@@ -335,12 +335,12 @@
     }
 
     .hero-section {
-        height: 460px;
-        min-height: 460px;
+        height: 400px;
+        min-height: 400px;
     }
 
     .hero-content {
-        top: 86px;
+        top: 58px;
         width: calc(100% - 40px);
         max-width: 614px;
         height: auto;
@@ -396,7 +396,7 @@
         width: 100%;
         max-width: 494px;
         height: auto;
-        margin-top: 16px;
+        margin-top: 12px;
     }
 
     .hero-primary-btn,
@@ -741,12 +741,12 @@
     }
 
     .hero-section {
-        height: 380px;
-        min-height: 380px;
+        height: 340px;
+        min-height: 340px;
     }
 
     .hero-content {
-        top: 34px;
+        top: 24px;
         width: calc(100% - 32px);
     }
 
@@ -759,44 +759,44 @@
     }
 
     .hero-copy h1 {
-        font-size: 22px;
-        line-height: 29px;
-        margin-top: 15px;
+        font-size: 20px;
+        line-height: 26px;
+        margin-top: 11px;
     }
 
     .hero-copy p {
-        margin-top: 11px;
-        font-size: 14px;
-        line-height: 20px;
+        margin-top: 8px;
+        font-size: 13px;
+        line-height: 18px;
     }
 
     .hero-tags {
-        margin-top: 13px;
-        gap: 7px;
+        margin-top: 9px;
+        gap: 5px;
     }
 
     .hero-tags span {
         height: auto;
-        min-height: 28px;
-        padding: 6px 10px;
-        font-size: 10px;
-        line-height: 14px;
+        min-height: 24px;
+        padding: 5px 8px;
+        font-size: 9px;
+        line-height: 12px;
         white-space: normal;
     }
 
     .hero-actions {
         flex-direction: column;
         height: auto;
-        margin-top: 12px;
-        gap: 7px;
+        margin-top: 9px;
+        gap: 6px;
     }
 
     .hero-primary-btn,
     .hero-secondary-btn {
-        height: 40px;
+        height: 36px;
         width: 100%;
         max-width: 250px;
-        padding: 10px 16px;
+        padding: 8px 14px;
     }
 
     .scroll-story-progress {
