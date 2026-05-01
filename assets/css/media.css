@@ -173,8 +173,8 @@
 
 @media (min-width: 768px) and (max-width: 991px) {
     .hero-section {
-        height: 500px;
-        min-height: 500px;
+        height: 500px !important;
+        min-height: 500px !important;
     }
 
     .hero-content {
@@ -335,8 +335,8 @@
     }
 
     .hero-section {
-        height: 400px;
-        min-height: 400px;
+        height: 400px !important;
+        min-height: 400px !important;
     }
 
     .hero-content {
@@ -741,8 +741,8 @@
     }
 
     .hero-section {
-        height: 340px;
-        min-height: 340px;
+        height: 340px !important;
+        min-height: 340px !important;
     }
 
     .hero-content {

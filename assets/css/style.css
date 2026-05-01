@@ -181,6 +181,8 @@ body.menu-open {
 /* Hero slider: first viewport image carousel and reveal animation. */
 .hero-section {
     font-family: "Jost", "Inter", Arial, sans-serif;
+    height: 730px;
+    min-height: 730px;
 }
 
 .hero-slide {
