@@ -1,0 +1,897 @@
+/* Responsive Styles */
+@media (max-width: 1199px) {
+    main,
+    header,
+    section {
+        max-width: 100% !important;
+        overflow-x: hidden;
+    }
+
+    header > div {
+        padding-left: 32px !important;
+        padding-right: 32px !important;
+        align-items: center !important;
+        padding-top: 0 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    header a[aria-label="Amelia Estate II home"] {
+        width: auto !important;
+        max-width: calc(100% - 58px);
+        gap: 18px !important;
+    }
+
+    header a[aria-label="Amelia Estate II home"] img:first-child {
+        width: 160px !important;
+        height: auto !important;
+    }
+
+    header a[aria-label="Amelia Estate II home"] img:last-child {
+        width: 96px !important;
+        height: auto !important;
+    }
+
+    header {
+        overflow: visible !important;
+    }
+
+    .hero-section {
+        height: min(720px, calc(100vh - 86px));
+        min-height: 600px;
+    }
+
+    .hero-slide.is-active .hero-overlay {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .hero-slide.is-active .hero-content {
+        animation: heroContentIn 1.4s ease 0.55s forwards;
+        pointer-events: auto;
+    }
+
+    .snapshot-section {
+        height: auto;
+        padding: 70px 24px;
+    }
+
+    .snapshot-inner,
+    .snapshot-grid {
+        width: 100%;
+        height: auto;
+        padding-top: 0;
+    }
+
+    .snapshot-inner {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .snapshot-card {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+
+    .snapshot-grid {
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+
+    .about-section {
+        height: auto;
+        min-height: 0;
+        padding: 70px 32px;
+    }
+
+    .about-inner {
+        grid-template-columns: 1fr;
+        gap: 42px;
+        width: 100%;
+        height: auto;
+        justify-items: center;
+    }
+
+    .about-gallery {
+        grid-template-columns: minmax(0, 1fr) minmax(150px, 0.48fr);
+        width: 100%;
+        max-width: 720px;
+        height: auto;
+    }
+
+    .about-main-img {
+        height: 460px;
+    }
+
+    .about-side-gallery img {
+        height: 223px;
+    }
+
+    .about-content,
+    .about-text-block,
+    .about-eyebrow,
+    .about-content h2,
+    .about-text-block > p,
+    .about-feature-grid {
+        width: 100%;
+        max-width: 720px;
+    }
+
+    .about-content {
+        min-height: 0;
+    }
+
+    .scroll-story-stage {
+        width: 100%;
+        height: 100%;
+    }
+
+    .scroll-story-content {
+        left: 46px;
+        bottom: 42px;
+        width: min(500px, calc(100% - 92px));
+    }
+
+    .differentiation-section {
+        height: auto;
+        background: #000000 url("../img/Differentiation Banner/89913c4de3bacd517a6920d106fe6f7082f9f0a4.jpg") center / cover no-repeat;
+    }
+
+    .differentiation-banner {
+        width: 100%;
+        max-width: 1200px;
+        height: auto;
+        min-height: 680px;
+        padding: 64px 32px;
+        align-items: flex-end;
+        gap: 40px;
+    }
+
+    .differentiation-cards {
+        margin-top: 72px;
+    }
+
+    .differentiation-section.is-visible::before {
+        opacity: 1;
+    }
+
+    .differentiation-section.is-visible::after {
+        transform: scale(1.08);
+    }
+
+    .differentiation-section.is-visible .differentiation-copy h2,
+    .differentiation-section.is-visible .differentiation-copy p,
+    .differentiation-section.is-visible .differentiation-card {
+        opacity: 1;
+        transform: translate(0, 0);
+    }
+
+    .differentiation-section.is-visible .differentiation-card:hover {
+        transform: translateX(-4px);
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    .hero-section {
+        height: 500px;
+        min-height: 500px;
+    }
+
+    .hero-content {
+        top: 72px;
+        width: min(560px, calc(100% - 64px));
+        height: auto;
+    }
+
+    .hero-copy,
+    .hero-copy h1,
+    .hero-location,
+    .hero-tags {
+        width: 100%;
+    }
+
+    .hero-copy {
+        height: auto;
+    }
+
+    .hero-copy h1 {
+        font-size: 34px;
+        line-height: 43px;
+    }
+
+    .hero-copy p,
+    .hero-slide--figma .hero-copy p {
+        width: 100%;
+        font-size: 16px;
+        line-height: 25px;
+    }
+
+    .snapshot-section {
+        padding: 60px 28px;
+    }
+
+    .snapshot-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 20px;
+    }
+
+    .snapshot-card {
+        width: 100%;
+    }
+
+    .differentiation-banner {
+        min-height: 720px;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-end;
+        padding: 56px 40px;
+        gap: 28px;
+    }
+
+    .differentiation-copy,
+    .differentiation-copy h2,
+    .differentiation-copy p,
+    .differentiation-cards,
+    .differentiation-card {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .differentiation-cards {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+        margin-top: 0;
+    }
+
+    .differentiation-card {
+        min-height: 82px;
+    }
+
+    .scroll-story-section {
+        height: 500px;
+        min-height: 500px;
+        background: #000000;
+    }
+
+    .scroll-story-sticky {
+        position: relative;
+        top: 0;
+        height: 500px;
+    }
+
+    .scroll-story-progress {
+        top: 130px;
+        left: 18px;
+    }
+
+    .scroll-story-content {
+        left: 72px;
+        bottom: 34px;
+        width: min(520px, calc(100% - 104px));
+    }
+
+    .scroll-story-slide--booking .scroll-story-content {
+        left: 72px;
+        bottom: 34px;
+        width: min(540px, calc(100% - 104px));
+    }
+
+    .scroll-story-content h2 {
+        font-size: 30px;
+        line-height: 1.14;
+    }
+}
+
+@media (max-width: 767px) {
+    body {
+        background: #ffffff;
+    }
+
+    header {
+        background: #0f0f0f !important;
+        box-shadow: none !important;
+    }
+
+    header > div {
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+        background: #0f0f0f;
+    }
+
+    header a[aria-label="Amelia Estate II home"] {
+        width: auto !important;
+        gap: 0 !important;
+    }
+
+    header a[aria-label="Amelia Estate II home"] img:first-child {
+        display: none !important;
+    }
+
+    .header-logo-divider {
+        display: none;
+    }
+
+    header a[aria-label="Amelia Estate II home"] img:last-child {
+        display: block !important;
+        width: 137px !important;
+        height: auto !important;
+    }
+
+    header a[aria-label="Amelia Estate II home"] img:nth-of-type(2) {
+        display: none !important;
+    }
+
+    #menuToggle {
+        border: 0 !important;
+        background: transparent !important;
+    }
+
+    #menuToggle span {
+        width: 18px !important;
+        height: 2px !important;
+        background: #c7a368 !important;
+    }
+
+    .hero-section {
+        height: 460px;
+        min-height: 460px;
+    }
+
+    .hero-content {
+        top: 86px;
+        width: calc(100% - 40px);
+        max-width: 614px;
+        height: auto;
+    }
+
+    .hero-copy {
+        height: auto;
+    }
+
+    .hero-copy,
+    .hero-copy h1,
+    .hero-location,
+    .hero-tags {
+        width: 100%;
+    }
+
+    .hero-copy p {
+        width: 100%;
+    }
+
+    .hero-slide--figma .hero-copy p {
+        width: 100%;
+    }
+
+    .hero-copy h1 {
+        font-size: 28px;
+        line-height: 35px;
+        margin-top: 16px;
+    }
+
+    .hero-copy p {
+        margin-top: 12px;
+        font-size: 16px;
+        line-height: 23px;
+    }
+
+    .hero-tags {
+        flex-wrap: wrap;
+        height: auto;
+        margin-top: 14px;
+        gap: 7px;
+    }
+
+    .hero-tags span {
+        height: auto;
+        min-height: 28px;
+        padding: 6px 10px;
+        font-size: 10px;
+        line-height: 14px;
+    }
+
+    .hero-actions {
+        width: 100%;
+        max-width: 494px;
+        height: auto;
+        margin-top: 16px;
+    }
+
+    .hero-primary-btn,
+    .hero-secondary-btn {
+        width: min(230px, 48%);
+        height: 46px;
+        padding: 12px 18px;
+    }
+
+    .snapshot-inner h2 {
+        font-size: 24px;
+        font-weight: 600;
+        line-height: 32px;
+    }
+
+    .snapshot-section {
+        height: auto !important;
+        padding: 56px 20px 64px;
+        background: #f7f5f0;
+    }
+
+    .snapshot-inner {
+        width: 100%;
+        max-width: 360px;
+        margin: 0 auto;
+        padding-top: 0;
+    }
+
+    .snapshot-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 28px 22px;
+        width: 100%;
+        height: auto;
+        margin-top: 22px;
+    }
+
+    .snapshot-card {
+        width: 100%;
+        height: 154px;
+        padding: 18px 8px 20px;
+        border: 1px solid rgba(48, 44, 42, 0.08);
+        border-radius: 16px;
+        background:
+            linear-gradient(180deg, rgba(255, 255, 255, 0.92) 0%, rgba(255, 255, 255, 0.62) 100%),
+            #f7f5f0;
+        box-shadow:
+            0 8px 16px rgba(0, 0, 0, 0.14),
+            inset 0 1px 0 rgba(255, 255, 255, 0.92);
+        gap: 8px;
+        opacity: 1;
+        transform: none;
+        overflow: hidden;
+    }
+
+    .snapshot-card::after {
+        height: 5px;
+        border-radius: 0 0 16px 16px;
+    }
+
+    .snapshot-icon {
+        width: 34px;
+        height: 34px;
+        stroke-width: 2;
+    }
+
+    .snapshot-card span {
+        width: 100%;
+        font-size: 14px;
+        line-height: 18px;
+        text-align: center;
+        overflow-wrap: anywhere;
+    }
+
+    .snapshot-card strong {
+        width: 100%;
+        font-size: clamp(12px, 4.2vw, 15px);
+        line-height: 1.28;
+        letter-spacing: 0.04em;
+        text-align: center;
+        overflow-wrap: anywhere;
+        word-break: normal;
+    }
+
+    .about-section {
+        width: 100%;
+        height: auto;
+        padding: 40px 20px 56px;
+        background: #000000;
+        color: #ffffff;
+    }
+
+    .about-inner,
+    .about-gallery,
+    .about-side-gallery,
+    .about-content,
+    .about-text-block,
+    .about-eyebrow,
+    .about-content h2,
+    .about-text-block > p,
+    .about-feature-grid {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .about-gallery {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 109px;
+        gap: 8px;
+        height: auto;
+    }
+
+    .about-main-img {
+        height: 288px;
+        border-radius: 16px;
+    }
+
+    .about-side-gallery {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+
+    .about-side-gallery img {
+        height: 140px;
+        border-radius: 16px;
+    }
+
+    .about-content {
+        gap: 18px;
+        padding-top: 0;
+    }
+
+    .about-eyebrow {
+        height: auto;
+        gap: 12px;
+        margin-top: 12px;
+        margin-bottom: 0;
+        color: #77716d;
+        font-size: 12px;
+        font-weight: 600;
+        line-height: 16px;
+        letter-spacing: 1.1px;
+    }
+
+    .about-eyebrow span {
+        width: 24px;
+        height: 2px;
+    }
+
+    .about-content h2 {
+        color: #ffffff;
+        font-size: 25px;
+        line-height: 1.32;
+        font-weight: 600;
+    }
+
+    .about-text-block > p {
+        margin-top: 22px;
+        color: #8b8682;
+        font-size: 15px;
+        line-height: 1.55;
+    }
+
+    .about-feature-grid {
+        grid-template-columns: 1fr;
+        gap: 13px;
+        width: 100%;
+        margin-top: 0;
+    }
+
+    .about-feature {
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 13px;
+        width: 100%;
+        height: auto;
+        min-height: 0;
+    }
+
+    .about-feature:nth-child(even) {
+        border-left: 0;
+        padding-left: 0;
+    }
+
+    .about-feature:nth-child(even)::before {
+        display: none;
+    }
+
+    .about-btn {
+        width: 134px;
+        height: 44px;
+        margin-top: 8px;
+        border-radius: 11px;
+        background: #d0a85f;
+        color: #ffffff;
+    }
+
+    .about-feature svg {
+        width: 22px;
+        height: 22px;
+        flex: 0 0 22px;
+        margin-top: 2px;
+        color: #d0ae69;
+        stroke: #d0ae69;
+    }
+
+    .about-feature h3 {
+        color: #ffffff;
+        font-size: 15px;
+        line-height: 20px;
+        letter-spacing: 0.7px;
+    }
+
+    .about-feature p {
+        margin-top: 3px;
+        color: #77716d;
+        font-size: 14px;
+        line-height: 20px;
+    }
+
+    .scroll-story-section {
+        height: calc(100vh - 86px);
+        min-height: 560px;
+        background: #000000;
+    }
+
+    .scroll-story-sticky {
+        position: relative;
+        top: 0;
+        height: calc(100vh - 86px);
+        min-height: 0;
+    }
+
+    .scroll-story-stage {
+        width: 100%;
+        min-height: 100%;
+    }
+
+    .scroll-story-progress {
+        top: 92px;
+        left: 12px;
+        gap: 11px;
+        font-size: 10px;
+    }
+
+    .scroll-story-content {
+        left: 58px;
+        bottom: 22px;
+        width: calc(100% - 74px);
+    }
+
+    .scroll-story-slide--booking .scroll-story-content {
+        left: 58px;
+        bottom: 18px;
+        width: calc(100% - 74px);
+    }
+
+    .scroll-story-kicker {
+        margin-bottom: 8px;
+        font-size: 10px;
+        line-height: 14px;
+        letter-spacing: 0.14em;
+    }
+
+    .scroll-story-content h2 {
+        font-size: 20px;
+        line-height: 1.12;
+    }
+
+    .scroll-story-content > p:last-child {
+        margin-top: 10px;
+        font-size: 11px;
+        line-height: 1.4;
+    }
+
+    .scroll-story-actions {
+        flex-wrap: wrap;
+        gap: 7px;
+        margin-top: 12px;
+    }
+
+    .scroll-story-primary-btn,
+    .scroll-story-secondary-btn {
+        width: calc(50% - 4px);
+        min-width: 0;
+        height: 36px;
+        padding: 9px 8px;
+        font-size: 9px;
+    }
+
+    .differentiation-banner {
+        min-height: 720px;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-end;
+        padding: 48px 20px;
+    }
+
+    .differentiation-copy,
+    .differentiation-copy h2,
+    .differentiation-copy p,
+    .differentiation-cards,
+    .differentiation-card {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .differentiation-copy h2 {
+        font-size: 32px;
+        line-height: 38px;
+    }
+
+    .differentiation-copy p {
+        font-size: 15px;
+        line-height: 22px;
+    }
+
+    .differentiation-cards {
+        height: auto;
+        gap: 10px;
+        margin-top: 0;
+    }
+
+    .differentiation-card {
+        min-height: 74px;
+    }
+}
+
+@media (max-width: 575px) {
+    header a[aria-label="Amelia Estate II home"] img:first-child {
+        display: none !important;
+    }
+
+    .header-logo-divider {
+        display: none;
+    }
+
+    header a[aria-label="Amelia Estate II home"] img:last-child {
+        display: block !important;
+        width: 137px !important;
+        height: auto !important;
+    }
+
+    .hero-section {
+        height: 380px;
+        min-height: 380px;
+    }
+
+    .hero-content {
+        top: 34px;
+        width: calc(100% - 32px);
+    }
+
+    .hero-location {
+        flex-wrap: wrap;
+        height: auto;
+        row-gap: 2px;
+        font-size: 11px;
+        line-height: 15px;
+    }
+
+    .hero-copy h1 {
+        font-size: 22px;
+        line-height: 29px;
+        margin-top: 15px;
+    }
+
+    .hero-copy p {
+        margin-top: 11px;
+        font-size: 14px;
+        line-height: 20px;
+    }
+
+    .hero-tags {
+        margin-top: 13px;
+        gap: 7px;
+    }
+
+    .hero-tags span {
+        height: auto;
+        min-height: 28px;
+        padding: 6px 10px;
+        font-size: 10px;
+        line-height: 14px;
+        white-space: normal;
+    }
+
+    .hero-actions {
+        flex-direction: column;
+        height: auto;
+        margin-top: 12px;
+        gap: 7px;
+    }
+
+    .hero-primary-btn,
+    .hero-secondary-btn {
+        height: 40px;
+        width: 100%;
+        max-width: 250px;
+        padding: 10px 16px;
+    }
+
+    .scroll-story-progress {
+        left: 10px;
+        gap: 9px;
+        font-size: 9px;
+    }
+
+    .scroll-story-content,
+    .scroll-story-slide--booking .scroll-story-content {
+        left: 52px;
+        bottom: 16px;
+        width: calc(100% - 62px);
+    }
+
+    .scroll-story-kicker {
+        margin-bottom: 6px;
+        font-size: 9px;
+        line-height: 12px;
+    }
+
+    .scroll-story-content h2 {
+        font-size: 18px;
+        line-height: 1.1;
+    }
+
+    .scroll-story-content > p:last-child {
+        margin-top: 8px;
+        font-size: 10px;
+        line-height: 1.35;
+    }
+
+    .scroll-story-actions {
+        gap: 6px;
+        margin-top: 10px;
+    }
+
+    .scroll-story-primary-btn,
+    .scroll-story-secondary-btn {
+        height: 34px;
+        padding: 8px 6px;
+        font-size: 8.5px;
+    }
+
+    .snapshot-section {
+        padding: 56px 20px 64px;
+    }
+
+    .snapshot-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 28px 22px;
+        justify-content: stretch;
+    }
+
+    .snapshot-card {
+        width: 100%;
+        height: 154px;
+    }
+
+    .about-main-img {
+        height: 288px;
+    }
+
+    .about-side-gallery img {
+        height: 140px;
+    }
+
+    .about-content h2 {
+        font-size: 25px;
+    }
+
+    .about-text-block > p {
+        font-size: 15px;
+        line-height: 23px;
+    }
+
+    .differentiation-banner {
+        min-height: 760px;
+        padding: 42px 16px;
+    }
+
+    .differentiation-copy h2 {
+        font-size: 27px;
+        line-height: 33px;
+    }
+
+    .differentiation-icon {
+        width: 44px;
+        height: 44px;
+        flex-basis: 44px;
+    }
+
+    .differentiation-card small,
+    .differentiation-card strong {
+        width: auto;
+    }
+
+}

@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Amelia Estate II - Premium low-rise 3 BHK built-up floors near Aero City Mohali.">
+    <title>Amelia Estate II</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/media.css">
+</head>
+
+<body class="min-h-screen bg-neutral-950 text-white">
+    <main class="min-h-screen">
+        <!-- Header -->
+        <header class="fixed left-0 top-0 z-50 h-[86px] w-full bg-white text-neutral-950 shadow-sm">
+            <div class="mx-auto flex h-[86px] max-w-[1440px] items-center px-[120px]">
+                <a href="#" class="flex h-[40.49px] w-[305.86px] shrink-0 items-center gap-[30.48px]"
+                    aria-label="Amelia Estate II home">
+                    <img class="h-[27.71px] w-[172.09px] object-contain" src="assets/img/logo/reality nivesh logo.png"
+                        alt="Realty Nivesh" />
+                    <span class="header-logo-divider" aria-hidden="true"></span>
+                    <img class="hidden h-[40.49px] w-[103.29px] object-contain sm:block"
+                        src="assets/img/logo/amelia logo.png" alt="Amelia Estate II" />
+                    <img class="mobile-header-logo hidden object-contain" src="assets/img/logo/Heading 1.png"
+                        alt="Amelia Estate II" />
+                </a>
+
+                <nav class="ml-[67px] hidden h-6 w-[793px] items-center justify-end gap-[10px] px-[21px] text-[12px] font-medium leading-6 xl:flex"
+                    aria-label="Primary navigation">
+                    <a href="#" class="whitespace-nowrap transition hover:text-orange-600">About Us</a>
+                    <a href="#" class="flex items-center gap-1 whitespace-nowrap transition hover:text-orange-600">
+                        Products
+                        <span class="mt-0.5 h-2 w-2 rotate-45 border-b-2 border-r-2 border-current"></span>
+                    </a>
+                    <a href="#" class="whitespace-nowrap transition hover:text-orange-600">Plans</a>
+                    <a href="#" class="whitespace-nowrap transition hover:text-orange-600">Location</a>
+                    <a href="#" class="whitespace-nowrap transition hover:text-orange-600">Price</a>
+                    <a href="#" class="whitespace-nowrap transition hover:text-orange-600">Amenities</a>
+                    <a href="#" class="whitespace-nowrap transition hover:text-orange-600">Specification</a>
+                    <a href="#" class="whitespace-nowrap transition hover:text-orange-600">Gallery</a>
+                    <a href="#" class="whitespace-nowrap transition hover:text-orange-600">Contact Us</a>
+                </nav>
+
+                <button id="menuToggle"
+                    class="group ml-auto flex h-10 w-10 shrink-0 flex-col items-center justify-center gap-[5px] rounded-md border border-neutral-200 bg-white xl:hidden"
+                    type="button" aria-label="Open menu" aria-expanded="false">
+                    <span class="block h-[2px] w-[23px] bg-neutral-900 transition group-hover:bg-orange-600"></span>
+                    <span class="block h-[2px] w-[23px] bg-neutral-900 transition group-hover:bg-orange-600"></span>
+                    <span class="block h-[2px] w-[23px] bg-neutral-900 transition group-hover:bg-orange-600"></span>
+                </button>
+            </div>
+
+            <nav id="mobileMenu" class="mobile-menu xl:hidden" aria-label="Mobile navigation">
+                <a href="#">About Us</a>
+                <a href="#">Products</a>
+                <a href="#">Plans</a>
+                <a href="#">Location</a>
+                <a href="#">Price</a>
+                <a href="#">Amenities</a>
+                <a href="#">Specification</a>
+                <a href="#">Gallery</a>
+                <a href="#">Contact Us</a>
+            </nav>
+        </header>
+
+        <!-- Hero slider -->
+        <section class="hero-section reveal-on-scroll relative mx-auto mt-[86px] h-[730px] max-w-[1440px] overflow-hidden">
+            <div id="heroSlider" class="flex h-full transition-transform duration-700 ease-in-out">
+                <div class="hero-slide hero-slide--figma relative h-full min-w-full">
+                    <div class="hero-slide-bg absolute inset-0 bg-cover bg-center"
+                        style="background-image: url('assets/img/slider/hero slider -1.jpg');"></div>
+                    <div class="hero-overlay absolute inset-0"></div>
+                    <div class="hero-content">
+                        <div class="hero-copy">
+                            <div class="hero-location">
+                                <span>Zirakpur-Patiala Highway</span>
+                                <span class="hero-location-divider"></span>
+                                <span>Near Aero City Mohali</span>
+                            </div>
+
+                            <h1>Premium Stilt + 4<br>Low-Rise 3 BHK Built-Up Floors</h1>
+
+                            <p>A rare low-rise address near Aero City Mohali for families who value privacy, space, and
+                                refined living.</p>
+
+                            <div class="hero-tags">
+                                <span>3 BHK Built-Up Floors</span>
+                                <span>Stilt + 4 With Lift</span>
+                                <span>Store Room</span>
+                                <span>Roof Rights on 4th Floor</span>
+                            </div>
+                        </div>
+
+                        <div class="hero-actions">
+                            <a class="hero-primary-btn" href="#">Enquire Now <span>-&gt;</span></a>
+                            <a class="hero-secondary-btn" href="https://wa.me/919509489253" target="_blank"
+                                rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+                                <svg class="hero-whatsapp-icon" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path
+                                        d="M20.52 3.48A11.86 11.86 0 0 0 12.08 0C5.5 0 .14 5.35.14 11.93c0 2.1.55 4.16 1.6 5.97L0 24l6.25-1.64a11.9 11.9 0 0 0 5.83 1.49h.01c6.58 0 11.93-5.35 11.93-11.93 0-3.18-1.24-6.17-3.5-8.44ZM12.09 21.83h-.01a9.9 9.9 0 0 1-5.05-1.38l-.36-.21-3.71.97.99-3.62-.23-.37a9.88 9.88 0 0 1-1.52-5.29c0-5.46 4.44-9.9 9.91-9.9a9.85 9.85 0 0 1 7 2.9 9.84 9.84 0 0 1 2.9 7c-.01 5.46-4.46 9.9-9.92 9.9Zm5.43-7.42c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.95 1.17-.17.2-.35.22-.65.08-.3-.15-1.26-.46-2.4-1.47-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.49s1.07 2.88 1.22 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.42.25-.7.25-1.29.17-1.42-.07-.13-.27-.2-.57-.35Z" />
+                                </svg>
+                                WhatsApp Now
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-slide relative h-full min-w-full">
+                    <div class="hero-slide-bg absolute inset-0 bg-cover bg-center"
+                        style="background-image: url('assets/img/slider/hero slider-2.jpg');"></div>
+                    <div class="hero-overlay absolute inset-0"></div>
+                    <div class="hero-content">
+                        <div class="hero-copy">
+                            <div class="hero-location">
+                                <span>Zirakpur-Patiala Highway</span>
+                                <span class="hero-location-divider"></span>
+                                <span>Near Aero City Mohali</span>
+                            </div>
+
+                            <h1>Premium Stilt + 4 Low-Rise 3 BHK Built-Up Floors</h1>
+
+                            <p>A rare low-rise address near Aero City Mohali for families who value privacy, space, and
+                                refined living.</p>
+
+                            <div class="hero-tags">
+                                <span>3 BHK Built-Up Floors</span>
+                                <span>Stilt + 4 With Lift</span>
+                                <span>Store Room</span>
+                                <span>Roof Rights on 4th Floor</span>
+                            </div>
+                        </div>
+
+                        <div class="hero-actions">
+                            <a class="hero-primary-btn" href="#">Enquire Now <span>-&gt;</span></a>
+                            <a class="hero-secondary-btn" href="https://wa.me/919509489253" target="_blank"
+                                rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+                                <svg class="hero-whatsapp-icon" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path
+                                        d="M20.52 3.48A11.86 11.86 0 0 0 12.08 0C5.5 0 .14 5.35.14 11.93c0 2.1.55 4.16 1.6 5.97L0 24l6.25-1.64a11.9 11.9 0 0 0 5.83 1.49h.01c6.58 0 11.93-5.35 11.93-11.93 0-3.18-1.24-6.17-3.5-8.44ZM12.09 21.83h-.01a9.9 9.9 0 0 1-5.05-1.38l-.36-.21-3.71.97.99-3.62-.23-.37a9.88 9.88 0 0 1-1.52-5.29c0-5.46 4.44-9.9 9.91-9.9a9.85 9.85 0 0 1 7 2.9 9.84 9.84 0 0 1 2.9 7c-.01 5.46-4.46 9.9-9.92 9.9Zm5.43-7.42c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.95 1.17-.17.2-.35.22-.65.08-.3-.15-1.26-.46-2.4-1.47-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.49s1.07 2.88 1.22 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.42.25-.7.25-1.29.17-1.42-.07-.13-.27-.2-.57-.35Z" />
+                                </svg>
+                                WhatsApp Now
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-slide relative h-full min-w-full">
+                    <div class="hero-slide-bg absolute inset-0 bg-cover bg-center"
+                        style="background-image: url('assets/img/slider/hero slider-3.png');"></div>
+                    <div class="hero-overlay absolute inset-0"></div>
+                    <div class="hero-content">
+                        <div class="hero-copy">
+                            <div class="hero-location">
+                                <span>Zirakpur-Patiala Highway</span>
+                                <span class="hero-location-divider"></span>
+                                <span>Near Aero City Mohali</span>
+                            </div>
+
+                            <h1>Premium Stilt + 4 Low-Rise 3 BHK Built-Up Floors</h1>
+
+                            <p>A rare low-rise address near Aero City Mohali for families who value privacy, space, and
+                                refined living.</p>
+
+                            <div class="hero-tags">
+                                <span>3 BHK Built-Up Floors</span>
+                                <span>Stilt + 4 With Lift</span>
+                                <span>Store Room</span>
+                                <span>Roof Rights on 4th Floor</span>
+                            </div>
+                        </div>
+
+                        <div class="hero-actions">
+                            <a class="hero-primary-btn" href="#">Enquire Now <span>-&gt;</span></a>
+                            <a class="hero-secondary-btn" href="https://wa.me/919509489253" target="_blank"
+                                rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+                                <svg class="hero-whatsapp-icon" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path
+                                        d="M20.52 3.48A11.86 11.86 0 0 0 12.08 0C5.5 0 .14 5.35.14 11.93c0 2.1.55 4.16 1.6 5.97L0 24l6.25-1.64a11.9 11.9 0 0 0 5.83 1.49h.01c6.58 0 11.93-5.35 11.93-11.93 0-3.18-1.24-6.17-3.5-8.44ZM12.09 21.83h-.01a9.9 9.9 0 0 1-5.05-1.38l-.36-.21-3.71.97.99-3.62-.23-.37a9.88 9.88 0 0 1-1.52-5.29c0-5.46 4.44-9.9 9.91-9.9a9.85 9.85 0 0 1 7 2.9 9.84 9.84 0 0 1 2.9 7c-.01 5.46-4.46 9.9-9.92 9.9Zm5.43-7.42c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.95 1.17-.17.2-.35.22-.65.08-.3-.15-1.26-.46-2.4-1.47-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.49s1.07 2.88 1.22 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.42.25-.7.25-1.29.17-1.42-.07-.13-.27-.2-.57-.35Z" />
+                                </svg>
+                                WhatsApp Now
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Project snapshot -->
+        <section class="snapshot-section reveal-on-scroll mx-auto h-[445px] max-w-[1440px] bg-[#f7f5f0]">
+            <div class="snapshot-inner">
+                <h2>Project Snapshot</h2>
+
+                <div class="snapshot-grid">
+                    <article class="snapshot-card">
+                        <svg class="snapshot-icon" viewBox="0 0 24 24" aria-hidden="true">
+                            <path
+                                d="M8 21h8M7 3h10a1 1 0 0 1 1 1v17H6V4a1 1 0 0 1 1-1Zm3 4h1m3 0h1m-5 4h1m3 0h1m-5 4h1m3 0h1" />
+                        </svg>
+                        <span>Configuration</span>
+                        <strong>3 BHK<br>FLOORS</strong>
+                    </article>
+
+                    <article class="snapshot-card">
+                        <svg class="snapshot-icon" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="m12 3 9 6-9 6-9-6 9-6Zm-7 10 7 5 7-5M5 17l7 5 7-5" />
+                        </svg>
+                        <span>Size</span>
+                        <strong>230/219 /205<br>SQ. YDS.</strong>
+                    </article>
+
+                    <article class="snapshot-card">
+                        <svg class="snapshot-icon" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M4 21h16M6 21V5h8v16m4 0V9h-4M9 8h2m-2 4h2m-2 4h2m7-3h1m-1 4h1" />
+                        </svg>
+                        <span>Structure</span>
+                        <strong>STILT + 4</strong>
+                    </article>
+
+                    <article class="snapshot-card">
+                        <span class="snapshot-icon snapshot-status-icon snapshot-key-icon" aria-hidden="true"></span>
+                        <span>Status</span>
+                        <strong>UNDER<br>CONSTRUCTION</strong>
+                    </article>
+
+                    <article class="snapshot-card">
+                        <svg class="snapshot-icon" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M7 3v4m10-4v4M5 7h14v14H5V7Zm3 5 3 3 5-5" />
+                        </svg>
+                        <span>Possession</span>
+                        <strong>DECEMBER<br>2026</strong>
+                    </article>
+
+                    <article class="snapshot-card">
+                        <svg class="snapshot-icon" viewBox="0 0 24 24" aria-hidden="true">
+                            <path
+                                d="m12 2 2.1 3.2 3.8-.5.5 3.8 3.2 2.1-2.1 3.2.5 3.8-3.8.5L12 22l-2.1-3.2-3.8.5-.5-3.8-3.2-2.1 2.1-3.2-.5-3.8 3.8-.5L12 2Zm-3 10 2 2 4-4" />
+                        </svg>
+                        <span>RERA Number</span>
+                        <strong>PBRERA-<br>SAS79-PR1183</strong>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- About -->
+        <section class="about-section reveal-on-scroll mx-auto max-w-[1440px]" id="about">
+            <div class="about-inner">
+                <div class="about-gallery" aria-label="Amelia Estate II photo highlights">
+                    <img class="about-main-img about-reveal-img"
+                        src="assets/img/about-us/77cf40051d352b930303e5137493a9469f1e7c04.png"
+                        alt="Low-rise Amelia Estate II building exterior" />
+                    <div class="about-side-gallery">
+                        <img class="about-reveal-img"
+                            src="assets/img/about-us/81801bab9b3b6f29f88a931e54ce4808b11ca585.jpg"
+                            alt="Premium balcony detail at Amelia Estate II" />
+                        <img class="about-reveal-img"
+                            src="assets/img/about-us/9d36bc9e1115936b757064117ba22e4770259b28.png"
+                            alt="Spacious modern 3 BHK living room interior" />
+                    </div>
+                </div>
+
+                <div class="about-content about-reveal-content">
+                    <div class="about-text-block">
+                        <div class="about-eyebrow">
+                            <span></span>
+                            About Amelia Estate II
+                        </div>
+
+                        <h2>A Premium Low-Rise Living Experience Near Aero City Mohali</h2>
+
+                        <p>Thoughtfully designed 3 BHK built-up floors in a premium township environment, created as a
+                            better alternative to crowded high-rise living. Prime location, strong layout planning,
+                            everyday
+                            practicality, store room utility, lift access and roof-rights advantage make this a rare
+                            low-rise
+                            opportunity.</p>
+                    </div>
+
+                    <div class="about-feature-grid">
+                        <article class="about-feature">
+                            <svg viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M4 21h16M6 21V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v17" />
+                                <path d="M9 7h1m4 0h1M9 11h1m4 0h1M9 15h1m4 0h1" />
+                            </svg>
+                            <div>
+                                <h3>G+4 Low-Rise Architecture</h3>
+                                <p>Only 4 floors. No crowding.</p>
+                            </div>
+                        </article>
+
+                        <article class="about-feature">
+                            <svg viewBox="0 0 48 48" aria-hidden="true">
+                                <path
+                                    d="M42.3358 16C39.2496 8.93638 32.2013 4 24 4C15.7987 4 8.75041 8.93638 5.66418 16"
+                                    stroke="currentColor" stroke-width="4" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path
+                                    d="M24 14C20.2973 17.6298 18 22.6881 18 28.2829C18 28.7833 18.0184 29.2795 18.0545 29.7708C21.7253 33.3967 24 38.4327 24 44C24 38.4327 26.2747 33.3967 29.9455 29.7708C29.9816 29.2795 30 28.7833 30 28.2829C30 22.6881 27.7027 17.6298 24 14Z"
+                                    stroke="currentColor" stroke-width="4" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path
+                                    d="M4 24C4 35.0457 12.9543 44 24 44C24 38.4327 21.7253 33.3967 18.0545 29.7708C14.4424 26.2027 9.47841 24 4 24Z"
+                                    stroke="currentColor" stroke-width="4" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path
+                                    d="M44 24C44 35.0457 35.0457 44 24 44C24 38.4327 26.2747 33.3967 29.9455 29.7708C33.5576 26.2027 38.5216 24 44 24Z"
+                                    stroke="currentColor" stroke-width="4" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                            <div>
+                                <h3>70% Open Green Space</h3>
+                                <p>Larger central park, better light & air.</p>
+                            </div>
+                        </article>
+
+                        <article class="about-feature">
+                            <svg viewBox="0 0 24 24" aria-hidden="true">
+                                <path
+                                    d="M12 3 14 6.2l3.7-.7.7 3.7L21 12l-2.6 2.8-.7 3.7-3.7-.7L12 21l-2-3.2-3.7.7-.7-3.7L3 12l2.6-2.8.7-3.7 3.7.7L12 3Z" />
+                                <path d="m8.7 12.2 2.1 2.1 4.5-4.6" />
+                            </svg>
+                            <div>
+                                <h3>RERA & Bank Approved</h3>
+                                <p>Home loan ready. 100% legal clarity.</p>
+                            </div>
+                        </article>
+
+                        <article class="about-feature">
+                            <svg viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M12 21s7-4.5 7-11a7 7 0 1 0-14 0c0 6.5 7 11 7 11Z" />
+                                <path d="M12 10.5a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z" />
+                            </svg>
+                            <div>
+                                <h3>Sector 66 Prime Location</h3>
+                                <p>5 min to Airport Road.</p>
+                            </div>
+                        </article>
+                    </div>
+
+                    <a class="about-btn" href="#">Read More</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Differentiation banner -->
+        <section class="differentiation-section reveal-on-scroll mx-auto max-w-[1440px]">
+            <div class="differentiation-banner">
+                <div class="differentiation-copy">
+                    <h2>A Rare Low-Rise Opportunity in a High-Rise Dominated Corridor</h2>
+                    <p>More privacy, more openness, and a more comfortable everyday living experience in a location
+                        where low-rise supply is limited.</p>
+                </div>
+
+                <div class="differentiation-cards" aria-label="Amelia Estate II key differentiators">
+                    <article class="differentiation-card">
+                        <span class="differentiation-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M4 21h16M6 21V4h10v17m2 0V9h-2M9 7h1m3 0h1M9 11h1m3 0h1M9 15h1m3 0h1" />
+                            </svg>
+                        </span>
+                        <div>
+                            <small>CONFIGURATION</small>
+                            <strong>3 BHK Built-Up Floors</strong>
+                        </div>
+                    </article>
+
+                    <article class="differentiation-card">
+                        <span class="differentiation-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24">
+                                <path d="m12 3 8 5-8 5-8-5 8-5Z" />
+                                <path d="m4 12 8 5 8-5" />
+                                <path d="m4 16 8 5 8-5" />
+                            </svg>
+                        </span>
+                        <div>
+                            <small>STRUCTURE</small>
+                            <strong>Stilt + 4 with Lift</strong>
+                        </div>
+                    </article>
+
+                    <article class="differentiation-card">
+                        <span class="differentiation-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M5 5h14v14H5V5Z" />
+                                <path d="M8 9h8M8 13h5" />
+                            </svg>
+                        </span>
+                        <div>
+                            <small>STORE ROOM</small>
+                            <strong>Included in Every Unit</strong>
+                        </div>
+                    </article>
+
+                    <article class="differentiation-card">
+                        <span class="differentiation-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="M12 3v3m0 12v3M3 12h3m12 0h3M5.64 5.64l2.12 2.12m8.48 8.48 2.12 2.12m0-12.72-2.12 2.12m-8.48 8.48-2.12 2.12" />
+                                <path d="M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8Z" />
+                            </svg>
+                        </span>
+                        <div>
+                            <small>SPECIAL BENEFIT</small>
+                            <strong>Roof Rights on 4th Floor</strong>
+                        </div>
+                    </article>
+
+                    <article class="differentiation-card">
+                        <span class="differentiation-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M7 3v4m10-4v4M5 7h14v14H5V7Z" />
+                                <path d="M8 12h8M8 16h5" />
+                            </svg>
+                        </span>
+                        <div>
+                            <small>POSSESSION</small>
+                            <strong>December 2026</strong>
+                        </div>
+                    </article>
+
+                    <article class="differentiation-card">
+                        <span class="differentiation-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24">
+                                <path
+                                    d="m12 2 2.1 3.2 3.8-.5.5 3.8 3.2 2.1-2.1 3.2.5 3.8-3.8.5L12 22l-2.1-3.2-3.8.5-.5-3.8-3.2-2.1 2.1-3.2-.5-3.8 3.8-.5L12 2Z" />
+                                <path d="m9 12 2 2 4-4" />
+                            </svg>
+                        </span>
+                        <div>
+                            <small>RERA</small>
+                            <strong>PB-RERA-SAS81-PRO-941</strong>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Scroll Story slider -->
+        <section class="scroll-story-section reveal-on-scroll" id="low-rise-story">
+            <div class="scroll-story-sticky">
+                <div class="scroll-story-stage" aria-label="Low-rise living story slider">
+                    <div class="scroll-story-progress" aria-hidden="true">
+                        <span class="is-active">01</span>
+                        <span>02</span>
+                        <span>03</span>
+                        <span>04</span>
+                        <span>05</span>
+                        <span>06</span>
+                    </div>
+
+                    <article class="scroll-story-slide is-active">
+                        <div class="scroll-story-bg" style="--story-image: url('assets/img/mid-slider/slide-1.png');">
+                            <img src="assets/img/mid-slider/slide-1.png" alt="Amelia Estate II gallery slide 1" />
+                        </div>
+                        <div class="scroll-story-overlay"></div>
+                        <div class="scroll-story-content">
+                            <p class="scroll-story-kicker">01 - LOW-RISE LIVING ADVANTAGE</p>
+                            <h2>A More <span>Private</span>, More <span>Refined</span> Way to Live</h2>
+                            <p>In a landscape filled with high-rise towers, Amelia Estate II offers a calmer low-rise
+                                format with better light, lower density, and more everyday comfort.</p>
+                        </div>
+                    </article>
+
+                    <article class="scroll-story-slide">
+                        <div class="scroll-story-bg" style="--story-image: url('assets/img/mid-slider/slider-2.png');">
+                            <img src="assets/img/mid-slider/slider-2.png" alt="Amelia Estate II gallery slide 2" />
+                        </div>
+                        <div class="scroll-story-overlay"></div>
+                        <div class="scroll-story-content">
+                            <p class="scroll-story-kicker">02 - PRIME LOCATION ADVANTAGE</p>
+                            <h2>Positioned in One of Tricity's Most <span>Promising Corridors.</span></h2>
+                            <p>Near Aero City Mohali, PR-7 Airport Road, and key growth corridors, the project combines
+                                strong connectivity with long-term value.</p>
+                        </div>
+                    </article>
+
+                    <article class="scroll-story-slide">
+                        <div class="scroll-story-bg" style="--story-image: url('assets/img/mid-slider/slider-3.png');">
+                            <img src="assets/img/mid-slider/slider-3.png" alt="Amelia Estate II gallery slide 3" />
+                        </div>
+                        <div class="scroll-story-overlay"></div>
+                        <div class="scroll-story-content">
+                            <p class="scroll-story-kicker">03 - THOUGHTFUL FLOOR PLANNING</p>
+                            <h2>Spacious <span>3 BHK Floors</span> That Feel Complete</h2>
+                            <p>Designed for practical family living, each floor layout maximizes natural ventilation and
+                                provides independent spaces for every family member.</p>
+                        </div>
+                    </article>
+
+                    <article class="scroll-story-slide">
+                        <div class="scroll-story-bg" style="--story-image: url('assets/img/mid-slider/slider-4.jpg');">
+                            <img src="assets/img/mid-slider/slider-4.jpg" alt="Amelia Estate II gallery slide 4" />
+                        </div>
+                        <div class="scroll-story-overlay"></div>
+                        <div class="scroll-story-content">
+                            <p class="scroll-story-kicker">04 - PREMIUM DELIVERABLES</p>
+                            <h2>A <span>Specification Package</span> That Adds Real Value</h2>
+                            <p>From modular kitchens and premium flooring to high-end bathroom fittings, we deliver a
+                                home that is ready for your lifestyle.</p>
+                        </div>
+                    </article>
+
+                    <article class="scroll-story-slide">
+                        <div class="scroll-story-bg" style="--story-image: url('assets/img/mid-slider/slider-5.png');">
+                            <img src="assets/img/mid-slider/slider-5.png" alt="Amelia Estate II gallery slide 5" />
+                        </div>
+                        <div class="scroll-story-overlay"></div>
+                        <div class="scroll-story-content">
+                            <p class="scroll-story-kicker">05 - UNIQUE OWNERSHIP BENEFITS</p>
+                            <h2>Added Advantages That Go Beyond <span>Standard Floors</span></h2>
+                            <p>A dedicated store room in every unit and roof rights on the 4th floor make ownership more
+                                complete and more valuable.</p>
+                        </div>
+                    </article>
+
+                    <article class="scroll-story-slide scroll-story-slide--booking">
+                        <div class="scroll-story-bg" style="--story-image: url('assets/img/mid-slider/slider-6.jpg');">
+                            <img src="assets/img/mid-slider/slider-6.jpg" alt="Amelia Estate II gallery slide 6" />
+                        </div>
+                        <div class="scroll-story-overlay"></div>
+                        <div class="scroll-story-content">
+                            <p class="scroll-story-kicker">06 - BOOKING OPPORTUNITY</p>
+                            <h2>Secure Your Place in a High-Demand <span>Low-Rise Community</span></h2>
+                            <p>Low-rise supply in this corridor is limited. Bookings are open and site visits are
+                                available for serious buyers.</p>
+                            <div class="scroll-story-actions">
+                                <a class="scroll-story-primary-btn" href="#">Check Current Price <span>-&gt;</span></a>
+                                <a class="scroll-story-secondary-btn" href="#">Book Site Visit</a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testing bar -->
+        <section class="test-white-section" aria-label="Test white section"></section>
+    </main>
+
+    <script src="assets/js/main.js"></script>
+</body>
+
+</html>
