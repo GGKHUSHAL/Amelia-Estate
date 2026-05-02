@@ -130,6 +130,46 @@
         height: 850px;
     }
 
+    .ideal-floor-section {
+        min-height: 0;
+        padding: 70px 32px;
+    }
+
+    .ideal-floor-header {
+        align-items: flex-start;
+        gap: 28px;
+        margin-bottom: 32px;
+    }
+
+    .ideal-floor-heading h2 {
+        font-size: 36px;
+        line-height: 44px;
+    }
+
+    .ideal-floor-heading > p:not(.ideal-floor-eyebrow) {
+        font-size: 16px;
+        line-height: 24px;
+    }
+
+    .ideal-floor-size-tabs {
+        width: 360px;
+        min-width: 360px;
+    }
+
+    .ideal-floor-card {
+        grid-template-columns: 1fr;
+        min-height: 0;
+    }
+
+    .ideal-floor-media,
+    .ideal-floor-media img {
+        min-height: 460px;
+    }
+
+    .ideal-floor-panel {
+        padding: 42px 36px 36px;
+    }
+
     .peace-density-content {
         width: calc(100% - 64px);
         padding-top: 30px;
@@ -333,6 +373,31 @@
 
     .peace-density-section {
         height: 680px;
+    }
+
+    .ideal-floor-section {
+        padding: 58px 40px 64px;
+    }
+
+    .ideal-floor-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 24px;
+    }
+
+    .ideal-floor-size-tabs {
+        width: min(100%, 398px);
+        min-width: 0;
+    }
+
+    .ideal-floor-media,
+    .ideal-floor-media img {
+        min-height: 430px;
+    }
+
+    .ideal-floor-panel h3 {
+        font-size: 28px;
+        line-height: 34px;
     }
 
     .peace-density-content {
@@ -605,6 +670,115 @@
         text-align: center;
         overflow-wrap: anywhere;
         word-break: normal;
+    }
+
+    .ideal-floor-section {
+        min-height: 0;
+        padding: 50px 20px 58px;
+        background: #000000;
+    }
+
+    .ideal-floor-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 22px;
+        margin-bottom: 28px;
+    }
+
+    .ideal-floor-eyebrow {
+        height: 26px;
+        padding: 5px 13px;
+        font-size: 10px;
+        letter-spacing: 0.28em;
+    }
+
+    .ideal-floor-heading h2 {
+        font-size: 30px;
+        line-height: 37px;
+    }
+
+    .ideal-floor-heading > p:not(.ideal-floor-eyebrow) {
+        margin-top: 14px;
+        font-size: 15px;
+        line-height: 22px;
+    }
+
+    .ideal-floor-size-tabs {
+        width: 100%;
+        min-width: 0;
+        height: auto;
+        min-height: 54px;
+    }
+
+    .ideal-floor-size-tabs button {
+        height: 44px;
+        font-size: 13px;
+        white-space: nowrap;
+    }
+
+    .ideal-floor-card {
+        grid-template-columns: 1fr;
+        min-height: 0;
+        border-radius: 14px;
+    }
+
+    .ideal-floor-media,
+    .ideal-floor-media img {
+        min-height: 360px;
+    }
+
+    .ideal-floor-badges {
+        top: 12px;
+        left: 12px;
+        gap: 9px;
+        max-width: calc(100% - 24px);
+    }
+
+    .ideal-floor-badges span,
+    .ideal-floor-badges strong {
+        min-height: 32px;
+        max-width: 100%;
+        padding: 8px 14px;
+        font-size: 12px;
+        white-space: normal;
+    }
+
+    .ideal-floor-panel {
+        gap: 22px;
+        padding: 30px 20px 24px;
+    }
+
+    .ideal-floor-panel h3 {
+        font-size: 24px;
+        line-height: 31px;
+        letter-spacing: 0.02em;
+    }
+
+    .ideal-floor-panel > div:first-child p {
+        font-size: 13px;
+        line-height: 18px;
+        letter-spacing: 0.06em;
+    }
+
+    .ideal-floor-levels {
+        height: 56px;
+    }
+
+    .ideal-floor-levels button {
+        font-size: 13px;
+    }
+
+    .ideal-floor-specs {
+        grid-template-columns: 1fr;
+    }
+
+    .ideal-floor-spec {
+        min-height: 60px;
+    }
+
+    .ideal-floor-price-btn {
+        height: 50px;
+        font-size: 14px;
     }
 
     .about-section {

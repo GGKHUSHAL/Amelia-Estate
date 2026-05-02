@@ -36,6 +36,7 @@ header,
 .about-section,
 .differentiation-section,
 .peace-density-section,
+.ideal-floor-section,
 .scroll-story-section,
 .booking-enquiry-section {
     width: 100%;
@@ -863,15 +864,6 @@ img.snapshot-icon {
     transform: translateY(-2px);
 }
 
-/* Scroll Story slider: pinned visual section controlled by wheel/touch JS. */
-.scroll-story-section {
-    height: 580px;
-    min-height: 580px;
-    background: #000000;
-    font-family: "Jost", "Inter", Arial, sans-serif;
-    scroll-margin-top: 86px;
-}
-
 /* Designed for peace banner: photo-led bridge into the scroll story. */
 .peace-density-section {
     position: relative;
@@ -1021,6 +1013,470 @@ img.snapshot-icon {
 .peace-density-section:hover .peace-density-bg img {
     filter: saturate(1.12) contrast(1.08) brightness(1.06);
     transform: scale(1.11) translate3d(10px, -10px, 0);
+}
+
+/* Choose ideal floor: Figma-matched dark product panel. */
+.ideal-floor-section {
+    min-height: 820px;
+    padding: 80px 120px;
+    background: #000000;
+    color: #ffffff;
+    font-family: "Jost", "Inter", Arial, sans-serif;
+    scroll-margin-top: 86px;
+}
+
+.ideal-floor-inner {
+    width: min(100%, 1200px);
+    margin: 0 auto;
+}
+
+.ideal-floor-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 48px;
+    margin-bottom: 40px;
+}
+
+.ideal-floor-heading {
+    width: min(100%, 690px);
+}
+
+.ideal-floor-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    height: 28px;
+    margin: 0 0 18px;
+    padding: 5px 17px;
+    border: 1px solid rgba(225, 195, 126, 0.38);
+    border-radius: 999px;
+    background: rgba(225, 195, 126, 0.14);
+    color: #e1c37e;
+    font-family: "Inter", Arial, sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: 0.34em;
+    text-transform: uppercase;
+}
+
+.ideal-floor-eyebrow svg {
+    width: 13px;
+    height: 13px;
+    fill: currentColor;
+}
+
+.ideal-floor-heading h2 {
+    margin: 0;
+    color: #ffffff;
+    font-size: 40px;
+    font-weight: 500;
+    line-height: 48px;
+    letter-spacing: 0;
+}
+
+.ideal-floor-heading h2 span {
+    color: #e1c37e;
+}
+
+.ideal-floor-heading > p:not(.ideal-floor-eyebrow) {
+    margin: 20px 0 0;
+    color: rgba(255, 255, 255, 0.54);
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 26px;
+}
+
+.ideal-floor-size-tabs {
+    display: flex;
+    align-items: center;
+    width: 398px;
+    min-width: 398px;
+    height: 60px;
+    padding: 5px;
+    border: 1px solid rgba(225, 195, 126, 0.26);
+    border-radius: 8px;
+    background: rgba(13, 13, 13, 0.92);
+}
+
+.ideal-floor-size-tabs button {
+    flex: 1 1 0;
+    height: 48px;
+    border: 0;
+    border-radius: 8px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.52);
+    font-family: "Jost", "Inter", Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1;
+    transition:
+        background-color 0.3s ease,
+        box-shadow 0.3s ease,
+        color 0.3s ease;
+}
+
+.ideal-floor-size-tabs button.is-active {
+    background: linear-gradient(180deg, #f0d793 0%, #d8b96d 100%);
+    color: #000000;
+    box-shadow: 0 0 28px rgba(225, 195, 126, 0.52);
+}
+
+.ideal-floor-card {
+    display: grid;
+    grid-template-columns: minmax(0, 696px) minmax(360px, 424px);
+    width: 100%;
+    min-height: 500px;
+    overflow: hidden;
+    border: 1px solid rgba(225, 195, 126, 0.25);
+    border-radius: 15px;
+    background:
+        radial-gradient(80% 100% at 100% 50%, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0) 64%),
+        #151515;
+    opacity: 0;
+    transform: translateY(34px);
+    transition:
+        opacity 0.85s ease,
+        transform 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+        border-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.ideal-floor-section.is-visible .ideal-floor-card {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.ideal-floor-card:hover {
+    border-color: rgba(225, 195, 126, 0.42);
+    box-shadow: 0 28px 60px rgba(0, 0, 0, 0.32);
+}
+
+.ideal-floor-media {
+    position: relative;
+    min-height: 500px;
+    overflow: hidden;
+}
+
+.ideal-floor-media img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-height: 500px;
+    object-fit: cover;
+    object-position: center;
+    transition:
+        filter 0.45s ease,
+        transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.ideal-floor-card:hover .ideal-floor-media img {
+    filter: saturate(1.06) contrast(1.04);
+    transform: scale(1.035);
+}
+
+.ideal-floor-badges {
+    position: absolute;
+    top: 17px;
+    left: 12px;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 13px;
+}
+
+.ideal-floor-badges span,
+.ideal-floor-badges strong {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 36px;
+    border-radius: 8px;
+    font-family: "Jost", "Inter", Arial, sans-serif;
+    font-weight: 600;
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+.ideal-floor-badges span {
+    padding: 10px 23px;
+    background: rgba(11, 10, 9, 0.93);
+    color: #ffffff;
+    font-size: 14px;
+    letter-spacing: 0.04em;
+}
+
+.ideal-floor-badges strong {
+    gap: 8px;
+    padding: 9px 21px;
+    background: linear-gradient(180deg, #efd58d 0%, #d8b96d 100%);
+    color: #151515;
+    font-size: 16px;
+    letter-spacing: 0.08em;
+}
+
+.ideal-floor-badges svg {
+    width: 15px;
+    height: 15px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.ideal-floor-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 26px;
+    padding: 48px 36px 39px;
+    background:
+        radial-gradient(90% 75% at 55% 8%, rgba(255, 255, 255, 0.07) 0%, rgba(255, 255, 255, 0) 66%),
+        #151515;
+}
+
+.ideal-floor-panel h3 {
+    margin: 0;
+    color: #ffffff;
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 40px;
+    letter-spacing: 0.03em;
+}
+
+.ideal-floor-panel > div:first-child p {
+    margin: 8px 0 0;
+    color: rgba(255, 255, 255, 0.45);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0.08em;
+}
+
+.ideal-floor-selector {
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+}
+
+.ideal-floor-selector > span {
+    color: rgba(255, 255, 255, 0.36);
+    font-family: "Inter", Arial, sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 16px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.ideal-floor-levels {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 4px;
+    height: 60px;
+    padding: 5px;
+    border: 1px solid rgba(225, 195, 126, 0.58);
+    border-radius: 10px;
+    background: #050505;
+}
+
+.ideal-floor-levels button {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    border: 0;
+    border-radius: 8px;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.44);
+    font-family: "Jost", "Inter", Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1;
+}
+
+.ideal-floor-levels button svg {
+    width: 15px;
+    height: 15px;
+    fill: currentColor;
+    stroke: currentColor;
+    stroke-width: 1.5;
+    stroke-linejoin: round;
+}
+
+.ideal-floor-levels button.is-active {
+    background: linear-gradient(180deg, #f0d793 0%, #d8b96d 100%);
+    color: #000000;
+    box-shadow: 0 0 18px rgba(225, 195, 126, 0.36);
+}
+
+.ideal-floor-specs {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.ideal-floor-spec {
+    display: grid;
+    grid-template-columns: 26px minmax(0, 1fr);
+    column-gap: 13px;
+    min-height: 64px;
+    padding: 16px 14px 14px;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    border-radius: 4px;
+    background: rgba(4, 4, 4, 0.56);
+    transition:
+        background-color 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease,
+        transform 0.3s ease;
+}
+
+.ideal-floor-spec svg {
+    grid-row: span 2;
+    width: 26px;
+    height: 26px;
+    margin-top: 1px;
+    fill: none;
+    stroke: #e1c37e;
+    stroke-width: 1.7;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition:
+        filter 0.3s ease,
+        stroke 0.3s ease,
+        transform 0.3s ease;
+}
+
+.ideal-floor-spec span {
+    color: rgba(255, 255, 255, 0.40);
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 14px;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+}
+
+.ideal-floor-spec strong {
+    margin-top: 5px;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 20px;
+    transition: color 0.3s ease;
+}
+
+.ideal-floor-spec:hover {
+    border-color: rgba(225, 195, 126, 0.42);
+    background: rgba(225, 195, 126, 0.10);
+    box-shadow:
+        0 12px 26px rgba(0, 0, 0, 0.24),
+        inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    transform: translateY(-3px);
+}
+
+.ideal-floor-spec:hover svg {
+    stroke: #f0d793;
+    filter: drop-shadow(0 0 10px rgba(225, 195, 126, 0.34));
+    transform: scale(1.08);
+}
+
+.ideal-floor-spec:hover span {
+    color: rgba(225, 195, 126, 0.72);
+}
+
+.ideal-floor-spec:hover strong {
+    color: #ffffff;
+}
+
+.ideal-floor-price-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    width: 100%;
+    height: 52px;
+    margin-top: auto;
+    border-radius: 9px;
+    background: linear-gradient(180deg, #efd58d 0%, #d8b96d 100%);
+    color: #000000;
+    font-family: "Jost", "Inter", Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1;
+    box-shadow: 0 15px 32px rgba(225, 195, 126, 0.28);
+    transition:
+        box-shadow 0.3s ease,
+        transform 0.3s ease;
+}
+
+.ideal-floor-price-btn:hover {
+    box-shadow: 0 18px 38px rgba(225, 195, 126, 0.38);
+    transform: translateY(-2px);
+}
+
+.ideal-floor-eyebrow,
+.ideal-floor-heading h2,
+.ideal-floor-heading > p:not(.ideal-floor-eyebrow),
+.ideal-floor-size-tabs,
+.ideal-floor-media,
+.ideal-floor-panel {
+    opacity: 0;
+    transition:
+        opacity 0.82s ease,
+        transform 0.92s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: opacity, transform;
+}
+
+.ideal-floor-eyebrow {
+    transform: translateX(-42px);
+}
+
+.ideal-floor-heading h2 {
+    transform: translateY(36px);
+    transition-delay: 0.08s;
+}
+
+.ideal-floor-heading > p:not(.ideal-floor-eyebrow) {
+    transform: translateX(46px);
+    transition-delay: 0.16s;
+}
+
+.ideal-floor-size-tabs {
+    transform: translateX(54px);
+    transition-delay: 0.18s;
+}
+
+.ideal-floor-media {
+    transform: translateX(-64px);
+    transition-delay: 0.24s;
+}
+
+.ideal-floor-panel {
+    transform: translateX(64px);
+    transition-delay: 0.32s;
+}
+
+.ideal-floor-section.is-visible .ideal-floor-eyebrow,
+.ideal-floor-section.is-visible .ideal-floor-heading h2,
+.ideal-floor-section.is-visible .ideal-floor-heading > p:not(.ideal-floor-eyebrow),
+.ideal-floor-section.is-visible .ideal-floor-size-tabs,
+.ideal-floor-section.is-visible .ideal-floor-media,
+.ideal-floor-section.is-visible .ideal-floor-panel {
+    opacity: 1;
+    transform: translate(0, 0);
+}
+
+/* Scroll Story slider: pinned visual section controlled by wheel/touch JS. */
+.scroll-story-section {
+    height: 580px;
+    min-height: 580px;
+    background: #000000;
+    font-family: "Jost", "Inter", Arial, sans-serif;
+    scroll-margin-top: 86px;
 }
 
 .scroll-story-sticky {
@@ -1930,6 +2386,14 @@ img.snapshot-icon {
     .scroll-story-content h2,
     .scroll-story-content > p:not(.scroll-story-kicker),
     .scroll-story-actions,
+    .ideal-floor-card,
+    .ideal-floor-media img,
+    .ideal-floor-eyebrow,
+    .ideal-floor-heading h2,
+    .ideal-floor-heading > p:not(.ideal-floor-eyebrow),
+    .ideal-floor-size-tabs,
+    .ideal-floor-media,
+    .ideal-floor-panel,
     .about-gallery img {
         opacity: 1;
         transform: none;
