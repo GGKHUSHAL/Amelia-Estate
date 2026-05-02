@@ -207,17 +207,49 @@
     }
 
     .snapshot-section {
-        padding: 60px 28px;
+        padding: 34px 28px 38px;
     }
 
     .snapshot-grid {
         display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 20px;
+        gap: 16px 32px;
+        margin-top: 24px;
     }
 
     .snapshot-card {
         width: 100%;
+        max-width: 184px;
+        height: 132px;
+        padding: 14px 10px 16px;
+        justify-self: center;
+        gap: 6px;
+        border-radius: 16px;
+    }
+
+    .snapshot-card::after {
+        height: 5px;
+        border-radius: 0 0 16px 16px;
+    }
+
+    .snapshot-icon {
+        width: 30px;
+        height: 30px;
+    }
+
+    .snapshot-card span {
+        font-size: 12px;
+        line-height: 16px;
+    }
+
+    .snapshot-card strong {
+        font-size: 13px;
+        line-height: 18px;
+    }
+
+    .snapshot-inner h2 {
+        font-size: 30px;
+        line-height: 38px;
     }
 
     .differentiation-banner {
@@ -666,7 +698,7 @@
         line-height: 1.12;
     }
 
-    .scroll-story-content > p:last-child {
+    .scroll-story-content > p:not(.scroll-story-kicker) {
         margin-top: 10px;
         font-size: 11px;
         line-height: 1.4;
@@ -823,7 +855,7 @@
         line-height: 1.1;
     }
 
-    .scroll-story-content > p:last-child {
+    .scroll-story-content > p:not(.scroll-story-kicker) {
         margin-top: 8px;
         font-size: 10px;
         line-height: 1.35;
