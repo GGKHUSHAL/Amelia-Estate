@@ -1298,9 +1298,14 @@ img.snapshot-icon {
     line-height: 1;
 }
 
-.ideal-floor-levels button svg {
+.ideal-floor-levels button svg,
+.ideal-floor-levels button img {
     width: 15px;
     height: 15px;
+    object-fit: contain;
+}
+
+.ideal-floor-levels button svg {
     fill: currentColor;
     stroke: currentColor;
     stroke-width: 1.5;
