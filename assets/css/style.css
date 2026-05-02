@@ -18,7 +18,7 @@ body {
     width: 100%;
     overflow-x: hidden;
     background: #ffffff;
-    --content-width: min(100% - 48px, 1040px);
+    --content-width: min(100% - 48px, 1200px);
 }
 
 main {
@@ -129,7 +129,7 @@ body.menu-open {
         justify-content: flex-start !important;
         flex-wrap: nowrap !important;
         width: var(--content-width) !important;
-        max-width: 1040px !important;
+        max-width: 1200px !important;
         margin: 0 auto !important;
         padding: 0 !important;
     }
@@ -908,7 +908,7 @@ img.snapshot-icon {
 .peace-density-content {
     position: relative;
     z-index: 2;
-    width: min(100% - 48px, 1040px);
+    width: min(100% - 48px, 1200px);
     height: 100%;
     margin: 0 auto;
     display: flex;
@@ -1018,7 +1018,7 @@ img.snapshot-icon {
 /* Choose ideal floor: Figma-matched dark product panel. */
 .ideal-floor-section {
     min-height: 820px;
-    padding: 80px 120px;
+    padding: 80px 0;
     background: #000000;
     color: #ffffff;
     font-family: "Jost", "Inter", Arial, sans-serif;
@@ -1035,7 +1035,7 @@ img.snapshot-icon {
     align-items: flex-end;
     justify-content: space-between;
     gap: 48px;
-    margin-bottom: 40px;
+    margin-bottom: 48px;
 }
 
 .ideal-floor-heading {
@@ -1125,7 +1125,7 @@ img.snapshot-icon {
 
 .ideal-floor-card {
     display: grid;
-    grid-template-columns: minmax(0, 696px) minmax(360px, 424px);
+    grid-template-columns: minmax(0, 776px) minmax(360px, 424px);
     width: 100%;
     min-height: 500px;
     overflow: hidden;
@@ -1231,7 +1231,7 @@ img.snapshot-icon {
     display: flex;
     flex-direction: column;
     gap: 26px;
-    padding: 48px 36px 39px;
+    padding: 48px 36px 40px;
     background:
         radial-gradient(90% 75% at 55% 8%, rgba(255, 255, 255, 0.07) 0%, rgba(255, 255, 255, 0) 66%),
         #151515;
@@ -1252,7 +1252,7 @@ img.snapshot-icon {
     font-size: 16px;
     font-weight: 400;
     line-height: 20px;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.03em;
 }
 
 .ideal-floor-selector {
@@ -1335,19 +1335,15 @@ img.snapshot-icon {
         transform 0.3s ease;
 }
 
-.ideal-floor-spec svg {
+.ideal-floor-spec img {
     grid-row: span 2;
     width: 26px;
     height: 26px;
     margin-top: 1px;
-    fill: none;
-    stroke: #e1c37e;
-    stroke-width: 1.7;
-    stroke-linecap: round;
-    stroke-linejoin: round;
+    object-fit: contain;
     transition:
         filter 0.3s ease,
-        stroke 0.3s ease,
+        opacity 0.3s ease,
         transform 0.3s ease;
 }
 
@@ -1378,9 +1374,9 @@ img.snapshot-icon {
     transform: translateY(-3px);
 }
 
-.ideal-floor-spec:hover svg {
-    stroke: #f0d793;
+.ideal-floor-spec:hover img {
     filter: drop-shadow(0 0 10px rgba(225, 195, 126, 0.34));
+    opacity: 1;
     transform: scale(1.08);
 }
 
@@ -2140,7 +2136,7 @@ img.snapshot-icon {
     align-items: flex-end;
     justify-content: space-between;
     width: var(--content-width);
-    max-width: 1040px;
+    max-width: 1200px;
     height: 760px;
     margin: 0 auto;
     padding: 0 0 38px;
