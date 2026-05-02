@@ -109,8 +109,14 @@ if (scrollStorySection) {
 
     let activeStorySlide = 0;
     let lastStoryStepTime = 0;
+    let wheelDeltaTotal = 0;
+    let isWheelGestureLocked = false;
+    let wheelUnlockTimer;
     let touchStartY = 0;
-    const storyStepDelay = 520;
+    const storyStepDelay = 1100;
+    const wheelStepThreshold = 260;
+    const touchStepThreshold = 76;
+    const wheelUnlockDelay = 720;
     const stickyTop = 86;
 
     const setStorySlide = (index) => {
@@ -182,7 +188,37 @@ if (scrollStorySection) {
     };
 
     window.addEventListener("wheel", (event) => {
+        if (!isStoryInFocus() || Math.abs(event.deltaY) < 4) {
+            wheelDeltaTotal = 0;
+            return;
+        }
+
+        clearTimeout(wheelUnlockTimer);
+        wheelUnlockTimer = setTimeout(() => {
+            wheelDeltaTotal = 0;
+            isWheelGestureLocked = false;
+        }, wheelUnlockDelay);
+
+        if (isWheelGestureLocked) {
+            event.preventDefault();
+            return;
+        }
+
         const direction = event.deltaY > 0 ? 1 : -1;
+
+        if (Math.sign(wheelDeltaTotal) !== direction) {
+            wheelDeltaTotal = 0;
+        }
+
+        wheelDeltaTotal += event.deltaY;
+
+        if (Math.abs(wheelDeltaTotal) < wheelStepThreshold) {
+            event.preventDefault();
+            return;
+        }
+
+        wheelDeltaTotal = 0;
+        isWheelGestureLocked = true;
         handleStoryStep(direction, event);
     }, { passive: false });
 
@@ -191,15 +227,22 @@ if (scrollStorySection) {
     }, { passive: true });
 
     window.addEventListener("touchmove", (event) => {
-        const touchDistance = touchStartY - event.touches[0].clientY;
+        if (!isStoryInFocus()) {
+            return;
+        }
 
-        if (Math.abs(touchDistance) < 36) {
+        event.preventDefault();
+    }, { passive: false });
+
+    window.addEventListener("touchend", (event) => {
+        const touchDistance = touchStartY - event.changedTouches[0].clientY;
+
+        if (Math.abs(touchDistance) < touchStepThreshold) {
             return;
         }
 
         const direction = touchDistance > 0 ? 1 : -1;
         handleStoryStep(direction, event);
-        touchStartY = event.touches[0].clientY;
     }, { passive: false });
 }
 

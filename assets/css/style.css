@@ -37,7 +37,7 @@ header,
 .differentiation-section,
 .peace-density-section,
 .scroll-story-section,
-.test-white-section {
+.booking-enquiry-section {
     width: 100%;
     max-width: none;
     margin-left: 0;
@@ -865,9 +865,9 @@ img.snapshot-icon {
 
 /* Scroll Story slider: pinned visual section controlled by wheel/touch JS. */
 .scroll-story-section {
-    height: calc(100vh - 86px);
-    min-height: 640px;
-    background: #ffffff;
+    height: 580px;
+    min-height: 580px;
+    background: #000000;
     font-family: "Jost", "Inter", Arial, sans-serif;
     scroll-margin-top: 86px;
 }
@@ -1026,7 +1026,7 @@ img.snapshot-icon {
 .scroll-story-sticky {
     position: sticky;
     top: 86px;
-    height: calc(100vh - 86px);
+    height: 580px;
     min-height: 0;
     display: grid;
     place-items: center;
@@ -1087,19 +1087,25 @@ img.snapshot-icon {
 }
 
 .scroll-story-content {
+    --story-content-left: max(104px, calc((100vw - 1200px) / 2 + 104px));
+    --story-content-right: clamp(24px, 4vw, 60px);
     position: absolute;
-    left: 60px;
+    left: var(--story-content-left);
     bottom: 48px;
-    width: min(500px, calc(100% - 120px));
+    width: min(500px, calc(100% - var(--story-content-left) - var(--story-content-right)));
+    max-width: calc(100% - var(--story-content-left) - var(--story-content-right));
     color: #ffffff;
     opacity: 1;
     transform: none;
+    overflow-wrap: anywhere;
+    word-break: normal;
 }
 
 .scroll-story-slide--booking .scroll-story-content {
-    left: 84px;
+    left: var(--story-content-left);
     bottom: 64px;
-    width: min(560px, calc(100% - 168px));
+    width: min(560px, calc(100% - var(--story-content-left) - var(--story-content-right)));
+    max-width: calc(100% - var(--story-content-left) - var(--story-content-right));
 }
 
 .scroll-story-kicker {
@@ -1109,15 +1115,17 @@ img.snapshot-icon {
     font-weight: 600;
     line-height: 16px;
     letter-spacing: 0.18em;
+    overflow-wrap: anywhere;
 }
 
 .scroll-story-content h2 {
     margin: 0;
     color: #ffffff;
-    font-size: 34px;
+    font-size: clamp(22px, 3vw, 34px);
     font-weight: 600;
     line-height: 1.16;
     letter-spacing: 0;
+    overflow-wrap: anywhere;
 }
 
 .scroll-story-content h2 span,
@@ -1131,13 +1139,16 @@ img.snapshot-icon {
     font-size: 13px;
     font-weight: 400;
     line-height: 1.55;
+    overflow-wrap: anywhere;
 }
 
 .scroll-story-actions {
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: 12px;
     margin-top: 18px;
+    max-width: 100%;
 }
 
 .scroll-story-primary-btn,
@@ -1146,6 +1157,7 @@ img.snapshot-icon {
     align-items: center;
     justify-content: center;
     min-width: 142px;
+    max-width: 100%;
     height: 44px;
     padding: 12px 18px;
     border-radius: 8px;
@@ -1154,6 +1166,9 @@ img.snapshot-icon {
     font-size: 12px;
     font-weight: 600;
     line-height: 1;
+    text-align: center;
+    white-space: normal;
+    overflow-wrap: anywhere;
     transition:
         background-color 0.3s ease,
         border-color 0.3s ease,
@@ -1277,7 +1292,7 @@ img.snapshot-icon {
 .scroll-story-progress {
     position: absolute;
     top: 160px;
-    left: 18px;
+    left: max(44px, calc((100vw - 1200px) / 2 + 44px));
     z-index: 4;
     display: flex;
     flex-direction: column;
@@ -1316,11 +1331,6 @@ img.snapshot-icon {
     opacity: 1;
 }
 
-.test-white-section {
-    height: 500px;
-    background: #ffffff;
-}
-
 /* Differentiation banner: low-rise value proposition over a photo background. */
 .differentiation-section {
     position: relative;
@@ -1329,6 +1339,311 @@ img.snapshot-icon {
     font-family: "Jost", "Inter", Arial, sans-serif;
     overflow: hidden;
     scroll-margin-top: 86px;
+}
+
+/* Booking enquiry: dark lead form paired with lifestyle imagery. */
+.booking-enquiry-section {
+    min-height: 675px;
+    padding: 56px 0;
+    background:
+        linear-gradient(115deg, rgba(31, 28, 24, 0.95) 0%, rgba(18, 17, 16, 0.92) 46%, rgba(63, 48, 28, 0.55) 100%),
+        linear-gradient(180deg, #24211d 0%, #151413 48%, #0f0e0d 100%);
+    color: #ffffff;
+    font-family: "Jost", "Inter", Arial, sans-serif;
+    overflow: hidden;
+    scroll-margin-top: 86px;
+}
+
+.booking-enquiry-inner {
+    display: grid;
+    grid-template-columns: minmax(0, 652px) minmax(360px, 509px);
+    gap: 39px;
+    align-items: start;
+    width: min(100%, 1200px);
+    margin: 0 auto;
+}
+
+.booking-enquiry-image,
+.booking-enquiry-panel {
+    opacity: 0;
+    transition:
+        opacity 0.85s ease,
+        transform 0.95s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.booking-enquiry-image {
+    position: relative;
+    height: 660px;
+    overflow: hidden;
+    background: #0c0c0c;
+    transform: translateX(-54px);
+}
+
+.booking-enquiry-image::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(180deg, rgba(0, 0, 0, 0.02) 0%, rgba(0, 0, 0, 0.22) 60%, rgba(0, 0, 0, 0.64) 100%),
+        linear-gradient(90deg, rgba(0, 0, 0, 0.08) 0%, rgba(0, 0, 0, 0) 48%, rgba(0, 0, 0, 0.18) 100%);
+}
+
+.booking-enquiry-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    filter: saturate(0.65) brightness(0.72) contrast(1.1);
+    transform: scale(1.03);
+    transition:
+        transform 1.25s cubic-bezier(0.22, 1, 0.36, 1),
+        filter 0.65s ease;
+}
+
+.booking-enquiry-panel {
+    transform: translateX(54px);
+}
+
+.booking-enquiry-form {
+    position: relative;
+    min-height: 612px;
+    padding: 47px 48px 34px;
+    border: 1px solid rgba(200, 169, 106, 0.3);
+    background:
+        radial-gradient(circle at 0% 0%, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0) 34%),
+        linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.028)),
+        rgba(31, 30, 29, 0.96);
+    box-shadow:
+        0 28px 60px rgba(0, 0, 0, 0.35),
+        inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(18px);
+}
+
+.booking-enquiry-form::before {
+    content: "";
+    position: absolute;
+    top: -16px;
+    right: -13px;
+    width: 94px;
+    height: 94px;
+    border-top: 1px solid rgba(200, 169, 106, 0.55);
+    border-right: 1px solid rgba(200, 169, 106, 0.55);
+}
+
+.booking-enquiry-form h2 {
+    width: 398px;
+    max-width: 100%;
+    margin: 0;
+    color: #ffffff;
+    font-size: 40px;
+    font-weight: 600;
+    line-height: 44px;
+    letter-spacing: 0;
+}
+
+.booking-enquiry-form p {
+    width: 360px;
+    max-width: 100%;
+    margin: 10px 0 35px;
+    color: rgba(255, 255, 255, 0.56);
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 22px;
+}
+
+.booking-enquiry-form label {
+    display: block;
+    margin-bottom: 28px;
+}
+
+.booking-enquiry-form label > span:first-child {
+    display: block;
+    margin-bottom: 18px;
+    color: #d8b66d;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 18px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.booking-enquiry-form input {
+    display: block;
+    width: 100%;
+    height: 29px;
+    border: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+    border-radius: 0;
+    outline: 0;
+    background: transparent;
+    color: #ffffff;
+    font-family: "Jost", "Inter", Arial, sans-serif;
+    font-size: 16px;
+    line-height: 24px;
+    transition: border-color 0.25s ease;
+}
+
+.booking-enquiry-form input::placeholder {
+    color: rgba(255, 255, 255, 0.22);
+}
+
+.booking-enquiry-form input:focus {
+    border-bottom-color: rgba(216, 182, 109, 0.78);
+}
+
+.booking-phone-field {
+    display: flex;
+    align-items: center;
+    height: 34px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.19);
+}
+
+.booking-phone-field input {
+    height: 33px;
+    padding-top: 2px;
+    border-bottom: 0;
+    color: rgba(255, 255, 255, 0.48);
+    font-family: Arial, "Inter", sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+}
+
+.booking-phone-field:focus-within {
+    border-bottom-color: rgba(216, 182, 109, 0.78);
+}
+
+.booking-country {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    flex: 0 0 auto;
+    margin-right: 8px;
+    padding-top: 1px;
+    color: rgba(255, 255, 255, 0.38);
+    font-family: Arial, "Inter", sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+}
+
+.booking-flag {
+    position: relative;
+    width: 17px;
+    height: 10px;
+    flex: 0 0 17px;
+    overflow: hidden;
+    border-radius: 1px;
+    background:
+        linear-gradient(180deg, #ff9933 0 33.333%, #ffffff 33.333% 66.666%, #138808 66.666% 100%);
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.16);
+}
+
+.booking-flag::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 3px;
+    height: 3px;
+    border: 1px solid #1f4da1;
+    border-radius: 999px;
+    transform: translate(-50%, -50%);
+}
+
+.booking-country-arrow {
+    width: 6px;
+    height: 6px;
+    flex: 0 0 6px;
+    border-right: 1.25px solid rgba(255, 255, 255, 0.22);
+    border-bottom: 1.25px solid rgba(255, 255, 255, 0.22);
+    transform: translateY(-3px) rotate(45deg);
+}
+
+.booking-enquiry-form button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    height: 55px;
+    margin-top: 13px;
+    border: 0;
+    border-radius: 12px;
+    background: linear-gradient(180deg, #dfbf78 0%, #c8a96a 100%);
+    color: #1f1a13;
+    font-family: "Inter", Arial, sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    box-shadow: 0 18px 34px rgba(200, 169, 106, 0.18);
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        filter 0.3s ease;
+}
+
+.booking-enquiry-form button:hover {
+    filter: brightness(1.05);
+    box-shadow: 0 22px 42px rgba(200, 169, 106, 0.28);
+    transform: translateY(-2px);
+}
+
+.booking-enquiry-form button span {
+    font-size: 18px;
+    line-height: 1;
+}
+
+.booking-trust-row {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 27px;
+    color: #ffffff;
+    font-family: "Inter", Arial, sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 16px;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+}
+
+.booking-trust-row span {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+}
+
+.booking-trust-row span + span::before {
+    content: "";
+    width: 1px;
+    height: 14px;
+    margin-right: 8px;
+    background: rgba(255, 255, 255, 0.48);
+}
+
+.booking-trust-row svg {
+    width: 14px;
+    height: 14px;
+    fill: none;
+    stroke: #d8b66d;
+    stroke-width: 1.9;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.booking-enquiry-section.is-visible .booking-enquiry-image,
+.booking-enquiry-section.is-visible .booking-enquiry-panel {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.booking-enquiry-section.is-visible .booking-enquiry-image img {
+    filter: saturate(0.78) brightness(0.78) contrast(1.12);
+    transform: scale(1);
 }
 
 .differentiation-section::after {
