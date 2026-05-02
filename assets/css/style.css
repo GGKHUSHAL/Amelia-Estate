@@ -35,6 +35,7 @@ header,
 .snapshot-section,
 .about-section,
 .differentiation-section,
+.peace-density-section,
 .scroll-story-section,
 .test-white-section {
     width: 100%;
@@ -871,6 +872,157 @@ img.snapshot-icon {
     scroll-margin-top: 86px;
 }
 
+/* Designed for peace banner: photo-led bridge into the scroll story. */
+.peace-density-section {
+    position: relative;
+    height: 850px;
+    background: #080b0d;
+    color: #ffffff;
+    font-family: "Jost", "Inter", Arial, sans-serif;
+    overflow: hidden;
+    scroll-margin-top: 86px;
+}
+
+.peace-density-bg,
+.peace-density-bg img,
+.peace-density-overlay {
+    position: absolute;
+    inset: 0;
+}
+
+.peace-density-bg {
+    overflow: hidden;
+}
+
+.peace-density-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    filter: saturate(0.95) contrast(1.02);
+    transform: scale(1.02) translate3d(0, 0, 0);
+    transition:
+        transform 1.35s cubic-bezier(0.22, 1, 0.36, 1),
+        filter 0.8s ease;
+}
+
+.peace-density-overlay {
+    z-index: 1;
+    background:
+        linear-gradient(180deg, rgba(3, 8, 12, 0.38) 0%, rgba(3, 8, 12, 0.34) 58%, rgba(3, 8, 12, 0.62) 100%),
+        linear-gradient(90deg, rgba(0, 0, 0, 0.58) 0%, rgba(0, 0, 0, 0.34) 44%, rgba(0, 0, 0, 0.18) 100%);
+}
+
+.peace-density-content {
+    position: relative;
+    z-index: 2;
+    width: min(100% - 48px, 1040px);
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 46px;
+}
+
+.peace-density-content h2,
+.peace-density-content p,
+.peace-density-scroll {
+    opacity: 0;
+    transform: translateY(42px);
+    transition:
+        opacity 0.82s ease,
+        transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.peace-density-content h2 {
+    width: min(540px, 100%);
+    margin: 0;
+    color: #ffffff;
+    font-size: 60px;
+    font-weight: 500;
+    line-height: 1.4;
+    letter-spacing: 0;
+}
+
+.peace-density-content p {
+    width: min(452px, 100%);
+    margin: 8px 0 0;
+    color: rgba(255, 255, 255, 0.86);
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 22.75px;
+}
+
+.peace-density-scroll {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    width: max-content;
+    margin-top: 23px;
+    color: #c7a368;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 16px;
+    letter-spacing: 0.04em;
+    transition:
+        color 0.3s ease,
+        opacity 0.82s ease,
+        transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+    transition-delay: 0s;
+}
+
+.peace-density-scroll span {
+    width: 8px;
+    height: 8px;
+    border-right: 1px solid currentColor;
+    border-bottom: 1px solid currentColor;
+    transform: translateY(-2px) rotate(45deg);
+    transition: transform 0.3s ease;
+}
+
+.peace-density-scroll:hover {
+    color: #e2c17d;
+    transform: translateY(2px);
+}
+
+.peace-density-section.is-visible .peace-density-scroll:hover {
+    transform: translateY(2px);
+}
+
+.peace-density-scroll:hover span {
+    transform: translateY(2px) rotate(45deg);
+}
+
+.peace-density-section.is-visible .peace-density-bg img {
+    filter: saturate(1.06) contrast(1.06) brightness(1.04);
+    transform: scale(1.085) translate3d(-14px, -8px, 0);
+}
+
+.peace-density-section.is-visible .peace-density-content h2,
+.peace-density-section.is-visible .peace-density-content p,
+.peace-density-section.is-visible .peace-density-scroll {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.peace-density-section.is-visible .peace-density-content h2 {
+    transition-delay: 0.9s;
+}
+
+.peace-density-section.is-visible .peace-density-content p {
+    transition-delay: 1.04s;
+}
+
+.peace-density-section.is-visible .peace-density-scroll {
+    transition-delay: 1.18s;
+}
+
+.peace-density-section:hover .peace-density-bg img {
+    filter: saturate(1.12) contrast(1.08) brightness(1.06);
+    transform: scale(1.11) translate3d(10px, -10px, 0);
+}
+
 .scroll-story-sticky {
     position: sticky;
     top: 86px;
@@ -1444,6 +1596,8 @@ img.snapshot-icon {
 @media (prefers-reduced-motion: reduce) {
     .differentiation-section::after,
     .differentiation-section::before,
+    .peace-density-bg img,
+    .peace-density-content,
     .differentiation-copy h2,
     .differentiation-copy p,
     .differentiation-card,

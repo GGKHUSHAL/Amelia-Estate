@@ -127,7 +127,7 @@ if (scrollStorySection) {
 
     const isStoryInFocus = () => {
         const rect = scrollStorySection.getBoundingClientRect();
-        return rect.top < window.innerHeight - 20 && rect.bottom > stickyTop + 20;
+        return rect.top <= stickyTop + 8 && rect.bottom > stickyTop + 120;
     };
 
     const canStepStory = () => {

@@ -126,6 +126,25 @@
         height: 100%;
     }
 
+    .peace-density-section {
+        height: 850px;
+    }
+
+    .peace-density-content {
+        width: calc(100% - 64px);
+        padding-top: 30px;
+    }
+
+    .peace-density-content h2 {
+        font-size: 50px;
+        line-height: 1.25;
+    }
+
+    .peace-density-content p {
+        font-size: 16px;
+        line-height: 22px;
+    }
+
     .scroll-story-content {
         left: 46px;
         bottom: 42px;
@@ -279,6 +298,26 @@
 
     .differentiation-card {
         min-height: 82px;
+    }
+
+    .peace-density-section {
+        height: 680px;
+    }
+
+    .peace-density-content {
+        width: calc(100% - 80px);
+        padding-top: 18px;
+    }
+
+    .peace-density-content h2 {
+        font-size: 42px;
+        line-height: 1.24;
+    }
+
+    .peace-density-content p {
+        width: min(420px, 100%);
+        font-size: 15px;
+        line-height: 21px;
     }
 
     .scroll-story-section {
@@ -650,15 +689,53 @@
     }
 
     .scroll-story-section {
-        height: calc(100vh - 86px);
-        min-height: 560px;
+        height: 460px;
+        min-height: 460px;
         background: #000000;
+    }
+
+    .peace-density-section {
+        height: 460px;
+    }
+
+    .peace-density-bg img {
+        object-position: center;
+    }
+
+    .peace-density-overlay {
+        background:
+            linear-gradient(180deg, rgba(3, 8, 12, 0.36) 0%, rgba(3, 8, 12, 0.34) 48%, rgba(3, 8, 12, 0.72) 100%),
+            linear-gradient(90deg, rgba(0, 0, 0, 0.62) 0%, rgba(0, 0, 0, 0.34) 64%, rgba(0, 0, 0, 0.18) 100%);
+    }
+
+    .peace-density-content {
+        width: calc(100% - 40px);
+        padding-top: 0;
+        justify-content: center;
+        padding-bottom: 0;
+    }
+
+    .peace-density-content h2 {
+        font-size: 34px;
+        line-height: 1.18;
+    }
+
+    .peace-density-content p {
+        width: min(340px, 100%);
+        margin-top: 10px;
+        font-size: 14px;
+        line-height: 20px;
+    }
+
+    .peace-density-scroll {
+        margin-top: 18px;
+        font-size: 11px;
     }
 
     .scroll-story-sticky {
         position: relative;
         top: 0;
-        height: calc(100vh - 86px);
+        height: 460px;
         min-height: 0;
     }
 
@@ -668,7 +745,7 @@
     }
 
     .scroll-story-progress {
-        top: 92px;
+        top: 74px;
         left: 12px;
         gap: 11px;
         font-size: 10px;
@@ -676,13 +753,13 @@
 
     .scroll-story-content {
         left: 58px;
-        bottom: 22px;
+        bottom: 18px;
         width: calc(100% - 74px);
     }
 
     .scroll-story-slide--booking .scroll-story-content {
         left: 58px;
-        bottom: 18px;
+        bottom: 16px;
         width: calc(100% - 74px);
     }
 
@@ -707,7 +784,7 @@
     .scroll-story-actions {
         flex-wrap: wrap;
         gap: 7px;
-        margin-top: 12px;
+        margin-top: 9px;
     }
 
     .scroll-story-primary-btn,
@@ -831,16 +908,35 @@
         padding: 8px 14px;
     }
 
+    .peace-density-section {
+        height: 420px;
+    }
+
+    .peace-density-content {
+        width: calc(100% - 32px);
+    }
+
+    .peace-density-content h2 {
+        font-size: 30px;
+        line-height: 1.18;
+    }
+
+    .peace-density-content p {
+        font-size: 13px;
+        line-height: 18px;
+    }
+
     .scroll-story-progress {
         left: 10px;
-        gap: 9px;
+        top: 70px;
+        gap: 8px;
         font-size: 9px;
     }
 
     .scroll-story-content,
     .scroll-story-slide--booking .scroll-story-content {
         left: 52px;
-        bottom: 16px;
+        bottom: 14px;
         width: calc(100% - 62px);
     }
 
@@ -863,7 +959,7 @@
 
     .scroll-story-actions {
         gap: 6px;
-        margin-top: 10px;
+        margin-top: 8px;
     }
 
     .scroll-story-primary-btn,
