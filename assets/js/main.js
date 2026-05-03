@@ -246,6 +246,152 @@ if (scrollStorySection) {
     }, { passive: false });
 }
 
+// Project plans: switches the main viewer between floor, site, and tower plan modes.
+const projectPlansSection = document.querySelector(".project-plans-section");
+
+if (projectPlansSection) {
+    const planTabs = projectPlansSection.querySelectorAll("[data-plan-tab]");
+    const variantBar = projectPlansSection.querySelector(".project-plan-variant-bar");
+    const variants = projectPlansSection.querySelector(".project-plan-variants");
+    const variantButtons = variants.querySelectorAll("button");
+    const meta = projectPlansSection.querySelector(".project-plan-meta");
+    const visual = projectPlansSection.querySelector(".project-plan-visual");
+    const image = projectPlansSection.querySelector(".project-plan-image");
+    const badge = projectPlansSection.querySelector(".project-plan-badge");
+    const footerTitle = projectPlansSection.querySelector(".project-plan-footer h3");
+    const footerCopy = projectPlansSection.querySelector(".project-plan-footer p");
+    const toolLinks = projectPlansSection.querySelectorAll(".project-plan-tools a");
+
+    const floorImage = "assets/img/project plans/90009c575573f8f004b5343f065db6963be4f203.png";
+    const siteImage = "assets/img/project plans/site plan.jpg";
+    let activePlan = "floor";
+
+    const planContent = {
+        floor: {
+            image: floorImage,
+            alt: "3 BHK floor plan layout",
+            badge: "230 Sq.Yd Floor Plan",
+            title: "3 BHK Floor Plan - 230 Sq.Yd",
+            copy: "Detailed layout with dimensions. Vastu compliant design.",
+            meta: "<strong>3 BHK</strong> · 1,650 Sq.Ft Carpet",
+            variants: ["230 Sq. Yds", "219 Sq. Yds", "205 Sq. Yds"],
+            showVariants: true
+        },
+        site: {
+            image: siteImage,
+            alt: "Master site plan layout",
+            badge: "Master Site Plan",
+            title: "Complete Project Layout",
+            copy: "Tower positions, amenities, roads & landscape plan.",
+            meta: "",
+            variants: [],
+            showVariants: false
+        },
+        tower: {
+            image: floorImage,
+            alt: "Tower plan layout",
+            badge: "Tower A Plan",
+            title: "Tower A - 4 BHK Layout",
+            copy: "4 BHK · Tower A · Pool View",
+            meta: "<strong>4 BHK</strong> · 2,400 Sq.Ft Carpet",
+            variants: ["Tower A 4Bhk", "Tower B 5Bhk", "Tower C Penthouse"],
+            showVariants: true
+        }
+    };
+
+    const updatePlan = (key) => {
+        const content = planContent[key];
+
+        if (!content) {
+            return;
+        }
+
+        activePlan = key;
+
+        planTabs.forEach((tab) => {
+            tab.classList.toggle("is-active", tab.dataset.planTab === key);
+        });
+
+        image.classList.add("is-switching");
+
+        setTimeout(() => {
+            image.src = content.image;
+            image.alt = content.alt;
+            badge.textContent = content.badge;
+            footerTitle.textContent = content.title;
+            footerCopy.textContent = content.copy;
+            meta.innerHTML = content.meta;
+            visual.classList.toggle("is-site", key === "site");
+            variantBar.hidden = !content.showVariants;
+            variants.hidden = !content.showVariants;
+            meta.hidden = !content.meta;
+
+            variantButtons.forEach((button, index) => {
+                const label = content.variants[index];
+                button.hidden = !label;
+                button.textContent = label || "";
+                button.classList.toggle("is-active", index === 0 && Boolean(label));
+            });
+
+            toolLinks.forEach((link) => {
+                link.href = content.image;
+            });
+
+            image.classList.remove("is-switching");
+        }, 120);
+    };
+
+    planTabs.forEach((tab) => {
+        tab.addEventListener("click", () => updatePlan(tab.dataset.planTab));
+    });
+
+    variantButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+            variantButtons.forEach((item) => item.classList.remove("is-active"));
+            button.classList.add("is-active");
+
+            const label = button.textContent.trim();
+
+            if (activePlan === "floor") {
+                badge.textContent = `${label.replace(" Sq. Yds", " Sq.Yd")} Floor Plan`;
+                footerTitle.textContent = `3 BHK Floor Plan - ${label.replace(" Yds", "Yd")}`;
+                meta.innerHTML = "<strong>3 BHK</strong> · 1,650 Sq.Ft Carpet";
+            }
+
+            if (activePlan === "tower") {
+                const towerDetails = {
+                    "Tower A 4Bhk": {
+                        badge: "Tower A Plan",
+                        title: "Tower A - 4 BHK Layout",
+                        copy: "4 BHK · Tower A · Pool View",
+                        meta: "<strong>4 BHK</strong> · 2,400 Sq.Ft Carpet"
+                    },
+                    "Tower B 5Bhk": {
+                        badge: "Tower B Plan",
+                        title: "Tower B - 5 BHK Layout",
+                        copy: "5 BHK · Tower B · Park View",
+                        meta: "<strong>5 BHK</strong> · 2,850 Sq.Ft Carpet"
+                    },
+                    "Tower C Penthouse": {
+                        badge: "Tower C Plan",
+                        title: "Tower C - Penthouse Layout",
+                        copy: "Penthouse · Tower C · Premium Terrace",
+                        meta: "<strong>Penthouse</strong> · 3,250 Sq.Ft Carpet"
+                    }
+                };
+                const detail = towerDetails[label];
+
+                if (detail) {
+                    badge.textContent = detail.badge;
+                    footerTitle.textContent = detail.title;
+                    footerCopy.textContent = detail.copy;
+                    meta.innerHTML = detail.meta;
+                }
+            }
+        });
+    });
+}
+
 // Scroll reveal: toggles .is-visible for sections that animate when entering the viewport.
 const revealSections = document.querySelectorAll(".reveal-on-scroll");
 
