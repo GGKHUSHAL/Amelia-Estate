@@ -392,6 +392,118 @@ if (projectPlansSection) {
     });
 }
 
+// Transparent pricing: size tabs, floor selection, and reveal state.
+const pricingSection = document.querySelector(".transparent-pricing-section");
+
+if (pricingSection) {
+    const pricingTabs = pricingSection.querySelectorAll("[data-pricing-tab]");
+    const pricingCard = pricingSection.querySelector(".pricing-card");
+    const floorButtons = pricingSection.querySelectorAll("[data-floor-price]");
+    const pricingTitle = pricingSection.querySelector(".pricing-title-block h3");
+    const pricingFloor = pricingSection.querySelector(".pricing-title-block p");
+    const imageBadge = pricingSection.querySelector(".pricing-image-badge");
+    const selectedPrice = pricingSection.querySelector(".selected-price-box strong");
+    const selectedMeta = pricingSection.querySelector(".selected-price-box p");
+    const unlockButton = pricingSection.querySelector(".pricing-unlock-btn");
+
+    const pricingContent = {
+        230: {
+            title: "3 BHK - 230 Sq. Yd",
+            badge: "3 BHK - 230 Sq. Yd",
+            area: "2,190 Sq.Ft",
+            prices: ["2.85 Cr", "2.95 Cr", "3.05 Cr", "3.25 Cr"]
+        },
+        219: {
+            title: "3 BHK - 219 Sq. Yd",
+            badge: "3 BHK - 219 Sq. Yd",
+            area: "2,080 Sq.Ft",
+            prices: ["2.72 Cr", "2.82 Cr", "2.92 Cr", "3.12 Cr"]
+        },
+        205: {
+            title: "3 BHK - 205 Sq. Yd",
+            badge: "3 BHK - 205 Sq. Yd",
+            area: "1,950 Sq.Ft",
+            prices: ["2.58 Cr", "2.68 Cr", "2.78 Cr", "2.98 Cr"]
+        }
+    };
+
+    let activeSize = "230";
+    let isPricingUnlocked = false;
+    const lockedIcon = `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 11V8a5 5 0 0 1 10 0v3" /><path d="M6 11h12v10H6V11Z" /></svg>`;
+    const unlockedIcon = `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 11V8a5 5 0 0 1 9.5-2.2" /><path d="M6 11h12v10H6V11Z" /></svg>`;
+
+    const updateSelectedPrice = (button) => {
+        const floorLabel = button.querySelector("span").textContent;
+        const price = button.dataset.floorPrice;
+
+        floorButtons.forEach((item) => item.classList.remove("is-active"));
+        button.classList.add("is-active");
+        pricingFloor.textContent = floorLabel;
+        selectedPrice.innerHTML = `<span class="pricing-currency">&#8377;</span>${price}*`;
+        selectedMeta.innerHTML = `${floorLabel} · <span>${activeSize} Sq.Yd</span>`;
+    };
+
+    const updatePricingSize = (size) => {
+        const content = pricingContent[size];
+
+        if (!content) {
+            return;
+        }
+
+        activeSize = size;
+        pricingTabs.forEach((tab) => {
+            tab.classList.toggle("is-active", tab.dataset.pricingTab === size);
+        });
+
+        pricingTitle.textContent = content.title;
+        imageBadge.textContent = content.badge;
+        pricingSection.querySelector(".pricing-spec strong").textContent = content.area;
+
+        floorButtons.forEach((button, index) => {
+            button.dataset.floorPrice = content.prices[index];
+            button.querySelector("strong").innerHTML = `<span class="pricing-currency">&#8377;</span>${content.prices[index]}`;
+        });
+
+        floorButtons.forEach((item) => item.classList.remove("is-active"));
+        floorButtons[0].classList.add("is-active");
+        pricingFloor.textContent = "1st Floor";
+        selectedMeta.innerHTML = `1st Floor · <span>${activeSize} Sq.Yd</span>`;
+
+        updateSelectedPrice(floorButtons[0]);
+    };
+
+    pricingTabs.forEach((tab) => {
+        tab.addEventListener("click", () => updatePricingSize(tab.dataset.pricingTab));
+    });
+
+    floorButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+            if (!isPricingUnlocked) {
+                return;
+            }
+
+            updateSelectedPrice(button);
+        });
+    });
+
+    unlockButton.addEventListener("click", () => {
+        isPricingUnlocked = !isPricingUnlocked;
+        pricingSection.classList.toggle("is-pricing-unlocked", isPricingUnlocked);
+        pricingCard.classList.toggle("is-unlocked", isPricingUnlocked);
+
+        if (isPricingUnlocked) {
+            updateSelectedPrice(pricingSection.querySelector(".floor-price-grid button.is-active"));
+            unlockButton.innerHTML = `${unlockedIcon}All Price Unlock`;
+            return;
+        }
+
+        floorButtons.forEach((item) => item.classList.remove("is-active"));
+        floorButtons[0].classList.add("is-active");
+        updateSelectedPrice(floorButtons[0]);
+        unlockButton.innerHTML = `${lockedIcon}Unlock Floor-wise Pricing`;
+    });
+}
+
 // Scroll reveal: toggles .is-visible for sections that animate when entering the viewport.
 const revealSections = document.querySelectorAll(".reveal-on-scroll");
 
