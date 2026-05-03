@@ -246,6 +246,78 @@ if (scrollStorySection) {
     }, { passive: false });
 }
 
+// Ideal floor: activates size and floor tabs, then refreshes the visible details.
+const idealFloorSection = document.querySelector(".ideal-floor-section");
+
+if (idealFloorSection) {
+    const sizeTabs = idealFloorSection.querySelectorAll("[data-ideal-size]");
+    const floorTabs = idealFloorSection.querySelectorAll("[data-ideal-floor]");
+    const badgeSizeFloor = idealFloorSection.querySelector(".ideal-floor-badges span");
+    const badgeFeature = idealFloorSection.querySelector(".ideal-floor-badges strong");
+    const badgeFeatureIcon = badgeFeature.querySelector("svg").outerHTML;
+    const panelSubtitle = idealFloorSection.querySelector(".ideal-floor-panel > div:first-child p");
+    const specValues = idealFloorSection.querySelectorAll(".ideal-floor-spec strong");
+
+    let activeSize = "230";
+    let activeFloor = "1st";
+
+    const sizeDetails = {
+        230: {
+            label: "230 Sq.Yd",
+            area: "230 Sq.Yds"
+        },
+        219: {
+            label: "219 Sq.Yd",
+            area: "219 Sq.Yds"
+        },
+        205: {
+            label: "205 Sq.Yd",
+            area: "205 Sq.Yds"
+        }
+    };
+
+    const featureCopy = {
+        "1st": "Low-Rise Living",
+        "2nd": "Lift Access",
+        "3rd": "Open View",
+        "4th": "Roof Right"
+    };
+
+    const refreshIdealFloor = () => {
+        const size = sizeDetails[activeSize];
+        const feature = featureCopy[activeFloor] || "Premium Floor";
+
+        if (!size) {
+            return;
+        }
+
+        badgeSizeFloor.textContent = `${size.label} - ${activeFloor} Floor`;
+        badgeFeature.innerHTML = `${badgeFeatureIcon}${feature}`;
+        panelSubtitle.textContent = `${activeSize} Sq. Yd ${activeFloor} Floor Selected`;
+        specValues[0].textContent = size.area;
+    };
+
+    sizeTabs.forEach((tab) => {
+        tab.addEventListener("click", () => {
+            activeSize = tab.dataset.idealSize;
+
+            sizeTabs.forEach((item) => item.classList.toggle("is-active", item === tab));
+            refreshIdealFloor();
+        });
+    });
+
+    floorTabs.forEach((tab) => {
+        tab.addEventListener("click", () => {
+            activeFloor = tab.dataset.idealFloor;
+
+            floorTabs.forEach((item) => item.classList.toggle("is-active", item === tab));
+            refreshIdealFloor();
+        });
+    });
+
+    refreshIdealFloor();
+}
+
 // Project plans: switches the main viewer between floor, site, and tower plan modes.
 const projectPlansSection = document.querySelector(".project-plans-section");
 

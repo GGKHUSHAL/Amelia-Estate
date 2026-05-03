@@ -1307,6 +1307,10 @@ img.snapshot-icon {
     object-fit: contain;
 }
 
+.ideal-floor-levels button img {
+    filter: brightness(0) saturate(100%) invert(77%) sepia(34%) saturate(513%) hue-rotate(2deg) brightness(93%) contrast(88%);
+}
+
 .ideal-floor-levels button svg {
     fill: currentColor;
     stroke: currentColor;
@@ -1318,6 +1322,10 @@ img.snapshot-icon {
     background: linear-gradient(180deg, #f0d793 0%, #d8b96d 100%);
     color: #000000;
     box-shadow: 0 0 18px rgba(225, 195, 126, 0.36);
+}
+
+.ideal-floor-levels button.is-active img {
+    filter: brightness(0);
 }
 
 .ideal-floor-specs {
