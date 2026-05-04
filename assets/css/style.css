@@ -1,5 +1,5 @@
 /* Global base styles and project fonts. */
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Jost:wght@400;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Jost:wght@400;500;600;700&display=swap");
 
 * {
     box-sizing: border-box;
@@ -2852,10 +2852,10 @@ img.snapshot-icon {
     border-radius: 999px;
     background: rgba(225, 195, 126, 0.10);
     color: #e1c37e;
-    font-size: 13px;
-    font-weight: 700;
+    font-size: 12px;
+    font-weight: 600;
     line-height: 1;
-    letter-spacing: 0.14em;
+    letter-spacing: 0.16em;
     text-transform: uppercase;
 }
 
@@ -2873,7 +2873,7 @@ img.snapshot-icon {
     margin: 0;
     color: #ffffff;
     font-size: 40px;
-    font-weight: 600;
+    font-weight: 500;
     line-height: 48px;
 }
 
@@ -2884,7 +2884,8 @@ img.snapshot-icon {
 .visual-showcase-header > p:not(.visual-showcase-eyebrow) {
     margin: 14px 0 0;
     color: rgba(255, 255, 255, 0.68);
-    font-size: 18px;
+    font-size: 17px;
+    font-weight: 400;
     line-height: 26px;
 }
 
@@ -2913,7 +2914,7 @@ img.snapshot-icon {
     background: transparent;
     color: rgba(255, 255, 255, 0.52);
     font-family: "Jost", "Inter", Arial, sans-serif;
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 500;
     line-height: 1;
     transition:
@@ -2933,7 +2934,7 @@ img.snapshot-icon {
     border-radius: 999px;
     background: rgba(255, 255, 255, 0.46);
     color: #111111;
-    font-size: 11px;
+    font-size: 10px;
     font-weight: 700;
 }
 
@@ -2965,6 +2966,7 @@ img.snapshot-icon {
     margin: 0 auto;
     color: rgba(255, 255, 255, 0.52);
     font-size: 14px;
+    font-weight: 400;
     line-height: 21px;
     transition:
         opacity 0.42s ease,
@@ -2973,7 +2975,7 @@ img.snapshot-icon {
 
 .visual-showcase-copy strong {
     color: #ffffff;
-    font-weight: 700;
+    font-weight: 600;
 }
 
 .visual-showcase-update {
@@ -2984,8 +2986,8 @@ img.snapshot-icon {
     border-radius: 8px;
     background: rgba(225, 195, 126, 0.18);
     color: #d8b96d;
-    font-size: 18px;
-    font-weight: 600;
+    font-size: 16px;
+    font-weight: 500;
     line-height: 20px;
 }
 
@@ -3185,7 +3187,7 @@ img.snapshot-icon {
     margin: 0;
     color: #ffffff;
     font-size: 28px;
-    font-weight: 600;
+    font-weight: 500;
     line-height: 36px;
 }
 
@@ -3197,6 +3199,7 @@ img.snapshot-icon {
     margin: 9px 0 22px;
     color: rgba(255, 255, 255, 0.52);
     font-size: 16px;
+    font-weight: 400;
     line-height: 23px;
 }
 
@@ -3211,7 +3214,7 @@ img.snapshot-icon {
     background: linear-gradient(180deg, #efd58d 0%, #d8b96d 100%);
     color: #000000;
     font-size: 15px;
-    font-weight: 600;
+    font-weight: 500;
     line-height: 1;
     box-shadow: 0 16px 34px rgba(225, 195, 126, 0.22);
     transition:
@@ -3229,6 +3232,7 @@ img.snapshot-icon {
     margin-top: 23px;
     color: rgba(255, 255, 255, 0.48);
     font-size: 15px;
+    font-weight: 400;
     line-height: 22px;
 }
 
@@ -3245,6 +3249,7 @@ img.snapshot-icon {
     margin: 0;
     color: rgba(255, 255, 255, 0.52);
     font-size: 13px;
+    font-weight: 400;
     line-height: 20px;
 }
 

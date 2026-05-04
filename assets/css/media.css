@@ -539,6 +539,7 @@
     .visual-showcase-header h2 {
         font-size: 34px;
         line-height: 42px;
+        font-weight: 500;
     }
 
     .visual-showcase-header > p:not(.visual-showcase-eyebrow) {
@@ -1222,12 +1223,14 @@
         margin-bottom: 16px;
         padding: 6px 14px;
         font-size: 11px;
+        font-weight: 600;
         letter-spacing: 0.1em;
     }
 
     .visual-showcase-header h2 {
         font-size: 30px;
         line-height: 37px;
+        font-weight: 500;
     }
 
     .visual-showcase-header > p:not(.visual-showcase-eyebrow) {
@@ -1253,6 +1256,7 @@
         min-height: 44px;
         padding: 0 14px;
         font-size: 14px;
+        font-weight: 500;
     }
 
     .visual-showcase-copy {
@@ -2169,11 +2173,13 @@
     .visual-showcase-eyebrow {
         padding: 6px 12px;
         font-size: 10px;
+        font-weight: 600;
     }
 
     .visual-showcase-header h2 {
         font-size: 27px;
         line-height: 34px;
+        font-weight: 500;
     }
 
     .visual-showcase-header > p:not(.visual-showcase-eyebrow) {
