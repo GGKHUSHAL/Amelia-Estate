@@ -208,6 +208,23 @@
         padding: 70px 32px;
     }
 
+    .visual-showcase-section {
+        min-height: 0;
+        padding: 70px 32px;
+    }
+
+    .visual-showcase-inner {
+        width: 100%;
+    }
+
+    .visual-gallery-card {
+        height: 260px;
+    }
+
+    .visual-walkthrough-card {
+        height: 480px;
+    }
+
     .premium-specs-inner {
         width: 100%;
     }
@@ -513,6 +530,43 @@
 
     .premium-specs-section {
         padding: 60px 40px;
+    }
+
+    .visual-showcase-section {
+        padding: 60px 40px;
+    }
+
+    .visual-showcase-header h2 {
+        font-size: 34px;
+        line-height: 42px;
+    }
+
+    .visual-showcase-header > p:not(.visual-showcase-eyebrow) {
+        font-size: 16px;
+        line-height: 24px;
+    }
+
+    .visual-showcase-tabs {
+        width: 100%;
+        max-width: 620px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .visual-showcase-tabs button {
+        min-width: 0;
+    }
+
+    .visual-showcase-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .visual-gallery-card {
+        height: 240px;
+    }
+
+    .visual-walkthrough-card {
+        height: 420px;
     }
 
     .premium-specs-header h2 {
@@ -1153,6 +1207,133 @@
 
     .premium-specs-section {
         padding: 52px 16px 58px;
+    }
+
+    .visual-showcase-section {
+        padding: 52px 16px 58px;
+    }
+
+    .visual-showcase-header {
+        max-width: 560px;
+    }
+
+    .visual-showcase-eyebrow {
+        min-height: 28px;
+        margin-bottom: 16px;
+        padding: 6px 14px;
+        font-size: 11px;
+        letter-spacing: 0.1em;
+    }
+
+    .visual-showcase-header h2 {
+        font-size: 30px;
+        line-height: 37px;
+    }
+
+    .visual-showcase-header > p:not(.visual-showcase-eyebrow) {
+        max-width: 360px;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 15px;
+        line-height: 22px;
+    }
+
+    .visual-showcase-tabs {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        margin-top: 32px;
+        min-height: 54px;
+        padding: 4px;
+        gap: 8px;
+    }
+
+    .visual-showcase-tabs button {
+        width: 100%;
+        min-width: 0;
+        min-height: 44px;
+        padding: 0 14px;
+        font-size: 14px;
+    }
+
+    .visual-showcase-copy {
+        margin-top: 20px;
+        padding-top: 18px;
+    }
+
+    .visual-showcase-copy p {
+        font-size: 13px;
+        line-height: 20px;
+    }
+
+    .visual-showcase-update {
+        margin: 24px 0 20px;
+        font-size: 14px;
+        line-height: 19px;
+    }
+
+    .visual-showcase-content {
+        margin-top: 30px;
+    }
+
+    .visual-showcase-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .visual-gallery-card {
+        height: 250px;
+        border-radius: 10px;
+    }
+
+    .visual-walkthrough-card {
+        height: 320px;
+        border-radius: 10px;
+    }
+
+    .visual-play-icon {
+        width: 82px;
+        height: 82px;
+        border-width: 6px;
+    }
+
+    .visual-play-icon svg {
+        width: 34px;
+        height: 34px;
+    }
+
+    .visual-showcase-cta {
+        margin-top: 34px;
+        padding: 26px 18px 24px;
+    }
+
+    .visual-showcase-cta h3 {
+        font-size: 24px;
+        line-height: 31px;
+    }
+
+    .visual-showcase-cta p {
+        font-size: 14px;
+        line-height: 21px;
+    }
+
+    .visual-showcase-cta a {
+        min-width: 210px;
+        min-height: 48px;
+    }
+
+    .visual-showcase-cta small {
+        font-size: 13px;
+        line-height: 20px;
+    }
+
+    .visual-showcase-disclaimer {
+        margin-top: 34px;
+        padding: 20px 16px;
+    }
+
+    .visual-showcase-disclaimer p {
+        font-size: 12px;
+        line-height: 18px;
     }
 
     .premium-specs-header {
@@ -1979,6 +2160,57 @@
 
     .premium-specs-section {
         padding: 44px 14px 50px;
+    }
+
+    .visual-showcase-section {
+        padding: 44px 14px 50px;
+    }
+
+    .visual-showcase-eyebrow {
+        padding: 6px 12px;
+        font-size: 10px;
+    }
+
+    .visual-showcase-header h2 {
+        font-size: 27px;
+        line-height: 34px;
+    }
+
+    .visual-showcase-header > p:not(.visual-showcase-eyebrow) {
+        font-size: 14px;
+        line-height: 21px;
+    }
+
+    .visual-showcase-tabs button {
+        min-width: 0;
+        padding: 0 9px;
+        font-size: 12px;
+        gap: 4px;
+    }
+
+    .visual-showcase-tabs button span {
+        min-width: 17px;
+        height: 17px;
+        padding: 0 4px;
+        font-size: 10px;
+    }
+
+    .visual-gallery-card {
+        height: 220px;
+    }
+
+    .visual-walkthrough-card {
+        height: 260px;
+    }
+
+    .visual-showcase-cta h3 {
+        font-size: 22px;
+        line-height: 29px;
+    }
+
+    .visual-showcase-cta a {
+        width: 100%;
+        min-width: 0;
     }
 
     .premium-specs-eyebrow {

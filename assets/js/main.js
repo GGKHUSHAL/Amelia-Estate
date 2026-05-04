@@ -679,6 +679,55 @@ if (premiumSpecsSection) {
     startSpecSlider();
 }
 
+// Visual showcase: switches gallery tabs, copy, and walkthrough/construction views.
+const visualShowcaseSection = document.querySelector(".visual-showcase-section");
+
+if (visualShowcaseSection) {
+    const galleryTabs = visualShowcaseSection.querySelectorAll("[data-gallery-tab]");
+    const galleryPanels = visualShowcaseSection.querySelectorAll("[data-gallery-panel]");
+    const galleryCopies = visualShowcaseSection.querySelectorAll("[data-gallery-copy]");
+    const galleryUpdate = visualShowcaseSection.querySelector(".visual-showcase-update");
+    let activeGalleryTab = "sample";
+    let gallerySwitchTimer;
+
+    const setGalleryTab = (key) => {
+        if (key === activeGalleryTab) {
+            return;
+        }
+
+        activeGalleryTab = key;
+        clearTimeout(gallerySwitchTimer);
+        visualShowcaseSection.classList.add("is-gallery-switching");
+
+        galleryTabs.forEach((tab) => {
+            tab.classList.toggle("is-active", tab.dataset.galleryTab === key);
+        });
+
+        gallerySwitchTimer = setTimeout(() => {
+            galleryPanels.forEach((panel) => {
+                const isActive = panel.dataset.galleryPanel === key;
+
+                panel.hidden = !isActive;
+                panel.classList.toggle("is-active", isActive);
+            });
+
+            galleryCopies.forEach((copy) => {
+                copy.hidden = copy.dataset.galleryCopy !== key;
+            });
+
+            galleryUpdate.hidden = key !== "construction";
+
+            requestAnimationFrame(() => {
+                visualShowcaseSection.classList.remove("is-gallery-switching");
+            });
+        }, 320);
+    };
+
+    galleryTabs.forEach((tab) => {
+        tab.addEventListener("click", () => setGalleryTab(tab.dataset.galleryTab));
+    });
+}
+
 // Scroll reveal: toggles .is-visible for sections that animate when entering the viewport.
 const revealSections = document.querySelectorAll(".reveal-on-scroll");
 
