@@ -576,6 +576,109 @@ if (pricingSection) {
     });
 }
 
+// Premium specifications: rotates the quality proof gallery and keeps dots in sync.
+const premiumSpecsSection = document.querySelector(".premium-specs-section");
+
+if (premiumSpecsSection) {
+    const specTrack = premiumSpecsSection.querySelector(".premium-specs-track");
+    const specSlides = premiumSpecsSection.querySelectorAll(".premium-specs-slide");
+    const specDots = premiumSpecsSection.querySelectorAll(".premium-specs-dots button");
+    let activeSpecSlide = 1;
+    let specSliderInterval;
+    let specStartX = 0;
+    let specEndX = 0;
+    let didSpecSwipe = false;
+    const specSwipeDistance = 44;
+
+    const setSpecSlide = (index) => {
+        activeSpecSlide = (index + specSlides.length) % specSlides.length;
+        const previousIndex = (activeSpecSlide - 1 + specSlides.length) % specSlides.length;
+        const nextIndex = (activeSpecSlide + 1) % specSlides.length;
+
+        specSlides.forEach((slide, slideIndex) => {
+            slide.classList.toggle("is-prev", slideIndex === previousIndex);
+            slide.classList.toggle("is-active", slideIndex === activeSpecSlide);
+            slide.classList.toggle("is-next", slideIndex === nextIndex);
+        });
+
+        specDots.forEach((dot, dotIndex) => {
+            dot.classList.toggle("is-active", dotIndex === activeSpecSlide);
+        });
+    };
+
+    const startSpecSlider = () => {
+        specSliderInterval = setInterval(() => {
+            setSpecSlide(activeSpecSlide + 1);
+        }, 5000);
+    };
+
+    const resetSpecSlider = () => {
+        clearInterval(specSliderInterval);
+        startSpecSlider();
+    };
+
+    const handleSpecSwipe = () => {
+        const distance = specStartX - specEndX;
+
+        if (Math.abs(distance) < specSwipeDistance) {
+            return;
+        }
+
+        didSpecSwipe = true;
+        setSpecSlide(distance > 0 ? activeSpecSlide + 1 : activeSpecSlide - 1);
+        resetSpecSlider();
+
+        setTimeout(() => {
+            didSpecSwipe = false;
+        }, 0);
+    };
+
+    specDots.forEach((dot, index) => {
+        dot.addEventListener("click", () => {
+            setSpecSlide(index);
+            resetSpecSlider();
+        });
+    });
+
+    specSlides.forEach((slide, index) => {
+        slide.addEventListener("click", () => {
+            if (didSpecSwipe) {
+                return;
+            }
+
+            if (index === activeSpecSlide) {
+                setSpecSlide(activeSpecSlide + 1);
+                resetSpecSlider();
+                return;
+            }
+
+            setSpecSlide(index);
+            resetSpecSlider();
+        });
+    });
+
+    specTrack.addEventListener("touchstart", (event) => {
+        specStartX = event.touches[0].clientX;
+    }, { passive: true });
+
+    specTrack.addEventListener("touchend", (event) => {
+        specEndX = event.changedTouches[0].clientX;
+        handleSpecSwipe();
+    });
+
+    specTrack.addEventListener("mousedown", (event) => {
+        specStartX = event.clientX;
+    });
+
+    specTrack.addEventListener("mouseup", (event) => {
+        specEndX = event.clientX;
+        handleSpecSwipe();
+    });
+
+    setSpecSlide(activeSpecSlide);
+    startSpecSlider();
+}
+
 // Scroll reveal: toggles .is-visible for sections that animate when entering the viewport.
 const revealSections = document.querySelectorAll(".reveal-on-scroll");
 

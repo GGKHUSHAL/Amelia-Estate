@@ -14,7 +14,7 @@ html {
 
 body {
     margin: 0;
-    font-family: "Inter", Arial, sans-serif;
+    font-family: "Jost", "Inter", Arial, sans-serif;
     width: 100%;
     overflow-x: hidden;
     background: #ffffff;
@@ -39,6 +39,7 @@ header,
 .ideal-floor-section,
 .project-plans-section,
 .transparent-pricing-section,
+.premium-specs-section,
 .scroll-story-section,
 .booking-enquiry-section {
     width: 100%;
@@ -2512,6 +2513,311 @@ img.snapshot-icon {
     }
 }
 
+/* Premium specifications: quality proof image slider and brand benchmarks. */
+.premium-specs-section {
+    min-height: 1212px;
+    padding: 82px 0 78px;
+    overflow: hidden;
+    background: #000000;
+    color: #ffffff;
+    font-family: "Jost", "Inter", Arial, sans-serif;
+    scroll-margin-top: 86px;
+}
+
+.premium-specs-inner {
+    width: min(100% - 48px, 1200px);
+    margin: 0 auto;
+    text-align: center;
+}
+
+.premium-specs-header {
+    max-width: 780px;
+    margin: 0 auto;
+}
+
+.premium-specs-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    min-height: 35px;
+    margin: 0 0 22px;
+    padding: 8px 20px;
+    border: 1px solid rgba(225, 195, 126, 0.58);
+    border-radius: 999px;
+    background: rgba(225, 195, 126, 0.10);
+    color: #e1c37e;
+    font-family: "Jost", "Inter", Arial, sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+.premium-specs-eyebrow svg {
+    width: 16px;
+    height: 16px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.premium-specs-header h2 {
+    margin: 0;
+    color: #ffffff;
+    font-size: 40px;
+    font-weight: 600;
+    line-height: 48px;
+}
+
+.premium-specs-header h2 span {
+    color: #e1c37e;
+}
+
+.premium-specs-header > p:not(.premium-specs-eyebrow) {
+    margin: 14px 0 0;
+    color: rgba(255, 255, 255, 0.68);
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 26px;
+}
+
+.premium-specs-slider {
+    margin-top: 70px;
+}
+
+.premium-specs-track {
+    display: grid;
+    grid-template-columns: minmax(0, 316px) minmax(0, 490px) minmax(0, 316px);
+    align-items: center;
+    justify-content: center;
+    gap: 38px;
+    min-height: 520px;
+    cursor: grab;
+    user-select: none;
+    touch-action: pan-y;
+}
+
+.premium-specs-track:active {
+    cursor: grabbing;
+}
+
+.premium-specs-slide {
+    display: none;
+    overflow: hidden;
+    height: 398px;
+    border-radius: 18px;
+    background: #111111;
+    opacity: 0.52;
+    transform: scale(1);
+    box-shadow: 0 24px 70px rgba(0, 0, 0, 0.48);
+    cursor: pointer;
+}
+
+.premium-specs-slide.is-prev,
+.premium-specs-slide.is-active,
+.premium-specs-slide.is-next {
+    display: block;
+}
+
+.premium-specs-slide.is-prev {
+    order: 1;
+}
+
+.premium-specs-slide.is-active {
+    order: 2;
+    height: 520px;
+    border: 1px solid rgba(225, 195, 126, 0.22);
+    border-radius: 16px;
+    opacity: 1;
+    box-shadow:
+        0 30px 90px rgba(0, 0, 0, 0.60),
+        0 0 80px rgba(225, 195, 126, 0.09);
+}
+
+.premium-specs-slide.is-next {
+    order: 3;
+}
+
+.premium-specs-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.premium-specs-slide:not(.is-active) img {
+    filter: brightness(0.52);
+}
+
+.premium-specs-dots {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 36px;
+}
+
+.premium-specs-dots button {
+    width: 9px;
+    height: 9px;
+    padding: 0;
+    border: 0;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.24);
+    transition:
+        width 0.28s ease,
+        background-color 0.28s ease,
+        box-shadow 0.28s ease;
+}
+
+.premium-specs-dots button.is-active {
+    width: 29px;
+    background: #e1c37e;
+    box-shadow: 0 0 22px rgba(225, 195, 126, 0.55);
+}
+
+.premium-specs-brands {
+    margin-top: 48px;
+    padding: 35px 34px 32px;
+    border: 1px solid rgba(225, 195, 126, 0.20);
+    border-radius: 14px;
+    background: #141414;
+}
+
+.premium-specs-brands p {
+    margin: 0 0 20px;
+    color: rgba(255, 255, 255, 0.46);
+    font-family: "Jost", "Inter", Arial, sans-serif;
+    font-size: 12px;
+    font-weight: 800;
+    line-height: 16px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+}
+
+.premium-specs-brands div {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.premium-specs-brands span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 54px;
+    padding: 0 16px;
+    border: 1px solid rgba(255, 255, 255, 0.04);
+    border-radius: 8px;
+    background: #030303;
+    color: #ffffff;
+    font-family: "Jost", "Inter", Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.1;
+    text-transform: uppercase;
+    transition:
+        background-color 0.28s ease,
+        border-color 0.28s ease,
+        color 0.28s ease,
+        transform 0.28s ease;
+}
+
+.premium-specs-brands span:hover {
+    border-color: rgba(225, 195, 126, 0.36);
+    background: rgba(225, 195, 126, 0.10);
+    color: #e1c37e;
+    transform: translateY(-2px);
+}
+
+.premium-specs-notice {
+    width: min(100%, 820px);
+    margin: 36px auto 0;
+    padding: 24px 34px 25px;
+    border: 1px solid rgba(225, 195, 126, 0.20);
+    border-radius: 12px;
+    background: #141414;
+}
+
+.premium-specs-notice strong {
+    display: block;
+    color: #ffffff;
+    font-family: "Jost", "Inter", Arial, sans-serif;
+    font-size: 12px;
+    font-weight: 800;
+    line-height: 16px;
+}
+
+.premium-specs-notice p {
+    margin: 13px 0 0;
+    color: rgba(255, 255, 255, 0.50);
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 20px;
+}
+
+.premium-specs-eyebrow,
+.premium-specs-header h2,
+.premium-specs-header > p:not(.premium-specs-eyebrow),
+.premium-specs-slider,
+.premium-specs-brands,
+.premium-specs-notice {
+    opacity: 0;
+    transition:
+        opacity 0.82s ease,
+        transform 0.92s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: opacity, transform;
+}
+
+.premium-specs-eyebrow {
+    transform: translateY(-24px);
+}
+
+.premium-specs-header h2,
+.premium-specs-header > p:not(.premium-specs-eyebrow) {
+    transform: translateY(30px);
+}
+
+.premium-specs-slider,
+.premium-specs-brands,
+.premium-specs-notice {
+    transform: translateY(42px);
+}
+
+.premium-specs-header h2 {
+    transition-delay: 0.08s;
+}
+
+.premium-specs-header > p:not(.premium-specs-eyebrow) {
+    transition-delay: 0.16s;
+}
+
+.premium-specs-slider {
+    transition-delay: 0.24s;
+}
+
+.premium-specs-brands {
+    transition-delay: 0.32s;
+}
+
+.premium-specs-notice {
+    transition-delay: 0.40s;
+}
+
+.premium-specs-section.is-visible .premium-specs-eyebrow,
+.premium-specs-section.is-visible .premium-specs-header h2,
+.premium-specs-section.is-visible .premium-specs-header > p:not(.premium-specs-eyebrow),
+.premium-specs-section.is-visible .premium-specs-slider,
+.premium-specs-section.is-visible .premium-specs-brands,
+.premium-specs-section.is-visible .premium-specs-notice {
+    opacity: 1;
+    transform: translate(0, 0);
+}
+
 /* Scroll Story slider: pinned visual section controlled by wheel/touch JS. */
 .scroll-story-section {
     height: 580px;
@@ -3447,6 +3753,12 @@ img.snapshot-icon {
     .transparent-pricing-tabs,
     .pricing-card,
     .selected-price-box::before,
+    .premium-specs-eyebrow,
+    .premium-specs-header h2,
+    .premium-specs-header > p:not(.premium-specs-eyebrow),
+    .premium-specs-slider,
+    .premium-specs-brands,
+    .premium-specs-notice,
     .about-gallery img {
         opacity: 1;
         transform: none;
