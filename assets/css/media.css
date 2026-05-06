@@ -361,7 +361,7 @@
 
 @media (min-width: 992px) and (max-width: 1199px) {
     .snapshot-section {
-        padding: 56px 32px 62px;
+        padding: 56px 32px 74px;
     }
 
     .snapshot-grid {
@@ -375,7 +375,7 @@
     .snapshot-card {
         width: 100%;
         max-width: none;
-        height: 156px;
+        height: 166px;
         padding: 16px 14px 18px;
         justify-self: stretch;
         gap: 7px;
@@ -438,7 +438,7 @@
     }
 
     .snapshot-section {
-        padding: 34px 28px 38px;
+        padding: 34px 28px 58px;
     }
 
     .snapshot-grid {
@@ -451,7 +451,7 @@
     .snapshot-card {
         width: 100%;
         max-width: 184px;
-        height: 132px;
+        height: 154px;
         padding: 14px 10px 16px;
         justify-self: center;
         gap: 6px;
