@@ -339,6 +339,14 @@ if (scrollStorySection) {
             return;
         }
 
+        const hasLockedSlidesInDirection = direction > 0
+            ? activeStorySlide < storySlides.length - 1
+            : activeStorySlide > 0;
+
+        if (!isStoryInFocus() && !hasLockedSlidesInDirection) {
+            return;
+        }
+
         event.preventDefault();
     }, { passive: false });
 
