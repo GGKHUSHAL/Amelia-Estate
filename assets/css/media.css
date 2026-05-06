@@ -359,6 +359,49 @@
     }
 }
 
+@media (min-width: 992px) and (max-width: 1199px) {
+    .snapshot-section {
+        padding: 56px 32px 62px;
+    }
+
+    .snapshot-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 18px 24px;
+        width: min(100%, 760px);
+        margin: 30px auto 0;
+    }
+
+    .snapshot-card {
+        width: 100%;
+        max-width: none;
+        height: 156px;
+        padding: 16px 14px 18px;
+        justify-self: stretch;
+        gap: 7px;
+        border-radius: 17px;
+    }
+
+    .snapshot-card::after {
+        border-radius: 0 0 17px 17px;
+    }
+
+    .snapshot-icon {
+        width: 34px;
+        height: 34px;
+    }
+
+    .snapshot-card span {
+        font-size: 13px;
+        line-height: 18px;
+    }
+
+    .snapshot-card strong {
+        font-size: 15px;
+        line-height: 20px;
+    }
+}
+
 @media (min-width: 768px) and (max-width: 991px) {
     .hero-section {
         height: 500px !important;
