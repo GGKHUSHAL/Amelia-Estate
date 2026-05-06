@@ -361,22 +361,22 @@
 
 @media (min-width: 992px) and (max-width: 1199px) {
     .snapshot-section {
-        padding: 56px 32px 74px;
+        padding: 46px 32px 52px;
     }
 
     .snapshot-grid {
         display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 18px 24px;
+        gap: 16px 22px;
         width: min(100%, 760px);
-        margin: 30px auto 0;
+        margin: 26px auto 0;
     }
 
     .snapshot-card {
         width: 100%;
         max-width: none;
-        height: 166px;
-        padding: 16px 14px 18px;
+        height: 148px;
+        padding: 14px 12px 16px;
         justify-self: stretch;
         gap: 7px;
         border-radius: 17px;
@@ -438,21 +438,21 @@
     }
 
     .snapshot-section {
-        padding: 34px 28px 58px;
+        padding: 30px 28px 38px;
     }
 
     .snapshot-grid {
         display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 16px 32px;
-        margin-top: 24px;
+        gap: 14px 24px;
+        margin-top: 20px;
     }
 
     .snapshot-card {
         width: 100%;
         max-width: 184px;
-        height: 154px;
-        padding: 14px 10px 16px;
+        height: 126px;
+        padding: 12px 10px 14px;
         justify-self: center;
         gap: 6px;
         border-radius: 16px;
@@ -464,8 +464,8 @@
     }
 
     .snapshot-icon {
-        width: 30px;
-        height: 30px;
+        width: 28px;
+        height: 28px;
     }
 
     .snapshot-card span {
@@ -474,8 +474,8 @@
     }
 
     .snapshot-card strong {
-        font-size: 13px;
-        line-height: 18px;
+        font-size: 12px;
+        line-height: 16px;
     }
 
     .snapshot-inner h2 {
@@ -888,7 +888,7 @@
 
     .snapshot-section {
         height: auto !important;
-        padding: 56px 20px 64px;
+        padding: 34px 16px 40px;
         background: #f7f5f0;
     }
 
@@ -902,16 +902,16 @@
     .snapshot-grid {
         display: grid;
         grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 28px 22px;
+        gap: 14px;
         width: 100%;
         height: auto;
-        margin-top: 22px;
+        margin-top: 16px;
     }
 
     .snapshot-card {
         width: 100%;
-        height: 154px;
-        padding: 18px 8px 20px;
+        height: 112px;
+        padding: 12px 8px 14px;
         border: 1px solid rgba(48, 44, 42, 0.08);
         border-radius: 16px;
         background:
@@ -920,7 +920,7 @@
         box-shadow:
             0 8px 16px rgba(0, 0, 0, 0.14),
             inset 0 1px 0 rgba(255, 255, 255, 0.92);
-        gap: 8px;
+        gap: 5px;
         opacity: 1;
         transform: none;
         overflow: hidden;
@@ -932,23 +932,23 @@
     }
 
     .snapshot-icon {
-        width: 34px;
-        height: 34px;
+        width: 26px;
+        height: 26px;
         stroke-width: 2;
     }
 
     .snapshot-card span {
         width: 100%;
-        font-size: 14px;
-        line-height: 18px;
+        font-size: 12px;
+        line-height: 15px;
         text-align: center;
         overflow-wrap: anywhere;
     }
 
     .snapshot-card strong {
         width: 100%;
-        font-size: clamp(12px, 4.2vw, 15px);
-        line-height: 1.28;
+        font-size: clamp(10px, 3.45vw, 12px);
+        line-height: 1.2;
         letter-spacing: 0.04em;
         text-align: center;
         overflow-wrap: anywhere;
@@ -2407,18 +2407,18 @@
     }
 
     .snapshot-section {
-        padding: 56px 20px 64px;
+        padding: 32px 14px 36px;
     }
 
     .snapshot-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 28px 22px;
+        gap: 12px;
         justify-content: stretch;
     }
 
     .snapshot-card {
         width: 100%;
-        height: 154px;
+        height: 106px;
     }
 
     .about-main-img {
