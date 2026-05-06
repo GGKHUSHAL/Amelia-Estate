@@ -100,7 +100,7 @@ if (heroSlider) {
     });
 }
 
-// Scroll Story slider: traps wheel/touch inside the section until all story slides are viewed.
+// Scroll Story slider: traps scroll until the story has been viewed in that direction.
 const scrollStorySection = document.querySelector(".scroll-story-section");
 
 if (scrollStorySection) {
@@ -113,11 +113,14 @@ if (scrollStorySection) {
     let isWheelGestureLocked = false;
     let wheelUnlockTimer;
     let touchStartY = 0;
+    let lastPageScrollY = window.scrollY;
+    let isPinningStory = false;
     const storyStepDelay = 1100;
     const wheelStepThreshold = 260;
     const touchStepThreshold = 76;
     const wheelUnlockDelay = 720;
     const stickyTop = 86;
+    const storyFocusOffset = stickyTop + 2;
 
     const setStorySlide = (index) => {
         if (index === activeStorySlide) {
@@ -133,7 +136,34 @@ if (scrollStorySection) {
 
     const isStoryInFocus = () => {
         const rect = scrollStorySection.getBoundingClientRect();
-        return rect.top <= stickyTop + 8 && rect.bottom > stickyTop + 120;
+        return rect.top <= storyFocusOffset && rect.bottom > storyFocusOffset + 80;
+    };
+
+    const isStoryEnteringDown = () => {
+        const rect = scrollStorySection.getBoundingClientRect();
+        return rect.top > storyFocusOffset && rect.top < window.innerHeight;
+    };
+
+    const isStoryEnteringUp = () => {
+        const rect = scrollStorySection.getBoundingClientRect();
+        return rect.top < storyFocusOffset && rect.bottom > storyFocusOffset;
+    };
+
+    const isStoryInTrapRange = () => {
+        const rect = scrollStorySection.getBoundingClientRect();
+        return rect.top < window.innerHeight && rect.bottom > storyFocusOffset;
+    };
+
+    const pinStoryToTop = (behavior = "auto") => {
+        isPinningStory = true;
+        window.scrollTo({
+            top: Math.max(scrollStorySection.offsetTop - stickyTop, 0),
+            behavior
+        });
+        requestAnimationFrame(() => {
+            isPinningStory = false;
+            lastPageScrollY = window.scrollY;
+        });
     };
 
     const canStepStory = () => {
@@ -160,6 +190,31 @@ if (scrollStorySection) {
     };
 
     const handleStoryStep = (direction, event) => {
+        if (direction > 0 && isStoryEnteringDown()) {
+            event.preventDefault();
+            pinStoryToTop();
+            return;
+        }
+
+        if (direction < 0 && isStoryEnteringUp() && !isStoryInFocus()) {
+            event.preventDefault();
+            setStorySlide(storySlides.length - 1);
+            pinStoryToTop();
+            return;
+        }
+
+        if (!isStoryInFocus() && isStoryInTrapRange()) {
+            const hasLockedSlidesInDirection = direction > 0
+                ? activeStorySlide < storySlides.length - 1
+                : activeStorySlide > 0;
+
+            if (hasLockedSlidesInDirection) {
+                event.preventDefault();
+                pinStoryToTop();
+                return;
+            }
+        }
+
         if (!isStoryInFocus()) {
             return;
         }
@@ -169,11 +224,7 @@ if (scrollStorySection) {
 
         if (!canMoveInsideStory) {
             event.preventDefault();
-
-            if (canStepStory()) {
-                scrollPastStory(direction);
-            }
-
+            scrollPastStory(direction);
             return;
         }
 
@@ -183,12 +234,45 @@ if (scrollStorySection) {
             return;
         }
 
-        scrollStorySection.scrollIntoView({ block: "start" });
+        pinStoryToTop();
         setStorySlide(nextIndex);
     };
 
     window.addEventListener("wheel", (event) => {
-        if (!isStoryInFocus() || Math.abs(event.deltaY) < 4) {
+        if (Math.abs(event.deltaY) < 4) {
+            wheelDeltaTotal = 0;
+            return;
+        }
+
+        const direction = event.deltaY > 0 ? 1 : -1;
+
+        if (direction > 0 && isStoryEnteringDown()) {
+            wheelDeltaTotal = 0;
+            isWheelGestureLocked = true;
+            handleStoryStep(direction, event);
+
+            clearTimeout(wheelUnlockTimer);
+            wheelUnlockTimer = setTimeout(() => {
+                isWheelGestureLocked = false;
+            }, wheelUnlockDelay);
+
+            return;
+        }
+
+        if (direction < 0 && isStoryEnteringUp() && !isStoryInFocus()) {
+            wheelDeltaTotal = 0;
+            isWheelGestureLocked = true;
+            handleStoryStep(direction, event);
+
+            clearTimeout(wheelUnlockTimer);
+            wheelUnlockTimer = setTimeout(() => {
+                isWheelGestureLocked = false;
+            }, wheelUnlockDelay);
+
+            return;
+        }
+
+        if (!isStoryInFocus() && !isStoryInTrapRange()) {
             wheelDeltaTotal = 0;
             return;
         }
@@ -204,10 +288,18 @@ if (scrollStorySection) {
             return;
         }
 
-        const direction = event.deltaY > 0 ? 1 : -1;
-
         if (Math.sign(wheelDeltaTotal) !== direction) {
             wheelDeltaTotal = 0;
+        }
+
+        if (
+            isStoryInFocus()
+            && ((direction < 0 && activeStorySlide === 0) || (direction > 0 && activeStorySlide === storySlides.length - 1))
+        ) {
+            wheelDeltaTotal = 0;
+            isWheelGestureLocked = true;
+            handleStoryStep(direction, event);
+            return;
         }
 
         wheelDeltaTotal += event.deltaY;
@@ -227,7 +319,23 @@ if (scrollStorySection) {
     }, { passive: true });
 
     window.addEventListener("touchmove", (event) => {
-        if (!isStoryInFocus()) {
+        const touchDistance = touchStartY - event.touches[0].clientY;
+        const direction = touchDistance > 0 ? 1 : -1;
+
+        if (direction > 0 && isStoryEnteringDown()) {
+            event.preventDefault();
+            pinStoryToTop();
+            return;
+        }
+
+        if (direction < 0 && isStoryEnteringUp() && !isStoryInFocus()) {
+            event.preventDefault();
+            setStorySlide(storySlides.length - 1);
+            pinStoryToTop();
+            return;
+        }
+
+        if (!isStoryInFocus() && !isStoryInTrapRange()) {
             return;
         }
 
@@ -244,6 +352,38 @@ if (scrollStorySection) {
         const direction = touchDistance > 0 ? 1 : -1;
         handleStoryStep(direction, event);
     }, { passive: false });
+
+    window.addEventListener("scroll", () => {
+        const currentScrollY = window.scrollY;
+        const isScrollingDown = currentScrollY > lastPageScrollY + 1;
+        const isScrollingUp = currentScrollY < lastPageScrollY - 1;
+        const hasUnseenSlides = activeStorySlide < storySlides.length - 1;
+        const hasPreviousSlides = activeStorySlide > 0;
+        const storyStartY = Math.max(scrollStorySection.offsetTop - stickyTop, 0);
+        const storyEndY = storyStartY + scrollStorySection.offsetHeight;
+
+        if (!isPinningStory && isScrollingDown && hasUnseenSlides && currentScrollY >= storyStartY) {
+            const rect = scrollStorySection.getBoundingClientRect();
+            const hasReachedStory = rect.top < window.innerHeight && rect.bottom > storyFocusOffset;
+            const hasSkippedStory = currentScrollY >= storyEndY;
+
+            if (hasReachedStory || hasSkippedStory) {
+                pinStoryToTop();
+            }
+        }
+
+        if (!isPinningStory && isScrollingUp && hasPreviousSlides && currentScrollY <= storyEndY) {
+            const rect = scrollStorySection.getBoundingClientRect();
+            const hasReachedStory = rect.top < window.innerHeight && rect.bottom >= storyFocusOffset;
+            const hasSkippedStory = currentScrollY <= storyStartY;
+
+            if (hasReachedStory || hasSkippedStory) {
+                pinStoryToTop();
+            }
+        }
+
+        lastPageScrollY = window.scrollY;
+    }, { passive: true });
 }
 
 // Ideal floor: activates size and floor tabs, then refreshes the visible details.

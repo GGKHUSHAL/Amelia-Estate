@@ -3606,7 +3606,7 @@ img.snapshot-icon {
 .scroll-story-progress {
     position: absolute;
     top: 160px;
-    left: max(44px, calc((100vw - 1200px) / 2 + 44px));
+    left: max(24px, calc((100vw - 1200px) / 2));
     z-index: 4;
     display: flex;
     flex-direction: column;
