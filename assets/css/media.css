@@ -722,7 +722,7 @@
     }
 
     .scroll-story-section {
-        --story-section-height: calc(100vh - 86px);
+        --story-section-height: calc(100dvh - 86px);
         height: var(--story-section-height);
         min-height: var(--story-section-height);
         background: #000000;
@@ -1763,7 +1763,7 @@
     }
 
     .scroll-story-section {
-        --story-section-height: calc(100vh - 86px);
+        --story-section-height: calc(100dvh - 86px);
         height: var(--story-section-height);
         min-height: var(--story-section-height);
         background: #000000;

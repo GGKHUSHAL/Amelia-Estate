@@ -3330,7 +3330,7 @@ img.snapshot-icon {
 
 /* Scroll Story slider: pinned visual section controlled by wheel/touch JS. */
 .scroll-story-section {
-    --story-section-height: calc(100vh - 86px);
+    --story-section-height: calc(100dvh - 86px);
     height: var(--story-section-height);
     min-height: var(--story-section-height);
     background: #000000;
@@ -3346,6 +3346,12 @@ img.snapshot-icon {
     display: grid;
     place-items: center;
     overflow: hidden;
+}
+
+@supports not (height: 100dvh) {
+    .scroll-story-section {
+        --story-section-height: calc(100vh - 86px);
+    }
 }
 
 .scroll-story-stage {
