@@ -1280,6 +1280,90 @@
             </div>
         </section>
 
+        <!-- Lifestyle amenities -->
+        <section class="lifestyle-amenities-section reveal-on-scroll w-full overflow-hidden bg-[#181818] pb-[62px] pt-[86px] text-white"
+            id="amenities" aria-label="Lifestyle amenities">
+            <div class="mx-auto w-[calc(100%_-_48px)] max-w-[980px]">
+                <div class="mx-auto text-center">
+                    <p class="lifestyle-amenities-eyebrow mx-auto inline-flex min-h-7 items-center gap-2 rounded-full border border-[#c7a368]/40 bg-[#c7a368]/10 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#c7a368]">
+                        <svg class="h-[15px] w-[15px]" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M5 12h14" />
+                            <path d="M12 5v14" />
+                            <path d="M7.5 7.5 16.5 16.5" />
+                            <path d="M16.5 7.5 7.5 16.5" />
+                        </svg>
+                        Lifestyle Amenities
+                    </p>
+                    <h2 class="lifestyle-amenities-title mt-5 text-[40px] font-medium leading-[48px] text-[#f6f2ea]">
+                        Curated For <span class="text-[#c7a368]">Elevated Living</span>
+                    </h2>
+
+                    <div class="lifestyle-amenities-tabs mx-auto mt-8 grid max-w-[760px] grid-cols-4 gap-0 border-b border-white/10"
+                        aria-label="Amenity categories">
+                        <button class="is-active" type="button" data-amenity-tab="all">All Amenities</button>
+                        <button type="button" data-amenity-tab="wellness">Wellness</button>
+                        <button type="button" data-amenity-tab="recreation">Recreation</button>
+                        <button type="button" data-amenity-tab="security">Security &amp; Convenience</button>
+                    </div>
+                </div>
+
+                <div class="lifestyle-amenities-grid mt-11 grid grid-cols-3 overflow-hidden border border-[#3c3526]">
+                    <article class="lifestyle-amenity-card" data-amenity-type="wellness">
+                        <img src="assets/img/lifestyle img/08dbf8b284c57e1048f715d17e9aa265bb594bd8.png" alt="Infinity pool amenity" />
+                        <div class="lifestyle-amenity-caption">
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 16c2 0 2-2 4-2s2 2 4 2 2-2 4-2 2 2 4 2M4 20c2 0 2-2 4-2s2 2 4 2 2-2 4-2 2 2 4 2M8 12l4-8 4 8" /></svg>
+                            <span>Infinity Pool</span>
+                        </div>
+                    </article>
+                    <article class="lifestyle-amenity-card" data-amenity-type="wellness">
+                        <img src="assets/img/lifestyle img/39facef832cb84ad963eea33b854a423175d5754.jpg" alt="Fitness studio amenity" />
+                        <div class="lifestyle-amenity-caption">
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 7v10M18 7v10M3 10v4M21 10v4M6 12h12" /></svg>
+                            <span>Fitness Studio</span>
+                        </div>
+                    </article>
+                    <article class="lifestyle-amenity-card" data-amenity-type="recreation">
+                        <img src="assets/img/lifestyle img/99826a0ae4206139a144e0cad7443e478dfa18ad.png" alt="Clubhouse amenity" />
+                        <div class="lifestyle-amenity-caption">
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h16M6 20V9l6-5 6 5v11M9 20v-6h6v6" /></svg>
+                            <span>Clubhouse</span>
+                        </div>
+                    </article>
+                    <article class="lifestyle-amenity-card" data-amenity-type="recreation">
+                        <img src="assets/img/lifestyle img/d25440a3b8a72e405e4a3a80a38c44fcc6871cdc.jpg" alt="Kids play zone amenity" />
+                        <div class="lifestyle-amenity-caption">
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 18a4 4 0 0 1 0-8 5 5 0 0 1 9.7-1.5A4.5 4.5 0 1 1 17 18H7Z" /><path d="M9 14h6" /></svg>
+                            <span>Kids Play Zone</span>
+                        </div>
+                    </article>
+                    <article class="lifestyle-amenity-card" data-amenity-type="recreation">
+                        <img src="assets/img/lifestyle img/ead92151fb34f66acdade3837b9eb43336bf5369.jpg" alt="Landscaped gardens amenity" />
+                        <div class="lifestyle-amenity-caption">
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21V9" /><path d="M7 9c0-3 2-5 5-5 0 3-2 5-5 5Z" /><path d="M17 12c0-3-2-5-5-5 0 3 2 5 5 5Z" /></svg>
+                            <span>Landscaped Gardens</span>
+                        </div>
+                    </article>
+                    <article class="lifestyle-amenity-card" data-amenity-type="security">
+                        <img src="assets/img/lifestyle img/f77d85aa8ec67ce21a408df20bfdfdbbc219a4f2.jpg" alt="24x7 security amenity" />
+                        <div class="lifestyle-amenity-caption">
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 10V8a6 6 0 0 1 12 0v2" /><path d="M5 10h14v10H5z" /><path d="M12 14v2" /></svg>
+                            <span>24x7 Security</span>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="lifestyle-amenities-cta mt-12 flex min-h-[118px] items-center justify-between border border-[#3c3526] bg-[#211f1b] px-12">
+                    <div>
+                        <p class="text-[11px] font-medium text-white/35">Experience These Amenities</p>
+                        <h3 class="mt-2 text-[18px] font-normal text-[#f6f2ea]">Starting <span class="text-[28px] font-semibold text-[#c7a368]">₹1.25 Cr</span></h3>
+                    </div>
+                    <a class="inline-flex h-10 min-w-[178px] items-center justify-center rounded-[8px] bg-gradient-to-b from-[#e1bf74] to-[#c9a765] px-6 text-[11px] font-semibold text-[#0b0906] shadow-[0_14px_30px_rgba(199,163,104,0.28)] transition hover:-translate-y-0.5 hover:brightness-110"
+                        href="#booking-enquiry">Book Free Site Visit <span class="ml-2">-&gt;</span></a>
+                </div>
+            </div>
+        </section>
+
 
     </main>
 

@@ -218,6 +218,15 @@
         padding: 70px 32px 76px;
     }
 
+    .lifestyle-amenities-section {
+        min-height: 0;
+        padding: 70px 32px 52px;
+    }
+
+    .lifestyle-amenities-section > div {
+        width: 100%;
+    }
+
     .prime-location-inner {
         width: 100%;
     }
@@ -609,6 +618,31 @@
 
     .prime-location-section {
         padding: 60px 40px 68px;
+    }
+
+    .lifestyle-amenities-section {
+        padding: 60px 40px 46px;
+    }
+
+    .lifestyle-amenities-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    }
+
+    .lifestyle-amenity-card,
+    .lifestyle-amenity-card img {
+        min-height: 250px;
+    }
+
+    .lifestyle-amenity-card:nth-child(3n) {
+        border-right: 1px solid #3c3526;
+    }
+
+    .lifestyle-amenity-card:nth-child(2n) {
+        border-right: 0;
+    }
+
+    .lifestyle-amenity-card:nth-last-child(-n + 3) {
+        border-bottom: 1px solid #3c3526;
     }
 
     .prime-location-header h2 {
@@ -1351,6 +1385,70 @@
 
     .visual-showcase-section {
         padding: 52px 16px 58px;
+    }
+
+    .lifestyle-amenities-section {
+        padding: 52px 16px 42px;
+    }
+
+    .lifestyle-amenities-title {
+        font-size: 30px !important;
+        line-height: 37px !important;
+    }
+
+    .lifestyle-amenities-tabs {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 6px !important;
+        border-bottom: 0;
+    }
+
+    .lifestyle-amenities-tabs button {
+        min-height: 42px;
+        border: 1px solid rgba(199, 163, 104, 0.2);
+        border-radius: 8px;
+        padding: 0 10px;
+        background: rgba(255, 255, 255, 0.035);
+        font-size: 12px;
+    }
+
+    .lifestyle-amenities-tabs button.is-active {
+        background: linear-gradient(180deg, #efd18c 0%, #c8a96a 100%);
+        color: #19150f;
+    }
+
+    .lifestyle-amenities-tabs button::after {
+        display: none;
+    }
+
+    .lifestyle-amenities-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    .lifestyle-amenity-card,
+    .lifestyle-amenity-card img {
+        min-height: 250px;
+    }
+
+    .lifestyle-amenity-card,
+    .lifestyle-amenity-card:nth-child(2n),
+    .lifestyle-amenity-card:nth-child(3n) {
+        border-right: 0;
+        border-bottom: 1px solid #3c3526;
+    }
+
+    .lifestyle-amenity-card:last-child {
+        border-bottom: 0;
+    }
+
+    .lifestyle-amenities-cta {
+        flex-direction: column;
+        align-items: flex-start !important;
+        gap: 22px;
+        padding: 24px 18px !important;
+    }
+
+    .lifestyle-amenities-cta a {
+        width: 100%;
     }
 
     .visual-showcase-header {
@@ -2312,6 +2410,30 @@
 
     .prime-location-section {
         padding: 44px 14px 50px;
+    }
+
+    .lifestyle-amenities-section {
+        padding: 44px 14px 36px;
+    }
+
+    .lifestyle-amenities-eyebrow {
+        padding: 6px 12px;
+        font-size: 10px;
+        letter-spacing: 0.1em;
+    }
+
+    .lifestyle-amenities-title {
+        font-size: 27px !important;
+        line-height: 34px !important;
+    }
+
+    .lifestyle-amenities-tabs {
+        margin-top: 24px !important;
+    }
+
+    .lifestyle-amenity-card,
+    .lifestyle-amenity-card img {
+        min-height: 230px;
     }
 
     .prime-location-inner {

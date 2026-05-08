@@ -42,6 +42,7 @@ header,
 .premium-specs-section,
 .visual-showcase-section,
 .prime-location-section,
+.lifestyle-amenities-section,
 .scroll-story-section,
 .booking-enquiry-section {
     width: 100%;
@@ -3835,6 +3836,158 @@ img.snapshot-icon {
     transition-delay: 0.46s;
 }
 
+/* Lifestyle amenities: tabbed amenity grid after prime location. */
+.lifestyle-amenities-tabs button {
+    position: relative;
+    min-height: 40px;
+    border: 0;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.38);
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 16px;
+    transition:
+        color 0.25s ease,
+        background-color 0.25s ease;
+}
+
+.lifestyle-amenities-tabs button::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -1px;
+    width: 0;
+    height: 1px;
+    background: #c7a368;
+    transform: translateX(-50%);
+    transition: width 0.25s ease;
+}
+
+.lifestyle-amenities-tabs button.is-active,
+.lifestyle-amenities-tabs button:hover {
+    color: #d8b66d;
+}
+
+.lifestyle-amenities-tabs button.is-active::after {
+    width: 74%;
+}
+
+.lifestyle-amenity-card {
+    position: relative;
+    min-height: 244px;
+    overflow: hidden;
+    border-right: 1px solid #3c3526;
+    border-bottom: 1px solid #3c3526;
+    background: #202020;
+    transition:
+        opacity 0.3s ease,
+        transform 0.35s ease,
+        filter 0.35s ease;
+}
+
+.lifestyle-amenity-card:nth-child(3n) {
+    border-right: 0;
+}
+
+.lifestyle-amenity-card:nth-last-child(-n + 3) {
+    border-bottom: 0;
+}
+
+.lifestyle-amenity-card.is-hidden {
+    display: none;
+}
+
+.lifestyle-amenity-card img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-height: 244px;
+    object-fit: cover;
+    filter: saturate(0.88) contrast(1.06) brightness(0.72);
+    transform: scale(1.01);
+    transition:
+        filter 0.45s ease,
+        transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.lifestyle-amenity-card:hover img {
+    filter: saturate(1.02) contrast(1.08) brightness(0.88);
+    transform: scale(1.055);
+}
+
+.lifestyle-amenity-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 45%, rgba(0, 0, 0, 0.64) 100%);
+    pointer-events: none;
+}
+
+.lifestyle-amenity-caption {
+    position: absolute;
+    left: 22px;
+    bottom: 20px;
+    z-index: 1;
+    display: grid;
+    gap: 5px;
+    color: #ffffff;
+}
+
+.lifestyle-amenity-caption svg {
+    width: 18px;
+    height: 18px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.lifestyle-amenity-caption span {
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 19px;
+    text-shadow: 0 8px 20px rgba(0, 0, 0, 0.38);
+}
+
+.lifestyle-amenities-eyebrow,
+.lifestyle-amenities-title,
+.lifestyle-amenities-tabs,
+.lifestyle-amenities-grid,
+.lifestyle-amenities-cta {
+    opacity: 0;
+    transform: translateY(34px);
+    transition:
+        opacity 0.8s ease,
+        transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.lifestyle-amenities-section.is-visible .lifestyle-amenities-eyebrow,
+.lifestyle-amenities-section.is-visible .lifestyle-amenities-title,
+.lifestyle-amenities-section.is-visible .lifestyle-amenities-tabs,
+.lifestyle-amenities-section.is-visible .lifestyle-amenities-grid,
+.lifestyle-amenities-section.is-visible .lifestyle-amenities-cta {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.lifestyle-amenities-section.is-visible .lifestyle-amenities-title {
+    transition-delay: 0.08s;
+}
+
+.lifestyle-amenities-section.is-visible .lifestyle-amenities-tabs {
+    transition-delay: 0.16s;
+}
+
+.lifestyle-amenities-section.is-visible .lifestyle-amenities-grid {
+    transition-delay: 0.24s;
+}
+
+.lifestyle-amenities-section.is-visible .lifestyle-amenities-cta {
+    transition-delay: 0.32s;
+}
+
 /* Scroll Story slider: pinned visual section controlled by wheel/touch JS. */
 .scroll-story-section {
     --story-section-height: calc(100dvh - 86px);
@@ -4798,6 +4951,11 @@ img.snapshot-icon {
     .prime-location-map,
     .prime-distance-block h3,
     .prime-distance-card,
+    .lifestyle-amenities-eyebrow,
+    .lifestyle-amenities-title,
+    .lifestyle-amenities-tabs,
+    .lifestyle-amenities-grid,
+    .lifestyle-amenities-cta,
     .prime-growth-grid article,
     .about-gallery img {
         opacity: 1;

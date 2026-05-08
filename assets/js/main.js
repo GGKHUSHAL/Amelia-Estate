@@ -912,6 +912,29 @@ if (primeLocationSection) {
     });
 }
 
+// Lifestyle amenities: filters the screenshot-style amenity grid by category.
+const lifestyleAmenitiesSection = document.querySelector(".lifestyle-amenities-section");
+
+if (lifestyleAmenitiesSection) {
+    const amenityTabs = lifestyleAmenitiesSection.querySelectorAll("[data-amenity-tab]");
+    const amenityCards = lifestyleAmenitiesSection.querySelectorAll("[data-amenity-type]");
+
+    const setAmenityTab = (key) => {
+        amenityTabs.forEach((tab) => {
+            tab.classList.toggle("is-active", tab.dataset.amenityTab === key);
+        });
+
+        amenityCards.forEach((card) => {
+            const shouldShow = key === "all" || card.dataset.amenityType === key;
+            card.classList.toggle("is-hidden", !shouldShow);
+        });
+    };
+
+    amenityTabs.forEach((tab) => {
+        tab.addEventListener("click", () => setAmenityTab(tab.dataset.amenityTab));
+    });
+}
+
 // Scroll reveal: toggles .is-visible for sections that animate when entering the viewport.
 const revealSections = document.querySelectorAll(".reveal-on-scroll");
 
