@@ -244,8 +244,8 @@
     }
 
     .sticky-availability-section {
-        height: var(--sticky-availability-height);
-        min-height: 520px;
+        height: calc(var(--sticky-availability-height) * 2);
+        min-height: calc(520px + var(--sticky-availability-height));
     }
 
     .buyer-appreciation-section {
@@ -331,7 +331,7 @@
     }
 
     .sticky-availability-panel {
-        height: 100%;
+        height: var(--sticky-availability-height);
         min-height: 520px;
     }
 
@@ -1679,7 +1679,7 @@
     }
 
     .sticky-availability-section {
-        min-height: 500px;
+        min-height: calc(500px + var(--sticky-availability-height));
     }
 
     .buyer-appreciation-section {
@@ -3003,7 +3003,7 @@
     }
 
     .sticky-availability-section {
-        min-height: 480px;
+        min-height: calc(480px + var(--sticky-availability-height));
     }
 
     .buyer-appreciation-section {

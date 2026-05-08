@@ -4433,20 +4433,37 @@ img.snapshot-icon {
 /* Sticky availability: full viewport CTA that holds while the page scrolls. */
 .sticky-availability-section {
     position: relative;
-    height: var(--sticky-availability-height);
-    min-height: 560px;
-    overflow: hidden;
+    height: calc(var(--sticky-availability-height) * 2);
+    min-height: calc(560px + var(--sticky-availability-height));
+    overflow: visible;
     z-index: 1;
 }
 
 .sticky-availability-panel {
-    position: relative;
+    position: absolute;
     top: 0;
+    left: 0;
     z-index: 1;
-    height: 100%;
+    width: 100%;
+    height: var(--sticky-availability-height);
     min-height: 560px;
     overflow: hidden;
     isolation: isolate;
+}
+
+.sticky-availability-section.is-pinned .sticky-availability-panel {
+    position: fixed;
+    top: 86px;
+    left: 0;
+    width: 100%;
+}
+
+.sticky-availability-section.is-released .sticky-availability-panel {
+    position: absolute;
+    top: auto;
+    bottom: 0;
+    left: 0;
+    width: 100%;
 }
 
 .sticky-availability-bg {
@@ -4580,8 +4597,8 @@ img.snapshot-icon {
 
 .buyer-appreciation-section {
     position: relative;
-    z-index: 3;
-    margin-top: 0;
+    z-index: 4;
+    margin-top: calc(-1 * var(--sticky-availability-height));
     box-shadow: 0 -40px 80px rgba(0, 0, 0, 0.42);
 }
 

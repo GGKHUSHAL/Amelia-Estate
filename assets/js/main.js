@@ -100,6 +100,33 @@ if (heroSlider) {
     });
 }
 
+// Sticky availability CTA: pins below the fixed header while later sections scroll over it.
+const stickyAvailabilitySection = document.querySelector(".sticky-availability-section");
+const stickyAvailabilityPanel = document.querySelector(".sticky-availability-panel");
+
+if (stickyAvailabilitySection && stickyAvailabilityPanel) {
+    const headerOffset = 86;
+
+    const updateStickyAvailability = () => {
+        const sectionRect = stickyAvailabilitySection.getBoundingClientRect();
+        const sectionTop = sectionRect.top + window.scrollY;
+        const sectionBottom = sectionTop + stickyAvailabilitySection.offsetHeight;
+        const panelHeight = stickyAvailabilityPanel.offsetHeight;
+        const pinStart = sectionTop - headerOffset;
+        const pinEnd = sectionBottom - headerOffset - panelHeight;
+        const scrollY = window.scrollY;
+        const shouldPin = scrollY >= pinStart && scrollY < pinEnd;
+        const shouldRelease = scrollY >= pinEnd;
+
+        stickyAvailabilitySection.classList.toggle("is-pinned", shouldPin);
+        stickyAvailabilitySection.classList.toggle("is-released", shouldRelease);
+    };
+
+    updateStickyAvailability();
+    window.addEventListener("scroll", updateStickyAvailability, { passive: true });
+    window.addEventListener("resize", updateStickyAvailability);
+}
+
 // Scroll Story slider: traps scroll until the story has been viewed in that direction.
 const scrollStorySection = document.querySelector(".scroll-story-section");
 
