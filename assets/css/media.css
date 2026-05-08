@@ -380,21 +380,25 @@
 
 @media (min-width: 992px) and (max-width: 1199px) {
     .snapshot-section {
-        padding: 30px 28px 34px;
+        padding: 30px 28px 26px;
     }
 
     .snapshot-grid {
         display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 10px 18px;
+        row-gap: 18px;
+        column-gap: 18px;
+        grid-auto-rows: minmax(108px, auto);
         width: min(100%, 720px);
         margin: 18px auto 0;
+        align-items: start;
     }
 
     .snapshot-card {
         width: 100%;
         max-width: none;
-        height: 108px;
+        min-height: 108px;
+        height: 100%;
         padding: 10px 10px 12px;
         justify-self: stretch;
         gap: 5px;
@@ -457,20 +461,25 @@
     }
 
     .snapshot-section {
-        padding: 26px 24px 30px;
+        padding: 26px 24px 26px;
     }
 
     .snapshot-grid {
         display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 10px 14px;
+        row-gap: 16px;
+        column-gap: 14px;
+        grid-auto-rows: minmax(102px, auto);
+        width: 100%;
         margin-top: 16px;
+        align-items: start;
     }
 
     .snapshot-card {
         width: 100%;
         max-width: none;
-        height: 102px;
+        min-height: 102px;
+        height: 100%;
         padding: 10px 6px 12px;
         justify-self: stretch;
         gap: 4px;
@@ -611,8 +620,39 @@
         height: 360px;
     }
 
+    .prime-distance-card {
+        min-height: 128px;
+        padding: 22px 18px;
+    }
+
+    .prime-distance-card div {
+        gap: 12px;
+    }
+
+    .prime-distance-card svg {
+        width: 28px;
+        height: 28px;
+        flex-basis: 28px;
+    }
+
+    .prime-distance-card span {
+        font-size: 14px;
+        line-height: 19px;
+    }
+
+    .prime-distance-card strong {
+        margin-left: 40px;
+        font-size: 12px;
+        line-height: 17px;
+    }
+
+    .prime-distance-card strong em {
+        font-size: 13px;
+        line-height: 18px;
+    }
+
     .prime-distance-grid {
-        grid-template-columns: 1fr !important;
+        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
         gap: 16px !important;
     }
 
@@ -801,6 +841,16 @@
     .scroll-story-content h2 {
         font-size: 30px;
         line-height: 1.14;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 899px) {
+    .prime-distance-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    }
+
+    .prime-distance-card {
+        min-height: 142px;
     }
 }
 
@@ -2331,12 +2381,12 @@
     .prime-distance-grid {
         display: grid !important;
         grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-        gap: 8px !important;
+        gap: 14px !important;
         margin-top: 24px;
     }
 
     .prime-distance-card {
-        min-height: 197px;
+        min-height: 190px;
         padding: 22px 16px 18px;
         width: 100%;
     }
