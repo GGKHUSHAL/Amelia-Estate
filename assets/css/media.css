@@ -229,6 +229,39 @@
         padding: 70px 32px;
     }
 
+    .interested-property-section {
+        height: auto !important;
+        min-height: 0;
+        padding: 60px 32px;
+    }
+
+    .interested-property-section > div {
+        width: 100%;
+        height: auto;
+        grid-template-columns: 1fr !important;
+        gap: 34px;
+    }
+
+    .interested-property-mosaic {
+        height: 360px !important;
+    }
+
+    .interested-property-tile img {
+        object-fit: fill;
+        background: transparent;
+    }
+
+    .interested-property-tile--main img,
+    .interested-property-tile--top img,
+    .interested-property-tile--bath img,
+    .interested-property-tile--lamp img {
+        object-position: center;
+    }
+
+    .interested-property-tile--tall img {
+        object-position: center top;
+    }
+
     .construction-progress-section > div {
         width: 100%;
     }
@@ -646,6 +679,15 @@
 
     .construction-progress-section {
         padding: 60px 40px;
+    }
+
+    .interested-property-section {
+        padding: 56px 40px;
+    }
+
+    .interested-property-copy h2 {
+        font-size: 30px !important;
+        line-height: 39px !important;
     }
 
     .construction-progress-title {
@@ -1426,6 +1468,58 @@
 
     .construction-progress-section {
         padding: 52px 16px;
+    }
+
+    .interested-property-section {
+        padding: 48px 16px;
+    }
+
+    .interested-property-copy h2 {
+        font-size: 27px !important;
+        line-height: 36px !important;
+    }
+
+    .interested-property-copy p {
+        margin-top: 18px !important;
+        font-size: 13px !important;
+        line-height: 20px !important;
+    }
+
+    .interested-property-copy > div {
+        margin-top: 24px !important;
+        flex-wrap: wrap;
+    }
+
+    .interested-property-mosaic {
+        height: 520px !important;
+        grid-template-columns: 1fr 1fr !important;
+        grid-template-rows: 1.2fr 0.85fr 1fr 1fr !important;
+        gap: 8px !important;
+    }
+
+    .interested-property-tile--main {
+        grid-column: 1 / -1 !important;
+        grid-row: 1 / 2 !important;
+    }
+
+    .interested-property-tile--top {
+        grid-column: 1 / 2 !important;
+        grid-row: 2 / 3 !important;
+    }
+
+    .interested-property-tile--tall {
+        grid-column: 2 / 3 !important;
+        grid-row: 2 / 4 !important;
+    }
+
+    .interested-property-tile--bath {
+        grid-column: 1 / 2 !important;
+        grid-row: 3 / 4 !important;
+    }
+
+    .interested-property-tile--lamp {
+        grid-column: 1 / -1 !important;
+        grid-row: 4 / 5 !important;
     }
 
     .construction-progress-title {
@@ -2513,6 +2607,19 @@
 
     .construction-progress-section {
         padding: 44px 14px;
+    }
+
+    .interested-property-section {
+        padding: 42px 14px;
+    }
+
+    .interested-property-mosaic {
+        height: 470px !important;
+    }
+
+    .interested-property-copy a {
+        min-width: 0 !important;
+        flex: 1 1 140px;
     }
 
     .construction-progress-eyebrow {
