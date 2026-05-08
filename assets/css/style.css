@@ -43,6 +43,7 @@ header,
 .visual-showcase-section,
 .prime-location-section,
 .lifestyle-amenities-section,
+.construction-progress-section,
 .scroll-story-section,
 .booking-enquiry-section {
     width: 100%;
@@ -3988,6 +3989,208 @@ img.snapshot-icon {
     transition-delay: 0.32s;
 }
 
+/* Construction progress: photo-led milestone accordion. */
+.construction-progress-photo,
+.construction-progress-card {
+    height: 498px;
+}
+
+.construction-progress-card {
+    display: flex;
+    flex-direction: column;
+}
+
+.construction-progress-photo img {
+    filter: saturate(0.96) contrast(1.04) brightness(0.78);
+    transform: scale(1.01);
+    transition:
+        filter 0.45s ease,
+        transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.construction-progress-photo:hover img {
+    filter: saturate(1.06) contrast(1.08) brightness(0.9);
+    transform: scale(1.04);
+}
+
+.construction-phase {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.58);
+}
+
+.construction-phase:last-child {
+    border-bottom: 0;
+}
+
+.construction-phase-trigger {
+    display: flex;
+    width: 100%;
+    min-height: 44px;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    border: 0;
+    background: transparent;
+    color: #ffffff;
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 22px;
+    text-align: left;
+}
+
+.construction-phase-trigger > span {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
+}
+
+.construction-phase-trigger svg {
+    width: 18px;
+    height: 18px;
+    flex: 0 0 18px;
+    fill: none;
+    stroke: #c7a368;
+    stroke-width: 1.9;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.construction-phase-trigger > svg:last-child {
+    transition: transform 0.25s ease;
+}
+
+.construction-phase.is-active .construction-phase-trigger > svg:last-child {
+    transform: rotate(180deg);
+}
+
+.construction-phase-panel {
+    display: grid;
+    gap: 9px;
+    padding: 0 3px 12px;
+}
+
+.construction-phase-panel[hidden] {
+    display: none;
+}
+
+.construction-phase-panel div {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: rgba(255, 255, 255, 0.56);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 21px;
+}
+
+.construction-phase-panel div > span {
+    position: relative;
+    width: 18px;
+    height: 18px;
+    flex: 0 0 18px;
+    border-radius: 999px;
+    background: #d8d8d8;
+}
+
+.construction-phase-panel div > span.is-complete {
+    background: #32a852;
+}
+
+.construction-phase-panel div > span.is-complete::after {
+    content: "";
+    position: absolute;
+    left: 5px;
+    top: 4px;
+    width: 7px;
+    height: 4px;
+    border-bottom: 2px solid #ffffff;
+    border-left: 2px solid #ffffff;
+    transform: rotate(-45deg);
+}
+
+.construction-phase-panel strong {
+    margin-left: auto;
+    min-width: 132px;
+    padding: 4px 12px;
+    border-radius: 999px;
+    background: #263645;
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 16px;
+    text-align: center;
+}
+
+.construction-phase-panel strong.is-green {
+    background: #a7e7a8;
+    color: #205f2a;
+}
+
+.construction-phase-panel strong.is-gold {
+    background: #a78141;
+    color: #ffffff;
+}
+
+.construction-progress-meter > div {
+    height: 17px;
+    overflow: hidden;
+    border-radius: 999px;
+    background: #d9d9d9;
+}
+
+.construction-progress-meter > div span {
+    display: block;
+    height: 100%;
+    border-radius: inherit;
+    background: linear-gradient(90deg, #c7a368 0%, #d7ba76 100%);
+    transition: width 0.35s ease;
+}
+
+.construction-progress-meter {
+    margin-top: auto !important;
+}
+
+.construction-progress-meter p {
+    overflow-wrap: anywhere;
+}
+
+.construction-progress-eyebrow,
+.construction-progress-title,
+.construction-progress-copy,
+.construction-progress-photo,
+.construction-progress-card {
+    opacity: 0;
+    transform: translateY(34px);
+    transition:
+        opacity 0.8s ease,
+        transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.construction-progress-section.is-visible .construction-progress-eyebrow,
+.construction-progress-section.is-visible .construction-progress-title,
+.construction-progress-section.is-visible .construction-progress-copy,
+.construction-progress-section.is-visible .construction-progress-photo,
+.construction-progress-section.is-visible .construction-progress-card {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.construction-progress-section.is-visible .construction-progress-title {
+    transition-delay: 0.08s;
+}
+
+.construction-progress-section.is-visible .construction-progress-copy {
+    transition-delay: 0.15s;
+}
+
+.construction-progress-section.is-visible .construction-progress-photo {
+    transition-delay: 0.24s;
+}
+
+.construction-progress-section.is-visible .construction-progress-card {
+    transition-delay: 0.32s;
+}
+
 /* Scroll Story slider: pinned visual section controlled by wheel/touch JS. */
 .scroll-story-section {
     --story-section-height: calc(100dvh - 86px);
@@ -4956,6 +5159,11 @@ img.snapshot-icon {
     .lifestyle-amenities-tabs,
     .lifestyle-amenities-grid,
     .lifestyle-amenities-cta,
+    .construction-progress-eyebrow,
+    .construction-progress-title,
+    .construction-progress-copy,
+    .construction-progress-photo,
+    .construction-progress-card,
     .prime-growth-grid article,
     .about-gallery img {
         opacity: 1;

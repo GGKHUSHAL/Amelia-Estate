@@ -223,6 +223,26 @@
         padding: 70px 32px 52px;
     }
 
+    .construction-progress-section {
+        height: auto !important;
+        min-height: 0;
+        padding: 70px 32px;
+    }
+
+    .construction-progress-section > div {
+        width: 100%;
+    }
+
+    .construction-progress-layout {
+        grid-template-columns: 1fr !important;
+    }
+
+    .construction-progress-photo,
+    .construction-progress-card {
+        height: auto;
+        min-height: 440px;
+    }
+
     .lifestyle-amenities-section > div {
         width: 100%;
     }
@@ -622,6 +642,19 @@
 
     .lifestyle-amenities-section {
         padding: 60px 40px 46px;
+    }
+
+    .construction-progress-section {
+        padding: 60px 40px;
+    }
+
+    .construction-progress-title {
+        font-size: 34px !important;
+        line-height: 42px !important;
+    }
+
+    .construction-progress-photo {
+        min-height: 420px;
     }
 
     .lifestyle-amenities-grid {
@@ -1389,6 +1422,68 @@
 
     .lifestyle-amenities-section {
         padding: 52px 16px 42px;
+    }
+
+    .construction-progress-section {
+        padding: 52px 16px;
+    }
+
+    .construction-progress-title {
+        font-size: 30px !important;
+        line-height: 37px !important;
+    }
+
+    .construction-progress-copy {
+        font-size: 15px !important;
+        line-height: 23px !important;
+    }
+
+    .construction-progress-layout {
+        margin-top: 34px !important;
+    }
+
+    .construction-progress-photo {
+        min-height: 320px;
+    }
+
+    .construction-progress-card {
+        min-height: 0;
+        padding: 20px 16px !important;
+    }
+
+    .construction-progress-meter {
+        margin-top: 22px !important;
+    }
+
+    .construction-phase-trigger {
+        min-height: 48px;
+        font-size: 15px;
+        line-height: 20px;
+    }
+
+    .construction-phase-panel div {
+        align-items: flex-start;
+        flex-wrap: wrap;
+        gap: 9px;
+        font-size: 14px;
+        line-height: 20px;
+    }
+
+    .construction-phase-panel strong {
+        margin-left: 30px;
+        min-width: 118px;
+        font-size: 12px;
+    }
+
+    .construction-progress-meter strong {
+        font-size: 19px !important;
+        line-height: 25px;
+    }
+
+    .construction-progress-meter p {
+        margin-top: 14px !important;
+        font-size: 13px !important;
+        line-height: 20px !important;
     }
 
     .lifestyle-amenities-title {
@@ -2414,6 +2509,35 @@
 
     .lifestyle-amenities-section {
         padding: 44px 14px 36px;
+    }
+
+    .construction-progress-section {
+        padding: 44px 14px;
+    }
+
+    .construction-progress-eyebrow {
+        padding: 6px 12px;
+        font-size: 10px;
+        letter-spacing: 0.1em;
+    }
+
+    .construction-progress-title {
+        font-size: 27px !important;
+        line-height: 34px !important;
+    }
+
+    .construction-progress-photo {
+        min-height: 280px;
+    }
+
+    .construction-phase-trigger {
+        font-size: 14px;
+    }
+
+    .construction-phase-trigger svg {
+        width: 16px;
+        height: 16px;
+        flex-basis: 16px;
     }
 
     .lifestyle-amenities-eyebrow {
