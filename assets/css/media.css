@@ -213,6 +213,25 @@
         padding: 70px 32px;
     }
 
+    .prime-location-section {
+        min-height: 0;
+        padding: 70px 32px 76px;
+    }
+
+    .prime-location-inner {
+        width: 100%;
+    }
+
+    .prime-location-map,
+    .prime-distance-block,
+    .prime-growth-grid {
+        width: 100%;
+    }
+
+    .prime-location-map {
+        height: 390px;
+    }
+
     .visual-showcase-inner {
         width: 100%;
     }
@@ -577,6 +596,32 @@
 
     .visual-showcase-section {
         padding: 60px 40px;
+    }
+
+    .prime-location-section {
+        padding: 60px 40px 68px;
+    }
+
+    .prime-location-header h2 {
+        font-size: 34px;
+        line-height: 42px;
+    }
+
+    .prime-location-map {
+        height: 360px;
+    }
+
+    .prime-distance-grid {
+        grid-template-columns: 1fr !important;
+        gap: 16px !important;
+    }
+
+    .prime-growth-grid {
+        grid-template-columns: 1fr !important;
+    }
+
+    .prime-growth-grid article {
+        min-height: 0;
     }
 
     .visual-showcase-header h2 {
@@ -2213,6 +2258,156 @@
 
     .visual-showcase-section {
         padding: 44px 14px 50px;
+    }
+
+    .prime-location-section {
+        padding: 44px 14px 50px;
+    }
+
+    .prime-location-inner {
+        width: 100%;
+    }
+
+    .prime-location-eyebrow {
+        padding: 6px 12px;
+        font-size: 10px;
+    }
+
+    .prime-location-header h2 {
+        font-size: 27px;
+        line-height: 34px;
+    }
+
+    .prime-location-header > p:not(.prime-location-eyebrow) {
+        font-size: 14px;
+        line-height: 21px;
+    }
+
+    .prime-location-tabs {
+        width: 100% !important;
+        justify-content: center;
+    }
+
+    .prime-location-tabs button {
+        flex: 1 1 0;
+        justify-content: center;
+        min-width: 0;
+        white-space: nowrap;
+    }
+
+    .prime-location-map {
+        height: 300px;
+        margin-top: 34px;
+    }
+
+    .prime-map-live-action {
+        top: 12px;
+        right: 12px;
+    }
+
+    .prime-map-live-action a {
+        height: 36px;
+        padding: 0 12px;
+        font-size: 12px;
+    }
+
+    .prime-map-tools {
+        bottom: 12px;
+        right: 12px;
+    }
+
+    .prime-distance-block {
+        margin-top: 38px;
+    }
+
+    .prime-distance-block h3 {
+        width: min(100%, 250px);
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 25px;
+        line-height: 31px;
+    }
+
+    .prime-distance-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 8px !important;
+        margin-top: 24px;
+    }
+
+    .prime-distance-card {
+        min-height: 197px;
+        padding: 22px 16px 18px;
+        width: 100%;
+    }
+
+    .prime-distance-card div {
+        display: block;
+    }
+
+    .prime-distance-card svg {
+        width: 35px;
+        height: 35px;
+        margin-bottom: 28px;
+    }
+
+    .prime-distance-card span {
+        display: block;
+        font-size: 15px;
+        line-height: 20px;
+    }
+
+    .prime-distance-card strong {
+        margin: 8px 0 0;
+        font-size: 13px;
+        line-height: 18px;
+    }
+
+    .prime-distance-card strong em {
+        margin-bottom: 10px;
+        font-size: 15px;
+        line-height: 20px;
+    }
+
+    .prime-whatsapp-location-cta {
+        height: 162px;
+        min-height: 162px;
+        margin-top: 28px;
+        border-radius: 14px;
+        padding: 0 18px;
+    }
+
+    .prime-whatsapp-location-btn {
+        min-width: 0;
+        width: min(100%, 278px);
+        height: 44px;
+        font-size: 15px;
+        line-height: 19px;
+    }
+
+    .prime-whatsapp-location-cta small {
+        max-width: 278px;
+        margin-top: 26px;
+        font-size: 15px;
+        line-height: 20px;
+    }
+
+    .prime-growth-grid {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        gap: 14px !important;
+        margin-top: 38px;
+    }
+
+    .prime-growth-grid article {
+        min-height: 0;
+        padding: 22px 18px;
+    }
+
+    .prime-growth-grid h4 {
+        margin-top: 16px;
+        font-size: 20px;
+        line-height: 26px;
     }
 
     .visual-showcase-eyebrow {

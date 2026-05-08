@@ -876,6 +876,42 @@ if (visualShowcaseSection) {
     });
 }
 
+// Prime location: switches the map card between the designed image and embedded Google Map.
+const primeLocationSection = document.querySelector(".prime-location-section");
+
+if (primeLocationSection) {
+    const primeMap = primeLocationSection.querySelector(".prime-location-map");
+    const mapTabs = primeLocationSection.querySelectorAll("[data-prime-map-tab]");
+    const mapPanels = primeLocationSection.querySelectorAll("[data-prime-map-panel]");
+    const mapOpenButtons = primeLocationSection.querySelectorAll("[data-prime-map-open]");
+
+    const setPrimeMapPanel = (key) => {
+        mapTabs.forEach((tab) => {
+            tab.classList.toggle("is-active", tab.dataset.primeMapTab === key);
+        });
+
+        mapPanels.forEach((panel) => {
+            const isActive = panel.dataset.primeMapPanel === key;
+
+            panel.hidden = !isActive;
+            panel.classList.toggle("is-active", isActive);
+        });
+
+        primeMap.classList.toggle("is-google-active", key === "google");
+    };
+
+    mapTabs.forEach((tab) => {
+        tab.addEventListener("click", () => setPrimeMapPanel(tab.dataset.primeMapTab));
+    });
+
+    mapOpenButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+            setPrimeMapPanel(button.dataset.primeMapOpen);
+            primeMap.scrollIntoView({ block: "center", behavior: "smooth" });
+        });
+    });
+}
+
 // Scroll reveal: toggles .is-visible for sections that animate when entering the viewport.
 const revealSections = document.querySelectorAll(".reveal-on-scroll");
 

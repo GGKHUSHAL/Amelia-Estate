@@ -41,6 +41,7 @@ header,
 .transparent-pricing-section,
 .premium-specs-section,
 .visual-showcase-section,
+.prime-location-section,
 .scroll-story-section,
 .booking-enquiry-section {
     width: 100%;
@@ -3328,6 +3329,512 @@ img.snapshot-icon {
     transform: translate(0, 0);
 }
 
+/* Prime location: map-led connectivity section after gallery. */
+.prime-location-section {
+    min-height: 1380px;
+    padding: 86px 0 58px;
+    overflow: hidden;
+    background:
+        radial-gradient(circle at 50% 20%, rgba(199, 163, 104, 0.12) 0%, rgba(199, 163, 104, 0) 28%),
+        linear-gradient(180deg, #101010 0%, #151515 48%, #0d0d0d 100%);
+    color: #ffffff;
+    font-family: "Jost", "Inter", Arial, sans-serif;
+    scroll-margin-top: 86px;
+}
+
+.prime-location-inner {
+    width: var(--content-width);
+    max-width: 1200px;
+}
+
+.prime-location-header {
+    width: min(100%, 830px);
+}
+
+.prime-location-eyebrow {
+    min-height: 28px;
+    padding: 6px 16px;
+    border: 1px solid rgba(199, 163, 104, 0.38);
+    border-radius: 999px;
+    background: rgba(199, 163, 104, 0.11);
+    color: #c7a368;
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 14px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+}
+
+.prime-location-eyebrow svg,
+.prime-location-tabs svg,
+.prime-distance-card svg,
+.prime-map-tools svg {
+    width: 15px;
+    height: 15px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.prime-location-header h2 {
+    margin: 20px auto 0;
+    color: #f6f2ea;
+    font-size: 40px;
+    font-weight: 500;
+    line-height: 48px;
+}
+
+.prime-location-header h2 span,
+.prime-distance-block h3 span,
+.prime-growth-grid h4 {
+    color: #c7a368;
+}
+
+.prime-location-header > p:not(.prime-location-eyebrow) {
+    width: min(100%, 720px);
+    margin: 10px auto 0;
+    color: rgba(255, 255, 255, 0.64);
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 23px;
+}
+
+.prime-location-tabs {
+    box-shadow: 0 18px 44px rgba(199, 163, 104, 0.12);
+}
+
+.prime-location-tabs button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    color: rgba(255, 255, 255, 0.54);
+    background: transparent;
+    transition:
+        color 0.25s ease,
+        background-color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.prime-location-tabs button.is-active {
+    background: linear-gradient(180deg, #efd18c 0%, #c8a96a 100%);
+    color: #19150f;
+    box-shadow: 0 12px 28px rgba(200, 169, 106, 0.28);
+}
+
+.prime-location-tabs button:not(.is-active):hover {
+    color: #d8b66d;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.prime-location-map {
+    width: min(100%, 980px);
+    height: 430px;
+    box-shadow:
+        0 28px 80px rgba(0, 0, 0, 0.34),
+        inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+.prime-location-map-panel {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition:
+        opacity 0.35s ease,
+        visibility 0.35s ease;
+}
+
+.prime-location-map-panel.is-active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.prime-location-map-panel[hidden] {
+    display: none;
+}
+
+.prime-location-map-img,
+.prime-location-map-panel iframe {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.prime-location-map-img {
+    object-fit: cover;
+    object-position: center;
+    filter: saturate(1.04) contrast(1.03);
+    transform: scale(1.01);
+    transition:
+        filter 0.45s ease,
+        transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.prime-location-map:hover .prime-location-map-img {
+    filter: saturate(1.12) contrast(1.08);
+    transform: scale(1.035);
+}
+
+.prime-location-map-panel iframe {
+    border: 0;
+    filter: saturate(0.88) contrast(1.03);
+}
+
+.prime-map-live-action {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    z-index: 2;
+}
+
+.prime-map-live-action a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    height: 40px;
+    padding: 0 16px;
+    border: 1px solid rgba(199, 163, 104, 0.38);
+    border-radius: 8px;
+    background: rgba(15, 15, 15, 0.82);
+    color: #d8b66d;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 18px;
+    backdrop-filter: blur(12px);
+    transition:
+        border-color 0.25s ease,
+        background-color 0.25s ease,
+        transform 0.25s ease;
+}
+
+.prime-map-live-action a:hover {
+    border-color: rgba(216, 182, 109, 0.78);
+    background: rgba(199, 163, 104, 0.16);
+    transform: translateY(-2px);
+}
+
+.prime-map-tools a {
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition:
+        transform 0.25s ease,
+        background-color 0.25s ease,
+        border-color 0.25s ease;
+}
+
+.prime-map-tools a:hover {
+    border-color: rgba(199, 163, 104, 0.55);
+    background: rgba(199, 163, 104, 0.18);
+    transform: translateY(-2px);
+}
+
+.prime-location-map.is-google-active .prime-map-tools {
+    display: none;
+}
+
+.prime-distance-block {
+    width: min(100%, 980px);
+}
+
+.prime-distance-block h3 {
+    margin: 0;
+    color: #ffffff;
+    font-size: 34px;
+    font-weight: 500;
+    line-height: 42px;
+}
+
+.prime-distance-card {
+    min-height: 121px;
+    padding: 26px 24px;
+    border: 1px solid rgba(199, 163, 104, 0.24);
+    border-radius: 8px;
+    background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.018)),
+        #1c1c1c;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    transition:
+        border-color 0.28s ease,
+        transform 0.28s ease,
+        background-color 0.28s ease;
+}
+
+.prime-distance-card:hover {
+    border-color: rgba(199, 163, 104, 0.54);
+    background:
+        linear-gradient(135deg, rgba(199, 163, 104, 0.12), rgba(255, 255, 255, 0.02)),
+        #202020;
+    transform: translateY(-4px);
+}
+
+.prime-distance-card div {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    color: #ffffff;
+}
+
+.prime-distance-card svg {
+    width: 34px;
+    height: 34px;
+    color: #d6b56f;
+    flex: 0 0 34px;
+}
+
+.prime-distance-card span {
+    color: rgba(255, 255, 255, 0.84);
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 21px;
+}
+
+.prime-distance-card strong {
+    display: block;
+    margin: 0 0 0 52px;
+    color: rgba(255, 255, 255, 0.46);
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 18px;
+}
+
+.prime-distance-card strong em {
+    display: block;
+    margin-bottom: 5px;
+    color: #d8b66d;
+    font-style: normal;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 20px;
+}
+
+.prime-whatsapp-location-cta {
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 176px;
+    min-height: 176px;
+    margin-top: 48px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    overflow: hidden;
+    border: 1px solid rgba(199, 163, 104, 0.22);
+    border-radius: 8px;
+    background:
+        linear-gradient(180deg, rgba(19, 18, 15, 0.78), rgba(22, 21, 18, 0.80)),
+        url("../img/prime loaction/46308d6f52f67f34894833b36b26f3210b6df91f.png") center / cover no-repeat;
+    color: #ffffff;
+    text-align: center;
+    box-shadow:
+        0 26px 64px rgba(0, 0, 0, 0.22),
+        inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    isolation: isolate;
+    transition:
+        transform 0.3s ease,
+        filter 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.prime-whatsapp-location-cta::before {
+    display: none;
+}
+
+.prime-whatsapp-location-cta:hover {
+    filter: brightness(1.03);
+    box-shadow:
+        0 30px 74px rgba(0, 0, 0, 0.28),
+        0 0 28px rgba(199, 163, 104, 0.18),
+        inset 0 1px 0 rgba(255, 255, 255, 0.32);
+}
+
+.prime-whatsapp-location-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 267px;
+    height: 36px;
+    padding: 0 24px;
+    border-radius: 8px;
+    background: linear-gradient(180deg, #e1bf74 0%, #c9a765 100%);
+    color: #0b0906;
+    font-size: 11px;
+    font-weight: 600;
+    line-height: 14px;
+    box-shadow:
+        0 10px 24px rgba(199, 163, 104, 0.22),
+        inset 0 1px 0 rgba(255, 255, 255, 0.22);
+    transition:
+        filter 0.25s ease,
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.prime-whatsapp-location-btn:hover {
+    filter: brightness(1.07);
+    box-shadow:
+        0 14px 30px rgba(199, 163, 104, 0.30),
+        inset 0 1px 0 rgba(255, 255, 255, 0.28);
+    transform: translateY(-2px);
+}
+
+.prime-whatsapp-location-cta small {
+    display: block;
+    margin-top: 28px;
+    color: rgba(255, 255, 255, 0.42);
+    font-size: 11px;
+    font-weight: 500;
+    line-height: 16px;
+}
+
+.prime-whatsapp-location-cta small em {
+    color: #d8b66d;
+    font-style: normal;
+}
+
+.prime-whatsapp-location-cta small span {
+    margin: 0 6px;
+    color: rgba(255, 255, 255, 0.38);
+}
+
+.prime-area-map-link {
+    border: 0;
+    padding: 0;
+    background: transparent;
+    color: #d8b66d;
+    font: inherit;
+    cursor: pointer;
+    transition:
+        color 0.25s ease,
+        text-shadow 0.25s ease;
+}
+
+.prime-area-map-link:hover {
+    color: #f0cf84;
+    text-shadow: 0 0 16px rgba(216, 182, 109, 0.32);
+}
+
+.prime-growth-grid {
+    width: min(100%, 980px);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.prime-growth-grid article {
+    min-height: 224px;
+    padding: 28px 24px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    background:
+        radial-gradient(circle at 0% 0%, rgba(199, 163, 104, 0.12) 0%, rgba(199, 163, 104, 0) 36%),
+        rgba(255, 255, 255, 0.045);
+}
+
+.prime-growth-grid span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 999px;
+    background: rgba(199, 163, 104, 0.14);
+    color: #d8b66d;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.prime-growth-grid h4 {
+    margin: 22px 0 0;
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 28px;
+}
+
+.prime-growth-grid p {
+    margin: 12px 0 0;
+    color: rgba(255, 255, 255, 0.58);
+    font-size: 15px;
+    line-height: 23px;
+}
+
+.prime-location-eyebrow,
+.prime-location-header h2,
+.prime-location-header > p:not(.prime-location-eyebrow),
+.prime-location-tabs,
+.prime-location-map,
+.prime-distance-block h3,
+.prime-distance-card,
+.prime-whatsapp-location-cta,
+.prime-growth-grid article {
+    opacity: 0;
+    transform: translateY(34px);
+    transition:
+        opacity 0.8s ease,
+        transform 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+        border-color 0.28s ease,
+        background-color 0.28s ease;
+}
+
+.prime-location-section.is-visible .prime-location-eyebrow,
+.prime-location-section.is-visible .prime-location-header h2,
+.prime-location-section.is-visible .prime-location-header > p:not(.prime-location-eyebrow),
+.prime-location-section.is-visible .prime-location-tabs,
+.prime-location-section.is-visible .prime-location-map,
+.prime-location-section.is-visible .prime-distance-block h3,
+.prime-location-section.is-visible .prime-distance-card,
+.prime-location-section.is-visible .prime-whatsapp-location-cta,
+.prime-location-section.is-visible .prime-growth-grid article {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.prime-location-section.is-visible .prime-location-header h2 {
+    transition-delay: 0.08s;
+}
+
+.prime-location-section.is-visible .prime-location-header > p:not(.prime-location-eyebrow) {
+    transition-delay: 0.15s;
+}
+
+.prime-location-section.is-visible .prime-location-tabs {
+    transition-delay: 0.22s;
+}
+
+.prime-location-section.is-visible .prime-location-map {
+    transition-delay: 0.30s;
+}
+
+.prime-location-section.is-visible .prime-distance-card:nth-child(1) {
+    transition-delay: 0.08s;
+}
+
+.prime-location-section.is-visible .prime-distance-card:nth-child(2) {
+    transition-delay: 0.14s;
+}
+
+.prime-location-section.is-visible .prime-distance-card:nth-child(3) {
+    transition-delay: 0.20s;
+}
+
+.prime-location-section.is-visible .prime-distance-card:nth-child(4) {
+    transition-delay: 0.26s;
+}
+
+.prime-location-section.is-visible .prime-distance-card:nth-child(5) {
+    transition-delay: 0.32s;
+}
+
+.prime-location-section.is-visible .prime-distance-card:nth-child(6) {
+    transition-delay: 0.38s;
+}
+
+.prime-location-section.is-visible .prime-whatsapp-location-cta {
+    transition-delay: 0.46s;
+}
+
 /* Scroll Story slider: pinned visual section controlled by wheel/touch JS. */
 .scroll-story-section {
     --story-section-height: calc(100dvh - 86px);
@@ -4284,6 +4791,14 @@ img.snapshot-icon {
     .visual-showcase-content,
     .visual-showcase-cta,
     .visual-showcase-disclaimer,
+    .prime-location-eyebrow,
+    .prime-location-header h2,
+    .prime-location-header > p:not(.prime-location-eyebrow),
+    .prime-location-tabs,
+    .prime-location-map,
+    .prime-distance-block h3,
+    .prime-distance-card,
+    .prime-growth-grid article,
     .about-gallery img {
         opacity: 1;
         transform: none;
