@@ -41,8 +41,8 @@
     }
 
     .hero-section {
-        height: min(720px, calc(100vh - 86px));
-        min-height: 600px;
+        height: var(--hero-section-height);
+        min-height: min(560px, var(--hero-section-height));
     }
 
     .hero-slide.is-active .hero-overlay {
@@ -620,12 +620,12 @@
 
 @media (min-width: 768px) and (max-width: 991px) {
     .hero-section {
-        height: 500px !important;
-        min-height: 500px !important;
+        height: var(--hero-section-height) !important;
+        min-height: min(520px, var(--hero-section-height)) !important;
     }
 
     .hero-content {
-        top: 72px;
+        top: 50%;
         width: min(560px, calc(100% - 64px));
         height: auto;
     }
@@ -1208,12 +1208,12 @@
     }
 
     .hero-section {
-        height: 400px !important;
-        min-height: 400px !important;
+        height: var(--hero-section-height) !important;
+        min-height: min(520px, var(--hero-section-height)) !important;
     }
 
     .hero-content {
-        top: 58px;
+        top: 50%;
         width: calc(100% - 40px);
         max-width: 614px;
         height: auto;
@@ -2767,12 +2767,12 @@
     }
 
     .hero-section {
-        height: 340px !important;
-        min-height: 340px !important;
+        height: var(--hero-section-height) !important;
+        min-height: min(500px, var(--hero-section-height)) !important;
     }
 
     .hero-content {
-        top: 24px;
+        top: 50%;
         width: calc(100% - 32px);
     }
 

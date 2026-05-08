@@ -218,9 +218,16 @@ body.menu-open {
 
 /* Hero slider: first viewport image carousel and reveal animation. */
 .hero-section {
+    --hero-section-height: calc(100dvh - 86px);
     font-family: "Jost", "Inter", Arial, sans-serif;
-    height: 730px;
-    min-height: 730px;
+    height: var(--hero-section-height);
+    min-height: min(560px, var(--hero-section-height));
+}
+
+@supports not (height: 100dvh) {
+    .hero-section {
+        --hero-section-height: calc(100vh - 86px);
+    }
 }
 
 .hero-slide {
@@ -257,12 +264,12 @@ body.menu-open {
 /* Hero content starts hidden and animates in when the section enters view. */
 .hero-content {
     position: absolute;
-    top: 176.25px;
+    top: 50%;
     left: 50%;
     width: 614px;
-    height: 375.5px;
+    height: auto;
     opacity: 0;
-    transform: translateX(-50%);
+    transform: translate(-50%, -50%);
     pointer-events: none;
 }
 
@@ -273,7 +280,7 @@ body.menu-open {
 
 .hero-copy {
     width: 614px;
-    height: 275.5px;
+    height: auto;
     text-align: center;
 }
 
@@ -367,7 +374,7 @@ body.menu-open {
     gap: 8px;
     width: 494px;
     height: 52px;
-    margin: 48px auto 0;
+    margin: clamp(22px, 4vh, 48px) auto 0;
 }
 
 .hero-primary-btn,
@@ -459,12 +466,12 @@ body.menu-open {
 @keyframes heroContentIn {
     from {
         opacity: 0;
-        transform: translateX(-50%) translateY(28px);
+        transform: translate(-50%, calc(-50% + 28px));
     }
 
     to {
         opacity: 1;
-        transform: translateX(-50%) translateY(0);
+        transform: translate(-50%, -50%);
     }
 }
 
