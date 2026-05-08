@@ -353,6 +353,24 @@
         height: auto;
         grid-template-columns: 1fr !important;
         gap: 34px;
+        justify-items: center;
+        text-align: center;
+    }
+
+    .interested-property-copy {
+        display: flex;
+        max-width: 620px;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .interested-property-copy p {
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    .interested-property-copy > div {
+        justify-content: center;
     }
 
     .interested-property-mosaic {
