@@ -4271,21 +4271,28 @@ img.snapshot-icon {
 }
 
 /* Buyer testimonials: continuous left-to-right review slider. */
+.buyer-testimonials-header {
+    max-width: 760px;
+}
+
+.buyer-testimonials-header p:not(.buyer-testimonials-eyebrow) {
+    overflow-wrap: anywhere;
+}
+
 .buyer-testimonials-slider {
-    width: 100%;
-    overflow: hidden;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-bottom: 18px;
+    scrollbar-color: #c7a368 rgba(255, 255, 255, 0.12);
+    scrollbar-width: thin;
+    overscroll-behavior-x: contain;
 }
 
 .buyer-testimonials-track {
     display: flex;
     width: max-content;
     gap: 28px;
-    animation: testimonialsSlideRight 42s linear infinite;
-    will-change: transform;
-}
-
-.buyer-testimonials-slider:hover .buyer-testimonials-track {
-    animation-play-state: paused;
+    padding-right: 2px;
 }
 
 .buyer-testimonial-card {
@@ -4367,14 +4374,18 @@ img.snapshot-icon {
     transition-delay: 0.24s;
 }
 
-@keyframes testimonialsSlideRight {
-    from {
-        transform: translateX(calc(-50% - 14px));
-    }
+.buyer-testimonials-slider::-webkit-scrollbar {
+    height: 5px;
+}
 
-    to {
-        transform: translateX(0);
-    }
+.buyer-testimonials-slider::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.10);
+    border-radius: 999px;
+}
+
+.buyer-testimonials-slider::-webkit-scrollbar-thumb {
+    background: #c7a368;
+    border-radius: 999px;
 }
 
 /* Scroll Story slider: pinned visual section controlled by wheel/touch JS. */

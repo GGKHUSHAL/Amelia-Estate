@@ -243,6 +243,10 @@
         width: 100%;
     }
 
+    .buyer-testimonials-slider {
+        width: 100% !important;
+    }
+
     .buyer-testimonial-card {
         width: 360px;
         flex-basis: 360px;
@@ -1512,7 +1516,6 @@
 
     .buyer-testimonials-track {
         gap: 16px;
-        animation-duration: 34s;
     }
 
     .buyer-testimonial-card {
