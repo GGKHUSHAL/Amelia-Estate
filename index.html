@@ -14,9 +14,8 @@
 </head>
 
 <body class="min-h-screen bg-white text-white">
-    <main class="min-h-screen">
-        <!-- Header -->
-        <header class="fixed left-0 top-0 z-50 h-[86px] w-full bg-white text-neutral-950 shadow-sm">
+    <!-- Header -->
+    <header class="fixed left-0 top-0 z-50 h-[86px] w-full bg-white text-neutral-950 shadow-sm">
             <div class="flex h-[86px] w-full items-center px-[120px]">
                 <a href="#" class="flex h-[40.49px] w-[305.86px] shrink-0 items-center gap-[30.48px]"
                     aria-label="Amelia Estate II home">
@@ -65,8 +64,9 @@
                 <a href="#">Gallery</a>
                 <a href="#">Contact Us</a>
             </nav>
-        </header>
+    </header>
 
+    <main class="min-h-screen">
         <!-- Hero slider -->
         <section class="hero-section reveal-on-scroll relative mt-[86px] w-full overflow-hidden">
             <div id="heroSlider" class="flex h-full transition-transform duration-700 ease-in-out">
@@ -188,7 +188,7 @@
         </section>
 
         <!-- Project snapshot -->
-        <section class="snapshot-section reveal-on-scroll h-[445px] w-full bg-[#f7f5f0]">
+        <section class="snapshot-section reveal-on-scroll h-[445px] w-full">
             <div class="snapshot-inner">
                 <h2>Project Snapshot</h2>
 
@@ -1283,7 +1283,7 @@
         <!-- Lifestyle amenities -->
         <section class="lifestyle-amenities-section reveal-on-scroll w-full overflow-hidden bg-[#181818] pb-[62px] pt-[86px] text-white"
             id="amenities" aria-label="Lifestyle amenities">
-            <div class="mx-auto w-[calc(100%_-_48px)] max-w-[980px]">
+            <div class="mx-auto w-[calc(100%_-_48px)] max-w-[1200px]">
                 <div class="mx-auto text-center">
                     <p class="lifestyle-amenities-eyebrow mx-auto inline-flex min-h-7 items-center gap-2 rounded-full border border-[#c7a368]/40 bg-[#c7a368]/10 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#c7a368]">
                         <svg class="h-[15px] w-[15px]" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -1588,7 +1588,659 @@
             </div>
         </section>
 
+        <!-- Sticky availability CTA -->
+        <section class="sticky-availability-section reveal-on-scroll w-full bg-[#050505]" id="availability"
+            aria-label="Limited low-rise availability">
+            <div class="sticky-availability-panel">
+                <div class="sticky-availability-bg" aria-hidden="true"></div>
+                <div class="sticky-availability-content mx-auto flex h-full w-[calc(100%_-_48px)] max-w-[900px] flex-col items-center justify-center text-center text-white">
+                    <p class="sticky-availability-eyebrow inline-flex min-h-8 items-center rounded-full border border-white/20 bg-[#c7a368]/45 px-5 text-[13px] font-semibold uppercase tracking-[0.24em] text-[#f3d996]">
+                        Amelia Estate II
+                    </p>
+                    <h2 class="mt-8 text-[44px] font-semibold leading-[56px] text-[#f7f4ee]">
+                        Limited Low-Rise Availability<br />in This Location
+                    </h2>
+                    <p class="mt-7 max-w-[680px] text-[16px] font-normal leading-7 text-white/74">
+                        Connect now for latest availability, pricing details, and site visit support.
+                    </p>
+                    <div class="mt-8 flex w-full max-w-[530px] items-center justify-center gap-5">
+                        <a class="sticky-availability-btn sticky-availability-btn--gold inline-flex h-[52px] flex-1 items-center justify-center rounded-[10px] bg-gradient-to-b from-[#e1bf74] to-[#c9a765] px-6 text-[15px] font-semibold text-[#0b0906] shadow-[0_18px_38px_rgba(199,163,104,0.28)]"
+                            href="#booking-enquiry">Enquire Now</a>
+                        <a class="sticky-availability-btn sticky-availability-btn--white inline-flex h-[52px] flex-1 items-center justify-center gap-3 rounded-[10px] bg-white px-6 text-[15px] font-semibold text-[#171717]"
+                            href="https://wa.me/919509489253" target="_blank" rel="noopener noreferrer">
+                            <svg class="h-[18px] w-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M4.5 19.5 5.8 16A8 8 0 1 1 8 18.2l-3.5 1.3Z" />
+                                <path d="M9 9.5c.4 2 2 3.7 4 4.5l1.2-1.2 1.8.5c.2.1.4.3.4.6v1.1c0 .4-.3.7-.7.7-4.4 0-8-3.6-8-8 0-.4.3-.7.7-.7h1.1c.3 0 .5.2.6.4l.5 1.8L9 9.5Z" />
+                            </svg>
+                            WhatsApp Now
+                        </a>
+                    </div>
+                    <div class="sticky-availability-label mt-12 flex items-center gap-5 text-[13px] font-medium uppercase tracking-[0.34em] text-white/38">
+                        <span></span>
+                        Exclusive Listing
+                        <span></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Buyer appreciation -->
+        <section class="buyer-appreciation-section reveal-on-scroll w-full bg-[#090909] py-[72px] text-white"
+            id="buyer-appreciation" aria-label="What buyers appreciate about Amelia Estate II">
+            <div class="mx-auto w-[calc(100%_-_48px)] max-w-[1200px]">
+                <h2 class="buyer-appreciation-title text-center text-[40px] font-medium leading-[50px] text-[#f7f4ee]">
+                    What Buyers Appreciate About Amelia Estate II
+                </h2>
+
+                <div class="buyer-appreciation-grid mt-10 grid grid-cols-3 gap-5">
+                    <article class="buyer-appreciation-card">
+                        <span aria-hidden="true"></span>
+                        <p>Low-rise floors in this location are limited, which makes this project feel more exclusive and future-relevant.</p>
+                        <strong>End-Use Family</strong>
+                    </article>
+                    <article class="buyer-appreciation-card">
+                        <span aria-hidden="true"></span>
+                        <p>The combination of lift, store room, and premium deliverables makes it more complete than typical builder floors.</p>
+                        <strong>Practical Homebuyer</strong>
+                    </article>
+                    <article class="buyer-appreciation-card">
+                        <span aria-hidden="true"></span>
+                        <p>Being close to Aero City, PR-7, and IT City makes it suitable for both living and long-term investment.</p>
+                        <strong>Location-Focused Investor</strong>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section class="faq-section reveal-on-scroll w-full bg-[#1c1c1c] py-[88px] text-white" id="faq"
+            aria-label="Frequently asked questions">
+            <div class="mx-auto w-[calc(100%_-_48px)] max-w-[1200px]">
+                <div class="faq-header mx-auto text-center">
+                    <p class="faq-eyebrow mx-auto inline-flex min-h-7 items-center gap-2 rounded-full border border-[#c7a368]/50 bg-[#151515] px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#d9b96f]">
+                        <span class="faq-eyebrow-icon" aria-hidden="true"></span>
+                        Your Questions
+                    </p>
+                    <h2 class="mt-5 text-[40px] font-medium leading-[50px] text-[#f7f4ee]">
+                        Frequently Asked <span class="text-[#c7a368]">Questions</span>
+                    </h2>
+                    <p class="mt-4 text-[14px] font-normal leading-6 text-white/62">
+                        Everything about Amelia Estate II Stilt+4 3BHK Floors on PR-7
+                    </p>
+                </div>
+
+                <div class="faq-layout mt-12 grid grid-cols-[280px_minmax(0,1fr)] gap-[54px]">
+                    <div class="faq-tabs flex flex-col gap-5" role="tablist" aria-label="FAQ categories">
+                        <button class="faq-tab is-active" type="button" role="tab" aria-selected="true"
+                            data-faq-tab="price">
+                            <span class="faq-tab-icon" aria-hidden="true">₹</span>
+                            <span>Price & Payment</span>
+                            <strong>5</strong>
+                        </button>
+                        <button class="faq-tab" type="button" role="tab" aria-selected="false" data-faq-tab="legal">
+                            <span class="faq-tab-icon" aria-hidden="true">✓</span>
+                            <span>Legal & RERA</span>
+                            <strong>3</strong>
+                        </button>
+                        <button class="faq-tab" type="button" role="tab" aria-selected="false" data-faq-tab="quality">
+                            <span class="faq-tab-icon" aria-hidden="true">▥</span>
+                            <span>Construction & Quality</span>
+                            <strong>5</strong>
+                        </button>
+                        <button class="faq-tab" type="button" role="tab" aria-selected="false" data-faq-tab="location">
+                            <span class="faq-tab-icon" aria-hidden="true">⌖</span>
+                            <span>Location & Connectivity</span>
+                            <strong>5</strong>
+                        </button>
+                    </div>
+
+                    <div class="faq-panels">
+                        <div class="faq-panel is-active" data-faq-panel="price">
+                            <article class="faq-item is-open">
+                                <button type="button" aria-expanded="true" data-faq-toggle>
+                                    What is the current price of Amelia Estate II 3BHK floors?
+                                    <span aria-hidden="true"></span>
+                                </button>
+                                <div class="faq-answer">
+                                    <p>Pricing depends on plot size, floor preference, availability, and payment plan. Connect with the sales team for the latest unit-wise offer and site visit support.</p>
+                                </div>
+                            </article>
+                            <article class="faq-item">
+                                <button type="button" aria-expanded="false" data-faq-toggle>
+                                    Are PLC, parking, and club charges included?
+                                    <span aria-hidden="true"></span>
+                                </button>
+                                <div class="faq-answer" hidden>
+                                    <p>The final cost sheet explains floor charges, parking, PLC if applicable, registration, taxes, and any other payable amount before booking.</p>
+                                </div>
+                            </article>
+                            <article class="faq-item">
+                                <button type="button" aria-expanded="false" data-faq-toggle>
+                                    Is bank loan assistance available?
+                                    <span aria-hidden="true"></span>
+                                </button>
+                                <div class="faq-answer" hidden>
+                                    <p>Yes, loan coordination can be supported through available banking partners after basic eligibility and project documentation review.</p>
+                                </div>
+                            </article>
+                            <article class="faq-item">
+                                <button type="button" aria-expanded="false" data-faq-toggle>
+                                    What is the booking amount?
+                                    <span aria-hidden="true"></span>
+                                </button>
+                                <div class="faq-answer" hidden>
+                                    <p>The booking amount can vary by active inventory and offer. The team shares the exact amount with the current payment schedule.</p>
+                                </div>
+                            </article>
+                            <article class="faq-item">
+                                <button type="button" aria-expanded="false" data-faq-toggle>
+                                    Can I get a written payment plan?
+                                    <span aria-hidden="true"></span>
+                                </button>
+                                <div class="faq-answer" hidden>
+                                    <p>Yes, a written cost sheet and payment plan can be shared before you proceed with the booking formalities.</p>
+                                </div>
+                            </article>
+                        </div>
+
+                        <div class="faq-panel" data-faq-panel="legal" hidden>
+                            <article class="faq-item is-open">
+                                <button type="button" aria-expanded="true" data-faq-toggle>
+                                    Is Amelia Estate II RERA approved?
+                                    <span aria-hidden="true"></span>
+                                </button>
+                                <div class="faq-answer">
+                                    <p>Yes, the project is marketed with RERA details. Buyers should verify the current RERA record and documents before booking.</p>
+                                </div>
+                            </article>
+                            <article class="faq-item">
+                                <button type="button" aria-expanded="false" data-faq-toggle>
+                                    Will allotment and agreement documents be provided?
+                                    <span aria-hidden="true"></span>
+                                </button>
+                                <div class="faq-answer" hidden>
+                                    <p>Allotment, agreement, payment receipts, and required project documents are shared as per the booking and documentation process.</p>
+                                </div>
+                            </article>
+                            <article class="faq-item">
+                                <button type="button" aria-expanded="false" data-faq-toggle>
+                                    Can I review documents before booking?
+                                    <span aria-hidden="true"></span>
+                                </button>
+                                <div class="faq-answer" hidden>
+                                    <p>Yes, you can request available approvals, layout details, and the applicable legal documentation during your consultation.</p>
+                                </div>
+                            </article>
+                        </div>
+
+                        <div class="faq-panel" data-faq-panel="quality" hidden>
+                            <article class="faq-item is-open">
+                                <button type="button" aria-expanded="true" data-faq-toggle>
+                                    What construction structure is offered?
+                                    <span aria-hidden="true"></span>
+                                </button>
+                                <div class="faq-answer">
+                                    <p>Amelia Estate II offers Stilt + 4 low-rise 3BHK built-up floors with lift access and practical family-focused planning.</p>
+                                </div>
+                            </article>
+                            <article class="faq-item">
+                                <button type="button" aria-expanded="false" data-faq-toggle>
+                                    Is lift available in the building?
+                                    <span aria-hidden="true"></span>
+                                </button>
+                                <div class="faq-answer" hidden>
+                                    <p>Yes, lift provision is part of the low-rise floor configuration for convenient access across levels.</p>
+                                </div>
+                            </article>
+                            <article class="faq-item">
+                                <button type="button" aria-expanded="false" data-faq-toggle>
+                                    Are store rooms included?
+                                    <span aria-hidden="true"></span>
+                                </button>
+                                <div class="faq-answer" hidden>
+                                    <p>Store room availability depends on the selected floor/unit plan. The sales team can confirm exact inventory details.</p>
+                                </div>
+                            </article>
+                            <article class="faq-item">
+                                <button type="button" aria-expanded="false" data-faq-toggle>
+                                    Can I visit a sample flat or site?
+                                    <span aria-hidden="true"></span>
+                                </button>
+                                <div class="faq-answer" hidden>
+                                    <p>Yes, private site visits can be scheduled so you can review construction progress, approach, and layout quality.</p>
+                                </div>
+                            </article>
+                            <article class="faq-item">
+                                <button type="button" aria-expanded="false" data-faq-toggle>
+                                    Who gets roof rights?
+                                    <span aria-hidden="true"></span>
+                                </button>
+                                <div class="faq-answer" hidden>
+                                    <p>Roof rights are generally associated with the 4th floor offering, subject to the final agreement and available inventory.</p>
+                                </div>
+                            </article>
+                        </div>
+
+                        <div class="faq-panel" data-faq-panel="location" hidden>
+                            <article class="faq-item is-open">
+                                <button type="button" aria-expanded="true" data-faq-toggle>
+                                    Where is Amelia Estate II located?
+                                    <span aria-hidden="true"></span>
+                                </button>
+                                <div class="faq-answer">
+                                    <p>The project is positioned near PR-7 Airport Road, Zirakpur-Patiala Highway, and Aero City Mohali connectivity.</p>
+                                </div>
+                            </article>
+                            <article class="faq-item">
+                                <button type="button" aria-expanded="false" data-faq-toggle>
+                                    How far is Chandigarh Airport?
+                                    <span aria-hidden="true"></span>
+                                </button>
+                                <div class="faq-answer" hidden>
+                                    <p>Airport connectivity is one of the key advantages, with drive time depending on traffic and the exact route taken.</p>
+                                </div>
+                            </article>
+                            <article class="faq-item">
+                                <button type="button" aria-expanded="false" data-faq-toggle>
+                                    Is it suitable for end-use families?
+                                    <span aria-hidden="true"></span>
+                                </button>
+                                <div class="faq-answer" hidden>
+                                    <p>Yes, the low-rise format, road access, and nearby daily conveniences make it relevant for family living.</p>
+                                </div>
+                            </article>
+                            <article class="faq-item">
+                                <button type="button" aria-expanded="false" data-faq-toggle>
+                                    Are schools and hospitals nearby?
+                                    <span aria-hidden="true"></span>
+                                </button>
+                                <div class="faq-answer" hidden>
+                                    <p>Several education, healthcare, retail, and daily-use options are reachable from the broader PR-7 and Aero City belt.</p>
+                                </div>
+                            </article>
+                            <article class="faq-item">
+                                <button type="button" aria-expanded="false" data-faq-toggle>
+                                    Can I get the exact map location?
+                                    <span aria-hidden="true"></span>
+                                </button>
+                                <div class="faq-answer" hidden>
+                                    <p>Yes, the team can share the exact pinned location and guide you for a planned site visit.</p>
+                                </div>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Project essentials download -->
+        <section class="project-essentials-section reveal-on-scroll w-full" id="project-essentials"
+            aria-label="Download project essentials">
+            <div class="project-essentials-card mx-auto w-[calc(100%_-_48px)] max-w-[1200px]">
+                <p class="project-essentials-eyebrow mx-auto inline-flex min-h-9 items-center gap-3 rounded-full border border-white/70 bg-white/5 px-5 text-[13px] font-semibold uppercase tracking-[0.12em] text-white">
+                    <svg class="h-[16px] w-[16px]" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M4 7h16v12H4z" />
+                        <path d="M8 7V5h8v2" />
+                        <path d="M9 13h6" />
+                    </svg>
+                    Project Essentials
+                </p>
+                <h2 class="mt-7 text-center text-[40px] font-semibold leading-[50px] text-white">
+                    Download <span class="text-[#d2b064]">Amelia Estate II</span>
+                </h2>
+                <p class="mt-4 text-center text-[18px] font-normal leading-7 text-white/90">
+                    Stilt+4 3BHK Floors · PR-7 Airport Road · Starting ₹1.25 Cr
+                </p>
+
+                <div class="project-essentials-actions mt-10 grid grid-cols-3 gap-4">
+                    <a class="project-essentials-btn project-essentials-btn--gold" href="assets/img/project gallery/walktrough.jpg"
+                        download>
+                        <svg class="h-[18px] w-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M12 3v12" />
+                            <path d="m7 10 5 5 5-5" />
+                            <path d="M5 21h14" />
+                        </svg>
+                        Brochure
+                    </a>
+                    <a class="project-essentials-btn" href="assets/img/project plans/site plan.jpg" download>
+                        <svg class="h-[18px] w-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M12 3v12" />
+                            <path d="m7 10 5 5 5-5" />
+                            <path d="M5 21h14" />
+                        </svg>
+                        Site Plan
+                    </a>
+                    <a class="project-essentials-btn" href="#booking-enquiry">
+                        <svg class="h-[18px] w-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M12 3v12" />
+                            <path d="m7 10 5 5 5-5" />
+                            <path d="M5 21h14" />
+                        </svg>
+                        Price List
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Site visit booking -->
+        <section class="site-visit-section reveal-on-scroll w-full bg-black py-[76px]" id="site-visit"
+            aria-label="Book your site visit">
+            <div class="site-visit-inner mx-auto grid w-[calc(100%_-_48px)] max-w-[1200px] grid-cols-[1fr_576px] items-center gap-10">
+                <div class="site-visit-map" aria-hidden="true">
+                    <img src="assets/img/prime loaction/39a9aa3054e6b7112941359dfa086812cd656f1d.png"
+                        alt="" />
+                    <span class="site-visit-pin"></span>
+                    <span class="site-visit-location">
+                        <svg class="h-[15px] w-[15px]" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M12 21s7-4.4 7-11a7 7 0 0 0-14 0c0 6.6 7 11 7 11Z" />
+                            <path d="M12 10.5h.01" />
+                        </svg>
+                        Amelia Estate II
+                    </span>
+                </div>
+
+                <div class="site-visit-card">
+                    <div class="site-visit-card-inner">
+                        <p class="site-visit-eyebrow mx-auto inline-flex min-h-9 items-center gap-3 rounded-full border border-[#d2b064]/70 bg-[#0d0b08]/80 px-5 text-[14px] font-semibold uppercase tracking-[0.1em] text-[#d2b064]">
+                            <svg class="h-[16px] w-[16px]" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M4 7h16v12H4z" />
+                                <path d="M8 7V5h8v2" />
+                            </svg>
+                            Contact Us
+                        </p>
+                        <h2 class="mt-5 text-center text-[40px] font-semibold leading-[50px] text-white">
+                            Book Your <span class="text-[#d2b064]">Site Visit</span>
+                        </h2>
+                        <p class="mt-4 text-center text-[16px] font-normal leading-6 text-white/76">
+                            Starting ₹1.25 Cr · RERA Approved
+                        </p>
+
+                        <form class="site-visit-form mt-9">
+                            <input type="text" name="name" placeholder="FULL NAME" aria-label="Full name">
+                            <input type="tel" name="phone" placeholder="MOBILE NUMBER" aria-label="Mobile number">
+                            <input type="email" name="email" placeholder="EMAIL ADDRESS*" aria-label="Email address">
+
+                            <button class="site-visit-submit" type="submit">
+                                Schedule Visit
+                                <span aria-hidden="true">-&gt;</span>
+                            </button>
+                        </form>
+
+                        <a class="site-visit-whatsapp" href="https://wa.me/919697300066" target="_blank"
+                            rel="noopener noreferrer">
+                            <svg class="h-[18px] w-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M4.5 19.5 5.8 16A8 8 0 1 1 8 18.2l-3.5 1.3Z" />
+                                <path d="M9 9.5c.4 2 2 3.7 4 4.5l1.2-1.2 1.8.5c.2.1.4.3.4.6v1.1c0 .4-.3.7-.7.7-4.4 0-8-3.6-8-8 0-.4.3-.7.7-.7h1.1c.3 0 .5.2.6.4l.5 1.8L9 9.5Z" />
+                            </svg>
+                            Whatsapp Now
+                        </a>
+
+                        <a class="site-visit-phone" href="tel:+919697300066">
+                            <svg class="h-[25px] w-[25px]" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                <path d="M6.62 10.79c1.44 2.83 3.76 5.15 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C10.61 21 3 13.39 3 4c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.24.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2Z" />
+                            </svg>
+                            9697300066 | 7009247378
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Property snapshots -->
+        <section class="property-snapshot-section reveal-on-scroll w-full bg-[#1c1c1c] py-[82px]"
+            id="property-snapshots" aria-label="Amelia Estate II property snapshots">
+            <div class="mx-auto w-[calc(100%_-_48px)] max-w-[1200px]">
+                <div class="property-snapshot-header mx-auto text-center">
+                    <p class="property-snapshot-eyebrow mx-auto inline-flex min-h-9 items-center gap-3 rounded-full border border-[#d2b064]/70 bg-[#0d0b08]/80 px-5 text-[13px] font-semibold uppercase tracking-[0.16em] text-[#d2b064]">
+                        <svg class="h-[16px] w-[16px]" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M4 7h16v12H4z" />
+                            <path d="M8 7V5h8v2" />
+                            <path d="M8 13h3m3 0h2" />
+                        </svg>
+                        Property Snapshots
+                    </p>
+                    <h2 class="mt-6 text-[42px] font-semibold leading-[52px] text-white">
+                        Amelia Estate II <span class="text-[#d2b064]">At A Glance</span>
+                    </h2>
+                </div>
+
+                <div class="property-snapshot-layout mt-14 grid grid-cols-[424px_minmax(0,1fr)] gap-11">
+                    <aside class="property-snapshot-card">
+                        <div class="property-snapshot-brand flex items-center gap-5">
+                            <span class="property-snapshot-logo">
+                                <img src="assets/img/logo/fe135463dcfb944da3f188b0d8829441afa2662b.png" alt="Realty Nivesh">
+                            </span>
+                            <div>
+                                <p>Marketed By</p>
+                                <strong>Realty Nivesh</strong>
+                            </div>
+                        </div>
+
+                        <div class="property-snapshot-metrics grid grid-cols-2">
+                            <div>
+                                <svg viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="M4 21h16M7 21V8h7v13m3 0V12h-3M9 11h2m-2 4h2m7 0h1m-1 3h1" />
+                                </svg>
+                                <strong>15+</strong>
+                                <span>Projects<br>Completed</span>
+                            </div>
+                            <div>
+                                <svg viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="M4 21h16M6 21V5h9v16m3 0V9h-3M9 8h2m-2 4h2m-2 4h2m8-3h1m-1 4h1" />
+                                </svg>
+                                <strong>8</strong>
+                                <span>Projects<br>Completed</span>
+                            </div>
+                            <div>
+                                <svg viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="M4 21h16M7 21V8h7v13m3 0V12h-3M9 11h2m-2 4h2m7 0h1m-1 3h1" />
+                                </svg>
+                                <strong>2.5M+</strong>
+                                <span>Sq Ft<br>Delivered</span>
+                            </div>
+                            <div>
+                                <svg viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="m12 2 3 6 6.5.9-4.7 4.6 1.1 6.5-5.9-3.1L6.1 20l1.1-6.5L2.5 8.9 9 8l3-6Z" />
+                                </svg>
+                                <strong>12</strong>
+                                <span>Years of<br>Excellence</span>
+                            </div>
+                        </div>
+
+                        <dl class="property-snapshot-meta">
+                            <div>
+                                <dt>RERA ID</dt>
+                                <dd>PBRERA-SAS81-PR0941</dd>
+                            </div>
+                            <div>
+                                <dt>Possession</dt>
+                                <dd>Dec 2027</dd>
+                            </div>
+                        </dl>
+                    </aside>
+
+                    <div class="property-snapshot-content">
+                        <h3>Premium 3BHK Stilt+4 Floors on PR-7 Airport Road</h3>
+                        <p>
+                            Amelia Estate II by Realty Nivesh brings you exclusive Stilt+4 floor 3BHK residences on the
+                            prestigious PR-7 Airport Road, Zirakpur. Designed for families seeking luxury, privacy, and
+                            connectivity, this low-density development offers only 4 homes per floor ensuring complete
+                            exclusivity.
+                        </p>
+                        <p>
+                            Located just 15 minutes from Chandigarh International Airport, Amelia Estate II connects you
+                            to the best of Tricity. Premium schools, hospitals, retail destinations, and daily
+                            conveniences are all within easy reach.
+                        </p>
+                        <a class="property-snapshot-readmore" href="#about">
+                            Read More
+                            <span aria-hidden="true">-&gt;</span>
+                        </a>
+
+                        <div class="property-snapshot-strip grid grid-cols-4">
+                            <div>
+                                <span>Configuration</span>
+                                <strong>3BHK Stilt+4</strong>
+                            </div>
+                            <div>
+                                <span>Floors</span>
+                                <strong>Low Density</strong>
+                            </div>
+                            <div>
+                                <span>Location</span>
+                                <strong>PR-7 Airport Road</strong>
+                            </div>
+                            <div>
+                                <span>RERA</span>
+                                <strong>PBRERA-SAS81-PR0941</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </main>
+
+    <footer class="site-footer reveal-on-scroll" id="contact">
+        <div class="footer-visit-bar">
+            <div class="footer-inner footer-visit-inner">
+                <div>
+                    <p>SCHEDULE SITE VISIT</p>
+                    <h2>Last Few 3 BHK Floors Available</h2>
+                </div>
+                <div class="footer-call-actions" aria-label="Contact phone numbers">
+                    <a class="footer-call footer-call--primary" href="tel:+919697300666">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M6.62 10.79c1.44 2.83 3.76 5.15 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C10.61 21 3 13.39 3 4c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.24.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2Z" />
+                        </svg>
+                        96973 00666
+                    </a>
+                    <a class="footer-call" href="tel:+917009247378">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M6.62 10.79c1.44 2.83 3.76 5.15 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C10.61 21 3 13.39 3 4c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.24.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2Z" />
+                        </svg>
+                        70092 47378
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-logo-band">
+            <div class="footer-logo-row" aria-label="Project partner logos">
+                <img class="footer-logo footer-logo--realty" src="assets/img/logo/reality nivesh logo.png" alt="Realty Nivesh">
+                <span aria-hidden="true"></span>
+                <img class="footer-logo footer-logo--amelia" src="assets/img/logo/amelia logo.png" alt="Amelia Estate II">
+                <span aria-hidden="true"></span>
+                <img class="footer-logo footer-logo--uptown" src="assets/img/logo/066b0dc5443751b17f79ec6d10460bd1e2a851bb.png" alt="Uptown Skylla">
+            </div>
+        </div>
+
+        <nav class="footer-nav" aria-label="Footer navigation">
+            <a href="#">Home</a>
+            <a href="#about">About us</a>
+            <a href="#floor-plans">Plans</a>
+            <a href="#location">Location</a>
+            <a href="#pricing">Price</a>
+            <a href="#amenities">Amenities</a>
+            <a href="#gallery">Gallery</a>
+            <a href="#specifications">Specifications</a>
+            <a href="#project-essentials">Downloads</a>
+            <a href="#faq">Faqs</a>
+            <a href="#contact">Contact us</a>
+        </nav>
+
+        <div class="footer-inner footer-details">
+            <section class="footer-column footer-project-details" aria-labelledby="footer-project-title">
+                <h3 id="footer-project-title">PROJECT DETAILS</h3>
+                <dl>
+                    <div>
+                        <dt>RERA No.</dt>
+                        <dd>PBRERA-SAS81-PR0941</dd>
+                    </div>
+                    <div>
+                        <dt>Configuration</dt>
+                        <dd>3 BHK Stilt+4 Floors</dd>
+                    </div>
+                    <div>
+                        <dt>Possession</dt>
+                        <dd>March 2027</dd>
+                    </div>
+                    <div>
+                        <dt>Status</dt>
+                        <dd>Under Construction</dd>
+                    </div>
+                </dl>
+                <a class="footer-link" href="https://www.rera.punjab.gov.in/" target="_blank" rel="noopener noreferrer">Verify on RERA Punjab -></a>
+            </section>
+
+            <section class="footer-column" aria-labelledby="footer-office-title">
+                <h3 id="footer-office-title">SALES OFFICE</h3>
+                <address>
+                    Showroom No. 12, Level 2<br>
+                    Uptown Insignia<br>
+                    PR-7 Airport Road<br>
+                    Zirakpur, Punjab 140603
+                </address>
+                <a class="footer-link" href="#location">Get Directions -></a>
+            </section>
+
+            <section class="footer-column" aria-labelledby="footer-sales-title">
+                <h3 id="footer-sales-title">CONTACT SALES</h3>
+                <a class="footer-phone" href="tel:+919697300666">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M6.62 10.79c1.44 2.83 3.76 5.15 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C10.61 21 3 13.39 3 4c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.24.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2Z" />
+                    </svg>
+                    +91 96973 00666
+                </a>
+                <a class="footer-phone" href="tel:+917009247378">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M6.62 10.79c1.44 2.83 3.76 5.15 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C10.61 21 3 13.39 3 4c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.24.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2Z" />
+                    </svg>
+                    +91 70092 47378
+                </a>
+                <a class="footer-link footer-whatsapp" href="https://wa.me/919697300666" target="_blank" rel="noopener noreferrer">WhatsApp Now -></a>
+            </section>
+
+            <section class="footer-column footer-developer" aria-labelledby="footer-developer-title">
+                <h3 id="footer-developer-title">DEVELOPER</h3>
+                <img src="assets/img/logo/066b0dc5443751b17f79ec6d10460bd1e2a851bb.png" alt="Uptown Skylla">
+                <p>Delivering premium residences across Tricity with commitment to quality and on-time possession.</p>
+                <span>Marketed By</span>
+                <img class="footer-developer-marketer" src="assets/img/logo/reality nivesh logo.png" alt="Realty Nivesh">
+            </section>
+        </div>
+
+        <div class="footer-legal">
+            <div class="footer-inner">
+                <div class="footer-legal-top">
+                    <p>&copy; 2026 Amelia Estate II. A project by Uptown Skylla. All rights reserved.</p>
+                    <div>
+                        <a href="#">Privacy Policy</a>
+                        <a href="#">Terms & Conditions</a>
+                        <a href="#">Disclaimer</a>
+                    </div>
+                </div>
+                <p class="footer-disclaimer">
+                    RERA Disclaimer: Amelia Estate II is registered with RERA Punjab vide Registration No.
+                    PBRERA-SAS81-PR0941. Project details available at https://www.rera.punjab.gov.in. Disclaimer: All
+                    information, images, and visuals are artistic impressions for representation only and actual may
+                    vary. This website is maintained by Realty Nivesh, preferred sales partner for Amelia Estate II by
+                    Uptown Skylla. This is not a legal offer. Prices and availability subject to change without notice.
+                    T&amp;C apply.
+                </p>
+            </div>
+        </div>
+    </footer>
 
     <script src="assets/js/main.js"></script>
 </body>

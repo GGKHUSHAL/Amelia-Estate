@@ -1,5 +1,9 @@
 /* Responsive Styles */
 @media (max-width: 1199px) {
+    body {
+        --sticky-availability-height: calc(100vh - 86px);
+    }
+
     main,
     header,
     section {
@@ -236,7 +240,99 @@
     }
 
     .buyer-testimonials-section {
+        padding: 60px 32px 34px;
+    }
+
+    .sticky-availability-section {
+        height: var(--sticky-availability-height);
+        min-height: 520px;
+    }
+
+    .buyer-appreciation-section {
         padding: 60px 32px;
+    }
+
+    .buyer-appreciation-section > div {
+        width: 100%;
+    }
+
+    .buyer-appreciation-grid {
+        grid-template-columns: 1fr 1fr !important;
+    }
+
+    .faq-section {
+        padding: 70px 32px;
+    }
+
+    .faq-layout {
+        grid-template-columns: 240px minmax(0, 1fr) !important;
+        gap: 34px !important;
+    }
+
+    .project-essentials-section {
+        min-height: 560px;
+        padding: 72px 0;
+    }
+
+    .project-essentials-card {
+        padding: 72px 56px;
+    }
+
+    .site-visit-section {
+        padding: 64px 32px;
+    }
+
+    .site-visit-inner {
+        width: 100% !important;
+        grid-template-columns: minmax(0, 1fr) 500px !important;
+        gap: 28px !important;
+    }
+
+    .site-visit-card-inner {
+        padding: 30px 30px 20px;
+    }
+
+    .site-visit-map {
+        min-height: 560px;
+    }
+
+    .property-snapshot-section {
+        padding: 70px 32px;
+    }
+
+    .property-snapshot-section > div {
+        width: 100% !important;
+    }
+
+    .property-snapshot-layout {
+        grid-template-columns: 360px minmax(0, 1fr) !important;
+        gap: 32px !important;
+    }
+
+    .property-snapshot-card {
+        padding: 28px 28px 24px;
+    }
+
+    .property-snapshot-content h3 {
+        font-size: 25px;
+        line-height: 34px;
+    }
+
+    .property-snapshot-strip {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    }
+
+    .property-snapshot-strip > div:nth-child(2) {
+        border-right: 0;
+    }
+
+    .property-snapshot-strip > div:nth-child(-n+2) {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+    }
+
+    .sticky-availability-panel {
+        height: 100%;
+        min-height: 520px;
     }
 
     .buyer-testimonials-section > div {
@@ -704,6 +800,54 @@
 
     .buyer-testimonials-section {
         padding: 56px 40px;
+    }
+
+    .sticky-availability-content h2 {
+        font-size: 38px !important;
+        line-height: 49px !important;
+    }
+
+    .buyer-appreciation-section {
+        padding: 56px 40px;
+    }
+
+    .buyer-appreciation-title {
+        font-size: 34px !important;
+        line-height: 42px !important;
+    }
+
+    .faq-header h2 {
+        font-size: 34px !important;
+        line-height: 42px !important;
+    }
+
+    .faq-item button {
+        padding: 0 24px;
+    }
+
+    .faq-answer {
+        margin-right: 24px;
+        margin-left: 24px;
+    }
+
+    .project-essentials-card h2 {
+        font-size: 34px !important;
+        line-height: 42px !important;
+    }
+
+    .site-visit-card h2 {
+        font-size: 34px !important;
+        line-height: 42px !important;
+    }
+
+    .site-visit-phone {
+        font-size: 23px;
+        line-height: 30px;
+    }
+
+    .property-snapshot-header h2 {
+        font-size: 34px !important;
+        line-height: 42px !important;
     }
 
     .buyer-testimonials-header h2 {
@@ -1501,7 +1645,158 @@
     }
 
     .buyer-testimonials-section {
+        padding: 48px 16px 30px;
+    }
+
+    .sticky-availability-section {
+        min-height: 500px;
+    }
+
+    .buyer-appreciation-section {
         padding: 48px 16px;
+    }
+
+    .buyer-appreciation-title {
+        font-size: 30px !important;
+        line-height: 37px !important;
+    }
+
+    .buyer-appreciation-grid {
+        grid-template-columns: 1fr !important;
+        gap: 16px !important;
+    }
+
+    .faq-section {
+        padding: 58px 16px;
+    }
+
+    .faq-layout {
+        grid-template-columns: 1fr !important;
+        gap: 28px !important;
+    }
+
+    .faq-tabs {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px !important;
+    }
+
+    .faq-tab {
+        min-height: 54px;
+        padding-left: 14px;
+        font-size: 12px;
+    }
+
+    .project-essentials-section {
+        min-height: 520px;
+        padding: 58px 0;
+    }
+
+    .project-essentials-card {
+        padding: 56px 26px;
+    }
+
+    .project-essentials-actions {
+        grid-template-columns: 1fr !important;
+        max-width: 430px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    .site-visit-section {
+        padding: 56px 16px;
+    }
+
+    .site-visit-inner {
+        width: 100% !important;
+        grid-template-columns: 1fr !important;
+        gap: 24px !important;
+    }
+
+    .site-visit-map {
+        min-height: 390px;
+    }
+
+    .site-visit-map img {
+        inset: -16%;
+        width: 132%;
+        height: 132%;
+    }
+
+    .site-visit-card-inner {
+        padding: 28px 24px 20px;
+    }
+
+    .property-snapshot-section {
+        padding: 58px 16px;
+    }
+
+    .property-snapshot-layout {
+        grid-template-columns: 1fr !important;
+        gap: 28px !important;
+    }
+
+    .property-snapshot-card {
+        min-height: 0;
+        padding: 26px 24px 24px;
+    }
+
+    .property-snapshot-content {
+        align-self: auto;
+    }
+
+    .property-snapshot-strip {
+        margin-top: 34px;
+    }
+
+    .buyer-appreciation-card {
+        min-height: 0;
+        padding: 24px 20px;
+    }
+
+    .buyer-appreciation-card p {
+        font-size: 15px;
+        line-height: 25px;
+    }
+
+    .buyer-appreciation-card strong {
+        margin-top: 24px;
+        font-size: 12px;
+    }
+
+    .sticky-availability-panel {
+        min-height: 500px;
+    }
+
+    .sticky-availability-content h2 {
+        font-size: 31px !important;
+        line-height: 40px !important;
+    }
+
+    .sticky-availability-content > p {
+        font-size: 14px !important;
+        line-height: 22px !important;
+    }
+
+    .sticky-availability-content > div:not(.sticky-availability-label) {
+        max-width: 440px !important;
+        flex-direction: column;
+        gap: 12px !important;
+    }
+
+    .sticky-availability-content a {
+        width: 100%;
+        flex: none !important;
+    }
+
+    .sticky-availability-label {
+        margin-top: 32px !important;
+        font-size: 11px !important;
+        letter-spacing: 0.22em !important;
+    }
+
+    .sticky-availability-label span {
+        width: 48px;
     }
 
     .buyer-testimonials-header h2 {
@@ -2670,7 +2965,205 @@
     }
 
     .buyer-testimonials-section {
+        padding: 42px 14px 28px;
+    }
+
+    .sticky-availability-section {
+        min-height: 480px;
+    }
+
+    .buyer-appreciation-section {
         padding: 42px 14px;
+    }
+
+    .buyer-appreciation-title {
+        font-size: 27px !important;
+        line-height: 34px !important;
+    }
+
+    .faq-header h2 {
+        font-size: 27px !important;
+        line-height: 34px !important;
+    }
+
+    .faq-tabs {
+        grid-template-columns: 1fr;
+    }
+
+    .faq-item button {
+        min-height: 62px;
+        padding: 0 18px;
+        font-size: 13px;
+        line-height: 20px;
+    }
+
+    .faq-answer {
+        margin: -2px 18px 20px;
+        padding-left: 18px;
+    }
+
+    .project-essentials-card {
+        width: calc(100% - 28px) !important;
+        padding: 44px 18px;
+    }
+
+    .project-essentials-card h2 {
+        font-size: 27px !important;
+        line-height: 34px !important;
+    }
+
+    .project-essentials-card > p:not(.project-essentials-eyebrow) {
+        font-size: 15px !important;
+        line-height: 24px !important;
+    }
+
+    .project-essentials-eyebrow {
+        min-height: 32px;
+        padding: 0 14px !important;
+        font-size: 10px !important;
+        letter-spacing: 0.1em !important;
+    }
+
+    .project-essentials-btn {
+        min-height: 52px;
+        font-size: 13px;
+        letter-spacing: 0.12em;
+    }
+
+    .site-visit-section {
+        padding: 44px 14px;
+    }
+
+    .site-visit-card h2 {
+        font-size: 27px !important;
+        line-height: 34px !important;
+    }
+
+    .site-visit-card-inner {
+        padding: 24px 16px 18px;
+    }
+
+    .site-visit-map {
+        min-height: 320px;
+    }
+
+    .site-visit-location {
+        left: 50%;
+        top: 52%;
+        transform: translateX(-50%);
+        white-space: nowrap;
+        font-size: 11px;
+        letter-spacing: 0.12em;
+    }
+
+    .site-visit-pin {
+        left: 50%;
+        top: 42%;
+    }
+
+    .site-visit-form input {
+        height: 46px;
+        font-size: 13px;
+    }
+
+    .site-visit-submit,
+    .site-visit-whatsapp {
+        height: 50px;
+        font-size: 14px;
+    }
+
+    .site-visit-phone {
+        gap: 10px;
+        font-size: 18px;
+        line-height: 26px;
+        letter-spacing: 0.02em;
+    }
+
+    .property-snapshot-section {
+        padding: 48px 14px;
+    }
+
+    .property-snapshot-header h2 {
+        font-size: 27px !important;
+        line-height: 34px !important;
+    }
+
+    .property-snapshot-card {
+        padding: 22px 18px 20px;
+    }
+
+    .property-snapshot-brand {
+        align-items: flex-start !important;
+        padding-bottom: 24px;
+    }
+
+    .property-snapshot-logo {
+        width: 112px;
+        height: 82px;
+        flex-basis: 112px;
+    }
+
+    .property-snapshot-metrics {
+        grid-template-columns: 1fr !important;
+    }
+
+    .property-snapshot-metrics > div {
+        min-height: 118px;
+        border-right: 0 !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .property-snapshot-metrics > div:last-child {
+        border-bottom: 0;
+    }
+
+    .property-snapshot-meta div {
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    .property-snapshot-meta dd {
+        text-align: left;
+    }
+
+    .property-snapshot-content h3 {
+        font-size: 22px;
+        line-height: 30px;
+    }
+
+    .property-snapshot-content p {
+        font-size: 14px;
+        line-height: 24px;
+    }
+
+    .property-snapshot-strip {
+        grid-template-columns: 1fr !important;
+    }
+
+    .property-snapshot-strip > div {
+        min-height: 88px;
+        border-right: 0 !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+    }
+
+    .property-snapshot-strip > div:last-child {
+        border-bottom: 0;
+    }
+
+    .sticky-availability-content {
+        width: calc(100% - 28px) !important;
+    }
+
+    .sticky-availability-eyebrow {
+        min-height: 30px;
+        padding: 0 14px !important;
+        font-size: 10px !important;
+        letter-spacing: 0.16em !important;
+    }
+
+    .sticky-availability-content h2 {
+        font-size: 27px !important;
+        line-height: 35px !important;
     }
 
     .buyer-testimonials-eyebrow {

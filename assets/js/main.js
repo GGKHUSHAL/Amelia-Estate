@@ -972,6 +972,62 @@ if (constructionProgressSection) {
     });
 }
 
+// FAQ: switches category tabs and opens one answer at a time inside each category.
+const faqSection = document.querySelector(".faq-section");
+
+if (faqSection) {
+    const faqTabs = faqSection.querySelectorAll("[data-faq-tab]");
+    const faqPanels = faqSection.querySelectorAll("[data-faq-panel]");
+
+    const setFaqPanel = (key) => {
+        faqTabs.forEach((tab) => {
+            const isActive = tab.dataset.faqTab === key;
+            tab.classList.toggle("is-active", isActive);
+            tab.setAttribute("aria-selected", String(isActive));
+        });
+
+        faqPanels.forEach((panel) => {
+            const isActive = panel.dataset.faqPanel === key;
+            panel.hidden = !isActive;
+            panel.classList.toggle("is-active", isActive);
+        });
+    };
+
+    const setFaqItem = (item, shouldOpen) => {
+        const button = item.querySelector("[data-faq-toggle]");
+        const answer = item.querySelector(".faq-answer");
+
+        item.classList.toggle("is-open", shouldOpen);
+        button.setAttribute("aria-expanded", String(shouldOpen));
+        answer.hidden = !shouldOpen;
+    };
+
+    faqTabs.forEach((tab) => {
+        tab.addEventListener("click", () => setFaqPanel(tab.dataset.faqTab));
+    });
+
+    faqSection.querySelectorAll("[data-faq-toggle]").forEach((button) => {
+        button.addEventListener("click", () => {
+            const item = button.closest(".faq-item");
+            const panel = button.closest("[data-faq-panel]");
+            const shouldOpen = !item.classList.contains("is-open");
+
+            panel.querySelectorAll(".faq-item").forEach((panelItem) => {
+                setFaqItem(panelItem, panelItem === item && shouldOpen);
+            });
+        });
+    });
+}
+
+// Site visit form: keeps the static landing page from reloading on submit.
+const siteVisitForm = document.querySelector(".site-visit-form");
+
+if (siteVisitForm) {
+    siteVisitForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+    });
+}
+
 // Scroll reveal: toggles .is-visible for sections that animate when entering the viewport.
 const revealSections = document.querySelectorAll(".reveal-on-scroll");
 
