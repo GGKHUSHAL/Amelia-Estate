@@ -45,6 +45,7 @@ header,
 .lifestyle-amenities-section,
 .construction-progress-section,
 .interested-property-section,
+.buyer-testimonials-section,
 .scroll-story-section,
 .booking-enquiry-section {
     width: 100%;
@@ -4269,6 +4270,113 @@ img.snapshot-icon {
     transition-delay: 0.12s;
 }
 
+/* Buyer testimonials: continuous left-to-right review slider. */
+.buyer-testimonials-slider {
+    width: 100%;
+    overflow: hidden;
+}
+
+.buyer-testimonials-track {
+    display: flex;
+    width: max-content;
+    gap: 28px;
+    animation: testimonialsSlideRight 42s linear infinite;
+    will-change: transform;
+}
+
+.buyer-testimonials-slider:hover .buyer-testimonials-track {
+    animation-play-state: paused;
+}
+
+.buyer-testimonial-card {
+    display: flex;
+    width: 386px;
+    min-height: 265px;
+    flex: 0 0 386px;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1px solid rgba(199, 163, 104, 0.64);
+    border-radius: 8px;
+    background: #101010;
+    padding: 27px 28px 20px;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.035);
+}
+
+.buyer-testimonial-card p {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.88);
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 27px;
+}
+
+.buyer-testimonial-card div {
+    margin-top: 22px;
+    padding-top: 18px;
+    border-top: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.buyer-testimonial-card strong,
+.buyer-testimonial-card span {
+    display: block;
+}
+
+.buyer-testimonial-card strong {
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 18px;
+}
+
+.buyer-testimonial-card span {
+    margin-top: 3px;
+    color: #c7a368;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 18px;
+}
+
+.buyer-testimonials-eyebrow,
+.buyer-testimonials-header h2,
+.buyer-testimonials-header p:not(.buyer-testimonials-eyebrow),
+.buyer-testimonials-slider {
+    opacity: 0;
+    transform: translateY(34px);
+    transition:
+        opacity 0.8s ease,
+        transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.buyer-testimonials-section.is-visible .buyer-testimonials-eyebrow,
+.buyer-testimonials-section.is-visible .buyer-testimonials-header h2,
+.buyer-testimonials-section.is-visible .buyer-testimonials-header p:not(.buyer-testimonials-eyebrow),
+.buyer-testimonials-section.is-visible .buyer-testimonials-slider {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.buyer-testimonials-section.is-visible .buyer-testimonials-header h2 {
+    transition-delay: 0.08s;
+}
+
+.buyer-testimonials-section.is-visible .buyer-testimonials-header p:not(.buyer-testimonials-eyebrow) {
+    transition-delay: 0.15s;
+}
+
+.buyer-testimonials-section.is-visible .buyer-testimonials-slider {
+    transition-delay: 0.24s;
+}
+
+@keyframes testimonialsSlideRight {
+    from {
+        transform: translateX(calc(-50% - 14px));
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}
+
 /* Scroll Story slider: pinned visual section controlled by wheel/touch JS. */
 .scroll-story-section {
     --story-section-height: calc(100dvh - 86px);
@@ -5244,6 +5352,10 @@ img.snapshot-icon {
     .construction-progress-card,
     .interested-property-copy,
     .interested-property-mosaic,
+    .buyer-testimonials-eyebrow,
+    .buyer-testimonials-header h2,
+    .buyer-testimonials-header p:not(.buyer-testimonials-eyebrow),
+    .buyer-testimonials-slider,
     .prime-growth-grid article,
     .about-gallery img {
         opacity: 1;

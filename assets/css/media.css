@@ -235,6 +235,19 @@
         padding: 60px 32px;
     }
 
+    .buyer-testimonials-section {
+        padding: 60px 32px;
+    }
+
+    .buyer-testimonials-section > div {
+        width: 100%;
+    }
+
+    .buyer-testimonial-card {
+        width: 360px;
+        flex-basis: 360px;
+    }
+
     .interested-property-section > div {
         width: 100%;
         height: auto;
@@ -683,6 +696,15 @@
 
     .interested-property-section {
         padding: 56px 40px;
+    }
+
+    .buyer-testimonials-section {
+        padding: 56px 40px;
+    }
+
+    .buyer-testimonials-header h2 {
+        font-size: 34px !important;
+        line-height: 42px !important;
     }
 
     .interested-property-copy h2 {
@@ -1472,6 +1494,37 @@
 
     .interested-property-section {
         padding: 48px 16px;
+    }
+
+    .buyer-testimonials-section {
+        padding: 48px 16px;
+    }
+
+    .buyer-testimonials-header h2 {
+        font-size: 30px !important;
+        line-height: 37px !important;
+    }
+
+    .buyer-testimonials-header p:not(.buyer-testimonials-eyebrow) {
+        font-size: 14px !important;
+        line-height: 21px !important;
+    }
+
+    .buyer-testimonials-track {
+        gap: 16px;
+        animation-duration: 34s;
+    }
+
+    .buyer-testimonial-card {
+        width: 300px;
+        min-height: 250px;
+        flex-basis: 300px;
+        padding: 22px 20px 18px;
+    }
+
+    .buyer-testimonial-card p {
+        font-size: 13px;
+        line-height: 23px;
     }
 
     .interested-property-copy h2 {
@@ -2611,6 +2664,26 @@
 
     .interested-property-section {
         padding: 42px 14px;
+    }
+
+    .buyer-testimonials-section {
+        padding: 42px 14px;
+    }
+
+    .buyer-testimonials-eyebrow {
+        padding: 6px 12px;
+        font-size: 10px;
+        letter-spacing: 0.1em;
+    }
+
+    .buyer-testimonials-header h2 {
+        font-size: 27px !important;
+        line-height: 34px !important;
+    }
+
+    .buyer-testimonial-card {
+        width: 278px;
+        flex-basis: 278px;
     }
 
     .interested-property-mosaic {
