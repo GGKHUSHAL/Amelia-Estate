@@ -29,6 +29,24 @@ if (menuToggle && mobileMenu) {
     });
 }
 
+// Site-wide mouse glow: follows the cursor across the full page.
+if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+    let siteGlowFrame;
+
+    window.addEventListener("mousemove", (event) => {
+        window.cancelAnimationFrame(siteGlowFrame);
+        siteGlowFrame = window.requestAnimationFrame(() => {
+            document.body.style.setProperty("--site-light-x", `${event.clientX}px`);
+            document.body.style.setProperty("--site-light-y", `${event.clientY}px`);
+            document.body.classList.add("is-site-pointer-active");
+        });
+    });
+
+    window.addEventListener("mouseleave", () => {
+        document.body.classList.remove("is-site-pointer-active");
+    });
+}
+
 // Hero carousel: auto-rotates slides and supports horizontal swipe/drag.
 const heroSlider = document.querySelector("#heroSlider");
 
