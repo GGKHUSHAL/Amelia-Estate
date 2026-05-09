@@ -35,36 +35,126 @@ const heroSlider = document.querySelector("#heroSlider");
 if (heroSlider) {
     const heroSection = heroSlider.closest(".hero-section");
     const slides = heroSlider.querySelectorAll(".hero-slide");
+    const storyProgress = heroSection.querySelector(".hero-story-progress");
+    const previousStoryTap = heroSection.querySelector(".hero-story-tap--prev");
+    const nextStoryTap = heroSection.querySelector(".hero-story-tap--next");
+    const storyDuration = 8000;
 
     let activeSlide = 0;
     let slideInterval;
     let startX = 0;
     let endX = 0;
     const swipeDistance = 50;
+    let storyProgressItems = [];
+    const originalHeroBackgrounds = Array.from(slides, (slide) => {
+        const background = slide.querySelector(".hero-slide-bg");
+        return background ? background.style.backgroundImage : "";
+    });
+
+    const isMobileStory = () => window.matchMedia("(max-width: 767px)").matches;
+
+    const applyMobileHeroImages = () => {
+        if (!isMobileStory()) {
+            slides.forEach((slide, index) => {
+                const background = slide.querySelector(".hero-slide-bg");
+
+                if (background) {
+                    background.style.backgroundImage = originalHeroBackgrounds[index];
+                }
+            });
+            return;
+        }
+
+        const mobileImages = [
+            null,
+            "assets/img/slider/mobile-slide-2.jpg",
+            "assets/img/slider/mobile-slide-3.jpg"
+        ];
+
+        slides.forEach((slide, index) => {
+            const mobileImage = mobileImages[index];
+            const background = slide.querySelector(".hero-slide-bg");
+
+            if (mobileImage && background) {
+                background.style.backgroundImage = `url("${mobileImage}")`;
+            }
+        });
+    };
+
+    const updateSliderPosition = () => {
+        if (isMobileStory()) {
+            heroSlider.style.transform = "none";
+            return;
+        }
+
+        heroSlider.style.transform = `translateX(-${activeSlide * 100}%)`;
+    };
+
+    if (storyProgress) {
+        storyProgress.innerHTML = Array.from(slides, (_, index) => (
+            `<span class="hero-story-progress-item" data-story-index="${index}"><span></span></span>`
+        )).join("");
+        storyProgressItems = storyProgress.querySelectorAll(".hero-story-progress-item");
+        heroSection.style.setProperty("--hero-story-duration", `${storyDuration}ms`);
+    }
+
+    const updateStoryProgress = () => {
+        if (!storyProgressItems.length) {
+            return;
+        }
+
+        storyProgressItems.forEach((item, index) => {
+            item.classList.toggle("is-complete", index < activeSlide);
+            item.classList.toggle("is-active", index === activeSlide);
+        });
+
+        const activeItem = storyProgressItems[activeSlide];
+
+        if (activeItem) {
+            activeItem.classList.remove("is-active");
+            activeItem.offsetHeight;
+            activeItem.classList.add("is-active");
+        }
+    };
 
     const showSlide = (index) => {
         slides[activeSlide].classList.remove("is-active");
         activeSlide = (index + slides.length) % slides.length;
-        heroSlider.style.transform = `translateX(-${activeSlide * 100}%)`;
+        updateSliderPosition();
         slides[activeSlide].classList.add("is-active");
+        updateStoryProgress();
 
         if (heroSection.classList.contains("is-visible")) {
             const content = slides[activeSlide].querySelector(".hero-content");
-            content.style.animation = "none";
-            content.offsetHeight;
-            content.style.animation = "";
+
+            if (content) {
+                content.style.animation = "none";
+                content.offsetHeight;
+                content.style.animation = "";
+            }
         }
     };
 
     const startAutoSlide = () => {
+        clearInterval(slideInterval);
         slideInterval = setInterval(() => {
             showSlide(activeSlide + 1);
-        }, 8000);
+        }, storyDuration);
     };
 
     const resetAutoSlide = () => {
         clearInterval(slideInterval);
         startAutoSlide();
+    };
+
+    const updateHeroLight = (event) => {
+        const rect = heroSection.getBoundingClientRect();
+        const x = ((event.clientX - rect.left) / rect.width) * 100;
+        const y = ((event.clientY - rect.top) / rect.height) * 100;
+
+        heroSection.style.setProperty("--hero-light-x", `${x}%`);
+        heroSection.style.setProperty("--hero-light-y", `${y}%`);
+        heroSection.classList.add("is-pointer-active");
     };
 
     const handleSwipe = () => {
@@ -79,7 +169,27 @@ if (heroSlider) {
     };
 
     slides[activeSlide].classList.add("is-active");
+    applyMobileHeroImages();
+    updateSliderPosition();
+    updateStoryProgress();
     startAutoSlide();
+
+    window.addEventListener("resize", () => {
+        applyMobileHeroImages();
+        updateSliderPosition();
+    });
+
+    if (previousStoryTap && nextStoryTap) {
+        previousStoryTap.addEventListener("click", () => {
+            showSlide(activeSlide - 1);
+            resetAutoSlide();
+        });
+
+        nextStoryTap.addEventListener("click", () => {
+            showSlide(activeSlide + 1);
+            resetAutoSlide();
+        });
+    }
 
     heroSlider.addEventListener("touchstart", (event) => {
         startX = event.touches[0].clientX;
@@ -97,6 +207,11 @@ if (heroSlider) {
     heroSlider.addEventListener("mouseup", (event) => {
         endX = event.clientX;
         handleSwipe();
+    });
+
+    heroSection.addEventListener("mousemove", updateHeroLight);
+    heroSection.addEventListener("mouseleave", () => {
+        heroSection.classList.remove("is-pointer-active");
     });
 }
 
@@ -125,6 +240,97 @@ if (stickyAvailabilitySection && stickyAvailabilityPanel) {
     updateStickyAvailability();
     window.addEventListener("scroll", updateStickyAvailability, { passive: true });
     window.addEventListener("resize", updateStickyAvailability);
+}
+
+// Project snapshot: follows the pointer with a soft gold spotlight.
+const snapshotSection = document.querySelector(".snapshot-section");
+
+if (snapshotSection) {
+    const updateSnapshotLight = (event) => {
+        const rect = snapshotSection.getBoundingClientRect();
+        const x = ((event.clientX - rect.left) / rect.width) * 100;
+        const y = ((event.clientY - rect.top) / rect.height) * 100;
+
+        snapshotSection.style.setProperty("--snapshot-light-x", `${x}%`);
+        snapshotSection.style.setProperty("--snapshot-light-y", `${y}%`);
+        snapshotSection.classList.add("is-pointer-active");
+    };
+
+    snapshotSection.addEventListener("mousemove", updateSnapshotLight);
+    snapshotSection.addEventListener("mouseleave", () => {
+        snapshotSection.classList.remove("is-pointer-active");
+    });
+}
+
+// About gallery: follows the pointer with a soft highlight around the images.
+const aboutSection = document.querySelector(".about-section");
+
+if (aboutSection) {
+    const aboutPhotos = aboutSection.querySelectorAll(".about-photo");
+    const aboutToggle = aboutSection.querySelector("[data-about-toggle]");
+    const aboutMore = aboutSection.querySelector("#aboutMore");
+
+    const updateAboutLight = (event) => {
+        const rect = aboutSection.getBoundingClientRect();
+        const x = ((event.clientX - rect.left) / rect.width) * 100;
+        const y = ((event.clientY - rect.top) / rect.height) * 100;
+
+        aboutSection.style.setProperty("--about-light-x", `${x}%`);
+        aboutSection.style.setProperty("--about-light-y", `${y}%`);
+        aboutSection.classList.add("is-pointer-active");
+    };
+
+    aboutSection.addEventListener("mousemove", updateAboutLight);
+    aboutSection.addEventListener("mouseleave", () => {
+        aboutSection.classList.remove("is-pointer-active");
+    });
+
+    aboutPhotos.forEach((photo) => {
+        photo.addEventListener("mousemove", (event) => {
+            const rect = photo.getBoundingClientRect();
+            const x = (event.clientX - rect.left) / rect.width - 0.5;
+            const y = (event.clientY - rect.top) / rect.height - 0.5;
+
+            photo.style.setProperty("--about-tilt-x", `${(-y * 7).toFixed(2)}deg`);
+            photo.style.setProperty("--about-tilt-y", `${(x * 7).toFixed(2)}deg`);
+            photo.style.setProperty("--about-image-x", `${(-x * 10).toFixed(2)}px`);
+            photo.style.setProperty("--about-image-y", `${(-y * 10).toFixed(2)}px`);
+        });
+
+        photo.addEventListener("mouseleave", () => {
+            photo.style.setProperty("--about-tilt-x", "0deg");
+            photo.style.setProperty("--about-tilt-y", "0deg");
+            photo.style.setProperty("--about-image-x", "0px");
+            photo.style.setProperty("--about-image-y", "0px");
+        });
+    });
+
+    if (aboutToggle && aboutMore) {
+        let aboutMoreTimer;
+
+        aboutToggle.addEventListener("click", () => {
+            const shouldOpen = aboutToggle.getAttribute("aria-expanded") !== "true";
+
+            clearTimeout(aboutMoreTimer);
+            aboutToggle.setAttribute("aria-expanded", String(shouldOpen));
+            aboutToggle.querySelector("span:first-child").textContent = shouldOpen ? "Show Less" : "Read More";
+
+            if (shouldOpen) {
+                aboutMore.hidden = false;
+                aboutSection.classList.add("is-about-expanded");
+                requestAnimationFrame(() => {
+                    aboutMore.classList.add("is-open");
+                });
+                return;
+            }
+
+            aboutMore.classList.remove("is-open");
+            aboutMoreTimer = setTimeout(() => {
+                aboutMore.hidden = true;
+                aboutSection.classList.remove("is-about-expanded");
+            }, 620);
+        });
+    }
 }
 
 // Scroll Story slider: traps scroll until the story has been viewed in that direction.
@@ -1062,11 +1268,16 @@ if (revealSections.length) {
     if ("IntersectionObserver" in window) {
         const revealObserver = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
-                entry.target.classList.toggle("is-visible", entry.isIntersecting);
+                const isDifferentiationSection = entry.target.classList.contains("differentiation-section");
+                const shouldReveal = isDifferentiationSection
+                    ? entry.isIntersecting && entry.intersectionRatio >= 0.50
+                    : entry.isIntersecting;
+
+                entry.target.classList.toggle("is-visible", shouldReveal);
             });
         }, {
-            threshold: 0.08,
-            rootMargin: "0px 0px -30px 0px"
+            threshold: [0.04, 0.16, 0.28, 0.42, 0.50, 0.62],
+            rootMargin: "0px 0px -120px 0px"
         });
 
         revealSections.forEach((section) => revealObserver.observe(section));
