@@ -29,25 +29,7 @@ if (menuToggle && mobileMenu) {
     });
 }
 
-// Site-wide mouse glow: follows the cursor across the full page.
-if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
-    let siteGlowFrame;
-
-    window.addEventListener("mousemove", (event) => {
-        window.cancelAnimationFrame(siteGlowFrame);
-        siteGlowFrame = window.requestAnimationFrame(() => {
-            document.body.style.setProperty("--site-light-x", `${event.clientX}px`);
-            document.body.style.setProperty("--site-light-y", `${event.clientY}px`);
-            document.body.classList.add("is-site-pointer-active");
-        });
-    });
-
-    window.addEventListener("mouseleave", () => {
-        document.body.classList.remove("is-site-pointer-active");
-    });
-}
-
-// Hero carousel: auto-rotates slides and supports horizontal swipe/drag.
+// Hero carousel: auto-rotates slides with a soft zoom and pointer-reactive depth.
 const heroSlider = document.querySelector("#heroSlider");
 
 if (heroSlider) {
@@ -60,6 +42,7 @@ if (heroSlider) {
 
     let activeSlide = 0;
     let slideInterval;
+    let heroLightFrame;
     let startX = 0;
     let endX = 0;
     const swipeDistance = 50;
@@ -70,7 +53,6 @@ if (heroSlider) {
     });
 
     const isMobileStory = () => window.matchMedia("(max-width: 767px)").matches;
-    const isStackedHero = () => window.matchMedia("(max-width: 991px)").matches;
 
     const applyMobileHeroImages = () => {
         if (!isMobileStory()) {
@@ -101,12 +83,7 @@ if (heroSlider) {
     };
 
     const updateSliderPosition = () => {
-        if (isStackedHero()) {
-            heroSlider.style.transform = "none";
-            return;
-        }
-
-        heroSlider.style.transform = `translateX(-${activeSlide * 100}%)`;
+        heroSlider.style.transform = "none";
     };
 
     if (storyProgress) {
@@ -167,16 +144,39 @@ if (heroSlider) {
     };
 
     const updateHeroLight = (event) => {
-        const rect = heroSection.getBoundingClientRect();
-        const x = ((event.clientX - rect.left) / rect.width) * 100;
-        const y = ((event.clientY - rect.top) / rect.height) * 100;
+        window.cancelAnimationFrame(heroLightFrame);
 
-        heroSection.style.setProperty("--hero-light-x", `${x}%`);
-        heroSection.style.setProperty("--hero-light-y", `${y}%`);
-        heroSection.classList.add("is-pointer-active");
+        heroLightFrame = window.requestAnimationFrame(() => {
+            const rect = heroSection.getBoundingClientRect();
+            const x = ((event.clientX - rect.left) / rect.width) * 100;
+            const y = ((event.clientY - rect.top) / rect.height) * 100;
+            const depthX = (x - 50) / 50;
+            const depthY = (y - 50) / 50;
+
+            heroSection.style.setProperty("--hero-light-x", `${x}%`);
+            heroSection.style.setProperty("--hero-light-y", `${y}%`);
+            heroSection.style.setProperty("--hero-content-x", `${(depthX * 10).toFixed(2)}px`);
+            heroSection.style.setProperty("--hero-content-y", `${(depthY * 8).toFixed(2)}px`);
+            heroSection.style.setProperty("--hero-bg-x", `${(-depthX * 8).toFixed(2)}px`);
+            heroSection.style.setProperty("--hero-bg-y", `${(-depthY * 6).toFixed(2)}px`);
+            heroSection.classList.add("is-pointer-active");
+        });
     };
 
-    const handleSwipe = () => {
+    const resetHeroLight = () => {
+        window.cancelAnimationFrame(heroLightFrame);
+        heroSection.classList.remove("is-pointer-active");
+        heroSection.style.setProperty("--hero-content-x", "0px");
+        heroSection.style.setProperty("--hero-content-y", "0px");
+        heroSection.style.setProperty("--hero-bg-x", "0px");
+        heroSection.style.setProperty("--hero-bg-y", "0px");
+    };
+
+    const handleMobileSwipe = () => {
+        if (!isMobileStory()) {
+            return;
+        }
+
         const distance = startX - endX;
 
         if (Math.abs(distance) < swipeDistance) {
@@ -200,38 +200,43 @@ if (heroSlider) {
 
     if (previousStoryTap && nextStoryTap) {
         previousStoryTap.addEventListener("click", () => {
+            if (!isMobileStory()) {
+                return;
+            }
+
             showSlide(activeSlide - 1);
             resetAutoSlide();
         });
 
         nextStoryTap.addEventListener("click", () => {
+            if (!isMobileStory()) {
+                return;
+            }
+
             showSlide(activeSlide + 1);
             resetAutoSlide();
         });
     }
 
     heroSlider.addEventListener("touchstart", (event) => {
+        if (!isMobileStory()) {
+            return;
+        }
+
         startX = event.touches[0].clientX;
-    });
+    }, { passive: true });
 
     heroSlider.addEventListener("touchend", (event) => {
+        if (!isMobileStory()) {
+            return;
+        }
+
         endX = event.changedTouches[0].clientX;
-        handleSwipe();
-    });
-
-    heroSlider.addEventListener("mousedown", (event) => {
-        startX = event.clientX;
-    });
-
-    heroSlider.addEventListener("mouseup", (event) => {
-        endX = event.clientX;
-        handleSwipe();
+        handleMobileSwipe();
     });
 
     heroSection.addEventListener("mousemove", updateHeroLight);
-    heroSection.addEventListener("mouseleave", () => {
-        heroSection.classList.remove("is-pointer-active");
-    });
+    heroSection.addEventListener("mouseleave", resetHeroLight);
 }
 
 // Sticky availability CTA: pins below the fixed header while later sections scroll over it.
@@ -261,48 +266,13 @@ if (stickyAvailabilitySection && stickyAvailabilityPanel) {
     window.addEventListener("resize", updateStickyAvailability);
 }
 
-// Project snapshot: follows the pointer with a soft gold spotlight.
-const snapshotSection = document.querySelector(".snapshot-section");
-
-if (snapshotSection) {
-    const updateSnapshotLight = (event) => {
-        const rect = snapshotSection.getBoundingClientRect();
-        const x = ((event.clientX - rect.left) / rect.width) * 100;
-        const y = ((event.clientY - rect.top) / rect.height) * 100;
-
-        snapshotSection.style.setProperty("--snapshot-light-x", `${x}%`);
-        snapshotSection.style.setProperty("--snapshot-light-y", `${y}%`);
-        snapshotSection.classList.add("is-pointer-active");
-    };
-
-    snapshotSection.addEventListener("mousemove", updateSnapshotLight);
-    snapshotSection.addEventListener("mouseleave", () => {
-        snapshotSection.classList.remove("is-pointer-active");
-    });
-}
-
-// About gallery: follows the pointer with a soft highlight around the images.
+// About gallery: keeps the image depth effect and toggles the longer content panel.
 const aboutSection = document.querySelector(".about-section");
 
 if (aboutSection) {
     const aboutPhotos = aboutSection.querySelectorAll(".about-photo");
     const aboutToggle = aboutSection.querySelector("[data-about-toggle]");
     const aboutMore = aboutSection.querySelector("#aboutMore");
-
-    const updateAboutLight = (event) => {
-        const rect = aboutSection.getBoundingClientRect();
-        const x = ((event.clientX - rect.left) / rect.width) * 100;
-        const y = ((event.clientY - rect.top) / rect.height) * 100;
-
-        aboutSection.style.setProperty("--about-light-x", `${x}%`);
-        aboutSection.style.setProperty("--about-light-y", `${y}%`);
-        aboutSection.classList.add("is-pointer-active");
-    };
-
-    aboutSection.addEventListener("mousemove", updateAboutLight);
-    aboutSection.addEventListener("mouseleave", () => {
-        aboutSection.classList.remove("is-pointer-active");
-    });
 
     aboutPhotos.forEach((photo) => {
         photo.addEventListener("mousemove", (event) => {
@@ -371,8 +341,27 @@ if (scrollStorySection) {
     const wheelStepThreshold = 260;
     const touchStepThreshold = 76;
     const wheelUnlockDelay = 720;
-    const stickyTop = 86;
-    const storyFocusOffset = stickyTop + 2;
+    const isMobileStoryView = () => window.matchMedia("(max-width: 767px)").matches;
+    const getStickyTop = () => isMobileStoryView() ? 0 : 86;
+    const getStoryFocusOffset = () => getStickyTop() + 2;
+
+    const updateMobileStoryHeader = () => {
+        if (!isMobileStoryView()) {
+            document.body.classList.remove("is-story-header-hidden");
+            return;
+        }
+
+        const rect = scrollStorySection.getBoundingClientRect();
+        const shouldHideHeader = rect.top <= 2 && rect.bottom > 64;
+
+        document.body.classList.toggle("is-story-header-hidden", shouldHideHeader);
+
+        if (shouldHideHeader && menuToggle && mobileMenu) {
+            menuToggle.setAttribute("aria-expanded", "false");
+            mobileMenu.classList.remove("is-open");
+            document.body.classList.remove("menu-open");
+        }
+    };
 
     const setStorySlide = (index) => {
         if (index === activeStorySlide) {
@@ -388,25 +377,30 @@ if (scrollStorySection) {
 
     const isStoryInFocus = () => {
         const rect = scrollStorySection.getBoundingClientRect();
+        const storyFocusOffset = getStoryFocusOffset();
         return rect.top <= storyFocusOffset && rect.bottom > storyFocusOffset + 80;
     };
 
     const isStoryEnteringDown = () => {
         const rect = scrollStorySection.getBoundingClientRect();
+        const storyFocusOffset = getStoryFocusOffset();
         return rect.top > storyFocusOffset && rect.top < window.innerHeight;
     };
 
     const isStoryEnteringUp = () => {
         const rect = scrollStorySection.getBoundingClientRect();
+        const storyFocusOffset = getStoryFocusOffset();
         return rect.top < storyFocusOffset && rect.bottom > storyFocusOffset;
     };
 
     const isStoryInTrapRange = () => {
         const rect = scrollStorySection.getBoundingClientRect();
+        const storyFocusOffset = getStoryFocusOffset();
         return rect.top < window.innerHeight && rect.bottom > storyFocusOffset;
     };
 
     const pinStoryToTop = (behavior = "auto") => {
+        const stickyTop = getStickyTop();
         isPinningStory = true;
         window.scrollTo({
             top: Math.max(scrollStorySection.offsetTop - stickyTop, 0),
@@ -415,6 +409,7 @@ if (scrollStorySection) {
         requestAnimationFrame(() => {
             isPinningStory = false;
             lastPageScrollY = window.scrollY;
+            updateMobileStoryHeader();
         });
     };
 
@@ -431,6 +426,7 @@ if (scrollStorySection) {
 
     const scrollPastStory = (direction) => {
         const rect = scrollStorySection.getBoundingClientRect();
+        const stickyTop = getStickyTop();
         const targetY = direction > 0
             ? window.scrollY + rect.bottom - stickyTop + 1
             : window.scrollY + rect.top - window.innerHeight + stickyTop - 1;
@@ -614,11 +610,15 @@ if (scrollStorySection) {
     }, { passive: false });
 
     window.addEventListener("scroll", () => {
+        updateMobileStoryHeader();
+
         const currentScrollY = window.scrollY;
         const isScrollingDown = currentScrollY > lastPageScrollY + 1;
         const isScrollingUp = currentScrollY < lastPageScrollY - 1;
         const hasUnseenSlides = activeStorySlide < storySlides.length - 1;
         const hasPreviousSlides = activeStorySlide > 0;
+        const stickyTop = getStickyTop();
+        const storyFocusOffset = getStoryFocusOffset();
         const storyStartY = Math.max(scrollStorySection.offsetTop - stickyTop, 0);
         const storyEndY = storyStartY + scrollStorySection.offsetHeight;
 
@@ -644,7 +644,43 @@ if (scrollStorySection) {
 
         lastPageScrollY = window.scrollY;
     }, { passive: true });
+
+    window.addEventListener("resize", updateMobileStoryHeader);
+    updateMobileStoryHeader();
 }
+
+const mobileHeaderMedia = window.matchMedia("(max-width: 767px)");
+const updateMobileHeaderVisibility = () => {
+    if (!mobileHeaderMedia.matches) {
+        document.body.classList.remove("is-mobile-header-hidden", "is-mobile-header-visible");
+        return;
+    }
+
+    const heroSection = document.querySelector(".hero-section");
+    const heroHeight = heroSection ? heroSection.offsetHeight : 0;
+    const hideAtTop = window.scrollY < Math.max(110, heroHeight * 0.18);
+    let hideInStory = false;
+
+    if (scrollStorySection) {
+        const storyRect = scrollStorySection.getBoundingClientRect();
+        hideInStory = storyRect.top <= 2 && storyRect.bottom > 64;
+    }
+
+    const shouldHideHeader = hideAtTop || hideInStory;
+
+    document.body.classList.toggle("is-mobile-header-hidden", shouldHideHeader);
+    document.body.classList.toggle("is-mobile-header-visible", !shouldHideHeader);
+
+    if (shouldHideHeader && menuToggle && mobileMenu) {
+        menuToggle.setAttribute("aria-expanded", "false");
+        mobileMenu.classList.remove("is-open");
+        document.body.classList.remove("menu-open");
+    }
+};
+
+window.addEventListener("scroll", updateMobileHeaderVisibility, { passive: true });
+window.addEventListener("resize", updateMobileHeaderVisibility);
+updateMobileHeaderVisibility();
 
 // Ideal floor: activates size and floor tabs, then refreshes the visible details.
 const idealFloorSection = document.querySelector(".ideal-floor-section");
@@ -657,22 +693,27 @@ if (idealFloorSection) {
     const badgeFeatureIcon = badgeFeature.querySelector("svg").outerHTML;
     const panelSubtitle = idealFloorSection.querySelector(".ideal-floor-panel > div:first-child p");
     const specValues = idealFloorSection.querySelectorAll(".ideal-floor-spec strong");
+    const idealImage = idealFloorSection.querySelector(".ideal-floor-media img");
 
     let activeSize = "230";
     let activeFloor = "1st";
+    let idealImageTimer;
 
     const sizeDetails = {
         230: {
             label: "230 Sq.Yd",
-            area: "230 Sq.Yds"
+            area: "230 Sq.Yds",
+            image: "assets/img/choose ideal/banner.jpg"
         },
         219: {
             label: "219 Sq.Yd",
-            area: "219 Sq.Yds"
+            area: "219 Sq.Yds",
+            image: "assets/img/choose ideal/banner.png"
         },
         205: {
             label: "205 Sq.Yd",
-            area: "205 Sq.Yds"
+            area: "205 Sq.Yds",
+            image: "assets/img/choose ideal/banner.jpg"
         }
     };
 
@@ -695,6 +736,15 @@ if (idealFloorSection) {
         badgeFeature.innerHTML = `${badgeFeatureIcon}${feature}`;
         panelSubtitle.textContent = `${activeSize} Sq. Yd ${activeFloor} Floor Selected`;
         specValues[0].textContent = size.area;
+
+        if (idealImage && size.image && idealImage.getAttribute("src") !== size.image) {
+            clearTimeout(idealImageTimer);
+            idealImage.classList.add("is-switching");
+            idealImageTimer = setTimeout(() => {
+                idealImage.src = size.image;
+                idealImage.classList.remove("is-switching");
+            }, 160);
+        }
     };
 
     sizeTabs.forEach((tab) => {
@@ -745,8 +795,8 @@ if (projectPlansSection) {
             badge: "230 Sq.Yd Floor Plan",
             title: "3 BHK Floor Plan - 230 Sq.Yd",
             copy: "Detailed layout with dimensions. Vastu compliant design.",
-            meta: "<strong>3 BHK</strong> · 1,650 Sq.Ft Carpet",
-            variants: ["230 Sq. Yds", "219 Sq. Yds", "205 Sq. Yds"],
+            meta: "<strong>3 BHK</strong> - 1,650 Sq.Ft Carpet",
+            variants: ["230 Sq.Yd", "219 Sq.Yd", "205 Sq.Yd"],
             showVariants: true
         },
         site: {
@@ -762,11 +812,11 @@ if (projectPlansSection) {
         tower: {
             image: floorImage,
             alt: "Tower plan layout",
-            badge: "Tower A Plan",
-            title: "Tower A - 4 BHK Layout",
-            copy: "4 BHK · Tower A · Pool View",
-            meta: "<strong>4 BHK</strong> · 2,400 Sq.Ft Carpet",
-            variants: ["Tower A 4Bhk", "Tower B 5Bhk", "Tower C Penthouse"],
+            badge: "230 Sq.Yd Stack Plan",
+            title: "3 BHK Stack Plan - 230 Sq.Yd",
+            copy: "Stilt+4 low-rise stack reference for the selected 3 BHK variant.",
+            meta: "<strong>3 BHK</strong> - Stilt+4 Floors",
+            variants: ["230 Sq.Yd", "219 Sq.Yd", "205 Sq.Yd"],
             showVariants: true
         }
     };
@@ -825,30 +875,30 @@ if (projectPlansSection) {
             const label = button.textContent.trim();
 
             if (activePlan === "floor") {
-                badge.textContent = `${label.replace(" Sq. Yds", " Sq.Yd")} Floor Plan`;
-                footerTitle.textContent = `3 BHK Floor Plan - ${label.replace(" Yds", "Yd")}`;
-                meta.innerHTML = "<strong>3 BHK</strong> · 1,650 Sq.Ft Carpet";
+                badge.textContent = `${label} Floor Plan`;
+                footerTitle.textContent = `3 BHK Floor Plan - ${label}`;
+                meta.innerHTML = "<strong>3 BHK</strong> - 1,650 Sq.Ft Carpet";
             }
 
             if (activePlan === "tower") {
                 const towerDetails = {
-                    "Tower A 4Bhk": {
-                        badge: "Tower A Plan",
-                        title: "Tower A - 4 BHK Layout",
-                        copy: "4 BHK · Tower A · Pool View",
-                        meta: "<strong>4 BHK</strong> · 2,400 Sq.Ft Carpet"
+                    "230 Sq.Yd": {
+                        badge: "230 Sq.Yd Stack Plan",
+                        title: "3 BHK Stack Plan - 230 Sq.Yd",
+                        copy: "Stilt+4 low-rise stack reference for the selected 3 BHK variant.",
+                        meta: "<strong>3 BHK</strong> - Stilt+4 Floors"
                     },
-                    "Tower B 5Bhk": {
-                        badge: "Tower B Plan",
-                        title: "Tower B - 5 BHK Layout",
-                        copy: "5 BHK · Tower B · Park View",
-                        meta: "<strong>5 BHK</strong> · 2,850 Sq.Ft Carpet"
+                    "219 Sq.Yd": {
+                        badge: "219 Sq.Yd Stack Plan",
+                        title: "3 BHK Stack Plan - 219 Sq.Yd",
+                        copy: "Stilt+4 low-rise stack reference for the selected 3 BHK variant.",
+                        meta: "<strong>3 BHK</strong> - Stilt+4 Floors"
                     },
-                    "Tower C Penthouse": {
-                        badge: "Tower C Plan",
-                        title: "Tower C - Penthouse Layout",
-                        copy: "Penthouse · Tower C · Premium Terrace",
-                        meta: "<strong>Penthouse</strong> · 3,250 Sq.Ft Carpet"
+                    "205 Sq.Yd": {
+                        badge: "205 Sq.Yd Stack Plan",
+                        title: "3 BHK Stack Plan - 205 Sq.Yd",
+                        copy: "Stilt+4 low-rise stack reference for the selected 3 BHK variant.",
+                        meta: "<strong>3 BHK</strong> - Stilt+4 Floors"
                     }
                 };
                 const detail = towerDetails[label];
@@ -874,6 +924,7 @@ if (pricingSection) {
     const pricingTitle = pricingSection.querySelector(".pricing-title-block h3");
     const pricingFloor = pricingSection.querySelector(".pricing-title-block p");
     const imageBadge = pricingSection.querySelector(".pricing-image-badge");
+    const pricingImage = pricingSection.querySelector(".pricing-image-wrap img");
     const selectedPrice = pricingSection.querySelector(".selected-price-box strong");
     const selectedMeta = pricingSection.querySelector(".selected-price-box p");
     const unlockButton = pricingSection.querySelector(".pricing-unlock-btn");
@@ -883,24 +934,28 @@ if (pricingSection) {
             title: "3 BHK - 230 Sq. Yd",
             badge: "3 BHK - 230 Sq. Yd",
             area: "2,190 Sq.Ft",
-            prices: ["2.85 Cr", "2.95 Cr", "3.05 Cr", "3.25 Cr"]
+            prices: ["2.85 Cr", "2.95 Cr", "3.05 Cr", "3.25 Cr"],
+            image: "assets/img/priceing and investment/photo-1600566753190-17f0baa2a6c3.avif"
         },
         219: {
             title: "3 BHK - 219 Sq. Yd",
             badge: "3 BHK - 219 Sq. Yd",
             area: "2,080 Sq.Ft",
-            prices: ["2.72 Cr", "2.82 Cr", "2.92 Cr", "3.12 Cr"]
+            prices: ["2.72 Cr", "2.82 Cr", "2.92 Cr", "3.12 Cr"],
+            image: "assets/img/priceing and investment/photo-1600596542815-ffad4c1539a9.avif"
         },
         205: {
             title: "3 BHK - 205 Sq. Yd",
             badge: "3 BHK - 205 Sq. Yd",
             area: "1,950 Sq.Ft",
-            prices: ["2.58 Cr", "2.68 Cr", "2.78 Cr", "2.98 Cr"]
+            prices: ["2.58 Cr", "2.68 Cr", "2.78 Cr", "2.98 Cr"],
+            image: "assets/img/priceing and investment/photo-1600607687939-ce8a6c25118c.avif"
         }
     };
 
     let activeSize = "230";
     let isPricingUnlocked = false;
+    let pricingImageTimer;
     const lockedIcon = `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 11V8a5 5 0 0 1 10 0v3" /><path d="M6 11h12v10H6V11Z" /></svg>`;
     const unlockedIcon = `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 11V8a5 5 0 0 1 9.5-2.2" /><path d="M6 11h12v10H6V11Z" /></svg>`;
 
@@ -930,6 +985,16 @@ if (pricingSection) {
         pricingTitle.textContent = content.title;
         imageBadge.textContent = content.badge;
         pricingSection.querySelector(".pricing-spec strong").textContent = content.area;
+
+        if (pricingImage && content.image && pricingImage.getAttribute("src") !== content.image) {
+            clearTimeout(pricingImageTimer);
+            pricingImage.classList.add("is-switching");
+            pricingImageTimer = setTimeout(() => {
+                pricingImage.src = content.image;
+                pricingImage.alt = `${content.title} premium residence view`;
+                pricingImage.classList.remove("is-switching");
+            }, 160);
+        }
 
         floorButtons.forEach((button, index) => {
             button.dataset.floorPrice = content.prices[index];
@@ -974,6 +1039,8 @@ if (pricingSection) {
         updateSelectedPrice(floorButtons[0]);
         unlockButton.innerHTML = `${lockedIcon}Unlock Floor-wise Pricing`;
     });
+
+    updatePricingSize(activeSize);
 }
 
 // Premium specifications: rotates the quality proof gallery and keeps dots in sync.
