@@ -70,6 +70,7 @@ if (heroSlider) {
     });
 
     const isMobileStory = () => window.matchMedia("(max-width: 767px)").matches;
+    const isStackedHero = () => window.matchMedia("(max-width: 991px)").matches;
 
     const applyMobileHeroImages = () => {
         if (!isMobileStory()) {
@@ -100,7 +101,7 @@ if (heroSlider) {
     };
 
     const updateSliderPosition = () => {
-        if (isMobileStory()) {
+        if (isStackedHero()) {
             heroSlider.style.transform = "none";
             return;
         }
