@@ -337,10 +337,19 @@ if (scrollStorySection) {
     let touchStartY = 0;
     let lastPageScrollY = window.scrollY;
     let isPinningStory = false;
+    let storyTransitionTimer;
     const storyStepDelay = 1100;
     const wheelStepThreshold = 260;
     const touchStepThreshold = 76;
     const wheelUnlockDelay = 720;
+    const storyTransitionDuration = 980;
+    const storyTransitionClasses = [
+        "is-flipping-in",
+        "is-entering-from-bottom",
+        "is-entering-from-top",
+        "is-leaving-to-top",
+        "is-leaving-to-bottom"
+    ];
     const isMobileStoryView = () => window.matchMedia("(max-width: 767px)").matches;
     const getStickyTop = () => isMobileStoryView() ? 0 : 86;
     const getStoryFocusOffset = () => getStickyTop() + 2;
@@ -363,16 +372,44 @@ if (scrollStorySection) {
         }
     };
 
-    const setStorySlide = (index) => {
+    const clearStoryTransitionClasses = (slide) => {
+        slide.classList.remove(...storyTransitionClasses);
+    };
+
+    const setStorySlide = (index, direction = index > activeStorySlide ? 1 : -1) => {
         if (index === activeStorySlide) {
             return;
         }
 
-        storySlides[activeStorySlide].classList.remove("is-active");
-        storyProgressItems[activeStorySlide].classList.remove("is-active");
+        const previousIndex = activeStorySlide;
+        const previousSlide = storySlides[previousIndex];
+        const nextSlide = storySlides[index];
+        const enteringClass = direction > 0 ? "is-entering-from-bottom" : "is-entering-from-top";
+        const leavingClass = direction > 0 ? "is-leaving-to-top" : "is-leaving-to-bottom";
+
+        clearTimeout(storyTransitionTimer);
+        storySlides.forEach((slide, slideIndex) => {
+            clearStoryTransitionClasses(slide);
+
+            if (slideIndex !== previousIndex && slideIndex !== index) {
+                slide.classList.remove("is-active");
+            }
+        });
+
+        nextSlide.classList.add("is-flipping-in", enteringClass);
+        nextSlide.offsetHeight;
+        previousSlide.classList.add(leavingClass);
+        storyProgressItems[previousIndex].classList.remove("is-active");
         activeStorySlide = index;
-        storySlides[activeStorySlide].classList.add("is-active");
+        nextSlide.classList.add("is-active");
         storyProgressItems[activeStorySlide].classList.add("is-active");
+        nextSlide.classList.remove(enteringClass);
+
+        storyTransitionTimer = setTimeout(() => {
+            previousSlide.classList.remove("is-active");
+            clearStoryTransitionClasses(previousSlide);
+            clearStoryTransitionClasses(nextSlide);
+        }, storyTransitionDuration);
     };
 
     const isStoryInFocus = () => {
@@ -446,7 +483,7 @@ if (scrollStorySection) {
 
         if (direction < 0 && isStoryEnteringUp() && !isStoryInFocus()) {
             event.preventDefault();
-            setStorySlide(storySlides.length - 1);
+            setStorySlide(storySlides.length - 1, direction);
             pinStoryToTop();
             return;
         }
@@ -483,7 +520,7 @@ if (scrollStorySection) {
         }
 
         pinStoryToTop();
-        setStorySlide(nextIndex);
+        setStorySlide(nextIndex, direction);
     };
 
     window.addEventListener("wheel", (event) => {
@@ -578,7 +615,7 @@ if (scrollStorySection) {
 
         if (direction < 0 && isStoryEnteringUp() && !isStoryInFocus()) {
             event.preventDefault();
-            setStorySlide(storySlides.length - 1);
+            setStorySlide(storySlides.length - 1, direction);
             pinStoryToTop();
             return;
         }
