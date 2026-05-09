@@ -387,7 +387,7 @@ body.menu-open {
 .hero-copy h1 {
     width: 100%;
     margin: 28px 0 0;
-    color: #ffffff;
+    color: rgba(255, 255, 255, 0.88);
     font-size: clamp(36px, 3.8vw, 54px);
     font-weight: 650;
     line-height: 1.08;
@@ -6622,8 +6622,9 @@ a[href*="wa.me"]:hover svg {
     min-height: 675px;
     padding: 56px 0;
     background:
-        linear-gradient(115deg, rgba(31, 28, 24, 0.95) 0%, rgba(18, 17, 16, 0.92) 46%, rgba(63, 48, 28, 0.55) 100%),
-        linear-gradient(180deg, #24211d 0%, #151413 48%, #0f0e0d 100%);
+        radial-gradient(760px 280px at 72% 0%, rgba(223, 188, 81, 0.18), rgba(223, 188, 81, 0) 68%),
+        radial-gradient(520px 240px at 0% 100%, rgba(223, 188, 81, 0.12), rgba(223, 188, 81, 0) 70%),
+        linear-gradient(180deg, #050505 0%, #0d0d0c 52%, #050505 100%);
     color: #ffffff;
     font-family: "Jost", "Inter", Arial, sans-serif;
     overflow: hidden;
@@ -6650,18 +6651,40 @@ a[href*="wa.me"]:hover svg {
 .booking-enquiry-image {
     position: relative;
     height: 660px;
+    border: 1px solid rgba(223, 188, 81, 0.18);
+    border-radius: 26px;
     overflow: hidden;
     background: #0c0c0c;
+    box-shadow:
+        0 28px 68px rgba(0, 0, 0, 0.42),
+        0 0 30px rgba(223, 188, 81, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.10);
     transform: translateX(-54px);
+}
+
+.booking-enquiry-image::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    z-index: 2;
+    border-radius: inherit;
+    background:
+        linear-gradient(135deg, rgba(223, 188, 81, 0.42), transparent 24%, rgba(255, 255, 255, 0.16) 48%, transparent 72%),
+        radial-gradient(180px 120px at 18% 0%, rgba(223, 188, 81, 0.28), transparent 70%);
+    opacity: 0.34;
+    pointer-events: none;
+    transition: opacity 0.35s ease;
 }
 
 .booking-enquiry-image::after {
     content: "";
     position: absolute;
     inset: 0;
+    z-index: 1;
     background:
         linear-gradient(180deg, rgba(0, 0, 0, 0.02) 0%, rgba(0, 0, 0, 0.22) 60%, rgba(0, 0, 0, 0.64) 100%),
         linear-gradient(90deg, rgba(0, 0, 0, 0.08) 0%, rgba(0, 0, 0, 0) 48%, rgba(0, 0, 0, 0.18) 100%);
+    pointer-events: none;
 }
 
 .booking-enquiry-image img {
@@ -6670,10 +6693,19 @@ a[href*="wa.me"]:hover svg {
     object-fit: cover;
     object-position: center;
     filter: saturate(0.65) brightness(0.72) contrast(1.1);
-    transform: scale(1.03);
+    transform: scale(1.05);
     transition:
         transform 1.25s cubic-bezier(0.22, 1, 0.36, 1),
         filter 0.65s ease;
+}
+
+.booking-enquiry-image:hover::before {
+    opacity: 0.56;
+}
+
+.booking-enquiry-image:hover img {
+    filter: saturate(0.92) brightness(0.86) contrast(1.12);
+    transform: scale(1.085);
 }
 
 .booking-enquiry-panel {
@@ -6684,15 +6716,23 @@ a[href*="wa.me"]:hover svg {
     position: relative;
     min-height: 612px;
     padding: 47px 48px 34px;
-    border: 1px solid rgba(200, 169, 106, 0.3);
+    border: 1px solid rgba(223, 188, 81, 0.24);
+    border-radius: 26px;
+    overflow: hidden;
     background:
-        radial-gradient(circle at 0% 0%, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0) 34%),
-        linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.028)),
-        rgba(31, 30, 29, 0.96);
+        radial-gradient(115% 82% at 50% 0%, rgba(223, 188, 81, 0.10), transparent 62%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.095), rgba(255, 255, 255, 0.025)),
+        rgba(17, 16, 13, 0.96);
     box-shadow:
-        0 28px 60px rgba(0, 0, 0, 0.35),
-        inset 0 1px 0 rgba(255, 255, 255, 0.06);
+        0 28px 60px rgba(0, 0, 0, 0.42),
+        0 0 28px rgba(223, 188, 81, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
     backdrop-filter: blur(18px);
+    isolation: isolate;
+    transition:
+        border-color 0.35s ease,
+        box-shadow 0.35s ease,
+        transform 0.35s ease;
 }
 
 .booking-enquiry-form::before {
@@ -6702,8 +6742,37 @@ a[href*="wa.me"]:hover svg {
     right: -13px;
     width: 94px;
     height: 94px;
-    border-top: 1px solid rgba(200, 169, 106, 0.55);
-    border-right: 1px solid rgba(200, 169, 106, 0.55);
+    border-top: 1px solid rgba(223, 188, 81, 0.62);
+    border-right: 1px solid rgba(223, 188, 81, 0.62);
+    pointer-events: none;
+}
+
+.booking-enquiry-form::after {
+    content: "";
+    position: absolute;
+    top: -60%;
+    left: -72%;
+    z-index: -1;
+    width: 42%;
+    height: 220%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.30), transparent);
+    opacity: 0;
+    transform: skewX(-18deg);
+    pointer-events: none;
+}
+
+.booking-enquiry-form:hover {
+    border-color: rgba(223, 188, 81, 0.54);
+    box-shadow:
+        0 34px 74px rgba(0, 0, 0, 0.46),
+        0 0 34px rgba(223, 188, 81, 0.14),
+        inset 0 1px 0 rgba(255, 255, 255, 0.12);
+    transform: translateY(-6px);
+}
+
+.booking-enquiry-form:hover::after {
+    opacity: 1;
+    animation: bookingFormShine 1.05s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .booking-enquiry-form h2 {
@@ -6715,13 +6784,14 @@ a[href*="wa.me"]:hover svg {
     font-weight: 600;
     line-height: 44px;
     letter-spacing: 0;
+    text-shadow: 0 12px 28px rgba(0, 0, 0, 0.46);
 }
 
 .booking-enquiry-form p {
     width: 360px;
     max-width: 100%;
     margin: 10px 0 35px;
-    color: rgba(255, 255, 255, 0.56);
+    color: rgba(255, 255, 255, 0.78);
     font-size: 15px;
     font-weight: 400;
     line-height: 22px;
@@ -6735,7 +6805,7 @@ a[href*="wa.me"]:hover svg {
 .booking-enquiry-form label > span:first-child {
     display: block;
     margin-bottom: 18px;
-    color: #d8b66d;
+    color: #DFBC51;
     font-size: 14px;
     font-weight: 600;
     line-height: 18px;
@@ -6748,7 +6818,7 @@ a[href*="wa.me"]:hover svg {
     width: 100%;
     height: 29px;
     border: 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.16);
+    border-bottom: 1px solid rgba(223, 188, 81, 0.24);
     border-radius: 0;
     outline: 0;
     background: transparent;
@@ -6760,25 +6830,25 @@ a[href*="wa.me"]:hover svg {
 }
 
 .booking-enquiry-form input::placeholder {
-    color: rgba(255, 255, 255, 0.22);
+    color: rgba(255, 255, 255, 0.42);
 }
 
 .booking-enquiry-form input:focus {
-    border-bottom-color: rgba(216, 182, 109, 0.78);
+    border-bottom-color: rgba(223, 188, 81, 0.84);
 }
 
 .booking-phone-field {
     display: flex;
     align-items: center;
     height: 34px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.19);
+    border-bottom: 1px solid rgba(223, 188, 81, 0.24);
 }
 
 .booking-phone-field input {
     height: 33px;
     padding-top: 2px;
     border-bottom: 0;
-    color: rgba(255, 255, 255, 0.48);
+    color: rgba(255, 255, 255, 0.86);
     font-family: Arial, "Inter", sans-serif;
     font-size: 14px;
     font-weight: 400;
@@ -6786,7 +6856,7 @@ a[href*="wa.me"]:hover svg {
 }
 
 .booking-phone-field:focus-within {
-    border-bottom-color: rgba(216, 182, 109, 0.78);
+    border-bottom-color: rgba(223, 188, 81, 0.84);
 }
 
 .booking-country {
@@ -6796,7 +6866,7 @@ a[href*="wa.me"]:hover svg {
     flex: 0 0 auto;
     margin-right: 8px;
     padding-top: 1px;
-    color: rgba(255, 255, 255, 0.38);
+    color: rgba(255, 255, 255, 0.78);
     font-family: Arial, "Inter", sans-serif;
     font-size: 14px;
     font-weight: 400;
@@ -6831,8 +6901,8 @@ a[href*="wa.me"]:hover svg {
     width: 6px;
     height: 6px;
     flex: 0 0 6px;
-    border-right: 1.25px solid rgba(255, 255, 255, 0.22);
-    border-bottom: 1.25px solid rgba(255, 255, 255, 0.22);
+    border-right: 1.25px solid rgba(223, 188, 81, 0.72);
+    border-bottom: 1.25px solid rgba(223, 188, 81, 0.72);
     transform: translateY(-3px) rotate(45deg);
 }
 
@@ -6846,15 +6916,17 @@ a[href*="wa.me"]:hover svg {
     margin-top: 13px;
     border: 0;
     border-radius: 12px;
-    background: linear-gradient(180deg, #dfbf78 0%, #c8a96a 100%);
-    color: #1f1a13;
+    background: #DFBC51;
+    color: #000000;
     font-family: "Inter", Arial, sans-serif;
     font-size: 12px;
     font-weight: 700;
     line-height: 1;
     letter-spacing: 0.22em;
     text-transform: uppercase;
-    box-shadow: 0 18px 34px rgba(200, 169, 106, 0.18);
+    box-shadow:
+        0 0 15px rgba(223, 188, 81, 0.22),
+        0 18px 34px rgba(223, 188, 81, 0.18);
     transition:
         transform 0.3s ease,
         box-shadow 0.3s ease,
@@ -6862,8 +6934,11 @@ a[href*="wa.me"]:hover svg {
 }
 
 .booking-enquiry-form button:hover {
-    filter: brightness(1.05);
-    box-shadow: 0 22px 42px rgba(200, 169, 106, 0.28);
+    background: #e9ca63;
+    filter: none;
+    box-shadow:
+        0 22px 42px rgba(223, 188, 81, 0.34),
+        0 0 26px rgba(223, 188, 81, 0.24);
     transform: translateY(-2px);
 }
 
@@ -6877,7 +6952,7 @@ a[href*="wa.me"]:hover svg {
     justify-content: center;
     gap: 10px;
     margin-top: 27px;
-    color: #ffffff;
+    color: rgba(255, 255, 255, 0.88);
     font-family: "Inter", Arial, sans-serif;
     font-size: 12px;
     font-weight: 700;
@@ -6891,6 +6966,7 @@ a[href*="wa.me"]:hover svg {
     align-items: center;
     gap: 6px;
     white-space: nowrap;
+    text-shadow: 0 0 18px rgba(223, 188, 81, 0.12);
 }
 
 .booking-trust-row span + span::before {
@@ -6898,17 +6974,18 @@ a[href*="wa.me"]:hover svg {
     width: 1px;
     height: 14px;
     margin-right: 8px;
-    background: rgba(255, 255, 255, 0.48);
+    background: rgba(223, 188, 81, 0.42);
 }
 
 .booking-trust-row svg {
     width: 14px;
     height: 14px;
     fill: none;
-    stroke: #d8b66d;
+    stroke: #DFBC51;
     stroke-width: 1.9;
     stroke-linecap: round;
     stroke-linejoin: round;
+    filter: drop-shadow(0 0 8px rgba(223, 188, 81, 0.28));
 }
 
 .booking-enquiry-section.is-visible .booking-enquiry-image,
@@ -6920,6 +6997,52 @@ a[href*="wa.me"]:hover svg {
 .booking-enquiry-section.is-visible .booking-enquiry-image img {
     filter: saturate(0.78) brightness(0.78) contrast(1.12);
     transform: scale(1);
+}
+
+.booking-enquiry-section.is-visible .booking-enquiry-form {
+    animation: bookingFormFloatIn 1.05s cubic-bezier(0.18, 0.86, 0.28, 1.18) 0.18s both;
+}
+
+.booking-enquiry-section.is-visible .booking-enquiry-image {
+    animation: bookingImageFloatIn 1.05s cubic-bezier(0.18, 0.86, 0.28, 1.18) both;
+}
+
+@keyframes bookingFormFloatIn {
+    from {
+        opacity: 0;
+        transform: translateY(38px) scale(0.96);
+        filter: blur(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+    }
+}
+
+@keyframes bookingImageFloatIn {
+    from {
+        opacity: 0;
+        transform: translateX(-42px) scale(0.96);
+        filter: blur(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+        filter: blur(0);
+    }
+}
+
+@keyframes bookingFormShine {
+    from {
+        left: -72%;
+    }
+
+    to {
+        left: 130%;
+    }
 }
 
 .differentiation-section::after {
