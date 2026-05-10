@@ -1802,43 +1802,6 @@ if (lifestyleAmenitiesSection) {
     }
 }
 
-// Construction progress: opens milestone groups and updates completion meter.
-const constructionProgressSection = document.querySelector(".construction-progress-section");
-
-if (constructionProgressSection) {
-    const constructionTabs = constructionProgressSection.querySelectorAll("[data-construction-tab]");
-    const constructionPanels = constructionProgressSection.querySelectorAll("[data-construction-panel]");
-    const progressBar = constructionProgressSection.querySelector(".construction-progress-meter > div span");
-    const progressText = constructionProgressSection.querySelector("[data-construction-progress-text]");
-
-    const setConstructionTab = (key, progress) => {
-        constructionTabs.forEach((tab) => {
-            const isActive = tab.dataset.constructionTab === key;
-            tab.closest(".construction-phase").classList.toggle("is-active", isActive);
-        });
-
-        constructionPanels.forEach((phase) => {
-            const isActive = phase.dataset.constructionPanel === key;
-            const panel = phase.querySelector(".construction-phase-panel");
-
-            if (panel) {
-                panel.hidden = !isActive;
-            }
-        });
-
-        if (progressBar && progressText) {
-            progressBar.style.width = `${progress}%`;
-            progressText.textContent = `${progress}%`;
-        }
-    };
-
-    constructionTabs.forEach((tab) => {
-        tab.addEventListener("click", () => {
-            setConstructionTab(tab.dataset.constructionTab, tab.dataset.progress);
-        });
-    });
-}
-
 // FAQ: switches category tabs and opens one answer at a time inside each category.
 const faqSection = document.querySelector(".faq-section");
 

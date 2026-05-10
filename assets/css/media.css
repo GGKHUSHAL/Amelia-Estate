@@ -6025,3 +6025,241 @@
         height: 42px;
     }
 }
+
+@media (max-width: 1199px) {
+    .construction-progress-layout {
+        grid-template-columns: 1fr !important;
+    }
+
+    .construction-progress-photo {
+        height: auto;
+        min-height: 440px;
+    }
+
+    .construction-progress-side {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        min-height: 0;
+    }
+
+    .construction-info-card {
+        min-height: 220px;
+    }
+}
+
+@media (max-width: 767px) {
+    .construction-progress-layout {
+        gap: 16px !important;
+        margin-top: 28px !important;
+    }
+
+    .construction-progress-photo {
+        min-height: 330px;
+        border-radius: 18px !important;
+    }
+
+    .construction-status-ring {
+        width: 190px;
+        height: 190px;
+    }
+
+    .construction-status-ring-track,
+    .construction-status-ring-fill {
+        stroke-width: 10;
+    }
+
+    .construction-status-center strong {
+        font-size: 48px;
+    }
+
+    .construction-status-center strong em {
+        font-size: 34px;
+    }
+
+    .construction-status-center small {
+        margin-top: 7px;
+        font-size: 10px;
+        letter-spacing: 0.18em;
+        line-height: 13px;
+    }
+
+    .construction-status-center b {
+        min-height: 25px;
+        margin-top: 11px;
+        padding: 0 11px;
+        font-size: 10px;
+    }
+
+    .construction-photo-status {
+        right: 14px;
+        bottom: 14px;
+        left: 14px;
+        gap: 8px;
+    }
+
+    .construction-photo-status span {
+        min-height: 31px;
+        padding: 0 11px;
+        font-size: 10px;
+    }
+
+    .construction-photo-status span:last-child {
+        display: none;
+    }
+
+    .construction-photo-status em {
+        padding-left: 8px;
+    }
+
+    .construction-progress-side {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        min-height: 0;
+    }
+
+    .construction-info-card {
+        min-height: 164px;
+        border-radius: 18px;
+        padding: 20px 16px;
+    }
+
+    .construction-info-card p {
+        font-size: 9px;
+        letter-spacing: 0.12em;
+        line-height: 13px;
+    }
+
+    .construction-info-card--possession strong {
+        gap: 6px;
+        margin-top: 12px;
+        font-size: 34px;
+        line-height: 36px;
+    }
+
+    .construction-info-card--possession strong span {
+        font-size: 19px;
+        line-height: 23px;
+    }
+
+    .construction-info-card small {
+        max-width: 230px;
+        margin-top: 11px;
+        font-size: 12px;
+        line-height: 17px;
+    }
+
+    .construction-info-card--possession em {
+        margin-top: 9px;
+        font-size: 10px;
+        line-height: 13px;
+    }
+
+    .construction-info-card--banks {
+        min-height: 250px;
+        padding: 18px 14px;
+    }
+
+    .construction-bank-subtitle {
+        margin-top: 6px !important;
+        font-size: 10px !important;
+        line-height: 14px !important;
+    }
+
+    .construction-bank-grid {
+        margin-top: 14px;
+        gap: 7px;
+    }
+
+    .construction-bank-tile {
+        min-height: 48px;
+        border-radius: 10px;
+    }
+
+    .construction-bank-tile b {
+        font-size: 10px;
+        line-height: 12px;
+    }
+
+    .construction-bank-tile em {
+        font-size: 8px;
+        line-height: 10px;
+    }
+
+    .construction-bank-proof {
+        padding-top: 12px;
+        gap: 10px;
+        font-size: 10px;
+        line-height: 13px;
+    }
+}
+
+@media (max-width: 767px) {
+    .hero-section {
+        --hero-story-width: 100vw;
+        --hero-section-height: calc(100dvh - 86px) !important;
+        display: block !important;
+        height: var(--hero-section-height) !important;
+        min-height: var(--hero-section-height) !important;
+        padding: 0 !important;
+        overflow: hidden !important;
+        background: #000000;
+    }
+
+    @supports not (height: 100dvh) {
+        .hero-section {
+            --hero-section-height: calc(100vh - 86px) !important;
+        }
+    }
+
+    #heroSlider {
+        width: 100% !important;
+        height: 100% !important;
+        max-height: none !important;
+        min-height: 100% !important;
+        flex: none !important;
+        border-radius: 0 !important;
+        overflow: hidden !important;
+        background: transparent !important;
+        box-shadow: none !important;
+    }
+
+    .hero-slide {
+        inset: 0 !important;
+        width: 100% !important;
+        min-width: 100% !important;
+        height: 100% !important;
+        min-height: 100% !important;
+        flex: none !important;
+        border-radius: 0 !important;
+    }
+
+    .hero-slide-bg,
+    .hero-slide > img {
+        inset: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        min-height: 100% !important;
+        background-position: center center !important;
+        background-size: cover !important;
+        object-fit: cover;
+        object-position: center center;
+    }
+
+    .hero-story-progress {
+        top: 14px !important;
+        width: calc(100% - 28px) !important;
+    }
+
+    .hero-story-tap {
+        top: 0 !important;
+        bottom: 0 !important;
+        width: 50% !important;
+    }
+
+    .hero-story-tap--prev {
+        left: 0 !important;
+    }
+
+    .hero-story-tap--next {
+        right: 0 !important;
+    }
+}
