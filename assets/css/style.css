@@ -1717,7 +1717,7 @@ img.snapshot-icon {
     height: 60px;
     padding: 5px;
     border: 1px solid rgba(225, 195, 126, 0.26);
-    border-radius: 8px;
+    border-radius: 18px;
     background: rgba(13, 13, 13, 0.92);
 }
 
@@ -1815,7 +1815,7 @@ img.snapshot-icon {
     align-items: center;
     justify-content: center;
     min-height: 36px;
-    border-radius: 8px;
+    border-radius: 999px;
     font-family: "Jost", "Inter", Arial, sans-serif;
     font-weight: 600;
     line-height: 1;
@@ -1900,7 +1900,7 @@ img.snapshot-icon {
     height: 60px;
     padding: 5px;
     border: 1px solid rgba(225, 195, 126, 0.58);
-    border-radius: 10px;
+    border-radius: 18px;
     background: #050505;
 }
 
@@ -3883,13 +3883,13 @@ body.is-pricing-modal-open {
 }
 
 .premium-specs-track {
-    display: grid;
-    grid-template-columns: minmax(0, 316px) minmax(0, 490px) minmax(0, 316px);
-    align-items: center;
-    justify-content: center;
-    gap: 38px;
-    min-height: 520px;
+    position: relative;
+    display: block;
+    height: 540px;
+    min-height: 540px;
+    overflow: visible;
     cursor: grab;
+    perspective: 1200px;
     user-select: none;
     touch-action: pan-y;
 }
@@ -3899,40 +3899,57 @@ body.is-pricing-modal-open {
 }
 
 .premium-specs-slide {
-    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 0;
+    display: block;
+    width: 316px;
     overflow: hidden;
     height: 398px;
     border-radius: 18px;
     background: #111111;
-    opacity: 0.52;
-    transform: scale(1);
+    opacity: 0;
+    pointer-events: none;
+    transform: translate3d(-50%, -50%, 0) scale(0.78);
     box-shadow: 0 24px 70px rgba(0, 0, 0, 0.48);
     cursor: pointer;
-}
-
-.premium-specs-slide.is-prev,
-.premium-specs-slide.is-active,
-.premium-specs-slide.is-next {
-    display: block;
+    transition:
+        width 0.82s cubic-bezier(0.18, 0.86, 0.22, 1),
+        height 0.82s cubic-bezier(0.18, 0.86, 0.22, 1),
+        opacity 0.54s ease,
+        filter 0.72s ease,
+        transform 0.82s cubic-bezier(0.18, 0.86, 0.22, 1),
+        box-shadow 0.82s ease;
+    will-change: width, height, opacity, transform;
 }
 
 .premium-specs-slide.is-prev {
-    order: 1;
+    z-index: 1;
+    opacity: 0.52;
+    pointer-events: auto;
+    transform: translate3d(calc(-50% - 430px), -50%, 0) scale(0.84);
 }
 
 .premium-specs-slide.is-active {
-    order: 2;
+    z-index: 3;
+    width: 490px;
     height: 520px;
     border: 1px solid rgba(225, 195, 126, 0.22);
     border-radius: 16px;
     opacity: 1;
+    pointer-events: auto;
+    transform: translate3d(-50%, -50%, 0) scale(1);
     box-shadow:
         0 30px 90px rgba(0, 0, 0, 0.60),
         0 0 80px rgba(225, 195, 126, 0.09);
 }
 
 .premium-specs-slide.is-next {
-    order: 3;
+    z-index: 1;
+    opacity: 0.52;
+    pointer-events: auto;
+    transform: translate3d(calc(-50% + 430px), -50%, 0) scale(0.84);
 }
 
 .premium-specs-slide img {
@@ -3941,10 +3958,49 @@ body.is-pricing-modal-open {
     height: 100%;
     object-fit: cover;
     object-position: center;
+    transform: scale(1);
+    transition:
+        filter 0.72s ease,
+        transform 0.82s cubic-bezier(0.18, 0.86, 0.22, 1);
+    will-change: transform;
 }
 
 .premium-specs-slide:not(.is-active) img {
     filter: brightness(0.52);
+}
+
+.premium-specs-section.is-spec-forward .premium-specs-slide.is-active img,
+.premium-specs-section.is-spec-backward .premium-specs-slide.is-active img {
+    animation: premiumSpecZoomIn 0.82s cubic-bezier(0.18, 0.86, 0.22, 1) both;
+}
+
+.premium-specs-section.is-spec-forward .premium-specs-slide.is-prev img,
+.premium-specs-section.is-spec-backward .premium-specs-slide.is-next img {
+    animation: premiumSpecZoomOut 0.82s cubic-bezier(0.18, 0.86, 0.22, 1) both;
+}
+
+@keyframes premiumSpecZoomIn {
+    0% {
+        transform: scale(0.90);
+    }
+
+    72% {
+        transform: scale(1.055);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes premiumSpecZoomOut {
+    0% {
+        transform: scale(1.045);
+    }
+
+    100% {
+        transform: scale(0.92);
+    }
 }
 
 .premium-specs-dots {
@@ -3993,18 +4049,19 @@ body.is-pricing-modal-open {
     text-transform: uppercase;
 }
 
-.premium-specs-brands div {
+.premium-specs-brand-list {
     display: grid;
     grid-template-columns: repeat(6, minmax(0, 1fr));
     gap: 14px;
 }
 
-.premium-specs-brands span {
+.premium-specs-brand {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    gap: 10px;
     min-height: 54px;
-    padding: 0 16px;
+    padding: 0 14px;
     border: 1px solid rgba(255, 255, 255, 0.04);
     border-radius: 16px;
     background: #030303;
@@ -4021,11 +4078,65 @@ body.is-pricing-modal-open {
         transform 0.28s ease;
 }
 
-.premium-specs-brands span:hover {
+.premium-specs-brand-logo {
+    display: block;
+    width: 74px;
+    height: 30px;
+    flex: 0 0 74px;
+    padding: 5px 8px;
+    border: 1px solid rgba(225, 195, 126, 0.18);
+    border-radius: 9px;
+    background: #ffffff;
+    object-fit: contain;
+    object-position: center;
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.34),
+        0 8px 18px rgba(0, 0, 0, 0.22);
+}
+
+.premium-specs-brand-logo--kajaria,
+.premium-specs-brand-logo--asian-paints {
+    width: 82px;
+    flex-basis: 82px;
+}
+
+.premium-specs-brand b {
+    min-width: 0;
+    font: inherit;
+}
+
+.premium-specs-brand:hover {
     border-color: rgba(225, 195, 126, 0.36);
     background: rgba(225, 195, 126, 0.10);
     color: #e1c37e;
     transform: translateY(-2px);
+}
+
+.premium-specs-brand-dots {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    margin-top: 16px;
+}
+
+.premium-specs-brand-dots button {
+    width: 7px;
+    height: 7px;
+    padding: 0;
+    border: 0;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.24);
+    transition:
+        width 0.26s ease,
+        background-color 0.26s ease,
+        box-shadow 0.26s ease;
+}
+
+.premium-specs-brand-dots button.is-active {
+    width: 24px;
+    background: #e1c37e;
+    box-shadow: 0 0 18px rgba(225, 195, 126, 0.48);
 }
 
 .premium-specs-notice {
@@ -4305,6 +4416,33 @@ body.is-pricing-modal-open {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 16px;
+}
+
+.visual-gallery-dots {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    margin-top: 14px;
+}
+
+.visual-gallery-dots button {
+    width: 7px;
+    height: 7px;
+    padding: 0;
+    border: 0;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.24);
+    transition:
+        width 0.26s ease,
+        background-color 0.26s ease,
+        box-shadow 0.26s ease;
+}
+
+.visual-gallery-dots button.is-active {
+    width: 24px;
+    background: #e1c37e;
+    box-shadow: 0 0 18px rgba(225, 195, 126, 0.48);
 }
 
 .visual-gallery-card {
@@ -4902,6 +5040,26 @@ body.is-pricing-modal-open {
     line-height: 20px;
 }
 
+.prime-distance-progress {
+    display: none;
+    width: min(224px, 68vw);
+    height: 3px;
+    margin: 18px auto 0;
+    overflow: hidden;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.14);
+}
+
+.prime-distance-progress span {
+    display: block;
+    width: 18%;
+    height: 100%;
+    border-radius: inherit;
+    background: linear-gradient(90deg, #f6da78, #dfbc51);
+    box-shadow: 0 0 18px rgba(223, 188, 81, 0.48);
+    transition: width 0.22s ease;
+}
+
 .prime-whatsapp-location-cta {
     position: relative;
     display: flex;
@@ -4941,6 +5099,12 @@ body.is-pricing-modal-open {
         0 30px 74px rgba(0, 0, 0, 0.28),
         0 0 28px rgba(223, 188, 81, 0.18),
         inset 0 1px 0 rgba(255, 255, 255, 0.32);
+}
+
+.prime-whatsapp-location-cta--map {
+    display: none;
+    width: min(100%, 980px);
+    margin: 22px auto 0;
 }
 
 .prime-whatsapp-location-btn {
@@ -5242,10 +5406,52 @@ body.is-pricing-modal-open {
     text-shadow: 0 8px 20px rgba(0, 0, 0, 0.38);
 }
 
+.lifestyle-amenities-progress {
+    display: none;
+    width: min(224px, 68vw);
+    height: 3px;
+    margin: 16px auto 0;
+    overflow: hidden;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.14);
+}
+
+.lifestyle-amenities-progress span {
+    display: block;
+    width: 18%;
+    height: 100%;
+    border-radius: inherit;
+    background: linear-gradient(90deg, #f6da78, #dfbc51);
+    box-shadow: 0 0 18px rgba(223, 188, 81, 0.48);
+    transition: width 0.22s ease;
+}
+
+.lifestyle-amenities-tab-progress {
+    display: none;
+    width: min(146px, 46vw);
+    height: 2px;
+    margin: 10px auto 0;
+    overflow: hidden;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.13);
+}
+
+.lifestyle-amenities-tab-progress span {
+    display: block;
+    width: 24%;
+    height: 100%;
+    border-radius: inherit;
+    background: linear-gradient(90deg, #f6da78, #dfbc51);
+    box-shadow: 0 0 14px rgba(223, 188, 81, 0.46);
+    transition: width 0.22s ease;
+}
+
 .lifestyle-amenities-eyebrow,
 .lifestyle-amenities-title,
 .lifestyle-amenities-tabs,
+.lifestyle-amenities-tab-progress,
 .lifestyle-amenities-grid,
+.lifestyle-amenities-progress,
 .lifestyle-amenities-cta {
     opacity: 0;
     transform: translateY(34px);
@@ -5257,7 +5463,9 @@ body.is-pricing-modal-open {
 .lifestyle-amenities-section.is-visible .lifestyle-amenities-eyebrow,
 .lifestyle-amenities-section.is-visible .lifestyle-amenities-title,
 .lifestyle-amenities-section.is-visible .lifestyle-amenities-tabs,
+.lifestyle-amenities-section.is-visible .lifestyle-amenities-tab-progress,
 .lifestyle-amenities-section.is-visible .lifestyle-amenities-grid,
+.lifestyle-amenities-section.is-visible .lifestyle-amenities-progress,
 .lifestyle-amenities-section.is-visible .lifestyle-amenities-cta {
     opacity: 1;
     transform: translateY(0);
@@ -5271,12 +5479,20 @@ body.is-pricing-modal-open {
     transition-delay: 0.16s;
 }
 
+.lifestyle-amenities-section.is-visible .lifestyle-amenities-tab-progress {
+    transition-delay: 0.20s;
+}
+
 .lifestyle-amenities-section.is-visible .lifestyle-amenities-grid {
     transition-delay: 0.24s;
 }
 
+.lifestyle-amenities-section.is-visible .lifestyle-amenities-progress {
+    transition-delay: 0.28s;
+}
+
 .lifestyle-amenities-section.is-visible .lifestyle-amenities-cta {
-    transition-delay: 0.32s;
+    transition-delay: 0.34s;
 }
 
 /* Construction progress: photo-led milestone accordion. */

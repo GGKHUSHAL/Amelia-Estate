@@ -454,19 +454,29 @@
     }
 
     .premium-specs-track {
-        grid-template-columns: minmax(0, 230px) minmax(0, 420px) minmax(0, 230px);
-        gap: 22px;
+        height: 480px;
+        min-height: 480px;
     }
 
     .premium-specs-slide {
+        width: 230px;
         height: 340px;
     }
 
+    .premium-specs-slide.is-prev {
+        transform: translate3d(calc(-50% - 350px), -50%, 0) scale(0.84);
+    }
+
     .premium-specs-slide.is-active {
+        width: 420px;
         height: 460px;
     }
 
-    .premium-specs-brands div {
+    .premium-specs-slide.is-next {
+        transform: translate3d(calc(-50% + 350px), -50%, 0) scale(0.84);
+    }
+
+    .premium-specs-brand-list {
         grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 
@@ -1137,19 +1147,22 @@
     }
 
     .premium-specs-track {
-        grid-template-columns: minmax(0, 1fr);
-        min-height: 0;
+        height: 430px;
+        min-height: 430px;
+        overflow: hidden;
     }
 
     .premium-specs-slide.is-prev,
     .premium-specs-slide.is-next {
-        display: none;
+        display: block;
+        opacity: 0;
+        pointer-events: none;
     }
 
     .premium-specs-slide.is-active {
         width: min(100%, 560px);
         height: 430px;
-        margin: 0 auto;
+        margin: 0;
     }
 
     .transparent-pricing-top {
@@ -1697,15 +1710,15 @@
 
     .ideal-floor-section {
         min-height: 0;
-        padding: 40px 20px 44px;
+        padding: 34px 16px 38px;
         background: #000000;
     }
 
     .ideal-floor-header {
         flex-direction: column;
         align-items: flex-start;
-        gap: 16px;
-        margin-bottom: 20px;
+        gap: 12px;
+        margin-bottom: 16px;
     }
 
     .ideal-floor-eyebrow {
@@ -1716,38 +1729,41 @@
     }
 
     .ideal-floor-heading h2 {
-        font-size: 30px;
-        line-height: 37px;
+        font-size: 27px;
+        line-height: 32px;
     }
 
     .ideal-floor-heading > p:not(.ideal-floor-eyebrow) {
-        margin-top: 14px;
-        font-size: 15px;
-        line-height: 22px;
+        margin-top: 8px;
+        font-size: 13px;
+        line-height: 18px;
     }
 
     .ideal-floor-size-tabs {
         width: 100%;
         min-width: 0;
         height: auto;
-        min-height: 54px;
+        min-height: 46px;
+        padding: 4px;
+        border-radius: 18px;
     }
 
     .ideal-floor-size-tabs button {
-        height: 44px;
-        font-size: 13px;
+        height: 38px;
+        border-radius: 14px;
+        font-size: 12px;
         white-space: nowrap;
     }
 
     .ideal-floor-card {
         grid-template-columns: 1fr;
         min-height: 0;
-        border-radius: 14px;
+        border-radius: 22px;
     }
 
     .ideal-floor-media,
     .ideal-floor-media img {
-        min-height: 286px;
+        min-height: 210px;
     }
 
     .ideal-floor-media {
@@ -1771,28 +1787,31 @@
     }
 
     .ideal-floor-panel {
-        gap: 16px;
-        padding: 22px 18px 20px;
+        gap: 12px;
+        padding: 18px 16px 16px;
     }
 
     .ideal-floor-panel h3 {
-        font-size: 24px;
-        line-height: 31px;
-        letter-spacing: 0.02em;
+        font-size: 21px;
+        line-height: 26px;
+        letter-spacing: 0.01em;
     }
 
     .ideal-floor-panel > div:first-child p {
-        font-size: 13px;
-        line-height: 18px;
-        letter-spacing: 0.06em;
+        margin-top: 4px;
+        font-size: 11px;
+        line-height: 15px;
+        letter-spacing: 0.04em;
     }
 
     .ideal-floor-levels {
-        height: 56px;
+        height: 50px;
+        border-radius: 18px;
     }
 
     .ideal-floor-levels button {
-        font-size: 13px;
+        border-radius: 14px;
+        font-size: 11px;
     }
 
     .ideal-floor-specs {
@@ -1801,26 +1820,27 @@
     }
 
     .ideal-floor-spec {
-        min-height: 58px;
-        padding: 12px 10px;
-        border-radius: 14px;
+        min-height: 72px;
+        padding: 11px 10px;
+        border-radius: 16px;
     }
 
     .ideal-floor-price-btn {
-        height: 50px;
-        font-size: 14px;
+        height: 48px;
+        border-radius: 16px;
+        font-size: 13px;
     }
 
     .project-plans-section {
-        padding: 48px 16px 54px;
+        padding: 34px 16px 38px;
     }
 
     .project-plans-header {
         display: flex;
         flex-direction: column;
         align-items: stretch;
-        gap: 20px;
-        margin-bottom: 26px;
+        gap: 12px;
+        margin-bottom: 16px;
     }
 
     .project-plans-copy {
@@ -1828,25 +1848,25 @@
     }
 
     .project-plans-copy h2 {
-        font-size: 29px;
-        line-height: 36px;
+        font-size: 27px;
+        line-height: 32px;
         max-width: 100%;
     }
 
     .project-plans-copy > p:not(.project-plans-eyebrow) {
         width: 100%;
         max-width: 100%;
-        font-size: 15px;
-        line-height: 22px;
+        font-size: 13px;
+        line-height: 18px;
         overflow-wrap: normal;
     }
 
     .project-plans-eyebrow {
-        min-height: 28px;
-        margin-bottom: 16px;
-        padding: 6px 14px;
-        font-size: 11px;
-        letter-spacing: 0.1em;
+        min-height: 24px;
+        margin-bottom: 8px;
+        padding: 5px 11px;
+        font-size: 9px;
+        letter-spacing: 0.16em;
     }
 
     .project-plans-eyebrow,
@@ -1858,15 +1878,16 @@
     }
 
     .project-plan-tabs {
-        display: flex;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
         width: 100%;
         min-width: 0;
         height: auto;
-        min-height: 52px;
+        min-height: 46px;
         padding: 4px;
-        gap: 6px;
-        border-radius: 12px;
-        overflow-x: auto;
+        gap: 4px;
+        border-radius: 18px;
+        overflow: visible;
         scrollbar-width: none;
     }
 
@@ -1875,36 +1896,38 @@
     }
 
     .project-plan-tabs button {
-        flex: 0 0 auto;
-        min-width: 116px;
-        width: auto;
-        height: 44px;
-        gap: 4px;
-        padding: 0 12px;
-        border-radius: 9px;
-        font-size: 11px;
+        min-width: 0;
+        width: 100%;
+        height: 38px;
+        gap: 3px;
+        padding: 0 4px;
+        border-radius: 14px;
+        font-size: 9.5px;
         white-space: nowrap;
     }
 
     .project-plan-tabs svg {
-        width: 13px;
-        height: 13px;
-        flex: 0 0 13px;
+        width: 11px;
+        height: 11px;
+        flex: 0 0 11px;
     }
 
     .project-plan-tabs .project-plan-cube-icon {
-        width: 14px;
-        height: 14px;
-        flex-basis: 14px;
+        width: 12px;
+        height: 12px;
+        flex-basis: 12px;
     }
 
     .project-plan-card {
-        border-radius: 14px;
+        border-radius: 22px;
     }
 
     .project-plan-variant-bar {
-        gap: 14px;
-        padding: 16px;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 8px;
+        min-height: 0;
+        padding: 10px;
     }
 
     .project-plan-variants {
@@ -1912,7 +1935,10 @@
         grid-template-columns: repeat(3, minmax(0, 1fr));
         width: 100%;
         min-width: 0;
-        gap: 8px;
+        height: auto;
+        gap: 5px;
+        padding: 4px;
+        border-radius: 16px;
     }
 
     .project-plan-variants span {
@@ -1923,78 +1949,85 @@
     .project-plan-variants button {
         width: 100%;
         min-width: 0;
-        height: 36px;
-        padding: 0 8px;
-        font-size: 11px;
+        height: 34px;
+        padding: 0 5px;
+        border-radius: 12px;
+        font-size: 10px;
         white-space: normal;
         line-height: 1.1;
     }
 
     .project-plan-meta {
         width: 100%;
-        font-size: 14px;
+        font-size: 12px;
+        line-height: 16px;
+        text-align: center;
     }
 
     .project-plan-visual,
     .project-plan-visual.is-site {
-        min-height: 292px;
-        padding: 54px 14px 68px;
+        min-height: 218px;
+        padding: 38px 10px 46px;
     }
 
     .project-plan-image,
     .project-plan-visual.is-site .project-plan-image {
         width: 100%;
-        max-height: 210px;
+        max-height: 152px;
     }
 
     .project-plan-badge {
-        top: 16px;
-        left: 16px;
-        max-width: calc(100% - 32px);
-        font-size: 10px;
+        top: 10px;
+        left: 10px;
+        min-height: 24px;
+        max-width: calc(100% - 20px);
+        padding: 6px 10px;
+        font-size: 8.5px;
     }
 
     .project-plan-tools {
-        right: 16px;
-        bottom: 16px;
+        right: 10px;
+        bottom: 10px;
     }
 
     .project-plan-tools a {
-        width: 38px;
-        height: 38px;
+        width: 32px;
+        height: 32px;
     }
 
     .project-plan-footer {
         flex-direction: column;
         align-items: stretch;
-        gap: 18px;
-        padding: 20px 18px;
+        gap: 10px;
+        padding: 14px 12px;
     }
 
     .project-plan-footer h3 {
         max-width: 100%;
-        font-size: 24px;
-        line-height: 31px;
+        font-size: 18px;
+        line-height: 23px;
         overflow-wrap: anywhere;
     }
 
     .project-plan-footer p {
-        font-size: 14px;
-        line-height: 21px;
+        margin-top: 4px;
+        font-size: 11px;
+        line-height: 16px;
     }
 
     .project-plan-cta {
         width: 100%;
         min-width: 0;
-        height: 50px;
-        padding: 0 12px;
-        font-size: 14px;
+        height: 42px;
+        padding: 0 10px;
+        border-radius: 16px;
+        font-size: 11px;
         white-space: normal;
         text-align: center;
     }
 
     .transparent-pricing-section {
-        padding: 52px 16px 58px;
+        padding: 34px 16px 38px;
     }
 
     .premium-specs-section {
@@ -2430,13 +2463,37 @@
     }
 
     .visual-showcase-grid {
-        grid-template-columns: 1fr;
+        display: flex;
+        grid-template-columns: none;
         gap: 12px;
+        margin-right: -16px;
+        margin-left: -16px;
+        padding: 0 16px 4px;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: none;
+    }
+
+    .visual-showcase-grid::-webkit-scrollbar {
+        display: none;
     }
 
     .visual-gallery-card {
+        flex: 0 0 min(84vw, 340px);
         height: 250px;
         border-radius: 10px;
+        scroll-snap-align: center;
+        scroll-snap-stop: always;
+    }
+
+    .visual-gallery-card.is-active {
+        box-shadow:
+            0 22px 54px rgba(0, 0, 0, 0.46),
+            0 0 0 1px rgba(225, 195, 126, 0.28);
+    }
+
+    .visual-gallery-dots {
+        display: flex;
     }
 
     .visual-walkthrough-card {
@@ -2520,17 +2577,35 @@
     }
 
     .premium-specs-track {
-        grid-template-columns: minmax(0, 1fr);
-        min-height: 0;
+        height: 360px;
+        min-height: 360px;
+        overflow: hidden;
+    }
+
+    .premium-specs-slide {
+        width: 100%;
+        max-width: 560px;
+        height: 320px;
     }
 
     .premium-specs-slide.is-prev,
     .premium-specs-slide.is-next {
-        display: none;
+        display: block;
+        opacity: 0;
+        pointer-events: none;
+    }
+
+    .premium-specs-slide.is-prev {
+        transform: translate3d(calc(-50% - 70%), -50%, 0) scale(0.86);
+    }
+
+    .premium-specs-slide.is-next {
+        transform: translate3d(calc(-50% + 70%), -50%, 0) scale(0.86);
     }
 
     .premium-specs-slide.is-active {
         width: 100%;
+        max-width: 560px;
         height: 360px;
         border-radius: 14px;
     }
@@ -2550,15 +2625,52 @@
         letter-spacing: 0.22em;
     }
 
-    .premium-specs-brands div {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+    .premium-specs-brand-list {
+        display: flex;
+        grid-template-columns: none;
         gap: 10px;
+        margin: 0 -8px;
+        padding: 0 8px 2px;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: none;
     }
 
-    .premium-specs-brands span {
+    .premium-specs-brand-list::-webkit-scrollbar {
+        display: none;
+    }
+
+    .premium-specs-brand {
+        flex: 0 0 min(78vw, 240px);
         min-height: 46px;
         padding: 0 10px;
+        scroll-snap-align: center;
+        scroll-snap-stop: always;
         font-size: 12px;
+    }
+
+    .premium-specs-brand-logo {
+        width: 72px;
+        height: 28px;
+        flex-basis: 72px;
+        padding: 5px 7px;
+        border-radius: 9px;
+    }
+
+    .premium-specs-brand-logo--kajaria,
+    .premium-specs-brand-logo--asian-paints {
+        width: 78px;
+        flex-basis: 78px;
+    }
+
+    .premium-specs-brand.is-active {
+        border-color: rgba(225, 195, 126, 0.52);
+        background: rgba(225, 195, 126, 0.12);
+        color: #e1c37e;
+    }
+
+    .premium-specs-brand-dots {
+        display: flex;
     }
 
     .premium-specs-notice {
@@ -2574,8 +2686,8 @@
     .transparent-pricing-top {
         flex-direction: column;
         align-items: center;
-        gap: 20px;
-        margin-bottom: 28px;
+        gap: 12px;
+        margin-bottom: 16px;
     }
 
     .transparent-pricing-header {
@@ -2586,32 +2698,32 @@
     }
 
     .transparent-pricing-eyebrow {
-        min-height: 28px;
-        margin-bottom: 16px;
-        padding: 6px 14px;
-        font-size: 11px;
-        letter-spacing: 0.1em;
+        min-height: 24px;
+        margin-bottom: 8px;
+        padding: 5px 11px;
+        font-size: 9px;
+        letter-spacing: 0.16em;
     }
 
     .transparent-pricing-header h2 {
-        font-size: 30px;
-        line-height: 37px;
+        font-size: 27px;
+        line-height: 32px;
     }
 
     .transparent-pricing-header > p:not(.transparent-pricing-eyebrow) {
-        max-width: 340px;
+        max-width: 300px;
         margin-left: auto;
         margin-right: auto;
-        font-size: 15px;
-        line-height: 22px;
+        font-size: 13px;
+        line-height: 18px;
     }
 
     .transparent-pricing-section.is-pricing-unlocked .transparent-pricing-top {
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 20px;
-        margin-bottom: 28px;
+        gap: 12px;
+        margin-bottom: 16px;
     }
 
     .transparent-pricing-section.is-pricing-unlocked .transparent-pricing-header {
@@ -2626,10 +2738,10 @@
         min-width: 0;
         max-width: 398px;
         height: auto;
-        min-height: 52px;
+        min-height: 46px;
         margin: 0 auto;
         padding: 4px;
-        border-radius: 12px;
+        border-radius: 18px;
     }
 
     .transparent-pricing-section.is-pricing-unlocked .transparent-pricing-tabs {
@@ -2641,89 +2753,146 @@
 
     .transparent-pricing-tabs button {
         min-width: 0;
-        height: 44px;
-        border-radius: 9px;
-        font-size: 13px;
+        height: 38px;
+        border-radius: 14px;
+        font-size: 12px;
         white-space: nowrap;
     }
 
     .pricing-card {
-        border-radius: 16px;
+        border-radius: 22px;
     }
 
     .pricing-left,
     .pricing-right {
-        padding: 20px;
+        padding: 14px;
     }
 
     .pricing-right {
-        gap: 22px;
+        gap: 12px;
     }
 
     .pricing-image-wrap img {
-        height: 240px;
+        height: 170px;
     }
 
     .pricing-image-badge {
         left: 12px;
         bottom: 12px;
-        min-height: 32px;
-        padding: 8px 13px;
-        font-size: 11px;
+        min-height: 26px;
+        padding: 6px 10px;
+        border-radius: 999px;
+        font-size: 9px;
     }
 
     .floor-price-panel {
-        margin-top: 18px;
+        margin-top: 10px;
+        padding: 10px;
+        border-radius: 16px;
+    }
+
+    .floor-price-panel > p {
+        margin-bottom: 8px;
+        font-size: 10px;
+        line-height: 14px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
     }
 
     .floor-price-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 7px;
     }
 
     .floor-price-grid button {
-        min-height: 64px;
+        min-height: 54px;
+        padding: 0 7px;
+        border-radius: 14px;
+    }
+
+    .floor-price-grid span {
+        font-size: 10px;
+        line-height: 13px;
     }
 
     .floor-price-grid strong {
-        font-size: 19px;
-        line-height: 25px;
+        margin-top: 3px;
+        font-size: 14px;
+        line-height: 18px;
     }
 
     .pricing-title-block h3 {
-        font-size: 26px;
-        line-height: 33px;
-        letter-spacing: 0.02em;
+        font-size: 20px;
+        line-height: 25px;
+        letter-spacing: 0.01em;
     }
 
     .pricing-title-block p {
-        font-size: 16px;
+        margin-top: 4px;
+        font-size: 12px;
+        line-height: 16px;
     }
 
     .pricing-spec-grid {
-        grid-template-columns: 1fr;
-        gap: 12px;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 7px;
     }
 
     .pricing-spec {
-        min-height: 78px;
-        padding: 15px 14px;
+        grid-template-columns: 21px minmax(0, 1fr);
+        column-gap: 8px;
+        min-height: 68px;
+        padding: 10px 8px;
+        border-radius: 16px;
+    }
+
+    .pricing-spec img,
+    .pricing-spec svg {
+        width: 21px;
+        height: 21px;
+    }
+
+    .pricing-spec span {
+        font-size: 9px;
+        line-height: 11px;
+    }
+
+    .pricing-spec strong {
+        margin-top: 3px;
+        font-size: 12px;
+        line-height: 15px;
     }
 
     .selected-price-box {
-        min-height: 132px;
-        padding: 22px 16px 18px;
+        min-height: 104px;
+        padding: 16px 12px 14px;
+        border-radius: 16px;
+    }
+
+    .selected-price-box > span {
+        font-size: 9px;
+        line-height: 12px;
+        letter-spacing: 0.14em;
     }
 
     .selected-price-box strong {
-        font-size: 38px;
-        line-height: 46px;
+        margin-top: 6px;
+        font-size: 30px;
+        line-height: 36px;
+    }
+
+    .selected-price-box p {
+        margin-top: 4px;
+        font-size: 10px;
+        line-height: 14px;
     }
 
     .pricing-unlock-btn {
-        min-height: 50px;
+        min-height: 44px;
         height: auto;
-        padding: 11px 14px;
-        font-size: 14px;
+        padding: 9px 10px;
+        border-radius: 16px;
+        font-size: 12px;
     }
 
     .transparent-pricing-eyebrow,
@@ -3284,102 +3453,138 @@
     }
 
     .project-plans-section {
-        padding: 42px 14px 48px;
+        padding: 28px 14px 34px;
     }
 
     .project-plans-header {
         align-items: stretch;
-        gap: 18px;
-        margin-bottom: 22px;
+        gap: 10px;
+        margin-bottom: 12px;
     }
 
     .project-plans-eyebrow {
-        padding: 6px 12px;
-        font-size: 10px;
+        min-height: 24px;
+        margin-bottom: 7px;
+        padding: 5px 11px;
+        font-size: 8.5px;
     }
 
     .project-plans-copy h2 {
-        font-size: 27px;
-        line-height: 34px;
+        font-size: 23px;
+        line-height: 28px;
     }
 
     .project-plans-copy > p:not(.project-plans-eyebrow) {
         max-width: 100%;
-        font-size: 14px;
-        line-height: 21px;
+        margin-top: 6px;
+        font-size: 11px;
+        line-height: 16px;
     }
 
     .project-plan-tabs {
-        margin-top: 2px;
+        min-height: 42px;
+        margin-top: 0;
+        border-radius: 16px;
     }
 
     .project-plan-tabs button {
-        min-width: 112px;
-        font-size: 10px;
+        height: 34px;
+        min-width: 0;
+        padding: 0 3px;
+        border-radius: 12px;
+        font-size: 8px;
     }
 
     .project-plan-tabs svg {
-        width: 12px;
-        height: 12px;
-        flex-basis: 12px;
+        width: 9px;
+        height: 9px;
+        flex-basis: 9px;
+    }
+
+    .project-plan-tabs .project-plan-cube-icon {
+        width: 10px;
+        height: 10px;
+        flex-basis: 10px;
+    }
+
+    .project-plan-card {
+        border-radius: 22px;
+    }
+
+    .project-plan-variant-bar {
+        gap: 6px;
+        padding: 8px;
     }
 
     .project-plan-variants {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 4px;
+        padding: 4px;
     }
 
     .project-plan-variants button {
-        height: 38px;
-        font-size: 12px;
+        height: 31px;
+        padding: 0 4px;
+        font-size: 9px;
+    }
+
+    .project-plan-meta {
+        font-size: 10px;
+        line-height: 14px;
     }
 
     .project-plan-visual,
     .project-plan-visual.is-site {
-        min-height: 266px;
-        padding: 52px 12px 64px;
+        min-height: 178px;
+        padding: 34px 8px 40px;
     }
 
     .project-plan-image,
     .project-plan-visual.is-site .project-plan-image {
-        max-height: 180px;
+        max-height: 118px;
     }
 
     .project-plan-badge {
-        top: 12px;
-        left: 12px;
-        min-height: 28px;
-        padding: 7px 12px;
-        font-size: 9px;
+        top: 8px;
+        left: 8px;
+        min-height: 22px;
+        padding: 5px 9px;
+        font-size: 7.5px;
     }
 
     .project-plan-tools {
-        right: 12px;
-        bottom: 12px;
+        right: 8px;
+        bottom: 8px;
     }
 
     .project-plan-tools a {
-        width: 36px;
-        height: 36px;
+        width: 30px;
+        height: 30px;
+    }
+
+    .project-plan-tools svg {
+        width: 16px;
+        height: 16px;
     }
 
     .project-plan-footer {
-        padding: 18px 16px;
+        padding: 12px 10px;
     }
 
     .project-plan-footer h3 {
-        font-size: 22px;
-        line-height: 28px;
+        font-size: 17px;
+        line-height: 22px;
     }
 
     .project-plan-cta {
-        min-height: 48px;
+        min-height: 40px;
         height: auto;
-        font-size: 13px;
+        font-size: 10px;
         line-height: 1.2;
     }
 
     .transparent-pricing-section {
-        padding: 44px 14px 50px;
+        padding: 28px 14px 34px;
     }
 
     .premium-specs-section {
@@ -3753,16 +3958,45 @@
     }
 
     .prime-distance-grid {
-        display: grid !important;
-        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-        gap: 14px !important;
-        margin-top: 24px;
+        display: flex !important;
+        grid-template-columns: none !important;
+        gap: 12px !important;
+        margin: 24px -14px 0;
+        padding: 0 14px 4px;
+        overflow-x: auto;
+        overflow-y: hidden;
+        scroll-padding-inline: 14px;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: none;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .prime-distance-grid::-webkit-scrollbar {
+        display: none;
     }
 
     .prime-distance-card {
-        min-height: 190px;
+        min-height: 206px;
+        width: auto;
+        flex: 0 0 min(76vw, 244px);
         padding: 22px 16px 18px;
-        width: 100%;
+        border-radius: 16px;
+        scroll-snap-align: center;
+        scroll-snap-stop: always;
+    }
+
+    .prime-distance-card.is-active {
+        border-color: rgba(246, 218, 120, 0.62);
+        background:
+            linear-gradient(135deg, rgba(246, 218, 120, 0.16), rgba(255, 255, 255, 0.035)),
+            #202020;
+        box-shadow:
+            inset 0 1px 0 rgba(255, 255, 255, 0.06),
+            0 18px 42px rgba(0, 0, 0, 0.32);
+    }
+
+    .prime-distance-progress {
+        display: block;
     }
 
     .prime-distance-card div {
@@ -3866,6 +4100,7 @@
     }
 
     .visual-gallery-card {
+        flex-basis: min(82vw, 276px);
         height: 220px;
     }
 
@@ -3898,12 +4133,28 @@
         line-height: 21px;
     }
 
+    .premium-specs-track {
+        height: 300px;
+        min-height: 300px;
+    }
+
+    .premium-specs-slide {
+        height: 270px;
+    }
+
     .premium-specs-slide.is-active {
         height: 300px;
     }
 
-    .premium-specs-brands div {
-        grid-template-columns: 1fr;
+    .premium-specs-brand-list {
+        margin-right: -10px;
+        margin-left: -10px;
+        padding-right: 10px;
+        padding-left: 10px;
+    }
+
+    .premium-specs-brand {
+        flex-basis: min(76vw, 232px);
     }
 
     .premium-specs-notice {
@@ -3911,13 +4162,13 @@
     }
 
     .transparent-pricing-top {
-        gap: 18px;
-        margin-bottom: 24px;
+        gap: 10px;
+        margin-bottom: 12px;
     }
 
     .transparent-pricing-section.is-pricing-unlocked .transparent-pricing-top {
-        gap: 18px;
-        margin-bottom: 24px;
+        gap: 10px;
+        margin-bottom: 12px;
     }
 
     .transparent-pricing-section.is-pricing-unlocked .transparent-pricing-header {
@@ -3934,48 +4185,141 @@
     }
 
     .transparent-pricing-eyebrow {
-        padding: 6px 12px;
-        font-size: 10px;
+        min-height: 24px;
+        margin-bottom: 7px;
+        padding: 5px 11px;
+        font-size: 8.5px;
     }
 
     .transparent-pricing-header h2 {
-        font-size: 27px;
-        line-height: 34px;
+        font-size: 23px;
+        line-height: 28px;
     }
 
     .transparent-pricing-header > p:not(.transparent-pricing-eyebrow) {
-        font-size: 14px;
-        line-height: 21px;
+        margin-top: 6px;
+        font-size: 11px;
+        line-height: 16px;
+    }
+
+    .transparent-pricing-tabs {
+        min-height: 42px;
+        border-radius: 16px;
     }
 
     .transparent-pricing-tabs button {
-        font-size: 11px;
+        height: 34px;
+        border-radius: 12px;
+        font-size: 10px;
         padding: 0 4px;
     }
 
     .pricing-left,
     .pricing-right {
-        padding: 16px;
+        padding: 10px;
+    }
+
+    .pricing-right {
+        gap: 9px;
     }
 
     .pricing-image-wrap img {
-        height: 205px;
+        height: 132px;
+    }
+
+    .pricing-image-badge {
+        left: 8px;
+        bottom: 8px;
+        min-height: 24px;
+        padding: 5px 9px;
+        font-size: 8px;
+    }
+
+    .floor-price-panel {
+        margin-top: 8px;
+        padding: 8px;
+    }
+
+    .floor-price-panel > p {
+        margin-bottom: 7px;
+        font-size: 8.5px;
+        line-height: 12px;
+    }
+
+    .floor-price-grid {
+        gap: 5px;
+    }
+
+    .floor-price-grid button {
+        min-height: 48px;
+        padding: 0 5px;
+        border-radius: 12px;
+    }
+
+    .floor-price-grid span {
+        font-size: 9px;
+        line-height: 12px;
+    }
+
+    .floor-price-grid strong {
+        font-size: 12px;
+        line-height: 16px;
     }
 
     .pricing-title-block h3 {
-        font-size: 24px;
-        line-height: 31px;
+        font-size: 17px;
+        line-height: 22px;
+    }
+
+    .pricing-title-block p {
+        font-size: 11px;
+        line-height: 14px;
+    }
+
+    .pricing-spec-grid {
+        gap: 6px;
+    }
+
+    .pricing-spec {
+        grid-template-columns: 19px minmax(0, 1fr);
+        column-gap: 7px;
+        min-height: 62px;
+        padding: 9px 7px;
+        border-radius: 14px;
+    }
+
+    .pricing-spec img,
+    .pricing-spec svg {
+        width: 19px;
+        height: 19px;
+    }
+
+    .pricing-spec span {
+        font-size: 8px;
+        line-height: 10px;
+    }
+
+    .pricing-spec strong {
+        margin-top: 2px;
+        font-size: 10.5px;
+        line-height: 13px;
+    }
+
+    .selected-price-box {
+        min-height: 88px;
+        padding: 12px 10px 11px;
     }
 
     .selected-price-box strong {
-        font-size: 34px;
-        line-height: 42px;
+        font-size: 25px;
+        line-height: 30px;
     }
 
     .pricing-unlock-btn {
-        min-height: 48px;
+        min-height: 40px;
         height: auto;
-        padding: 11px 12px;
+        padding: 8px 10px;
+        font-size: 10px;
         line-height: 1.2;
     }
 
@@ -5183,5 +5527,501 @@
     .hero-slide:not(.hero-slide--figma) .hero-copy h1 {
         max-width: 282px;
         font-size: clamp(25px, 7.4vw, 31px);
+    }
+}
+
+@media (max-width: 575px) {
+    .ideal-floor-section {
+        padding: 30px 14px 34px;
+    }
+
+    .ideal-floor-header {
+        gap: 10px;
+        margin-bottom: 14px;
+    }
+
+    .ideal-floor-eyebrow {
+        height: 24px;
+        padding: 5px 11px;
+        font-size: 9px;
+        letter-spacing: 0.22em;
+    }
+
+    .ideal-floor-heading h2 {
+        max-width: 280px;
+        font-size: 23px;
+        line-height: 28px;
+    }
+
+    .ideal-floor-heading > p:not(.ideal-floor-eyebrow) {
+        max-width: 280px;
+        margin-top: 6px;
+        font-size: 11px;
+        line-height: 16px;
+    }
+
+    .ideal-floor-size-tabs {
+        min-height: 42px;
+        gap: 4px;
+        padding: 4px;
+        border-radius: 16px;
+    }
+
+    .ideal-floor-size-tabs button {
+        height: 34px;
+        padding: 0 5px;
+        border-radius: 12px;
+        font-size: 10px;
+    }
+
+    .ideal-floor-card {
+        border-radius: 22px;
+    }
+
+    .ideal-floor-media,
+    .ideal-floor-media img {
+        min-height: 156px;
+    }
+
+    .ideal-floor-media {
+        border-radius: 20px 20px 0 0;
+    }
+
+    .ideal-floor-badges {
+        top: 9px;
+        left: 9px;
+        gap: 6px;
+        max-width: calc(100% - 18px);
+    }
+
+    .ideal-floor-badges span,
+    .ideal-floor-badges strong {
+        min-height: 26px;
+        padding: 6px 10px;
+        border-radius: 999px;
+        font-size: 9px;
+        letter-spacing: 0.04em;
+    }
+
+    .ideal-floor-badges svg {
+        width: 12px;
+        height: 12px;
+    }
+
+    .ideal-floor-panel {
+        gap: 10px;
+        padding: 14px 12px 14px;
+    }
+
+    .ideal-floor-panel h3 {
+        font-size: 18px;
+        line-height: 23px;
+    }
+
+    .ideal-floor-panel > div:first-child p {
+        margin-top: 3px;
+        font-size: 10px;
+        line-height: 14px;
+        letter-spacing: 0.03em;
+    }
+
+    .ideal-floor-selector {
+        gap: 7px;
+    }
+
+    .ideal-floor-selector > span {
+        font-size: 10px;
+        line-height: 13px;
+        letter-spacing: 0.09em;
+    }
+
+    .ideal-floor-levels {
+        height: 46px;
+        padding: 4px;
+        border-radius: 16px;
+    }
+
+    .ideal-floor-levels button {
+        gap: 1px;
+        border-radius: 12px;
+        font-size: 10px;
+    }
+
+    .ideal-floor-levels button svg,
+    .ideal-floor-levels button img {
+        width: 12px;
+        height: 12px;
+    }
+
+    .ideal-floor-specs {
+        gap: 7px;
+    }
+
+    .ideal-floor-spec {
+        grid-template-columns: 21px minmax(0, 1fr);
+        column-gap: 8px;
+        min-height: 68px;
+        padding: 10px 8px;
+        border-radius: 16px;
+    }
+
+    .ideal-floor-spec img {
+        width: 21px;
+        height: 21px;
+    }
+
+    .ideal-floor-spec span {
+        font-size: 9px;
+        line-height: 11px;
+    }
+
+    .ideal-floor-spec strong {
+        margin-top: 3px;
+        font-size: 13px;
+        line-height: 16px;
+    }
+
+    .ideal-floor-price-btn {
+        height: 44px;
+        gap: 8px;
+        border-radius: 16px;
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 767px) {
+    .prime-distance-block {
+        margin-top: 32px;
+    }
+
+    .prime-distance-block h3 {
+        width: min(100%, 250px);
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 25px;
+        line-height: 31px;
+    }
+
+    .prime-distance-grid {
+        display: flex !important;
+        grid-template-columns: none !important;
+        gap: 12px !important;
+        margin: 24px -14px 0;
+        padding: 0 14px 4px;
+        overflow-x: auto;
+        overflow-y: hidden;
+        scroll-padding-inline: 14px;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: none;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .prime-distance-grid::-webkit-scrollbar {
+        display: none;
+    }
+
+    .prime-distance-card {
+        width: auto;
+        min-height: 206px;
+        flex: 0 0 min(76vw, 244px);
+        padding: 22px 16px 18px;
+        border-radius: 16px;
+        scroll-snap-align: center;
+        scroll-snap-stop: always;
+    }
+
+    .prime-distance-card.is-active {
+        border-color: rgba(246, 218, 120, 0.62);
+        background:
+            linear-gradient(135deg, rgba(246, 218, 120, 0.16), rgba(255, 255, 255, 0.035)),
+            #202020;
+        box-shadow:
+            inset 0 1px 0 rgba(255, 255, 255, 0.06),
+            0 18px 42px rgba(0, 0, 0, 0.32);
+    }
+
+    .prime-distance-card div {
+        display: block;
+    }
+
+    .prime-distance-card svg {
+        width: 35px;
+        height: 35px;
+        margin-bottom: 28px;
+    }
+
+    .prime-distance-card span {
+        display: block;
+        font-size: 15px;
+        line-height: 20px;
+    }
+
+    .prime-distance-card strong {
+        margin: 8px 0 0;
+        font-size: 13px;
+        line-height: 18px;
+    }
+
+    .prime-distance-card strong em {
+        margin-bottom: 10px;
+        font-size: 15px;
+        line-height: 20px;
+    }
+
+    .prime-distance-progress {
+        display: block;
+    }
+
+    .prime-whatsapp-location-cta--map {
+        display: flex;
+        width: calc(100% - 28px);
+        height: 136px;
+        min-height: 136px;
+        max-height: 136px;
+        margin: 14px auto 0;
+        padding: 0 16px;
+        border-radius: 16px;
+        opacity: 1;
+        transform: translateY(0);
+        transition:
+            max-height 0.36s ease,
+            min-height 0.36s ease,
+            height 0.36s ease,
+            margin 0.36s ease,
+            padding 0.36s ease,
+            opacity 0.24s ease,
+            transform 0.32s ease;
+    }
+
+    .prime-whatsapp-location-cta--after-distance {
+        height: 0;
+        min-height: 0;
+        max-height: 0;
+        margin-top: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+        border-width: 0;
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(16px);
+        transition:
+            max-height 0.38s ease,
+            min-height 0.38s ease,
+            height 0.38s ease,
+            margin 0.38s ease,
+            padding 0.38s ease,
+            opacity 0.28s ease,
+            transform 0.34s ease;
+    }
+
+    .prime-location-section.is-distance-cta-shifted .prime-whatsapp-location-cta--map {
+        height: 0;
+        min-height: 0;
+        max-height: 0;
+        margin-top: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+        border-width: 0;
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(-14px);
+    }
+
+    .prime-location-section.is-distance-cta-shifted .prime-whatsapp-location-cta--after-distance {
+        height: 162px;
+        min-height: 162px;
+        max-height: 162px;
+        margin-top: 26px;
+        padding: 0 18px;
+        border-width: 1px;
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateY(0);
+    }
+
+    .prime-whatsapp-location-cta--map .prime-whatsapp-location-btn {
+        width: min(100%, 254px);
+        height: 42px;
+        font-size: 13px;
+        line-height: 17px;
+    }
+
+    .prime-whatsapp-location-cta--map small {
+        max-width: 254px;
+        margin-top: 18px;
+        font-size: 12px;
+        line-height: 17px;
+    }
+}
+
+@media (max-width: 767px) {
+    .lifestyle-amenities-section {
+        padding: 36px 0 38px !important;
+    }
+
+    .lifestyle-amenities-section > div {
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    .lifestyle-amenities-section > div > .mx-auto.text-center {
+        width: calc(100% - 32px);
+    }
+
+    .lifestyle-amenities-eyebrow {
+        min-height: 24px;
+        padding: 5px 11px;
+        font-size: 9px;
+        letter-spacing: 0.12em;
+    }
+
+    .lifestyle-amenities-title {
+        margin-top: 14px !important;
+        font-size: 25px !important;
+        line-height: 30px !important;
+    }
+
+    .lifestyle-amenities-tabs {
+        display: flex !important;
+        grid-template-columns: none !important;
+        gap: 8px !important;
+        width: auto;
+        max-width: none;
+        margin: 18px -16px 0 !important;
+        padding: 0 16px 2px;
+        overflow-x: auto;
+        border-bottom: 0;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: none;
+    }
+
+    .lifestyle-amenities-tabs::-webkit-scrollbar {
+        display: none;
+    }
+
+    .lifestyle-amenities-tabs button {
+        min-width: 108px;
+        min-height: 38px;
+        flex: 0 0 auto;
+        padding: 0 14px;
+        border: 1px solid rgba(223, 188, 81, 0.22);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.035);
+        font-size: 11px;
+        line-height: 14px;
+        white-space: nowrap;
+        scroll-snap-align: start;
+    }
+
+    .lifestyle-amenities-tabs button:last-child {
+        min-width: 158px;
+    }
+
+    .lifestyle-amenities-tabs button.is-active {
+        background: linear-gradient(180deg, #efd18c 0%, #c8a96a 100%);
+        color: #19150f;
+    }
+
+    .lifestyle-amenities-tabs button::after {
+        display: none;
+    }
+
+    .lifestyle-amenities-tab-progress {
+        display: block;
+    }
+
+    .lifestyle-amenities-grid {
+        display: flex !important;
+        grid-template-columns: none !important;
+        gap: 12px !important;
+        margin: 24px -16px 0 !important;
+        padding: 0 16px 4px;
+        overflow-x: auto !important;
+        overflow-y: hidden;
+        border: 0 !important;
+        scroll-padding-inline: 16px;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: none;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .lifestyle-amenities-grid::-webkit-scrollbar {
+        display: none;
+    }
+
+    .lifestyle-amenity-card,
+    .lifestyle-amenity-card:nth-child(2n),
+    .lifestyle-amenity-card:nth-child(3n) {
+        width: auto;
+        min-height: 190px;
+        height: 190px;
+        flex: 0 0 min(78vw, 246px);
+        overflow: hidden;
+        border: 1px solid rgba(223, 188, 81, 0.24);
+        border-radius: 16px;
+        scroll-snap-align: center;
+        scroll-snap-stop: always;
+    }
+
+    .lifestyle-amenity-card.is-active {
+        border-color: rgba(246, 218, 120, 0.62);
+        box-shadow:
+            0 18px 42px rgba(0, 0, 0, 0.34),
+            0 0 0 1px rgba(246, 218, 120, 0.08);
+    }
+
+    .lifestyle-amenity-card.is-hidden {
+        display: none !important;
+    }
+
+    .lifestyle-amenity-card img {
+        min-height: 190px;
+        height: 190px;
+    }
+
+    .lifestyle-amenity-caption {
+        left: 16px;
+        bottom: 16px;
+        gap: 4px;
+    }
+
+    .lifestyle-amenity-caption svg {
+        width: 17px;
+        height: 17px;
+    }
+
+    .lifestyle-amenity-caption span {
+        font-size: 14px;
+        line-height: 18px;
+    }
+
+    .lifestyle-amenities-progress {
+        display: block;
+        margin-top: 14px;
+    }
+
+    .lifestyle-amenities-cta {
+        width: calc(100% - 32px);
+        min-height: 0 !important;
+        margin: 24px auto 0 !important;
+        gap: 12px;
+        padding: 16px !important;
+        border-radius: 16px;
+    }
+
+    .lifestyle-amenities-cta h3 {
+        margin-top: 4px !important;
+        font-size: 16px !important;
+        line-height: 22px !important;
+    }
+
+    .lifestyle-amenities-cta h3 span {
+        font-size: 23px !important;
+        line-height: 28px !important;
+    }
+
+    .lifestyle-amenities-cta a {
+        width: 100%;
+        height: 42px;
     }
 }

@@ -1216,17 +1216,95 @@ if (premiumSpecsSection) {
     const specTrack = premiumSpecsSection.querySelector(".premium-specs-track");
     const specSlides = premiumSpecsSection.querySelectorAll(".premium-specs-slide");
     const specDots = premiumSpecsSection.querySelectorAll(".premium-specs-dots button");
+    const brandTrack = premiumSpecsSection.querySelector(".premium-specs-brand-list");
+    const brandItems = premiumSpecsSection.querySelectorAll(".premium-specs-brand");
+    const brandDots = premiumSpecsSection.querySelectorAll(".premium-specs-brand-dots button");
     let activeSpecSlide = 1;
     let specSliderInterval;
     let specStartX = 0;
     let specEndX = 0;
     let didSpecSwipe = false;
+    let specAnimationTimer;
+    let brandIndicatorFrame;
     const specSwipeDistance = 44;
+    const specAnimationDuration = 860;
 
-    const setSpecSlide = (index) => {
+    const setActiveBrand = (index) => {
+        brandItems.forEach((item, itemIndex) => {
+            item.classList.toggle("is-active", itemIndex === index);
+        });
+
+        brandDots.forEach((dot, dotIndex) => {
+            dot.classList.toggle("is-active", dotIndex === index);
+        });
+    };
+
+    const updateBrandIndicator = () => {
+        if (!brandTrack || !brandItems.length || !brandDots.length) {
+            return;
+        }
+
+        const trackRect = brandTrack.getBoundingClientRect();
+        const trackCenter = trackRect.left + trackRect.width / 2;
+        let activeBrandIndex = 0;
+        let closestDistance = Number.POSITIVE_INFINITY;
+
+        brandItems.forEach((item, index) => {
+            const itemRect = item.getBoundingClientRect();
+            const itemCenter = itemRect.left + itemRect.width / 2;
+            const distance = Math.abs(itemCenter - trackCenter);
+
+            if (distance < closestDistance) {
+                closestDistance = distance;
+                activeBrandIndex = index;
+            }
+        });
+
+        setActiveBrand(activeBrandIndex);
+    };
+
+    const requestBrandIndicatorUpdate = () => {
+        cancelAnimationFrame(brandIndicatorFrame);
+        brandIndicatorFrame = requestAnimationFrame(updateBrandIndicator);
+    };
+
+    const getSpecDirection = (index) => {
+        const normalizedIndex = (index + specSlides.length) % specSlides.length;
+
+        if (normalizedIndex === activeSpecSlide) {
+            return 0;
+        }
+
+        const forwardDistance = (normalizedIndex - activeSpecSlide + specSlides.length) % specSlides.length;
+        const backwardDistance = (activeSpecSlide - normalizedIndex + specSlides.length) % specSlides.length;
+
+        return forwardDistance <= backwardDistance ? 1 : -1;
+    };
+
+    const setSpecAnimationDirection = (direction) => {
+        clearTimeout(specAnimationTimer);
+        premiumSpecsSection.classList.remove("is-spec-forward", "is-spec-backward");
+
+        if (!direction) {
+            return;
+        }
+
+        void premiumSpecsSection.offsetHeight;
+        premiumSpecsSection.classList.add(direction > 0 ? "is-spec-forward" : "is-spec-backward");
+
+        specAnimationTimer = setTimeout(() => {
+            premiumSpecsSection.classList.remove("is-spec-forward", "is-spec-backward");
+        }, specAnimationDuration);
+    };
+
+    const setSpecSlide = (index, direction = getSpecDirection(index)) => {
+        const previousSpecSlide = activeSpecSlide;
+
         activeSpecSlide = (index + specSlides.length) % specSlides.length;
         const previousIndex = (activeSpecSlide - 1 + specSlides.length) % specSlides.length;
         const nextIndex = (activeSpecSlide + 1) % specSlides.length;
+
+        setSpecAnimationDirection(previousSpecSlide !== activeSpecSlide ? direction : 0);
 
         specSlides.forEach((slide, slideIndex) => {
             slide.classList.toggle("is-prev", slideIndex === previousIndex);
@@ -1241,7 +1319,7 @@ if (premiumSpecsSection) {
 
     const startSpecSlider = () => {
         specSliderInterval = setInterval(() => {
-            setSpecSlide(activeSpecSlide + 1);
+            setSpecSlide(activeSpecSlide + 1, 1);
         }, 5000);
     };
 
@@ -1258,7 +1336,7 @@ if (premiumSpecsSection) {
         }
 
         didSpecSwipe = true;
-        setSpecSlide(distance > 0 ? activeSpecSlide + 1 : activeSpecSlide - 1);
+        setSpecSlide(distance > 0 ? activeSpecSlide + 1 : activeSpecSlide - 1, distance > 0 ? 1 : -1);
         resetSpecSlider();
 
         setTimeout(() => {
@@ -1280,7 +1358,7 @@ if (premiumSpecsSection) {
             }
 
             if (index === activeSpecSlide) {
-                setSpecSlide(activeSpecSlide + 1);
+                setSpecSlide(activeSpecSlide + 1, 1);
                 resetSpecSlider();
                 return;
             }
@@ -1308,6 +1386,23 @@ if (premiumSpecsSection) {
         handleSpecSwipe();
     });
 
+    if (brandTrack && brandItems.length && brandDots.length) {
+        brandDots.forEach((dot, index) => {
+            dot.addEventListener("click", () => {
+                brandItems[index].scrollIntoView({
+                    behavior: "smooth",
+                    block: "nearest",
+                    inline: "center"
+                });
+                setActiveBrand(index);
+            });
+        });
+
+        brandTrack.addEventListener("scroll", requestBrandIndicatorUpdate, { passive: true });
+        window.addEventListener("resize", requestBrandIndicatorUpdate);
+        updateBrandIndicator();
+    }
+
     setSpecSlide(activeSpecSlide);
     startSpecSlider();
 }
@@ -1320,8 +1415,104 @@ if (visualShowcaseSection) {
     const galleryPanels = visualShowcaseSection.querySelectorAll("[data-gallery-panel]");
     const galleryCopies = visualShowcaseSection.querySelectorAll("[data-gallery-copy]");
     const galleryUpdate = visualShowcaseSection.querySelector(".visual-showcase-update");
+    const galleryGrids = visualShowcaseSection.querySelectorAll(".visual-showcase-grid");
+    const galleryGridState = new Map();
     let activeGalleryTab = "sample";
     let gallerySwitchTimer;
+    const isMobileGallery = () => window.matchMedia("(max-width: 767px)").matches;
+
+    const setActiveGalleryImage = (grid, index) => {
+        const state = galleryGridState.get(grid);
+
+        if (!state) {
+            return;
+        }
+
+        state.cards.forEach((card, cardIndex) => {
+            card.classList.toggle("is-active", cardIndex === index);
+        });
+
+        state.dots.forEach((dot, dotIndex) => {
+            dot.classList.toggle("is-active", dotIndex === index);
+        });
+    };
+
+    const updateGalleryIndicator = (grid) => {
+        const state = galleryGridState.get(grid);
+
+        if (!state || !isMobileGallery() || grid.closest("[hidden]")) {
+            return;
+        }
+
+        const gridRect = grid.getBoundingClientRect();
+        const gridCenter = gridRect.left + gridRect.width / 2;
+        let activeIndex = 0;
+        let closestDistance = Number.POSITIVE_INFINITY;
+
+        state.cards.forEach((card, index) => {
+            const cardRect = card.getBoundingClientRect();
+            const cardCenter = cardRect.left + cardRect.width / 2;
+            const distance = Math.abs(cardCenter - gridCenter);
+
+            if (distance < closestDistance) {
+                closestDistance = distance;
+                activeIndex = index;
+            }
+        });
+
+        setActiveGalleryImage(grid, activeIndex);
+    };
+
+    const requestGalleryIndicatorUpdate = (grid) => {
+        const state = galleryGridState.get(grid);
+
+        if (!state) {
+            return;
+        }
+
+        cancelAnimationFrame(state.frame);
+        state.frame = requestAnimationFrame(() => updateGalleryIndicator(grid));
+    };
+
+    const updateActiveGalleryGrid = () => {
+        galleryGrids.forEach((grid) => updateGalleryIndicator(grid));
+    };
+
+    galleryGrids.forEach((grid) => {
+        const cards = Array.from(grid.querySelectorAll(".visual-gallery-card"));
+
+        if (cards.length < 2) {
+            return;
+        }
+
+        const dotsWrap = document.createElement("div");
+        dotsWrap.className = "visual-gallery-dots";
+        dotsWrap.setAttribute("aria-label", "Gallery image controls");
+
+        const dots = cards.map((card, index) => {
+            const dot = document.createElement("button");
+            dot.type = "button";
+            dot.setAttribute("aria-label", `Show gallery image ${index + 1}`);
+            dot.classList.toggle("is-active", index === 0);
+            dotsWrap.appendChild(dot);
+
+            dot.addEventListener("click", () => {
+                card.scrollIntoView({
+                    behavior: "smooth",
+                    block: "nearest",
+                    inline: "center"
+                });
+                setActiveGalleryImage(grid, index);
+            });
+
+            return dot;
+        });
+
+        grid.insertAdjacentElement("afterend", dotsWrap);
+        galleryGridState.set(grid, { cards, dots, frame: 0 });
+        setActiveGalleryImage(grid, 0);
+        grid.addEventListener("scroll", () => requestGalleryIndicatorUpdate(grid), { passive: true });
+    });
 
     const setGalleryTab = (key) => {
         if (key === activeGalleryTab) {
@@ -1352,6 +1543,7 @@ if (visualShowcaseSection) {
 
             requestAnimationFrame(() => {
                 visualShowcaseSection.classList.remove("is-gallery-switching");
+                updateActiveGalleryGrid();
             });
         }, 320);
     };
@@ -1359,6 +1551,9 @@ if (visualShowcaseSection) {
     galleryTabs.forEach((tab) => {
         tab.addEventListener("click", () => setGalleryTab(tab.dataset.galleryTab));
     });
+
+    window.addEventListener("resize", updateActiveGalleryGrid);
+    updateActiveGalleryGrid();
 }
 
 // Prime location: switches the map card between the designed image and embedded Google Map.
@@ -1369,6 +1564,12 @@ if (primeLocationSection) {
     const mapTabs = primeLocationSection.querySelectorAll("[data-prime-map-tab]");
     const mapPanels = primeLocationSection.querySelectorAll("[data-prime-map-panel]");
     const mapOpenButtons = primeLocationSection.querySelectorAll("[data-prime-map-open]");
+    const distanceGrid = primeLocationSection.querySelector(".prime-distance-grid");
+    const distanceCards = distanceGrid ? Array.from(distanceGrid.querySelectorAll(".prime-distance-card")) : [];
+    const distanceProgress = primeLocationSection.querySelector(".prime-distance-progress span");
+    let distanceFrame = 0;
+    let locationCtaFrame = 0;
+    const isMobileDistanceSlider = () => window.matchMedia("(max-width: 767px)").matches;
 
     const setPrimeMapPanel = (key) => {
         mapTabs.forEach((tab) => {
@@ -1395,29 +1596,210 @@ if (primeLocationSection) {
             primeMap.scrollIntoView({ block: "center", behavior: "smooth" });
         });
     });
+
+    const setActiveDistanceCard = (activeIndex) => {
+        distanceCards.forEach((card, index) => {
+            card.classList.toggle("is-active", index === activeIndex);
+        });
+    };
+
+    const updateDistanceSlider = () => {
+        if (!distanceGrid || !distanceCards.length || !isMobileDistanceSlider()) {
+            return;
+        }
+
+        const maxScroll = distanceGrid.scrollWidth - distanceGrid.clientWidth;
+        const progress = maxScroll > 0 ? distanceGrid.scrollLeft / maxScroll : 0;
+        const progressWidth = Math.max(18, Math.min(100, 18 + (progress * 82)));
+
+        if (distanceProgress) {
+            distanceProgress.style.width = `${progressWidth}%`;
+        }
+
+        const gridRect = distanceGrid.getBoundingClientRect();
+        const gridCenter = gridRect.left + gridRect.width / 2;
+        let activeIndex = 0;
+        let closestDistance = Number.POSITIVE_INFINITY;
+
+        distanceCards.forEach((card, index) => {
+            const cardRect = card.getBoundingClientRect();
+            const cardCenter = cardRect.left + cardRect.width / 2;
+            const distance = Math.abs(cardCenter - gridCenter);
+
+            if (distance < closestDistance) {
+                closestDistance = distance;
+                activeIndex = index;
+            }
+        });
+
+        setActiveDistanceCard(activeIndex);
+    };
+
+    const requestDistanceSliderUpdate = () => {
+        cancelAnimationFrame(distanceFrame);
+        distanceFrame = requestAnimationFrame(updateDistanceSlider);
+    };
+
+    const updateLocationCtaShift = () => {
+        const distanceBlock = distanceGrid ? distanceGrid.closest(".prime-distance-block") : null;
+
+        if (!distanceBlock || !isMobileDistanceSlider()) {
+            primeLocationSection.classList.remove("is-distance-cta-shifted");
+            return;
+        }
+
+        const distanceTop = distanceBlock.getBoundingClientRect().top;
+        const shouldShiftCta = distanceTop <= window.innerHeight * 0.62;
+
+        primeLocationSection.classList.toggle("is-distance-cta-shifted", shouldShiftCta);
+    };
+
+    const requestLocationCtaShiftUpdate = () => {
+        cancelAnimationFrame(locationCtaFrame);
+        locationCtaFrame = requestAnimationFrame(updateLocationCtaShift);
+    };
+
+    if (distanceGrid && distanceCards.length) {
+        setActiveDistanceCard(0);
+        distanceGrid.addEventListener("scroll", requestDistanceSliderUpdate, { passive: true });
+        window.addEventListener("resize", requestDistanceSliderUpdate);
+        window.addEventListener("scroll", requestLocationCtaShiftUpdate, { passive: true });
+        window.addEventListener("resize", requestLocationCtaShiftUpdate);
+        requestDistanceSliderUpdate();
+        requestLocationCtaShiftUpdate();
+    }
 }
 
 // Lifestyle amenities: filters the screenshot-style amenity grid by category.
 const lifestyleAmenitiesSection = document.querySelector(".lifestyle-amenities-section");
 
 if (lifestyleAmenitiesSection) {
+    const amenityTabsWrap = lifestyleAmenitiesSection.querySelector(".lifestyle-amenities-tabs");
     const amenityTabs = lifestyleAmenitiesSection.querySelectorAll("[data-amenity-tab]");
     const amenityCards = lifestyleAmenitiesSection.querySelectorAll("[data-amenity-type]");
+    const amenityGrid = lifestyleAmenitiesSection.querySelector(".lifestyle-amenities-grid");
+    const amenityTabProgress = lifestyleAmenitiesSection.querySelector(".lifestyle-amenities-tab-progress span");
+    const amenityProgress = lifestyleAmenitiesSection.querySelector(".lifestyle-amenities-progress span");
+    let amenityFrame = 0;
+    let amenityTabFrame = 0;
+    const isMobileAmenitySlider = () => window.matchMedia("(max-width: 767px)").matches;
+
+    const getVisibleAmenityCards = () => Array.from(amenityCards).filter((card) => !card.classList.contains("is-hidden"));
+
+    const setActiveAmenityCard = (activeCard) => {
+        amenityCards.forEach((card) => {
+            card.classList.toggle("is-active", card === activeCard);
+        });
+    };
+
+    const updateAmenitySlider = () => {
+        if (!amenityGrid || !isMobileAmenitySlider()) {
+            return;
+        }
+
+        const visibleCards = getVisibleAmenityCards();
+
+        if (!visibleCards.length) {
+            return;
+        }
+
+        const maxScroll = amenityGrid.scrollWidth - amenityGrid.clientWidth;
+        const progress = maxScroll > 0 ? amenityGrid.scrollLeft / maxScroll : 0;
+        const progressWidth = Math.max(18, Math.min(100, 18 + (progress * 82)));
+
+        if (amenityProgress) {
+            amenityProgress.style.width = `${progressWidth}%`;
+        }
+
+        const gridRect = amenityGrid.getBoundingClientRect();
+        const gridCenter = gridRect.left + gridRect.width / 2;
+        let activeCard = visibleCards[0];
+        let closestDistance = Number.POSITIVE_INFINITY;
+
+        visibleCards.forEach((card) => {
+            const cardRect = card.getBoundingClientRect();
+            const cardCenter = cardRect.left + cardRect.width / 2;
+            const distance = Math.abs(cardCenter - gridCenter);
+
+            if (distance < closestDistance) {
+                closestDistance = distance;
+                activeCard = card;
+            }
+        });
+
+        setActiveAmenityCard(activeCard);
+    };
+
+    const requestAmenitySliderUpdate = () => {
+        cancelAnimationFrame(amenityFrame);
+        amenityFrame = requestAnimationFrame(updateAmenitySlider);
+    };
+
+    const updateAmenityTabProgress = () => {
+        if (!amenityTabsWrap || !amenityTabProgress || !isMobileAmenitySlider()) {
+            return;
+        }
+
+        const maxScroll = amenityTabsWrap.scrollWidth - amenityTabsWrap.clientWidth;
+        const progress = maxScroll > 0 ? amenityTabsWrap.scrollLeft / maxScroll : 1;
+        const progressWidth = maxScroll > 0 ? Math.max(24, Math.min(100, 24 + (progress * 76))) : 100;
+
+        amenityTabProgress.style.width = `${progressWidth}%`;
+    };
+
+    const requestAmenityTabProgressUpdate = () => {
+        cancelAnimationFrame(amenityTabFrame);
+        amenityTabFrame = requestAnimationFrame(updateAmenityTabProgress);
+    };
 
     const setAmenityTab = (key) => {
+        let activeTab = null;
+
         amenityTabs.forEach((tab) => {
-            tab.classList.toggle("is-active", tab.dataset.amenityTab === key);
+            const isActive = tab.dataset.amenityTab === key;
+            tab.classList.toggle("is-active", isActive);
+
+            if (isActive) {
+                activeTab = tab;
+            }
         });
 
         amenityCards.forEach((card) => {
             const shouldShow = key === "all" || card.dataset.amenityType === key;
             card.classList.toggle("is-hidden", !shouldShow);
         });
+
+        if (activeTab && isMobileAmenitySlider()) {
+            activeTab.scrollIntoView({
+                behavior: "smooth",
+                block: "nearest",
+                inline: "center"
+            });
+        }
+
+        if (amenityGrid) {
+            amenityGrid.scrollTo({ left: 0, behavior: isMobileAmenitySlider() ? "smooth" : "auto" });
+        }
+
+        requestAmenitySliderUpdate();
+        requestAmenityTabProgressUpdate();
     };
 
     amenityTabs.forEach((tab) => {
         tab.addEventListener("click", () => setAmenityTab(tab.dataset.amenityTab));
     });
+
+    if (amenityGrid) {
+        amenityGrid.addEventListener("scroll", requestAmenitySliderUpdate, { passive: true });
+        window.addEventListener("resize", requestAmenitySliderUpdate);
+        requestAmenitySliderUpdate();
+    }
+
+    if (amenityTabsWrap) {
+        amenityTabsWrap.addEventListener("scroll", requestAmenityTabProgressUpdate, { passive: true });
+        window.addEventListener("resize", requestAmenityTabProgressUpdate);
+        requestAmenityTabProgressUpdate();
+    }
 }
 
 // Construction progress: opens milestone groups and updates completion meter.
