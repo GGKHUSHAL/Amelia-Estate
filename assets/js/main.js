@@ -1569,6 +1569,7 @@ if (primeLocationSection) {
     const distanceProgress = primeLocationSection.querySelector(".prime-distance-progress span");
     let distanceFrame = 0;
     let locationCtaFrame = 0;
+    let isLocationCtaShifted = false;
     const isMobileDistanceSlider = () => window.matchMedia("(max-width: 767px)").matches;
 
     const setPrimeMapPanel = (key) => {
@@ -1643,15 +1644,32 @@ if (primeLocationSection) {
     const updateLocationCtaShift = () => {
         const distanceBlock = distanceGrid ? distanceGrid.closest(".prime-distance-block") : null;
 
-        if (!distanceBlock || !isMobileDistanceSlider()) {
+        if (!distanceBlock || !distanceGrid) {
+            isLocationCtaShifted = false;
             primeLocationSection.classList.remove("is-distance-cta-shifted");
             return;
         }
 
-        const distanceTop = distanceBlock.getBoundingClientRect().top;
-        const shouldShiftCta = distanceTop <= window.innerHeight * 0.62;
+        const viewportHeight = window.innerHeight;
+        const distanceRect = distanceGrid.getBoundingClientRect();
+        const shouldShiftCta = isMobileDistanceSlider()
+            ? (
+                isLocationCtaShifted
+                    ? distanceRect.top <= viewportHeight * 0.74
+                    : distanceRect.top <= viewportHeight * 0.62
+            )
+            : (
+                isLocationCtaShifted
+                    ? distanceRect.top <= viewportHeight * 0.56
+                    : distanceRect.bottom <= viewportHeight * 0.92
+            );
 
-        primeLocationSection.classList.toggle("is-distance-cta-shifted", shouldShiftCta);
+        if (shouldShiftCta === isLocationCtaShifted) {
+            return;
+        }
+
+        isLocationCtaShifted = shouldShiftCta;
+        primeLocationSection.classList.toggle("is-distance-cta-shifted", isLocationCtaShifted);
     };
 
     const requestLocationCtaShiftUpdate = () => {
@@ -1700,6 +1718,15 @@ if (lifestyleAmenitiesSection) {
         const visibleCards = getVisibleAmenityCards();
 
         if (!visibleCards.length) {
+            return;
+        }
+
+        if (visibleCards.length <= 1) {
+            if (amenityProgress) {
+                amenityProgress.style.width = "100%";
+            }
+
+            setActiveAmenityCard(visibleCards[0]);
             return;
         }
 
