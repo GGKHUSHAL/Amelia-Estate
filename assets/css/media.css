@@ -6040,7 +6040,13 @@
 
     .construction-progress-side {
         grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-rows: none;
+        height: auto;
         min-height: 0;
+    }
+
+    .construction-proof-row {
+        grid-template-columns: 1fr;
     }
 
     .construction-info-card {
@@ -6055,6 +6061,7 @@
     }
 
     .construction-progress-photo {
+        height: 330px;
         min-height: 330px;
         border-radius: 18px !important;
     }
@@ -6114,8 +6121,53 @@
 
     .construction-progress-side {
         grid-template-columns: 1fr;
+        grid-template-rows: none;
         gap: 12px;
+        height: auto;
         min-height: 0;
+    }
+
+    .construction-proof-row {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        margin-top: 12px;
+    }
+
+    .construction-proof-card {
+        min-height: 178px;
+        border-radius: 18px;
+        padding: 20px 16px 18px;
+    }
+
+    .construction-proof-card p {
+        top: 21px;
+        right: 16px;
+        font-size: 9px;
+        letter-spacing: 0.12em;
+    }
+
+    .construction-proof-card strong {
+        margin-top: 20px;
+        font-size: 27px;
+        line-height: 32px;
+    }
+
+    .construction-proof-card small {
+        font-size: 12px;
+        line-height: 17px;
+    }
+
+    .construction-stage-track {
+        margin-top: 18px;
+    }
+
+    .construction-buyer-proof {
+        margin-top: 18px;
+    }
+
+    .construction-buyer-proof em {
+        font-size: 10px;
+        line-height: 14px;
     }
 
     .construction-info-card {
@@ -6301,7 +6353,20 @@
         flex: 0 0 100% !important;
         width: 100% !important;
         max-width: 100% !important;
+        height: 280px !important;
+        min-height: 280px !important;
         scroll-snap-align: center;
+    }
+
+    .lifestyle-amenity-card:nth-child(1),
+    .lifestyle-amenity-card:nth-child(6) {
+        height: 280px !important;
+        min-height: 280px !important;
+    }
+
+    .lifestyle-amenity-card img {
+        height: 100% !important;
+        min-height: 100% !important;
     }
 
     .lifestyle-amenities-tab-progress,

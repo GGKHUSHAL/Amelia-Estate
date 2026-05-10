@@ -5880,13 +5880,15 @@ body.is-pricing-modal-open {
 }
 
 .construction-progress-layout {
+    --construction-feature-height: 592px;
     grid-template-columns: minmax(0, 1.34fr) minmax(320px, 0.86fr) !important;
     align-items: stretch;
 }
 
 .construction-progress-photo,
 .construction-progress-side {
-    min-height: 498px;
+    min-height: var(--construction-feature-height);
+    height: var(--construction-feature-height);
 }
 
 .construction-progress-photo {
@@ -6076,12 +6078,13 @@ body.is-pricing-modal-open {
 .construction-progress-side {
     display: grid;
     gap: 24px;
+    grid-template-rows: minmax(0, 0.82fr) minmax(0, 1.18fr);
 }
 
 .construction-info-card {
     position: relative;
     display: flex;
-    min-height: 194px;
+    min-height: 0;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -6190,7 +6193,7 @@ body.is-pricing-modal-open {
 }
 
 .construction-info-card--banks {
-    min-height: 280px;
+    min-height: 0;
     justify-content: flex-start;
     background:
         radial-gradient(circle at 50% 42%, rgba(223, 188, 81, 0.10), rgba(223, 188, 81, 0) 46%),
@@ -6323,11 +6326,212 @@ body.is-pricing-modal-open {
     box-shadow: inset 0 0 0 2px rgba(223, 188, 81, 0.64);
 }
 
+.construction-proof-row {
+    display: grid;
+    width: min(100%, 1200px);
+    margin: 28px auto 0;
+    grid-template-columns: minmax(0, 1.34fr) minmax(320px, 0.86fr);
+    gap: 24px;
+}
+
+.construction-proof-card {
+    position: relative;
+    min-height: 206px;
+    overflow: hidden;
+    border: 1px solid rgba(223, 188, 81, 0.22);
+    border-radius: 22px;
+    background:
+        radial-gradient(circle at 0% 0%, rgba(223, 188, 81, 0.14), rgba(223, 188, 81, 0) 36%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.052), rgba(255, 255, 255, 0.018)),
+        #111111;
+    padding: 28px 28px 24px;
+    box-shadow:
+        0 24px 62px rgba(0, 0, 0, 0.28),
+        inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    transition:
+        border-color 0.32s ease,
+        box-shadow 0.32s ease,
+        transform 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.construction-proof-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(115deg, rgba(255, 255, 255, 0) 0%, rgba(255, 245, 210, 0.10) 46%, rgba(255, 255, 255, 0) 70%);
+    opacity: 0;
+    transform: translateX(-45%);
+    transition:
+        opacity 0.32s ease,
+        transform 0.62s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.construction-proof-card:hover {
+    border-color: rgba(246, 218, 120, 0.48);
+    box-shadow:
+        0 30px 78px rgba(0, 0, 0, 0.36),
+        0 0 34px rgba(223, 188, 81, 0.11),
+        inset 0 1px 0 rgba(255, 255, 255, 0.10);
+    transform: translateY(-5px);
+}
+
+.construction-proof-card:hover::after {
+    opacity: 1;
+    transform: translateX(42%);
+}
+
+.construction-proof-card--social {
+    background:
+        radial-gradient(circle at 100% 0%, rgba(223, 188, 81, 0.15), rgba(223, 188, 81, 0) 38%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.046), rgba(255, 255, 255, 0.014)),
+        #111006;
+}
+
+.construction-proof-icon {
+    display: grid;
+    width: 40px;
+    height: 40px;
+    place-items: center;
+    border: 1px solid rgba(223, 188, 81, 0.28);
+    border-radius: 999px;
+    background: rgba(223, 188, 81, 0.14);
+    color: #f4d35f;
+}
+
+.construction-proof-icon svg {
+    width: 19px;
+    height: 19px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.9;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.construction-proof-card p {
+    position: absolute;
+    top: 29px;
+    right: 28px;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.42);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.18em;
+    line-height: 16px;
+    text-transform: uppercase;
+}
+
+.construction-proof-card strong {
+    display: block;
+    margin-top: 26px;
+    color: #ffffff;
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 38px;
+}
+
+.construction-proof-card strong span {
+    color: #ffd715;
+}
+
+.construction-proof-card small {
+    display: block;
+    margin-top: 6px;
+    color: rgba(255, 255, 255, 0.58);
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 20px;
+}
+
+.construction-stage-track {
+    display: grid;
+    margin-top: 22px;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 6px;
+}
+
+.construction-stage-track span {
+    height: 4px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.14);
+}
+
+.construction-stage-track span.is-done,
+.construction-stage-track span.is-active {
+    background: #ffd715;
+    box-shadow: 0 0 16px rgba(255, 215, 21, 0.30);
+}
+
+.construction-stage-labels {
+    display: grid;
+    margin-top: 9px;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 6px;
+    color: rgba(255, 255, 255, 0.34);
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    line-height: 12px;
+    text-transform: uppercase;
+}
+
+.construction-stage-labels span:nth-child(3) {
+    color: #ffd715;
+}
+
+.construction-buyer-proof {
+    display: flex;
+    margin-top: 24px;
+    align-items: center;
+}
+
+.construction-buyer-proof span {
+    display: inline-flex;
+    width: 30px;
+    height: 30px;
+    align-items: center;
+    justify-content: center;
+    margin-right: -7px;
+    border: 2px solid #111006;
+    border-radius: 999px;
+    color: #ffffff;
+    font-size: 10px;
+    font-weight: 800;
+    line-height: 1;
+}
+
+.construction-buyer-proof span:nth-child(1) {
+    background: #7c4dff;
+}
+
+.construction-buyer-proof span:nth-child(2) {
+    background: #1f9de0;
+}
+
+.construction-buyer-proof span:nth-child(3) {
+    background: #ff8a2a;
+}
+
+.construction-buyer-proof span:nth-child(4) {
+    background: #17c9a3;
+}
+
+.construction-buyer-proof em {
+    margin-left: auto;
+    color: #17d8a5;
+    font-style: normal;
+    font-size: 12px;
+    font-weight: 800;
+    line-height: 16px;
+}
+
 .construction-progress-eyebrow,
 .construction-progress-title,
 .construction-progress-copy,
 .construction-progress-photo,
-.construction-progress-side {
+.construction-progress-side,
+.construction-proof-card {
     opacity: 0;
     transform: translateY(34px);
     transition:
@@ -6339,13 +6543,22 @@ body.is-pricing-modal-open {
 .construction-progress-section.is-visible .construction-progress-title,
 .construction-progress-section.is-visible .construction-progress-copy,
 .construction-progress-section.is-visible .construction-progress-photo,
-.construction-progress-section.is-visible .construction-progress-side {
+.construction-progress-section.is-visible .construction-progress-side,
+.construction-progress-section.is-visible .construction-proof-card {
     opacity: 1;
     transform: translateY(0);
 }
 
 .construction-progress-section.is-visible .construction-progress-side {
     transition-delay: 0.32s;
+}
+
+.construction-progress-section.is-visible .construction-proof-card:nth-child(1) {
+    transition-delay: 0.40s;
+}
+
+.construction-progress-section.is-visible .construction-proof-card:nth-child(2) {
+    transition-delay: 0.48s;
 }
 
 /* Interested property: compact CTA with image mosaic. */

@@ -1835,22 +1835,48 @@ const constructionProgressSection = document.querySelector(".construction-progre
 if (constructionProgressSection) {
     const progressCount = constructionProgressSection.querySelector("[data-construction-progress-count]");
     let constructionProgressStarted = false;
+    let constructionProgressFrame = 0;
+    let constructionProgressRun = 0;
+
+    const getConstructionProgressTarget = () => {
+        if (!progressCount) {
+            return 35;
+        }
+
+        const target = Number(progressCount.dataset.progressTarget || progressCount.textContent || 35);
+        return Number.isFinite(target) ? Math.max(0, Math.min(100, target)) : 35;
+    };
+
+    const resetConstructionProgress = () => {
+        cancelAnimationFrame(constructionProgressFrame);
+        constructionProgressRun += 1;
+        constructionProgressStarted = false;
+        constructionProgressSection.classList.remove("is-progress-animated");
+
+        if (progressCount) {
+            progressCount.textContent = "0";
+        }
+    };
 
     const animateConstructionProgress = () => {
         if (!progressCount || constructionProgressStarted) {
             return;
         }
 
-        const target = Number(progressCount.dataset.progressTarget || progressCount.textContent || 35);
-        const safeTarget = Number.isFinite(target) ? Math.max(0, Math.min(100, target)) : 35;
+        const safeTarget = getConstructionProgressTarget();
         const duration = 1450;
         const startTime = performance.now();
+        const runId = ++constructionProgressRun;
 
         constructionProgressStarted = true;
         constructionProgressSection.classList.add("is-progress-animated");
         progressCount.textContent = "0";
 
         const tick = (time) => {
+            if (runId !== constructionProgressRun) {
+                return;
+            }
+
             const progress = Math.min((time - startTime) / duration, 1);
             const eased = 1 - Math.pow(1 - progress, 3);
             const value = Math.round(safeTarget * eased);
@@ -1858,26 +1884,28 @@ if (constructionProgressSection) {
             progressCount.textContent = String(value);
 
             if (progress < 1) {
-                requestAnimationFrame(tick);
+                constructionProgressFrame = requestAnimationFrame(tick);
                 return;
             }
 
             progressCount.textContent = String(safeTarget);
         };
 
-        requestAnimationFrame(tick);
+        constructionProgressFrame = requestAnimationFrame(tick);
     };
 
     if (progressCount) {
         progressCount.textContent = "0";
 
         if ("IntersectionObserver" in window) {
-            const constructionProgressObserver = new IntersectionObserver((entries, observer) => {
+            const constructionProgressObserver = new IntersectionObserver((entries) => {
                 entries.forEach((entry) => {
                     if (entry.isIntersecting) {
                         animateConstructionProgress();
-                        observer.unobserve(entry.target);
+                        return;
                     }
+
+                    resetConstructionProgress();
                 });
             }, {
                 threshold: 0.34
