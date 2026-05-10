@@ -5495,33 +5495,10 @@ body.is-pricing-modal-open {
     transition-delay: 0.34s;
 }
 
-/* Construction progress: animated status photo with confidence cards. */
-.construction-progress-layout {
-    grid-template-columns: minmax(0, 1.34fr) minmax(330px, 0.86fr) !important;
-}
-
+/* Construction progress: photo-led milestone accordion. */
 .construction-progress-photo,
-.construction-progress-side {
+.construction-progress-card {
     height: 498px;
-}
-
-.construction-progress-photo {
-    position: relative;
-    overflow: hidden;
-    border-radius: 26px !important;
-    isolation: isolate;
-}
-
-.construction-progress-photo::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-    background:
-        radial-gradient(circle at 50% 45%, rgba(223, 188, 81, 0.10) 0%, rgba(223, 188, 81, 0) 30%),
-        linear-gradient(90deg, rgba(0, 0, 0, 0.62), rgba(0, 0, 0, 0.24) 46%, rgba(0, 0, 0, 0.58)),
-        linear-gradient(180deg, rgba(0, 0, 0, 0.10), rgba(0, 0, 0, 0.48));
-    pointer-events: none;
 }
 
 .construction-progress-card {
@@ -5530,9 +5507,7 @@ body.is-pricing-modal-open {
 }
 
 .construction-progress-photo img {
-    position: relative;
-    z-index: 0;
-    filter: saturate(1.02) contrast(1.05) brightness(0.82);
+    filter: saturate(0.96) contrast(1.04) brightness(0.78);
     transform: scale(1.01);
     transition:
         filter 0.45s ease,
@@ -5540,396 +5515,8 @@ body.is-pricing-modal-open {
 }
 
 .construction-progress-photo:hover img {
-    filter: saturate(1.08) contrast(1.08) brightness(0.94);
+    filter: saturate(1.06) contrast(1.08) brightness(0.9);
     transform: scale(1.04);
-}
-
-.construction-status-overlay {
-    position: absolute;
-    inset: 0;
-    z-index: 2;
-    display: grid;
-    place-items: center;
-    pointer-events: none;
-}
-
-.construction-status-ring {
-    position: relative;
-    display: grid;
-    width: 246px;
-    height: 246px;
-    place-items: center;
-    border-radius: 999px;
-    background: radial-gradient(circle, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.03) 46%, rgba(255, 255, 255, 0) 68%);
-    filter: drop-shadow(0 18px 42px rgba(0, 0, 0, 0.38));
-}
-
-.construction-status-ring svg {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    transform: rotate(-90deg);
-}
-
-.construction-status-ring-track,
-.construction-status-ring-fill {
-    fill: none;
-    stroke-linecap: round;
-    stroke-width: 11;
-}
-
-.construction-status-ring-track {
-    stroke: rgba(255, 255, 255, 0.14);
-}
-
-.construction-status-ring-fill {
-    stroke: #ffd715;
-    stroke-dasharray: 100;
-    stroke-dashoffset: 100;
-    filter: drop-shadow(0 0 18px rgba(255, 215, 21, 0.58));
-    transition: stroke-dashoffset 1.55s cubic-bezier(0.22, 1, 0.36, 1) 0.36s;
-}
-
-.construction-progress-section.is-progress-animated .construction-status-ring-fill {
-    stroke-dashoffset: 65;
-}
-
-.construction-status-center {
-    position: relative;
-    z-index: 1;
-    display: grid;
-    justify-items: center;
-    text-align: center;
-}
-
-.construction-status-center strong {
-    display: flex;
-    align-items: baseline;
-    color: #ffffff;
-    font-size: 64px;
-    font-weight: 800;
-    line-height: 0.9;
-    letter-spacing: -0.02em;
-    text-shadow: 0 12px 34px rgba(0, 0, 0, 0.48);
-}
-
-.construction-status-center strong em {
-    color: #ffd715;
-    font-style: normal;
-    font-size: 46px;
-}
-
-.construction-status-center small {
-    margin-top: 9px;
-    color: rgba(255, 255, 255, 0.84);
-    font-size: 13px;
-    font-weight: 800;
-    letter-spacing: 0.34em;
-    line-height: 16px;
-    text-transform: uppercase;
-}
-
-.construction-status-center b {
-    display: inline-flex;
-    min-height: 28px;
-    margin-top: 16px;
-    align-items: center;
-    gap: 8px;
-    border: 1px solid rgba(255, 255, 255, 0.14);
-    border-radius: 999px;
-    background: rgba(18, 18, 18, 0.72);
-    padding: 0 14px;
-    color: rgba(255, 255, 255, 0.88);
-    font-size: 12px;
-    font-weight: 700;
-    line-height: 15px;
-    backdrop-filter: blur(12px);
-}
-
-.construction-status-center b i,
-.construction-photo-status i {
-    width: 7px;
-    height: 7px;
-    flex: 0 0 7px;
-    border-radius: 999px;
-    background: #ffd715;
-    box-shadow: 0 0 14px rgba(255, 215, 21, 0.68);
-}
-
-.construction-photo-status {
-    position: absolute;
-    right: 28px;
-    bottom: 28px;
-    left: 28px;
-    z-index: 3;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 16px;
-    color: #ffffff;
-}
-
-.construction-photo-status span {
-    display: inline-flex;
-    min-height: 38px;
-    align-items: center;
-    gap: 9px;
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 999px;
-    background: rgba(9, 9, 9, 0.62);
-    padding: 0 16px;
-    color: rgba(255, 255, 255, 0.88);
-    font-size: 12px;
-    font-weight: 700;
-    line-height: 15px;
-    backdrop-filter: blur(12px);
-}
-
-.construction-photo-status em {
-    border-left: 1px solid rgba(255, 255, 255, 0.16);
-    padding-left: 10px;
-    color: rgba(255, 255, 255, 0.58);
-    font-style: normal;
-    font-weight: 600;
-}
-
-.construction-progress-side {
-    display: grid;
-    gap: 24px;
-}
-
-.construction-info-card {
-    display: flex;
-    min-height: 237px;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    border: 1px solid rgba(223, 188, 81, 0.22);
-    border-radius: 26px;
-    background:
-        radial-gradient(circle at 50% 0%, rgba(223, 188, 81, 0.12), rgba(223, 188, 81, 0) 42%),
-        linear-gradient(180deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.018)),
-        #141414;
-    padding: 30px 26px;
-    text-align: center;
-    box-shadow:
-        0 24px 58px rgba(0, 0, 0, 0.26),
-        inset 0 1px 0 rgba(255, 255, 255, 0.05);
-    transition:
-        border-color 0.28s ease,
-        background-color 0.28s ease,
-        box-shadow 0.28s ease,
-        transform 0.28s ease;
-}
-
-.construction-info-card:hover {
-    border-color: rgba(246, 218, 120, 0.48);
-    background:
-        radial-gradient(circle at 50% 0%, rgba(246, 218, 120, 0.17), rgba(223, 188, 81, 0) 44%),
-        linear-gradient(180deg, rgba(255, 255, 255, 0.075), rgba(255, 255, 255, 0.025)),
-        #171717;
-    box-shadow:
-        0 30px 74px rgba(0, 0, 0, 0.34),
-        0 0 34px rgba(223, 188, 81, 0.13),
-        inset 0 1px 0 rgba(255, 255, 255, 0.08);
-    transform: translateY(-5px);
-}
-
-.construction-info-card p {
-    margin: 0;
-    color: rgba(255, 255, 255, 0.42);
-    font-size: 11px;
-    font-weight: 800;
-    letter-spacing: 0.22em;
-    line-height: 16px;
-    text-transform: uppercase;
-}
-
-.construction-info-card--possession strong {
-    display: grid;
-    gap: 10px;
-    margin-top: 18px;
-    color: #dfbc51;
-    font-family: Georgia, "Times New Roman", serif;
-    font-size: 43px;
-    font-weight: 700;
-    line-height: 44px;
-}
-
-.construction-info-card--possession strong span {
-    color: rgba(255, 255, 255, 0.72);
-    font-family: "Jost", "Inter", Arial, sans-serif;
-    font-size: 24px;
-    font-weight: 400;
-    line-height: 28px;
-}
-
-.construction-info-card small {
-    display: block;
-    max-width: 250px;
-    margin-top: 18px;
-    color: rgba(255, 255, 255, 0.62);
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 21px;
-}
-
-.construction-info-card--possession em {
-    margin-top: 14px;
-    color: rgba(255, 255, 255, 0.42);
-    font-style: normal;
-    font-size: 12px;
-    font-weight: 700;
-    line-height: 16px;
-}
-
-.construction-info-card--possession {
-    min-height: 194px;
-}
-
-.construction-info-card--banks {
-    min-height: 280px;
-    justify-content: flex-start;
-    background:
-        radial-gradient(circle at 50% 42%, rgba(223, 188, 81, 0.10), rgba(223, 188, 81, 0) 46%),
-        linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
-        #0f0f0f;
-    background-size: auto, 18px 18px, 18px 18px, auto;
-    padding: 24px 24px 22px;
-}
-
-.construction-bank-eyebrow {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    color: rgba(255, 255, 255, 0.90) !important;
-}
-
-.construction-bank-eyebrow svg {
-    width: 15px;
-    height: 15px;
-    fill: none;
-    stroke: #ffd715;
-    stroke-width: 1.9;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-}
-
-.construction-bank-subtitle {
-    margin-top: 8px !important;
-    color: rgba(255, 255, 255, 0.58) !important;
-    font-size: 12px !important;
-    line-height: 16px !important;
-}
-
-.construction-bank-grid {
-    display: grid;
-    width: 100%;
-    margin-top: 20px;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 9px;
-}
-
-.construction-bank-tile {
-    display: grid;
-    min-height: 58px;
-    place-items: center;
-    align-content: center;
-    gap: 5px;
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    border-radius: 12px;
-    background: rgba(5, 5, 5, 0.82);
-    color: #ffffff;
-    transition:
-        border-color 0.25s ease,
-        background-color 0.25s ease,
-        box-shadow 0.25s ease,
-        transform 0.25s ease;
-}
-
-.construction-bank-tile:hover {
-    border-color: rgba(0, 210, 137, 0.42);
-    background: rgba(0, 120, 80, 0.10);
-    box-shadow:
-        0 16px 30px rgba(0, 0, 0, 0.30),
-        0 0 22px rgba(0, 210, 137, 0.10);
-    transform: translateY(-3px);
-}
-
-.construction-bank-tile b {
-    color: #ffffff;
-    font-size: 11px;
-    font-weight: 800;
-    line-height: 13px;
-    text-transform: uppercase;
-}
-
-.construction-bank-tile em {
-    display: inline-flex;
-    align-items: center;
-    gap: 4px;
-    color: #00d289;
-    font-style: normal;
-    font-size: 9px;
-    font-weight: 800;
-    letter-spacing: 0.04em;
-    line-height: 11px;
-    text-transform: uppercase;
-}
-
-.construction-bank-tile em i {
-    position: relative;
-    width: 12px;
-    height: 12px;
-    flex: 0 0 12px;
-    border-radius: 999px;
-    background: rgba(0, 210, 137, 0.22);
-}
-
-.construction-bank-tile em i::after {
-    content: "";
-    position: absolute;
-    left: 4px;
-    top: 3px;
-    width: 5px;
-    height: 3px;
-    border-bottom: 1.6px solid #00d289;
-    border-left: 1.6px solid #00d289;
-    transform: rotate(-45deg);
-}
-
-.construction-bank-proof {
-    display: flex;
-    margin-top: auto;
-    padding-top: 16px;
-    align-items: center;
-    justify-content: center;
-    gap: 14px;
-    color: rgba(255, 255, 255, 0.76);
-    font-size: 12px;
-    font-weight: 600;
-    line-height: 16px;
-}
-
-.construction-bank-proof span {
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-}
-
-.construction-bank-proof span::before {
-    content: "";
-    width: 8px;
-    height: 8px;
-    flex: 0 0 8px;
-    border-radius: 999px;
-    background: rgba(223, 188, 81, 0.32);
-    box-shadow: inset 0 0 0 2px rgba(223, 188, 81, 0.64);
 }
 
 .construction-phase {
@@ -6077,7 +5664,7 @@ body.is-pricing-modal-open {
 .construction-progress-title,
 .construction-progress-copy,
 .construction-progress-photo,
-.construction-progress-side {
+.construction-progress-card {
     opacity: 0;
     transform: translateY(34px);
     transition:
@@ -6089,7 +5676,7 @@ body.is-pricing-modal-open {
 .construction-progress-section.is-visible .construction-progress-title,
 .construction-progress-section.is-visible .construction-progress-copy,
 .construction-progress-section.is-visible .construction-progress-photo,
-.construction-progress-section.is-visible .construction-progress-side {
+.construction-progress-section.is-visible .construction-progress-card {
     opacity: 1;
     transform: translateY(0);
 }
@@ -6106,7 +5693,7 @@ body.is-pricing-modal-open {
     transition-delay: 0.24s;
 }
 
-.construction-progress-section.is-visible .construction-progress-side {
+.construction-progress-section.is-visible .construction-progress-card {
     transition-delay: 0.32s;
 }
 
@@ -9440,7 +9027,7 @@ a[href*="wa.me"]:hover svg {
     .construction-progress-title,
     .construction-progress-copy,
     .construction-progress-photo,
-    .construction-progress-side,
+    .construction-progress-card,
     .interested-property-copy,
     .interested-property-mosaic,
     .buyer-testimonials-eyebrow,
@@ -9651,7 +9238,7 @@ a[href*="wa.me"]:hover svg {
     .construction-progress-title,
     .construction-progress-copy,
     .construction-progress-photo,
-    .construction-progress-side,
+    .construction-progress-card,
     .interested-property-copy,
     .interested-property-mosaic,
     .buyer-testimonials-eyebrow,

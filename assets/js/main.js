@@ -1810,85 +1810,6 @@ if (constructionProgressSection) {
     const constructionPanels = constructionProgressSection.querySelectorAll("[data-construction-panel]");
     const progressBar = constructionProgressSection.querySelector(".construction-progress-meter > div span");
     const progressText = constructionProgressSection.querySelector("[data-construction-progress-text]");
-    const progressCount = constructionProgressSection.querySelector("[data-construction-progress-count]");
-    let hasAnimatedConstructionProgress = false;
-    let constructionProgressDelayTimer;
-    let constructionProgressFrame = 0;
-    let constructionProgressRun = 0;
-
-    const animateConstructionProgress = () => {
-        if (!progressCount || hasAnimatedConstructionProgress) {
-            return;
-        }
-
-        hasAnimatedConstructionProgress = true;
-        constructionProgressSection.classList.add("is-progress-animated");
-
-        const target = Number(progressCount.dataset.progressTarget || progressCount.textContent || 35);
-        const duration = 1350;
-        const startTime = performance.now();
-        const runId = ++constructionProgressRun;
-
-        const tick = (time) => {
-            if (runId !== constructionProgressRun) {
-                return;
-            }
-
-            const elapsed = Math.min((time - startTime) / duration, 1);
-            const eased = 1 - Math.pow(1 - elapsed, 3);
-            const value = Math.round(target * eased);
-
-            progressCount.textContent = String(value);
-
-            if (elapsed < 1) {
-                constructionProgressFrame = requestAnimationFrame(tick);
-                return;
-            }
-
-            progressCount.textContent = String(target);
-        };
-
-        progressCount.textContent = "0";
-        constructionProgressFrame = requestAnimationFrame(tick);
-    };
-
-    const resetConstructionProgressAnimation = () => {
-        clearTimeout(constructionProgressDelayTimer);
-        cancelAnimationFrame(constructionProgressFrame);
-        constructionProgressRun += 1;
-        hasAnimatedConstructionProgress = false;
-        constructionProgressSection.classList.remove("is-progress-animated");
-
-        if (progressCount) {
-            progressCount.textContent = "0";
-        }
-    };
-
-    const startConstructionProgressAfterReveal = () => {
-        if (!progressCount || hasAnimatedConstructionProgress) {
-            return;
-        }
-
-        if (!constructionProgressSection.classList.contains("is-visible")) {
-            return;
-        }
-
-        clearTimeout(constructionProgressDelayTimer);
-        constructionProgressDelayTimer = setTimeout(() => {
-            if (constructionProgressSection.classList.contains("is-visible")) {
-                animateConstructionProgress();
-            }
-        }, 1250);
-    };
-
-    const handleConstructionRevealChange = () => {
-        if (constructionProgressSection.classList.contains("is-visible")) {
-            startConstructionProgressAfterReveal();
-            return;
-        }
-
-        resetConstructionProgressAnimation();
-    };
 
     const setConstructionTab = (key, progress) => {
         constructionTabs.forEach((tab) => {
@@ -1916,23 +1837,6 @@ if (constructionProgressSection) {
             setConstructionTab(tab.dataset.constructionTab, tab.dataset.progress);
         });
     });
-
-    if (progressCount) {
-        progressCount.textContent = "0";
-
-        if ("MutationObserver" in window) {
-            const constructionRevealObserver = new MutationObserver(handleConstructionRevealChange);
-
-            constructionRevealObserver.observe(constructionProgressSection, {
-                attributes: true,
-                attributeFilter: ["class"]
-            });
-
-            handleConstructionRevealChange();
-        } else {
-            setInterval(handleConstructionRevealChange, 120);
-        }
-    }
 }
 
 // FAQ: switches category tabs and opens one answer at a time inside each category.
