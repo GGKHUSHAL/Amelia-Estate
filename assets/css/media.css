@@ -587,7 +587,7 @@
     }
 
     .differentiation-section.is-visible .differentiation-card:hover {
-        transform: scale(1.025) !important;
+        transform: translateY(-7px) !important;
     }
 }
 
@@ -4052,9 +4052,36 @@
         flex-basis: 44px;
     }
 
+    .differentiation-card {
+        grid-template-columns: 42px minmax(0, 1fr);
+        gap: 10px;
+        min-height: 116px;
+        padding: 13px 12px 13px 13px;
+    }
+
+    .differentiation-card div {
+        padding-right: 18px;
+    }
+
     .differentiation-card small,
     .differentiation-card strong {
         width: auto;
+    }
+
+    .differentiation-card small {
+        font-size: 8.5px;
+        line-height: 12px;
+        letter-spacing: 0.12em;
+    }
+
+    .differentiation-card strong {
+        margin-top: 5px;
+        font-size: 13px;
+        line-height: 17px;
+    }
+
+    .differentiation-card div::after {
+        font-size: 11px;
     }
 
 }
