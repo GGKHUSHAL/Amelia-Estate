@@ -5902,8 +5902,8 @@ body.is-pricing-modal-open {
     z-index: 1;
     background:
         radial-gradient(circle at 50% 45%, rgba(223, 188, 81, 0.10) 0%, rgba(223, 188, 81, 0) 30%),
-        linear-gradient(90deg, rgba(0, 0, 0, 0.62), rgba(0, 0, 0, 0.24) 46%, rgba(0, 0, 0, 0.58)),
-        linear-gradient(180deg, rgba(0, 0, 0, 0.10), rgba(0, 0, 0, 0.48));
+        linear-gradient(90deg, rgba(0, 0, 0, 0.48), rgba(0, 0, 0, 0.12) 46%, rgba(0, 0, 0, 0.46)),
+        linear-gradient(180deg, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.34));
     pointer-events: none;
 }
 
@@ -5911,7 +5911,16 @@ body.is-pricing-modal-open {
     position: relative;
     z-index: 0;
     min-height: inherit;
-    filter: saturate(1.02) contrast(1.05) brightness(0.82);
+    filter: saturate(1.08) contrast(1.05) brightness(0.96);
+    transform: scale(1.01);
+    transition:
+        filter 0.35s ease,
+        transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.construction-progress-photo:hover img {
+    filter: saturate(1.14) contrast(1.07) brightness(1.04);
+    transform: scale(1.035);
 }
 
 .construction-status-overlay {
@@ -5956,8 +5965,13 @@ body.is-pricing-modal-open {
 .construction-status-ring-fill {
     stroke: #ffd715;
     stroke-dasharray: 100;
-    stroke-dashoffset: 65;
+    stroke-dashoffset: 100;
     filter: drop-shadow(0 0 18px rgba(255, 215, 21, 0.58));
+    transition: stroke-dashoffset 1.45s cubic-bezier(0.16, 1, 0.3, 1) 0.28s;
+}
+
+.construction-progress-section.is-progress-animated .construction-status-ring-fill {
+    stroke-dashoffset: 65;
 }
 
 .construction-status-center {
@@ -6065,6 +6079,7 @@ body.is-pricing-modal-open {
 }
 
 .construction-info-card {
+    position: relative;
     display: flex;
     min-height: 194px;
     flex-direction: column;
@@ -6080,6 +6095,50 @@ body.is-pricing-modal-open {
     padding: 30px 26px;
     text-align: center;
     box-shadow: 0 24px 58px rgba(0, 0, 0, 0.26), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    transition:
+        border-color 0.32s ease,
+        box-shadow 0.32s ease,
+        transform 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+        background-color 0.32s ease;
+}
+
+.construction-info-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(115deg, rgba(255, 255, 255, 0) 0%, rgba(255, 245, 210, 0.10) 45%, rgba(255, 255, 255, 0) 68%);
+    opacity: 0;
+    transform: translateX(-45%);
+    transition:
+        opacity 0.32s ease,
+        transform 0.62s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.construction-info-card:hover {
+    border-color: rgba(246, 218, 120, 0.48);
+    box-shadow:
+        0 30px 72px rgba(0, 0, 0, 0.34),
+        0 0 34px rgba(223, 188, 81, 0.12),
+        inset 0 1px 0 rgba(255, 255, 255, 0.09);
+    transform: translateY(-5px);
+}
+
+.construction-info-card:hover::after {
+    opacity: 1;
+    transform: translateX(42%);
+}
+
+.construction-bank-tile {
+    position: relative;
+    overflow: hidden;
+}
+
+.construction-bank-tile:hover {
+    border-color: rgba(0, 210, 137, 0.42);
+    background: rgba(0, 120, 80, 0.10);
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.28), 0 0 18px rgba(0, 210, 137, 0.08);
+    transform: translateY(-2px);
 }
 
 .construction-info-card p {
@@ -6185,6 +6244,11 @@ body.is-pricing-modal-open {
     border-radius: 12px;
     background: rgba(5, 5, 5, 0.82);
     color: #ffffff;
+    transition:
+        border-color 0.28s ease,
+        background-color 0.28s ease,
+        box-shadow 0.28s ease,
+        transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .construction-bank-tile b {

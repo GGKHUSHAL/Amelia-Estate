@@ -1829,6 +1829,67 @@ if (lifestyleAmenitiesSection) {
     }
 }
 
+// Construction progress: fills the status ring and count after reveal.
+const constructionProgressSection = document.querySelector(".construction-progress-section");
+
+if (constructionProgressSection) {
+    const progressCount = constructionProgressSection.querySelector("[data-construction-progress-count]");
+    let constructionProgressStarted = false;
+
+    const animateConstructionProgress = () => {
+        if (!progressCount || constructionProgressStarted) {
+            return;
+        }
+
+        const target = Number(progressCount.dataset.progressTarget || progressCount.textContent || 35);
+        const safeTarget = Number.isFinite(target) ? Math.max(0, Math.min(100, target)) : 35;
+        const duration = 1450;
+        const startTime = performance.now();
+
+        constructionProgressStarted = true;
+        constructionProgressSection.classList.add("is-progress-animated");
+        progressCount.textContent = "0";
+
+        const tick = (time) => {
+            const progress = Math.min((time - startTime) / duration, 1);
+            const eased = 1 - Math.pow(1 - progress, 3);
+            const value = Math.round(safeTarget * eased);
+
+            progressCount.textContent = String(value);
+
+            if (progress < 1) {
+                requestAnimationFrame(tick);
+                return;
+            }
+
+            progressCount.textContent = String(safeTarget);
+        };
+
+        requestAnimationFrame(tick);
+    };
+
+    if (progressCount) {
+        progressCount.textContent = "0";
+
+        if ("IntersectionObserver" in window) {
+            const constructionProgressObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        animateConstructionProgress();
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.34
+            });
+
+            constructionProgressObserver.observe(constructionProgressSection);
+        } else {
+            animateConstructionProgress();
+        }
+    }
+}
+
 // FAQ: switches category tabs and opens one answer at a time inside each category.
 const faqSection = document.querySelector(".faq-section");
 
