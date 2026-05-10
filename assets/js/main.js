@@ -1829,6 +1829,38 @@ if (lifestyleAmenitiesSection) {
     }
 }
 
+// Buyer testimonials: slider progress fill.
+const buyerAppreciationSection = document.querySelector(".buyer-appreciation-section");
+
+if (buyerAppreciationSection) {
+    const testimonialSlider = buyerAppreciationSection.querySelector(".buyer-testimonials-slider");
+    const testimonialProgress = buyerAppreciationSection.querySelector(".buyer-testimonials-progress span");
+    let testimonialFrame = 0;
+
+    const updateTestimonialProgress = () => {
+        if (!testimonialSlider || !testimonialProgress) {
+            return;
+        }
+
+        const maxScroll = testimonialSlider.scrollWidth - testimonialSlider.clientWidth;
+        const progress = maxScroll > 0 ? testimonialSlider.scrollLeft / maxScroll : 1;
+        const progressWidth = maxScroll > 0 ? Math.max(18, Math.min(100, 18 + (progress * 82))) : 100;
+
+        testimonialProgress.style.width = `${progressWidth}%`;
+    };
+
+    const requestTestimonialProgressUpdate = () => {
+        cancelAnimationFrame(testimonialFrame);
+        testimonialFrame = requestAnimationFrame(updateTestimonialProgress);
+    };
+
+    if (testimonialSlider) {
+        testimonialSlider.addEventListener("scroll", requestTestimonialProgressUpdate, { passive: true });
+        window.addEventListener("resize", requestTestimonialProgressUpdate);
+        requestTestimonialProgressUpdate();
+    }
+}
+
 // Construction progress: fills the status ring and count after reveal.
 const constructionProgressSection = document.querySelector(".construction-progress-section");
 

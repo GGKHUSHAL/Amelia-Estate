@@ -6638,6 +6638,56 @@ body.is-pricing-modal-open {
     transition-delay: 0.12s;
 }
 
+.sticky-availability-content--interested {
+    position: relative;
+    z-index: 1;
+}
+
+.sticky-availability-content--interested .interested-property-copy {
+    max-width: 540px;
+}
+
+.sticky-availability-content--interested .interested-property-mosaic {
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow:
+        0 24px 70px rgba(0, 0, 0, 0.42),
+        0 0 0 1px rgba(223, 188, 81, 0.16);
+}
+
+.sticky-availability-content--interested .interested-property-tile {
+    background: transparent;
+}
+
+.sticky-availability-content--interested .interested-property-tile img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover !important;
+    object-position: center;
+}
+
+.sticky-availability-content--interested .interested-property-tile--top img {
+    object-position: center 58%;
+}
+
+.sticky-availability-content--interested .interested-property-tile--tall img {
+    object-position: center top;
+}
+
+.sticky-availability-content--interested .interested-property-tile--lamp img {
+    object-position: center 54%;
+}
+
+.sticky-availability-section.is-visible .sticky-availability-content--interested .interested-property-copy,
+.sticky-availability-section.is-visible .sticky-availability-content--interested .interested-property-mosaic {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.sticky-availability-section.is-visible .sticky-availability-content--interested .interested-property-mosaic {
+    transition-delay: 0.14s;
+}
+
 /* Buyer testimonials: continuous left-to-right review slider. */
 .buyer-testimonials-section {
     margin-bottom: 0 !important;
@@ -6759,6 +6809,25 @@ body.is-pricing-modal-open {
 .buyer-testimonials-slider::-webkit-scrollbar-thumb {
     background: #DFBC51;
     border-radius: 999px;
+}
+
+.buyer-testimonials-progress {
+    display: block;
+    width: min(100%, 520px);
+    height: 3px;
+    margin: 18px auto 0;
+    overflow: hidden;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.14);
+}
+
+.buyer-testimonials-progress span {
+    display: block;
+    width: 18%;
+    height: 100%;
+    border-radius: inherit;
+    background: linear-gradient(90deg, #DFBC51, #f4dc82);
+    transition: width 0.22s ease;
 }
 
 /* Sticky availability: full viewport CTA that holds while the page scrolls. */
@@ -6933,6 +7002,29 @@ body.is-pricing-modal-open {
     box-shadow: 0 -40px 80px rgba(0, 0, 0, 0.42);
 }
 
+.buyer-appreciation-section .buyer-testimonials-eyebrow {
+    display: flex;
+    width: max-content;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.buyer-appreciation-section .buyer-appreciation-title {
+    margin-top: 20px;
+}
+
+.buyer-appreciation-section .buyer-testimonials-slider {
+    width: 100%;
+}
+
+.buyer-appreciation-section .buyer-testimonials-progress {
+    opacity: 0;
+    transform: translateY(24px);
+    transition:
+        opacity 0.7s ease,
+        transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
 /* Buyer appreciation: three buyer insight cards in dark theme. */
 .buyer-appreciation-card {
     min-height: 238px;
@@ -6991,7 +7083,9 @@ body.is-pricing-modal-open {
     text-transform: uppercase;
 }
 
+.buyer-appreciation-section .buyer-testimonials-eyebrow,
 .buyer-appreciation-title,
+.buyer-appreciation-section .buyer-testimonials-slider,
 .buyer-appreciation-card {
     opacity: 0;
     transform: translateY(34px);
@@ -7002,10 +7096,26 @@ body.is-pricing-modal-open {
         background-color 0.28s ease;
 }
 
+.buyer-appreciation-section.is-visible .buyer-testimonials-eyebrow,
 .buyer-appreciation-section.is-visible .buyer-appreciation-title,
+.buyer-appreciation-section.is-visible .buyer-testimonials-slider,
 .buyer-appreciation-section.is-visible .buyer-appreciation-card {
     opacity: 1;
     transform: translateY(0);
+}
+
+.buyer-appreciation-section.is-visible .buyer-appreciation-title {
+    transition-delay: 0.08s;
+}
+
+.buyer-appreciation-section.is-visible .buyer-testimonials-slider {
+    transition-delay: 0.18s;
+}
+
+.buyer-appreciation-section.is-visible .buyer-testimonials-progress {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.24s;
 }
 
 .buyer-appreciation-section.is-visible .buyer-appreciation-card:nth-child(1) {
