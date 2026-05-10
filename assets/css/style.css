@@ -6519,9 +6519,9 @@ a[href*="wa.me"]:hover svg {
     backface-visibility: hidden;
     filter: brightness(0.78) saturate(0.92);
     transition:
-        opacity 0.82s ease,
-        filter 0.9s ease,
-        transform 0.94s cubic-bezier(0.18, 0.86, 0.22, 1);
+        opacity 0.74s ease,
+        filter 0.82s ease,
+        transform 0.84s cubic-bezier(0.18, 0.86, 0.22, 1);
     will-change: opacity, filter, transform;
 }
 

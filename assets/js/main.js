@@ -338,11 +338,12 @@ if (scrollStorySection) {
     let lastPageScrollY = window.scrollY;
     let isPinningStory = false;
     let storyTransitionTimer;
-    const storyStepDelay = 1100;
-    const wheelStepThreshold = 260;
-    const touchStepThreshold = 76;
-    const wheelUnlockDelay = 720;
-    const storyTransitionDuration = 980;
+    let queuedStoryStepTimer;
+    const storyStepDelay = 620;
+    const wheelStepThreshold = 90;
+    const touchStepThreshold = 44;
+    const wheelUnlockDelay = 260;
+    const storyTransitionDuration = 860;
     const storyTransitionClasses = [
         "is-flipping-in",
         "is-entering-from-bottom",
@@ -353,6 +354,14 @@ if (scrollStorySection) {
     const isMobileStoryView = () => window.matchMedia("(max-width: 767px)").matches;
     const getStickyTop = () => isMobileStoryView() ? 0 : 86;
     const getStoryFocusOffset = () => getStickyTop() + 2;
+    const releaseWheelGesture = () => {
+        wheelDeltaTotal = 0;
+        isWheelGestureLocked = false;
+    };
+    const scheduleWheelUnlock = () => {
+        clearTimeout(wheelUnlockTimer);
+        wheelUnlockTimer = setTimeout(releaseWheelGesture, wheelUnlockDelay);
+    };
 
     const updateMobileStoryHeader = () => {
         if (!isMobileStoryView()) {
@@ -461,6 +470,27 @@ if (scrollStorySection) {
         return true;
     };
 
+    const queueStoryStep = (direction) => {
+        const remainingDelay = Math.max(storyStepDelay - (Date.now() - lastStoryStepTime), 0);
+
+        clearTimeout(queuedStoryStepTimer);
+        queuedStoryStepTimer = setTimeout(() => {
+            if (!isStoryInFocus()) {
+                return;
+            }
+
+            const nextIndex = activeStorySlide + direction;
+
+            if (nextIndex < 0 || nextIndex >= storySlides.length) {
+                return;
+            }
+
+            lastStoryStepTime = Date.now();
+            pinStoryToTop();
+            setStorySlide(nextIndex, direction);
+        }, remainingDelay + 24);
+    };
+
     const scrollPastStory = (direction) => {
         const rect = scrollStorySection.getBoundingClientRect();
         const stickyTop = getStickyTop();
@@ -516,6 +546,7 @@ if (scrollStorySection) {
         event.preventDefault();
 
         if (!canStepStory()) {
+            queueStoryStep(direction);
             return;
         }
 
@@ -535,11 +566,7 @@ if (scrollStorySection) {
             wheelDeltaTotal = 0;
             isWheelGestureLocked = true;
             handleStoryStep(direction, event);
-
-            clearTimeout(wheelUnlockTimer);
-            wheelUnlockTimer = setTimeout(() => {
-                isWheelGestureLocked = false;
-            }, wheelUnlockDelay);
+            scheduleWheelUnlock();
 
             return;
         }
@@ -548,11 +575,7 @@ if (scrollStorySection) {
             wheelDeltaTotal = 0;
             isWheelGestureLocked = true;
             handleStoryStep(direction, event);
-
-            clearTimeout(wheelUnlockTimer);
-            wheelUnlockTimer = setTimeout(() => {
-                isWheelGestureLocked = false;
-            }, wheelUnlockDelay);
+            scheduleWheelUnlock();
 
             return;
         }
@@ -562,16 +585,12 @@ if (scrollStorySection) {
             return;
         }
 
-        clearTimeout(wheelUnlockTimer);
-        wheelUnlockTimer = setTimeout(() => {
-            wheelDeltaTotal = 0;
-            isWheelGestureLocked = false;
-        }, wheelUnlockDelay);
-
         if (isWheelGestureLocked) {
             event.preventDefault();
             return;
         }
+
+        scheduleWheelUnlock();
 
         if (Math.sign(wheelDeltaTotal) !== direction) {
             wheelDeltaTotal = 0;
@@ -584,6 +603,7 @@ if (scrollStorySection) {
             wheelDeltaTotal = 0;
             isWheelGestureLocked = true;
             handleStoryStep(direction, event);
+            scheduleWheelUnlock();
             return;
         }
 
@@ -597,6 +617,7 @@ if (scrollStorySection) {
         wheelDeltaTotal = 0;
         isWheelGestureLocked = true;
         handleStoryStep(direction, event);
+        scheduleWheelUnlock();
     }, { passive: false });
 
     window.addEventListener("touchstart", (event) => {
