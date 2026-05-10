@@ -337,8 +337,10 @@ if (scrollStorySection) {
     let touchStartY = 0;
     let lastPageScrollY = window.scrollY;
     let isPinningStory = false;
+    let isExitingStory = false;
     let storyTransitionTimer;
     let queuedStoryStepTimer;
+    let storyExitTimer;
     const storyStepDelay = 620;
     const wheelStepThreshold = 90;
     const touchStepThreshold = 44;
@@ -365,6 +367,11 @@ if (scrollStorySection) {
 
     const updateMobileStoryHeader = () => {
         if (!isMobileStoryView()) {
+            document.body.classList.remove("is-story-header-hidden");
+            return;
+        }
+
+        if (isExitingStory) {
             document.body.classList.remove("is-story-header-hidden");
             return;
         }
@@ -494,6 +501,26 @@ if (scrollStorySection) {
     const scrollPastStory = (direction) => {
         const rect = scrollStorySection.getBoundingClientRect();
         const stickyTop = getStickyTop();
+        const bookingImage = document.querySelector("#booking-enquiry .booking-enquiry-image");
+
+        if (direction > 0 && isMobileStoryView() && bookingImage) {
+            const headerHeight = document.querySelector("header")?.offsetHeight || 86;
+            const imageGap = 18;
+
+            isExitingStory = true;
+            clearTimeout(storyExitTimer);
+            document.body.classList.remove("is-story-header-hidden");
+            window.scrollTo({
+                top: Math.max(window.scrollY + bookingImage.getBoundingClientRect().top - headerHeight - imageGap, 0),
+                behavior: "smooth"
+            });
+            storyExitTimer = setTimeout(() => {
+                isExitingStory = false;
+                updateMobileStoryHeader();
+            }, 900);
+            return;
+        }
+
         const targetY = direction > 0
             ? window.scrollY + rect.bottom - stickyTop + 1
             : window.scrollY + rect.top - window.innerHeight + stickyTop - 1;
@@ -986,6 +1013,19 @@ if (pricingSection) {
     const selectedPrice = pricingSection.querySelector(".selected-price-box strong");
     const selectedMeta = pricingSection.querySelector(".selected-price-box p");
     const unlockButton = pricingSection.querySelector(".pricing-unlock-btn");
+    const unlockModal = pricingSection.querySelector(".pricing-unlock-modal");
+    const unlockForm = pricingSection.querySelector(".pricing-unlock-form");
+    const unlockCloseButtons = pricingSection.querySelectorAll("[data-pricing-unlock-close]");
+    const unlockSizeInput = pricingSection.querySelector(".pricing-unlock-size");
+    const pricingCelebration = pricingSection.querySelector(".pricing-celebration");
+
+    if (unlockModal && unlockModal.parentElement !== document.body) {
+        document.body.appendChild(unlockModal);
+    }
+
+    if (pricingCelebration && pricingCelebration.parentElement !== document.body) {
+        document.body.appendChild(pricingCelebration);
+    }
 
     const pricingContent = {
         230: {
@@ -1014,8 +1054,9 @@ if (pricingSection) {
     let activeSize = "230";
     let isPricingUnlocked = false;
     let pricingImageTimer;
-    const lockedIcon = `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 11V8a5 5 0 0 1 10 0v3" /><path d="M6 11h12v10H6V11Z" /></svg>`;
+    let pricingCelebrationTimer;
     const unlockedIcon = `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 11V8a5 5 0 0 1 9.5-2.2" /><path d="M6 11h12v10H6V11Z" /></svg>`;
+    const getActiveSizeLabel = () => `${activeSize} Sq.Yd`;
 
     const updateSelectedPrice = (button) => {
         const floorLabel = button.querySelector("span").textContent;
@@ -1028,6 +1069,63 @@ if (pricingSection) {
         selectedMeta.innerHTML = `${floorLabel} · <span>${activeSize} Sq.Yd</span>`;
     };
 
+    const syncPricingUnlockSize = () => {
+        if (unlockSizeInput) {
+            unlockSizeInput.value = getActiveSizeLabel();
+        }
+    };
+
+    const openPricingUnlockForm = () => {
+        if (!unlockModal || isPricingUnlocked) {
+            return;
+        }
+
+        syncPricingUnlockSize();
+        unlockModal.hidden = false;
+        document.body.classList.add("is-pricing-modal-open");
+
+        const firstInput = unlockModal.querySelector("input:not([readonly])");
+
+        if (firstInput) {
+            setTimeout(() => firstInput.focus(), 60);
+        }
+    };
+
+    const closePricingUnlockForm = () => {
+        if (!unlockModal) {
+            return;
+        }
+
+        unlockModal.hidden = true;
+        document.body.classList.remove("is-pricing-modal-open");
+    };
+
+    const showPricingCelebration = () => {
+        if (!pricingCelebration) {
+            return;
+        }
+
+        clearTimeout(pricingCelebrationTimer);
+        pricingCelebration.hidden = false;
+
+        pricingCelebrationTimer = setTimeout(() => {
+            pricingCelebration.hidden = true;
+        }, 2750);
+    };
+
+    const unlockPricing = () => {
+        if (isPricingUnlocked) {
+            return;
+        }
+
+        isPricingUnlocked = true;
+        pricingSection.classList.add("is-pricing-unlocked");
+        pricingCard.classList.add("is-unlocked");
+        updateSelectedPrice(pricingSection.querySelector(".floor-price-grid button.is-active"));
+        unlockButton.innerHTML = `${unlockedIcon}<span>All Prices Unlocked</span>`;
+        unlockButton.setAttribute("aria-label", "All floor prices are unlocked");
+    };
+
     const updatePricingSize = (size) => {
         const content = pricingContent[size];
 
@@ -1036,6 +1134,7 @@ if (pricingSection) {
         }
 
         activeSize = size;
+        syncPricingUnlockSize();
         pricingTabs.forEach((tab) => {
             tab.classList.toggle("is-active", tab.dataset.pricingTab === size);
         });
@@ -1082,20 +1181,29 @@ if (pricingSection) {
     });
 
     unlockButton.addEventListener("click", () => {
-        isPricingUnlocked = !isPricingUnlocked;
-        pricingSection.classList.toggle("is-pricing-unlocked", isPricingUnlocked);
-        pricingCard.classList.toggle("is-unlocked", isPricingUnlocked);
+        openPricingUnlockForm();
+    });
 
-        if (isPricingUnlocked) {
-            updateSelectedPrice(pricingSection.querySelector(".floor-price-grid button.is-active"));
-            unlockButton.innerHTML = `${unlockedIcon}All Price Unlock`;
-            return;
+    unlockCloseButtons.forEach((button) => {
+        button.addEventListener("click", closePricingUnlockForm);
+    });
+
+    if (unlockForm) {
+        unlockForm.addEventListener("submit", (event) => {
+            event.preventDefault();
+            closePricingUnlockForm();
+            showPricingCelebration();
+
+            setTimeout(() => {
+                unlockPricing();
+            }, 520);
+        });
+    }
+
+    window.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && unlockModal && !unlockModal.hidden) {
+            closePricingUnlockForm();
         }
-
-        floorButtons.forEach((item) => item.classList.remove("is-active"));
-        floorButtons[0].classList.add("is-active");
-        updateSelectedPrice(floorButtons[0]);
-        unlockButton.innerHTML = `${lockedIcon}Unlock Floor-wise Pricing`;
     });
 
     updatePricingSize(activeSize);
