@@ -4465,7 +4465,7 @@
     .hero-section.is-visible .hero-slide.is-active .hero-content {
         animation: none;
         opacity: 1;
-        transform: translate3d(var(--hero-content-x), var(--hero-content-y), 0);
+        transform: translate3d(var(--hero-content-x), calc(-50% + var(--hero-content-y)), 0);
     }
 }
 

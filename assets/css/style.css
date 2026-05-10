@@ -342,7 +342,7 @@ body.menu-open {
 /* Hero content starts hidden and animates in when the section enters view. */
 .hero-content {
     position: absolute;
-    top: clamp(26px, 5vh, 54px);
+    top: 50%;
     left: clamp(56px, 7.2vw, 98px);
     z-index: 3;
     width: min(840px, calc(100% - 112px));
@@ -354,7 +354,7 @@ body.menu-open {
     box-shadow: none;
     backdrop-filter: none;
     opacity: 0;
-    transform: translate3d(var(--hero-content-x), calc(var(--hero-content-y) + 22px), 0);
+    transform: translate3d(var(--hero-content-x), calc(-50% + var(--hero-content-y) + 22px), 0);
     pointer-events: none;
     transition:
         opacity 0.9s ease,
@@ -364,7 +364,7 @@ body.menu-open {
 
 .hero-section.is-visible .hero-slide.is-active .hero-content {
     opacity: 1;
-    transform: translate3d(var(--hero-content-x), var(--hero-content-y), 0);
+    transform: translate3d(var(--hero-content-x), calc(-50% + var(--hero-content-y)), 0);
     pointer-events: auto;
 }
 
