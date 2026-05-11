@@ -1774,6 +1774,44 @@ if (projectEssentialsSection) {
     });
 }
 
+// Property Snapshot Modal: handle opening and closing modal
+const propertyDetailsModal = document.getElementById("property-details-modal");
+const propertyDetailsOpenButton = document.querySelector('[data-open-modal="property-details"]');
+const propertyDetailsCloseButton = propertyDetailsModal?.querySelector(".property-snapshot-modal-close");
+const propertyDetailsBackdrop = propertyDetailsModal?.querySelector(".property-snapshot-modal-backdrop");
+
+if (propertyDetailsModal && propertyDetailsOpenButton) {
+    const openPropertyDetailsModal = () => {
+        propertyDetailsModal.removeAttribute("hidden");
+        document.body.style.overflow = "hidden";
+    };
+
+    const closePropertyDetailsModal = () => {
+        propertyDetailsModal.setAttribute("hidden", "");
+        document.body.style.overflow = "";
+    };
+
+    propertyDetailsOpenButton.addEventListener("click", (e) => {
+        e.preventDefault();
+        openPropertyDetailsModal();
+    });
+
+    if (propertyDetailsCloseButton) {
+        propertyDetailsCloseButton.addEventListener("click", closePropertyDetailsModal);
+    }
+
+    if (propertyDetailsBackdrop) {
+        propertyDetailsBackdrop.addEventListener("click", closePropertyDetailsModal);
+    }
+
+    // Close modal on Escape key
+    document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && !propertyDetailsModal.hasAttribute("hidden")) {
+            closePropertyDetailsModal();
+        }
+    });
+}
+
 // Lifestyle amenities: filters the screenshot-style amenity grid by category.
 const lifestyleAmenitiesSection = document.querySelector(".lifestyle-amenities-section");
 

@@ -2076,9 +2076,54 @@
             </div>
         </section>
 
-        <!-- Property snapshots -->
-        <section class="property-snapshot-section reveal-on-scroll w-full bg-[#1c1c1c] py-[82px]"
-            id="property-snapshots" aria-label="Amelia Estate II property snapshots">
+        <!-- Property Details Modal -->
+        <div class="property-snapshot-modal" id="property-details-modal" role="dialog" aria-modal="true" hidden>
+            <div class="property-snapshot-modal-backdrop"></div>
+            <div class="property-snapshot-modal-panel">
+                <button class="property-snapshot-modal-close" type="button" aria-label="Close modal">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M18 6 6 18M6 6l12 12" />
+                    </svg>
+                </button>
+                <div class="property-snapshot-modal-header">
+                    <h3>About Amelia Estate II</h3>
+                </div>
+                <div class="property-snapshot-modal-content">
+                    <div class="property-snapshot-modal-section">
+                        <h4>Project Overview</h4>
+                        <p>Amelia Estate II is a luxurious, low-density residential project featuring exclusive Stilt+4 floor 3BHK apartments. With only 4 homes per floor, every residence ensures premium privacy and unobstructed views.</p>
+                    </div>
+                    <div class="property-snapshot-modal-section">
+                        <h4>Key Highlights</h4>
+                        <ul>
+                            <li>MIVAN construction technology for superior quality</li>
+                            <li>Vastu-compliant design for optimal living</li>
+                            <li>Earthquake-resistant structure with advanced safety features</li>
+                            <li>Premium brand specifications (Kohler, Grohe, Godrej)</li>
+                            <li>Spacious balconies with city views</li>
+                            <li>Multi-level parking and stilt-floor planning</li>
+                        </ul>
+                    </div>
+                    <div class="property-snapshot-modal-section">
+                        <h4>Lifestyle Amenities</h4>
+                        <p>Residents enjoy access to an infinity pool, state-of-the-art fitness studio, clubhouse, landscaped gardens, kids play zone, and 24×7 security with CCTV monitoring.</p>
+                    </div>
+                    <div class="property-snapshot-modal-section">
+                        <h4>Location Advantage</h4>
+                        <p>Just 15 minutes from Chandigarh International Airport, near PR-7 Airport Road and Aero City. Close to premium schools, hospitals, retail, and daily conveniences making it ideal for families.</p>
+                    </div>
+                    <div class="property-snapshot-modal-section">
+                        <h4>Investment Highlights</h4>
+                        <p>RERA approved with transparent pricing. Home loans available up to 80% from major banks including HDFC, SBI, ICICI, Axis, PNB, and Kotak. Expected possession: December 2027.</p>
+                    </div>
+                </div>
+                <div class="property-snapshot-modal-footer">
+                    <a class="property-snapshot-modal-btn" href="#booking-enquiry">Schedule Your Site Visit</a>
+                </div>
+            </div>
+        </div>
+
+        <section class="property-snapshot-section reveal-on-scroll w-full bg-[#1c1c1c] py-[82px]" id="property-snapshots" aria-label="Amelia Estate II property snapshots">
             <div class="mx-auto w-[calc(100%_-_48px)] max-w-[1200px]">
                 <div class="property-snapshot-header mx-auto text-center">
                     <p class="property-snapshot-eyebrow mx-auto inline-flex min-h-9 items-center gap-3 rounded-full border border-[#FFD715]/70 bg-[#0d0b08]/80 px-5 text-[13px] font-semibold uppercase tracking-[0.16em] text-[#FFD715]">
@@ -2163,7 +2208,7 @@
                             to the best of Tricity. Premium schools, hospitals, retail destinations, and daily
                             conveniences are all within easy reach.
                         </p>
-                        <a class="property-snapshot-readmore" href="#about">
+                        <a class="property-snapshot-readmore" href="javascript:void(0)" data-open-modal="property-details">
                             Read More
                             <span aria-hidden="true">-&gt;</span>
                         </a>
@@ -2193,141 +2238,135 @@
 
     </main>
 
-    <footer class="site-footer reveal-on-scroll" id="contact">
-        <div class="footer-visit-bar">
-            <div class="footer-inner footer-visit-inner">
-                <div>
-                    <p>SCHEDULE SITE VISIT</p>
-                    <h2>Last Few 3 BHK Floors Available</h2>
+    <footer class="site-footer">
+        <!-- Premium CTA Banner -->
+        <div class="footer-premium-cta">
+            <div class="footer-premium-content">
+                <div class="footer-premium-text">
+                    <p class="footer-premium-label">SECURE YOUR HOME</p>
+                    <h2>Premium 3BHK Floors Starting ₹1.25 Cr</h2>
+                    <p>Limited low-rise inventory. Only 4 homes per floor.</p>
                 </div>
-                <div class="footer-call-actions" aria-label="Contact phone numbers">
-                    <a class="footer-call footer-call--primary" href="tel:+919697300666">
-                        <svg viewBox="0 0 24 24" aria-hidden="true">
-                            <path d="M6.62 10.79c1.44 2.83 3.76 5.15 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C10.61 21 3 13.39 3 4c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.24.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2Z" />
-                        </svg>
-                        96973 00666
+                <div class="footer-premium-actions">
+                    <a href="#booking-enquiry" class="footer-premium-btn footer-premium-btn--primary">
+                        Book Site Visit <span>-&gt;</span>
                     </a>
-                    <a class="footer-call" href="tel:+917009247378">
-                        <svg viewBox="0 0 24 24" aria-hidden="true">
-                            <path d="M6.62 10.79c1.44 2.83 3.76 5.15 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C10.61 21 3 13.39 3 4c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.24.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2Z" />
+                    <a href="https://wa.me/919697300066" target="_blank" rel="noopener noreferrer" class="footer-premium-btn footer-premium-btn--secondary">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4.5 19.5 5.8 16A8 8 0 1 1 8 18.2l-3.5 1.3Z" />
                         </svg>
-                        70092 47378
+                        WhatsApp Us
                     </a>
                 </div>
             </div>
         </div>
 
-        <div class="footer-logo-band">
-            <div class="footer-logo-row" aria-label="Project partner logos">
-                <img class="footer-logo footer-logo--realty" src="assets/img/logo/reality nivesh logo.png" alt="Realty Nivesh">
-                <span aria-hidden="true"></span>
-                <img class="footer-logo footer-logo--amelia" src="assets/img/logo/amelia logo.png" alt="Amelia Estate II">
-                <span aria-hidden="true"></span>
-                <img class="footer-logo footer-logo--uptown" src="assets/img/logo/066b0dc5443751b17f79ec6d10460bd1e2a851bb.png" alt="Uptown Skylla">
-            </div>
-        </div>
-
-        <nav class="footer-nav" aria-label="Footer navigation">
-            <a href="#">Home</a>
-            <a href="#about">About us</a>
-            <a href="#floor-plans">Plans</a>
-            <a href="#location">Location</a>
-            <a href="#pricing">Price</a>
-            <a href="#amenities">Amenities</a>
-            <a href="#gallery">Gallery</a>
-            <a href="#specifications">Specifications</a>
-            <a href="#project-essentials">Downloads</a>
-            <a href="#faq">Faqs</a>
-            <a href="#contact">Contact us</a>
-        </nav>
-
-        <div class="footer-inner footer-details">
-            <section class="footer-column footer-project-details" aria-labelledby="footer-project-title">
-                <h3 id="footer-project-title">PROJECT DETAILS</h3>
-                <dl>
-                    <div>
-                        <dt>RERA No.</dt>
-                        <dd>PBRERA-SAS81-PR0941</dd>
+        <!-- Main Footer Content -->
+        <div class="footer-main">
+            <div class="footer-container">
+                <!-- Brand Section -->
+                <div class="footer-section footer-brand">
+                    <div class="footer-brand-logo">
+                        <img src="assets/img/logo/amelia logo.png" alt="Amelia Estate II">
                     </div>
-                    <div>
-                        <dt>Configuration</dt>
-                        <dd>3 BHK Stilt+4 Floors</dd>
-                    </div>
-                    <div>
-                        <dt>Possession</dt>
-                        <dd>March 2027</dd>
-                    </div>
-                    <div>
-                        <dt>Status</dt>
-                        <dd>Under Construction</dd>
-                    </div>
-                </dl>
-                <a class="footer-link" href="https://www.rera.punjab.gov.in/" target="_blank" rel="noopener noreferrer">Verify on RERA Punjab -></a>
-            </section>
-
-            <section class="footer-column" aria-labelledby="footer-office-title">
-                <h3 id="footer-office-title">SALES OFFICE</h3>
-                <address>
-                    Showroom No. 12, Level 2<br>
-                    Uptown Insignia<br>
-                    PR-7 Airport Road<br>
-                    Zirakpur, Punjab 140603
-                </address>
-                <a class="footer-link" href="#location">Get Directions -></a>
-            </section>
-
-            <section class="footer-column" aria-labelledby="footer-sales-title">
-                <h3 id="footer-sales-title">CONTACT SALES</h3>
-                <a class="footer-phone" href="tel:+919697300666">
-                    <svg viewBox="0 0 24 24" aria-hidden="true">
-                        <path d="M6.62 10.79c1.44 2.83 3.76 5.15 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C10.61 21 3 13.39 3 4c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.24.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2Z" />
-                    </svg>
-                    +91 96973 00666
-                </a>
-                <a class="footer-phone" href="tel:+917009247378">
-                    <svg viewBox="0 0 24 24" aria-hidden="true">
-                        <path d="M6.62 10.79c1.44 2.83 3.76 5.15 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C10.61 21 3 13.39 3 4c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.24.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2Z" />
-                    </svg>
-                    +91 70092 47378
-                </a>
-                <a class="footer-link footer-whatsapp" href="https://wa.me/919697300666" target="_blank" rel="noopener noreferrer">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                        stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                        <path d="M4.5 19.5 5.8 16A8 8 0 1 1 8 18.2l-3.5 1.3Z" />
-                        <path d="M9 9.5c.4 2 2 3.7 4 4.5l1.2-1.2 1.8.5c.2.1.4.3.4.6v1.1c0 .4-.3.7-.7.7-4.4 0-8-3.6-8-8 0-.4.3-.7.7-.7h1.1c.3 0 .5.2.6.4l.5 1.8L9 9.5Z" />
-                    </svg>
-                    WhatsApp Now -&gt;
-                </a>
-            </section>
-
-            <section class="footer-column footer-developer" aria-labelledby="footer-developer-title">
-                <h3 id="footer-developer-title">DEVELOPER</h3>
-                <img src="assets/img/logo/066b0dc5443751b17f79ec6d10460bd1e2a851bb.png" alt="Uptown Skylla">
-                <p>Delivering premium residences across Tricity with commitment to quality and on-time possession.</p>
-                <span>Marketed By</span>
-                <img class="footer-developer-marketer" src="assets/img/logo/reality nivesh logo.png" alt="Realty Nivesh">
-            </section>
-        </div>
-
-        <div class="footer-legal">
-            <div class="footer-inner">
-                <div class="footer-legal-top">
-                    <p>&copy; 2026 Amelia Estate II. A project by Uptown Skylla. All rights reserved.</p>
-                    <div>
-                        <a href="#">Privacy Policy</a>
-                        <a href="#">Terms & Conditions</a>
-                        <a href="#">Disclaimer</a>
+                    <p class="footer-brand-tagline">Premium residential experience on PR-7 Airport Road, Zirakpur</p>
+                    <div class="footer-social-links">
+                        <a href="https://wa.me/919697300066" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M17.6 6.4c-1.9-1.9-4.4-2.9-7.1-2.9-5.5 0-10 4.5-10 10s4.5 10 10 10c2.7 0 5.2-1.1 7.1-2.9 1.9-1.9 2.9-4.4 2.9-7.1 0-2.7-1.1-5.2-2.9-7.1zm-6.1 15.6c-4.9 0-8.9-4-8.9-8.9s4-8.9 8.9-8.9 8.9 4 8.9 8.9-4 8.9-8.9 8.9zm3.5-8.9c-.3-.2-1.7-.8-1.9-.9-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.2-.5-2.3-1.4-.9-.8-1.4-1.8-1.6-2.1-.2-.3 0-.5.2-.6.1-.1.3-.3.4-.4.1-.1.2-.3.3-.4.1-.1.1-.3 0-.4-.1-.1-.7-1.7-.9-2.3-.2-.5-.4-.4-.6-.4h-.6c-.2 0-.5.1-.8.3-.2.3-1 1-1 2.4 0 1.4.7 2.7 1 2.9.3.2 2.9.5 3.7.5 1.3 0 1.5-.3 1.7-.7.2-.4.2-.8.2-.8z"/>
+                            </svg>
+                        </a>
+                        <a href="tel:+919697300066" aria-label="Call us">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M6.62 10.79c1.44 2.83 3.76 5.15 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C10.61 21 3 13.39 3 4c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.24.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2Z" />
+                            </svg>
+                        </a>
                     </div>
                 </div>
-                <p class="footer-disclaimer">
-                    RERA Disclaimer: Amelia Estate II is registered with RERA Punjab vide Registration No.
-                    PBRERA-SAS81-PR0941. Project details available at https://www.rera.punjab.gov.in. Disclaimer: All
-                    information, images, and visuals are artistic impressions for representation only and actual may
-                    vary. This website is maintained by Realty Nivesh, preferred sales partner for Amelia Estate II by
-                    Uptown Skylla. This is not a legal offer. Prices and availability subject to change without notice.
-                    T&amp;C apply.
-                </p>
+
+                <!-- Quick Links -->
+                <div class="footer-section">
+                    <h4>QUICK LINKS</h4>
+                    <nav class="footer-links">
+                        <a href="#about">About Project</a>
+                        <a href="#floor-plans">Floor Plans</a>
+                        <a href="#pricing">Pricing</a>
+                        <a href="#amenities">Amenities</a>
+                        <a href="#specifications">Specifications</a>
+                        <a href="#gallery">Gallery</a>
+                    </nav>
+                </div>
+
+                <!-- Project Info -->
+                <div class="footer-section">
+                    <h4>PROJECT INFO</h4>
+                    <dl class="footer-details">
+                        <div>
+                            <dt>RERA No.</dt>
+                            <dd>PBRERA-SAS81-PR0941</dd>
+                        </div>
+                        <div>
+                            <dt>Configuration</dt>
+                            <dd>3 BHK Stilt+4</dd>
+                        </div>
+                        <div>
+                            <dt>Possession</dt>
+                            <dd>Dec 2027</dd>
+                        </div>
+                        <div>
+                            <dt>Status</dt>
+                            <dd>35% Built</dd>
+                        </div>
+                    </dl>
+                    <a href="https://www.rera.punjab.gov.in/" target="_blank" rel="noopener noreferrer" class="footer-verify-rera">Verify on RERA →</a>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="footer-section">
+                    <h4>GET IN TOUCH</h4>
+                    <div class="footer-contact">
+                        <div class="footer-contact-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                            </svg>
+                            <a href="tel:+919697300066">+91 96973 00666</a>
+                        </div>
+                        <div class="footer-contact-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                <circle cx="12" cy="10" r="3"/>
+                            </svg>
+                            <address>Showroom No. 12, Level 2<br>Uptown Insignia, PR-7<br>Zirakpur, Punjab 140603</address>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Developer Info -->
+                <div class="footer-section">
+                    <h4>ABOUT DEVELOPER</h4>
+                    <img src="assets/img/logo/066b0dc5443751b17f79ec6d10460bd1e2a851bb.png" alt="Uptown Skylla" class="footer-developer-logo">
+                    <p class="footer-developer-desc">Premium residential project by Uptown Skylla</p>
+                    <p class="footer-marketed-by">Marketed By</p>
+                    <img src="assets/img/logo/reality nivesh logo.png" alt="Realty Nivesh" class="footer-marketer-logo">
+                </div>
             </div>
+        </div>
+
+        <!-- Bottom Bar -->
+        <div class="footer-bottom">
+            <div class="footer-bottom-content">
+                <p class="footer-copyright">&copy; 2026 Amelia Estate II by Uptown Skylla. All rights reserved.</p>
+                <div class="footer-legal-links">
+                    <a href="#">Privacy Policy</a>
+                    <span aria-hidden="true">•</span>
+                    <a href="#">Terms & Conditions</a>
+                    <span aria-hidden="true">•</span>
+                    <a href="#">Disclaimer</a>
+                </div>
+            </div>
+            <p class="footer-rera-disclaimer">
+                RERA Registered: PBRERA-SAS81-PR0941 | Visit https://www.rera.punjab.gov.in for project details
+            </p>
         </div>
     </footer>
 
