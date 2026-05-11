@@ -277,8 +277,10 @@
     }
 
     .faq-layout {
-        grid-template-columns: 240px minmax(0, 1fr) !important;
-        gap: 34px !important;
+        grid-template-columns: 280px minmax(0, 1fr) !important;
+        gap: 18px !important;
+        padding: 14px !important;
+        border-radius: 22px !important;
     }
 
     .project-essentials-section {
@@ -2073,24 +2075,103 @@
     }
 
     .faq-section {
-        padding: 58px 16px;
+        padding: 46px 12px;
     }
 
     .faq-layout {
         grid-template-columns: 1fr !important;
-        gap: 28px !important;
+        gap: 12px !important;
+        margin-top: 28px !important;
+        padding: 10px !important;
+        border-radius: 18px !important;
+    }
+
+    .faq-sidebar {
+        min-width: 0;
     }
 
     .faq-tabs {
-        display: grid !important;
-        grid-template-columns: 1fr 1fr;
-        gap: 12px !important;
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: stretch;
+        grid-template-columns: none !important;
+        width: auto;
+        max-width: none;
+        margin: 0 -12px !important;
+        gap: 8px !important;
+        overflow-x: auto;
+        overscroll-behavior-inline: contain;
+        scroll-snap-type: x mandatory;
+        scroll-padding-inline: 12px;
+        scrollbar-width: none;
+        padding: 0 12px 2px !important;
+        border: 0 !important;
+        border-radius: 0 !important;
+        background: transparent !important;
+    }
+
+    .faq-tabs::-webkit-scrollbar {
+        display: none;
+    }
+
+    .faq-tab-progress {
+        display: block;
     }
 
     .faq-tab {
-        min-height: 54px;
-        padding-left: 14px;
-        font-size: 12px;
+        grid-template-columns: 30px minmax(0, 1fr) 22px;
+        flex: 0 0 min(76vw, 238px);
+        min-width: 0;
+        height: 46px;
+        min-height: 46px;
+        scroll-snap-align: center;
+        scroll-snap-stop: always;
+        gap: 8px;
+        padding: 0 9px;
+        font-size: 11px;
+        line-height: 15px;
+        border-radius: 12px;
+        border-color: rgba(255, 215, 21, 0.16);
+        background: rgba(0, 0, 0, 0.32);
+    }
+
+    .faq-tab > span:not(.faq-tab-icon) {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .faq-tab-icon {
+        width: 30px;
+        height: 30px;
+        border-radius: 9px;
+    }
+
+    .faq-tab-icon::before {
+        font-size: 14px;
+    }
+
+    .faq-tab strong {
+        width: 22px;
+        height: 22px;
+        font-size: 10px;
+    }
+
+    .faq-assist-card {
+        display: none;
+    }
+
+    .faq-panels {
+        padding: 8px;
+        border-radius: 16px;
+    }
+
+    .faq-panel {
+        gap: 8px;
+    }
+
+    .faq-item {
+        border-radius: 13px;
     }
 
     .project-essentials-section {
@@ -3660,24 +3741,42 @@
     }
 
     .faq-header h2 {
-        font-size: 27px !important;
-        line-height: 34px !important;
+        font-size: 25px !important;
+        line-height: 31px !important;
     }
 
     .faq-tabs {
-        grid-template-columns: 1fr;
+        grid-template-columns: none !important;
+    }
+
+    .faq-tab {
+        flex-basis: min(76vw, 238px);
+        height: 44px;
+        min-height: 44px;
     }
 
     .faq-item button {
-        min-height: 62px;
-        padding: 0 18px;
-        font-size: 13px;
-        line-height: 20px;
+        min-height: 56px;
+        padding: 0 9px 0 13px;
+        font-size: 12px;
+        line-height: 17px;
+        gap: 10px;
+    }
+
+    .faq-item button span {
+        width: 28px;
+        height: 28px;
+        flex-basis: 28px;
     }
 
     .faq-answer {
-        margin: -2px 18px 20px;
-        padding-left: 18px;
+        margin: -2px 10px 14px 13px;
+        padding-left: 12px;
+    }
+
+    .faq-answer p {
+        font-size: 12px;
+        line-height: 19px;
     }
 
     .project-essentials-card {

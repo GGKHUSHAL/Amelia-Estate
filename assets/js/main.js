@@ -2008,6 +2008,28 @@ const faqSection = document.querySelector(".faq-section");
 if (faqSection) {
     const faqTabs = faqSection.querySelectorAll("[data-faq-tab]");
     const faqPanels = faqSection.querySelectorAll("[data-faq-panel]");
+    const faqTabsWrap = faqSection.querySelector(".faq-tabs");
+    const faqTabProgress = faqSection.querySelector(".faq-tab-progress span");
+    let faqTabProgressFrame = 0;
+
+    const isMobileFaqTabs = () => window.matchMedia("(max-width: 991px)").matches;
+
+    const updateFaqTabProgress = () => {
+        if (!faqTabsWrap || !faqTabProgress || !isMobileFaqTabs()) {
+            return;
+        }
+
+        const maxScroll = faqTabsWrap.scrollWidth - faqTabsWrap.clientWidth;
+        const progress = maxScroll > 0 ? faqTabsWrap.scrollLeft / maxScroll : 1;
+        const progressWidth = maxScroll > 0 ? Math.max(24, Math.min(100, 24 + (progress * 76))) : 100;
+
+        faqTabProgress.style.width = `${progressWidth}%`;
+    };
+
+    const requestFaqTabProgressUpdate = () => {
+        cancelAnimationFrame(faqTabProgressFrame);
+        faqTabProgressFrame = requestAnimationFrame(updateFaqTabProgress);
+    };
 
     const setFaqPanel = (key) => {
         faqTabs.forEach((tab) => {
@@ -2033,8 +2055,21 @@ if (faqSection) {
     };
 
     faqTabs.forEach((tab) => {
-        tab.addEventListener("click", () => setFaqPanel(tab.dataset.faqTab));
+        tab.addEventListener("click", () => {
+            setFaqPanel(tab.dataset.faqTab);
+
+            if (faqTabsWrap && isMobileFaqTabs()) {
+                tab.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+                requestFaqTabProgressUpdate();
+            }
+        });
     });
+
+    if (faqTabsWrap) {
+        faqTabsWrap.addEventListener("scroll", requestFaqTabProgressUpdate, { passive: true });
+        window.addEventListener("resize", requestFaqTabProgressUpdate);
+        requestFaqTabProgressUpdate();
+    }
 
     faqSection.querySelectorAll("[data-faq-toggle]").forEach((button) => {
         button.addEventListener("click", () => {
