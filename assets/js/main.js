@@ -1836,6 +1836,9 @@ if (buyerAppreciationSection) {
     const testimonialSlider = buyerAppreciationSection.querySelector(".buyer-testimonials-slider");
     const testimonialProgress = buyerAppreciationSection.querySelector(".buyer-testimonials-progress span");
     let testimonialFrame = 0;
+    let testimonialPointerDown = false;
+    let testimonialStartX = 0;
+    let testimonialStartScroll = 0;
 
     const updateTestimonialProgress = () => {
         if (!testimonialSlider || !testimonialProgress) {
@@ -1856,6 +1859,55 @@ if (buyerAppreciationSection) {
 
     if (testimonialSlider) {
         testimonialSlider.addEventListener("scroll", requestTestimonialProgressUpdate, { passive: true });
+
+        testimonialSlider.addEventListener("wheel", (event) => {
+            if (Math.abs(event.deltaY) <= Math.abs(event.deltaX)) {
+                return;
+            }
+
+            event.preventDefault();
+            testimonialSlider.scrollLeft += event.deltaY;
+            requestTestimonialProgressUpdate();
+        }, { passive: false });
+
+        testimonialSlider.addEventListener("pointerdown", (event) => {
+            if (event.button !== 0) {
+                return;
+            }
+
+            testimonialPointerDown = true;
+            testimonialStartX = event.clientX;
+            testimonialStartScroll = testimonialSlider.scrollLeft;
+            testimonialSlider.classList.add("is-dragging");
+            testimonialSlider.setPointerCapture(event.pointerId);
+        });
+
+        testimonialSlider.addEventListener("pointermove", (event) => {
+            if (!testimonialPointerDown) {
+                return;
+            }
+
+            const distance = event.clientX - testimonialStartX;
+            testimonialSlider.scrollLeft = testimonialStartScroll - distance;
+            requestTestimonialProgressUpdate();
+        });
+
+        const stopTestimonialDrag = (event) => {
+            if (!testimonialPointerDown) {
+                return;
+            }
+
+            testimonialPointerDown = false;
+            testimonialSlider.classList.remove("is-dragging");
+
+            if (testimonialSlider.hasPointerCapture(event.pointerId)) {
+                testimonialSlider.releasePointerCapture(event.pointerId);
+            }
+        };
+
+        testimonialSlider.addEventListener("pointerup", stopTestimonialDrag);
+        testimonialSlider.addEventListener("pointercancel", stopTestimonialDrag);
+        testimonialSlider.addEventListener("pointerleave", stopTestimonialDrag);
         window.addEventListener("resize", requestTestimonialProgressUpdate);
         requestTestimonialProgressUpdate();
     }

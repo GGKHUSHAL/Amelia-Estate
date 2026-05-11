@@ -490,7 +490,7 @@
 
     .pricing-left {
         border-right: 0;
-        border-bottom: 1px solid rgba(225, 195, 126, 0.16);
+        border-bottom: 1px solid rgba(255, 215, 21, 0.16);
     }
 
     .pricing-left,
@@ -1344,7 +1344,7 @@
     #menuToggle span {
         width: 18px !important;
         height: 2px !important;
-        background: #DFBC51 !important;
+        background: #FFD715 !important;
     }
 
     .hero-section {
@@ -1511,7 +1511,7 @@
     }
 
     .hero-copy h1 span {
-        color: #DFBC51;
+        color: #FFD715;
     }
 
     .hero-copy p {
@@ -1593,7 +1593,7 @@
         color: #000000;
         font-size: 15px;
         font-weight: 800;
-        background: #e6bf3e;
+        background: #FFD715;
         box-shadow: 0 16px 28px rgba(0, 0, 0, 0.28);
     }
 
@@ -1634,7 +1634,7 @@
         height: auto !important;
         padding: 34px 16px 40px;
         background:
-            radial-gradient(520px 190px at 50% -70px, rgba(223, 188, 81, 0.13), transparent 70%),
+            radial-gradient(520px 190px at 50% -70px, rgba(255, 215, 21, 0.13), transparent 70%),
             linear-gradient(180deg, #050505 0%, #0d0d0c 52%, #050505 100%);
     }
 
@@ -1658,10 +1658,10 @@
         width: 100%;
         height: 112px;
         padding: 12px 8px 14px;
-        border: 1px solid rgba(223, 188, 81, 0.16);
+        border: 1px solid rgba(255, 215, 21, 0.16);
         border-radius: 16px;
         background:
-            radial-gradient(120% 100% at 50% 0%, rgba(223, 188, 81, 0.075), rgba(223, 188, 81, 0.018) 58%, rgba(255, 255, 255, 0.04) 100%),
+            radial-gradient(120% 100% at 50% 0%, rgba(255, 215, 21, 0.075), rgba(255, 215, 21, 0.018) 58%, rgba(255, 255, 255, 0.04) 100%),
             linear-gradient(180deg, rgba(255, 255, 255, 0.085), rgba(255, 255, 255, 0.025)),
             #11100d;
         box-shadow:
@@ -2381,7 +2381,7 @@
 
     .lifestyle-amenities-tabs button {
         min-height: 42px;
-        border: 1px solid rgba(223, 188, 81, 0.2);
+        border: 1px solid rgba(255, 215, 21, 0.2);
         border-radius: 8px;
         padding: 0 10px;
         background: rgba(255, 255, 255, 0.035);
@@ -2389,7 +2389,7 @@
     }
 
     .lifestyle-amenities-tabs button.is-active {
-        background: linear-gradient(180deg, #efd18c 0%, #c8a96a 100%);
+        background: linear-gradient(180deg, #FFD715 0%, #FFD715 100%);
         color: #19150f;
     }
 
@@ -2520,7 +2520,7 @@
     .visual-gallery-card.is-active {
         box-shadow:
             0 22px 54px rgba(0, 0, 0, 0.46),
-            0 0 0 1px rgba(225, 195, 126, 0.28);
+            0 0 0 1px rgba(255, 215, 21, 0.28);
     }
 
     .visual-gallery-dots {
@@ -2695,9 +2695,9 @@
     }
 
     .premium-specs-brand.is-active {
-        border-color: rgba(225, 195, 126, 0.52);
-        background: rgba(225, 195, 126, 0.12);
-        color: #e1c37e;
+        border-color: rgba(255, 215, 21, 0.52);
+        background: rgba(255, 215, 21, 0.12);
+        color: #FFD715;
     }
 
     .premium-specs-brand-dots {
@@ -3066,12 +3066,12 @@
         height: 22px;
         flex: 0 0 22px;
         margin-top: 2px;
-        color: #DFBC51;
-        stroke: #DFBC51;
+        color: #FFD715;
+        stroke: #FFD715;
     }
 
     .about-feature h3 {
-        color: #DFBC51;
+        color: #FFD715;
         font-size: 15px;
         line-height: 20px;
         letter-spacing: 0.7px;
@@ -4031,9 +4031,9 @@
     }
 
     .prime-distance-card.is-active {
-        border-color: rgba(246, 218, 120, 0.62);
+        border-color: rgba(255, 215, 21, 0.62);
         background:
-            linear-gradient(135deg, rgba(246, 218, 120, 0.16), rgba(255, 255, 255, 0.035)),
+            linear-gradient(135deg, rgba(255, 215, 21, 0.16), rgba(255, 255, 255, 0.035)),
             #202020;
         box-shadow:
             inset 0 1px 0 rgba(255, 255, 255, 0.06),
@@ -4552,7 +4552,7 @@
         border: 1px solid rgba(255, 255, 255, 0.09);
         border-radius: 18px;
         background:
-            radial-gradient(80% 100% at 50% 0%, rgba(223, 188, 81, 0.10), rgba(223, 188, 81, 0) 62%),
+            radial-gradient(80% 100% at 50% 0%, rgba(255, 215, 21, 0.10), rgba(255, 215, 21, 0) 62%),
             linear-gradient(180deg, rgba(0, 0, 0, 0.10), rgba(0, 0, 0, 0.04));
         box-shadow:
             0 26px 70px rgba(0, 0, 0, 0.20),
@@ -4702,11 +4702,11 @@
     }
 
     .hero-primary-btn {
-        background: #DFBC51;
+        background: #FFD715;
         color: #ffffff;
         box-shadow:
-            0 0 15px rgba(223, 188, 81, 0.2),
-            0 12px 28px rgba(223, 188, 81, 0.18);
+            0 0 15px rgba(255, 215, 21, 0.2),
+            0 12px 28px rgba(255, 215, 21, 0.18);
         font-size: 12px;
         line-height: 14px;
     }
@@ -4832,7 +4832,7 @@
         border: 1px solid rgba(255, 255, 255, 0.09);
         border-radius: 18px;
         background:
-            radial-gradient(80% 100% at 50% 0%, rgba(223, 188, 81, 0.10), rgba(223, 188, 81, 0) 62%),
+            radial-gradient(80% 100% at 50% 0%, rgba(255, 215, 21, 0.10), rgba(255, 215, 21, 0) 62%),
             linear-gradient(180deg, rgba(0, 0, 0, 0.10), rgba(0, 0, 0, 0.04));
         box-shadow:
             0 26px 70px rgba(0, 0, 0, 0.20),
@@ -5024,7 +5024,7 @@
         border: 1px solid rgba(255, 255, 255, 0.09);
         border-radius: 18px;
         background:
-            radial-gradient(80% 100% at 50% 0%, rgba(223, 188, 81, 0.10), rgba(223, 188, 81, 0) 62%),
+            radial-gradient(80% 100% at 50% 0%, rgba(255, 215, 21, 0.10), rgba(255, 215, 21, 0) 62%),
             linear-gradient(180deg, rgba(0, 0, 0, 0.10), rgba(0, 0, 0, 0.04));
         box-shadow:
             0 26px 70px rgba(0, 0, 0, 0.20),
@@ -5221,7 +5221,7 @@
         z-index: -1;
         border-radius: inherit;
         background:
-            radial-gradient(86% 120% at 16% 0%, rgba(223, 188, 81, 0.14), rgba(223, 188, 81, 0) 62%),
+            radial-gradient(86% 120% at 16% 0%, rgba(255, 215, 21, 0.14), rgba(255, 215, 21, 0) 62%),
             linear-gradient(180deg, rgba(0, 0, 0, 0.70), rgba(0, 0, 0, 0.46));
         box-shadow:
             0 16px 34px rgba(0, 0, 0, 0.34),
@@ -5349,7 +5349,7 @@
         justify-content: flex-start;
         gap: 8px;
         height: auto;
-        color: rgba(223, 188, 81, 0.86);
+        color: rgba(255, 215, 21, 0.86);
         font-family: "Inter", Arial, sans-serif;
         font-size: 9.6px;
         font-weight: 800;
@@ -5380,7 +5380,7 @@
     }
 
     .hero-copy h1 span {
-        color: #F3D976;
+        color: #FFD715;
     }
 
     .hero-copy p,
@@ -5409,7 +5409,7 @@
         height: auto;
         min-height: 25px;
         padding: 5px 8px;
-        border-color: rgba(223, 188, 81, 0.24);
+        border-color: rgba(255, 215, 21, 0.24);
         border-radius: 999px;
         background: rgba(255, 255, 255, 0.08);
         color: #ffffff;
@@ -5452,7 +5452,7 @@
     .hero-primary-btn {
         height: 52px;
         background:
-            linear-gradient(180deg, #f3d976 0%, #d7ae33 100%);
+            linear-gradient(180deg, #FFD715 0%, #FFD715 100%);
         color: #000000;
         font-family: "Inter", Arial, sans-serif;
         font-size: 15px;
@@ -5460,7 +5460,7 @@
         line-height: 1;
         box-shadow:
             0 15px 30px rgba(0, 0, 0, 0.34),
-            0 0 24px rgba(223, 188, 81, 0.26),
+            0 0 24px rgba(255, 215, 21, 0.26),
             inset 0 1px 0 rgba(255, 255, 255, 0.42);
     }
 
@@ -5776,9 +5776,9 @@
     }
 
     .prime-distance-card.is-active {
-        border-color: rgba(246, 218, 120, 0.62);
+        border-color: rgba(255, 215, 21, 0.62);
         background:
-            linear-gradient(135deg, rgba(246, 218, 120, 0.16), rgba(255, 255, 255, 0.035)),
+            linear-gradient(135deg, rgba(255, 215, 21, 0.16), rgba(255, 255, 255, 0.035)),
             #202020;
         box-shadow:
             inset 0 1px 0 rgba(255, 255, 255, 0.06),
@@ -5951,7 +5951,7 @@
         min-height: 38px;
         flex: 0 0 auto;
         padding: 0 14px;
-        border: 1px solid rgba(223, 188, 81, 0.22);
+        border: 1px solid rgba(255, 215, 21, 0.22);
         border-radius: 999px;
         background: rgba(255, 255, 255, 0.035);
         font-size: 11px;
@@ -5965,7 +5965,7 @@
     }
 
     .lifestyle-amenities-tabs button.is-active {
-        background: linear-gradient(180deg, #efd18c 0%, #c8a96a 100%);
+        background: linear-gradient(180deg, #FFD715 0%, #FFD715 100%);
         color: #19150f;
     }
 
@@ -6004,17 +6004,17 @@
         height: 190px;
         flex: 0 0 min(78vw, 246px);
         overflow: hidden;
-        border: 1px solid rgba(223, 188, 81, 0.24);
+        border: 1px solid rgba(255, 215, 21, 0.24);
         border-radius: 16px;
         scroll-snap-align: center;
         scroll-snap-stop: always;
     }
 
     .lifestyle-amenity-card.is-active {
-        border-color: rgba(246, 218, 120, 0.62);
+        border-color: rgba(255, 215, 21, 0.62);
         box-shadow:
             0 18px 42px rgba(0, 0, 0, 0.34),
-            0 0 0 1px rgba(246, 218, 120, 0.08);
+            0 0 0 1px rgba(255, 215, 21, 0.08);
     }
 
     .lifestyle-amenity-card.is-hidden {
@@ -6428,7 +6428,6 @@
     .sticky-availability-content--interested {
         width: calc(100% - 40px) !important;
         max-width: 760px !important;
-        grid-template-columns: 1fr !important;
         align-content: center;
         justify-items: center;
         gap: 28px !important;
@@ -6441,6 +6440,17 @@
         max-width: 620px !important;
         flex-direction: column;
         align-items: center;
+        padding: 28px 0;
+    }
+
+    .sticky-availability-content--interested .interested-property-copy::before {
+        inset: -22px -26px;
+        border-radius: 20px;
+    }
+
+    .sticky-availability-content--interested .interested-property-copy h2 {
+        font-size: 42px !important;
+        line-height: 52px !important;
     }
 
     .sticky-availability-content--interested .interested-property-copy p {
@@ -6452,17 +6462,6 @@
         justify-content: center;
     }
 
-    .sticky-availability-content--interested .interested-property-mosaic {
-        width: 100%;
-        max-width: 720px !important;
-        height: 300px !important;
-    }
-
-    .sticky-availability-content--interested .interested-property-tile img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover !important;
-    }
 }
 
 @media (max-width: 767px) {
@@ -6473,15 +6472,23 @@
     }
 
     .sticky-availability-content--interested .interested-property-copy h2 {
-        font-size: 26px !important;
-        line-height: 32px !important;
+        font-size: 31px !important;
+        line-height: 39px !important;
+    }
+
+    .interested-property-kicker {
+        min-height: 30px;
+        margin-bottom: 16px;
+        padding: 0 14px;
+        font-size: 10px;
+        letter-spacing: 0.12em;
     }
 
     .sticky-availability-content--interested .interested-property-copy p {
-        margin-top: 14px !important;
+        margin-top: 16px !important;
         max-width: 292px !important;
-        font-size: 12px !important;
-        line-height: 18px !important;
+        font-size: 13px !important;
+        line-height: 21px !important;
     }
 
     .sticky-availability-content--interested .interested-property-copy > div {
@@ -6500,32 +6507,4 @@
         font-size: 13px !important;
     }
 
-    .sticky-availability-content--interested .interested-property-mosaic {
-        height: 230px !important;
-        max-width: 292px !important;
-        border-radius: 14px;
-        grid-template-columns: 1.15fr 0.85fr !important;
-        grid-template-rows: 1fr 1fr !important;
-        gap: 6px !important;
-    }
-
-    .sticky-availability-content--interested .interested-property-tile--main {
-        grid-column: 1 / 2 !important;
-        grid-row: 1 / 3 !important;
-    }
-
-    .sticky-availability-content--interested .interested-property-tile--top {
-        grid-column: 2 / 3 !important;
-        grid-row: 1 / 2 !important;
-    }
-
-    .sticky-availability-content--interested .interested-property-tile--tall {
-        grid-column: 2 / 3 !important;
-        grid-row: 2 / 3 !important;
-    }
-
-    .sticky-availability-content--interested .interested-property-tile--bath,
-    .sticky-availability-content--interested .interested-property-tile--lamp {
-        display: none;
-    }
 }
