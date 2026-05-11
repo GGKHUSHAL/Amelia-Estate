@@ -7581,14 +7581,12 @@ body.is-pricing-modal-open {
 /* Project essentials: download CTA over an interior image. */
 .project-essentials-section {
     position: relative;
-    min-height: 610px;
-    display: grid;
-    place-items: center;
+    min-height: 760px;
     overflow: hidden;
-    padding: 92px 0;
+    padding: 96px 0 112px;
     background:
-        linear-gradient(180deg, rgba(0, 0, 0, 0.06), rgba(0, 0, 0, 0.16)),
-        url("../img/are you intersted/3a60f0d29ab7bfe4507a2d49201f2d616bcc99a4.jpg") center 58% / cover no-repeat;
+        radial-gradient(820px 360px at 50% 0%, rgba(255, 215, 21, 0.12), rgba(255, 215, 21, 0) 72%),
+        linear-gradient(180deg, #050505 0%, #0d0d0c 54%, #050505 100%);
     font-family: "Jost", "Inter", Arial, sans-serif;
 }
 
@@ -7597,84 +7595,284 @@ body.is-pricing-modal-open {
     position: absolute;
     inset: 0;
     background:
-        linear-gradient(90deg, rgba(0, 0, 0, 0.10), rgba(0, 0, 0, 0.02), rgba(0, 0, 0, 0.12)),
-        linear-gradient(180deg, rgba(28, 28, 28, 0.02), rgba(28, 28, 28, 0.16));
+        linear-gradient(90deg, rgba(255, 215, 21, 0.045) 0 1px, transparent 1px 100%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.035) 0 1px, transparent 1px 100%);
+    background-size: 96px 96px;
+    mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.72), transparent 76%);
+    opacity: 0.42;
     pointer-events: none;
+}
+
+.project-essentials-wrap {
+    position: relative;
+    z-index: 1;
+}
+
+.project-essentials-head {
+    width: min(100%, 760px);
+}
+
+.project-essentials-head-eyebrow {
+    display: inline-flex;
+    min-height: 32px;
+    align-items: center;
+    justify-content: center;
+    margin: 0 0 16px;
+    border: 1px solid rgba(255, 215, 21, 0.32);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.045);
+    padding: 0 16px;
+    color: #FFD715;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+}
+
+.project-essentials-head h2 {
+    margin: 0;
+    color: #ffffff;
+    font-size: 48px;
+    font-weight: 650;
+    line-height: 56px;
+}
+
+.project-essentials-head h2 span {
+    color: #FFD715;
+}
+
+.project-essentials-head > p:not(.project-essentials-head-eyebrow) {
+    margin: 14px 0 0;
+    color: rgba(255, 255, 255, 0.68);
+    font-size: 17px;
+    line-height: 27px;
 }
 
 .project-essentials-card {
     position: relative;
-    z-index: 1;
-    min-height: 425px;
-    border-radius: 9px;
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    background: rgba(28, 25, 21, 0.58);
-    padding: 89px 84px;
-    text-align: center;
+    display: grid;
+    grid-template-columns: 1.12fr 0.88fr;
+    min-height: 560px;
+    margin-top: 48px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 215, 21, 0.18);
+    border-radius: 30px;
+    background: #090a0b;
     box-shadow:
-        0 30px 90px rgba(0, 0, 0, 0.34),
-        inset 0 1px 0 rgba(255, 255, 255, 0.07);
-    backdrop-filter: blur(5px);
+        0 42px 110px rgba(0, 0, 0, 0.56),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 
-.project-essentials-card::before {
+.project-essentials-visual {
+    position: relative;
+    min-height: 560px;
+    overflow: hidden;
+    background:
+        radial-gradient(520px 280px at 34% 22%, rgba(255, 215, 21, 0.18), transparent 64%),
+        linear-gradient(145deg, #080808, #11100d);
+}
+
+.project-essentials-visual::before {
     content: "";
     position: absolute;
     inset: 0;
-    border-radius: inherit;
     background:
-        radial-gradient(80% 70% at 50% 0%, rgba(255, 215, 21, 0.12), rgba(255, 215, 21, 0) 70%),
-        linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0));
-    pointer-events: none;
+        linear-gradient(90deg, rgba(255, 215, 21, 0.05) 0 1px, transparent 1px 100%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.035) 0 1px, transparent 1px 100%);
+    background-size: 62px 62px;
+    opacity: 0.42;
 }
 
-.project-essentials-card > * {
-    position: relative;
+.project-essentials-preview {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: min(82%, 520px);
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    border-radius: 18px;
+    box-shadow:
+        0 26px 64px rgba(0, 0, 0, 0.58),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.project-essentials-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.project-essentials-preview--active {
+    z-index: 3;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.project-essentials-preview--prev {
+    z-index: 2;
+    opacity: 0.62;
+    transform: translate(calc(-50% - 20px), calc(-50% - 26px)) rotate(-3deg) scale(0.93);
+}
+
+.project-essentials-preview--next {
     z-index: 1;
+    opacity: 0.52;
+    transform: translate(calc(-50% + 22px), calc(-50% + 30px)) rotate(3deg) scale(0.92);
+}
+
+.project-essentials-panel {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 48px 38px 34px;
+    background:
+        radial-gradient(360px 180px at 100% 0%, rgba(255, 215, 21, 0.12), transparent 70%),
+        #f8f3e8;
+    color: #101010;
+}
+
+.project-essentials-panel::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 1px;
+    background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.12), transparent);
+}
+
+.project-essentials-eyebrow {
+    border-color: rgba(255, 215, 21, 0.40) !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+    color: #FFD715 !important;
+    margin-left: 0 !important;
+}
+
+.project-essentials-card h2 {
+    margin-top: 22px !important;
+    color: #111111 !important;
+    text-align: left !important;
+    font-size: 27px !important;
+    line-height: 34px !important;
+}
+
+.project-essentials-card h2 span {
+    color: #7b6500 !important;
+}
+
+.project-essentials-card > .project-essentials-panel > p:not(.project-essentials-eyebrow) {
+    margin-top: 10px !important;
+    color: #6f685c !important;
+    text-align: left !important;
+    font-size: 15px !important;
+    line-height: 23px !important;
+}
+
+.project-essentials-actions {
+    display: flex !important;
+    flex-direction: column;
+    gap: 13px !important;
+    margin-top: 30px !important;
 }
 
 .project-essentials-btn {
-    display: inline-flex;
-    min-height: 58px;
+    display: grid;
+    grid-template-columns: 50px minmax(0, 1fr) auto;
     align-items: center;
-    justify-content: center;
-    gap: 14px;
-    border: 1px solid rgba(255, 255, 255, 0.26);
-    border-radius: 5px;
-    background: rgba(255, 255, 255, 0.035);
-    color: #ffffff;
-    font-size: 15px;
+    gap: 15px;
+    min-height: 76px;
+    border: 1px solid #e4dccb;
+    border-radius: 16px;
+    background: #ffffff;
+    padding: 12px 16px;
+    color: #101010;
+    font-size: 16px;
     font-weight: 700;
-    letter-spacing: 0.16em;
+    letter-spacing: 0;
     line-height: 20px;
-    text-transform: uppercase;
+    text-align: left;
+    text-transform: none;
     transition:
         transform 0.26s ease,
         border-color 0.26s ease,
-        background-color 0.26s ease,
-        color 0.26s ease;
+        box-shadow 0.26s ease;
+}
+
+.project-essentials-btn svg {
+    width: 22px;
+    height: 22px;
+    justify-self: center;
+    color: #7b6500;
+    stroke: currentColor;
+}
+
+.project-essentials-btn::before {
+    content: "";
+    grid-column: 1;
+    grid-row: 1;
+    width: 50px;
+    height: 50px;
+    border: 1px solid #e6dcc8;
+    border-radius: 13px;
+    background: linear-gradient(180deg, #ffffff, #f3ead7);
+}
+
+.project-essentials-btn > svg {
+    position: relative;
+    z-index: 1;
+    grid-column: 1;
+    grid-row: 1;
+}
+
+.project-essentials-btn span {
+    display: block;
+    min-width: 0;
+}
+
+.project-essentials-btn b {
+    display: block;
+    color: #111111;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 20px;
+}
+
+.project-essentials-btn em {
+    display: block;
+    margin-top: 3px;
+    color: #777064;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 18px;
+}
+
+.project-essentials-btn strong {
+    color: #7b6500;
+    font-size: 13px;
+    font-weight: 800;
 }
 
 .project-essentials-btn:hover {
-    border-color: rgba(255, 215, 21, 0.78);
-    background: rgba(255, 215, 21, 0.12);
-    transform: translateY(-3px);
+    border-color: #FFD715;
+    box-shadow:
+        0 14px 32px rgba(0, 0, 0, 0.10),
+        0 0 0 2px rgba(255, 215, 21, 0.16);
+    transform: translateY(-2px);
 }
 
 .project-essentials-btn--gold {
-    border-color: transparent;
-    background: #FFD715;
-    color: #0d0b08;
+    border-color: #FFD715;
+    box-shadow: 0 0 0 2px rgba(255, 215, 21, 0.14);
 }
 
 .project-essentials-btn--gold:hover {
-    background: #FFD715;
     color: #0d0b08;
 }
 
 .project-essentials-eyebrow,
 .project-essentials-card h2,
-.project-essentials-card > p:not(.project-essentials-eyebrow),
+.project-essentials-panel > p:not(.project-essentials-eyebrow),
 .project-essentials-actions {
     opacity: 0;
     transform: translateY(34px);
@@ -7685,7 +7883,7 @@ body.is-pricing-modal-open {
 
 .project-essentials-section.is-visible .project-essentials-eyebrow,
 .project-essentials-section.is-visible .project-essentials-card h2,
-.project-essentials-section.is-visible .project-essentials-card > p:not(.project-essentials-eyebrow),
+.project-essentials-section.is-visible .project-essentials-panel > p:not(.project-essentials-eyebrow),
 .project-essentials-section.is-visible .project-essentials-actions {
     opacity: 1;
     transform: translateY(0);
@@ -7695,12 +7893,23 @@ body.is-pricing-modal-open {
     transition-delay: 0.08s;
 }
 
-.project-essentials-section.is-visible .project-essentials-card > p:not(.project-essentials-eyebrow) {
+.project-essentials-section.is-visible .project-essentials-panel > p:not(.project-essentials-eyebrow) {
     transition-delay: 0.15s;
 }
 
 .project-essentials-section.is-visible .project-essentials-actions {
     transition-delay: 0.22s;
+}
+
+.project-essentials-panel::after {
+    content: "RERA  |  PR-7  |  3 BHK";
+    margin-top: auto;
+    border-top: 1px solid #e4dccb;
+    padding-top: 20px;
+    color: #6f685c;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
 }
 
 /* Site visit: dark map and contact card. */
@@ -10264,7 +10473,7 @@ a[href*="wa.me"]:hover svg {
     .faq-panels,
     .project-essentials-eyebrow,
     .project-essentials-card h2,
-    .project-essentials-card > p:not(.project-essentials-eyebrow),
+    .project-essentials-panel > p:not(.project-essentials-eyebrow),
     .project-essentials-actions,
     .site-visit-map,
     .site-visit-card,
@@ -10475,7 +10684,7 @@ a[href*="wa.me"]:hover svg {
     .faq-panels,
     .project-essentials-eyebrow,
     .project-essentials-card h2,
-    .project-essentials-card > p:not(.project-essentials-eyebrow),
+    .project-essentials-panel > p:not(.project-essentials-eyebrow),
     .project-essentials-actions,
     .site-visit-map,
     .site-visit-card,

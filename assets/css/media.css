@@ -284,12 +284,22 @@
     }
 
     .project-essentials-section {
-        min-height: 560px;
+        min-height: auto;
         padding: 72px 0;
     }
 
     .project-essentials-card {
-        padding: 72px 56px;
+        grid-template-columns: 1fr;
+        min-height: 0;
+    }
+
+    .project-essentials-visual {
+        min-height: 390px;
+    }
+
+    .project-essentials-head h2 {
+        font-size: 40px;
+        line-height: 48px;
     }
 
     .site-visit-section {
@@ -2175,19 +2185,36 @@
     }
 
     .project-essentials-section {
-        min-height: 520px;
+        min-height: auto;
         padding: 58px 0;
     }
 
     .project-essentials-card {
-        padding: 56px 26px;
+        width: 100% !important;
+        grid-template-columns: 1fr;
+        border-radius: 22px;
     }
 
     .project-essentials-actions {
-        grid-template-columns: 1fr !important;
-        max-width: 430px;
-        margin-right: auto;
-        margin-left: auto;
+        max-width: none;
+    }
+
+    .project-essentials-visual {
+        min-height: 330px;
+    }
+
+    .project-essentials-panel {
+        padding: 34px 22px 28px;
+    }
+
+    .project-essentials-head h2 {
+        font-size: 32px;
+        line-height: 39px;
+    }
+
+    .project-essentials-head > p:not(.project-essentials-head-eyebrow) {
+        font-size: 14px;
+        line-height: 22px;
     }
 
     .site-visit-section {
@@ -3780,31 +3807,85 @@
     }
 
     .project-essentials-card {
+        width: 100% !important;
+        padding: 0;
+        border-radius: 18px;
+    }
+
+    .project-essentials-wrap {
         width: calc(100% - 28px) !important;
-        padding: 44px 18px;
+    }
+
+    .project-essentials-head-eyebrow {
+        min-height: 28px;
+        margin-bottom: 12px;
+        padding: 0 12px;
+        font-size: 9px;
+        letter-spacing: 0.12em;
+    }
+
+    .project-essentials-head h2 {
+        font-size: 27px;
+        line-height: 33px;
+    }
+
+    .project-essentials-visual {
+        min-height: 255px;
     }
 
     .project-essentials-card h2 {
-        font-size: 27px !important;
-        line-height: 34px !important;
+        margin-top: 18px !important;
+        font-size: 25px !important;
+        line-height: 31px !important;
     }
 
-    .project-essentials-card > p:not(.project-essentials-eyebrow) {
-        font-size: 15px !important;
-        line-height: 24px !important;
+    .project-essentials-panel > p:not(.project-essentials-eyebrow) {
+        font-size: 13px !important;
+        line-height: 20px !important;
     }
 
     .project-essentials-eyebrow {
-        min-height: 32px;
-        padding: 0 14px !important;
+        min-height: 28px;
+        padding: 0 12px !important;
         font-size: 10px !important;
         letter-spacing: 0.1em !important;
     }
 
     .project-essentials-btn {
-        min-height: 52px;
+        grid-template-columns: 42px minmax(0, 1fr) auto;
+        min-height: 62px;
+        gap: 12px;
+        padding: 10px 12px;
         font-size: 13px;
-        letter-spacing: 0.12em;
+    }
+
+    .project-essentials-btn::before {
+        width: 42px;
+        height: 42px;
+        border-radius: 11px;
+    }
+
+    .project-essentials-btn svg {
+        width: 19px;
+        height: 19px;
+    }
+
+    .project-essentials-btn b {
+        font-size: 13px;
+        line-height: 17px;
+    }
+
+    .project-essentials-btn em {
+        font-size: 11px;
+        line-height: 15px;
+    }
+
+    .project-essentials-btn strong {
+        font-size: 11px;
+    }
+
+    .project-essentials-panel {
+        padding: 28px 16px 24px;
     }
 
     .site-visit-section {
