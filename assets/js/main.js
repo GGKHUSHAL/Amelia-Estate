@@ -1711,10 +1711,10 @@ if (projectEssentialsSection) {
         const preloader = new Image();
         preloader.onload = () => {
             img.style.opacity = "0";
-            requestAnimationFrame(() => {
+            setTimeout(() => {
                 img.src = src;
                 img.style.opacity = "1";
-            });
+            }, 175); // Half the transition duration for smooth crossfade
         };
         preloader.src = src;
     };
