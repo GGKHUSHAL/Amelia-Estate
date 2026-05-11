@@ -8967,7 +8967,7 @@ a[href*="wa.me"]:hover svg {
     position: absolute;
     left: var(--story-content-left);
     bottom: 48px;
-    width: min(500px, calc(100% - var(--story-content-left) - var(--story-content-right)));
+    width: min(640px, calc(100% - var(--story-content-left) - var(--story-content-right)));
     max-width: calc(100% - var(--story-content-left) - var(--story-content-right));
     color: #ffffff;
     opacity: 1;
@@ -8979,16 +8979,16 @@ a[href*="wa.me"]:hover svg {
 .scroll-story-slide--booking .scroll-story-content {
     left: var(--story-content-left);
     bottom: 64px;
-    width: min(560px, calc(100% - var(--story-content-left) - var(--story-content-right)));
+    width: min(720px, calc(100% - var(--story-content-left) - var(--story-content-right)));
     max-width: calc(100% - var(--story-content-left) - var(--story-content-right));
 }
 
 .scroll-story-kicker {
-    margin: 0 0 12px;
+    margin: 0 0 14px;
     color: #FFD715;
-    font-size: 12px;
-    font-weight: 600;
-    line-height: 16px;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 20px;
     letter-spacing: 0.18em;
     overflow-wrap: anywhere;
 }
@@ -8996,9 +8996,9 @@ a[href*="wa.me"]:hover svg {
 .scroll-story-content h2 {
     margin: 0;
     color: #ffffff;
-    font-size: clamp(22px, 3vw, 34px);
-    font-weight: 600;
-    line-height: 1.16;
+    font-size: clamp(28px, 4vw, 46px);
+    font-weight: 700;
+    line-height: 1.12;
     letter-spacing: 0;
     overflow-wrap: anywhere;
 }
@@ -9009,11 +9009,11 @@ a[href*="wa.me"]:hover svg {
 }
 
 .scroll-story-content > p:not(.scroll-story-kicker) {
-    margin: 18px 0 0;
-    color: rgba(255, 255, 255, 0.86);
-    font-size: 13px;
+    margin: 20px 0 0;
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 16px;
     font-weight: 400;
-    line-height: 1.55;
+    line-height: 1.75;
     overflow-wrap: anywhere;
 }
 
@@ -9021,8 +9021,8 @@ a[href*="wa.me"]:hover svg {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    gap: 12px;
-    margin-top: 18px;
+    gap: 14px;
+    margin-top: 22px;
     max-width: 100%;
 }
 
@@ -9031,16 +9031,16 @@ a[href*="wa.me"]:hover svg {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-width: 142px;
+    min-width: 150px;
     max-width: 100%;
-    height: 44px;
-    padding: 12px 18px;
-    border-radius: 8px;
+    height: 48px;
+    padding: 14px 20px;
+    border-radius: 10px;
     color: #ffffff;
     font-family: "Inter", Arial, sans-serif;
-    font-size: 12px;
-    font-weight: 600;
-    line-height: 1;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.1;
     text-align: center;
     white-space: normal;
     overflow-wrap: anywhere;
@@ -9064,6 +9064,143 @@ a[href*="wa.me"]:hover svg {
 .scroll-story-primary-btn:hover,
 .scroll-story-secondary-btn:hover {
     transform: translateY(-2px);
+}
+
+/* Story slider typography and spacing improvements */
+.scroll-story-content {
+    width: min(760px, calc(100% - var(--story-content-left) - var(--story-content-right)));
+}
+
+.scroll-story-slide--booking .scroll-story-content {
+    width: min(820px, calc(100% - var(--story-content-left) - var(--story-content-right)));
+}
+
+.scroll-story-kicker {
+    margin: 0 0 18px;
+    font-size: 16px;
+    line-height: 22px;
+    letter-spacing: 0.18em;
+}
+
+.scroll-story-content h2 {
+    font-size: clamp(34px, 5vw, 56px);
+    font-weight: 700;
+    line-height: 1.1;
+}
+
+.scroll-story-content > p:not(.scroll-story-kicker) {
+    margin: 22px 0 0;
+    font-size: 17px;
+    line-height: 1.85;
+    max-width: 100%;
+}
+
+.scroll-story-actions {
+    gap: 16px;
+    margin-top: 26px;
+}
+
+.scroll-story-primary-btn,
+.scroll-story-secondary-btn {
+    min-width: 160px;
+    height: 50px;
+    padding: 16px 22px;
+    font-size: 15px;
+    font-weight: 700;
+    border-radius: 10px;
+}
+
+@media (max-width: 991px) {
+    .scroll-story-content {
+        left: clamp(24px, 5vw, 52px);
+        right: clamp(24px, 5vw, 52px);
+        width: calc(100% - 2 * clamp(24px, 5vw, 52px));
+        bottom: 36px;
+    }
+}
+
+@media (max-width: 767px) {
+    .scroll-story-content {
+        left: 16px;
+        right: 16px;
+        bottom: 16px;
+        width: calc(100% - 32px);
+        max-width: none;
+        padding-bottom: 16px;
+        box-sizing: border-box;
+    }
+
+    .scroll-story-kicker {
+        font-size: 20px;
+        line-height: 1.35;
+        letter-spacing: 0.2em;
+        margin-bottom: 12px;
+        text-shadow: 0 1px 10px rgba(0, 0, 0, 0.55);
+    }
+
+    .scroll-story-content h2 {
+        font-size: clamp(46px, 12vw, 70px);
+        line-height: 1.05;
+        letter-spacing: -0.02em;
+        text-shadow: 0 2px 22px rgba(0, 0, 0, 0.5);
+    }
+
+    .scroll-story-content > p:not(.scroll-story-kicker) {
+        font-size: 20px;
+        line-height: 2.1;
+        margin-top: 20px;
+        color: rgba(255, 255, 255, 0.94);
+    }
+
+    .scroll-story-actions {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        margin-top: 26px;
+    }
+
+    .scroll-story-primary-btn,
+    .scroll-story-secondary-btn {
+        min-width: 100%;
+        width: 100%;
+        height: 58px;
+        padding: 16px 18px;
+        font-size: 15px;
+    }
+
+    .scroll-story-progress {
+        top: 108px;
+        left: 16px;
+        font-size: 13px;
+        gap: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .scroll-story-content {
+        left: 14px;
+        right: 14px;
+        width: calc(100% - 28px);
+        bottom: 14px;
+        padding-bottom: 18px;
+    }
+
+    .scroll-story-kicker {
+        font-size: 22px;
+    }
+
+    .scroll-story-content h2 {
+        font-size: 52px;
+    }
+
+    .scroll-story-content > p:not(.scroll-story-kicker) {
+        font-size: 19px;
+    }
+
+    .scroll-story-progress {
+        top: 100px;
+        left: 14px;
+    }
 }
 
 .scroll-story-slide.is-active .scroll-story-bg {
@@ -10894,6 +11031,118 @@ a[href*="wa.me"]:hover svg {
     .footer-disclaimer {
         font-size: 13px;
         line-height: 21px;
+    }
+}
+
+@media (max-width: 767px) {
+    body {
+        font-size: 16px;
+        line-height: 1.75;
+    }
+
+    h1 {
+        font-size: 34px;
+        line-height: 1.15;
+    }
+
+    h2 {
+        font-size: 30px;
+        line-height: 1.2;
+    }
+
+    h3 {
+        font-size: 24px;
+        line-height: 1.25;
+    }
+
+    h4,
+    .footer-section h4,
+    .premium-specs-eyebrow,
+    .visual-showcase-eyebrow {
+        font-size: 16px;
+    }
+
+    p,
+    li,
+    dd,
+    dt,
+    address,
+    .footer-links a,
+    .footer-nav a,
+    .visual-showcase-copy p,
+    .premium-specs-header > p,
+    .project-plans-copy > p,
+    .property-snapshot-content p,
+    .visual-showcase-cta p,
+    .footer-contact-item,
+    .footer-legal p,
+    .footer-rera-disclaimer {
+        font-size: 16px;
+        line-height: 1.8;
+    }
+
+    .visual-showcase-header h2 {
+        font-size: 34px;
+    }
+
+    .project-essentials-head h2,
+    .site-visit-card h2,
+    .property-snapshot-header h2,
+    .footer-premium-text h2 {
+        font-size: 32px;
+    }
+
+    .visual-showcase-tabs button,
+    .footer-premium-btn,
+    .project-essentials-btn,
+    .site-visit-submit,
+    .mobile-menu a {
+        font-size: 15px;
+    }
+
+    .visual-showcase-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
+    }
+
+    .visual-gallery-card {
+        height: 380px;
+    }
+
+    .visual-walkthrough-card {
+        height: 320px;
+    }
+
+    .premium-specs-track {
+        min-height: 520px;
+        height: 520px;
+    }
+
+    .premium-specs-slide {
+        width: 280px;
+        height: 430px;
+    }
+
+    .premium-specs-slide.is-active {
+        width: min(520px, calc(100vw - 32px));
+        height: 500px;
+    }
+
+    .premium-specs-slide img {
+        height: 100%;
+    }
+
+    .visual-showcase-cta h3 {
+        font-size: 26px;
+    }
+
+    .visual-showcase-cta a {
+        min-width: 100%;
+    }
+
+    .visual-showcase-cta small,
+    .footer-legal-links a {
+        font-size: 14px;
     }
 }
 
