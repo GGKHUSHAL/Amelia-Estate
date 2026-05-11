@@ -1688,6 +1688,92 @@ if (primeLocationSection) {
     }
 }
 
+// Project essentials: hover over each item to update the preview images with a smooth transform effect.
+const projectEssentialsSection = document.querySelector(".project-essentials-section");
+
+if (projectEssentialsSection) {
+    const visuals = projectEssentialsSection.querySelector(".project-essentials-visual");
+    const previewPrevImg = projectEssentialsSection.querySelector(".project-essentials-preview--prev img");
+    const previewActiveImg = projectEssentialsSection.querySelector(".project-essentials-preview--active img");
+    const previewNextImg = projectEssentialsSection.querySelector(".project-essentials-preview--next img");
+    const previewButtons = projectEssentialsSection.querySelectorAll(".project-essentials-btn[data-preview-active]");
+    const originalPreviews = {
+        prev: previewPrevImg?.src,
+        active: previewActiveImg?.src,
+        next: previewNextImg?.src
+    };
+
+    const fadeImageTo = (img, src) => {
+        if (!img || img.getAttribute("src") === src) {
+            return;
+        }
+
+        const preloader = new Image();
+        preloader.onload = () => {
+            img.style.opacity = "0";
+            requestAnimationFrame(() => {
+                img.src = src;
+                img.style.opacity = "1";
+            });
+        };
+        preloader.src = src;
+    };
+
+    const updatePreviews = (previewData) => {
+        if (!previewPrevImg || !previewActiveImg || !previewNextImg) {
+            return;
+        }
+
+        fadeImageTo(previewPrevImg, previewData.prev);
+        fadeImageTo(previewActiveImg, previewData.active);
+        fadeImageTo(previewNextImg, previewData.next);
+        visuals?.classList.add("is-preview-hovered");
+    };
+
+    const resetPreviews = () => {
+        if (!previewPrevImg || !previewActiveImg || !previewNextImg) {
+            return;
+        }
+
+        fadeImageTo(previewPrevImg, originalPreviews.prev);
+        fadeImageTo(previewActiveImg, originalPreviews.active);
+        fadeImageTo(previewNextImg, originalPreviews.next);
+        visuals?.classList.remove("is-preview-hovered");
+        previewButtons.forEach((btn) => btn.classList.remove("is-active"));
+    };
+
+    const setActiveButton = (button) => {
+        previewButtons.forEach((btn) => {
+            btn.classList.toggle("is-active", btn === button);
+        });
+    };
+
+    previewButtons.forEach((button) => {
+        const previewData = {
+            active: button.dataset.previewActive,
+            prev: button.dataset.previewPrev,
+            next: button.dataset.previewNext
+        };
+
+        button.addEventListener("mouseenter", () => {
+            setActiveButton(button);
+            updatePreviews(previewData);
+        });
+
+        button.addEventListener("focus", () => {
+            setActiveButton(button);
+            updatePreviews(previewData);
+        });
+    });
+
+    projectEssentialsSection.addEventListener("mouseleave", resetPreviews);
+    projectEssentialsSection.addEventListener("focusout", (event) => {
+        if (!projectEssentialsSection.contains(event.relatedTarget)) {
+            resetPreviews();
+        }
+    });
+}
+
 // Lifestyle amenities: filters the screenshot-style amenity grid by category.
 const lifestyleAmenitiesSection = document.querySelector(".lifestyle-amenities-section");
 

@@ -7695,18 +7695,47 @@ body.is-pricing-modal-open {
     box-shadow:
         0 26px 64px rgba(0, 0, 0, 0.58),
         inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    transition: transform 0.35s ease, opacity 0.35s ease;
 }
 
 .project-essentials-preview img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: opacity 0.35s ease, transform 0.35s ease, filter 0.35s ease;
 }
 
 .project-essentials-preview--active {
     z-index: 3;
     transform: translate(-50%, -50%) scale(1);
 }
+
+.project-essentials-visual.is-preview-hovered .project-essentials-preview--active {
+    transform: translate(-50%, -50%) scale(1.03);
+}
+
+.project-essentials-visual.is-preview-hovered .project-essentials-preview--prev {
+    opacity: 0.7;
+    transform: translate(calc(-50% - 20px), calc(-50% - 26px)) rotate(-3deg) scale(0.96);
+}
+
+.project-essentials-visual.is-preview-hovered .project-essentials-preview--next {
+    opacity: 0.62;
+    transform: translate(calc(-50% + 22px), calc(-50% + 30px)) rotate(3deg) scale(0.96);
+}
+
+.project-essentials-visual.is-preview-hovered .project-essentials-preview img {
+    filter: brightness(1.03) saturate(1.05);
+}
+
+.project-essentials-btn:hover {
+    border-color: #FFD715;
+    box-shadow:
+        0 14px 32px rgba(0, 0, 0, 0.10),
+        0 0 0 2px rgba(255, 215, 21, 0.16);
+    transform: translateY(-2px);
+}
+
 
 .project-essentials-preview--prev {
     z-index: 2;
@@ -7853,11 +7882,12 @@ body.is-pricing-modal-open {
     font-weight: 800;
 }
 
-.project-essentials-btn:hover {
+.project-essentials-btn:hover,
+.project-essentials-btn.is-active {
     border-color: #FFD715;
     box-shadow:
         0 14px 32px rgba(0, 0, 0, 0.10),
-        0 0 0 2px rgba(255, 215, 21, 0.16);
+        0 0 0 2px rgba(255, 215, 21, 0.20);
     transform: translateY(-2px);
 }
 
@@ -7866,7 +7896,8 @@ body.is-pricing-modal-open {
     box-shadow: 0 0 0 2px rgba(255, 215, 21, 0.14);
 }
 
-.project-essentials-btn--gold:hover {
+.project-essentials-btn--gold:hover,
+.project-essentials-btn--gold.is-active {
     color: #0d0b08;
 }
 
