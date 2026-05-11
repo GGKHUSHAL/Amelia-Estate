@@ -1949,6 +1949,37 @@ img.snapshot-icon {
     stroke: #000000;
 }
 
+.ideal-floor-levels button .ideal-floor-lock-icon .lock-shackle {
+    fill: none;
+    stroke: #FFD715;
+    stroke-width: 1.7;
+    stroke-linecap: round;
+}
+
+.ideal-floor-levels button .ideal-floor-lock-icon .lock-body {
+    fill: #FFD715;
+    stroke: none;
+}
+
+.ideal-floor-levels button .ideal-floor-lock-icon .lock-keyhole {
+    fill: none;
+    stroke: #050505;
+    stroke-width: 1.6;
+    stroke-linecap: round;
+}
+
+.ideal-floor-levels button.is-active .ideal-floor-lock-icon .lock-shackle {
+    stroke: #000000;
+}
+
+.ideal-floor-levels button.is-active .ideal-floor-lock-icon .lock-body {
+    fill: #000000;
+}
+
+.ideal-floor-levels button.is-active .ideal-floor-lock-icon .lock-keyhole {
+    stroke: #FFD715;
+}
+
 .ideal-floor-levels button.is-active img {
     filter: brightness(0);
 }
