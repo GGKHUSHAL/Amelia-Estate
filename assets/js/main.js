@@ -746,6 +746,7 @@ if (scrollStorySection && useScrollDrivenStory) {
     let storySnapTimer;
     let storySnapDebounceTimer;
     let storyScrollSettleTimer;
+    let storyTouchLockActive = false;
     let storyTouchStartY = 0;
     const storySnapDuration = 720;
     const storyWheelThreshold = 8;
@@ -836,11 +837,17 @@ if (scrollStorySection && useScrollDrivenStory) {
 
             const nearestIndex = getNearestStorySlideIndex();
 
+            if (shouldSkipBoundaryStorySnap(nearestIndex)) {
+                return;
+            }
+
             if (!isSlideAligned(nearestIndex)) {
                 snapToStorySlide(nearestIndex);
             }
         }, 130);
     };
+
+    const shouldSkipBoundaryStorySnap = () => false;
 
     const scheduleStoryScrollSettleSnap = () => {
         clearTimeout(storyScrollSettleTimer);
@@ -855,6 +862,10 @@ if (scrollStorySection && useScrollDrivenStory) {
             }
 
             const nearestIndex = getNearestStorySlideIndex();
+
+            if (shouldSkipBoundaryStorySnap(nearestIndex)) {
+                return;
+            }
 
             if (!isSlideAligned(nearestIndex)) {
                 snapToStorySlide(nearestIndex);
@@ -931,6 +942,8 @@ if (scrollStorySection && useScrollDrivenStory) {
         const viewportUnit = isMobileStoryView() ? "svh" : "vh";
         scrollStorySection.style.setProperty("--story-scroll-height", `${storySlides.length * sceneHeight}${viewportUnit}`);
     };
+
+    const shouldLockMobileStoryGesture = () => isMobileStoryView() && isStoryInViewport();
 
     const updateMobileStoryHeader = () => {
         if (!isMobileStoryView()) {
@@ -1075,29 +1088,49 @@ if (scrollStorySection && useScrollDrivenStory) {
         }
     });
     window.addEventListener("touchstart", (event) => {
-        if (!isStoryInViewport()) {
+        if (!shouldLockMobileStoryGesture() || event.touches.length !== 1) {
+            storyTouchLockActive = false;
             return;
         }
 
+        storyTouchLockActive = true;
         storyTouchStartY = event.touches[0].clientY;
     }, { passive: true });
+    window.addEventListener("touchmove", (event) => {
+        if (!storyTouchLockActive || !shouldLockMobileStoryGesture()) {
+            return;
+        }
+
+        event.preventDefault();
+    }, { passive: false });
     window.addEventListener("touchend", (event) => {
-        if (!storyTouchStartY || !isStoryInViewport()) {
+        if (!storyTouchStartY || !storyTouchLockActive || !shouldLockMobileStoryGesture()) {
+            storyTouchLockActive = false;
             return;
         }
 
         const touchDistance = storyTouchStartY - event.changedTouches[0].clientY;
         storyTouchStartY = 0;
+        storyTouchLockActive = false;
+        event.preventDefault();
 
         if (Math.abs(touchDistance) < storyTouchThreshold) {
             scheduleNearestStorySnap();
             return;
         }
 
-        handleStoryStep(touchDistance > 0 ? 1 : -1, event);
+        const nearestIndex = getNearestStorySlideIndex();
+        const lastIndex = storySlides.length - 1;
+        const direction = touchDistance > 0 ? 1 : -1;
+        const nextIndex = direction > 0
+            ? Math.min(nearestIndex + 1, lastIndex)
+            : Math.max(nearestIndex - 1, 0);
+
+        snapToStorySlide(nextIndex);
     }, { passive: false });
     window.addEventListener("touchcancel", () => {
         storyTouchStartY = 0;
+        storyTouchLockActive = false;
         scheduleStoryScrollSettleSnap();
     }, { passive: true });
     window.addEventListener("scroll", () => {
