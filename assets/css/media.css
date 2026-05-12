@@ -7594,6 +7594,16 @@
 }
 
 @media (max-width: 767px) {
+    .peace-density-section {
+        height: 100dvh !important;
+        min-height: 100dvh !important;
+        scroll-margin-top: 0 !important;
+    }
+
+    .peace-density-content {
+        height: 100% !important;
+    }
+
     .scroll-story-section--scenes {
         --story-scene-height: 100dvh;
         --story-sticky-height: var(--story-scene-height);
