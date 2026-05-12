@@ -745,6 +745,7 @@ if (scrollStorySection && useScrollDrivenStory) {
     let isStorySnapping = false;
     let storySnapTimer;
     let storySnapDebounceTimer;
+    let storyScrollSettleTimer;
     let storyTouchStartY = 0;
     const storySnapDuration = 720;
     const storyWheelThreshold = 8;
@@ -839,6 +840,26 @@ if (scrollStorySection && useScrollDrivenStory) {
                 snapToStorySlide(nearestIndex);
             }
         }, 130);
+    };
+
+    const scheduleStoryScrollSettleSnap = () => {
+        clearTimeout(storyScrollSettleTimer);
+
+        if (!isMobileStoryView() || isStorySnapping || !isStoryInViewport()) {
+            return;
+        }
+
+        storyScrollSettleTimer = setTimeout(() => {
+            if (!isMobileStoryView() || isStorySnapping || !isStoryInViewport()) {
+                return;
+            }
+
+            const nearestIndex = getNearestStorySlideIndex();
+
+            if (!isSlideAligned(nearestIndex)) {
+                snapToStorySlide(nearestIndex);
+            }
+        }, 140);
     };
 
     const handleStoryStep = (direction, event) => {
@@ -1075,8 +1096,13 @@ if (scrollStorySection && useScrollDrivenStory) {
 
         handleStoryStep(touchDistance > 0 ? 1 : -1, event);
     }, { passive: false });
+    window.addEventListener("touchcancel", () => {
+        storyTouchStartY = 0;
+        scheduleStoryScrollSettleSnap();
+    }, { passive: true });
     window.addEventListener("scroll", () => {
         requestStoryUpdate();
+        scheduleStoryScrollSettleSnap();
     }, { passive: true });
     window.addEventListener("resize", () => {
         setStoryHeight();
