@@ -7593,6 +7593,13 @@
     transform: translate3d(0, 0, 0) !important;
 }
 
+@media (min-width: 768px) and (max-width: 1199px) {
+    .scroll-story-section--scenes {
+        overscroll-behavior-y: auto !important;
+        touch-action: pan-y !important;
+    }
+}
+
 @media (max-width: 767px) {
     .peace-density-section {
         height: 100dvh !important;

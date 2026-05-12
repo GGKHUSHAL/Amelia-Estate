@@ -769,6 +769,7 @@ if (scrollStorySection && useScrollDrivenStory) {
     });
 
     const isMobileStoryView = () => window.matchMedia("(max-width: 767px)").matches;
+    const isTouchStoryView = () => window.matchMedia("(max-width: 1199px)").matches;
     const getStickyTop = () => isMobileStoryView() ? 0 : 86;
 
     const getSlideSnapTop = (slide) => Math.max(window.scrollY + slide.getBoundingClientRect().top - getStickyTop(), 0);
@@ -877,7 +878,7 @@ if (scrollStorySection && useScrollDrivenStory) {
     };
 
     const shouldSkipBoundaryStorySnap = (nearestIndex) => {
-        if (!isMobileStoryView() || !storySlides.length) {
+        if (!isTouchStoryView() || !storySlides.length) {
             return false;
         }
 
@@ -906,12 +907,12 @@ if (scrollStorySection && useScrollDrivenStory) {
     const scheduleStoryScrollSettleSnap = () => {
         clearTimeout(storyScrollSettleTimer);
 
-        if (!isMobileStoryView() || isStorySnapping || isStoryBoundaryExitSuppressed() || isStoryEntryGuardActive() || !isStoryInViewport()) {
+        if (!isTouchStoryView() || isStorySnapping || isStoryBoundaryExitSuppressed() || isStoryEntryGuardActive() || !isStoryInViewport()) {
             return;
         }
 
         storyScrollSettleTimer = setTimeout(() => {
-            if (!isMobileStoryView() || isStorySnapping || isStoryBoundaryExitSuppressed() || isStoryEntryGuardActive() || !isStoryInViewport()) {
+            if (!isTouchStoryView() || isStorySnapping || isStoryBoundaryExitSuppressed() || isStoryEntryGuardActive() || !isStoryInViewport()) {
                 return;
             }
 
@@ -997,10 +998,10 @@ if (scrollStorySection && useScrollDrivenStory) {
         scrollStorySection.style.setProperty("--story-scroll-height", `${storySlides.length * sceneHeight}${viewportUnit}`);
     };
 
-    const shouldLockMobileStoryGesture = () => isMobileStoryView() && isStoryInViewport();
+    const shouldLockMobileStoryGesture = () => isTouchStoryView() && isStoryInViewport();
 
     const guardMobileStoryEntry = () => {
-        if (!isMobileStoryView() || !storySlides.length) {
+        if (!isTouchStoryView() || !storySlides.length) {
             storyWasOverlappingViewport = false;
             storyPendingEntrySide = null;
             lastStoryScrollY = window.scrollY;
@@ -1055,7 +1056,7 @@ if (scrollStorySection && useScrollDrivenStory) {
     };
 
     const isBoundaryExitGesture = (touchDistance) => {
-        if (!isMobileStoryView() || !storySlides.length) {
+        if (!isTouchStoryView() || !storySlides.length) {
             return false;
         }
 
