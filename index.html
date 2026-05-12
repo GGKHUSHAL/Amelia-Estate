@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -9,8 +9,8 @@
 
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/media.css">
+    <link rel="stylesheet" href="assets/css/style.css?v=story-scenes-9">
+    <link rel="stylesheet" href="assets/css/media.css?v=story-scenes-9">
 </head>
 
 <body class="min-h-screen bg-white text-white">
@@ -475,19 +475,19 @@
         </section>
 
         <!-- Scroll Story slider -->
-        <section class="scroll-story-section reveal-on-scroll" id="low-rise-story">
-            <div class="scroll-story-sticky">
-                <div class="scroll-story-stage" aria-label="Low-rise living story slider">
-                    <div class="scroll-story-progress" aria-hidden="true">
-                        <span class="is-active">01</span>
-                        <span>02</span>
-                        <span>03</span>
-                        <span>04</span>
-                        <span>05</span>
-                        <span>06</span>
-                    </div>
+        <section class="scroll-story-section scroll-story-section--scenes reveal-on-scroll" id="low-rise-story">
+            <div class="scroll-story-progress" aria-hidden="true">
+                <span class="is-active">01</span>
+                <span>02</span>
+                <span>03</span>
+                <span>04</span>
+                <span>05</span>
+                <span>06</span>
+            </div>
 
-                    <article class="scroll-story-slide is-active">
+            <article class="scroll-story-slide scroll-story-scene is-active" data-story-scene="1">
+                <div class="scroll-story-sticky">
+                    <div class="scroll-story-stage" aria-label="Low-rise living story slide 1">
                         <div class="scroll-story-bg" style="--story-image: url('assets/img/mid-slider/slide-1.png');">
                             <img src="assets/img/mid-slider/slide-1.png" alt="Amelia Estate II gallery slide 1" />
                         </div>
@@ -498,9 +498,13 @@
                             <p>In a landscape filled with high-rise towers, Amelia Estate II offers a calmer low-rise
                                 format with better light, lower density, and more everyday comfort.</p>
                         </div>
-                    </article>
+                    </div>
+                </div>
+            </article>
 
-                    <article class="scroll-story-slide">
+            <article class="scroll-story-slide scroll-story-scene" data-story-scene="2">
+                <div class="scroll-story-sticky">
+                    <div class="scroll-story-stage" aria-label="Low-rise living story slide 2">
                         <div class="scroll-story-bg" style="--story-image: url('assets/img/mid-slider/slider-2.png');">
                             <img src="assets/img/mid-slider/slider-2.png" alt="Amelia Estate II gallery slide 2" />
                         </div>
@@ -511,9 +515,13 @@
                             <p>Near Aero City Mohali, PR-7 Airport Road, and key growth corridors, the project combines
                                 strong connectivity with long-term value.</p>
                         </div>
-                    </article>
+                    </div>
+                </div>
+            </article>
 
-                    <article class="scroll-story-slide">
+            <article class="scroll-story-slide scroll-story-scene" data-story-scene="3">
+                <div class="scroll-story-sticky">
+                    <div class="scroll-story-stage" aria-label="Low-rise living story slide 3">
                         <div class="scroll-story-bg" style="--story-image: url('assets/img/mid-slider/slider-3.png');">
                             <img src="assets/img/mid-slider/slider-3.png" alt="Amelia Estate II gallery slide 3" />
                         </div>
@@ -524,9 +532,13 @@
                             <p>Designed for practical family living, each floor layout maximizes natural ventilation and
                                 provides independent spaces for every family member.</p>
                         </div>
-                    </article>
+                    </div>
+                </div>
+            </article>
 
-                    <article class="scroll-story-slide">
+            <article class="scroll-story-slide scroll-story-scene" data-story-scene="4">
+                <div class="scroll-story-sticky">
+                    <div class="scroll-story-stage" aria-label="Low-rise living story slide 4">
                         <div class="scroll-story-bg" style="--story-image: url('assets/img/mid-slider/slider-4.jpg');">
                             <img src="assets/img/mid-slider/slider-4.jpg" alt="Amelia Estate II gallery slide 4" />
                         </div>
@@ -537,9 +549,13 @@
                             <p>From modular kitchens and premium flooring to high-end bathroom fittings, we deliver a
                                 home that is ready for your lifestyle.</p>
                         </div>
-                    </article>
+                    </div>
+                </div>
+            </article>
 
-                    <article class="scroll-story-slide">
+            <article class="scroll-story-slide scroll-story-scene" data-story-scene="5">
+                <div class="scroll-story-sticky">
+                    <div class="scroll-story-stage" aria-label="Low-rise living story slide 5">
                         <div class="scroll-story-bg" style="--story-image: url('assets/img/mid-slider/slider-5.png');">
                             <img src="assets/img/mid-slider/slider-5.png" alt="Amelia Estate II gallery slide 5" />
                         </div>
@@ -550,9 +566,13 @@
                             <p>A dedicated store room in every unit and roof rights on the 4th floor make ownership more
                                 complete and more valuable.</p>
                         </div>
-                    </article>
+                    </div>
+                </div>
+            </article>
 
-                    <article class="scroll-story-slide scroll-story-slide--booking">
+            <article class="scroll-story-slide scroll-story-scene scroll-story-slide--booking" data-story-scene="6">
+                <div class="scroll-story-sticky">
+                    <div class="scroll-story-stage" aria-label="Low-rise living story slide 6">
                         <div class="scroll-story-bg" style="--story-image: url('assets/img/mid-slider/slider-6.jpg');">
                             <img src="assets/img/mid-slider/slider-6.jpg" alt="Amelia Estate II gallery slide 6" />
                         </div>
@@ -567,9 +587,9 @@
                                 <a class="scroll-story-secondary-btn" href="#booking-enquiry">Book Site Visit</a>
                             </div>
                         </div>
-                    </article>
+                    </div>
                 </div>
-            </div>
+            </article>
         </section>
 
         <!-- Booking enquiry -->
@@ -937,7 +957,7 @@
                         <div class="selected-price-box">
                             <span>Selected Floor Price</span>
                             <strong><span class="pricing-currency">&#8377;</span>2.85 Cr*</strong>
-                            <p>1st Floor · <span>230 Sq.Yd</span></p>
+                            <p>1st Floor Â· <span>230 Sq.Yd</span></p>
                         </div>
 
                         <button class="pricing-unlock-btn" type="button">
@@ -1254,7 +1274,7 @@
                     <h3>Like What You See? <span>Visit the Sample Flat</span></h3>
                     <p>Actual unit ready for viewing. Experience the space, quality, and location firsthand.</p>
                     <a href="#booking-enquiry">Book Free Site Visit <span>-&gt;</span></a>
-                    <small>Free pickup &amp; drop from Chandigarh · Open 10 AM - 7 PM</small>
+                    <small>Free pickup &amp; drop from Chandigarh Â· Open 10 AM - 7 PM</small>
                 </div>
 
                 <div class="visual-showcase-disclaimer">
@@ -1488,7 +1508,7 @@
                 <div class="lifestyle-amenities-cta mt-12 flex min-h-[118px] items-center justify-between border border-[#3c3526] bg-[#211f1b] px-12">
                     <div>
                         <p class="text-[11px] font-medium text-white/35">Experience These Amenities</p>
-                        <h3 class="mt-2 text-[18px] font-normal text-[#f6f2ea]">Starting <span class="text-[28px] font-semibold text-[#FFD715]">₹1.25 Cr</span></h3>
+                        <h3 class="mt-2 text-[18px] font-normal text-[#f6f2ea]">Starting <span class="text-[28px] font-semibold text-[#FFD715]">â‚¹1.25 Cr</span></h3>
                     </div>
                     <a class="inline-flex h-10 min-w-[178px] items-center justify-center rounded-[8px] bg-gradient-to-b from-[#FFD715] to-[#FFD715] px-6 text-[11px] font-semibold text-[#0b0906] shadow-[0_14px_30px_rgba(255, 215, 21,0.28)] transition hover:-translate-y-0.5 hover:brightness-110"
                         href="#booking-enquiry">Book Free Site Visit <span class="ml-2">-&gt;</span></a>
@@ -1717,22 +1737,22 @@
                     <div class="faq-tabs flex flex-col gap-3" role="tablist" aria-label="FAQ categories">
                         <button class="faq-tab is-active" type="button" role="tab" aria-selected="true"
                             data-faq-tab="price">
-                            <span class="faq-tab-icon" aria-hidden="true">₹</span>
+                            <span class="faq-tab-icon" aria-hidden="true">â‚¹</span>
                             <span>Price & Payment</span>
                             <strong>5</strong>
                         </button>
                         <button class="faq-tab" type="button" role="tab" aria-selected="false" data-faq-tab="legal">
-                            <span class="faq-tab-icon" aria-hidden="true">✓</span>
+                            <span class="faq-tab-icon" aria-hidden="true">âœ“</span>
                             <span>Legal & RERA</span>
                             <strong>3</strong>
                         </button>
                         <button class="faq-tab" type="button" role="tab" aria-selected="false" data-faq-tab="quality">
-                            <span class="faq-tab-icon" aria-hidden="true">▥</span>
+                            <span class="faq-tab-icon" aria-hidden="true">â–¥</span>
                             <span>Construction & Quality</span>
                             <strong>5</strong>
                         </button>
                         <button class="faq-tab" type="button" role="tab" aria-selected="false" data-faq-tab="location">
-                            <span class="faq-tab-icon" aria-hidden="true">⌖</span>
+                            <span class="faq-tab-icon" aria-hidden="true">âŒ–</span>
                             <span>Location & Connectivity</span>
                             <strong>5</strong>
                         </button>
@@ -1959,7 +1979,7 @@
                     Download <span class="text-[#FFD715]">Amelia Estate II</span>
                 </h2>
                 <p class="mt-4 text-center text-[18px] font-normal leading-7 text-white/90">
-                    Stilt+4 3BHK Floors · PR-7 Airport Road · Starting ₹1.25 Cr
+                    Stilt+4 3BHK Floors Â· PR-7 Airport Road Â· Starting â‚¹1.25 Cr
                 </p>
 
                 <div class="project-essentials-actions mt-10 grid grid-cols-3 gap-4">
@@ -2041,7 +2061,7 @@
                             Book Your <span class="text-[#FFD715]">Site Visit</span>
                         </h2>
                         <p class="mt-4 text-center text-[16px] font-normal leading-6 text-white/76">
-                            Starting ₹1.25 Cr · RERA Approved
+                            Starting â‚¹1.25 Cr Â· RERA Approved
                         </p>
 
                         <form class="site-visit-form mt-9">
@@ -2155,7 +2175,7 @@
                     </div>
                     <div class="property-snapshot-modal-section">
                         <h4>Lifestyle Amenities</h4>
-                        <p>Residents enjoy access to an infinity pool, state-of-the-art fitness studio, clubhouse, landscaped gardens, kids play zone, and 24×7 security with CCTV monitoring.</p>
+                        <p>Residents enjoy access to an infinity pool, state-of-the-art fitness studio, clubhouse, landscaped gardens, kids play zone, and 24Ã—7 security with CCTV monitoring.</p>
                     </div>
                     <div class="property-snapshot-modal-section">
                         <h4>Location Advantage</h4>
@@ -2354,7 +2374,7 @@
             <div class="footer-premium-content">
                 <div class="footer-premium-text">
                     <p class="footer-premium-label">SECURE YOUR HOME</p>
-                    <h2>Premium 3BHK Floors Starting ₹1.25 Cr</h2>
+                    <h2>Premium 3BHK Floors Starting â‚¹1.25 Cr</h2>
                     <p>Limited low-rise inventory. Only 4 homes per floor.</p>
                 </div>
                 <div class="footer-premium-actions">
@@ -2428,7 +2448,7 @@
                             <dd>35% Built</dd>
                         </div>
                     </dl>
-                    <a href="https://www.rera.punjab.gov.in/" target="_blank" rel="noopener noreferrer" class="footer-verify-rera">Verify on RERA →</a>
+                    <a href="https://www.rera.punjab.gov.in/" target="_blank" rel="noopener noreferrer" class="footer-verify-rera">Verify on RERA â†’</a>
                 </div>
 
                 <!-- Contact Info -->
@@ -2468,9 +2488,9 @@
                 <p class="footer-copyright">&copy; 2026 Amelia Estate II by Uptown Skylla. All rights reserved.</p>
                 <div class="footer-legal-links">
                     <a href="#">Privacy Policy</a>
-                    <span aria-hidden="true">•</span>
+                    <span aria-hidden="true">â€¢</span>
                     <a href="#">Terms & Conditions</a>
-                    <span aria-hidden="true">•</span>
+                    <span aria-hidden="true">â€¢</span>
                     <a href="#">Disclaimer</a>
                 </div>
             </div>
@@ -2480,7 +2500,7 @@
         </div>
     </footer>
 
-    <script src="assets/js/main.js"></script>
+    <script src="assets/js/main.js?v=story-scenes-9"></script>
 </body>
 
 </html>

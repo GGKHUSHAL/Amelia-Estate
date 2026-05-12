@@ -9374,11 +9374,12 @@ a[href*="wa.me"]:hover svg {
     box-shadow: 0 26px 54px rgba(255, 215, 21, 0.28);
 }
 
-/* Scroll Story slider: pinned visual section controlled by wheel/touch JS. */
+/* Scroll Story slider: sticky cinematic scenes driven by page scroll. */
 .scroll-story-section {
     --story-section-height: calc(100dvh - 86px);
-    height: var(--story-section-height);
-    min-height: var(--story-section-height);
+    --story-scroll-height: 720vh;
+    height: var(--story-scroll-height);
+    min-height: var(--story-scroll-height);
     background: #000000;
     font-family: "Jost", "Inter", Arial, sans-serif;
     scroll-margin-top: 86px;
@@ -9416,17 +9417,17 @@ a[href*="wa.me"]:hover svg {
 .scroll-story-slide {
     position: absolute;
     inset: 0;
+    z-index: 0;
     opacity: 0;
     pointer-events: none;
-    transform: translate3d(0, 0, 0) rotateX(0deg);
+    transform: translate3d(0, 22px, 0) scale(1.025);
     transform-origin: center center;
-    transform-style: preserve-3d;
     backface-visibility: hidden;
-    filter: brightness(0.78) saturate(0.92);
+    filter: brightness(0.66) saturate(0.86);
     transition:
-        opacity 0.74s ease,
-        filter 0.82s ease,
-        transform 0.84s cubic-bezier(0.18, 0.86, 0.22, 1);
+        opacity 0.95s ease,
+        filter 1.05s ease,
+        transform 1.05s cubic-bezier(0.16, 1, 0.3, 1);
     will-change: opacity, filter, transform;
 }
 
@@ -9447,7 +9448,7 @@ a[href*="wa.me"]:hover svg {
     opacity: 1;
     pointer-events: auto;
     filter: brightness(1) saturate(1);
-    transform: translate3d(0, 0, 0) rotateX(0deg);
+    transform: translate3d(0, 0, 0) scale(1);
 }
 
 .scroll-story-slide.is-flipping-in {
@@ -9502,10 +9503,11 @@ a[href*="wa.me"]:hover svg {
 .scroll-story-bg {
     position: absolute;
     inset: 0;
+    z-index: 0;
     overflow: hidden;
     background: var(--story-image) center / cover no-repeat;
-    transform: none;
-    transition: transform 1.1s cubic-bezier(0.22, 1, 0.36, 1);
+    transform: translateZ(0);
+    transition: transform 1.1s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .scroll-story-bg img {
@@ -9517,12 +9519,16 @@ a[href*="wa.me"]:hover svg {
     min-width: 100%;
     min-height: 100%;
     object-fit: cover;
-    object-position: center;
+    object-position: 50% 58%;
+    transform: scale(1.08);
+    will-change: transform, filter;
 }
 
 .scroll-story-overlay {
     position: absolute;
     inset: 0;
+    z-index: 1;
+    pointer-events: none;
     background:
         linear-gradient(180deg, rgba(0, 0, 0, 0.08) 0%, rgba(0, 0, 0, 0.16) 48%, rgba(0, 0, 0, 0.44) 100%),
         linear-gradient(90deg, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0.20) 54%, rgba(0, 0, 0, 0.12) 100%);
@@ -9534,8 +9540,9 @@ a[href*="wa.me"]:hover svg {
     --story-content-left: max(104px, calc((100vw - 1200px) / 2 + 104px));
     --story-content-right: clamp(24px, 4vw, 60px);
     position: absolute;
+    z-index: 3;
     left: var(--story-content-left);
-    bottom: 48px;
+    bottom: clamp(112px, 28vh, 280px);
     width: min(640px, calc(100% - var(--story-content-left) - var(--story-content-right)));
     max-width: calc(100% - var(--story-content-left) - var(--story-content-right));
     color: #ffffff;
@@ -9547,7 +9554,7 @@ a[href*="wa.me"]:hover svg {
 
 .scroll-story-slide--booking .scroll-story-content {
     left: var(--story-content-left);
-    bottom: 64px;
+    bottom: clamp(112px, 28vh, 280px);
     width: min(720px, calc(100% - var(--story-content-left) - var(--story-content-right)));
     max-width: calc(100% - var(--story-content-left) - var(--story-content-right));
 }

@@ -324,8 +324,9 @@ if (aboutSection) {
 
 // Scroll Story slider: traps scroll until the story has been viewed in that direction.
 const scrollStorySection = document.querySelector(".scroll-story-section");
+const useScrollDrivenStory = true;
 
-if (scrollStorySection) {
+if (scrollStorySection && !useScrollDrivenStory) {
     const storySlides = scrollStorySection.querySelectorAll(".scroll-story-slide");
     const storyProgressItems = scrollStorySection.querySelectorAll(".scroll-story-progress span");
 
@@ -732,6 +733,360 @@ if (scrollStorySection) {
 
     window.addEventListener("resize", updateMobileStoryHeader);
     updateMobileStoryHeader();
+}
+
+// Scroll Story: reference-style sticky scenes driven by normal page scroll.
+if (scrollStorySection && useScrollDrivenStory) {
+    const storySlides = Array.from(scrollStorySection.querySelectorAll(".scroll-story-slide"));
+    const storyProgressItems = Array.from(scrollStorySection.querySelectorAll(".scroll-story-progress span"));
+    const storyImages = storySlides.map((slide) => slide.querySelector(".scroll-story-bg img"));
+    let activeStorySlide = 0;
+    let storyTicking = false;
+    let isStorySnapping = false;
+    let storySnapTimer;
+    let storySnapDebounceTimer;
+    let storyTouchStartY = 0;
+    const storySnapDuration = 720;
+    const storyWheelThreshold = 8;
+    const storyTouchThreshold = 44;
+
+    storySlides.forEach((slide) => {
+        const storyBackground = slide.querySelector(".scroll-story-bg");
+        const storyImage = storyBackground?.style.getPropertyValue("--story-image");
+
+        if (storyImage) {
+            slide.style.setProperty("--story-image", storyImage);
+        }
+    });
+
+    const isMobileStoryView = () => window.matchMedia("(max-width: 767px)").matches;
+    const getStickyTop = () => isMobileStoryView() ? 0 : 86;
+
+    const getSlideSnapTop = (slide) => Math.max(window.scrollY + slide.getBoundingClientRect().top - getStickyTop(), 0);
+
+    const getNearestStorySlideIndex = () => {
+        const snapLine = getStickyTop();
+        let nearestIndex = 0;
+        let nearestDistance = Infinity;
+
+        storySlides.forEach((slide, slideIndex) => {
+            const distance = Math.abs(slide.getBoundingClientRect().top - snapLine);
+
+            if (distance < nearestDistance) {
+                nearestDistance = distance;
+                nearestIndex = slideIndex;
+            }
+        });
+
+        return nearestIndex;
+    };
+
+    const isStoryInViewport = () => {
+        const rect = scrollStorySection.getBoundingClientRect();
+        const snapLine = getStickyTop();
+
+        return rect.top < window.innerHeight && rect.bottom > snapLine;
+    };
+
+    const isSlideAligned = (index) => {
+        const slide = storySlides[index];
+
+        if (!slide) {
+            return false;
+        }
+
+        return Math.abs(slide.getBoundingClientRect().top - getStickyTop()) <= 3;
+    };
+
+    const snapToStorySlide = (index, behavior = "smooth") => {
+        if (!storySlides.length) {
+            return;
+        }
+
+        const nextIndex = Math.max(0, Math.min(index, storySlides.length - 1));
+        const targetTop = getSlideSnapTop(storySlides[nextIndex]);
+
+        clearTimeout(storySnapTimer);
+        clearTimeout(storySnapDebounceTimer);
+        isStorySnapping = true;
+        setStorySlide(nextIndex);
+        window.scrollTo({
+            top: targetTop,
+            behavior
+        });
+
+        storySnapTimer = setTimeout(() => {
+            isStorySnapping = false;
+            requestStoryUpdate();
+        }, behavior === "smooth" ? storySnapDuration : 80);
+    };
+
+    const scheduleNearestStorySnap = () => {
+        clearTimeout(storySnapDebounceTimer);
+
+        if (isStorySnapping || !isStoryInViewport()) {
+            return;
+        }
+
+        storySnapDebounceTimer = setTimeout(() => {
+            if (!isStoryInViewport()) {
+                return;
+            }
+
+            const nearestIndex = getNearestStorySlideIndex();
+
+            if (!isSlideAligned(nearestIndex)) {
+                snapToStorySlide(nearestIndex);
+            }
+        }, 130);
+    };
+
+    const handleStoryStep = (direction, event) => {
+        if (!storySlides.length || !isStoryInViewport()) {
+            return;
+        }
+
+        const rect = scrollStorySection.getBoundingClientRect();
+        const snapLine = getStickyTop();
+        const nearestIndex = getNearestStorySlideIndex();
+        const lastIndex = storySlides.length - 1;
+        const firstSlideTop = storySlides[0].getBoundingClientRect().top;
+        const lastSlideTop = storySlides[lastIndex].getBoundingClientRect().top;
+
+        if (direction < 0 && nearestIndex === 0 && firstSlideTop >= snapLine - 3) {
+            return;
+        }
+
+        if (direction > 0 && nearestIndex === lastIndex && lastSlideTop <= snapLine + 3) {
+            return;
+        }
+
+        if (isStorySnapping) {
+            event?.preventDefault();
+            return;
+        }
+
+        if (direction > 0) {
+            if (rect.top > snapLine + 3) {
+                event?.preventDefault();
+                snapToStorySlide(0);
+                return;
+            }
+
+            if (nearestIndex < lastIndex) {
+                event?.preventDefault();
+                snapToStorySlide(nearestIndex + 1);
+                return;
+            }
+
+            if (!isSlideAligned(lastIndex)) {
+                event?.preventDefault();
+                snapToStorySlide(lastIndex);
+            }
+
+            return;
+        }
+
+        if (rect.bottom < window.innerHeight - 3) {
+            event?.preventDefault();
+            snapToStorySlide(lastIndex);
+            return;
+        }
+
+        if (nearestIndex > 0) {
+            event?.preventDefault();
+            snapToStorySlide(nearestIndex - 1);
+            return;
+        }
+
+        if (!isSlideAligned(0)) {
+            event?.preventDefault();
+            snapToStorySlide(0);
+        }
+    };
+
+    const setStoryHeight = () => {
+        const sceneHeight = 100;
+        const viewportUnit = isMobileStoryView() ? "svh" : "vh";
+        scrollStorySection.style.setProperty("--story-scroll-height", `${storySlides.length * sceneHeight}${viewportUnit}`);
+    };
+
+    const updateMobileStoryHeader = () => {
+        if (!isMobileStoryView()) {
+            document.body.classList.remove("is-story-header-hidden");
+            return;
+        }
+
+        const rect = scrollStorySection.getBoundingClientRect();
+        const shouldHideHeader = rect.top <= 2 && rect.bottom > 64;
+        document.body.classList.toggle("is-story-header-hidden", shouldHideHeader);
+
+        if (shouldHideHeader && menuToggle && mobileMenu) {
+            menuToggle.setAttribute("aria-expanded", "false");
+            mobileMenu.classList.remove("is-open");
+            document.body.classList.remove("menu-open");
+        }
+    };
+
+    const setStorySlide = (index) => {
+        if (!storySlides.length) {
+            return;
+        }
+
+        const nextIndex = Math.max(0, Math.min(index, storySlides.length - 1));
+
+        if (nextIndex === activeStorySlide && storySlides[nextIndex].classList.contains("is-active")) {
+            return;
+        }
+
+        storySlides.forEach((slide, slideIndex) => {
+            slide.classList.toggle("is-active", slideIndex === nextIndex);
+            slide.classList.remove(
+                "is-flipping-in",
+                "is-entering-from-bottom",
+                "is-entering-from-top",
+                "is-leaving-to-top",
+                "is-leaving-to-bottom"
+            );
+        });
+
+        storyProgressItems.forEach((item, itemIndex) => {
+            item.classList.toggle("is-active", itemIndex === nextIndex);
+        });
+
+        activeStorySlide = nextIndex;
+    };
+
+    const updateStory = () => {
+        storyTicking = false;
+        updateMobileStoryHeader();
+
+        if (!storySlides.length) {
+            return;
+        }
+
+        const stickyTop = getStickyTop();
+        const stickyHeight = Math.max(window.innerHeight - stickyTop, 1);
+        const storyStart = Math.max(scrollStorySection.offsetTop - stickyTop, 0);
+        const scrollableDistance = Math.max(scrollStorySection.offsetHeight - stickyHeight, 1);
+        const rawProgress = (window.scrollY - storyStart) / scrollableDistance;
+        const progress = Math.max(0, Math.min(rawProgress, 1));
+        const viewportAnchor = stickyTop + (stickyHeight / 2);
+        let nextIndex = 0;
+        let closestSceneDistance = Infinity;
+
+        storySlides.forEach((slide, slideIndex) => {
+            const rect = slide.getBoundingClientRect();
+            const sceneCenter = rect.top + (rect.height / 2);
+            const distance = Math.abs(sceneCenter - viewportAnchor);
+
+            if (distance < closestSceneDistance) {
+                closestSceneDistance = distance;
+                nextIndex = slideIndex;
+            }
+        });
+
+        const activeScene = storySlides[nextIndex];
+        const sceneStart = Math.max(activeScene.offsetTop - stickyTop, 0);
+        const sceneScrollableDistance = Math.max(activeScene.offsetHeight - stickyHeight, stickyHeight * 0.65, 1);
+        const sceneRawProgress = (window.scrollY - sceneStart) / sceneScrollableDistance;
+        const slideProgress = Math.max(0, Math.min(sceneRawProgress, 1));
+
+        setStorySlide(nextIndex);
+
+        storyImages.forEach((image, imageIndex) => {
+            if (!image) {
+                return;
+            }
+
+            if (imageIndex !== nextIndex) {
+                image.style.transform = "";
+                image.style.filter = "";
+                return;
+            }
+
+            const translateY = (slideProgress - 0.5) * -28;
+            const scale = 1.08 - (slideProgress * 0.035);
+            image.style.transform = `translate3d(0, ${translateY}px, 0) scale(${scale})`;
+            image.style.filter = `saturate(${0.92 + (slideProgress * 0.16)}) contrast(1.04) brightness(${0.78 + (slideProgress * 0.12)})`;
+        });
+
+        scrollStorySection.style.setProperty("--story-local-progress", slideProgress.toFixed(3));
+        scrollStorySection.style.setProperty("--story-total-progress", progress.toFixed(3));
+    };
+
+    const requestStoryUpdate = () => {
+        if (storyTicking) {
+            return;
+        }
+
+        storyTicking = true;
+        requestAnimationFrame(updateStory);
+    };
+
+    setStoryHeight();
+    setStorySlide(0);
+    requestStoryUpdate();
+    window.addEventListener("wheel", (event) => {
+        if (Math.abs(event.deltaY) < storyWheelThreshold) {
+            return;
+        }
+
+        handleStoryStep(event.deltaY > 0 ? 1 : -1, event);
+    }, { passive: false });
+    window.addEventListener("keydown", (event) => {
+        const activeTag = document.activeElement?.tagName?.toLowerCase();
+
+        if (["input", "textarea", "select"].includes(activeTag)) {
+            return;
+        }
+
+        const downKeys = ["ArrowDown", "PageDown", " "];
+        const upKeys = ["ArrowUp", "PageUp"];
+
+        if (downKeys.includes(event.key)) {
+            handleStoryStep(event.shiftKey && event.key === " " ? -1 : 1, event);
+            return;
+        }
+
+        if (upKeys.includes(event.key)) {
+            handleStoryStep(-1, event);
+        }
+    });
+    window.addEventListener("touchstart", (event) => {
+        if (!isStoryInViewport()) {
+            return;
+        }
+
+        storyTouchStartY = event.touches[0].clientY;
+    }, { passive: true });
+    window.addEventListener("touchend", (event) => {
+        if (!storyTouchStartY || !isStoryInViewport()) {
+            return;
+        }
+
+        const touchDistance = storyTouchStartY - event.changedTouches[0].clientY;
+        storyTouchStartY = 0;
+
+        if (Math.abs(touchDistance) < storyTouchThreshold) {
+            scheduleNearestStorySnap();
+            return;
+        }
+
+        handleStoryStep(touchDistance > 0 ? 1 : -1, event);
+    }, { passive: false });
+    window.addEventListener("scroll", () => {
+        requestStoryUpdate();
+    }, { passive: true });
+    window.addEventListener("resize", () => {
+        setStoryHeight();
+        if (isStoryInViewport()) {
+            snapToStorySlide(getNearestStorySlideIndex(), "auto");
+            return;
+        }
+
+        requestStoryUpdate();
+    });
 }
 
 const mobileHeaderMedia = window.matchMedia("(max-width: 767px)");
