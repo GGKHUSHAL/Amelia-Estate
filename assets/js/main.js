@@ -747,6 +747,11 @@ if (scrollStorySection && useScrollDrivenStory) {
     let storySnapDebounceTimer;
     let storyScrollSettleTimer;
     let storyBoundaryExitUntil = 0;
+    let storyEntryGuardUntil = 0;
+    let storyEntryGuardIndex = null;
+    let storyWasOverlappingViewport = false;
+    let storyPendingEntrySide = null;
+    let lastStoryScrollY = window.scrollY;
     let storyTouchLockActive = false;
     let storyTouchStartY = 0;
     let storyTouchCurrentY = 0;
@@ -826,24 +831,36 @@ if (scrollStorySection && useScrollDrivenStory) {
     };
 
     const isStoryBoundaryExitSuppressed = () => Date.now() < storyBoundaryExitUntil;
+    const isStoryEntryGuardActive = () => Date.now() < storyEntryGuardUntil;
 
     const markStoryBoundaryExit = () => {
         storyBoundaryExitUntil = Date.now() + 900;
+        storyEntryGuardUntil = 0;
+        storyEntryGuardIndex = null;
         clearTimeout(storySnapDebounceTimer);
         clearTimeout(storyScrollSettleTimer);
         clearTimeout(storySnapTimer);
         isStorySnapping = false;
     };
 
+    const markStoryEntryGuard = (index) => {
+        storyEntryGuardUntil = Date.now() + 720;
+        storyEntryGuardIndex = index;
+        storyPendingEntrySide = null;
+        clearTimeout(storySnapDebounceTimer);
+        clearTimeout(storyScrollSettleTimer);
+        snapToStorySlide(index, "auto");
+    };
+
     const scheduleNearestStorySnap = () => {
         clearTimeout(storySnapDebounceTimer);
 
-        if (isStorySnapping || isStoryBoundaryExitSuppressed() || !isStoryInViewport()) {
+        if (isStorySnapping || isStoryBoundaryExitSuppressed() || isStoryEntryGuardActive() || !isStoryInViewport()) {
             return;
         }
 
         storySnapDebounceTimer = setTimeout(() => {
-            if (isStoryBoundaryExitSuppressed() || !isStoryInViewport()) {
+            if (isStoryBoundaryExitSuppressed() || isStoryEntryGuardActive() || !isStoryInViewport()) {
                 return;
             }
 
@@ -868,6 +885,10 @@ if (scrollStorySection && useScrollDrivenStory) {
             return true;
         }
 
+        if (isStoryEntryGuardActive()) {
+            return true;
+        }
+
         const lastIndex = storySlides.length - 1;
         const rect = scrollStorySection.getBoundingClientRect();
 
@@ -885,12 +906,12 @@ if (scrollStorySection && useScrollDrivenStory) {
     const scheduleStoryScrollSettleSnap = () => {
         clearTimeout(storyScrollSettleTimer);
 
-        if (!isMobileStoryView() || isStorySnapping || isStoryBoundaryExitSuppressed() || !isStoryInViewport()) {
+        if (!isMobileStoryView() || isStorySnapping || isStoryBoundaryExitSuppressed() || isStoryEntryGuardActive() || !isStoryInViewport()) {
             return;
         }
 
         storyScrollSettleTimer = setTimeout(() => {
-            if (!isMobileStoryView() || isStorySnapping || isStoryBoundaryExitSuppressed() || !isStoryInViewport()) {
+            if (!isMobileStoryView() || isStorySnapping || isStoryBoundaryExitSuppressed() || isStoryEntryGuardActive() || !isStoryInViewport()) {
                 return;
             }
 
@@ -977,6 +998,61 @@ if (scrollStorySection && useScrollDrivenStory) {
     };
 
     const shouldLockMobileStoryGesture = () => isMobileStoryView() && isStoryInViewport();
+
+    const guardMobileStoryEntry = () => {
+        if (!isMobileStoryView() || !storySlides.length) {
+            storyWasOverlappingViewport = false;
+            storyPendingEntrySide = null;
+            lastStoryScrollY = window.scrollY;
+            return;
+        }
+
+        const rect = scrollStorySection.getBoundingClientRect();
+        const isOverlappingViewport = rect.top < window.innerHeight && rect.bottom > 0;
+        const direction = window.scrollY > lastStoryScrollY ? 1 : window.scrollY < lastStoryScrollY ? -1 : 0;
+
+        if (!isOverlappingViewport) {
+            storyWasOverlappingViewport = false;
+            storyPendingEntrySide = null;
+            storyEntryGuardIndex = null;
+            lastStoryScrollY = window.scrollY;
+            return;
+        }
+
+        if (!storyWasOverlappingViewport && direction !== 0) {
+            storyPendingEntrySide = direction > 0 ? "top" : "bottom";
+        }
+
+        storyWasOverlappingViewport = true;
+
+        if (isStoryBoundaryExitSuppressed()) {
+            lastStoryScrollY = window.scrollY;
+            return;
+        }
+
+        if (isStoryEntryGuardActive() && storyEntryGuardIndex !== null) {
+            if (!isSlideAligned(storyEntryGuardIndex)) {
+                snapToStorySlide(storyEntryGuardIndex, "auto");
+            }
+
+            lastStoryScrollY = window.scrollY;
+            return;
+        }
+
+        if (storyPendingEntrySide === "top" && direction > 0 && rect.top <= getStickyTop()) {
+            markStoryEntryGuard(0);
+            lastStoryScrollY = window.scrollY;
+            return;
+        }
+
+        if (storyPendingEntrySide === "bottom" && direction < 0 && rect.bottom >= window.innerHeight) {
+            markStoryEntryGuard(storySlides.length - 1);
+            lastStoryScrollY = window.scrollY;
+            return;
+        }
+
+        lastStoryScrollY = window.scrollY;
+    };
 
     const isBoundaryExitGesture = (touchDistance) => {
         if (!isMobileStoryView() || !storySlides.length) {
@@ -1150,6 +1226,11 @@ if (scrollStorySection && useScrollDrivenStory) {
         storyTouchCurrentY = storyTouchStartY;
     }, { passive: true });
     window.addEventListener("touchmove", (event) => {
+        if (isStoryEntryGuardActive() && isStoryInViewport()) {
+            event.preventDefault();
+            return;
+        }
+
         if (!storyTouchLockActive || !shouldLockMobileStoryGesture()) {
             return;
         }
@@ -1205,6 +1286,7 @@ if (scrollStorySection && useScrollDrivenStory) {
         scheduleStoryScrollSettleSnap();
     }, { passive: true });
     window.addEventListener("scroll", () => {
+        guardMobileStoryEntry();
         requestStoryUpdate();
         scheduleStoryScrollSettleSnap();
     }, { passive: true });
