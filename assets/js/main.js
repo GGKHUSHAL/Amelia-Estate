@@ -1125,6 +1125,7 @@ if (scrollStorySection && useScrollDrivenStory) {
         storyTouchCurrentY = event.touches[0].clientY;
 
         if (isBoundaryExitGesture(storyTouchStartY - storyTouchCurrentY)) {
+            storyTouchLockActive = false;
             return;
         }
 

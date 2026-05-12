@@ -7597,7 +7597,7 @@
     .scroll-story-section--scenes {
         --story-scene-height: 100dvh;
         --story-sticky-height: var(--story-scene-height);
-        overscroll-behavior-y: contain !important;
+        overscroll-behavior-y: auto !important;
         scroll-margin-top: 0 !important;
         touch-action: pan-y !important;
     }
