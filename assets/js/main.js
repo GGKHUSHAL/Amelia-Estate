@@ -2134,6 +2134,7 @@ if (faqSection) {
     const faqPanels = faqSection.querySelectorAll("[data-faq-panel]");
     const faqTabsWrap = faqSection.querySelector(".faq-tabs");
     const faqTabProgress = faqSection.querySelector(".faq-tab-progress span");
+    const faqAnimationDuration = 380;
     let faqTabProgressFrame = 0;
 
     const isMobileFaqTabs = () => window.matchMedia("(max-width: 991px)").matches;
@@ -2169,14 +2170,66 @@ if (faqSection) {
         });
     };
 
-    const setFaqItem = (item, shouldOpen) => {
+    const stopFaqAnimation = (answer) => {
+        if (answer._faqTimer) {
+            clearTimeout(answer._faqTimer);
+            answer._faqTimer = null;
+        }
+    };
+
+    const animateFaqAnswer = (answer, shouldOpen) => {
+        stopFaqAnimation(answer);
+
+        answer.hidden = false;
+        answer.style.overflow = "hidden";
+
+        if (shouldOpen) {
+            answer.style.maxHeight = "0px";
+            answer.offsetHeight;
+            answer.style.maxHeight = `${answer.scrollHeight}px`;
+
+            answer._faqTimer = window.setTimeout(() => {
+                answer.style.maxHeight = "none";
+                answer._faqTimer = null;
+            }, faqAnimationDuration);
+            return;
+        }
+
+        const currentHeight = answer.scrollHeight;
+        answer.style.maxHeight = `${currentHeight}px`;
+        answer.offsetHeight;
+        answer.style.maxHeight = "0px";
+
+        answer._faqTimer = window.setTimeout(() => {
+            answer.hidden = true;
+            answer.style.maxHeight = "";
+            answer._faqTimer = null;
+        }, faqAnimationDuration);
+    };
+
+    const setFaqItem = (item, shouldOpen, options = {}) => {
         const button = item.querySelector("[data-faq-toggle]");
         const answer = item.querySelector(".faq-answer");
+        const { immediate = false } = options;
 
         item.classList.toggle("is-open", shouldOpen);
         button.setAttribute("aria-expanded", String(shouldOpen));
-        answer.hidden = !shouldOpen;
+
+        if (immediate) {
+            stopFaqAnimation(answer);
+            answer.hidden = !shouldOpen;
+            answer.style.maxHeight = shouldOpen ? "none" : "0px";
+            return;
+        }
+
+        animateFaqAnswer(answer, shouldOpen);
     };
+
+    faqPanels.forEach((panel) => {
+        panel.querySelectorAll(".faq-item").forEach((item) => {
+            setFaqItem(item, item.classList.contains("is-open"), { immediate: true });
+        });
+    });
 
     faqTabs.forEach((tab) => {
         tab.addEventListener("click", () => {
