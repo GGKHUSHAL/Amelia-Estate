@@ -7768,3 +7768,251 @@
         font-size: 11px !important;
     }
 }
+
+/* Final header redesign. */
+.site-header {
+    height: 86px !important;
+    overflow: visible !important;
+    border-bottom: 1px solid rgba(17, 24, 39, 0.08) !important;
+    background: rgba(255, 255, 255, 0.94) !important;
+    box-shadow: 0 14px 40px rgba(15, 23, 42, 0.08) !important;
+    backdrop-filter: blur(16px);
+}
+
+.site-header > div {
+    width: min(100% - 48px, 1240px) !important;
+    max-width: 1240px !important;
+    height: 86px !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+    gap: 22px !important;
+    align-items: center !important;
+}
+
+.site-header a[aria-label="Amelia Estate II home"] {
+    width: auto !important;
+    height: 52px !important;
+    gap: 20px !important;
+    padding: 0 18px 0 0 !important;
+}
+
+.site-header a[aria-label="Amelia Estate II home"] img:first-child {
+    width: 158px !important;
+    height: auto !important;
+}
+
+.site-header a[aria-label="Amelia Estate II home"] img:nth-of-type(2) {
+    display: block !important;
+    width: 94px !important;
+    height: auto !important;
+}
+
+.site-header .mobile-header-logo {
+    display: none !important;
+}
+
+.site-header .header-logo-divider {
+    width: 1px !important;
+    height: 34px !important;
+    background: rgba(15, 23, 42, 0.14) !important;
+}
+
+.site-header nav[aria-label="Primary navigation"] {
+    display: flex !important;
+    flex: 1 1 auto !important;
+    width: auto !important;
+    min-width: 0 !important;
+    height: 44px !important;
+    margin-left: auto !important;
+    padding: 4px !important;
+    gap: 2px !important;
+    align-items: center !important;
+    justify-content: flex-end !important;
+    border: 1px solid rgba(15, 23, 42, 0.08) !important;
+    border-radius: 999px !important;
+    background: rgba(248, 250, 252, 0.92) !important;
+    font-size: 13.5px !important;
+    font-weight: 600 !important;
+    line-height: 1 !important;
+}
+
+.site-header nav[aria-label="Primary navigation"] a {
+    display: inline-flex !important;
+    height: 34px !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 0 11px !important;
+    border-radius: 999px !important;
+    color: #171717 !important;
+    transition:
+        color 0.22s ease,
+        background 0.22s ease,
+        box-shadow 0.22s ease !important;
+}
+
+.site-header nav[aria-label="Primary navigation"] a:hover {
+    color: #d95f0e !important;
+    background: #ffffff !important;
+    box-shadow: 0 8px 22px rgba(15, 23, 42, 0.08) !important;
+}
+
+.site-header .header-cta {
+    display: inline-flex !important;
+    height: 42px !important;
+    flex: 0 0 auto !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 0 18px !important;
+    border: 1px solid rgba(255, 215, 21, 0.75) !important;
+    border-radius: 999px !important;
+    background: #ffd715 !important;
+    color: #141414 !important;
+    box-shadow: 0 12px 26px rgba(255, 194, 0, 0.24) !important;
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    line-height: 1 !important;
+    white-space: nowrap !important;
+    transition:
+        transform 0.22s ease,
+        box-shadow 0.22s ease,
+        background 0.22s ease !important;
+}
+
+.site-header .header-cta:hover {
+    transform: translateY(-1px);
+    background: #ffe45a !important;
+    box-shadow: 0 16px 32px rgba(255, 194, 0, 0.3) !important;
+}
+
+.site-header #menuToggle {
+    display: none !important;
+}
+
+@media (max-width: 1199px) {
+    .site-header {
+        background: rgba(255, 255, 255, 0.96) !important;
+    }
+
+    .site-header > div {
+        width: 100% !important;
+        padding: 0 28px !important;
+    }
+
+    .site-header nav[aria-label="Primary navigation"] {
+        display: none !important;
+    }
+
+    .site-header .header-cta {
+        margin-left: auto !important;
+    }
+
+    .site-header #menuToggle {
+        display: flex !important;
+        width: 42px !important;
+        height: 42px !important;
+        margin-left: 0 !important;
+        gap: 5px !important;
+        border: 1px solid rgba(15, 23, 42, 0.1) !important;
+        border-radius: 999px !important;
+        background: #ffffff !important;
+        box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08) !important;
+    }
+
+    .site-header #menuToggle span {
+        width: 18px !important;
+        height: 2px !important;
+        border-radius: 999px !important;
+        background: #171717 !important;
+    }
+
+    .mobile-menu {
+        top: 86px !important;
+        left: 16px !important;
+        width: calc(100% - 32px) !important;
+        padding: 8px !important;
+        border: 1px solid rgba(15, 23, 42, 0.08) !important;
+        border-radius: 18px !important;
+        background: rgba(255, 255, 255, 0.98) !important;
+        box-shadow: 0 24px 54px rgba(15, 23, 42, 0.18) !important;
+    }
+
+    .mobile-menu a {
+        padding: 13px 14px !important;
+        border-bottom: 0 !important;
+        border-radius: 12px !important;
+        color: #171717 !important;
+        font-size: 15px !important;
+        font-weight: 600 !important;
+    }
+
+    .mobile-menu a:hover {
+        background: rgba(255, 215, 21, 0.18) !important;
+    }
+}
+
+@media (max-width: 767px) {
+    .site-header {
+        height: 74px !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+        background: rgba(14, 14, 14, 0.96) !important;
+        box-shadow: 0 16px 36px rgba(0, 0, 0, 0.18) !important;
+    }
+
+    .site-header > div {
+        height: 74px !important;
+        padding: 0 16px !important;
+        background: transparent !important;
+    }
+
+    .site-header a[aria-label="Amelia Estate II home"] {
+        height: 48px !important;
+        max-width: calc(100% - 58px) !important;
+        padding: 0 !important;
+        gap: 0 !important;
+    }
+
+    .site-header a[aria-label="Amelia Estate II home"] img:first-child,
+    .site-header a[aria-label="Amelia Estate II home"] img:nth-of-type(2),
+    .site-header .header-logo-divider {
+        display: none !important;
+    }
+
+    .site-header .mobile-header-logo {
+        display: block !important;
+        width: 138px !important;
+        height: auto !important;
+    }
+
+    .site-header .header-cta {
+        display: none !important;
+    }
+
+    .site-header #menuToggle {
+        width: 42px !important;
+        height: 42px !important;
+        border-color: rgba(255, 255, 255, 0.14) !important;
+        background: rgba(255, 255, 255, 0.08) !important;
+        box-shadow: none !important;
+    }
+
+    .site-header #menuToggle span {
+        width: 18px !important;
+        background: #ffd715 !important;
+    }
+
+    .mobile-menu {
+        top: 82px !important;
+        background: rgba(17, 17, 17, 0.98) !important;
+        border-color: rgba(255, 255, 255, 0.1) !important;
+        box-shadow: 0 22px 50px rgba(0, 0, 0, 0.32) !important;
+    }
+
+    .mobile-menu a {
+        color: #ffffff !important;
+    }
+
+    .mobile-menu a:hover {
+        background: rgba(255, 215, 21, 0.16) !important;
+        color: #ffd715 !important;
+    }
+}
