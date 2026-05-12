@@ -7595,23 +7595,27 @@
 
 @media (max-width: 767px) {
     .scroll-story-section--scenes {
-        --story-scene-height: 100svh;
+        --story-scene-height: 100dvh;
         --story-sticky-height: var(--story-scene-height);
         overscroll-behavior-y: contain !important;
         scroll-margin-top: 0 !important;
-        touch-action: none !important;
+        touch-action: pan-y !important;
     }
 
     .scroll-story-section--scenes .scroll-story-slide,
     .scroll-story-section--scenes .scroll-story-scene {
-        height: 100svh !important;
-        min-height: 100svh !important;
+        height: 100dvh !important;
+        min-height: 100dvh !important;
     }
 
     .scroll-story-section--scenes .scroll-story-sticky {
         top: 0 !important;
-        height: 100svh !important;
-        min-height: 100svh !important;
+        height: 100dvh !important;
+        min-height: 100dvh !important;
+    }
+
+    .scroll-story-section--scenes .scroll-story-slide + .scroll-story-slide {
+        margin-top: 0 !important;
     }
 
     .scroll-story-section--scenes .scroll-story-progress {

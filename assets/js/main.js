@@ -748,6 +748,7 @@ if (scrollStorySection && useScrollDrivenStory) {
     let storyScrollSettleTimer;
     let storyTouchLockActive = false;
     let storyTouchStartY = 0;
+    let storyTouchCurrentY = 0;
     const storySnapDuration = 720;
     const storyWheelThreshold = 8;
     const storyTouchThreshold = 44;
@@ -939,11 +940,30 @@ if (scrollStorySection && useScrollDrivenStory) {
 
     const setStoryHeight = () => {
         const sceneHeight = 100;
-        const viewportUnit = isMobileStoryView() ? "svh" : "vh";
+        const viewportUnit = isMobileStoryView() ? "dvh" : "vh";
         scrollStorySection.style.setProperty("--story-scroll-height", `${storySlides.length * sceneHeight}${viewportUnit}`);
     };
 
     const shouldLockMobileStoryGesture = () => isMobileStoryView() && isStoryInViewport();
+
+    const isBoundaryExitGesture = (touchDistance) => {
+        if (!isMobileStoryView() || !storySlides.length) {
+            return false;
+        }
+
+        const nearestIndex = getNearestStorySlideIndex();
+        const lastIndex = storySlides.length - 1;
+
+        if (nearestIndex === 0 && isSlideAligned(0) && touchDistance < 0) {
+            return true;
+        }
+
+        if (nearestIndex === lastIndex && isSlideAligned(lastIndex) && touchDistance > 0) {
+            return true;
+        }
+
+        return false;
+    };
 
     const updateMobileStoryHeader = () => {
         if (!isMobileStoryView()) {
@@ -1095,9 +1115,16 @@ if (scrollStorySection && useScrollDrivenStory) {
 
         storyTouchLockActive = true;
         storyTouchStartY = event.touches[0].clientY;
+        storyTouchCurrentY = storyTouchStartY;
     }, { passive: true });
     window.addEventListener("touchmove", (event) => {
         if (!storyTouchLockActive || !shouldLockMobileStoryGesture()) {
+            return;
+        }
+
+        storyTouchCurrentY = event.touches[0].clientY;
+
+        if (isBoundaryExitGesture(storyTouchStartY - storyTouchCurrentY)) {
             return;
         }
 
@@ -1111,7 +1138,13 @@ if (scrollStorySection && useScrollDrivenStory) {
 
         const touchDistance = storyTouchStartY - event.changedTouches[0].clientY;
         storyTouchStartY = 0;
+        storyTouchCurrentY = 0;
         storyTouchLockActive = false;
+
+        if (isBoundaryExitGesture(touchDistance)) {
+            return;
+        }
+
         event.preventDefault();
 
         if (Math.abs(touchDistance) < storyTouchThreshold) {
@@ -1130,6 +1163,7 @@ if (scrollStorySection && useScrollDrivenStory) {
     }, { passive: false });
     window.addEventListener("touchcancel", () => {
         storyTouchStartY = 0;
+        storyTouchCurrentY = 0;
         storyTouchLockActive = false;
         scheduleStoryScrollSettleSnap();
     }, { passive: true });
