@@ -137,11 +137,6 @@
         min-height: 0;
     }
 
-    .scroll-story-stage {
-        width: 100%;
-        height: 100%;
-    }
-
     .peace-density-section {
         height: 850px;
     }
@@ -557,13 +552,6 @@
     .booking-trust-row {
         flex-wrap: wrap;
         row-gap: 8px;
-    }
-
-    .scroll-story-content {
-        left: 46px;
-        bottom: 42px;
-        width: min(500px, calc(100% - 92px));
-        max-width: calc(100% - 92px);
     }
 
     .differentiation-section {
@@ -1253,49 +1241,6 @@
 
     .booking-enquiry-form {
         min-height: 0;
-    }
-
-    .scroll-story-section {
-        --story-section-height: calc(100dvh - 86px);
-        height: var(--story-section-height);
-        min-height: var(--story-section-height);
-        background: #000000;
-    }
-
-    .scroll-story-sticky {
-        position: relative;
-        top: 0;
-        height: var(--story-section-height);
-    }
-
-    .scroll-story-progress {
-        top: 112px;
-        left: 18px;
-        gap: 16px;
-        font-size: 12px;
-    }
-
-    .scroll-story-content {
-        left: 72px;
-        top: 50%;
-        bottom: auto;
-        width: min(520px, calc(100% - 104px));
-        max-width: calc(100% - 104px);
-        transform: translateY(-42%);
-    }
-
-    .scroll-story-slide--booking .scroll-story-content {
-        left: 72px;
-        top: 50%;
-        bottom: auto;
-        width: min(540px, calc(100% - 104px));
-        max-width: calc(100% - 104px);
-        transform: translateY(-42%);
-    }
-
-    .scroll-story-content h2 {
-        font-size: 32px;
-        line-height: 1.16;
     }
 }
 
@@ -3205,13 +3150,6 @@
         line-height: 20px;
     }
 
-    .scroll-story-section {
-        --story-section-height: calc(100dvh - 86px);
-        height: var(--story-section-height);
-        min-height: var(--story-section-height);
-        background: #000000;
-    }
-
     .peace-density-section {
         height: 460px;
     }
@@ -3320,77 +3258,6 @@
     .booking-trust-row svg {
         width: 12px;
         height: 12px;
-    }
-
-    .scroll-story-sticky {
-        position: relative;
-        top: 0;
-        height: var(--story-section-height);
-        min-height: 0;
-    }
-
-    .scroll-story-stage {
-        width: 100%;
-        min-height: 100%;
-    }
-
-    .scroll-story-progress {
-        top: 54px;
-        left: 12px;
-        gap: 13px;
-        font-size: 11px;
-    }
-
-    .scroll-story-content {
-        left: 54px;
-        top: 50%;
-        bottom: auto;
-        width: calc(100% - 74px);
-        max-width: calc(100% - 74px);
-        transform: translateY(-38%);
-    }
-
-    .scroll-story-slide--booking .scroll-story-content {
-        left: 54px;
-        top: 50%;
-        bottom: auto;
-        width: calc(100% - 74px);
-        max-width: calc(100% - 74px);
-        transform: translateY(-38%);
-    }
-
-    .scroll-story-kicker {
-        margin-bottom: 9px;
-        font-size: 13px;
-        line-height: 17px;
-        letter-spacing: 0.14em;
-    }
-
-    .scroll-story-content h2 {
-        font-size: 32px;
-        line-height: 1.12;
-    }
-
-    .scroll-story-content > p:not(.scroll-story-kicker) {
-        margin-top: 13px;
-        font-size: 15px;
-        line-height: 1.55;
-    }
-
-    .scroll-story-actions {
-        flex-wrap: wrap;
-        gap: 8px;
-        margin-top: 16px;
-    }
-
-    .scroll-story-primary-btn,
-    .scroll-story-secondary-btn {
-        width: calc(50% - 4px);
-        min-width: 0;
-        max-width: 100%;
-        height: 44px;
-        padding: 11px 10px;
-        font-size: 12px;
     }
 
     .differentiation-banner {
@@ -4595,56 +4462,6 @@
         margin-top: 0;
         padding: 8px 10px;
         font-size: 10px;
-        line-height: 1.2;
-    }
-
-    .scroll-story-progress {
-        left: 10px;
-        top: 46px;
-        gap: 10px;
-        font-size: 10px;
-    }
-
-    .scroll-story-content,
-    .scroll-story-slide--booking .scroll-story-content {
-        left: 48px;
-        top: 50%;
-        bottom: auto;
-        width: calc(100% - 62px);
-        max-width: calc(100% - 62px);
-        transform: translateY(-34%);
-    }
-
-    .scroll-story-kicker {
-        margin-bottom: 9px;
-        font-size: 11px;
-        line-height: 15px;
-    }
-
-    .scroll-story-content h2 {
-        font-size: 28px;
-        line-height: 1.12;
-    }
-
-    .scroll-story-content > p:not(.scroll-story-kicker) {
-        margin-top: 11px;
-        font-size: 14px;
-        line-height: 1.5;
-    }
-
-    .scroll-story-actions {
-        gap: 6px;
-        margin-top: 14px;
-    }
-
-    .scroll-story-primary-btn,
-    .scroll-story-secondary-btn {
-        flex: 1 1 100%;
-        width: 100%;
-        height: auto;
-        min-height: 42px;
-        padding: 11px 9px;
-        font-size: 12px;
         line-height: 1.2;
     }
 
@@ -6863,27 +6680,24 @@
         line-height: 1.16 !important;
     }
 
-    .scroll-story-kicker,
     .faq-tab strong,
-    .project-plan-tabs button,
-    .project-plan-variants button,
-    .ideal-floor-levels button,
-    .ideal-floor-size-tabs button {
+.project-plan-tabs button,
+.project-plan-variants button,
+.ideal-floor-levels button,
+.ideal-floor-size-tabs button{
         font-size: 12px !important;
         line-height: 1.35 !important;
     }
 
-    .scroll-story-content h2,
-    .property-snapshot-content h3 {
+    .property-snapshot-content h3{
         font-size: 28px !important;
         line-height: 1.28 !important;
     }
 
-    .scroll-story-content > p:not(.scroll-story-kicker),
     .property-snapshot-modal-section p,
-    .property-snapshot-modal-section ul,
-    .site-visit-phone,
-    .footer-phone {
+.property-snapshot-modal-section ul,
+.site-visit-phone,
+.footer-phone{
         font-size: 16px !important;
         line-height: 1.7 !important;
     }
@@ -6959,55 +6773,6 @@
 
     .hero-section.is-visible .hero-slide.is-active .hero-content {
         transform: translateY(0) !important;
-    }
-
-    .scroll-story-content,
-    .scroll-story-slide--booking .scroll-story-content {
-        top: auto !important;
-        right: 16px !important;
-        bottom: 24px !important;
-        left: 16px !important;
-        width: auto !important;
-        max-width: none !important;
-        transform: none !important;
-    }
-
-    .scroll-story-slide--booking .scroll-story-content {
-        bottom: 18px !important;
-        padding: 0 2px 2px 0;
-    }
-
-    .scroll-story-slide--booking .scroll-story-kicker {
-        margin-bottom: 8px;
-        font-size: 11px !important;
-        line-height: 1.35 !important;
-        letter-spacing: 0.12em;
-    }
-
-    .scroll-story-slide--booking .scroll-story-content h2 {
-        max-width: 268px;
-        font-size: 25px !important;
-        line-height: 1.18 !important;
-    }
-
-    .scroll-story-slide--booking .scroll-story-content > p:not(.scroll-story-kicker) {
-        max-width: 270px;
-        margin-top: 10px;
-        font-size: 14px !important;
-        line-height: 1.55 !important;
-    }
-
-    .scroll-story-slide--booking .scroll-story-actions {
-        gap: 7px;
-        margin-top: 15px;
-    }
-
-    .scroll-story-slide--booking .scroll-story-primary-btn,
-    .scroll-story-slide--booking .scroll-story-secondary-btn {
-        min-height: 40px;
-        padding: 10px 12px;
-        font-size: 12px !important;
-        line-height: 1.2 !important;
     }
 }
 
@@ -7313,159 +7078,6 @@
     }
 }
 
-@media (max-width: 767px) {
-    .scroll-story-section {
-        --story-section-height: 100svh !important;
-        height: var(--story-scroll-height, 600svh) !important;
-        min-height: var(--story-scroll-height, 600svh) !important;
-        scroll-margin-top: 0 !important;
-    }
-
-    .scroll-story-sticky,
-    .scroll-story-stage {
-        height: 100svh !important;
-        min-height: 100svh !important;
-    }
-
-    .scroll-story-sticky {
-        top: 0 !important;
-    }
-
-    .scroll-story-bg {
-        inset: 0 !important;
-    }
-
-    .scroll-story-content,
-    .scroll-story-slide--booking .scroll-story-content {
-        left: 6vw !important;
-        right: 6vw !important;
-        bottom: 18% !important;
-        width: auto !important;
-        max-width: none !important;
-        padding-bottom: 0 !important;
-        text-align: center !important;
-    }
-
-    .scroll-story-kicker,
-    .scroll-story-slide--booking .scroll-story-kicker {
-        margin-bottom: 10px !important;
-        font-size: 12px !important;
-        line-height: 1.45 !important;
-        letter-spacing: 0.16em !important;
-    }
-
-    .scroll-story-content h2,
-    .scroll-story-slide--booking .scroll-story-content h2 {
-        max-width: 100% !important;
-        margin-right: auto !important;
-        margin-left: auto !important;
-        font-size: 40px !important;
-        line-height: 1.08 !important;
-        letter-spacing: 0 !important;
-    }
-
-    .scroll-story-content > p:not(.scroll-story-kicker),
-    .scroll-story-slide--booking .scroll-story-content > p:not(.scroll-story-kicker) {
-        max-width: 300px !important;
-        margin: 12px auto 0 !important;
-        font-size: 16px !important;
-        line-height: 1.55 !important;
-    }
-
-    .scroll-story-actions,
-    .scroll-story-slide--booking .scroll-story-actions {
-        width: min(100%, 290px) !important;
-        margin: 18px auto 0 !important;
-        gap: 10px !important;
-    }
-
-    .scroll-story-primary-btn,
-    .scroll-story-secondary-btn,
-    .scroll-story-slide--booking .scroll-story-primary-btn,
-    .scroll-story-slide--booking .scroll-story-secondary-btn {
-        width: 100% !important;
-        min-width: 0 !important;
-        min-height: 46px !important;
-        height: 46px !important;
-        padding: 12px 16px !important;
-        font-size: 13px !important;
-        line-height: 1.2 !important;
-    }
-
-    .scroll-story-progress {
-        top: 18px !important;
-        left: 50% !important;
-        right: auto !important;
-        flex-direction: row !important;
-        gap: 10px !important;
-        font-size: 11px !important;
-        transform: translateX(-50%) !important;
-    }
-
-    .scroll-story-progress span {
-        gap: 0 !important;
-    }
-
-    .scroll-story-progress span::after {
-        display: none !important;
-    }
-}
-
-@media (min-width: 768px) {
-    .scroll-story-section {
-        --story-section-height: calc(100dvh - 86px) !important;
-        height: var(--story-scroll-height, 720vh) !important;
-        min-height: var(--story-scroll-height, 720vh) !important;
-    }
-
-    .scroll-story-sticky {
-        position: sticky !important;
-        top: 86px !important;
-        height: var(--story-section-height) !important;
-        min-height: var(--story-section-height) !important;
-    }
-
-    .scroll-story-stage {
-        height: 100% !important;
-        min-height: 100% !important;
-    }
-
-    .scroll-story-slide {
-        inset: 0 !important;
-        min-height: 100% !important;
-    }
-
-    .scroll-story-bg {
-        inset: 0 !important;
-        z-index: 0 !important;
-    }
-
-    .scroll-story-bg,
-    .scroll-story-bg img {
-        width: 100% !important;
-        height: 100% !important;
-        min-width: 100% !important;
-        min-height: 100% !important;
-    }
-
-    .scroll-story-overlay {
-        z-index: 1 !important;
-    }
-
-    .scroll-story-content,
-    .scroll-story-slide--booking .scroll-story-content {
-        top: auto !important;
-        bottom: clamp(112px, 28vh, 280px) !important;
-        z-index: 3 !important;
-        transform: none !important;
-    }
-
-    .scroll-story-progress {
-        z-index: 6 !important;
-    }
-}
-
-/* Final story rebuild: mirrors the reference file with one sticky scene per slide. */
 .hero-section {
     background: #000000 url("../img/slider/hero slider -1.jpg") center center / cover no-repeat !important;
 }
@@ -7492,161 +7104,6 @@
     background-repeat: no-repeat !important;
 }
 
-.scroll-story-section--scenes {
-    --story-scene-height: calc(100dvh - 86px);
-    --story-sticky-height: var(--story-scene-height);
-    --story-progress-left: max(24px, calc((100vw - 1200px) / 2));
-    --story-content-left: max(154px, calc((100vw - 1200px) / 2 + 124px));
-    --story-content-right: clamp(24px, 4vw, 68px);
-    position: relative !important;
-    height: auto !important;
-    min-height: 0 !important;
-    background: #000000 !important;
-    overflow: visible !important;
-    scroll-margin-top: 86px !important;
-}
-
-.scroll-story-section--scenes .scroll-story-progress {
-    position: fixed !important;
-    top: 158px !important;
-    left: var(--story-progress-left) !important;
-    right: auto !important;
-    z-index: 40 !important;
-    opacity: 0 !important;
-    transform: none !important;
-    transition: opacity 0.25s ease !important;
-}
-
-.scroll-story-section--scenes .scroll-story-progress span {
-    flex-direction: row-reverse !important;
-}
-
-.scroll-story-section--scenes.is-visible .scroll-story-progress {
-    opacity: 1 !important;
-}
-
-.scroll-story-section--scenes .scroll-story-slide,
-.scroll-story-section--scenes .scroll-story-scene {
-    display: block !important;
-    position: relative !important;
-    inset: auto !important;
-    width: 100% !important;
-    height: var(--story-scene-height) !important;
-    min-height: var(--story-scene-height) !important;
-    overflow: visible !important;
-    opacity: 1 !important;
-    pointer-events: auto !important;
-    filter: none !important;
-    background: var(--story-image, #000000) center center / cover no-repeat !important;
-    transform: none !important;
-    transition: none !important;
-    scroll-snap-align: start;
-}
-
-.scroll-story-section--scenes .scroll-story-slide::after {
-    display: none !important;
-}
-
-.scroll-story-section--scenes .scroll-story-slide + .scroll-story-slide {
-    margin-top: -1px !important;
-}
-
-.scroll-story-section--scenes .scroll-story-sticky {
-    position: relative !important;
-    top: 0 !important;
-    display: block !important;
-    width: 100% !important;
-    height: var(--story-sticky-height) !important;
-    min-height: var(--story-sticky-height) !important;
-    overflow: hidden !important;
-    background: #000000 !important;
-}
-
-.scroll-story-section--scenes .scroll-story-stage {
-    position: relative !important;
-    width: 100% !important;
-    height: 100% !important;
-    min-height: 100% !important;
-    overflow: hidden !important;
-    background: var(--story-image, #000000) center center / cover no-repeat !important;
-    isolation: isolate;
-}
-
-.scroll-story-section--scenes .scroll-story-bg {
-    position: absolute !important;
-    inset: -10% !important;
-    z-index: 1 !important;
-    width: auto !important;
-    height: auto !important;
-    min-width: 0 !important;
-    min-height: 0 !important;
-    opacity: 1 !important;
-    background: var(--story-image) center center / cover no-repeat !important;
-    transform: translateZ(0) scale(1.08) !important;
-}
-
-.scroll-story-section--scenes .scroll-story-bg img {
-    position: absolute !important;
-    inset: 0 !important;
-    display: block !important;
-    width: 100% !important;
-    height: 100% !important;
-    min-width: 100% !important;
-    min-height: 100% !important;
-    object-fit: cover !important;
-    object-position: 50% 58% !important;
-}
-
-.scroll-story-section--scenes .scroll-story-overlay {
-    position: absolute !important;
-    inset: 0 !important;
-    z-index: 6 !important;
-    opacity: 1 !important;
-    pointer-events: none !important;
-    background:
-        linear-gradient(90deg, rgba(0, 0, 0, 0.56) 0%, rgba(0, 0, 0, 0.28) 44%, rgba(0, 0, 0, 0.04) 78%, transparent 100%),
-        linear-gradient(180deg, rgba(0, 0, 0, 0.16) 0%, rgba(0, 0, 0, 0.04) 52%, rgba(0, 0, 0, 0.08) 100%) !important;
-}
-
-.scroll-story-section--scenes .scroll-story-content,
-.scroll-story-section--scenes .scroll-story-slide--booking .scroll-story-content {
-    position: absolute !important;
-    left: var(--story-content-left) !important;
-    right: var(--story-content-right) !important;
-    bottom: 28% !important;
-    z-index: 20 !important;
-    width: auto !important;
-    max-width: min(1080px, calc(100% - var(--story-content-left) - var(--story-content-right))) !important;
-    margin: 0 !important;
-    padding: 0 !important;
-    color: #ffffff !important;
-    text-align: left !important;
-    transform: none !important;
-}
-
-.scroll-story-section--scenes .scroll-story-kicker,
-.scroll-story-section--scenes .scroll-story-content h2,
-.scroll-story-section--scenes .scroll-story-content > p:not(.scroll-story-kicker),
-.scroll-story-section--scenes .scroll-story-actions {
-    opacity: 0 !important;
-    transform: translate3d(0, 24px, 0) !important;
-}
-
-.scroll-story-section--scenes .scroll-story-slide.is-active .scroll-story-kicker,
-.scroll-story-section--scenes .scroll-story-slide.is-active .scroll-story-content h2,
-.scroll-story-section--scenes .scroll-story-slide.is-active .scroll-story-content > p:not(.scroll-story-kicker),
-.scroll-story-section--scenes .scroll-story-slide.is-active .scroll-story-actions {
-    opacity: 1 !important;
-    transform: translate3d(0, 0, 0) !important;
-}
-
-@media (min-width: 768px) and (max-width: 1199px) {
-    .scroll-story-section--scenes {
-        overscroll-behavior-y: auto !important;
-        touch-action: pan-y !important;
-    }
-}
-
 @media (max-width: 767px) {
     .peace-density-section {
         height: 100dvh !important;
@@ -7656,170 +7113,6 @@
 
     .peace-density-content {
         height: 100% !important;
-    }
-
-    .scroll-story-section--scenes {
-        --story-scene-height: 100dvh;
-        --story-sticky-height: var(--story-scene-height);
-        overscroll-behavior-y: auto !important;
-        scroll-margin-top: 0 !important;
-        touch-action: pan-y !important;
-    }
-
-    .scroll-story-section--scenes .scroll-story-slide,
-    .scroll-story-section--scenes .scroll-story-scene {
-        height: 100dvh !important;
-        min-height: 100dvh !important;
-    }
-
-    .scroll-story-section--scenes .scroll-story-sticky {
-        top: 0 !important;
-        height: 100dvh !important;
-        min-height: 100dvh !important;
-    }
-
-    .scroll-story-section--scenes .scroll-story-slide + .scroll-story-slide {
-        margin-top: 0 !important;
-    }
-
-    .scroll-story-section--scenes .scroll-story-progress {
-        top: 18px !important;
-        left: 50% !important;
-        flex-direction: row !important;
-        gap: 10px !important;
-        transform: translateX(-50%) !important;
-    }
-
-    .scroll-story-section--scenes .scroll-story-bg {
-        inset: -8% !important;
-    }
-
-    .scroll-story-section--scenes .scroll-story-content,
-    .scroll-story-section--scenes .scroll-story-slide--booking .scroll-story-content {
-        left: 6vw !important;
-        right: 6vw !important;
-        bottom: 18% !important;
-        width: auto !important;
-        max-width: none !important;
-        text-align: center !important;
-    }
-
-    .scroll-story-section--scenes .scroll-story-kicker,
-    .scroll-story-section--scenes .scroll-story-slide--booking .scroll-story-kicker {
-        margin-bottom: 10px !important;
-        font-size: 11px !important;
-        line-height: 1.4 !important;
-        letter-spacing: 0.14em !important;
-    }
-
-    .scroll-story-section--scenes .scroll-story-content h2,
-    .scroll-story-section--scenes .scroll-story-slide--booking .scroll-story-content h2 {
-        max-width: 100% !important;
-        margin-right: auto !important;
-        margin-left: auto !important;
-        font-size: 34px !important;
-        line-height: 1.08 !important;
-    }
-
-    .scroll-story-section--scenes .scroll-story-content > p:not(.scroll-story-kicker),
-    .scroll-story-section--scenes .scroll-story-slide--booking .scroll-story-content > p:not(.scroll-story-kicker) {
-        max-width: 290px !important;
-        margin: 12px auto 0 !important;
-        font-size: 14px !important;
-        line-height: 1.55 !important;
-    }
-
-    .scroll-story-section--scenes .scroll-story-actions,
-    .scroll-story-section--scenes .scroll-story-slide--booking .scroll-story-actions {
-        width: min(100%, 280px) !important;
-        margin: 16px auto 0 !important;
-        gap: 9px !important;
-    }
-
-    .scroll-story-section--scenes .scroll-story-primary-btn,
-    .scroll-story-section--scenes .scroll-story-secondary-btn,
-    .scroll-story-section--scenes .scroll-story-slide--booking .scroll-story-primary-btn,
-    .scroll-story-section--scenes .scroll-story-slide--booking .scroll-story-secondary-btn {
-        width: 100% !important;
-        min-width: 0 !important;
-        min-height: 44px !important;
-        height: 44px !important;
-        padding: 11px 14px !important;
-        font-size: 12px !important;
-        line-height: 1.2 !important;
-    }
-
-    .scroll-story-section--scenes .scroll-story-slide--booking .scroll-story-content {
-        bottom: 12% !important;
-        max-width: 292px !important;
-    }
-
-    .scroll-story-section--scenes .scroll-story-slide--booking .scroll-story-content h2 {
-        max-width: 270px !important;
-        font-size: 30px !important;
-        line-height: 1.06 !important;
-    }
-
-    .scroll-story-section--scenes .scroll-story-slide--booking .scroll-story-content > p:not(.scroll-story-kicker) {
-        max-width: 260px !important;
-        font-size: 13px !important;
-        line-height: 1.5 !important;
-    }
-
-    .scroll-story-section--scenes .scroll-story-slide--booking .scroll-story-actions {
-        width: min(100%, 250px) !important;
-        margin-top: 14px !important;
-    }
-}
-
-@media (max-width: 380px) {
-    .scroll-story-section--scenes .scroll-story-content,
-    .scroll-story-section--scenes .scroll-story-slide--booking .scroll-story-content {
-        left: 5vw !important;
-        right: 5vw !important;
-    }
-
-    .scroll-story-section--scenes .scroll-story-content h2 {
-        font-size: 30px !important;
-    }
-
-    .scroll-story-section--scenes .scroll-story-content > p:not(.scroll-story-kicker) {
-        max-width: 270px !important;
-        font-size: 13px !important;
-    }
-
-    .scroll-story-section--scenes .scroll-story-slide--booking .scroll-story-content {
-        bottom: 10% !important;
-        max-width: 272px !important;
-    }
-
-    .scroll-story-section--scenes .scroll-story-slide--booking .scroll-story-kicker {
-        font-size: 10px !important;
-        letter-spacing: 0.12em !important;
-    }
-
-    .scroll-story-section--scenes .scroll-story-slide--booking .scroll-story-content h2 {
-        max-width: 248px !important;
-        font-size: 26px !important;
-    }
-
-    .scroll-story-section--scenes .scroll-story-slide--booking .scroll-story-content > p:not(.scroll-story-kicker) {
-        max-width: 236px !important;
-        margin-top: 10px !important;
-        font-size: 12px !important;
-        line-height: 1.45 !important;
-    }
-
-    .scroll-story-section--scenes .scroll-story-slide--booking .scroll-story-actions {
-        width: min(100%, 230px) !important;
-        gap: 8px !important;
-    }
-
-    .scroll-story-section--scenes .scroll-story-slide--booking .scroll-story-primary-btn,
-    .scroll-story-section--scenes .scroll-story-slide--booking .scroll-story-secondary-btn {
-        min-height: 42px !important;
-        height: 42px !important;
-        font-size: 11px !important;
     }
 }
 
@@ -8249,104 +7542,6 @@ a[href*="wa.me"].whatsapp-cta:hover::before {
         drop-shadow(0 1px 1px rgba(0, 0, 0, 0.45)) !important;
 }
 
-/* Scroll story autoplay slider behavior. Keeps existing content/design, changes only motion/state. */
-.scroll-story-section--scenes {
-    --story-scene-height: calc(100dvh - 86px);
-    position: relative !important;
-    height: var(--story-scene-height) !important;
-    min-height: var(--story-scene-height) !important;
-    overflow: hidden !important;
-    background: #000000 !important;
-}
-
-.scroll-story-section--scenes .scroll-story-progress {
-    position: absolute !important;
-    opacity: 1 !important;
-}
-
-.scroll-story-section--scenes .scroll-story-progress span {
-    cursor: pointer !important;
-}
-
-.scroll-story-section--scenes .scroll-story-slide,
-.scroll-story-section--scenes .scroll-story-scene {
-    position: absolute !important;
-    inset: 0 !important;
-    display: block !important;
-    width: 100% !important;
-    height: 100% !important;
-    min-height: 100% !important;
-    margin: 0 !important;
-    opacity: 0 !important;
-    pointer-events: none !important;
-    transform: none !important;
-    transition: opacity 0.82s cubic-bezier(0.22, 1, 0.36, 1) !important;
-}
-
-.scroll-story-section--scenes .scroll-story-slide.is-active,
-.scroll-story-section--scenes .scroll-story-scene.is-active {
-    opacity: 1 !important;
-    pointer-events: auto !important;
-}
-
-.scroll-story-section--scenes .scroll-story-sticky,
-.scroll-story-section--scenes .scroll-story-stage {
-    position: absolute !important;
-    inset: 0 !important;
-    width: 100% !important;
-    height: 100% !important;
-    min-height: 100% !important;
-}
-
-.scroll-story-section--scenes .scroll-story-bg {
-    transform: translateZ(0) scale(1.04) !important;
-    transition: transform 4.8s cubic-bezier(0.22, 1, 0.36, 1) !important;
-}
-
-.scroll-story-section--scenes .scroll-story-slide.is-active .scroll-story-bg {
-    transform: translateZ(0) scale(1.08) !important;
-}
-
-.scroll-story-section--scenes .scroll-story-kicker,
-.scroll-story-section--scenes .scroll-story-content h2,
-.scroll-story-section--scenes .scroll-story-content > p:not(.scroll-story-kicker),
-.scroll-story-section--scenes .scroll-story-actions {
-    opacity: 0 !important;
-    transform: translate3d(0, 28px, 0) !important;
-    transition:
-        opacity 0.66s cubic-bezier(0.22, 1, 0.36, 1),
-        transform 0.76s cubic-bezier(0.22, 1, 0.36, 1) !important;
-}
-
-.scroll-story-section--scenes .scroll-story-content h2 {
-    transition-delay: 0.06s !important;
-}
-
-.scroll-story-section--scenes .scroll-story-content > p:not(.scroll-story-kicker) {
-    transition-delay: 0.13s !important;
-}
-
-.scroll-story-section--scenes .scroll-story-actions {
-    transition-delay: 0.20s !important;
-}
-
-.scroll-story-section--scenes .scroll-story-slide.is-active .scroll-story-kicker,
-.scroll-story-section--scenes .scroll-story-slide.is-active .scroll-story-content h2,
-.scroll-story-section--scenes .scroll-story-slide.is-active .scroll-story-content > p:not(.scroll-story-kicker),
-.scroll-story-section--scenes .scroll-story-slide.is-active .scroll-story-actions {
-    opacity: 1 !important;
-    transform: translate3d(0, 0, 0) !important;
-}
-
-@media (max-width: 767px) {
-    .scroll-story-section--scenes {
-        --story-scene-height: 100dvh;
-        height: 100dvh !important;
-        min-height: 100dvh !important;
-    }
-}
-
-/* Premium specifications slider: keep the S9-style center/side behavior across breakpoints. */
 @media (max-width: 1199px) {
     .premium-specs-track {
         display: flex !important;
@@ -8425,286 +7620,6 @@ a[href*="wa.me"].whatsapp-cta:hover::before {
     .premium-specs-slide-overlay p {
         font-size: 13px;
         line-height: 20px;
-    }
-}
-
-/* Fixed-pin middle story slider behavior. Keeps the existing slides/design unchanged. */
-.scroll-story-section--scenes {
-    --story-scroll-height: 600vh;
-    --story-pin-top: 86px;
-    --story-pin-height: calc(100vh - var(--story-pin-top));
-    --story-ease: cubic-bezier(0.22, 1, 0.36, 1);
-    position: relative !important;
-    min-height: var(--story-scroll-height) !important;
-    height: var(--story-scroll-height) !important;
-    overflow: visible !important;
-    background: #000000 !important;
-    scroll-margin-top: var(--story-pin-top) !important;
-}
-
-.scroll-story-section--scenes .scroll-story-sticky-shell {
-    position: absolute !important;
-    top: 0 !important;
-    right: 0 !important;
-    left: 0 !important;
-    height: var(--story-pin-height) !important;
-    min-height: var(--story-pin-height) !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    overflow: hidden !important;
-    isolation: isolate !important;
-    background: #000000 !important;
-    z-index: 12 !important;
-}
-
-.scroll-story-section--scenes.is-story-fixed .scroll-story-sticky-shell {
-    position: fixed !important;
-    top: var(--story-pin-top) !important;
-    bottom: auto !important;
-}
-
-.scroll-story-section--scenes.is-story-ended .scroll-story-sticky-shell {
-    position: absolute !important;
-    top: auto !important;
-    bottom: 0 !important;
-}
-
-.scroll-story-section--scenes .scroll-story-progress {
-    position: absolute !important;
-    top: 50% !important;
-    left: max(24px, calc((100vw - 1200px) / 2)) !important;
-    width: 78px !important;
-    transform: translate3d(0, -50%, 0) !important;
-    z-index: 40 !important;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: flex-start !important;
-    gap: 18px !important;
-    opacity: 1 !important;
-}
-
-.scroll-story-section--scenes .scroll-story-progress span {
-    width: 100% !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: flex-start !important;
-    gap: 10px !important;
-    color: #ffffff !important;
-    opacity: 0.3 !important;
-    cursor: pointer !important;
-    transition:
-        opacity 0.35s ease,
-        color 0.35s ease,
-        transform 0.35s ease !important;
-}
-
-.scroll-story-section--scenes .scroll-story-progress span::after {
-    content: "" !important;
-    width: 22px !important;
-    height: 1px !important;
-    display: block !important;
-    flex: 0 0 22px !important;
-    background: currentColor !important;
-    opacity: 0.72 !important;
-    transform: scaleX(0.55) !important;
-    transform-origin: left center !important;
-    transition: transform 0.35s ease !important;
-}
-
-.scroll-story-section--scenes .scroll-story-progress span.is-active {
-    color: #d5ae66 !important;
-    opacity: 1 !important;
-}
-
-.scroll-story-section--scenes .scroll-story-progress span.is-active::after {
-    transform: scaleX(1) !important;
-}
-
-.scroll-story-section--scenes .scroll-story-slide,
-.scroll-story-section--scenes .scroll-story-scene {
-    position: absolute !important;
-    inset: 0 !important;
-    display: block !important;
-    width: 100% !important;
-    height: 100% !important;
-    min-height: 100% !important;
-    margin: 0 !important;
-    opacity: 0 !important;
-    pointer-events: none !important;
-    transform: none !important;
-    background: var(--story-image, #000000) center / cover no-repeat !important;
-    transition: opacity 0.7s var(--story-ease) !important;
-    will-change: opacity !important;
-}
-
-.scroll-story-section--scenes .scroll-story-slide.is-active,
-.scroll-story-section--scenes .scroll-story-scene.is-active {
-    opacity: 1 !important;
-    pointer-events: auto !important;
-    z-index: 2 !important;
-}
-
-.scroll-story-section--scenes .scroll-story-slide.is-story-leaving {
-    opacity: 0 !important;
-    z-index: 1 !important;
-}
-
-.scroll-story-section--scenes .scroll-story-sticky,
-.scroll-story-section--scenes .scroll-story-stage {
-    position: absolute !important;
-    inset: 0 !important;
-    width: 100% !important;
-    height: 100% !important;
-    min-height: 100% !important;
-    overflow: hidden !important;
-}
-
-.scroll-story-section--scenes .scroll-story-bg {
-    position: absolute !important;
-    inset: 0 !important;
-    width: 100% !important;
-    height: 100% !important;
-    transform: translateZ(0) scale(1.03) !important;
-    transition: transform 4.8s var(--story-ease) !important;
-}
-
-.scroll-story-section--scenes .scroll-story-bg img {
-    width: 100% !important;
-    height: 100% !important;
-    object-fit: cover !important;
-    display: block !important;
-}
-
-.scroll-story-section--scenes .scroll-story-slide.is-active .scroll-story-bg {
-    transform: translateZ(0) scale(1.08) !important;
-}
-
-.scroll-story-section--scenes .scroll-story-overlay {
-    position: absolute !important;
-    inset: 0 !important;
-    opacity: 1 !important;
-    z-index: 2 !important;
-    background:
-        linear-gradient(90deg, rgba(0, 0, 0, 0.82) 0%, rgba(0, 0, 0, 0.46) 42%, rgba(0, 0, 0, 0.16) 100%),
-        linear-gradient(180deg, rgba(0, 0, 0, 0.18) 0%, rgba(0, 0, 0, 0.56) 100%) !important;
-}
-
-.scroll-story-section--scenes .scroll-story-content,
-.scroll-story-section--scenes .scroll-story-slide--booking .scroll-story-content {
-    position: absolute !important;
-    left: clamp(110px, 14vw, 210px) !important;
-    right: auto !important;
-    top: 50% !important;
-    bottom: auto !important;
-    width: min(560px, calc(100vw - 180px)) !important;
-    max-width: 560px !important;
-    transform: translate3d(0, -50%, 0) !important;
-    z-index: 4 !important;
-}
-
-.scroll-story-section--scenes .scroll-story-kicker,
-.scroll-story-section--scenes .scroll-story-content h2,
-.scroll-story-section--scenes .scroll-story-content > p:not(.scroll-story-kicker),
-.scroll-story-section--scenes .scroll-story-actions {
-    opacity: 0 !important;
-    transform: translate3d(0, 40px, 0) !important;
-    transition:
-        opacity 0.7s var(--story-ease),
-        transform 0.7s var(--story-ease) !important;
-    will-change: opacity, transform !important;
-}
-
-.scroll-story-section--scenes .scroll-story-content h2 {
-    transition-delay: 0.06s !important;
-}
-
-.scroll-story-section--scenes .scroll-story-content > p:not(.scroll-story-kicker) {
-    transition-delay: 0.12s !important;
-}
-
-.scroll-story-section--scenes .scroll-story-actions {
-    transition-delay: 0.18s !important;
-}
-
-.scroll-story-section--scenes .scroll-story-slide.is-active .scroll-story-kicker,
-.scroll-story-section--scenes .scroll-story-slide.is-active .scroll-story-content h2,
-.scroll-story-section--scenes .scroll-story-slide.is-active .scroll-story-content > p:not(.scroll-story-kicker),
-.scroll-story-section--scenes .scroll-story-slide.is-active .scroll-story-actions {
-    opacity: 1 !important;
-    transform: translate3d(0, 0, 0) !important;
-}
-
-.scroll-story-section--scenes .scroll-story-slide.is-story-leaving .scroll-story-kicker,
-.scroll-story-section--scenes .scroll-story-slide.is-story-leaving .scroll-story-content h2,
-.scroll-story-section--scenes .scroll-story-slide.is-story-leaving .scroll-story-content > p:not(.scroll-story-kicker),
-.scroll-story-section--scenes .scroll-story-slide.is-story-leaving .scroll-story-actions {
-    opacity: 0 !important;
-    transform: translate3d(0, -40px, 0) !important;
-}
-
-@media (max-width: 1024px) {
-    .scroll-story-section--scenes .scroll-story-progress {
-        left: 24px !important;
-        width: 64px !important;
-    }
-
-    .scroll-story-section--scenes .scroll-story-content,
-    .scroll-story-section--scenes .scroll-story-slide--booking .scroll-story-content {
-        left: clamp(92px, 13vw, 150px) !important;
-        width: min(560px, calc(100vw - 128px)) !important;
-    }
-}
-
-@media (max-width: 767px) {
-    .scroll-story-section--scenes {
-        --story-scroll-height: 600dvh;
-        --story-pin-top: 0px;
-        --story-pin-height: 100dvh;
-    }
-
-    .scroll-story-section--scenes .scroll-story-sticky-shell {
-        height: var(--story-pin-height) !important;
-        min-height: var(--story-pin-height) !important;
-    }
-
-    .scroll-story-section--scenes .scroll-story-progress {
-        top: 18px !important;
-        left: 50% !important;
-        width: auto !important;
-        transform: translate3d(-50%, 0, 0) !important;
-        flex-direction: row !important;
-        align-items: center !important;
-        justify-content: center !important;
-        gap: 12px !important;
-    }
-
-    .scroll-story-section--scenes .scroll-story-progress span {
-        width: auto !important;
-        gap: 5px !important;
-        flex-direction: column !important;
-        font-size: 11px !important;
-    }
-
-    .scroll-story-section--scenes .scroll-story-progress span::after {
-        width: 16px !important;
-        flex-basis: 16px !important;
-    }
-
-    .scroll-story-section--scenes .scroll-story-content,
-    .scroll-story-section--scenes .scroll-story-slide--booking .scroll-story-content {
-        left: 22px !important;
-        right: 22px !important;
-        top: auto !important;
-        bottom: 54px !important;
-        width: auto !important;
-        max-width: none !important;
-        transform: none !important;
-    }
-
-    .scroll-story-section--scenes .scroll-story-overlay {
-        background:
-            linear-gradient(180deg, rgba(0, 0, 0, 0.22) 0%, rgba(0, 0, 0, 0.28) 38%, rgba(0, 0, 0, 0.84) 100%) !important;
     }
 }
 
@@ -8792,10 +7707,9 @@ body {
     .sticky-availability-content h2,
     .sticky-availability-content--interested h2,
     .interested-property-copy h2,
-    .scroll-story-content h2,
     .differentiation-copy h2,
     .booking-enquiry-form h2
-) {
+){
     text-wrap: balance;
 }
 
@@ -8858,11 +7772,10 @@ body {
     .site-visit-eyebrow,
     .property-snapshot-eyebrow,
     .interested-property-kicker,
-    .scroll-story-kicker,
     .pricing-unlock-kicker,
     .footer-premium-label,
     .footer-redesign-cta p
-) {
+){
     font-size: 13px !important;
     line-height: 1.35 !important;
     letter-spacing: 0.12em !important;
@@ -9078,8 +7991,6 @@ body {
 
     :is(
         .peace-density-content h2,
-        .scroll-story-content h2,
-        .scroll-story-section--scenes .scroll-story-content h2,
         .differentiation-copy h2,
         .booking-enquiry-form h2,
         .interested-property-copy h2,
@@ -9090,7 +8001,7 @@ body {
         .project-plan-footer h3,
         .premium-specs-slide-overlay h3,
         .visual-showcase-cta h3
-    ) {
+    ){
         font-size: clamp(26px, 7.2vw, 32px) !important;
         line-height: 1.2 !important;
         text-wrap: balance;
@@ -9156,12 +8067,10 @@ body {
         .site-visit-eyebrow,
         .property-snapshot-eyebrow,
         .interested-property-kicker,
-        .scroll-story-kicker,
-        .scroll-story-section--scenes .scroll-story-kicker,
         .pricing-unlock-kicker,
         .footer-premium-label,
         .footer-redesign-cta p
-    ) {
+    ){
         font-size: 11.5px !important;
         line-height: 1.35 !important;
         letter-spacing: 0.09em !important;
@@ -9265,12 +8174,7 @@ body {
         .footer-redesign-actions a,
         .footer-premium-btn,
         .property-snapshot-readmore,
-        .property-snapshot-modal-btn,
-        .scroll-story-primary-btn,
-        .scroll-story-secondary-btn,
-        .scroll-story-section--scenes .scroll-story-primary-btn,
-        .scroll-story-section--scenes .scroll-story-secondary-btn
-    ) {
+        .property-snapshot-modal-btn){
         min-height: 42px !important;
         height: auto !important;
         font-size: 13.5px !important;
@@ -9329,126 +8233,8 @@ body {
     }
 }
 
-/* Final mobile polish: story slider and booking form. */
+/* Final mobile booking form polish. */
 @media (max-width: 767px) {
-    .struct-slider-section {
-        height: var(--struct-mobile-scroll-height, 600svh) !important;
-        min-height: var(--struct-mobile-scroll-height, 600svh) !important;
-        overflow: visible !important;
-        scroll-margin-top: 0 !important;
-    }
-
-    .struct-slider-inner {
-        position: sticky !important;
-        top: 0 !important;
-        height: 100svh !important;
-        min-height: 100svh !important;
-        overflow: hidden !important;
-        align-items: flex-end !important;
-        justify-content: flex-start !important;
-        padding: 86px 18px 54px !important;
-    }
-
-    .struct-slider-section.is-struct-mobile-active .struct-slider-bg,
-    .struct-slider-section.is-struct-mobile-active .struct-slider-overlay {
-        position: fixed !important;
-        inset: 0 !important;
-        width: 100% !important;
-        height: 100svh !important;
-        pointer-events: none !important;
-    }
-
-    .struct-slider-overlay {
-        background:
-            linear-gradient(180deg, rgba(0, 0, 0, 0.22) 0%, rgba(0, 0, 0, 0.26) 38%, rgba(0, 0, 0, 0.86) 100%),
-            linear-gradient(90deg, rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.08) 52%, rgba(0, 0, 0, 0.34)) !important;
-    }
-
-    .struct-slider-rail {
-        position: absolute !important;
-        left: 18px !important;
-        right: 18px !important;
-        top: 28px !important;
-        z-index: 20 !important;
-        width: auto !important;
-        min-height: 0 !important;
-        transform: none !important;
-    }
-
-    .struct-slider-rail-items {
-        display: flex !important;
-        width: 100% !important;
-        justify-content: space-between !important;
-        gap: 8px !important;
-    }
-
-    .struct-index {
-        display: inline-flex !important;
-        min-width: 34px !important;
-        justify-content: center !important;
-        padding: 0 0 8px !important;
-        font-size: 10px !important;
-        line-height: 1 !important;
-    }
-
-    .struct-index::before {
-        left: 50% !important;
-        top: auto !important;
-        bottom: 0 !important;
-        width: 14px !important;
-        transform: translateX(-50%) !important;
-    }
-
-    .struct-index.is-active::before {
-        width: 26px !important;
-    }
-
-    .struct-slider-content {
-        display: block !important;
-        width: 100% !important;
-        min-height: 0 !important;
-        max-width: 100% !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        text-align: left !important;
-    }
-
-    .struct-kicker {
-        margin-bottom: 11px !important;
-        font-size: 10px !important;
-        line-height: 1.45 !important;
-        letter-spacing: 0.12em !important;
-    }
-
-    .struct-title {
-        max-width: 100% !important;
-        font-size: clamp(28px, 10vw, 38px) !important;
-        line-height: 1.08 !important;
-        text-wrap: balance;
-    }
-
-    .struct-description {
-        max-width: 100% !important;
-        margin-top: 12px !important;
-        font-size: 14px !important;
-        line-height: 1.58 !important;
-    }
-
-    .struct-actions {
-        display: grid !important;
-        grid-template-columns: 1fr !important;
-        gap: 9px !important;
-        margin-top: 22px !important;
-    }
-
-    .struct-primary-btn,
-    .struct-secondary-btn {
-        width: 100% !important;
-        min-height: 44px !important;
-        border-radius: 12px !important;
-        font-size: 13px !important;
-    }
-
     .booking-enquiry-section {
         display: flex !important;
         min-height: calc(100svh - 73px) !important;
