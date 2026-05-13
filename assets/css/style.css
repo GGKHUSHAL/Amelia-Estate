@@ -13773,3 +13773,180 @@ a[href*="wa.me"]:hover svg {
         line-height: 1.45 !important;
     }
 }
+
+/* -------------------------------------------------------------------------- */
+/* Structured story slider (github.com/Anil-0001/Amelia-Estate) + scroll lock */
+/* -------------------------------------------------------------------------- */
+
+html.struct-slider-locked,
+body.struct-slider-locked {
+    overflow: hidden;
+    overscroll-behavior: none;
+}
+
+.struct-slider-section {
+    font-family: "Jost", "Inter", Arial, sans-serif;
+    scroll-margin-top: 86px;
+}
+
+.struct-slider-section,
+.struct-slider-inner {
+    min-height: 620px;
+}
+
+.struct-slider-bg {
+    transform: scale(1.01);
+}
+
+.struct-slide {
+    opacity: 0;
+    background-position: center;
+    background-size: cover;
+    transition: opacity 700ms ease;
+}
+
+.struct-slide.is-active {
+    opacity: 1;
+}
+
+.struct-slide-1 {
+    background-image: url("../img/struct-slider/structslider1.png");
+}
+
+.struct-slide-2 {
+    background-image: url("../img/struct-slider/structslider2.png");
+}
+
+.struct-slide-3 {
+    background-image: url("../img/struct-slider/structslider3.png");
+}
+
+.struct-slide-4 {
+    background-image: url("../img/struct-slider/stuctslider4.jpg");
+}
+
+.struct-slide-5 {
+    background-image: url("../img/struct-slider/structslider5.png");
+}
+
+.struct-slide-6 {
+    background-image: url("../img/struct-slider/structslider6.jpg");
+}
+
+.struct-slider-overlay {
+    opacity: 0;
+    background:
+        linear-gradient(180deg, rgba(0, 0, 0, 0.16), rgba(0, 0, 0, 0.78)),
+        linear-gradient(90deg, rgba(0, 0, 0, 0.72) 0%, rgba(0, 0, 0, 0.28) 53%, rgba(0, 0, 0, 0.66) 100%);
+    animation: structOverlayReveal 920ms ease-out 180ms forwards;
+}
+
+.struct-slider-inner {
+    gap: clamp(28px, 6vw, 96px);
+}
+
+.struct-slider-rail {
+    display: flex;
+    flex: 0 0 84px;
+    width: 84px;
+    min-height: 260px;
+    align-items: flex-start;
+    padding-top: 0;
+    transform: translateY(-94px);
+}
+
+.struct-slider-content {
+    position: relative;
+    min-height: 245px;
+}
+
+.struct-slider-rail-items {
+    display: grid;
+    gap: 14px;
+}
+
+.struct-index {
+    position: relative;
+    padding-left: 34px;
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    color: rgba(255, 255, 255, 0.45);
+    transition: color 320ms ease;
+}
+
+.struct-index::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 24px;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.4);
+    transform: translateY(-50%);
+    transition: background-color 320ms ease, width 320ms ease;
+}
+
+.struct-index.is-active {
+    color: #d5ae66;
+}
+
+.struct-index.is-active::before {
+    width: 30px;
+    background: #d5ae66;
+}
+
+.struct-copy {
+    display: none;
+}
+
+.struct-copy.is-active {
+    display: block;
+    animation: structTextReveal 680ms ease forwards;
+}
+
+.struct-kicker {
+    margin-bottom: 14px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.17em;
+    color: #d5ae66;
+}
+
+.struct-title {
+    max-width: 620px;
+    font-size: clamp(2rem, 4.2vw, 3.3rem);
+    line-height: 1.12;
+    font-weight: 500;
+    color: #ffffff;
+    text-shadow: 0 4px 16px rgba(0, 0, 0, 0.44);
+}
+
+.struct-title span {
+    color: #d5ae66;
+}
+
+.struct-description {
+    margin-top: 12px;
+    max-width: 400px;
+    font-size: 16px;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+@keyframes structOverlayReveal {
+    to {
+        opacity: 0.8;
+    }
+}
+
+@keyframes structTextReveal {
+    from {
+        opacity: 0;
+        transform: translateY(24px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

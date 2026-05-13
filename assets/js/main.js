@@ -266,6 +266,169 @@ if (stickyAvailabilitySection && stickyAvailabilityPanel) {
     window.addEventListener("resize", updateStickyAvailability);
 }
 
+// Structured story slider (ported from github.com/Anil-0001/Amelia-Estate/js/script.js; scroll lock extended for this layout).
+const structSliderSection = document.querySelector(".struct-slider-section");
+const structSlides = structSliderSection?.querySelectorAll(".struct-slide") || [];
+const structCopies = structSliderSection?.querySelectorAll(".struct-copy") || [];
+const structIndexes = structSliderSection?.querySelectorAll(".struct-index") || [];
+const structDots = structSliderSection?.querySelectorAll(".struct-dot") || [];
+
+let activeStructSlide = 0;
+let structTouchStartY = 0;
+let structAnimating = false;
+let structLocked = false;
+let structReleasedDirection = 0;
+
+const updateStructSlide = (nextIndex) => {
+    if (!structSlides.length || structAnimating || nextIndex === activeStructSlide) {
+        return;
+    }
+
+    structAnimating = true;
+    structSlides[activeStructSlide]?.classList.remove("is-active");
+    structCopies[activeStructSlide]?.classList.remove("is-active");
+    structIndexes[activeStructSlide]?.classList.remove("is-active");
+    structDots[activeStructSlide]?.classList.remove("is-active");
+
+    activeStructSlide = nextIndex;
+    structSlides[activeStructSlide]?.classList.add("is-active");
+    structCopies[activeStructSlide]?.classList.add("is-active");
+    structIndexes[activeStructSlide]?.classList.add("is-active");
+    structDots[activeStructSlide]?.classList.add("is-active");
+
+    window.setTimeout(() => {
+        structAnimating = false;
+    }, 700);
+};
+
+if (structSliderSection && structSlides.length > 1) {
+    const canMoveStructSlide = (direction) =>
+        (direction > 0 && activeStructSlide < structSlides.length - 1) ||
+        (direction < 0 && activeStructSlide > 0);
+
+    const isStructInFocus = () => {
+        const rect = structSliderSection.getBoundingClientRect();
+        return rect.top < window.innerHeight * 0.72 && rect.bottom > window.innerHeight * 0.28;
+    };
+
+    const isStructSectionFullyOutOfView = () => {
+        const rect = structSliderSection.getBoundingClientRect();
+        const vh = window.innerHeight || document.documentElement.clientHeight || 1;
+
+        return rect.bottom < 1 || rect.top > vh - 1;
+    };
+
+    const setStructLock = (shouldLock) => {
+        if (shouldLock === structLocked) {
+            return;
+        }
+
+        structLocked = shouldLock;
+        document.documentElement.classList.toggle("struct-slider-locked", shouldLock);
+        document.body.classList.toggle("struct-slider-locked", shouldLock);
+
+        if (shouldLock) {
+            structSliderSection.scrollIntoView({ block: "start" });
+        }
+    };
+
+    const syncStructLock = () => {
+        if (!isStructInFocus()) {
+            if (isStructSectionFullyOutOfView()) {
+                structReleasedDirection = 0;
+            }
+
+            setStructLock(false);
+            return;
+        }
+
+        if (
+            (structReleasedDirection === 1 && activeStructSlide === structSlides.length - 1) ||
+            (structReleasedDirection === -1 && activeStructSlide === 0)
+        ) {
+            setStructLock(false);
+            return;
+        }
+
+        setStructLock(true);
+    };
+
+    const handleStructDirection = (direction, event) => {
+        if (!isStructInFocus()) {
+            syncStructLock();
+            return;
+        }
+
+        if (canMoveStructSlide(direction)) {
+            event.preventDefault();
+            structReleasedDirection = 0;
+            setStructLock(true);
+            updateStructSlide(activeStructSlide + direction);
+            return;
+        }
+
+        structReleasedDirection = direction;
+        setStructLock(false);
+    };
+
+    const handleStructWheel = (event) => {
+        const dy = event.deltaY;
+
+        if (dy === 0) {
+            return;
+        }
+
+        const atFirstSlide = activeStructSlide === 0;
+        const atLastSlide = activeStructSlide === structSlides.length - 1;
+        const boundaryWheelExit =
+            isStructInFocus() &&
+            ((atFirstSlide && dy < 0) || (atLastSlide && dy > 0));
+
+        if (Math.abs(dy) <= 12 && !boundaryWheelExit) {
+            return;
+        }
+
+        handleStructDirection(dy > 0 ? 1 : -1, event);
+    };
+
+    const handleStructTouchStart = (event) => {
+        structTouchStartY = event.touches[0]?.clientY || 0;
+    };
+
+    const handleStructTouchMove = (event) => {
+        if (!isStructInFocus()) {
+            return;
+        }
+
+        const currentY = event.touches[0]?.clientY || 0;
+        const deltaY = structTouchStartY - currentY;
+
+        if (Math.abs(deltaY) > 16) {
+            handleStructDirection(deltaY > 0 ? 1 : -1, event);
+            structTouchStartY = currentY;
+        }
+    };
+
+    const handleStructKeydown = (event) => {
+        if (!isStructInFocus()) {
+            return;
+        }
+
+        if (["ArrowDown", "PageDown", "Space"].includes(event.code)) {
+            handleStructDirection(1, event);
+        } else if (["ArrowUp", "PageUp"].includes(event.code)) {
+            handleStructDirection(-1, event);
+        }
+    };
+
+    window.addEventListener("scroll", syncStructLock, { passive: true });
+    window.addEventListener("wheel", handleStructWheel, { passive: false });
+    window.addEventListener("touchstart", handleStructTouchStart, { passive: true });
+    window.addEventListener("touchmove", handleStructTouchMove, { passive: false });
+    window.addEventListener("keydown", handleStructKeydown);
+    syncStructLock();
+}
+
 // About gallery: keeps the image depth effect and toggles the longer content panel.
 const aboutSection = document.querySelector(".about-section");
 
@@ -332,7 +495,14 @@ const updateMobileHeaderVisibility = () => {
     const heroSection = document.querySelector(".hero-section");
     const heroHeight = heroSection ? heroSection.offsetHeight : 0;
     const hideAtTop = window.scrollY < Math.max(110, heroHeight * 0.18);
-    const shouldHideHeader = hideAtTop;
+    let hideInStruct = false;
+
+    if (structSliderSection) {
+        const structRect = structSliderSection.getBoundingClientRect();
+        hideInStruct = structRect.top <= 2 && structRect.bottom > 64;
+    }
+
+    const shouldHideHeader = hideAtTop || hideInStruct;
 
     document.body.classList.toggle("is-mobile-header-hidden", shouldHideHeader);
     document.body.classList.toggle("is-mobile-header-visible", !shouldHideHeader);

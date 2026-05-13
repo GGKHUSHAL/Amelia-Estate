@@ -8619,3 +8619,86 @@ body {
         letter-spacing: 0.16em !important;
     }
 }
+
+/* Structured story slider — responsive (github.com/Anil-0001/Amelia-Estate) */
+@media (max-width: 1023px) {
+    .struct-slider-inner {
+        padding-top: 56px !important;
+        padding-bottom: 56px !important;
+    }
+}
+
+@media (max-width: 639px) {
+    .struct-slider-inner {
+        justify-content: center;
+        min-height: 620px;
+        padding-top: 42px !important;
+        padding-bottom: 42px !important;
+    }
+
+    .struct-slider-rail {
+        position: absolute;
+        left: 16px;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 20;
+        width: auto;
+        min-height: auto;
+        padding-top: 0;
+    }
+
+    .struct-slider-rail-items {
+        gap: 12px;
+    }
+
+    .struct-index {
+        font-size: 11px;
+        padding-left: 28px;
+    }
+
+    .struct-index::before {
+        width: 18px;
+    }
+
+    .struct-index.is-active::before {
+        width: 24px;
+    }
+
+    .struct-slider-content {
+        width: 100%;
+        max-width: 100%;
+        min-height: 285px;
+        padding: 0 18px 0 58px;
+        margin: auto;
+        text-align: left;
+        display: flex;
+        align-items: center;
+    }
+
+    .struct-copy {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .struct-title {
+        max-width: 100%;
+        font-size: clamp(1.75rem, 9vw, 2.45rem);
+        line-height: 1.12;
+    }
+
+    .struct-description {
+        max-width: 100%;
+    }
+
+    .struct-kicker {
+        margin-bottom: 10px;
+        font-size: 11px;
+        letter-spacing: 0.14em;
+    }
+
+    .struct-description {
+        margin-top: 10px;
+        font-size: 14px;
+        line-height: 1.55;
+    }
+}
