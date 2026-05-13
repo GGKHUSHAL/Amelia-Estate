@@ -9332,15 +9332,30 @@ body {
 /* Final mobile polish: story slider and booking form. */
 @media (max-width: 767px) {
     .struct-slider-section {
-        min-height: 100svh !important;
+        height: var(--struct-mobile-scroll-height, 600svh) !important;
+        min-height: var(--struct-mobile-scroll-height, 600svh) !important;
+        overflow: visible !important;
         scroll-margin-top: 0 !important;
     }
 
     .struct-slider-inner {
+        position: sticky !important;
+        top: 0 !important;
+        height: 100svh !important;
         min-height: 100svh !important;
+        overflow: hidden !important;
         align-items: flex-end !important;
         justify-content: flex-start !important;
         padding: 86px 18px 54px !important;
+    }
+
+    .struct-slider-section.is-struct-mobile-active .struct-slider-bg,
+    .struct-slider-section.is-struct-mobile-active .struct-slider-overlay {
+        position: fixed !important;
+        inset: 0 !important;
+        width: 100% !important;
+        height: 100svh !important;
+        pointer-events: none !important;
     }
 
     .struct-slider-overlay {

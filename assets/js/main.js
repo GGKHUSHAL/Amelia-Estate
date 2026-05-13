@@ -1455,30 +1455,45 @@ let structTouchStartY = 0;
 let structAnimating = false;
 let structLocked = false;
 let structReleasedDirection = 0;
+let structAnimationTimer = 0;
 
-const updateStructSlide = (nextIndex) => {
-    if (!structSlides.length || structAnimating || nextIndex === activeStructSlide) {
+const updateStructSlide = (nextIndex, options = {}) => {
+    if (!structSlides.length) {
         return;
     }
 
-    structAnimating = true;
+    const safeIndex = Math.max(0, Math.min(nextIndex, structSlides.length - 1));
+    const force = options.force === true;
+
+    if ((!force && structAnimating) || safeIndex === activeStructSlide) {
+        return;
+    }
+
+    clearTimeout(structAnimationTimer);
+    structAnimating = !force;
     structSlides[activeStructSlide]?.classList.remove("is-active");
     structCopies[activeStructSlide]?.classList.remove("is-active");
     structIndexes[activeStructSlide]?.classList.remove("is-active");
     structDots[activeStructSlide]?.classList.remove("is-active");
 
-    activeStructSlide = nextIndex;
+    activeStructSlide = safeIndex;
     structSlides[activeStructSlide]?.classList.add("is-active");
     structCopies[activeStructSlide]?.classList.add("is-active");
     structIndexes[activeStructSlide]?.classList.add("is-active");
     structDots[activeStructSlide]?.classList.add("is-active");
 
-    window.setTimeout(() => {
-        structAnimating = false;
-    }, 700);
+    if (!force) {
+        structAnimationTimer = window.setTimeout(() => {
+            structAnimating = false;
+        }, 700);
+    }
 };
 
 if (structSliderSection && structSlides.length > 1) {
+    const structMobileMedia = window.matchMedia("(max-width: 767px)");
+
+    structSliderSection.style.setProperty("--struct-mobile-scroll-height", `${structSlides.length * 100}svh`);
+
     const canMoveStructSlide = (direction) =>
         (direction > 0 && activeStructSlide < structSlides.length - 1) ||
         (direction < 0 && activeStructSlide > 0);
@@ -1501,7 +1516,34 @@ if (structSliderSection && structSlides.length > 1) {
         }
     };
 
+    const syncStructMobileScroll = () => {
+        if (!structMobileMedia.matches) {
+            structSliderSection.classList.remove("is-struct-mobile-active");
+            return false;
+        }
+
+        setStructLock(false);
+
+        const sectionTop = structSliderSection.offsetTop;
+        const maxScroll = Math.max(structSliderSection.offsetHeight - window.innerHeight, 1);
+        const rawProgress = (window.scrollY - sectionTop) / maxScroll;
+        const progress = Math.max(0, Math.min(rawProgress, 1));
+        const isInsideMobileStory = rawProgress >= 0 && rawProgress <= 1;
+        const nextIndex = Math.min(
+            structSlides.length - 1,
+            Math.floor(progress * structSlides.length)
+        );
+
+        structSliderSection.classList.toggle("is-struct-mobile-active", isInsideMobileStory);
+        updateStructSlide(nextIndex, { force: true });
+        return true;
+    };
+
     const syncStructLock = () => {
+        if (syncStructMobileScroll()) {
+            return;
+        }
+
         if (!isStructInFocus()) {
             structReleasedDirection = 0;
             setStructLock(false);
@@ -1520,6 +1562,10 @@ if (structSliderSection && structSlides.length > 1) {
     };
 
     const handleStructDirection = (direction, event) => {
+        if (structMobileMedia.matches) {
+            return;
+        }
+
         if (!isStructInFocus()) {
             syncStructLock();
             return;
@@ -1546,10 +1592,19 @@ if (structSliderSection && structSlides.length > 1) {
     };
 
     const handleStructTouchStart = (event) => {
+        if (structMobileMedia.matches) {
+            structTouchStartY = 0;
+            return;
+        }
+
         structTouchStartY = event.touches[0]?.clientY || 0;
     };
 
     const handleStructTouchMove = (event) => {
+        if (structMobileMedia.matches) {
+            return;
+        }
+
         if (!isStructInFocus()) {
             return;
         }
@@ -1563,6 +1618,10 @@ if (structSliderSection && structSlides.length > 1) {
     };
 
     const handleStructKeydown = (event) => {
+        if (structMobileMedia.matches) {
+            return;
+        }
+
         if (!isStructInFocus()) {
             return;
         }
@@ -1579,6 +1638,14 @@ if (structSliderSection && structSlides.length > 1) {
     window.addEventListener("touchstart", handleStructTouchStart, { passive: true });
     window.addEventListener("touchmove", handleStructTouchMove, { passive: false });
     window.addEventListener("keydown", handleStructKeydown);
+    window.addEventListener("resize", syncStructLock);
+
+    if (typeof structMobileMedia.addEventListener === "function") {
+        structMobileMedia.addEventListener("change", syncStructLock);
+    } else if (typeof structMobileMedia.addListener === "function") {
+        structMobileMedia.addListener(syncStructLock);
+    }
+
     syncStructLock();
 }
 
