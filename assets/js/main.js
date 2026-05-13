@@ -324,9 +324,9 @@ if (aboutSection) {
 
 // Scroll Story slider: traps scroll until the story has been viewed in that direction.
 const scrollStorySection = document.querySelector(".scroll-story-section");
-const useScrollDrivenStory = true;
+const useScrollDrivenStory = false;
 
-if (scrollStorySection && !useScrollDrivenStory) {
+if (scrollStorySection && false) {
     const storySlides = scrollStorySection.querySelectorAll(".scroll-story-slide");
     const storyProgressItems = scrollStorySection.querySelectorAll(".scroll-story-progress span");
 
@@ -736,7 +736,7 @@ if (scrollStorySection && !useScrollDrivenStory) {
 }
 
 // Scroll Story: reference-style sticky scenes driven by normal page scroll.
-if (scrollStorySection && useScrollDrivenStory) {
+if (scrollStorySection && false) {
     const storySlides = Array.from(scrollStorySection.querySelectorAll(".scroll-story-slide"));
     const storyProgressItems = Array.from(scrollStorySection.querySelectorAll(".scroll-story-progress span"));
     const storyImages = storySlides.map((slide) => slide.querySelector(".scroll-story-bg img"));
@@ -1302,6 +1302,148 @@ if (scrollStorySection && useScrollDrivenStory) {
     });
 }
 
+// Scroll Story: sticky slider behavior driven by scroll progress.
+if (scrollStorySection) {
+    const storySlides = Array.from(scrollStorySection.querySelectorAll(".scroll-story-slide"));
+    const storyProgressItems = Array.from(scrollStorySection.querySelectorAll(".scroll-story-progress span"));
+    const storyHeader = document.querySelector(".site-header");
+    const storyMobileMedia = window.matchMedia("(max-width: 767px)");
+    let activeIndex = 0;
+    let storyTicking = false;
+    let storyLeaveTimer;
+    let isStoryNavScrolling = false;
+    let storyNavScrollTimer;
+    let storyPinTop = 86;
+    let storyPinHeight = Math.max(window.innerHeight - storyPinTop, 360);
+
+    const syncStoryViewport = () => {
+        storyPinTop = storyMobileMedia.matches ? 0 : Math.round(storyHeader?.getBoundingClientRect().height || 86);
+        storyPinHeight = Math.max(window.innerHeight - storyPinTop, 360);
+
+        scrollStorySection.style.setProperty("--story-pin-top", `${storyPinTop}px`);
+        scrollStorySection.style.setProperty("--story-pin-height", `${storyPinHeight}px`);
+    };
+
+    const handleSlideChange = (index, shouldScroll = false) => {
+        if (!storySlides.length) {
+            return;
+        }
+
+        const nextIndex = Math.max(0, Math.min(index, storySlides.length - 1));
+
+        if (shouldScroll) {
+            isStoryNavScrolling = true;
+            clearTimeout(storyNavScrollTimer);
+
+            const maxScroll = Math.max(scrollStorySection.offsetHeight - storyPinHeight, 1);
+            const scrollProgress = storySlides.length > 1 ? nextIndex / (storySlides.length - 1) : 0;
+            window.scrollTo({
+                top: scrollStorySection.offsetTop - storyPinTop + (maxScroll * scrollProgress),
+                behavior: "smooth"
+            });
+
+            storyNavScrollTimer = setTimeout(() => {
+                isStoryNavScrolling = false;
+                requestStickyStoryUpdate();
+            }, 900);
+        }
+
+        if (nextIndex === activeIndex && storySlides[nextIndex].classList.contains("is-active")) {
+            return;
+        }
+
+        const previousSlide = storySlides[activeIndex];
+        clearTimeout(storyLeaveTimer);
+
+        if (previousSlide) {
+            previousSlide.classList.add("is-story-leaving");
+        }
+
+        storySlides.forEach((slide, slideIndex) => {
+            slide.classList.toggle("is-active", slideIndex === nextIndex);
+        });
+
+        storyProgressItems.forEach((item, itemIndex) => {
+            item.classList.toggle("is-active", itemIndex === nextIndex);
+        });
+
+        activeIndex = nextIndex;
+
+        storyLeaveTimer = setTimeout(() => {
+            storySlides.forEach((slide) => slide.classList.remove("is-story-leaving"));
+        }, 760);
+    };
+
+    const updateStickyStory = () => {
+        storyTicking = false;
+
+        if (!storySlides.length) {
+            return;
+        }
+
+        if (isStoryNavScrolling) {
+            return;
+        }
+
+        const sectionTop = scrollStorySection.offsetTop;
+        const sectionHeight = scrollStorySection.offsetHeight;
+        const maxScroll = Math.max(sectionHeight - storyPinHeight, 1);
+        const storyPosition = window.scrollY + storyPinTop - sectionTop;
+        const isBeforeStory = storyPosition < 0;
+        const isAfterStory = storyPosition > maxScroll;
+        const isNearStory = storyPosition > -storyPinHeight && storyPosition < maxScroll + storyPinHeight;
+
+        scrollStorySection.classList.toggle("is-story-fixed", !isBeforeStory && !isAfterStory);
+        scrollStorySection.classList.toggle("is-story-ended", isAfterStory);
+
+        if (!isNearStory) {
+            return;
+        }
+
+        const rawProgress = storyPosition / maxScroll;
+        const progress = Math.max(0, Math.min(rawProgress, 1));
+        const nextIndex = Math.round(progress * (storySlides.length - 1));
+        handleSlideChange(nextIndex);
+    };
+
+    const requestStickyStoryUpdate = () => {
+        if (storyTicking) {
+            return;
+        }
+
+        storyTicking = true;
+        requestAnimationFrame(updateStickyStory);
+    };
+
+    storyProgressItems.forEach((item, index) => {
+        item.setAttribute("role", "button");
+        item.setAttribute("tabindex", "0");
+        item.setAttribute("aria-label", `Show story slide ${index + 1}`);
+
+        item.addEventListener("click", () => {
+            handleSlideChange(index, true);
+        });
+
+        item.addEventListener("keydown", (event) => {
+            if (event.key !== "Enter" && event.key !== " ") {
+                return;
+            }
+
+            event.preventDefault();
+            handleSlideChange(index, true);
+        });
+    });
+
+    syncStoryViewport();
+    handleSlideChange(0);
+    requestStickyStoryUpdate();
+    window.addEventListener("scroll", requestStickyStoryUpdate, { passive: true });
+    window.addEventListener("resize", () => {
+        syncStoryViewport();
+        requestStickyStoryUpdate();
+    });
+}
+
 const mobileHeaderMedia = window.matchMedia("(max-width: 767px)");
 const updateMobileHeaderVisibility = () => {
     if (!mobileHeaderMedia.matches) {
@@ -1349,7 +1491,7 @@ if (idealFloorSection) {
     const idealImage = idealFloorSection.querySelector(".ideal-floor-media img");
 
     let activeSize = "230";
-    let activeFloor = "1st";
+    let activeFloor = "4th";
     let idealImageTimer;
 
     const sizeDetails = {
@@ -1436,10 +1578,19 @@ if (projectPlansSection) {
     const footerTitle = projectPlansSection.querySelector(".project-plan-footer h3");
     const footerCopy = projectPlansSection.querySelector(".project-plan-footer p");
     const toolLinks = projectPlansSection.querySelectorAll(".project-plan-tools a");
+    const lightbox = document.getElementById("project-plan-lightbox");
+    const lightboxImage = lightbox?.querySelector(".project-plan-lightbox-image");
+    const lightboxTitle = lightbox?.querySelector(".project-plan-lightbox-title");
+    const lightboxCloseButtons = lightbox?.querySelectorAll(".project-plan-lightbox-close, .project-plan-lightbox-backdrop");
 
     const floorImage = "assets/img/project plans/90009c575573f8f004b5343f065db6963be4f203.png";
     const siteImage = "assets/img/project plans/site plan.jpg";
     let activePlan = "floor";
+
+    [floorImage, siteImage].forEach((src) => {
+        const preload = new Image();
+        preload.src = src;
+    });
 
     const planContent = {
         floor: {
@@ -1487,33 +1638,49 @@ if (projectPlansSection) {
             tab.classList.toggle("is-active", tab.dataset.planTab === key);
         });
 
-        image.classList.add("is-switching");
+        image.classList.remove("is-switching");
+        image.src = content.image;
+        image.alt = content.alt;
+        badge.textContent = content.badge;
+        footerTitle.textContent = content.title;
+        footerCopy.textContent = content.copy;
+        meta.innerHTML = content.meta;
+        visual.classList.toggle("is-site", key === "site");
+        variantBar.hidden = !content.showVariants;
+        variants.hidden = !content.showVariants;
+        meta.hidden = !content.meta;
 
-        setTimeout(() => {
-            image.src = content.image;
-            image.alt = content.alt;
-            badge.textContent = content.badge;
-            footerTitle.textContent = content.title;
-            footerCopy.textContent = content.copy;
-            meta.innerHTML = content.meta;
-            visual.classList.toggle("is-site", key === "site");
-            variantBar.hidden = !content.showVariants;
-            variants.hidden = !content.showVariants;
-            meta.hidden = !content.meta;
+        variantButtons.forEach((button, index) => {
+            const label = content.variants[index];
+            button.hidden = !label;
+            button.textContent = label || "";
+            button.classList.toggle("is-active", index === 0 && Boolean(label));
+        });
 
-            variantButtons.forEach((button, index) => {
-                const label = content.variants[index];
-                button.hidden = !label;
-                button.textContent = label || "";
-                button.classList.toggle("is-active", index === 0 && Boolean(label));
-            });
+        toolLinks.forEach((link) => {
+            link.href = content.image;
+        });
+    };
 
-            toolLinks.forEach((link) => {
-                link.href = content.image;
-            });
+    const openPlanLightbox = () => {
+        if (!lightbox || !lightboxImage || !lightboxTitle) {
+            return;
+        }
 
-            image.classList.remove("is-switching");
-        }, 120);
+        lightboxImage.src = image.currentSrc || image.src;
+        lightboxImage.alt = image.alt;
+        lightboxTitle.textContent = badge.textContent;
+        lightbox.removeAttribute("hidden");
+        document.body.classList.add("is-project-plan-lightbox-open");
+    };
+
+    const closePlanLightbox = () => {
+        if (!lightbox) {
+            return;
+        }
+
+        lightbox.setAttribute("hidden", "");
+        document.body.classList.remove("is-project-plan-lightbox-open");
     };
 
     planTabs.forEach((tab) => {
@@ -1565,6 +1732,24 @@ if (projectPlansSection) {
             }
         });
     });
+
+    image.addEventListener("click", openPlanLightbox);
+    image.addEventListener("keydown", (event) => {
+        if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            openPlanLightbox();
+        }
+    });
+
+    lightboxCloseButtons?.forEach((button) => {
+        button.addEventListener("click", closePlanLightbox);
+    });
+
+    document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && lightbox && !lightbox.hasAttribute("hidden")) {
+            closePlanLightbox();
+        }
+    });
 }
 
 // Transparent pricing: size tabs, floor selection, and reveal state.
@@ -1578,6 +1763,7 @@ if (pricingSection) {
     const pricingFloor = pricingSection.querySelector(".pricing-title-block p");
     const imageBadge = pricingSection.querySelector(".pricing-image-badge");
     const pricingImage = pricingSection.querySelector(".pricing-image-wrap img");
+    const selectedPriceBox = pricingSection.querySelector(".selected-price-box");
     const selectedPrice = pricingSection.querySelector(".selected-price-box strong");
     const selectedMeta = pricingSection.querySelector(".selected-price-box p");
     const unlockButton = pricingSection.querySelector(".pricing-unlock-btn");
@@ -1599,22 +1785,22 @@ if (pricingSection) {
         230: {
             title: "3 BHK - 230 Sq. Yd",
             badge: "3 BHK - 230 Sq. Yd",
-            area: "2,190 Sq.Ft",
-            prices: ["2.85 Cr", "2.95 Cr", "3.05 Cr", "3.25 Cr"],
+            area: "230 Sq.Yds",
+            prices: ["1.54 Cr", "1.49 Cr", "1.49 Cr", "1.67 Cr"],
             image: "assets/img/priceing and investment/photo-1600566753190-17f0baa2a6c3.avif"
         },
         219: {
             title: "3 BHK - 219 Sq. Yd",
             badge: "3 BHK - 219 Sq. Yd",
-            area: "2,080 Sq.Ft",
-            prices: ["2.72 Cr", "2.82 Cr", "2.92 Cr", "3.12 Cr"],
+            area: "219 Sq.Yds",
+            prices: ["1.47 Cr", "1.42 Cr", "1.42 Cr", "1.60 Cr"],
             image: "assets/img/priceing and investment/photo-1600596542815-ffad4c1539a9.avif"
         },
         205: {
             title: "3 BHK - 205 Sq. Yd",
             badge: "3 BHK - 205 Sq. Yd",
-            area: "1,950 Sq.Ft",
-            prices: ["2.58 Cr", "2.68 Cr", "2.78 Cr", "2.98 Cr"],
+            area: "205 Sq.Yds",
+            prices: ["1.37 Cr", "1.325 Cr", "1.325 Cr", "1.505 Cr"],
             image: "assets/img/priceing and investment/photo-1600607687939-ce8a6c25118c.avif"
         }
     };
@@ -1629,12 +1815,18 @@ if (pricingSection) {
     const updateSelectedPrice = (button) => {
         const floorLabel = button.querySelector("span").textContent;
         const price = button.dataset.floorPrice;
+        const isVisiblePrice = isPricingUnlocked || button.classList.contains("is-price-visible");
 
         floorButtons.forEach((item) => item.classList.remove("is-active"));
         button.classList.add("is-active");
+        selectedPriceBox?.classList.toggle("is-price-visible", isVisiblePrice);
         pricingFloor.textContent = floorLabel;
-        selectedPrice.innerHTML = `<span class="pricing-currency">&#8377;</span>${price}*`;
-        selectedMeta.innerHTML = `${floorLabel} · <span>${activeSize} Sq.Yd</span>`;
+        selectedPrice.innerHTML = isVisiblePrice
+            ? `<span class="pricing-currency">&#8377;</span>${price}*`
+            : `<span class="pricing-locked-price">Price Hidden</span>`;
+        selectedMeta.innerHTML = isVisiblePrice
+            ? `${floorLabel} &middot; <span>${activeSize} Sq.Yd</span>`
+            : `${floorLabel} &middot; <span>Unlock to view price</span>`;
     };
 
     const syncPricingUnlockSize = () => {
@@ -1723,13 +1915,14 @@ if (pricingSection) {
 
         floorButtons.forEach((button, index) => {
             button.dataset.floorPrice = content.prices[index];
-            button.querySelector("strong").innerHTML = `<span class="pricing-currency">&#8377;</span>${content.prices[index]}`;
+            button.querySelector("strong").innerHTML = `<span class="pricing-currency">&#8377;</span>${content.prices[index]}*`;
+            button.classList.toggle("is-price-visible", index === 0 || isPricingUnlocked);
         });
 
         floorButtons.forEach((item) => item.classList.remove("is-active"));
         floorButtons[0].classList.add("is-active");
         pricingFloor.textContent = "1st Floor";
-        selectedMeta.innerHTML = `1st Floor · <span>${activeSize} Sq.Yd</span>`;
+        selectedMeta.innerHTML = `1st Floor &middot; <span>${activeSize} Sq.Yd</span>`;
 
         updateSelectedPrice(floorButtons[0]);
     };
@@ -1740,10 +1933,6 @@ if (pricingSection) {
 
     floorButtons.forEach((button) => {
         button.addEventListener("click", () => {
-            if (!isPricingUnlocked) {
-                return;
-            }
-
             updateSelectedPrice(button);
         });
     });
@@ -1787,6 +1976,13 @@ if (premiumSpecsSection) {
     const brandTrack = premiumSpecsSection.querySelector(".premium-specs-brand-list");
     const brandItems = premiumSpecsSection.querySelectorAll(".premium-specs-brand");
     const brandDots = premiumSpecsSection.querySelectorAll(".premium-specs-brand-dots button");
+    const specsModal = document.getElementById("premium-specs-modal");
+    const specsModalImage = specsModal?.querySelector(".premium-specs-modal-image");
+    const specsModalTitle = specsModal?.querySelector("#premiumSpecsModalTitle");
+    const specsModalCopy = specsModal?.querySelector(".premium-specs-modal-copy");
+    const specsModalBrands = specsModal?.querySelector(".premium-specs-modal-brand-box strong");
+    const specsModalDetailList = specsModal?.querySelector(".premium-specs-modal-detail-list");
+    const specsModalCloseButtons = specsModal?.querySelectorAll("[data-premium-specs-close]");
     let activeSpecSlide = 1;
     let specSliderInterval;
     let specStartX = 0;
@@ -1794,8 +1990,56 @@ if (premiumSpecsSection) {
     let didSpecSwipe = false;
     let specAnimationTimer;
     let brandIndicatorFrame;
+    let brandMarqueeFrame;
+    let isBrandMarqueePaused = false;
     const specSwipeDistance = 44;
     const specAnimationDuration = 860;
+    const specDetails = {
+        "classic-kitchen": {
+            title: "Classic Kitchen",
+            copy: "Bright white cabinetry with a stone countertop, built-in cooking zone, and practical storage planning for daily family use.",
+            brands: "Hettich, Jaquar, Hindware, Kajaria",
+            details: [
+                ["Countertop", "Polished stone/granite working top with easy-clean surface"],
+                ["Cabinet Finish", "White modular shutters with soft-close hardware provision"],
+                ["Cooking Zone", "Hob/cooktop platform with chimney and exhaust provision"],
+                ["Sink & Utility", "Stainless steel sink with RO, dishwasher and washing machine point provision"]
+            ]
+        },
+        "modern-kitchen": {
+            title: "Modern Modular Kitchen",
+            copy: "Sleek matte shutters, marble-look backsplash, under-cabinet lighting, and a clean island-style counter for a premium kitchen feel.",
+            brands: "Hettich, Hafele, Kajaria, Jaquar",
+            details: [
+                ["Backsplash", "Marble-look dado/backsplash with concealed task lighting"],
+                ["Shutters", "Matte-finish modular shutters with soft-close channels"],
+                ["Counter & Island", "Premium stone countertop with spacious preparation surface"],
+                ["Appliance Points", "Provision for chimney, hob, microwave, RO and refrigerator"]
+            ]
+        },
+        bathroom: {
+            title: "Luxury Bathroom",
+            copy: "Designer bathroom with bathtub zone, feature wall tiles, vanity counter, premium sanitaryware, and branded CP fittings.",
+            brands: "Jaquar, Hindware, Kajaria",
+            details: [
+                ["Sanitaryware", "Wall-hung WC, bathtub and premium wash basin provision"],
+                ["Vanity Counter", "Stone/wood-finish vanity slab with under-counter storage"],
+                ["Wall & Floor Tiles", "Designer wall tiles with anti-skid bathroom floor tiles"],
+                ["CP Fittings", "Branded mixer, shower, health faucet and towel rail provision"]
+            ]
+        },
+        bedroom: {
+            title: "Premium Bedroom",
+            copy: "A calm, well-lit bedroom with large window opening, soft wall finish, warm wooden flooring, and planned electrical points.",
+            brands: "Asian Paints, Havells, Legrand",
+            details: [
+                ["Flooring", "Wooden-finish flooring for a warmer bedroom look"],
+                ["Wall Finish", "Smooth putty finish with premium emulsion paint"],
+                ["Window & Light", "Large window opening with curtain track provision"],
+                ["Electrical Points", "AC point, TV point, bedside sockets and modular switch plates"]
+            ]
+        }
+    };
 
     const setActiveBrand = (index) => {
         brandItems.forEach((item, itemIndex) => {
@@ -1817,14 +2061,16 @@ if (premiumSpecsSection) {
         let activeBrandIndex = 0;
         let closestDistance = Number.POSITIVE_INFINITY;
 
-        brandItems.forEach((item, index) => {
+        const visibleBrandItems = brandTrack.querySelectorAll(".premium-specs-brand");
+
+        visibleBrandItems.forEach((item, index) => {
             const itemRect = item.getBoundingClientRect();
             const itemCenter = itemRect.left + itemRect.width / 2;
             const distance = Math.abs(itemCenter - trackCenter);
 
             if (distance < closestDistance) {
                 closestDistance = distance;
-                activeBrandIndex = index;
+                activeBrandIndex = index % brandItems.length;
             }
         });
 
@@ -1834,6 +2080,43 @@ if (premiumSpecsSection) {
     const requestBrandIndicatorUpdate = () => {
         cancelAnimationFrame(brandIndicatorFrame);
         brandIndicatorFrame = requestAnimationFrame(updateBrandIndicator);
+    };
+
+    const setupBrandMarquee = () => {
+        if (!brandTrack || !brandItems.length) {
+            return;
+        }
+
+        brandTrack.classList.add("is-marquee");
+        brandItems.forEach((item) => {
+            const clone = item.cloneNode(true);
+            clone.setAttribute("aria-hidden", "true");
+            clone.classList.remove("is-active");
+            brandTrack.appendChild(clone);
+        });
+    };
+
+    const startBrandMarquee = () => {
+        if (!brandTrack || !brandItems.length) {
+            return;
+        }
+
+        const step = () => {
+            if (!isBrandMarqueePaused) {
+                brandTrack.scrollLeft += 0.9;
+
+                if (brandTrack.scrollLeft >= brandTrack.scrollWidth / 2) {
+                    brandTrack.scrollLeft = 0;
+                }
+
+                requestBrandIndicatorUpdate();
+            }
+
+            brandMarqueeFrame = requestAnimationFrame(step);
+        };
+
+        cancelAnimationFrame(brandMarqueeFrame);
+        brandMarqueeFrame = requestAnimationFrame(step);
     };
 
     const getSpecDirection = (index) => {
@@ -1886,14 +2169,40 @@ if (premiumSpecsSection) {
     };
 
     const startSpecSlider = () => {
-        specSliderInterval = setInterval(() => {
-            setSpecSlide(activeSpecSlide + 1, 1);
-        }, 5000);
+        clearInterval(specSliderInterval);
     };
 
     const resetSpecSlider = () => {
         clearInterval(specSliderInterval);
-        startSpecSlider();
+    };
+
+    const openSpecsModal = (slide) => {
+        if (!specsModal || !specsModalImage || !specsModalTitle || !specsModalCopy || !specsModalBrands || !specsModalDetailList) {
+            return;
+        }
+
+        const image = slide.querySelector("img");
+        const detail = specDetails[slide.dataset.specKey] || specDetails["modern-kitchen"];
+
+        specsModalImage.src = image.currentSrc || image.src;
+        specsModalImage.alt = image.alt;
+        specsModalTitle.textContent = detail.title;
+        specsModalCopy.textContent = detail.copy;
+        specsModalBrands.textContent = detail.brands;
+        specsModalDetailList.innerHTML = detail.details.map(([label, value]) => (
+            `<div class="premium-specs-modal-detail"><strong>${label}</strong><span>${value}</span></div>`
+        )).join("");
+        specsModal.hidden = false;
+        document.body.classList.add("is-premium-specs-modal-open");
+    };
+
+    const closeSpecsModal = () => {
+        if (!specsModal) {
+            return;
+        }
+
+        specsModal.hidden = true;
+        document.body.classList.remove("is-premium-specs-modal-open");
     };
 
     const handleSpecSwipe = () => {
@@ -1925,15 +2234,20 @@ if (premiumSpecsSection) {
                 return;
             }
 
-            if (index === activeSpecSlide) {
-                setSpecSlide(activeSpecSlide + 1, 1);
+            if (index !== activeSpecSlide) {
+                setSpecSlide(index);
                 resetSpecSlider();
                 return;
             }
 
             setSpecSlide(index);
             resetSpecSlider();
+            openSpecsModal(slide);
         });
+    });
+
+    specsModalCloseButtons?.forEach((button) => {
+        button.addEventListener("click", closeSpecsModal);
     });
 
     specTrack.addEventListener("touchstart", (event) => {
@@ -1955,21 +2269,38 @@ if (premiumSpecsSection) {
     });
 
     if (brandTrack && brandItems.length && brandDots.length) {
+        setupBrandMarquee();
+
         brandDots.forEach((dot, index) => {
             dot.addEventListener("click", () => {
+                isBrandMarqueePaused = true;
                 brandItems[index].scrollIntoView({
                     behavior: "smooth",
                     block: "nearest",
                     inline: "center"
                 });
                 setActiveBrand(index);
+
+                setTimeout(() => {
+                    isBrandMarqueePaused = false;
+                }, 1400);
             });
         });
 
         brandTrack.addEventListener("scroll", requestBrandIndicatorUpdate, { passive: true });
         window.addEventListener("resize", requestBrandIndicatorUpdate);
+        document.addEventListener("visibilitychange", () => {
+            isBrandMarqueePaused = document.hidden;
+        });
         updateBrandIndicator();
+        startBrandMarquee();
     }
+
+    document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && specsModal && !specsModal.hidden) {
+            closeSpecsModal();
+        }
+    });
 
     setSpecSlide(activeSpecSlide);
     startSpecSlider();
@@ -1984,10 +2315,179 @@ if (visualShowcaseSection) {
     const galleryCopies = visualShowcaseSection.querySelectorAll("[data-gallery-copy]");
     const galleryUpdate = visualShowcaseSection.querySelector(".visual-showcase-update");
     const galleryGrids = visualShowcaseSection.querySelectorAll(".visual-showcase-grid");
+    const galleryCards = visualShowcaseSection.querySelectorAll(".visual-gallery-card, .visual-walkthrough-card");
+    const visualDetailModal = document.getElementById("visual-detail-modal");
+    const visualDetailImage = visualDetailModal?.querySelector(".visual-detail-modal-image");
+    const visualDetailTitle = visualDetailModal?.querySelector("#visualDetailTitle");
+    const visualDetailCopy = visualDetailModal?.querySelector(".visual-detail-modal-copy");
+    const visualDetailCategory = visualDetailModal?.querySelector("[data-visual-detail-category]");
+    const visualDetailList = visualDetailModal?.querySelector(".visual-detail-modal-detail-list");
+    const visualDetailCloseButtons = visualDetailModal?.querySelectorAll("[data-visual-detail-close]");
     const galleryGridState = new Map();
     let activeGalleryTab = "sample";
     let gallerySwitchTimer;
     const isMobileGallery = () => window.matchMedia("(max-width: 767px)").matches;
+
+    const galleryPanelLabels = {
+        sample: "Sample Flat",
+        walkthrough: "Walkthrough",
+        exterior: "Exterior",
+        construction: "Construction"
+    };
+
+    const galleryDetailByFile = {
+        "0be2e6c5e9842f9e20d65c054d0f4df90ec098c0.jpg": {
+            title: "Modular Island Kitchen",
+            description: "Warm cabinetry, island counter and built-in appliances for a ready-to-use premium kitchen.",
+            focus: "Kitchen planning, storage wall, island counter and appliance placement",
+            finish: "Wood-look cabinetry, light countertop, pendant lighting and premium fittings"
+        },
+        "71f1fe9bf7b83056f21dcc38fe0297862834698b.png": {
+            title: "Sunlit Living Lounge",
+            description: "A bright living and dining zone planned for natural light, family seating and everyday comfort.",
+            focus: "Living room volume, window light, lounge seating and dining connection",
+            finish: "Soft neutral palette, curtains, pendant lights and warm decor accents"
+        },
+        "bdec928ef1c3f2fad9db07ae04140d3f77543c80.jpg": {
+            title: "Luxury Bathroom Suite",
+            description: "Premium bathroom finish with vanity counter, wall cladding and modern sanitary fittings.",
+            focus: "Vanity counter, shower/bath zone, wall tiles and sanitaryware positioning",
+            finish: "Dark feature wall, stone-look surfaces, mirror lighting and branded fittings"
+        },
+        "9d36bc9e1115936b757064117ba22e4770259b28.png": {
+            title: "Family Living Area",
+            description: "Open lounge planning with natural light, calm finishes and practical furniture placement.",
+            focus: "Daily-use living layout, sofa placement, table zone and window-side seating",
+            finish: "Warm neutral finishes, soft furnishings and elegant ceiling lighting"
+        },
+        "f4b90b41d2921d5f3eb4fe1272f937640e7f3dfe.png": {
+            title: "Premium Lounge Interior",
+            description: "A refined lounge view showing material depth, curated lighting and comfortable proportions.",
+            focus: "Interior mood, lounge depth, lighting and material continuity",
+            finish: "Premium textures, warm lights, feature furniture and polished surfaces"
+        },
+        "ffbfb80a4618358645f60806327606317538f142.jpg": {
+            title: "Classic Kitchen Finish",
+            description: "A practical kitchen detail focused on countertop workspace, storage and everyday utility.",
+            focus: "Countertop work area, cabinetry, sink position and compact kitchen workflow",
+            finish: "Classic cabinets, durable counter surface and clean appliance provisions"
+        },
+        "walktrough.jpg": {
+            title: "Project Walkthrough Preview",
+            description: "A full visual preview to understand elevation, approach, scale and overall project experience.",
+            focus: "Project frontage, massing, entry experience and visual walkthrough context",
+            finish: "Exterior lighting, facade rhythm, landscape edges and low-rise presentation"
+        }
+    };
+
+    const escapeHtml = (value = "") => String(value).replace(/[&<>"']/g, (character) => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        "\"": "&quot;",
+        "'": "&#39;"
+    })[character]);
+
+    const getGalleryFileName = (img) => (img?.getAttribute("src") || "").split("/").pop() || "";
+
+    const getVisualGalleryDetail = (card) => {
+        const img = card.querySelector("img");
+        const panelKey = card.closest("[data-gallery-panel]")?.dataset.galleryPanel || activeGalleryTab;
+        const category = galleryPanelLabels[panelKey] || "Project Gallery";
+        const fileName = getGalleryFileName(img);
+        const base = galleryDetailByFile[fileName] || {
+            title: img?.alt || "Project Gallery View",
+            description: "A closer look at the project finish, scale and presentation.",
+            focus: "Project visual reference and finish quality",
+            finish: "Premium real-estate presentation details"
+        };
+        const title = panelKey === "construction"
+            ? base.title.replace("Preview", "Progress View")
+            : panelKey === "exterior" && fileName === "walktrough.jpg"
+                ? "Exterior Elevation Preview"
+                : base.title;
+        const description = panelKey === "construction"
+            ? `Construction update reference showing ${base.title.toLowerCase()} quality and site progress context.`
+            : panelKey === "exterior"
+                ? `Exterior-focused view highlighting ${base.focus.toLowerCase()}.`
+                : base.description;
+
+        return {
+            title,
+            description,
+            category,
+            imageSrc: img?.currentSrc || img?.src || "",
+            imageAlt: img?.alt || title,
+            details: [
+                ["Visual Focus", base.focus],
+                ["Finish Notes", base.finish],
+                ["Category Context", panelKey === "walkthrough"
+                    ? "Designed for a full-screen project preview before scheduling a site visit"
+                    : `Part of the ${category.toLowerCase()} gallery set for Amelia Estate II`],
+                ["Best Next Step", "Open the full image, then schedule a site visit to verify scale and finish in person"]
+            ]
+        };
+    };
+
+    const addVisualGalleryOverlay = (card) => {
+        const detail = getVisualGalleryDetail(card);
+        let overlay = card.querySelector(".visual-gallery-info");
+
+        if (!overlay) {
+            overlay = document.createElement("div");
+            overlay.className = "visual-gallery-info";
+            card.appendChild(overlay);
+        }
+
+        overlay.innerHTML = `
+            <div class="visual-gallery-info-copy">
+                <strong>${escapeHtml(detail.title)}</strong>
+                <span>${escapeHtml(detail.description)}</span>
+            </div>
+            <span class="visual-gallery-view-full" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                    <path d="M15 3h6v6" />
+                    <path d="m14 10 7-7" />
+                    <path d="M9 21H3v-6" />
+                    <path d="m10 14-7 7" />
+                </svg>
+            </span>
+        `;
+
+        card.setAttribute("aria-label", `View full details for ${detail.title}`);
+
+        if (card.tagName !== "BUTTON") {
+            card.setAttribute("role", "button");
+            card.setAttribute("tabindex", "0");
+        }
+    };
+
+    const openVisualDetail = (card) => {
+        if (!visualDetailModal || !visualDetailImage || !visualDetailTitle || !visualDetailCopy || !visualDetailCategory || !visualDetailList) {
+            return;
+        }
+
+        const detail = getVisualGalleryDetail(card);
+        visualDetailImage.src = detail.imageSrc;
+        visualDetailImage.alt = detail.imageAlt;
+        visualDetailTitle.textContent = detail.title;
+        visualDetailCopy.textContent = detail.description;
+        visualDetailCategory.textContent = detail.category;
+        visualDetailList.innerHTML = detail.details.map(([label, value]) => (
+            `<div class="visual-detail-modal-detail"><strong>${escapeHtml(label)}</strong><span>${escapeHtml(value)}</span></div>`
+        )).join("");
+        visualDetailModal.hidden = false;
+        document.body.classList.add("is-visual-detail-modal-open");
+    };
+
+    const closeVisualDetail = () => {
+        if (!visualDetailModal) {
+            return;
+        }
+
+        visualDetailModal.hidden = true;
+        document.body.classList.remove("is-visual-detail-modal-open");
+    };
 
     const setActiveGalleryImage = (grid, index) => {
         const state = galleryGridState.get(grid);
@@ -2120,6 +2620,33 @@ if (visualShowcaseSection) {
         tab.addEventListener("click", () => setGalleryTab(tab.dataset.galleryTab));
     });
 
+    galleryCards.forEach((card) => {
+        addVisualGalleryOverlay(card);
+
+        card.addEventListener("click", () => openVisualDetail(card));
+
+        if (card.tagName !== "BUTTON") {
+            card.addEventListener("keydown", (event) => {
+                if (event.key !== "Enter" && event.key !== " ") {
+                    return;
+                }
+
+                event.preventDefault();
+                openVisualDetail(card);
+            });
+        }
+    });
+
+    visualDetailCloseButtons?.forEach((button) => {
+        button.addEventListener("click", closeVisualDetail);
+    });
+
+    document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && visualDetailModal && !visualDetailModal.hidden) {
+            closeVisualDetail();
+        }
+    });
+
     window.addEventListener("resize", updateActiveGalleryGrid);
     updateActiveGalleryGrid();
 }
@@ -2129,14 +2656,23 @@ const primeLocationSection = document.querySelector(".prime-location-section");
 
 if (primeLocationSection) {
     const primeMap = primeLocationSection.querySelector(".prime-location-map");
+    const primeMapImagePanel = primeLocationSection.querySelector('[data-prime-map-panel="image"]');
+    const primeMapImage = primeLocationSection.querySelector(".prime-location-map-img");
     const mapTabs = primeLocationSection.querySelectorAll("[data-prime-map-tab]");
     const mapPanels = primeLocationSection.querySelectorAll("[data-prime-map-panel]");
     const mapOpenButtons = primeLocationSection.querySelectorAll("[data-prime-map-open]");
+    const primeMapFullscreenButtons = primeLocationSection.querySelectorAll("[data-prime-map-fullscreen]");
+    const primeMapLightbox = document.getElementById("prime-map-lightbox");
+    const primeMapLightboxImage = primeMapLightbox?.querySelector(".prime-map-lightbox-image");
+    const primeMapLightboxCloseButtons = primeMapLightbox?.querySelectorAll("[data-prime-map-close]");
     const distanceGrid = primeLocationSection.querySelector(".prime-distance-grid");
     const distanceCards = distanceGrid ? Array.from(distanceGrid.querySelectorAll(".prime-distance-card")) : [];
     const distanceProgress = primeLocationSection.querySelector(".prime-distance-progress span");
+    const distanceBlock = distanceGrid ? distanceGrid.closest(".prime-distance-block") : null;
+    const mapLocationCta = primeLocationSection.querySelector(".prime-whatsapp-location-cta--map");
     let distanceFrame = 0;
     let locationCtaFrame = 0;
+    let isDistanceRevealed = false;
     let isLocationCtaShifted = false;
     const isMobileDistanceSlider = () => window.matchMedia("(max-width: 767px)").matches;
 
@@ -2155,6 +2691,26 @@ if (primeLocationSection) {
         primeMap.classList.toggle("is-google-active", key === "google");
     };
 
+    const openPrimeMapLightbox = () => {
+        if (!primeMapLightbox || !primeMapLightboxImage || !primeMapImage) {
+            return;
+        }
+
+        primeMapLightboxImage.src = primeMapImage.currentSrc || primeMapImage.src;
+        primeMapLightboxImage.alt = primeMapImage.alt;
+        primeMapLightbox.hidden = false;
+        document.body.classList.add("is-prime-map-lightbox-open");
+    };
+
+    const closePrimeMapLightbox = () => {
+        if (!primeMapLightbox) {
+            return;
+        }
+
+        primeMapLightbox.hidden = true;
+        document.body.classList.remove("is-prime-map-lightbox-open");
+    };
+
     mapTabs.forEach((tab) => {
         tab.addEventListener("click", () => setPrimeMapPanel(tab.dataset.primeMapTab));
     });
@@ -2164,6 +2720,35 @@ if (primeLocationSection) {
             setPrimeMapPanel(button.dataset.primeMapOpen);
             primeMap.scrollIntoView({ block: "center", behavior: "smooth" });
         });
+    });
+
+    if (primeMapImagePanel) {
+        primeMapImagePanel.setAttribute("role", "button");
+        primeMapImagePanel.setAttribute("tabindex", "0");
+        primeMapImagePanel.setAttribute("aria-label", "Open location map full screen");
+        primeMapImagePanel.addEventListener("click", openPrimeMapLightbox);
+        primeMapImagePanel.addEventListener("keydown", (event) => {
+            if (event.key !== "Enter" && event.key !== " ") {
+                return;
+            }
+
+            event.preventDefault();
+            openPrimeMapLightbox();
+        });
+    }
+
+    primeMapFullscreenButtons.forEach((button) => {
+        button.addEventListener("click", openPrimeMapLightbox);
+    });
+
+    primeMapLightboxCloseButtons?.forEach((button) => {
+        button.addEventListener("click", closePrimeMapLightbox);
+    });
+
+    document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && primeMapLightbox && !primeMapLightbox.hidden) {
+            closePrimeMapLightbox();
+        }
     });
 
     const setActiveDistanceCard = (activeIndex) => {
@@ -2210,34 +2795,31 @@ if (primeLocationSection) {
     };
 
     const updateLocationCtaShift = () => {
-        const distanceBlock = distanceGrid ? distanceGrid.closest(".prime-distance-block") : null;
-
-        if (!distanceBlock || !distanceGrid) {
+        if (!distanceBlock || !distanceGrid || !mapLocationCta) {
+            isDistanceRevealed = false;
             isLocationCtaShifted = false;
+            primeLocationSection.classList.remove("is-distance-revealed");
             primeLocationSection.classList.remove("is-distance-cta-shifted");
             return;
         }
 
         const viewportHeight = window.innerHeight;
-        const distanceRect = distanceGrid.getBoundingClientRect();
-        const shouldShiftCta = isMobileDistanceSlider()
-            ? (
-                isLocationCtaShifted
-                    ? distanceRect.top <= viewportHeight * 0.74
-                    : distanceRect.top <= viewportHeight * 0.62
-            )
-            : (
-                isLocationCtaShifted
-                    ? distanceRect.top <= viewportHeight * 0.56
-                    : distanceRect.bottom <= viewportHeight * 0.92
-            );
+        const ctaRect = mapLocationCta.getBoundingClientRect();
+        const revealLine = isMobileDistanceSlider() ? 0.72 : 0.70;
+        const shouldShiftCta = isDistanceRevealed || ctaRect.bottom <= viewportHeight * revealLine;
 
         if (shouldShiftCta === isLocationCtaShifted) {
             return;
         }
 
+        isDistanceRevealed = shouldShiftCta;
         isLocationCtaShifted = shouldShiftCta;
+        primeLocationSection.classList.toggle("is-distance-revealed", isDistanceRevealed);
         primeLocationSection.classList.toggle("is-distance-cta-shifted", isLocationCtaShifted);
+
+        if (isDistanceRevealed) {
+            requestDistanceSliderUpdate();
+        }
     };
 
     const requestLocationCtaShiftUpdate = () => {
@@ -2265,6 +2847,7 @@ if (projectEssentialsSection) {
     const previewActiveImg = projectEssentialsSection.querySelector(".project-essentials-preview--active img");
     const previewNextImg = projectEssentialsSection.querySelector(".project-essentials-preview--next img");
     const previewButtons = projectEssentialsSection.querySelectorAll(".project-essentials-btn[data-preview-active]");
+    const defaultPreviewButton = projectEssentialsSection.querySelector(".project-essentials-btn.is-active") || previewButtons[0];
     const originalPreviews = {
         prev: previewPrevImg?.src,
         active: previewActiveImg?.src,
@@ -2307,7 +2890,9 @@ if (projectEssentialsSection) {
         fadeImageTo(previewActiveImg, originalPreviews.active);
         fadeImageTo(previewNextImg, originalPreviews.next);
         visuals?.classList.remove("is-preview-hovered");
-        previewButtons.forEach((btn) => btn.classList.remove("is-active"));
+        previewButtons.forEach((btn) => {
+            btn.classList.toggle("is-active", btn === defaultPreviewButton);
+        });
     };
 
     const setActiveButton = (button) => {
@@ -2390,6 +2975,10 @@ if (lifestyleAmenitiesSection) {
     const amenityGrid = lifestyleAmenitiesSection.querySelector(".lifestyle-amenities-grid");
     const amenityTabProgress = lifestyleAmenitiesSection.querySelector(".lifestyle-amenities-tab-progress span");
     const amenityProgress = lifestyleAmenitiesSection.querySelector(".lifestyle-amenities-progress span");
+    const amenityLightbox = document.getElementById("amenity-image-lightbox");
+    const amenityLightboxImage = amenityLightbox?.querySelector(".amenity-image-lightbox-image");
+    const amenityLightboxTitle = amenityLightbox?.querySelector(".amenity-image-lightbox-title");
+    const amenityLightboxCloseButtons = amenityLightbox?.querySelectorAll("[data-amenity-lightbox-close]");
     let amenityFrame = 0;
     let amenityTabFrame = 0;
     const isMobileAmenitySlider = () => window.matchMedia("(max-width: 767px)").matches;
@@ -2471,6 +3060,36 @@ if (lifestyleAmenitiesSection) {
         amenityTabFrame = requestAnimationFrame(updateAmenityTabProgress);
     };
 
+    const openAmenityLightbox = (card) => {
+        if (!amenityLightbox || !amenityLightboxImage || !amenityLightboxTitle) {
+            return;
+        }
+
+        const image = card.querySelector("img");
+        const caption = card.querySelector(".lifestyle-amenity-caption span");
+
+        if (!image) {
+            return;
+        }
+
+        const title = caption?.textContent.trim() || image.alt || "Amenity Preview";
+
+        amenityLightboxImage.src = image.currentSrc || image.src;
+        amenityLightboxImage.alt = image.alt || title;
+        amenityLightboxTitle.textContent = title;
+        amenityLightbox.hidden = false;
+        document.body.classList.add("is-amenity-lightbox-open");
+    };
+
+    const closeAmenityLightbox = () => {
+        if (!amenityLightbox) {
+            return;
+        }
+
+        amenityLightbox.hidden = true;
+        document.body.classList.remove("is-amenity-lightbox-open");
+    };
+
     const setAmenityTab = (key) => {
         let activeTab = null;
 
@@ -2506,6 +3125,33 @@ if (lifestyleAmenitiesSection) {
 
     amenityTabs.forEach((tab) => {
         tab.addEventListener("click", () => setAmenityTab(tab.dataset.amenityTab));
+    });
+
+    amenityCards.forEach((card) => {
+        const label = card.querySelector(".lifestyle-amenity-caption span")?.textContent.trim() || "amenity image";
+
+        card.setAttribute("role", "button");
+        card.setAttribute("tabindex", "0");
+        card.setAttribute("aria-label", `Open ${label} image preview`);
+        card.addEventListener("click", () => openAmenityLightbox(card));
+        card.addEventListener("keydown", (event) => {
+            if (event.key !== "Enter" && event.key !== " ") {
+                return;
+            }
+
+            event.preventDefault();
+            openAmenityLightbox(card);
+        });
+    });
+
+    amenityLightboxCloseButtons?.forEach((button) => {
+        button.addEventListener("click", closeAmenityLightbox);
+    });
+
+    document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && amenityLightbox && !amenityLightbox.hidden) {
+            closeAmenityLightbox();
+        }
     });
 
     if (amenityGrid) {

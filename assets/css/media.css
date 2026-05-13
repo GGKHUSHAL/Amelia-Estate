@@ -502,7 +502,7 @@
 
     .pricing-left {
         border-right: 0;
-        border-bottom: 1px solid rgba(255, 215, 21, 0.16);
+        border-bottom: 1px solid rgba(213, 174, 102, 0.16);
     }
 
     .pricing-left,
@@ -1356,7 +1356,7 @@
     #menuToggle span {
         width: 18px !important;
         height: 2px !important;
-        background: #FFD715 !important;
+        background: #D5AE66 !important;
     }
 
     .hero-section {
@@ -1523,7 +1523,7 @@
     }
 
     .hero-copy h1 span {
-        color: #FFD715;
+        color: #D5AE66;
     }
 
     .hero-copy p {
@@ -1605,7 +1605,7 @@
         color: #000000;
         font-size: 15px;
         font-weight: 800;
-        background: #FFD715;
+        background: #D5AE66;
         box-shadow: 0 16px 28px rgba(0, 0, 0, 0.28);
     }
 
@@ -1646,7 +1646,7 @@
         height: auto !important;
         padding: 34px 16px 40px;
         background:
-            radial-gradient(520px 190px at 50% -70px, rgba(255, 215, 21, 0.13), transparent 70%),
+            radial-gradient(520px 190px at 50% -70px, rgba(213, 174, 102, 0.13), transparent 70%),
             linear-gradient(180deg, #050505 0%, #0d0d0c 52%, #050505 100%);
     }
 
@@ -1670,10 +1670,10 @@
         width: 100%;
         height: 112px;
         padding: 12px 8px 14px;
-        border: 1px solid rgba(255, 215, 21, 0.16);
+        border: 1px solid rgba(213, 174, 102, 0.16);
         border-radius: 16px;
         background:
-            radial-gradient(120% 100% at 50% 0%, rgba(255, 215, 21, 0.075), rgba(255, 215, 21, 0.018) 58%, rgba(255, 255, 255, 0.04) 100%),
+            radial-gradient(120% 100% at 50% 0%, rgba(213, 174, 102, 0.075), rgba(213, 174, 102, 0.018) 58%, rgba(255, 255, 255, 0.04) 100%),
             linear-gradient(180deg, rgba(255, 255, 255, 0.085), rgba(255, 255, 255, 0.025)),
             #11100d;
         box-shadow:
@@ -2142,7 +2142,7 @@
         font-size: 11px;
         line-height: 15px;
         border-radius: 12px;
-        border-color: rgba(255, 215, 21, 0.16);
+        border-color: rgba(213, 174, 102, 0.16);
         background: rgba(0, 0, 0, 0.32);
     }
 
@@ -2492,7 +2492,7 @@
 
     .lifestyle-amenities-tabs button {
         min-height: 42px;
-        border: 1px solid rgba(255, 215, 21, 0.2);
+        border: 1px solid rgba(213, 174, 102, 0.2);
         border-radius: 8px;
         padding: 0 10px;
         background: rgba(255, 255, 255, 0.035);
@@ -2500,7 +2500,7 @@
     }
 
     .lifestyle-amenities-tabs button.is-active {
-        background: linear-gradient(180deg, #FFD715 0%, #FFD715 100%);
+        background: linear-gradient(180deg, #D5AE66 0%, #D5AE66 100%);
         color: #19150f;
     }
 
@@ -2631,7 +2631,7 @@
     .visual-gallery-card.is-active {
         box-shadow:
             0 22px 54px rgba(0, 0, 0, 0.46),
-            0 0 0 1px rgba(255, 215, 21, 0.28);
+            0 0 0 1px rgba(213, 174, 102, 0.28);
     }
 
     .visual-gallery-dots {
@@ -2774,7 +2774,7 @@
         margin: 0 -8px;
         padding: 0 8px 2px;
         overflow-x: auto;
-        scroll-snap-type: x mandatory;
+        scroll-snap-type: none;
         scrollbar-width: none;
     }
 
@@ -2783,11 +2783,9 @@
     }
 
     .premium-specs-brand {
-        flex: 0 0 min(78vw, 240px);
+        flex: 0 0 min(68vw, 210px);
         min-height: 46px;
         padding: 0 10px;
-        scroll-snap-align: center;
-        scroll-snap-stop: always;
         font-size: 12px;
     }
 
@@ -2806,9 +2804,9 @@
     }
 
     .premium-specs-brand.is-active {
-        border-color: rgba(255, 215, 21, 0.52);
-        background: rgba(255, 215, 21, 0.12);
-        color: #FFD715;
+        border-color: rgba(213, 174, 102, 0.52);
+        background: rgba(213, 174, 102, 0.12);
+        color: #D5AE66;
     }
 
     .premium-specs-brand-dots {
@@ -3177,12 +3175,12 @@
         height: 22px;
         flex: 0 0 22px;
         margin-top: 2px;
-        color: #FFD715;
-        stroke: #FFD715;
+        color: #D5AE66;
+        stroke: #D5AE66;
     }
 
     .about-feature h3 {
-        color: #FFD715;
+        color: #D5AE66;
         font-size: 15px;
         line-height: 20px;
         letter-spacing: 0.7px;
@@ -3960,31 +3958,52 @@
     }
 
     .property-snapshot-card {
-        padding: 22px 18px 20px;
+        padding: 18px;
     }
 
     .property-snapshot-brand {
-        align-items: flex-start !important;
-        padding-bottom: 24px;
+        display: block !important;
+        margin-bottom: 16px !important;
+        padding-bottom: 18px !important;
+        text-align: center !important;
     }
 
-    .property-snapshot-logo {
-        width: 112px;
-        height: 82px;
-        flex-basis: 112px;
+    .property-snapshot-kicker {
+        justify-content: center !important;
+        gap: 9px !important;
+        font-size: 8px !important;
+        letter-spacing: 0.12em !important;
+    }
+
+    .property-snapshot-kicker span {
+        width: 22px !important;
+        flex-basis: 22px !important;
+    }
+
+    .property-snapshot-brand h3 {
+        margin-top: 18px !important;
+        font-size: 49px !important;
+        line-height: 0.86 !important;
+    }
+
+    .property-snapshot-subtitle {
+        margin-top: 18px !important;
+        font-size: 15px !important;
+        letter-spacing: 0.14em !important;
     }
 
     .property-snapshot-metrics {
         grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-        gap: 9px !important;
+        gap: 10px !important;
+        padding: 0 !important;
+        border-bottom: 0 !important;
     }
 
     .property-snapshot-metrics > div {
         min-height: 92px !important;
-        padding: 12px 8px !important;
-        border-right: 0 !important;
-        border-bottom: 0 !important;
-        border-radius: 14px !important;
+        padding: 12px 8px 19px !important;
+        border: 1px solid rgba(213, 174, 102, 0.22) !important;
+        border-radius: 12px !important;
     }
 
     .property-snapshot-meta div {
@@ -4218,9 +4237,9 @@
     }
 
     .prime-distance-card.is-active {
-        border-color: rgba(255, 215, 21, 0.62);
+        border-color: rgba(213, 174, 102, 0.62);
         background:
-            linear-gradient(135deg, rgba(255, 215, 21, 0.16), rgba(255, 255, 255, 0.035)),
+            linear-gradient(135deg, rgba(213, 174, 102, 0.16), rgba(255, 255, 255, 0.035)),
             #202020;
         box-shadow:
             inset 0 1px 0 rgba(255, 255, 255, 0.06),
@@ -4739,7 +4758,7 @@
         border: 1px solid rgba(255, 255, 255, 0.09);
         border-radius: 18px;
         background:
-            radial-gradient(80% 100% at 50% 0%, rgba(255, 215, 21, 0.10), rgba(255, 215, 21, 0) 62%),
+            radial-gradient(80% 100% at 50% 0%, rgba(213, 174, 102, 0.10), rgba(213, 174, 102, 0) 62%),
             linear-gradient(180deg, rgba(0, 0, 0, 0.10), rgba(0, 0, 0, 0.04));
         box-shadow:
             0 26px 70px rgba(0, 0, 0, 0.20),
@@ -4889,11 +4908,11 @@
     }
 
     .hero-primary-btn {
-        background: #FFD715;
+        background: #D5AE66;
         color: #ffffff;
         box-shadow:
-            0 0 15px rgba(255, 215, 21, 0.2),
-            0 12px 28px rgba(255, 215, 21, 0.18);
+            0 0 15px rgba(213, 174, 102, 0.2),
+            0 12px 28px rgba(213, 174, 102, 0.18);
         font-size: 12px;
         line-height: 14px;
     }
@@ -5019,7 +5038,7 @@
         border: 1px solid rgba(255, 255, 255, 0.09);
         border-radius: 18px;
         background:
-            radial-gradient(80% 100% at 50% 0%, rgba(255, 215, 21, 0.10), rgba(255, 215, 21, 0) 62%),
+            radial-gradient(80% 100% at 50% 0%, rgba(213, 174, 102, 0.10), rgba(213, 174, 102, 0) 62%),
             linear-gradient(180deg, rgba(0, 0, 0, 0.10), rgba(0, 0, 0, 0.04));
         box-shadow:
             0 26px 70px rgba(0, 0, 0, 0.20),
@@ -5211,7 +5230,7 @@
         border: 1px solid rgba(255, 255, 255, 0.09);
         border-radius: 18px;
         background:
-            radial-gradient(80% 100% at 50% 0%, rgba(255, 215, 21, 0.10), rgba(255, 215, 21, 0) 62%),
+            radial-gradient(80% 100% at 50% 0%, rgba(213, 174, 102, 0.10), rgba(213, 174, 102, 0) 62%),
             linear-gradient(180deg, rgba(0, 0, 0, 0.10), rgba(0, 0, 0, 0.04));
         box-shadow:
             0 26px 70px rgba(0, 0, 0, 0.20),
@@ -5408,7 +5427,7 @@
         z-index: -1;
         border-radius: inherit;
         background:
-            radial-gradient(86% 120% at 16% 0%, rgba(255, 215, 21, 0.14), rgba(255, 215, 21, 0) 62%),
+            radial-gradient(86% 120% at 16% 0%, rgba(213, 174, 102, 0.14), rgba(213, 174, 102, 0) 62%),
             linear-gradient(180deg, rgba(0, 0, 0, 0.70), rgba(0, 0, 0, 0.46));
         box-shadow:
             0 16px 34px rgba(0, 0, 0, 0.34),
@@ -5536,7 +5555,7 @@
         justify-content: flex-start;
         gap: 8px;
         height: auto;
-        color: rgba(255, 215, 21, 0.86);
+        color: rgba(213, 174, 102, 0.86);
         font-family: "Inter", Arial, sans-serif;
         font-size: 9.6px;
         font-weight: 800;
@@ -5567,7 +5586,7 @@
     }
 
     .hero-copy h1 span {
-        color: #FFD715;
+        color: #D5AE66;
     }
 
     .hero-copy p,
@@ -5596,7 +5615,7 @@
         height: auto;
         min-height: 25px;
         padding: 5px 8px;
-        border-color: rgba(255, 215, 21, 0.24);
+        border-color: rgba(213, 174, 102, 0.24);
         border-radius: 999px;
         background: rgba(255, 255, 255, 0.08);
         color: #ffffff;
@@ -5639,7 +5658,7 @@
     .hero-primary-btn {
         height: 52px;
         background:
-            linear-gradient(180deg, #FFD715 0%, #FFD715 100%);
+            linear-gradient(180deg, #D5AE66 0%, #D5AE66 100%);
         color: #000000;
         font-family: "Inter", Arial, sans-serif;
         font-size: 15px;
@@ -5647,7 +5666,7 @@
         line-height: 1;
         box-shadow:
             0 15px 30px rgba(0, 0, 0, 0.34),
-            0 0 24px rgba(255, 215, 21, 0.26),
+            0 0 24px rgba(213, 174, 102, 0.26),
             inset 0 1px 0 rgba(255, 255, 255, 0.42);
     }
 
@@ -5963,9 +5982,9 @@
     }
 
     .prime-distance-card.is-active {
-        border-color: rgba(255, 215, 21, 0.62);
+        border-color: rgba(213, 174, 102, 0.62);
         background:
-            linear-gradient(135deg, rgba(255, 215, 21, 0.16), rgba(255, 255, 255, 0.035)),
+            linear-gradient(135deg, rgba(213, 174, 102, 0.16), rgba(255, 255, 255, 0.035)),
             #202020;
         box-shadow:
             inset 0 1px 0 rgba(255, 255, 255, 0.06),
@@ -6138,7 +6157,7 @@
         min-height: 38px;
         flex: 0 0 auto;
         padding: 0 14px;
-        border: 1px solid rgba(255, 215, 21, 0.22);
+        border: 1px solid rgba(213, 174, 102, 0.22);
         border-radius: 999px;
         background: rgba(255, 255, 255, 0.035);
         font-size: 11px;
@@ -6152,7 +6171,7 @@
     }
 
     .lifestyle-amenities-tabs button.is-active {
-        background: linear-gradient(180deg, #FFD715 0%, #FFD715 100%);
+        background: linear-gradient(180deg, #D5AE66 0%, #D5AE66 100%);
         color: #19150f;
     }
 
@@ -6191,17 +6210,17 @@
         height: 190px;
         flex: 0 0 min(78vw, 246px);
         overflow: hidden;
-        border: 1px solid rgba(255, 215, 21, 0.24);
+        border: 1px solid rgba(213, 174, 102, 0.24);
         border-radius: 16px;
         scroll-snap-align: center;
         scroll-snap-stop: always;
     }
 
     .lifestyle-amenity-card.is-active {
-        border-color: rgba(255, 215, 21, 0.62);
+        border-color: rgba(213, 174, 102, 0.62);
         box-shadow:
             0 18px 42px rgba(0, 0, 0, 0.34),
-            0 0 0 1px rgba(255, 215, 21, 0.08);
+            0 0 0 1px rgba(213, 174, 102, 0.08);
     }
 
     .lifestyle-amenity-card.is-hidden {
@@ -7185,7 +7204,7 @@
         max-width: 420px !important;
         margin: 0 auto !important;
         padding: 18px 12px 14px !important;
-        border: 1px solid rgba(255, 215, 21, 0.14) !important;
+        border: 1px solid rgba(213, 174, 102, 0.14) !important;
         border-radius: 20px !important;
         background:
             linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02)),
@@ -7472,6 +7491,10 @@
     opacity: 0 !important;
     transform: none !important;
     transition: opacity 0.25s ease !important;
+}
+
+.scroll-story-section--scenes .scroll-story-progress span {
+    flex-direction: row-reverse !important;
 }
 
 .scroll-story-section--scenes.is-visible .scroll-story-progress {
@@ -7858,7 +7881,7 @@
 }
 
 .site-header nav[aria-label="Primary navigation"] a:hover {
-    color: #d95f0e !important;
+    color: #D5AE66 !important;
     background: #ffffff !important;
     box-shadow: 0 8px 22px rgba(15, 23, 42, 0.08) !important;
 }
@@ -7870,11 +7893,11 @@
     align-items: center !important;
     justify-content: center !important;
     padding: 0 18px !important;
-    border: 1px solid rgba(255, 215, 21, 0.75) !important;
+    border: 1px solid rgba(213, 174, 102, 0.75) !important;
     border-radius: 999px !important;
-    background: #ffd715 !important;
+    background: #D5AE66 !important;
     color: #141414 !important;
-    box-shadow: 0 12px 26px rgba(255, 194, 0, 0.24) !important;
+    box-shadow: 0 12px 26px rgba(213, 174, 102, 0.24) !important;
     font-size: 13px !important;
     font-weight: 700 !important;
     line-height: 1 !important;
@@ -7887,8 +7910,8 @@
 
 .site-header .header-cta:hover {
     transform: translateY(-1px);
-    background: #ffe45a !important;
-    box-shadow: 0 16px 32px rgba(255, 194, 0, 0.3) !important;
+    background: #D5AE66 !important;
+    box-shadow: 0 16px 32px rgba(213, 174, 102, 0.3) !important;
 }
 
 .site-header #menuToggle {
@@ -7953,7 +7976,7 @@
     }
 
     .mobile-menu a:hover {
-        background: rgba(255, 215, 21, 0.18) !important;
+        background: rgba(213, 174, 102, 0.18) !important;
     }
 }
 
@@ -8004,7 +8027,7 @@
 
     .site-header #menuToggle span {
         width: 18px !important;
-        background: #ffd715 !important;
+        background: #D5AE66 !important;
     }
 
     .mobile-menu {
@@ -8019,7 +8042,1265 @@
     }
 
     .mobile-menu a:hover {
-        background: rgba(255, 215, 21, 0.16) !important;
-        color: #ffd715 !important;
+        background: rgba(213, 174, 102, 0.16) !important;
+        color: #D5AE66 !important;
+    }
+}
+
+/* Final hero copy color cleanup. */
+.hero-location,
+.hero-slide--figma .hero-location {
+    color: rgba(255, 255, 255, 0.88) !important;
+}
+
+.hero-location-divider {
+    background: rgba(255, 255, 255, 0.34) !important;
+}
+
+.hero-copy p,
+.hero-slide--figma .hero-copy p {
+    color: rgba(255, 255, 255, 0.92) !important;
+}
+
+.hero-tags span {
+    border-color: rgba(255, 255, 255, 0.16) !important;
+    background: rgba(10, 10, 10, 0.36) !important;
+    color: rgba(255, 255, 255, 0.92) !important;
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.04),
+        0 10px 22px rgba(0, 0, 0, 0.18) !important;
+}
+
+.hero-tags span:hover {
+    border-color: rgba(213, 174, 102, 0.52) !important;
+    background:
+        linear-gradient(180deg, rgba(24, 20, 14, 0.92), rgba(36, 29, 20, 0.9)) !important;
+    color: #D5AE66 !important;
+    box-shadow:
+        0 14px 30px rgba(0, 0, 0, 0.26),
+        0 0 0 1px rgba(213, 174, 102, 0.12),
+        0 0 18px rgba(213, 174, 102, 0.16) !important;
+}
+
+/* Final WhatsApp CTA system. */
+.whatsapp-cta {
+    position: relative !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 10px !important;
+    border: 1px solid rgba(94, 203, 132, 0.32) !important;
+    background:
+        linear-gradient(180deg, rgba(20, 29, 28, 0.94), rgba(12, 19, 19, 0.96)) !important;
+    color: #5ecb84 !important;
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.05),
+        0 12px 28px rgba(0, 0, 0, 0.22),
+        0 0 0 1px rgba(94, 203, 132, 0.07) !important;
+    backdrop-filter: blur(10px) !important;
+    isolation: isolate !important;
+    overflow: hidden !important;
+    letter-spacing: 0 !important;
+    text-transform: none !important;
+    transition:
+        transform 0.28s ease,
+        border-color 0.28s ease,
+        color 0.28s ease,
+        background 0.28s ease,
+        box-shadow 0.28s ease !important;
+}
+
+.whatsapp-cta::before {
+    content: "" !important;
+    position: relative !important;
+    inset: auto !important;
+    z-index: 1 !important;
+    width: 20px !important;
+    height: 20px !important;
+    flex: 0 0 20px !important;
+    border-radius: 0 !important;
+    background-color: #52f28d !important;
+    background-image: none !important;
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M20.52 3.48A11.86 11.86 0 0 0 12.08 0C5.5 0 .14 5.35.14 11.93c0 2.1.55 4.16 1.6 5.97L0 24l6.25-1.64a11.9 11.9 0 0 0 5.83 1.49h.01c6.58 0 11.93-5.35 11.93-11.93 0-3.18-1.24-6.17-3.5-8.44ZM12.09 21.83h-.01a9.9 9.9 0 0 1-5.05-1.38l-.36-.21-3.71.97.99-3.62-.23-.37a9.88 9.88 0 0 1-1.52-5.29c0-5.46 4.44-9.9 9.91-9.9a9.85 9.85 0 0 1 7 2.9 9.84 9.84 0 0 1 2.9 7c-.01 5.46-4.46 9.9-9.92 9.9Zm5.43-7.42c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.95 1.17-.17.2-.35.22-.65.08-.3-.15-1.26-.46-2.4-1.47-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.49s1.07 2.88 1.22 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.42.25-.7.25-1.29.17-1.42-.07-.13-.27-.2-.57-.35Z'/%3E%3C/svg%3E") !important;
+    mask-repeat: no-repeat !important;
+    mask-position: center !important;
+    mask-size: contain !important;
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M20.52 3.48A11.86 11.86 0 0 0 12.08 0C5.5 0 .14 5.35.14 11.93c0 2.1.55 4.16 1.6 5.97L0 24l6.25-1.64a11.9 11.9 0 0 0 5.83 1.49h.01c6.58 0 11.93-5.35 11.93-11.93 0-3.18-1.24-6.17-3.5-8.44ZM12.09 21.83h-.01a9.9 9.9 0 0 1-5.05-1.38l-.36-.21-3.71.97.99-3.62-.23-.37a9.88 9.88 0 0 1-1.52-5.29c0-5.46 4.44-9.9 9.91-9.9a9.85 9.85 0 0 1 7 2.9 9.84 9.84 0 0 1 2.9 7c-.01 5.46-4.46 9.9-9.92 9.9Zm5.43-7.42c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.95 1.17-.17.2-.35.22-.65.08-.3-.15-1.26-.46-2.4-1.47-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.49s1.07 2.88 1.22 3.08c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.42.25-.7.25-1.29.17-1.42-.07-.13-.27-.2-.57-.35Z'/%3E%3C/svg%3E") !important;
+    -webkit-mask-repeat: no-repeat !important;
+    -webkit-mask-position: center !important;
+    -webkit-mask-size: contain !important;
+    pointer-events: none !important;
+    transform: none !important;
+    filter: drop-shadow(0 0 4px rgba(82, 242, 141, 0.18)) !important;
+}
+
+.whatsapp-cta::after {
+    content: "" !important;
+    position: absolute !important;
+    inset: 1px !important;
+    z-index: 0 !important;
+    border-radius: inherit !important;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0)) !important;
+    pointer-events: none !important;
+}
+
+.whatsapp-cta:hover {
+    border-color: rgba(94, 203, 132, 0.42) !important;
+    background:
+        linear-gradient(180deg, rgba(14, 22, 20, 0.98), rgba(8, 14, 13, 0.98)) !important;
+    color: #5ecb84 !important;
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.06),
+        0 16px 36px rgba(0, 0, 0, 0.28),
+        0 0 0 1px rgba(94, 203, 132, 0.1),
+        0 0 14px rgba(94, 203, 132, 0.08) !important;
+    transform: translateY(-2px) !important;
+}
+
+.whatsapp-cta:hover::before {
+    color: #5ecb84 !important;
+    background-color: #52f28d !important;
+    transform: none !important;
+    filter: drop-shadow(0 0 4px rgba(82, 242, 141, 0.2)) !important;
+}
+
+.whatsapp-cta svg,
+a[href*="wa.me"].whatsapp-cta svg {
+    display: none !important;
+}
+
+a[href*="wa.me"].whatsapp-cta::before,
+a[href*="wa.me"].whatsapp-cta::after {
+    animation: none !important;
+    mix-blend-mode: normal !important;
+}
+
+a[href*="wa.me"].whatsapp-cta:hover {
+    transform: translateY(-2px) !important;
+}
+
+/* High-contrast WhatsApp badge so the icon stays readable on every CTA. */
+.whatsapp-cta::before,
+a[href*="wa.me"].whatsapp-cta::before {
+    width: 22px !important;
+    height: 22px !important;
+    flex: 0 0 22px !important;
+    border-radius: 999px !important;
+    background-color: transparent !important;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='15' fill='%2325D366'/%3E%3Cpath fill='%23FFFFFF' d='M22.86 9.12A9.66 9.66 0 0 0 16.02 6.3c-5.34 0-9.68 4.34-9.68 9.67 0 1.7.45 3.37 1.3 4.84L6.25 25.9l5.2-1.36a9.7 9.7 0 0 0 4.56 1.16h.01c5.33 0 9.67-4.34 9.67-9.68 0-2.58-1-5.01-2.83-6.9ZM16.02 24.07h-.01a8.05 8.05 0 0 1-4.1-1.12l-.3-.18-3.08.81.82-3-.2-.31a8.02 8.02 0 0 1-1.23-4.29c0-4.46 3.63-8.09 8.1-8.09a8.04 8.04 0 0 1 5.72 2.37 8.04 8.04 0 0 1 2.37 5.73c0 4.45-3.63 8.08-8.09 8.08Zm4.43-6.06c-.24-.12-1.43-.71-1.65-.79-.22-.08-.38-.12-.54.12-.16.24-.63.79-.77.95-.14.16-.28.18-.53.06-.24-.12-1.02-.38-1.95-1.2-.72-.64-1.2-1.43-1.35-1.67-.14-.24-.02-.37.11-.49.11-.11.24-.28.37-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.31-.74-1.79-.2-.47-.4-.4-.54-.41h-.46c-.16 0-.42.06-.64.3-.22.24-.84.82-.84 2.01s.86 2.33.98 2.49c.12.16 1.7 2.6 4.12 3.64.58.25 1.03.4 1.38.51.58.18 1.1.16 1.51.1.46-.07 1.43-.58 1.63-1.15.2-.56.2-1.05.14-1.15-.06-.1-.22-.16-.46-.29Z'/%3E%3C/svg%3E") !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    background-size: 22px 22px !important;
+    mask-image: none !important;
+    -webkit-mask-image: none !important;
+    filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.32)) !important;
+}
+
+.whatsapp-cta:hover::before,
+a[href*="wa.me"].whatsapp-cta:hover::before {
+    background-color: transparent !important;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='15' fill='%2325D366'/%3E%3Cpath fill='%23FFFFFF' d='M22.86 9.12A9.66 9.66 0 0 0 16.02 6.3c-5.34 0-9.68 4.34-9.68 9.67 0 1.7.45 3.37 1.3 4.84L6.25 25.9l5.2-1.36a9.7 9.7 0 0 0 4.56 1.16h.01c5.33 0 9.67-4.34 9.67-9.68 0-2.58-1-5.01-2.83-6.9ZM16.02 24.07h-.01a8.05 8.05 0 0 1-4.1-1.12l-.3-.18-3.08.81.82-3-.2-.31a8.02 8.02 0 0 1-1.23-4.29c0-4.46 3.63-8.09 8.1-8.09a8.04 8.04 0 0 1 5.72 2.37 8.04 8.04 0 0 1 2.37 5.73c0 4.45-3.63 8.08-8.09 8.08Zm4.43-6.06c-.24-.12-1.43-.71-1.65-.79-.22-.08-.38-.12-.54.12-.16.24-.63.79-.77.95-.14.16-.28.18-.53.06-.24-.12-1.02-.38-1.95-1.2-.72-.64-1.2-1.43-1.35-1.67-.14-.24-.02-.37.11-.49.11-.11.24-.28.37-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.31-.74-1.79-.2-.47-.4-.4-.54-.41h-.46c-.16 0-.42.06-.64.3-.22.24-.84.82-.84 2.01s.86 2.33.98 2.49c.12.16 1.7 2.6 4.12 3.64.58.25 1.03.4 1.38.51.58.18 1.1.16 1.51.1.46-.07 1.43-.58 1.63-1.15.2-.56.2-1.05.14-1.15-.06-.1-.22-.16-.46-.29Z'/%3E%3C/svg%3E") !important;
+    filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.34)) !important;
+}
+
+.whatsapp-cta::before,
+a[href*="wa.me"].whatsapp-cta::before,
+.whatsapp-cta:hover::before,
+a[href*="wa.me"].whatsapp-cta:hover::before {
+    z-index: 3 !important;
+    width: 26px !important;
+    height: 26px !important;
+    flex-basis: 26px !important;
+    opacity: 1 !important;
+    mix-blend-mode: normal !important;
+    background-color: transparent !important;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14.6' fill='%2300FF66' stroke='%23FFFFFF' stroke-width='1.6'/%3E%3Cpath fill='%23FFFFFF' d='M22.86 9.12A9.66 9.66 0 0 0 16.02 6.3c-5.34 0-9.68 4.34-9.68 9.67 0 1.7.45 3.37 1.3 4.84L6.25 25.9l5.2-1.36a9.7 9.7 0 0 0 4.56 1.16h.01c5.33 0 9.67-4.34 9.67-9.68 0-2.58-1-5.01-2.83-6.9ZM16.02 24.07h-.01a8.05 8.05 0 0 1-4.1-1.12l-.3-.18-3.08.81.82-3-.2-.31a8.02 8.02 0 0 1-1.23-4.29c0-4.46 3.63-8.09 8.1-8.09a8.04 8.04 0 0 1 5.72 2.37 8.04 8.04 0 0 1 2.37 5.73c0 4.45-3.63 8.08-8.09 8.08Zm4.43-6.06c-.24-.12-1.43-.71-1.65-.79-.22-.08-.38-.12-.54.12-.16.24-.63.79-.77.95-.14.16-.28.18-.53.06-.24-.12-1.02-.38-1.95-1.2-.72-.64-1.2-1.43-1.35-1.67-.14-.24-.02-.37.11-.49.11-.11.24-.28.37-.42.12-.14.16-.24.24-.4.08-.16.04-.3-.02-.42-.06-.12-.54-1.31-.74-1.79-.2-.47-.4-.4-.54-.41h-.46c-.16 0-.42.06-.64.3-.22.24-.84.82-.84 2.01s.86 2.33.98 2.49c.12.16 1.7 2.6 4.12 3.64.58.25 1.03.4 1.38.51.58.18 1.1.16 1.51.1.46-.07 1.43-.58 1.63-1.15.2-.56.2-1.05.14-1.15-.06-.1-.22-.16-.46-.29Z'/%3E%3C/svg%3E") !important;
+    background-size: 26px 26px !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    filter:
+        saturate(1.45)
+        brightness(1.18)
+        drop-shadow(0 0 6px rgba(0, 255, 102, 0.42))
+        drop-shadow(0 1px 1px rgba(0, 0, 0, 0.45)) !important;
+}
+
+/* Scroll story autoplay slider behavior. Keeps existing content/design, changes only motion/state. */
+.scroll-story-section--scenes {
+    --story-scene-height: calc(100dvh - 86px);
+    position: relative !important;
+    height: var(--story-scene-height) !important;
+    min-height: var(--story-scene-height) !important;
+    overflow: hidden !important;
+    background: #000000 !important;
+}
+
+.scroll-story-section--scenes .scroll-story-progress {
+    position: absolute !important;
+    opacity: 1 !important;
+}
+
+.scroll-story-section--scenes .scroll-story-progress span {
+    cursor: pointer !important;
+}
+
+.scroll-story-section--scenes .scroll-story-slide,
+.scroll-story-section--scenes .scroll-story-scene {
+    position: absolute !important;
+    inset: 0 !important;
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 100% !important;
+    margin: 0 !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    transform: none !important;
+    transition: opacity 0.82s cubic-bezier(0.22, 1, 0.36, 1) !important;
+}
+
+.scroll-story-section--scenes .scroll-story-slide.is-active,
+.scroll-story-section--scenes .scroll-story-scene.is-active {
+    opacity: 1 !important;
+    pointer-events: auto !important;
+}
+
+.scroll-story-section--scenes .scroll-story-sticky,
+.scroll-story-section--scenes .scroll-story-stage {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 100% !important;
+}
+
+.scroll-story-section--scenes .scroll-story-bg {
+    transform: translateZ(0) scale(1.04) !important;
+    transition: transform 4.8s cubic-bezier(0.22, 1, 0.36, 1) !important;
+}
+
+.scroll-story-section--scenes .scroll-story-slide.is-active .scroll-story-bg {
+    transform: translateZ(0) scale(1.08) !important;
+}
+
+.scroll-story-section--scenes .scroll-story-kicker,
+.scroll-story-section--scenes .scroll-story-content h2,
+.scroll-story-section--scenes .scroll-story-content > p:not(.scroll-story-kicker),
+.scroll-story-section--scenes .scroll-story-actions {
+    opacity: 0 !important;
+    transform: translate3d(0, 28px, 0) !important;
+    transition:
+        opacity 0.66s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.76s cubic-bezier(0.22, 1, 0.36, 1) !important;
+}
+
+.scroll-story-section--scenes .scroll-story-content h2 {
+    transition-delay: 0.06s !important;
+}
+
+.scroll-story-section--scenes .scroll-story-content > p:not(.scroll-story-kicker) {
+    transition-delay: 0.13s !important;
+}
+
+.scroll-story-section--scenes .scroll-story-actions {
+    transition-delay: 0.20s !important;
+}
+
+.scroll-story-section--scenes .scroll-story-slide.is-active .scroll-story-kicker,
+.scroll-story-section--scenes .scroll-story-slide.is-active .scroll-story-content h2,
+.scroll-story-section--scenes .scroll-story-slide.is-active .scroll-story-content > p:not(.scroll-story-kicker),
+.scroll-story-section--scenes .scroll-story-slide.is-active .scroll-story-actions {
+    opacity: 1 !important;
+    transform: translate3d(0, 0, 0) !important;
+}
+
+@media (max-width: 767px) {
+    .scroll-story-section--scenes {
+        --story-scene-height: 100dvh;
+        height: 100dvh !important;
+        min-height: 100dvh !important;
+    }
+}
+
+/* Premium specifications slider: keep the S9-style center/side behavior across breakpoints. */
+@media (max-width: 1199px) {
+    .premium-specs-track {
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+        gap: 18px;
+        height: 500px !important;
+        min-height: 500px !important;
+        overflow: hidden;
+    }
+
+    .premium-specs-slide {
+        position: relative !important;
+        top: auto !important;
+        left: auto !important;
+        flex: 0 0 290px !important;
+        width: 290px !important;
+        height: 410px !important;
+        opacity: 0.45;
+        transform: none !important;
+    }
+
+    .premium-specs-slide.is-active {
+        flex-basis: 460px !important;
+        width: 460px !important;
+        height: 480px !important;
+        opacity: 1;
+        transform: none !important;
+    }
+}
+
+@media (max-width: 1024px) {
+    .premium-specs-track {
+        height: 470px !important;
+        min-height: 470px !important;
+    }
+
+    .premium-specs-slide.is-prev,
+    .premium-specs-slide.is-next {
+        display: none !important;
+    }
+
+    .premium-specs-slide.is-active {
+        display: block !important;
+        flex-basis: min(100%, 500px) !important;
+        width: min(100%, 500px) !important;
+        height: 450px !important;
+    }
+
+    .premium-specs-slide-overlay {
+        opacity: 1;
+    }
+}
+
+@media (max-width: 640px) {
+    .premium-specs-track {
+        height: 390px !important;
+        min-height: 390px !important;
+    }
+
+    .premium-specs-slide.is-active {
+        flex-basis: min(100%, 360px) !important;
+        width: min(100%, 360px) !important;
+        height: 360px !important;
+    }
+
+    .premium-specs-slide-overlay {
+        padding: 22px;
+    }
+
+    .premium-specs-slide-overlay h3 {
+        font-size: 21px;
+        line-height: 27px;
+    }
+
+    .premium-specs-slide-overlay p {
+        font-size: 13px;
+        line-height: 20px;
+    }
+}
+
+/* Fixed-pin middle story slider behavior. Keeps the existing slides/design unchanged. */
+.scroll-story-section--scenes {
+    --story-scroll-height: 600vh;
+    --story-pin-top: 86px;
+    --story-pin-height: calc(100vh - var(--story-pin-top));
+    --story-ease: cubic-bezier(0.22, 1, 0.36, 1);
+    position: relative !important;
+    min-height: var(--story-scroll-height) !important;
+    height: var(--story-scroll-height) !important;
+    overflow: visible !important;
+    background: #000000 !important;
+    scroll-margin-top: var(--story-pin-top) !important;
+}
+
+.scroll-story-section--scenes .scroll-story-sticky-shell {
+    position: absolute !important;
+    top: 0 !important;
+    right: 0 !important;
+    left: 0 !important;
+    height: var(--story-pin-height) !important;
+    min-height: var(--story-pin-height) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    overflow: hidden !important;
+    isolation: isolate !important;
+    background: #000000 !important;
+    z-index: 12 !important;
+}
+
+.scroll-story-section--scenes.is-story-fixed .scroll-story-sticky-shell {
+    position: fixed !important;
+    top: var(--story-pin-top) !important;
+    bottom: auto !important;
+}
+
+.scroll-story-section--scenes.is-story-ended .scroll-story-sticky-shell {
+    position: absolute !important;
+    top: auto !important;
+    bottom: 0 !important;
+}
+
+.scroll-story-section--scenes .scroll-story-progress {
+    position: absolute !important;
+    top: 50% !important;
+    left: max(24px, calc((100vw - 1200px) / 2)) !important;
+    width: 78px !important;
+    transform: translate3d(0, -50%, 0) !important;
+    z-index: 40 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 18px !important;
+    opacity: 1 !important;
+}
+
+.scroll-story-section--scenes .scroll-story-progress span {
+    width: 100% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 10px !important;
+    color: #ffffff !important;
+    opacity: 0.3 !important;
+    cursor: pointer !important;
+    transition:
+        opacity 0.35s ease,
+        color 0.35s ease,
+        transform 0.35s ease !important;
+}
+
+.scroll-story-section--scenes .scroll-story-progress span::after {
+    content: "" !important;
+    width: 22px !important;
+    height: 1px !important;
+    display: block !important;
+    flex: 0 0 22px !important;
+    background: currentColor !important;
+    opacity: 0.72 !important;
+    transform: scaleX(0.55) !important;
+    transform-origin: left center !important;
+    transition: transform 0.35s ease !important;
+}
+
+.scroll-story-section--scenes .scroll-story-progress span.is-active {
+    color: #d5ae66 !important;
+    opacity: 1 !important;
+}
+
+.scroll-story-section--scenes .scroll-story-progress span.is-active::after {
+    transform: scaleX(1) !important;
+}
+
+.scroll-story-section--scenes .scroll-story-slide,
+.scroll-story-section--scenes .scroll-story-scene {
+    position: absolute !important;
+    inset: 0 !important;
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 100% !important;
+    margin: 0 !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    transform: none !important;
+    background: var(--story-image, #000000) center / cover no-repeat !important;
+    transition: opacity 0.7s var(--story-ease) !important;
+    will-change: opacity !important;
+}
+
+.scroll-story-section--scenes .scroll-story-slide.is-active,
+.scroll-story-section--scenes .scroll-story-scene.is-active {
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    z-index: 2 !important;
+}
+
+.scroll-story-section--scenes .scroll-story-slide.is-story-leaving {
+    opacity: 0 !important;
+    z-index: 1 !important;
+}
+
+.scroll-story-section--scenes .scroll-story-sticky,
+.scroll-story-section--scenes .scroll-story-stage {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 100% !important;
+    overflow: hidden !important;
+}
+
+.scroll-story-section--scenes .scroll-story-bg {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    transform: translateZ(0) scale(1.03) !important;
+    transition: transform 4.8s var(--story-ease) !important;
+}
+
+.scroll-story-section--scenes .scroll-story-bg img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    display: block !important;
+}
+
+.scroll-story-section--scenes .scroll-story-slide.is-active .scroll-story-bg {
+    transform: translateZ(0) scale(1.08) !important;
+}
+
+.scroll-story-section--scenes .scroll-story-overlay {
+    position: absolute !important;
+    inset: 0 !important;
+    opacity: 1 !important;
+    z-index: 2 !important;
+    background:
+        linear-gradient(90deg, rgba(0, 0, 0, 0.82) 0%, rgba(0, 0, 0, 0.46) 42%, rgba(0, 0, 0, 0.16) 100%),
+        linear-gradient(180deg, rgba(0, 0, 0, 0.18) 0%, rgba(0, 0, 0, 0.56) 100%) !important;
+}
+
+.scroll-story-section--scenes .scroll-story-content,
+.scroll-story-section--scenes .scroll-story-slide--booking .scroll-story-content {
+    position: absolute !important;
+    left: clamp(110px, 14vw, 210px) !important;
+    right: auto !important;
+    top: 50% !important;
+    bottom: auto !important;
+    width: min(560px, calc(100vw - 180px)) !important;
+    max-width: 560px !important;
+    transform: translate3d(0, -50%, 0) !important;
+    z-index: 4 !important;
+}
+
+.scroll-story-section--scenes .scroll-story-kicker,
+.scroll-story-section--scenes .scroll-story-content h2,
+.scroll-story-section--scenes .scroll-story-content > p:not(.scroll-story-kicker),
+.scroll-story-section--scenes .scroll-story-actions {
+    opacity: 0 !important;
+    transform: translate3d(0, 40px, 0) !important;
+    transition:
+        opacity 0.7s var(--story-ease),
+        transform 0.7s var(--story-ease) !important;
+    will-change: opacity, transform !important;
+}
+
+.scroll-story-section--scenes .scroll-story-content h2 {
+    transition-delay: 0.06s !important;
+}
+
+.scroll-story-section--scenes .scroll-story-content > p:not(.scroll-story-kicker) {
+    transition-delay: 0.12s !important;
+}
+
+.scroll-story-section--scenes .scroll-story-actions {
+    transition-delay: 0.18s !important;
+}
+
+.scroll-story-section--scenes .scroll-story-slide.is-active .scroll-story-kicker,
+.scroll-story-section--scenes .scroll-story-slide.is-active .scroll-story-content h2,
+.scroll-story-section--scenes .scroll-story-slide.is-active .scroll-story-content > p:not(.scroll-story-kicker),
+.scroll-story-section--scenes .scroll-story-slide.is-active .scroll-story-actions {
+    opacity: 1 !important;
+    transform: translate3d(0, 0, 0) !important;
+}
+
+.scroll-story-section--scenes .scroll-story-slide.is-story-leaving .scroll-story-kicker,
+.scroll-story-section--scenes .scroll-story-slide.is-story-leaving .scroll-story-content h2,
+.scroll-story-section--scenes .scroll-story-slide.is-story-leaving .scroll-story-content > p:not(.scroll-story-kicker),
+.scroll-story-section--scenes .scroll-story-slide.is-story-leaving .scroll-story-actions {
+    opacity: 0 !important;
+    transform: translate3d(0, -40px, 0) !important;
+}
+
+@media (max-width: 1024px) {
+    .scroll-story-section--scenes .scroll-story-progress {
+        left: 24px !important;
+        width: 64px !important;
+    }
+
+    .scroll-story-section--scenes .scroll-story-content,
+    .scroll-story-section--scenes .scroll-story-slide--booking .scroll-story-content {
+        left: clamp(92px, 13vw, 150px) !important;
+        width: min(560px, calc(100vw - 128px)) !important;
+    }
+}
+
+@media (max-width: 767px) {
+    .scroll-story-section--scenes {
+        --story-scroll-height: 600dvh;
+        --story-pin-top: 0px;
+        --story-pin-height: 100dvh;
+    }
+
+    .scroll-story-section--scenes .scroll-story-sticky-shell {
+        height: var(--story-pin-height) !important;
+        min-height: var(--story-pin-height) !important;
+    }
+
+    .scroll-story-section--scenes .scroll-story-progress {
+        top: 18px !important;
+        left: 50% !important;
+        width: auto !important;
+        transform: translate3d(-50%, 0, 0) !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 12px !important;
+    }
+
+    .scroll-story-section--scenes .scroll-story-progress span {
+        width: auto !important;
+        gap: 5px !important;
+        flex-direction: column !important;
+        font-size: 11px !important;
+    }
+
+    .scroll-story-section--scenes .scroll-story-progress span::after {
+        width: 16px !important;
+        flex-basis: 16px !important;
+    }
+
+    .scroll-story-section--scenes .scroll-story-content,
+    .scroll-story-section--scenes .scroll-story-slide--booking .scroll-story-content {
+        left: 22px !important;
+        right: 22px !important;
+        top: auto !important;
+        bottom: 54px !important;
+        width: auto !important;
+        max-width: none !important;
+        transform: none !important;
+    }
+
+    .scroll-story-section--scenes .scroll-story-overlay {
+        background:
+            linear-gradient(180deg, rgba(0, 0, 0, 0.22) 0%, rgba(0, 0, 0, 0.28) 38%, rgba(0, 0, 0, 0.84) 100%) !important;
+    }
+}
+
+/* Final typography polish pass. */
+html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
+body {
+    font-size: 16px;
+    line-height: 1.58;
+    text-rendering: geometricPrecision;
+    -webkit-font-smoothing: antialiased;
+}
+
+.site-header nav[aria-label="Primary navigation"] {
+    font-size: 14.5px !important;
+}
+
+.site-header .header-cta {
+    font-size: 14.5px !important;
+}
+
+.mobile-menu a {
+    font-size: 16px !important;
+    line-height: 1.35 !important;
+}
+
+.hero-location,
+.hero-slide--figma .hero-location {
+    font-size: 13px !important;
+    line-height: 1.4 !important;
+}
+
+.hero-copy p,
+.hero-slide--figma .hero-copy p {
+    font-size: clamp(17px, 1.3vw, 20px) !important;
+    line-height: 1.52 !important;
+}
+
+.hero-tags span {
+    min-height: 31px !important;
+    font-size: 11.5px !important;
+    line-height: 1.2 !important;
+}
+
+.hero-primary-btn {
+    font-size: 16.5px !important;
+}
+
+.hero-secondary-btn {
+    font-size: 15.5px !important;
+}
+
+:is(
+    .snapshot-inner h2,
+    .about-content h2,
+    .ideal-floor-heading h2,
+    .project-plans-copy h2,
+    .transparent-pricing-header h2,
+    .premium-specs-header h2,
+    .visual-showcase-header h2,
+    .prime-location-header h2,
+    .lifestyle-amenities-title,
+    .construction-progress-title,
+    .buyer-testimonials-header h2,
+    .buyer-appreciation-title,
+    .faq-header h2,
+    .project-essentials-head h2,
+    .project-essentials-card h2,
+    .site-visit-card h2,
+    .site-visit-section h2,
+    .property-snapshot-header h2,
+    .footer-redesign-cta h2,
+    .footer-premium-text h2
+) {
+    font-size: clamp(40px, 3.6vw, 48px) !important;
+    line-height: 1.18 !important;
+    text-wrap: balance;
+}
+
+:is(
+    .peace-density-content h2,
+    .sticky-availability-content h2,
+    .sticky-availability-content--interested h2,
+    .interested-property-copy h2,
+    .scroll-story-content h2,
+    .differentiation-copy h2,
+    .booking-enquiry-form h2
+) {
+    text-wrap: balance;
+}
+
+:is(
+    .about-text-block > p,
+    .about-more p,
+    .ideal-floor-heading > p:not(.ideal-floor-eyebrow),
+    .project-plans-copy > p:not(.project-plans-eyebrow),
+    .project-plan-footer p,
+    .transparent-pricing-header > p:not(.transparent-pricing-eyebrow),
+    .premium-specs-header > p:not(.premium-specs-eyebrow),
+    .premium-specs-slide-overlay p,
+    .premium-specs-notice p,
+    .visual-showcase-header > p:not(.visual-showcase-eyebrow),
+    .visual-showcase-copy p,
+    .visual-showcase-cta p,
+    .visual-showcase-cta small,
+    .visual-showcase-disclaimer p,
+    .prime-location-header > p:not(.prime-location-eyebrow),
+    .prime-growth-grid p,
+    .construction-progress-copy,
+    .construction-progress-meter p,
+    .interested-property-copy p,
+    .buyer-testimonials-header p:not(.buyer-testimonials-eyebrow),
+    .buyer-testimonial-card p,
+    .buyer-appreciation-card p,
+    .faq-header > p,
+    .faq-answer p,
+    .project-essentials-head > p:not(.project-essentials-head-eyebrow),
+    .project-essentials-panel > p:not(.project-essentials-eyebrow),
+    .site-visit-card > p,
+    .property-snapshot-content p,
+    .property-modal-hero > p,
+    .property-modal-grid p,
+    .property-modal-note p,
+    .footer-redesign-cta span,
+    .footer-redesign-brand > p,
+    .footer-premium-text p:last-child,
+    .footer-brand-tagline,
+    .footer-developer-desc
+) {
+    font-size: clamp(16px, 1.18vw, 18px) !important;
+    line-height: 1.65 !important;
+}
+
+:is(
+    .about-eyebrow,
+    .ideal-floor-eyebrow,
+    .project-plans-eyebrow,
+    .transparent-pricing-eyebrow,
+    .premium-specs-eyebrow,
+    .visual-showcase-eyebrow,
+    .prime-location-eyebrow,
+    .lifestyle-amenities-eyebrow,
+    .construction-progress-eyebrow,
+    .buyer-testimonials-eyebrow,
+    .faq-eyebrow,
+    .project-essentials-head-eyebrow,
+    .project-essentials-eyebrow,
+    .site-visit-eyebrow,
+    .property-snapshot-eyebrow,
+    .interested-property-kicker,
+    .scroll-story-kicker,
+    .pricing-unlock-kicker,
+    .footer-premium-label,
+    .footer-redesign-cta p
+) {
+    font-size: 13px !important;
+    line-height: 1.35 !important;
+    letter-spacing: 0.12em !important;
+}
+
+:is(
+    .snapshot-card span,
+    .about-feature p,
+    .about-more-points span,
+    .ideal-floor-spec span,
+    .project-plan-variants span,
+    .project-plan-meta,
+    .project-plan-badge,
+    .pricing-spec span,
+    .pricing-unlock-note,
+    .premium-specs-brands p,
+    .premium-specs-brand,
+    .premium-specs-modal-brand-box span,
+    .visual-gallery-info-copy span,
+    .prime-distance-card strong,
+    .prime-whatsapp-location-cta small,
+    .construction-status-center small,
+    .construction-info-card p,
+    .construction-bank-subtitle,
+    .construction-bank-tile b,
+    .construction-bank-tile em,
+    .construction-proof-card p,
+    .construction-stage-labels,
+    .construction-buyer-proof span,
+    .property-modal-hero dt,
+    .property-modal-grid span,
+    .property-snapshot-brand p,
+    .property-snapshot-metrics span,
+    .property-snapshot-strip span,
+    .property-snapshot-meta dt,
+    .footer-redesign-brand span,
+    .footer-redesign-column strong,
+    .footer-details dt,
+    .footer-marketed-by,
+    .footer-rera-disclaimer,
+    .footer-legal-links
+) {
+    font-size: 12.5px !important;
+    line-height: 1.45 !important;
+}
+
+:is(
+    .snapshot-card strong,
+    .about-feature h3,
+    .ideal-floor-spec strong,
+    .pricing-spec strong,
+    .premium-specs-slide-overlay h3,
+    .visual-gallery-info-copy strong,
+    .prime-distance-card span,
+    .prime-distance-card strong em,
+    .lifestyle-amenity-caption span,
+    .construction-phase-panel div,
+    .construction-phase-panel strong,
+    .construction-info-card small,
+    .construction-proof-card small,
+    .property-modal-hero dd,
+    .property-modal-grid h4,
+    .property-snapshot-strip strong,
+    .property-snapshot-meta dd,
+    .footer-redesign-column a,
+    .footer-redesign-column address,
+    .footer-redesign-column p,
+    .footer-links a,
+    .footer-details dd,
+    .footer-contact-item
+) {
+    font-size: 15px !important;
+    line-height: 1.45 !important;
+}
+
+:is(
+    .about-btn,
+    .ideal-floor-size-tabs button,
+    .ideal-floor-levels button,
+    .ideal-floor-price-btn,
+    .project-plan-tabs button,
+    .project-plan-variants button,
+    .project-plan-cta,
+    .transparent-pricing-tabs button,
+    .pricing-unlock-btn,
+    .pricing-unlock-submit,
+    .premium-specs-slide-overlay button,
+    .visual-showcase-tabs button,
+    .visual-showcase-cta a,
+    .prime-map-live-action a,
+    .prime-whatsapp-location-btn,
+    .lifestyle-amenities-tabs button,
+    .construction-phase-trigger,
+    .faq-tab,
+    .faq-item button,
+    .faq-assist-card a,
+    .project-essentials-btn,
+    .site-visit-submit,
+    .site-visit-whatsapp,
+    .footer-redesign-actions a,
+    .footer-premium-btn,
+    .property-snapshot-readmore,
+    .property-snapshot-modal-btn
+) {
+    font-size: 15.5px !important;
+    line-height: 1.25 !important;
+}
+
+.booking-enquiry-form label > span:first-child,
+.pricing-unlock-form label > span,
+.booking-enquiry-form input,
+.pricing-unlock-form input,
+.site-visit-form input,
+.booking-country {
+    font-size: 15px !important;
+    line-height: 1.35 !important;
+}
+
+@media (max-width: 1199px) {
+    .site-header .header-cta {
+        font-size: 14px !important;
+    }
+
+    :is(
+        .about-content h2,
+        .ideal-floor-heading h2,
+        .project-plans-copy h2,
+        .transparent-pricing-header h2,
+        .premium-specs-header h2,
+        .visual-showcase-header h2,
+        .prime-location-header h2,
+        .lifestyle-amenities-title,
+        .construction-progress-title,
+        .buyer-testimonials-header h2,
+        .buyer-appreciation-title,
+        .faq-header h2,
+        .project-essentials-head h2,
+        .site-visit-card h2,
+        .site-visit-section h2,
+        .property-snapshot-header h2
+    ) {
+        font-size: clamp(34px, 5vw, 42px) !important;
+    }
+}
+
+@media (max-width: 767px) {
+    body {
+        font-size: 15px;
+        line-height: 1.6;
+    }
+
+    .hero-location,
+    .hero-slide--figma .hero-location {
+        font-size: 11.5px !important;
+        line-height: 1.32 !important;
+        letter-spacing: 0.12em !important;
+    }
+
+    .hero-copy h1,
+    .hero-slide--figma .hero-copy h1,
+    .hero-slide:not(.hero-slide--figma) .hero-copy h1 {
+        font-size: clamp(31px, 8.7vw, 38px) !important;
+        line-height: 1.08 !important;
+        text-wrap: balance;
+    }
+
+    .hero-copy p,
+    .hero-slide--figma .hero-copy p {
+        font-size: 14.5px !important;
+        line-height: 1.48 !important;
+    }
+
+    .hero-tags span {
+        min-height: 28px !important;
+        padding: 6px 10px !important;
+        font-size: 10.5px !important;
+        letter-spacing: 0.08em !important;
+    }
+
+    .hero-primary-btn,
+    .hero-secondary-btn {
+        min-height: 44px !important;
+        height: auto !important;
+        font-size: 13.5px !important;
+        line-height: 1.2 !important;
+    }
+
+    :is(
+        .snapshot-inner h2,
+        .about-content h2,
+        .ideal-floor-heading h2,
+        .project-plans-copy h2,
+        .transparent-pricing-header h2,
+        .premium-specs-header h2,
+        .visual-showcase-header h2,
+        .prime-location-header h2,
+        .lifestyle-amenities-title,
+        .construction-progress-title,
+        .buyer-testimonials-header h2,
+        .buyer-appreciation-title,
+        .faq-header h2,
+        .project-essentials-head h2,
+        .project-essentials-card h2,
+        .site-visit-card h2,
+        .site-visit-section h2,
+        .property-snapshot-header h2,
+        .footer-redesign-cta h2,
+        .footer-premium-text h2
+    ) {
+        font-size: clamp(29px, 8.1vw, 34px) !important;
+        line-height: 1.18 !important;
+    }
+
+    :is(
+        .peace-density-content h2,
+        .scroll-story-content h2,
+        .scroll-story-section--scenes .scroll-story-content h2,
+        .differentiation-copy h2,
+        .booking-enquiry-form h2,
+        .interested-property-copy h2,
+        .sticky-availability-content--interested .interested-property-copy h2,
+        .property-snapshot-content h3,
+        .prime-distance-block h3,
+        .pricing-title-block h3,
+        .project-plan-footer h3,
+        .premium-specs-slide-overlay h3,
+        .visual-showcase-cta h3
+    ) {
+        font-size: clamp(26px, 7.2vw, 32px) !important;
+        line-height: 1.2 !important;
+        text-wrap: balance;
+    }
+
+    :is(
+        .about-text-block > p,
+        .about-more p,
+        .ideal-floor-heading > p:not(.ideal-floor-eyebrow),
+        .project-plans-copy > p:not(.project-plans-eyebrow),
+        .project-plan-footer p,
+        .transparent-pricing-header > p:not(.transparent-pricing-eyebrow),
+        .premium-specs-header > p:not(.premium-specs-eyebrow),
+        .premium-specs-slide-overlay p,
+        .premium-specs-notice p,
+        .visual-showcase-header > p:not(.visual-showcase-eyebrow),
+        .visual-showcase-copy p,
+        .visual-showcase-cta p,
+        .visual-showcase-cta small,
+        .visual-showcase-disclaimer p,
+        .prime-location-header > p:not(.prime-location-eyebrow),
+        .prime-growth-grid p,
+        .peace-density-content p,
+        .construction-progress-copy,
+        .construction-progress-meter p,
+        .interested-property-copy p,
+        .buyer-testimonials-header p:not(.buyer-testimonials-eyebrow),
+        .buyer-testimonial-card p,
+        .buyer-appreciation-card p,
+        .faq-header > p,
+        .faq-answer p,
+        .project-essentials-head > p:not(.project-essentials-head-eyebrow),
+        .project-essentials-panel > p:not(.project-essentials-eyebrow),
+        .site-visit-card > p,
+        .property-snapshot-content p,
+        .property-modal-hero > p,
+        .property-modal-grid p,
+        .property-modal-note p,
+        .footer-redesign-cta span,
+        .footer-redesign-brand > p,
+        .footer-premium-text p:last-child,
+        .footer-brand-tagline,
+        .footer-developer-desc
+    ) {
+        font-size: 15px !important;
+        line-height: 1.62 !important;
+    }
+
+    :is(
+        .about-eyebrow,
+        .ideal-floor-eyebrow,
+        .project-plans-eyebrow,
+        .transparent-pricing-eyebrow,
+        .premium-specs-eyebrow,
+        .visual-showcase-eyebrow,
+        .prime-location-eyebrow,
+        .lifestyle-amenities-eyebrow,
+        .construction-progress-eyebrow,
+        .buyer-testimonials-eyebrow,
+        .faq-eyebrow,
+        .project-essentials-head-eyebrow,
+        .project-essentials-eyebrow,
+        .site-visit-eyebrow,
+        .property-snapshot-eyebrow,
+        .interested-property-kicker,
+        .scroll-story-kicker,
+        .scroll-story-section--scenes .scroll-story-kicker,
+        .pricing-unlock-kicker,
+        .footer-premium-label,
+        .footer-redesign-cta p
+    ) {
+        font-size: 11.5px !important;
+        line-height: 1.35 !important;
+        letter-spacing: 0.09em !important;
+    }
+
+    :is(
+        .snapshot-card span,
+        .snapshot-card strong,
+        .about-feature p,
+        .about-more-points span,
+        .ideal-floor-badges strong,
+        .ideal-floor-spec span,
+        .project-plan-variants span,
+        .project-plan-meta,
+        .project-plan-badge,
+        .pricing-spec span,
+        .selected-price-box > span,
+        .selected-price-box p,
+        .pricing-unlock-note,
+        .premium-specs-brands p,
+        .premium-specs-brand,
+        .visual-gallery-info-copy span,
+        .prime-distance-card strong,
+        .prime-whatsapp-location-cta small,
+        .construction-status-center small,
+        .construction-info-card p,
+        .construction-bank-subtitle,
+        .construction-bank-tile b,
+        .construction-bank-tile em,
+        .construction-proof-card p,
+        .construction-stage-labels,
+        .construction-buyer-proof span,
+        .property-modal-hero dt,
+        .property-modal-grid span,
+        .property-snapshot-brand p,
+        .property-snapshot-metrics span,
+        .property-snapshot-strip span,
+        .property-snapshot-meta dt,
+        .footer-redesign-brand span,
+        .footer-redesign-column strong,
+        .footer-details dt,
+        .footer-marketed-by,
+        .footer-rera-disclaimer,
+        .footer-legal-links
+    ) {
+        font-size: 11.5px !important;
+        line-height: 1.38 !important;
+    }
+
+    :is(
+        .about-feature h3,
+        .ideal-floor-spec strong,
+        .pricing-spec strong,
+        .visual-gallery-info-copy strong,
+        .prime-distance-card span,
+        .prime-distance-card strong em,
+        .lifestyle-amenity-caption span,
+        .construction-phase-panel div,
+        .construction-phase-panel strong,
+        .construction-info-card small,
+        .construction-proof-card small,
+        .property-modal-hero dd,
+        .property-modal-grid h4,
+        .property-snapshot-strip strong,
+        .property-snapshot-meta dd,
+        .footer-redesign-column a,
+        .footer-redesign-column address,
+        .footer-redesign-column p,
+        .footer-links a,
+        .footer-details dd,
+        .footer-contact-item
+    ) {
+        font-size: 14px !important;
+        line-height: 1.42 !important;
+    }
+
+    :is(
+        .about-btn,
+        .ideal-floor-size-tabs button,
+        .ideal-floor-levels button,
+        .ideal-floor-price-btn,
+        .project-plan-tabs button,
+        .project-plan-variants button,
+        .project-plan-cta,
+        .transparent-pricing-tabs button,
+        .pricing-unlock-btn,
+        .pricing-unlock-submit,
+        .premium-specs-slide-overlay button,
+        .visual-showcase-tabs button,
+        .visual-showcase-cta a,
+        .prime-map-live-action a,
+        .prime-whatsapp-location-btn,
+        .lifestyle-amenities-tabs button,
+        .construction-phase-trigger,
+        .faq-tab,
+        .faq-item button,
+        .faq-assist-card a,
+        .project-essentials-btn,
+        .site-visit-submit,
+        .site-visit-whatsapp,
+        .footer-redesign-actions a,
+        .footer-premium-btn,
+        .property-snapshot-readmore,
+        .property-snapshot-modal-btn,
+        .scroll-story-primary-btn,
+        .scroll-story-secondary-btn,
+        .scroll-story-section--scenes .scroll-story-primary-btn,
+        .scroll-story-section--scenes .scroll-story-secondary-btn
+    ) {
+        min-height: 42px !important;
+        height: auto !important;
+        font-size: 13.5px !important;
+        line-height: 1.25 !important;
+        white-space: normal !important;
+    }
+
+    .booking-enquiry-form label > span:first-child,
+    .pricing-unlock-form label > span,
+    .booking-enquiry-form input,
+    .pricing-unlock-form input,
+    .site-visit-form input,
+    .booking-country {
+        font-size: 14px !important;
+    }
+
+    .booking-enquiry-form button {
+        min-height: 48px !important;
+        font-size: 13.5px !important;
+        line-height: 1.2 !important;
+        white-space: normal !important;
+    }
+
+    .booking-trust-row {
+        font-size: 11.5px !important;
+        line-height: 1.35 !important;
+    }
+}
+
+/* Final responsive override: later breakpoint rules set margins, so gate the distance reveal again here. */
+.prime-location-section:not(.is-distance-revealed) .prime-distance-block {
+    max-height: 0;
+    margin-top: 0;
+    opacity: 0;
+    transform: translateY(34px);
+}
+
+.prime-location-section.is-distance-revealed .prime-distance-block {
+    max-height: 900px;
+    margin-top: 56px;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@media (max-width: 991px) {
+    .prime-location-section.is-distance-revealed .prime-distance-block {
+        max-height: 760px;
+        margin-top: 38px;
+    }
+}
+
+@media (max-width: 767px) {
+    .prime-location-section.is-distance-revealed .prime-distance-block {
+        max-height: 680px;
+        margin-top: 32px;
     }
 }
