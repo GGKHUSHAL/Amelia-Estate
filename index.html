@@ -476,123 +476,68 @@
             </div>
         </section>
 
-        <!-- Scroll Story slider -->
-        <section class="scroll-story-section scroll-story-section--scenes reveal-on-scroll" id="low-rise-story">
-            <div class="scroll-story-sticky-shell">
-                <div class="scroll-story-progress" role="navigation" aria-label="Story slide navigation">
-                    <span class="is-active">01</span>
-                    <span>02</span>
-                    <span>03</span>
-                    <span>04</span>
-                    <span>05</span>
-                    <span>06</span>
+        <!-- Structured Story slider -->
+        <section class="struct-slider-section reveal-on-scroll relative min-h-screen overflow-hidden bg-[#111111]"
+            id="low-rise-story" aria-label="Structured project highlights slider">
+            <div class="struct-slider-bg absolute inset-0" aria-hidden="true">
+                <div class="struct-slide struct-slide-1 is-active absolute inset-0"></div>
+                <div class="struct-slide struct-slide-2 absolute inset-0"></div>
+                <div class="struct-slide struct-slide-3 absolute inset-0"></div>
+                <div class="struct-slide struct-slide-4 absolute inset-0"></div>
+                <div class="struct-slide struct-slide-5 absolute inset-0"></div>
+                <div class="struct-slide struct-slide-6 absolute inset-0"></div>
+            </div>
+
+            <div class="struct-slider-overlay absolute inset-0" aria-hidden="true"></div>
+
+            <div class="struct-slider-inner relative z-10 mx-auto flex min-h-screen w-full max-w-[1240px] items-center px-4 py-20 sm:px-6 lg:px-8">
+                <div class="struct-slider-rail" aria-hidden="true">
+                    <div class="struct-slider-rail-items">
+                        <span class="struct-index is-active">01</span>
+                        <span class="struct-index">02</span>
+                        <span class="struct-index">03</span>
+                        <span class="struct-index">04</span>
+                        <span class="struct-index">05</span>
+                        <span class="struct-index">06</span>
+                    </div>
                 </div>
 
-                <article class="scroll-story-slide scroll-story-scene is-active" data-story-scene="1">
-                    <div class="scroll-story-sticky">
-                        <div class="scroll-story-stage" aria-label="Low-rise living story slide 1">
-                            <div class="scroll-story-bg" style="--story-image: url('assets/img/mid-slider/slide-1.png');">
-                                <img src="assets/img/mid-slider/slide-1.png" alt="Amelia Estate II gallery slide 1" />
-                            </div>
-                            <div class="scroll-story-overlay"></div>
-                            <div class="scroll-story-content">
-                                <p class="scroll-story-kicker">01 - LOW-RISE LIVING ADVANTAGE</p>
-                                <h2>A More <span>Private</span>, More <span>Refined</span> Way to Live</h2>
-                                <p>In a landscape filled with high-rise towers, Amelia Estate II offers a calmer low-rise
-                                    format with better light, lower density, and more everyday comfort.</p>
-                            </div>
+                <div class="struct-slider-content w-full max-w-[660px]">
+                    <article class="struct-copy is-active">
+                        <p class="struct-kicker">01 - LOW-RISE LIVING ADVANTAGE</p>
+                        <h2 class="struct-title">A More <span>Private</span>, More <span>Refined</span> Way to Live</h2>
+                        <p class="struct-description">In a landscape filled with high-rise towers, Amelia Estate II offers a calmer low-rise format with better light, lower density, and more everyday comfort.</p>
+                    </article>
+                    <article class="struct-copy">
+                        <p class="struct-kicker">02 - PRIME LOCATION ADVANTAGE</p>
+                        <h2 class="struct-title">Positioned in One of Tricity's Most <span>Promising Corridors.</span></h2>
+                        <p class="struct-description">Near Aero City Mohali, PR-7 Airport Road, and key growth corridors, the project combines strong connectivity with long-term value.</p>
+                    </article>
+                    <article class="struct-copy">
+                        <p class="struct-kicker">03 - THOUGHTFUL FLOOR PLANNING</p>
+                        <h2 class="struct-title">Spacious <span>3 BHK Floors</span> That Feel Complete</h2>
+                        <p class="struct-description">Designed for practical family living, each floor layout maximizes natural ventilation and provides independent spaces for every family member.</p>
+                    </article>
+                    <article class="struct-copy">
+                        <p class="struct-kicker">04 - PREMIUM DELIVERABLES</p>
+                        <h2 class="struct-title">A <span>Specification Package</span> That Adds Real Value</h2>
+                        <p class="struct-description">From modular kitchens and premium flooring to high-end bathroom fittings, we deliver a home that is ready for your lifestyle.</p>
+                    </article>
+                    <article class="struct-copy">
+                        <p class="struct-kicker">05 - UNIQUE OWNERSHIP BENEFITS</p>
+                        <h2 class="struct-title">Added Advantages That Go Beyond <span>Standard Floors</span></h2>
+                        <p class="struct-description">A dedicated store room in every unit and roof rights on the 4th floor make ownership more complete and more valuable.</p>
+                    </article>
+                    <article class="struct-copy">
+                        <p class="struct-kicker">06 - BOOKING OPPORTUNITY</p>
+                        <h2 class="struct-title">Secure Your Place in a High-Demand <span>Low-Rise Community</span></h2>
+                        <p class="struct-description">Low-rise supply in this corridor is limited. Bookings are open and site visits are available for serious buyers.</p>
+                        <div class="struct-actions">
+                            <a class="struct-primary-btn" href="#booking-enquiry">Check Current Price <span>-&gt;</span></a>
+                            <a class="struct-secondary-btn" href="#booking-enquiry">Book Site Visit</a>
                         </div>
-                    </div>
-                </article>
-
-                <article class="scroll-story-slide scroll-story-scene" data-story-scene="2">
-                    <div class="scroll-story-sticky">
-                        <div class="scroll-story-stage" aria-label="Low-rise living story slide 2">
-                            <div class="scroll-story-bg" style="--story-image: url('assets/img/mid-slider/slider-2.png');">
-                                <img src="assets/img/mid-slider/slider-2.png" alt="Amelia Estate II gallery slide 2" />
-                            </div>
-                            <div class="scroll-story-overlay"></div>
-                            <div class="scroll-story-content">
-                                <p class="scroll-story-kicker">02 - PRIME LOCATION ADVANTAGE</p>
-                                <h2>Positioned in One of Tricity's Most <span>Promising Corridors.</span></h2>
-                                <p>Near Aero City Mohali, PR-7 Airport Road, and key growth corridors, the project combines
-                                    strong connectivity with long-term value.</p>
-                            </div>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="scroll-story-slide scroll-story-scene" data-story-scene="3">
-                    <div class="scroll-story-sticky">
-                        <div class="scroll-story-stage" aria-label="Low-rise living story slide 3">
-                            <div class="scroll-story-bg" style="--story-image: url('assets/img/mid-slider/slider-3.png');">
-                                <img src="assets/img/mid-slider/slider-3.png" alt="Amelia Estate II gallery slide 3" />
-                            </div>
-                            <div class="scroll-story-overlay"></div>
-                            <div class="scroll-story-content">
-                                <p class="scroll-story-kicker">03 - THOUGHTFUL FLOOR PLANNING</p>
-                                <h2>Spacious <span>3 BHK Floors</span> That Feel Complete</h2>
-                                <p>Designed for practical family living, each floor layout maximizes natural ventilation and
-                                    provides independent spaces for every family member.</p>
-                            </div>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="scroll-story-slide scroll-story-scene" data-story-scene="4">
-                    <div class="scroll-story-sticky">
-                        <div class="scroll-story-stage" aria-label="Low-rise living story slide 4">
-                            <div class="scroll-story-bg" style="--story-image: url('assets/img/mid-slider/slider-4.jpg');">
-                                <img src="assets/img/mid-slider/slider-4.jpg" alt="Amelia Estate II gallery slide 4" />
-                            </div>
-                            <div class="scroll-story-overlay"></div>
-                            <div class="scroll-story-content">
-                                <p class="scroll-story-kicker">04 - PREMIUM DELIVERABLES</p>
-                                <h2>A <span>Specification Package</span> That Adds Real Value</h2>
-                                <p>From modular kitchens and premium flooring to high-end bathroom fittings, we deliver a
-                                    home that is ready for your lifestyle.</p>
-                            </div>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="scroll-story-slide scroll-story-scene" data-story-scene="5">
-                    <div class="scroll-story-sticky">
-                        <div class="scroll-story-stage" aria-label="Low-rise living story slide 5">
-                            <div class="scroll-story-bg" style="--story-image: url('assets/img/mid-slider/slider-5.png');">
-                                <img src="assets/img/mid-slider/slider-5.png" alt="Amelia Estate II gallery slide 5" />
-                            </div>
-                            <div class="scroll-story-overlay"></div>
-                            <div class="scroll-story-content">
-                                <p class="scroll-story-kicker">05 - UNIQUE OWNERSHIP BENEFITS</p>
-                                <h2>Added Advantages That Go Beyond <span>Standard Floors</span></h2>
-                                <p>A dedicated store room in every unit and roof rights on the 4th floor make ownership more
-                                    complete and more valuable.</p>
-                            </div>
-                        </div>
-                    </div>
-                </article>
-
-                <article class="scroll-story-slide scroll-story-scene scroll-story-slide--booking" data-story-scene="6">
-                    <div class="scroll-story-sticky">
-                        <div class="scroll-story-stage" aria-label="Low-rise living story slide 6">
-                            <div class="scroll-story-bg" style="--story-image: url('assets/img/mid-slider/slider-6.jpg');">
-                                <img src="assets/img/mid-slider/slider-6.jpg" alt="Amelia Estate II gallery slide 6" />
-                            </div>
-                            <div class="scroll-story-overlay"></div>
-                            <div class="scroll-story-content">
-                                <p class="scroll-story-kicker">06 - BOOKING OPPORTUNITY</p>
-                                <h2>Secure Your Place in a High-Demand <span>Low-Rise Community</span></h2>
-                                <p>Low-rise supply in this corridor is limited. Bookings are open and site visits are
-                                    available for serious buyers.</p>
-                                <div class="scroll-story-actions">
-                                    <a class="scroll-story-primary-btn" href="#booking-enquiry">Check Current Price <span>-&gt;</span></a>
-                                    <a class="scroll-story-secondary-btn" href="#booking-enquiry">Book Site Visit</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </article>
+                    </article>
+                </div>
             </div>
         </section>
 
@@ -977,14 +922,16 @@
                             <p>1st Floor &middot; <span>230 Sq.Yd</span></p>
                         </div>
 
-                        <button class="pricing-unlock-btn" type="button">
-                            <svg viewBox="0 0 24 24" aria-hidden="true">
-                                <path d="M7 11V8a5 5 0 0 1 10 0v3" />
-                                <path d="M6 11h12v10H6V11Z" />
-                            </svg>
-                            <span>Unlock All Floor Prices + Detailed Breakup</span>
-                        </button>
-                        <p class="pricing-unlock-note">*Base price. Unlock to see PLC, GST, charges &amp; payment plans.</p>
+                        <div class="pricing-unlock-area">
+                            <button class="pricing-unlock-btn" type="button">
+                                <svg viewBox="0 0 24 24" aria-hidden="true">
+                                    <path d="M7 11V8a5 5 0 0 1 10 0v3" />
+                                    <path d="M6 11h12v10H6V11Z" />
+                                </svg>
+                                <span>Unlock All Floor Prices + Detailed Breakup</span>
+                            </button>
+                            <small class="pricing-unlock-note">*Base price. Unlock to see PLC, GST, charges &amp; payment plans.</small>
+                        </div>
                     </div>
                 </article>
 
@@ -2419,20 +2366,20 @@
 
                         <div class="property-snapshot-strip grid grid-cols-2 md:grid-cols-4">
                             <div>
-                                <span>Configuration</span>
-                                <strong>3BHK Stilt+4</strong>
+                                <strong>48</strong>
+                                <span>Private<br>Residences</span>
                             </div>
                             <div>
-                                <span>Floors</span>
-                                <strong>Low Density</strong>
+                                <strong>S+4</strong>
+                                <span>With Lift</span>
                             </div>
                             <div>
-                                <span>Location</span>
-                                <strong>PR-7 Airport Road</strong>
+                                <strong>3 BHK</strong>
+                                <span>+ Store<br>Room</span>
                             </div>
                             <div>
-                                <span>RERA</span>
-                                <strong>PBRERA-SAS81-PR0941</strong>
+                                <strong>Dec '26</strong>
+                                <span>Possession</span>
                             </div>
                         </div>
                     </div>
@@ -2481,7 +2428,6 @@
                     <p><strong>Configuration</strong>3 BHK Stilt+4 Floors</p>
                     <p><strong>RERA No.</strong>PBRERA-SAS81-PR0941</p>
                     <p><strong>Possession</strong>December 2027</p>
-                    <a class="footer-redesign-rera" href="https://www.rera.punjab.gov.in/" target="_blank" rel="noopener noreferrer">Verify RERA Details</a>
                 </div>
 
                 <div class="footer-redesign-column footer-redesign-contact">

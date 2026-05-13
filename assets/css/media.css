@@ -3027,9 +3027,21 @@
         line-height: 14px;
     }
 
+    .pricing-unlock-area {
+        gap: 7px;
+    }
+
+    .pricing-unlock-note {
+        min-height: 24px;
+        padding: 5px 8px;
+        font-size: 9px;
+        line-height: 1.3;
+    }
+
     .pricing-unlock-btn {
         min-height: 44px;
         height: auto;
+        margin-top: 0;
         padding: 9px 10px;
         border-radius: 16px;
         font-size: 12px;
@@ -4566,9 +4578,21 @@
         line-height: 30px;
     }
 
+    .pricing-unlock-area {
+        gap: 6px;
+    }
+
+    .pricing-unlock-note {
+        min-height: 22px;
+        padding: 5px 7px;
+        font-size: 8.5px;
+        line-height: 1.28;
+    }
+
     .pricing-unlock-btn {
         min-height: 40px;
         height: auto;
+        margin-top: 0;
         padding: 8px 10px;
         font-size: 10px;
         line-height: 1.2;
@@ -9302,5 +9326,495 @@ body {
     .prime-location-section.is-distance-revealed .prime-distance-block {
         max-height: 680px;
         margin-top: 32px;
+    }
+}
+
+/* Final mobile polish: story slider and booking form. */
+@media (max-width: 767px) {
+    .struct-slider-section {
+        min-height: 100svh !important;
+        scroll-margin-top: 0 !important;
+    }
+
+    .struct-slider-inner {
+        min-height: 100svh !important;
+        align-items: flex-end !important;
+        justify-content: flex-start !important;
+        padding: 86px 18px 54px !important;
+    }
+
+    .struct-slider-overlay {
+        background:
+            linear-gradient(180deg, rgba(0, 0, 0, 0.22) 0%, rgba(0, 0, 0, 0.26) 38%, rgba(0, 0, 0, 0.86) 100%),
+            linear-gradient(90deg, rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.08) 52%, rgba(0, 0, 0, 0.34)) !important;
+    }
+
+    .struct-slider-rail {
+        position: absolute !important;
+        left: 18px !important;
+        right: 18px !important;
+        top: 28px !important;
+        z-index: 20 !important;
+        width: auto !important;
+        min-height: 0 !important;
+        transform: none !important;
+    }
+
+    .struct-slider-rail-items {
+        display: flex !important;
+        width: 100% !important;
+        justify-content: space-between !important;
+        gap: 8px !important;
+    }
+
+    .struct-index {
+        display: inline-flex !important;
+        min-width: 34px !important;
+        justify-content: center !important;
+        padding: 0 0 8px !important;
+        font-size: 10px !important;
+        line-height: 1 !important;
+    }
+
+    .struct-index::before {
+        left: 50% !important;
+        top: auto !important;
+        bottom: 0 !important;
+        width: 14px !important;
+        transform: translateX(-50%) !important;
+    }
+
+    .struct-index.is-active::before {
+        width: 26px !important;
+    }
+
+    .struct-slider-content {
+        display: block !important;
+        width: 100% !important;
+        min-height: 0 !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        text-align: left !important;
+    }
+
+    .struct-kicker {
+        margin-bottom: 11px !important;
+        font-size: 10px !important;
+        line-height: 1.45 !important;
+        letter-spacing: 0.12em !important;
+    }
+
+    .struct-title {
+        max-width: 100% !important;
+        font-size: clamp(28px, 10vw, 38px) !important;
+        line-height: 1.08 !important;
+        text-wrap: balance;
+    }
+
+    .struct-description {
+        max-width: 100% !important;
+        margin-top: 12px !important;
+        font-size: 14px !important;
+        line-height: 1.58 !important;
+    }
+
+    .struct-actions {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        gap: 9px !important;
+        margin-top: 22px !important;
+    }
+
+    .struct-primary-btn,
+    .struct-secondary-btn {
+        width: 100% !important;
+        min-height: 44px !important;
+        border-radius: 12px !important;
+        font-size: 13px !important;
+    }
+
+    .booking-enquiry-section {
+        display: flex !important;
+        min-height: calc(100svh - 73px) !important;
+        align-items: center !important;
+        padding: 14px 12px 16px !important;
+        overflow: hidden !important;
+    }
+
+    .booking-enquiry-inner {
+        display: block !important;
+        width: 100% !important;
+        max-width: 360px !important;
+        margin: 0 auto !important;
+    }
+
+    .booking-enquiry-image {
+        display: none !important;
+    }
+
+    .booking-enquiry-panel {
+        width: 100% !important;
+        margin-top: 0 !important;
+    }
+
+    .booking-enquiry-form {
+        width: 100% !important;
+        min-height: 0 !important;
+        max-height: calc(100svh - 112px) !important;
+        border-radius: 18px !important;
+        padding: 18px 16px 14px !important;
+    }
+
+    .booking-enquiry-form h2 {
+        font-size: 22px !important;
+        line-height: 1.12 !important;
+    }
+
+    .booking-enquiry-form p {
+        margin: 8px 0 16px !important;
+        font-size: 12px !important;
+        line-height: 1.45 !important;
+    }
+
+    .booking-enquiry-form label {
+        margin-bottom: 12px !important;
+    }
+
+    .booking-enquiry-form label > span:first-child {
+        margin-bottom: 5px !important;
+        font-size: 10px !important;
+        line-height: 1 !important;
+        letter-spacing: 0.09em !important;
+    }
+
+    .booking-phone-field,
+    .booking-enquiry-form input {
+        height: 30px !important;
+        min-height: 30px !important;
+        font-size: 12.5px !important;
+    }
+
+    .booking-country {
+        gap: 5px !important;
+        margin-right: 6px !important;
+        font-size: 12px !important;
+    }
+
+    .booking-flag {
+        width: 15px !important;
+        height: 9px !important;
+    }
+
+    .booking-country-arrow {
+        width: 5px !important;
+        height: 5px !important;
+    }
+
+    .booking-enquiry-form button {
+        min-height: 44px !important;
+        height: 44px !important;
+        margin-top: 5px !important;
+        padding: 0 12px !important;
+        font-size: 10px !important;
+        line-height: 1.15 !important;
+        letter-spacing: 0.08em !important;
+    }
+
+    .booking-enquiry-form button span {
+        display: inline-block !important;
+        margin-left: auto !important;
+    }
+
+    .booking-trust-row {
+        display: grid !important;
+        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+        gap: 4px !important;
+        margin-top: 10px !important;
+        font-size: 7px !important;
+        line-height: 1 !important;
+        letter-spacing: 0 !important;
+    }
+
+    .booking-trust-row span {
+        min-width: 0 !important;
+        justify-content: center !important;
+        align-items: center !important;
+        gap: 2px !important;
+        border: 1px solid rgba(213, 174, 102, 0.18) !important;
+        border-radius: 999px !important;
+        background: rgba(213, 174, 102, 0.055) !important;
+        padding: 6px 3px !important;
+        white-space: nowrap !important;
+    }
+
+    .booking-trust-row span + span::before {
+        display: none !important;
+    }
+
+    .booking-trust-row svg {
+        width: 8px !important;
+        height: 8px !important;
+        flex: 0 0 8px !important;
+    }
+
+    .selected-price-box {
+        min-height: 0 !important;
+        padding: 14px 10px 12px !important;
+    }
+
+    .selected-price-box > span {
+        font-size: 8px !important;
+        line-height: 1.25 !important;
+        letter-spacing: 0.14em !important;
+    }
+
+    .selected-price-box strong {
+        margin-top: 5px !important;
+        font-size: 28px !important;
+        line-height: 1.05 !important;
+    }
+
+    .selected-price-box p {
+        margin-top: 4px !important;
+        font-size: 10px !important;
+        line-height: 1.2 !important;
+    }
+
+    .pricing-unlock-area {
+        gap: 7px !important;
+        margin-top: 8px !important;
+    }
+
+    .pricing-unlock-note {
+        max-width: 100% !important;
+        min-height: 24px !important;
+        margin: 0 auto !important;
+        padding: 5px 7px !important;
+        font-size: 8.5px !important;
+        line-height: 1.28 !important;
+    }
+
+    .pricing-unlock-btn {
+        min-height: 46px !important;
+        margin-top: 0 !important;
+        padding: 8px 10px !important;
+        font-size: 11px !important;
+        line-height: 1.18 !important;
+    }
+}
+
+@media (max-width: 360px) {
+    .booking-enquiry-section {
+        padding: 12px 12px 14px !important;
+    }
+
+    .booking-enquiry-form {
+        padding: 17px 16px 13px !important;
+    }
+
+    .booking-enquiry-form h2 {
+        font-size: 21px !important;
+    }
+
+    .booking-enquiry-form p {
+        margin-bottom: 14px !important;
+        font-size: 11.5px !important;
+        line-height: 1.42 !important;
+    }
+
+    .booking-enquiry-form label {
+        margin-bottom: 11px !important;
+    }
+
+    .booking-trust-row {
+        font-size: 6.5px !important;
+    }
+}
+
+/* Construction mobile fit: keep status cards equal and bank tiles readable. */
+@media (max-width: 767px) {
+    .construction-progress-side,
+    .construction-proof-row {
+        width: 100% !important;
+        max-width: 100% !important;
+        justify-items: stretch !important;
+        align-items: stretch !important;
+    }
+
+    .construction-progress-side > .construction-info-card,
+    .construction-progress-side > .construction-proof-card,
+    .construction-proof-row > .construction-info-card {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        box-sizing: border-box !important;
+    }
+
+    .construction-info-card--banks {
+        padding: 20px 16px 18px !important;
+    }
+
+    .construction-bank-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 8px !important;
+        width: 100% !important;
+        margin-top: 14px !important;
+    }
+
+    .construction-bank-tile {
+        min-width: 0 !important;
+        min-height: 50px !important;
+        padding: 8px 6px !important;
+        box-sizing: border-box !important;
+    }
+
+    .construction-bank-tile b {
+        font-size: 10px !important;
+        line-height: 1.1 !important;
+    }
+
+    .construction-bank-tile em {
+        max-width: 100% !important;
+        gap: 3px !important;
+        font-size: 8px !important;
+        line-height: 1 !important;
+        white-space: nowrap !important;
+    }
+
+    .construction-bank-tile em i {
+        width: 10px !important;
+        height: 10px !important;
+        flex-basis: 10px !important;
+    }
+
+    .construction-bank-tile em i::after {
+        left: 3px !important;
+        top: 3px !important;
+        width: 5px !important;
+        height: 3px !important;
+    }
+
+    .construction-bank-proof {
+        flex-wrap: wrap !important;
+        padding-top: 13px !important;
+        gap: 8px 12px !important;
+        text-align: center !important;
+    }
+
+    .construction-stage-labels {
+        justify-items: center !important;
+        gap: 4px !important;
+        font-size: 9px !important;
+        line-height: 12px !important;
+        letter-spacing: 0.04em !important;
+    }
+
+    .construction-stage-labels span {
+        min-width: 0 !important;
+        max-width: 100% !important;
+        text-align: center !important;
+        white-space: nowrap !important;
+    }
+}
+
+/* Property snapshot mobile stats: no-card premium typography blocks. */
+@media (max-width: 767px) {
+    .property-snapshot-strip {
+        display: grid !important;
+        grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+        gap: 10px !important;
+        margin-top: 25px !important;
+        overflow: visible !important;
+        border-radius: 0 !important;
+        background: transparent !important;
+    }
+
+    .property-snapshot-strip > div {
+        position: relative !important;
+        min-height: 68px !important;
+        align-items: flex-start !important;
+        justify-content: flex-start !important;
+        gap: 6px !important;
+        overflow: visible !important;
+        border: 0 !important;
+        border-radius: 0 !important;
+        background: transparent !important;
+        padding: 0 !important;
+        text-align: left !important;
+        box-shadow: none !important;
+        transform-origin: left center !important;
+        transition:
+            transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+            filter 0.28s ease !important;
+    }
+
+    .property-snapshot-strip > div::before {
+        content: "" !important;
+        position: absolute !important;
+        left: 0 !important;
+        top: -10px !important;
+        width: 20px !important;
+        height: 2px !important;
+        border-radius: 999px !important;
+        background: rgba(213, 174, 102, 0.72) !important;
+    }
+
+    .property-snapshot-strip > div:nth-child(2n),
+    .property-snapshot-strip > div:nth-last-child(-n+2),
+    .property-snapshot-strip > div:not(:last-child) {
+        border: 0 !important;
+    }
+
+    .property-snapshot-strip > div:hover {
+        filter: brightness(1.08) !important;
+        transform: translateY(-3px) scale(1.08) !important;
+    }
+
+    .property-snapshot-strip strong {
+        margin-top: 0 !important;
+        color: #fff2dc !important;
+        font-family: Georgia, "Times New Roman", serif !important;
+        font-size: 25px !important;
+        font-weight: 500 !important;
+        line-height: 0.98 !important;
+        letter-spacing: 0 !important;
+        white-space: nowrap !important;
+        text-shadow: 0 10px 28px rgba(213, 174, 102, 0.18) !important;
+        transition: color 0.28s ease, transform 0.28s ease !important;
+    }
+
+    .property-snapshot-strip > div:hover strong {
+        color: #D5AE66 !important;
+    }
+
+    .property-snapshot-strip span {
+        max-width: 100% !important;
+        color: rgba(213, 174, 102, 0.72) !important;
+        font-size: 7px !important;
+        font-weight: 800 !important;
+        line-height: 1.35 !important;
+        letter-spacing: 0.20em !important;
+        text-transform: uppercase !important;
+    }
+}
+
+@media (max-width: 360px) {
+    .property-snapshot-strip {
+        gap: 7px !important;
+    }
+
+    .property-snapshot-strip > div {
+        min-height: 64px !important;
+    }
+
+    .property-snapshot-strip strong {
+        font-size: 22px !important;
+    }
+
+    .property-snapshot-strip span {
+        font-size: 6.5px !important;
+        letter-spacing: 0.16em !important;
     }
 }
