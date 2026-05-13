@@ -465,9 +465,10 @@ if (aboutSection) {
 
             clearTimeout(aboutMoreTimer);
             aboutToggle.setAttribute("aria-expanded", String(shouldOpen));
-            aboutToggle.querySelector("span:first-child").textContent = shouldOpen ? "Show Less" : "Read More";
+            const aboutToggleLabel = aboutToggle.querySelector("span:first-child");
 
             if (shouldOpen) {
+                aboutToggleLabel.textContent = "Show Less";
                 aboutMore.hidden = false;
                 aboutSection.classList.add("is-about-expanded");
                 requestAnimationFrame(() => {
@@ -480,6 +481,7 @@ if (aboutSection) {
             aboutMoreTimer = setTimeout(() => {
                 aboutMore.hidden = true;
                 aboutSection.classList.remove("is-about-expanded");
+                aboutToggleLabel.textContent = "Read More";
             }, 620);
         });
     }
