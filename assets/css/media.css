@@ -4914,7 +4914,7 @@
         width: min(560px, 100%);
         margin: clamp(14px, 2.5vh, 28px) 0 0;
         font-size: clamp(15px, 1.9vw, 18px);
-        font-weight: 700;
+        font-weight: 500;
         line-height: 1.45;
         text-align: left;
     }
@@ -8895,8 +8895,8 @@ a[href*="wa.me"].whatsapp-cta:hover,
 
     .hero-actions a[href*="wa.me"].hero-whatsapp-primary-btn {
         min-width: 0 !important;
-        padding-right: 50px !important;
-        padding-left: 50px !important;
+        padding-right: 35px !important;
+        padding-left: 35px !important;
         white-space: nowrap !important;
     }
 
@@ -9229,7 +9229,7 @@ body {
         min-width: 0 !important;
         height: auto !important;
         min-height: 52px !important;
-        padding: 14px 65px !important;
+        padding: 14px 35px !important;
         border-radius: 999px !important;
         background: #f0cd45 !important;
         color: #000000 !important;
@@ -9293,7 +9293,7 @@ body {
         max-width: 384px !important;
         height: auto !important;
         min-height: 0 !important;
-        padding: 14px 65px !important;
+        padding: 14px 35px !important;
         border: 0 !important;
         border-radius: 999px !important;
         background: #f0cd45 !important;
@@ -12111,5 +12111,130 @@ body {
     .booking-enquiry-inner {
         margin-top: 0 !important;
         margin-bottom: 0 !important;
+    }
+}
+
+/* Final header and hero theme pass. */
+.site-header {
+    background: rgba(5, 5, 5, 0.96) !important;
+    border-bottom-color: rgba(240, 205, 69, 0.16) !important;
+    box-shadow: 0 16px 38px rgba(0, 0, 0, 0.32) !important;
+    color: #ffffff !important;
+}
+
+.site-header .header-logo-divider {
+    background: rgba(240, 205, 69, 0.36) !important;
+}
+
+.site-header nav[aria-label="Primary navigation"] {
+    border-color: rgba(240, 205, 69, 0.18) !important;
+    background: rgba(255, 255, 255, 0.055) !important;
+}
+
+.site-header nav[aria-label="Primary navigation"] a,
+.mobile-menu a {
+    color: rgba(255, 255, 255, 0.88) !important;
+}
+
+.site-header nav[aria-label="Primary navigation"] a:hover,
+.mobile-menu a:hover {
+    background: rgba(240, 205, 69, 0.12) !important;
+    color: #f0cd45 !important;
+    box-shadow: none !important;
+}
+
+.site-header #menuToggle {
+    border-color: rgba(240, 205, 69, 0.24) !important;
+    background: rgba(255, 255, 255, 0.07) !important;
+    box-shadow: none !important;
+}
+
+.site-header #menuToggle span {
+    background: #f0cd45 !important;
+}
+
+.mobile-menu {
+    background: rgba(10, 10, 10, 0.98) !important;
+    border-color: rgba(240, 205, 69, 0.16) !important;
+}
+
+.hero-section,
+.hero-copy,
+.hero-copy h1,
+.hero-slide--figma .hero-copy h1 {
+    font-family: "Jost", "Inter", Arial, sans-serif !important;
+}
+
+.hero-location,
+.hero-slide--figma .hero-location {
+    color: #ffffff !important;
+}
+
+.hero-location-divider {
+    background: rgba(255, 255, 255, 0.48) !important;
+}
+
+.hero-actions a[href*="wa.me"].hero-whatsapp-primary-btn:hover {
+    background: rgba(0, 0, 0, 0.54) !important;
+    box-shadow: 0 12px 26px rgba(0, 0, 0, 0.26) !important;
+}
+
+.hero-actions a[href*="wa.me"].hero-whatsapp-primary-btn {
+    transition:
+        transform 0.35s ease,
+        background 0.35s ease,
+        box-shadow 0.35s ease !important;
+}
+
+/* Keep all hero slides visually consistent. */
+.hero-copy h1,
+.hero-slide--figma .hero-copy h1,
+.hero-slide:not(.hero-slide--figma) .hero-copy h1 {
+    font-family: "Jost", "Inter", Arial, sans-serif !important;
+    font-size: clamp(42px, 4.75vw, 72px) !important;
+    font-weight: 500 !important;
+    line-height: 1 !important;
+}
+
+.hero-slide--figma .hero-copy p,
+.hero-copy p {
+    margin-top: clamp(12px, 2vh, 22px) !important;
+}
+
+.hero-tags,
+.hero-section .hero-tags {
+    margin-top: 8px !important;
+    gap: 6px !important;
+}
+
+.hero-tags span,
+.hero-section .hero-tags span {
+    height: 24px !important;
+    padding-top: 4px !important;
+    padding-bottom: 4px !important;
+}
+
+.hero-actions,
+.hero-section .hero-actions {
+    margin-top: clamp(14px, 2.4vh, 26px) !important;
+}
+
+@media (max-width: 767px) {
+    .hero-copy h1,
+    .hero-slide--figma .hero-copy h1,
+    .hero-slide:not(.hero-slide--figma) .hero-copy h1 {
+        font-size: clamp(34px, 11vw, 44px) !important;
+        font-weight: 500 !important;
+        line-height: 1.02 !important;
+    }
+
+    .hero-slide--figma .hero-copy p,
+    .hero-copy p {
+        margin-top: 8px !important;
+    }
+
+    .hero-tags,
+    .hero-section .hero-tags {
+        margin-top: 7px !important;
     }
 }
