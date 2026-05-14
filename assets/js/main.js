@@ -38,7 +38,8 @@ if (heroSlider) {
     const storyProgress = heroSection.querySelector(".hero-story-progress");
     const previousStoryTap = heroSection.querySelector(".hero-story-tap--prev");
     const nextStoryTap = heroSection.querySelector(".hero-story-tap--next");
-    const storyDuration = 8000;
+    const desktopStoryDuration = 6500;
+    const mobileStoryDuration = 4200;
 
     let activeSlide = 0;
     let slideInterval;
@@ -53,6 +54,7 @@ if (heroSlider) {
     });
 
     const isMobileStory = () => window.matchMedia("(max-width: 767px)").matches;
+    const getStoryDuration = () => (isMobileStory() ? mobileStoryDuration : desktopStoryDuration);
 
     const applyMobileHeroImages = () => {
         if (!isMobileStory()) {
@@ -91,7 +93,7 @@ if (heroSlider) {
             `<span class="hero-story-progress-item" data-story-index="${index}"><span></span></span>`
         )).join("");
         storyProgressItems = storyProgress.querySelectorAll(".hero-story-progress-item");
-        heroSection.style.setProperty("--hero-story-duration", `${storyDuration}ms`);
+        heroSection.style.setProperty("--hero-story-duration", `${getStoryDuration()}ms`);
     }
 
     const updateStoryProgress = () => {
@@ -133,6 +135,8 @@ if (heroSlider) {
 
     const startAutoSlide = () => {
         clearInterval(slideInterval);
+        const storyDuration = getStoryDuration();
+        heroSection.style.setProperty("--hero-story-duration", `${storyDuration}ms`);
         slideInterval = setInterval(() => {
             showSlide(activeSlide + 1);
         }, storyDuration);
@@ -196,6 +200,8 @@ if (heroSlider) {
     window.addEventListener("resize", () => {
         applyMobileHeroImages();
         updateSliderPosition();
+        updateStoryProgress();
+        resetAutoSlide();
     });
 
     if (previousStoryTap && nextStoryTap) {
@@ -536,6 +542,7 @@ if (idealFloorSection) {
     let activeSize = "230";
     let activeFloor = "4th";
     let idealImageTimer;
+    let idealImageRequest = 0;
 
     const sizeDetails = {
         230: {
@@ -562,6 +569,63 @@ if (idealFloorSection) {
         "4th": "Roof Right"
     };
 
+    Object.values(sizeDetails).forEach(({ image }) => {
+        if (image) {
+            const preload = new Image();
+            preload.src = image;
+        }
+    });
+
+    const switchIdealImage = (src) => {
+        if (!idealImage || !src || idealImage.getAttribute("src") === src) {
+            return;
+        }
+
+        const requestId = ++idealImageRequest;
+        clearTimeout(idealImageTimer);
+        idealFloorSection.querySelectorAll(".ideal-floor-media-next").forEach((image) => image.remove());
+
+        const nextImage = new Image();
+        nextImage.className = "ideal-floor-media-next";
+        nextImage.alt = idealImage.alt;
+        nextImage.setAttribute("aria-hidden", "true");
+        nextImage.src = src;
+        const minimumFade = new Promise((resolve) => {
+            setTimeout(resolve, 180);
+        });
+
+        const finishSwitch = () => {
+            if (requestId !== idealImageRequest) {
+                return;
+            }
+
+            idealImage.parentElement.appendChild(nextImage);
+            requestAnimationFrame(() => {
+                nextImage.classList.add("is-visible");
+            });
+
+            idealImageTimer = setTimeout(() => {
+                if (requestId === idealImageRequest) {
+                    idealImage.src = src;
+                    nextImage.remove();
+                }
+            }, 620);
+        };
+
+        const imageReady = nextImage.decode
+            ? nextImage.decode().catch(() => undefined)
+            : new Promise((resolve) => {
+                nextImage.onload = resolve;
+                nextImage.onerror = resolve;
+            });
+
+        if (nextImage.decode) {
+            Promise.all([imageReady, minimumFade]).then(finishSwitch);
+        } else {
+            Promise.all([imageReady, minimumFade]).then(finishSwitch);
+        }
+    };
+
     const refreshIdealFloor = () => {
         const size = sizeDetails[activeSize];
         const feature = featureCopy[activeFloor] || "Premium Floor";
@@ -571,18 +635,16 @@ if (idealFloorSection) {
         }
 
         badgeSizeFloor.textContent = `${size.label} - ${activeFloor} Floor`;
-        badgeFeature.innerHTML = `${badgeFeatureIcon}${feature}`;
+        if (activeFloor === "4th") {
+            badgeFeature.style.display = "";
+            badgeFeature.innerHTML = `${badgeFeatureIcon}${feature}`;
+        } else {
+            badgeFeature.style.display = "none";
+        }
         panelSubtitle.textContent = `${activeSize} Sq. Yd ${activeFloor} Floor Selected`;
         specValues[0].textContent = size.area;
 
-        if (idealImage && size.image && idealImage.getAttribute("src") !== size.image) {
-            clearTimeout(idealImageTimer);
-            idealImage.classList.add("is-switching");
-            idealImageTimer = setTimeout(() => {
-                idealImage.src = size.image;
-                idealImage.classList.remove("is-switching");
-            }, 160);
-        }
+        switchIdealImage(size.image);
     };
 
     sizeTabs.forEach((tab) => {
@@ -617,7 +679,8 @@ if (projectPlansSection) {
     const meta = projectPlansSection.querySelector(".project-plan-meta");
     const visual = projectPlansSection.querySelector(".project-plan-visual");
     const image = projectPlansSection.querySelector(".project-plan-image");
-    const badge = projectPlansSection.querySelector(".project-plan-badge");
+    const badgeLabel = projectPlansSection.querySelector(".project-plan-badge-label");
+    const badgeAccentText = projectPlansSection.querySelector(".project-plan-badge-accent-text");
     const footerTitle = projectPlansSection.querySelector(".project-plan-footer h3");
     const footerCopy = projectPlansSection.querySelector(".project-plan-footer p");
     const toolLinks = projectPlansSection.querySelectorAll(".project-plan-tools a");
@@ -640,6 +703,7 @@ if (projectPlansSection) {
             image: floorImage,
             alt: "3 BHK floor plan layout",
             badge: "230 Sq.Yd Floor Plan",
+            badgeAccent: "3 BHK layout",
             title: "3 BHK Floor Plan - 230 Sq.Yd",
             copy: "Detailed layout with dimensions. Vastu compliant design.",
             meta: "<strong>3 BHK</strong> - 1,650 Sq.Ft Carpet",
@@ -650,6 +714,7 @@ if (projectPlansSection) {
             image: siteImage,
             alt: "Master site plan layout",
             badge: "Master Site Plan",
+            badgeAccent: "Site layout",
             title: "Complete Project Layout",
             copy: "Tower positions, amenities, roads & landscape plan.",
             meta: "",
@@ -660,6 +725,7 @@ if (projectPlansSection) {
             image: floorImage,
             alt: "Tower plan layout",
             badge: "230 Sq.Yd Stack Plan",
+            badgeAccent: "Stack view",
             title: "3 BHK Stack Plan - 230 Sq.Yd",
             copy: "Stilt+4 low-rise stack reference for the selected 3 BHK variant.",
             meta: "<strong>3 BHK</strong> - Stilt+4 Floors",
@@ -684,7 +750,8 @@ if (projectPlansSection) {
         image.classList.remove("is-switching");
         image.src = content.image;
         image.alt = content.alt;
-        badge.textContent = content.badge;
+        badgeLabel.textContent = content.badge;
+        badgeAccentText.textContent = content.badgeAccent;
         footerTitle.textContent = content.title;
         footerCopy.textContent = content.copy;
         meta.innerHTML = content.meta;
@@ -712,7 +779,7 @@ if (projectPlansSection) {
 
         lightboxImage.src = image.currentSrc || image.src;
         lightboxImage.alt = image.alt;
-        lightboxTitle.textContent = badge.textContent;
+        lightboxTitle.textContent = badgeLabel.textContent;
         lightbox.removeAttribute("hidden");
         document.body.classList.add("is-project-plan-lightbox-open");
     };
@@ -738,7 +805,8 @@ if (projectPlansSection) {
             const label = button.textContent.trim();
 
             if (activePlan === "floor") {
-                badge.textContent = `${label} Floor Plan`;
+                badgeLabel.textContent = `${label} Floor Plan`;
+                badgeAccentText.textContent = "3 BHK layout";
                 footerTitle.textContent = `3 BHK Floor Plan - ${label}`;
                 meta.innerHTML = "<strong>3 BHK</strong> - 1,650 Sq.Ft Carpet";
             }
@@ -747,18 +815,21 @@ if (projectPlansSection) {
                 const towerDetails = {
                     "230 Sq.Yd": {
                         badge: "230 Sq.Yd Stack Plan",
+                        badgeAccent: "Stack view",
                         title: "3 BHK Stack Plan - 230 Sq.Yd",
                         copy: "Stilt+4 low-rise stack reference for the selected 3 BHK variant.",
                         meta: "<strong>3 BHK</strong> - Stilt+4 Floors"
                     },
                     "219 Sq.Yd": {
                         badge: "219 Sq.Yd Stack Plan",
+                        badgeAccent: "Stack view",
                         title: "3 BHK Stack Plan - 219 Sq.Yd",
                         copy: "Stilt+4 low-rise stack reference for the selected 3 BHK variant.",
                         meta: "<strong>3 BHK</strong> - Stilt+4 Floors"
                     },
                     "205 Sq.Yd": {
                         badge: "205 Sq.Yd Stack Plan",
+                        badgeAccent: "Stack view",
                         title: "3 BHK Stack Plan - 205 Sq.Yd",
                         copy: "Stilt+4 low-rise stack reference for the selected 3 BHK variant.",
                         meta: "<strong>3 BHK</strong> - Stilt+4 Floors"
@@ -767,7 +838,8 @@ if (projectPlansSection) {
                 const detail = towerDetails[label];
 
                 if (detail) {
-                    badge.textContent = detail.badge;
+                    badgeLabel.textContent = detail.badge;
+                    badgeAccentText.textContent = detail.badgeAccent;
                     footerTitle.textContent = detail.title;
                     footerCopy.textContent = detail.copy;
                     meta.innerHTML = detail.meta;
@@ -864,12 +936,8 @@ if (pricingSection) {
         button.classList.add("is-active");
         selectedPriceBox?.classList.toggle("is-price-visible", isVisiblePrice);
         pricingFloor.textContent = floorLabel;
-        selectedPrice.innerHTML = isVisiblePrice
-            ? `<span class="pricing-currency">&#8377;</span>${price}*`
-            : `<span class="pricing-locked-price">Price Hidden</span>`;
-        selectedMeta.innerHTML = isVisiblePrice
-            ? `${floorLabel} &middot; <span>${activeSize} Sq.Yd</span>`
-            : `${floorLabel} &middot; <span>Unlock to view price</span>`;
+        selectedPrice.innerHTML = `<span class="pricing-currency">&#8377;</span>${price}*`;
+        selectedMeta.innerHTML = `${floorLabel} &middot; <span>${activeSize} Sq.Yd</span>`;
     };
 
     const syncPricingUnlockSize = () => {
