@@ -11986,7 +11986,8 @@ body {
     }
 
     .transparent-pricing-section .pricing-spec img {
-        filter: brightness(0) saturate(100%) invert(83%) sepia(87%) saturate(1731%) hue-rotate(348deg) brightness(102%) contrast(103%) !important;
+        filter: none !important;
+        opacity: 1 !important;
     }
 
     .transparent-pricing-section .pricing-spec svg,
@@ -12072,7 +12073,7 @@ body {
     }
 
     .transparent-pricing-section .pricing-image-wrap img {
-        height: 150px !important;
+        height: 164px !important;
     }
 
     .transparent-pricing-section .selected-price-box {
@@ -12097,5 +12098,18 @@ body {
         margin-top: 4px !important;
         font-size: 8px !important;
         line-height: 11px !important;
+    }
+
+    .booking-enquiry-section {
+        min-height: auto !important;
+        align-items: center !important;
+        justify-content: center !important;
+        padding-top: 34px !important;
+        padding-bottom: 34px !important;
+    }
+
+    .booking-enquiry-inner {
+        margin-top: 0 !important;
+        margin-bottom: 0 !important;
     }
 }
