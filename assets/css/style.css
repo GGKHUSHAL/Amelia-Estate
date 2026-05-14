@@ -300,7 +300,7 @@ button {
     gap: 10px;
     width: 100%;
     height: auto;
-    color: rgba(213, 174, 102, 0.96);
+    color:white !important;
     font-size: 12px;
     font-weight: 800;
     line-height: 18px;
@@ -435,7 +435,7 @@ button {
 }
 
 .hero-price-details-btn:hover {
-    background: #ffdd59;
+    background: #fceba6;
     box-shadow: 0 18px 45px rgba(240, 205, 69, 0.35);
     transform: translateY(-4px);
 }
@@ -12029,7 +12029,7 @@ a[href*="wa.me"] small {
 
 /* Final header and hero theme pass. */
 .site-header {
-    background: rgba(5, 5, 5, 0.96) !important;
+    background: black !important;
     border-bottom-color: rgba(240, 205, 69, 0.16) !important;
     box-shadow: 0 16px 38px rgba(0, 0, 0, 0.32) !important;
     color: #ffffff !important;
@@ -12708,10 +12708,11 @@ body.struct-slider-locked {
 .site-header {
     height: 86px !important;
     overflow: visible !important;
-    border-bottom: 1px solid rgba(17, 24, 39, 0.08) !important;
-    background: rgba(255, 255, 255, 0.94) !important;
-    box-shadow: 0 14px 40px rgba(15, 23, 42, 0.08) !important;
+    border-bottom: 1px solid rgba(240, 205, 69, 0.16) !important;
+    background: rgba(5, 5, 5, 0.96) !important;
+    box-shadow: 0 16px 38px rgba(0, 0, 0, 0.32) !important;
     backdrop-filter: blur(16px);
+    color: #ffffff !important;
 }
 
 
@@ -12755,7 +12756,7 @@ body.struct-slider-locked {
 .site-header .header-logo-divider {
     width: 1px !important;
     height: 34px !important;
-    background: rgba(15, 23, 42, 0.14) !important;
+    background: rgba(240, 205, 69, 0.36) !important;
 }
 
 
@@ -12770,9 +12771,9 @@ body.struct-slider-locked {
     gap: 2px !important;
     align-items: center !important;
     justify-content: flex-end !important;
-    border: 1px solid rgba(15, 23, 42, 0.08) !important;
+    border: 1px solid rgba(240, 205, 69, 0.18) !important;
     border-radius: 999px !important;
-    background: rgba(248, 250, 252, 0.92) !important;
+    background: rgba(255, 255, 255, 0.055) !important;
     font-size: 13.5px !important;
     font-weight: 600 !important;
     line-height: 1 !important;
@@ -12786,7 +12787,7 @@ body.struct-slider-locked {
     justify-content: center !important;
     padding: 0 11px !important;
     border-radius: 999px !important;
-    color: #171717 !important;
+    color: rgba(255, 255, 255, 0.88) !important;
     transition:
         color 0.22s ease,
         background 0.22s ease,
@@ -12796,8 +12797,8 @@ body.struct-slider-locked {
 
 .site-header nav[aria-label="Primary navigation"] a:hover {
     color: #D5AE66 !important;
-    background: #ffffff !important;
-    box-shadow: 0 8px 22px rgba(15, 23, 42, 0.08) !important;
+    background: rgba(240, 205, 69, 0.12) !important;
+    box-shadow: none !important;
 }
 
 
@@ -12839,7 +12840,7 @@ body.struct-slider-locked {
 /* Final hero copy color cleanup. */
 .hero-location,
 .hero-slide--figma .hero-location {
-    color: rgba(255, 255, 255, 0.88) !important;
+    color: #ffffff !important;
 }
 
 
@@ -13208,7 +13209,6 @@ body {
 
 
 .hero-copy h1 span,
-.hero-location,
 .ideal-floor-copy h2 span,
 .project-plan-heading h2 span,
 .transparent-pricing-heading h2 span,
