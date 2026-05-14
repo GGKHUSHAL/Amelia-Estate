@@ -39,7 +39,7 @@ if (heroSlider) {
     const previousStoryTap = heroSection.querySelector(".hero-story-tap--prev");
     const nextStoryTap = heroSection.querySelector(".hero-story-tap--next");
     const desktopStoryDuration = 6500;
-    const mobileStoryDuration = 4200;
+    const mobileStoryDuration = 2800;
 
     let activeSlide = 0;
     let slideInterval;

@@ -10505,18 +10505,88 @@
     .hero-copy h1,
     .hero-slide--figma .hero-copy h1,
     .hero-slide:not(.hero-slide--figma) .hero-copy h1 {
-        font-size: clamp(34px, 11vw, 44px) !important;
-        font-weight: 500 !important;
-        line-height: 1.02 !important;
+        font-size: clamp(29px, 8.8vw, 36px) !important;
+        font-weight: 450 !important;
+        line-height: 1.06 !important;
+    }
+
+    .hero-copy h1 span,
+    .hero-slide--figma .hero-copy h1 span,
+    .hero-slide:not(.hero-slide--figma) .hero-copy h1 span {
+        font-size: 0.88em !important;
+        font-weight: 430 !important;
     }
 
     .hero-slide--figma .hero-copy p,
     .hero-copy p {
+        font-size: 12.5px !important;
+        font-weight: 400 !important;
+        line-height: 1.5 !important;
         margin-top: 8px !important;
     }
 
     .hero-tags,
     .hero-section .hero-tags {
         margin-top: 7px !important;
+    }
+}
+
+/* Final mobile hero controls: keep all phone-only hero edits in media.css. */
+@media (max-width: 767px) {
+    .hero-copy,
+    .hero-copy h1,
+    .hero-slide--figma .hero-copy h1,
+    .hero-copy p,
+    .hero-slide--figma .hero-copy p,
+    .hero-location,
+    .hero-slide--figma .hero-location,
+    .hero-tags,
+    .hero-actions {
+        text-align: left !important;
+    }
+
+    .hero-location,
+    .hero-slide--figma .hero-location {
+        font-size: 10px !important;
+        font-weight: 500 !important;
+        line-height: 1.35 !important;
+        justify-content: flex-start !important;
+        align-items: center !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        flex-wrap: nowrap !important;
+    }
+
+    .hero-story-progress {
+        top: 14px !important;
+        height: 2px !important;
+        gap: 3px !important;
+    }
+
+    .hero-actions,
+    .hero-section .hero-actions {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: stretch !important;
+        justify-content: flex-start !important;
+        width: 100% !important;
+        max-width: none !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+
+    .hero-price-details-btn,
+    .hero-whatsapp-btn {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+        align-self: stretch !important;
+    }
+}
+
+@media (max-width: 575px) {
+    .hero-story-progress {
+        height: 2px !important;
+        gap: 3px !important;
     }
 }
