@@ -4110,11 +4110,12 @@
     }
 
     .about-btn {
-        width: 100%;
-        max-width: 142px;
-        height: 40px;
+        --about-readmore-height: 34px;
+        --about-readmore-padding-x: 18px;
+        --about-readmore-font-size: 12px;
+        width: auto;
+        max-width: none;
         margin-top: 0;
-        border-radius: 1px;
     }
 
     .about-more.is-open {
@@ -7598,8 +7599,7 @@
     .mobile-menu a,
     .project-plan-meta,
     .site-visit-submit,
-    .site-visit-whatsapp,
-    .property-snapshot-readmore {
+    .site-visit-whatsapp {
         font-size: 15px !important;
         line-height: 1.45 !important;
     }
@@ -8535,7 +8535,6 @@
     }
 
     :is(
-        .about-btn,
         .ideal-floor-size-tabs button,
         .ideal-floor-levels button,
         .ideal-floor-price-btn,
@@ -8559,7 +8558,6 @@
         .site-visit-submit,
         .site-visit-whatsapp,
         .footer-redesign-actions a,
-        .property-snapshot-readmore,
         .property-snapshot-modal-btn){
         min-height: 42px !important;
         height: auto !important;
@@ -9418,19 +9416,11 @@
         display: none !important;
     }
 
-    .about-content h2 {
-        color: #ffffff !important;
-        background: linear-gradient(135deg, #ffffff 0%, #f0cd45 62%, #fff4bf 100%) !important;
-        -webkit-background-clip: text !important;
-        background-clip: text !important;
-        -webkit-text-fill-color: transparent !important;
-    }
-
     .about-feature-grid {
         gap: 10px !important;
         justify-items: stretch !important;
-        width: fit-content !important;
-        margin: 0 auto !important;
+        width: 100% !important;
+        margin: 0 !important;
     }
 
     .about-feature {
@@ -9859,8 +9849,8 @@
 
     .about-btn {
         border-radius: 10px !important;
-        margin-right: auto !important;
-        margin-left: auto !important;
+        margin-right: 0 !important;
+        margin-left: 0 !important;
     }
 }
 
@@ -10565,9 +10555,14 @@
 
     .hero-actions,
     .hero-section .hero-actions {
+        --hero-mobile-btn-width: min(100%, clamp(220px, 78vw, 248px));
+        --hero-mobile-btn-height: 42px;
+        --hero-mobile-btn-padding-x: 14px;
+        --hero-mobile-btn-radius: 12px;
+        --hero-mobile-btn-font-size: 16px;
         display: flex !important;
         flex-direction: column !important;
-        align-items: stretch !important;
+        align-items: center !important;
         justify-content: flex-start !important;
         width: 100% !important;
         max-width: none !important;
@@ -10575,12 +10570,29 @@
         margin-right: 0 !important;
     }
 
+    /* Single mobile source for both hero CTA buttons. */
     .hero-price-details-btn,
-    .hero-whatsapp-btn {
-        width: 100% !important;
-        max-width: 100% !important;
+    a[href*="wa.me"],
+    .hero-actions a[href*="wa.me"].hero-whatsapp-btn {
+        width: var(--hero-mobile-btn-width) !important;
+        max-width: var(--hero-mobile-btn-width) !important;
         min-width: 0 !important;
-        align-self: stretch !important;
+        align-self: center !important;
+        height: var(--hero-mobile-btn-height) !important;
+        min-height: var(--hero-mobile-btn-height) !important;
+        padding: 0 var(--hero-mobile-btn-padding-x) !important;
+        border-radius: var(--hero-mobile-btn-radius) !important;
+        font-size: var(--hero-mobile-btn-font-size) !important;
+        line-height: 1 !important;
+    }
+
+    .hero-price-details-btn > span:not(.hero-price-details-shine),
+    a[href*="wa.me"],
+    .hero-actions a[href*="wa.me"].hero-whatsapp-btn,
+    .hero-whatsapp-btn span {
+        font-size: inherit !important;
+        font-weight: inherit !important;
+        line-height: inherit !important;
     }
 }
 
@@ -10588,5 +10600,64 @@
     .hero-story-progress {
         height: 2px !important;
         gap: 3px !important;
+    }
+}
+
+@media (max-width: 1199px) {
+    .property-snapshot-readmore {
+        --property-snapshot-readmore-min-height: 28px;
+        --property-snapshot-readmore-padding-y: 7px;
+        --property-snapshot-readmore-padding-x: 18px;
+        --property-snapshot-readmore-radius: 10px;
+        --property-snapshot-readmore-font-size: 12px;
+        --property-snapshot-readmore-line-height: 1;
+        --property-snapshot-readmore-letter-spacing: 0.18em;
+    }
+}
+
+@media (max-width: 767px) {
+    .about-content h2 {
+        color: #ffffff !important;
+        background: none !important;
+        -webkit-background-clip: initial !important;
+        background-clip: initial !important;
+        -webkit-text-fill-color: #ffffff !important;
+    }
+
+    .about-content h2 span {
+        color: #f0cd45 !important;
+        -webkit-text-fill-color: #f0cd45 !important;
+    }
+
+    .about-content,
+    .about-text-block {
+        align-items: flex-start !important;
+        text-align: left !important;
+    }
+
+    .about-text-block > p {
+        text-align: left !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+
+    .about-feature-grid {
+        justify-items: stretch !important;
+        width: 100% !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+
+    .about-feature,
+    .about-feature div,
+    .about-feature h3,
+    .about-feature p {
+        text-align: left !important;
+    }
+
+    .about-btn {
+        align-self: flex-start !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
     }
 }

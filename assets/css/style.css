@@ -1150,6 +1150,10 @@ img.snapshot-icon {
     letter-spacing: 0;
 }
 
+.about-content h2 span {
+    color: #f0cd45;
+}
+
 .about-text-block > p {
     width: 100%;
     margin: 4px 0 0;
@@ -1257,25 +1261,30 @@ img.snapshot-icon {
 }
 
 .about-btn {
+    --about-readmore-height: 36px;
+    --about-readmore-padding-x: 20px;
+    --about-readmore-radius: 10px;
+    --about-readmore-font-size: 13px;
     position: relative;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     width: auto;
-    min-width: 116px;
-    height: 40px;
+    min-width: 0;
+    height: var(--about-readmore-height);
     margin-top: 0;
-    padding: 0 24px;
-    border: 0;
-    border-radius: 10px;
+    padding: 0 var(--about-readmore-padding-x);
+    border: 1px solid rgba(240, 205, 69, 0.38);
+    border-radius: var(--about-readmore-radius);
     overflow: hidden;
-    background: #f0cd45;
-    color: #000000;
+    background: rgba(240, 205, 69, 0.14);
+    color: #f0cd45;
     font-family: "Inter", Arial, sans-serif;
-    font-size: 12px;
-    font-weight: 800;
+    font-size: var(--about-readmore-font-size);
+    font-weight: 700;
     line-height: 1;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
     white-space: nowrap;
     cursor: pointer;
     box-shadow: none;
@@ -1310,10 +1319,11 @@ img.snapshot-icon {
 }
 
 .about-btn:hover {
-    background: #c7a72d;
-    color: #000000;
+    border-color: rgba(240, 205, 69, 0.56);
+    background: rgba(240, 205, 69, 0.20);
+    color: #f0cd45;
     box-shadow: none;
-    transform: none;
+    transform: translateY(-2px);
 }
 
 .about-btn:hover::before,
@@ -1328,8 +1338,9 @@ img.snapshot-icon {
 }
 
 .about-btn[aria-expanded="true"] {
-    background: #f0cd45;
-    color: #000000;
+    border-color: rgba(240, 205, 69, 0.56);
+    background: rgba(240, 205, 69, 0.20);
+    color: #f0cd45;
 }
 
 .about-more {
@@ -1529,17 +1540,12 @@ img.snapshot-icon {
     text-shadow: 0 14px 34px rgba(0, 0, 0, 0.50);
 }
 
-.peace-density-content h2 span,
-.peace-density-content h2 strong {
+.peace-density-content h2 span {
     color: #f0cd45;
     font-weight: 600;
     text-shadow:
         0 0 18px rgba(240, 205, 69, 0.34),
         0 12px 34px rgba(0, 0, 0, 0.48);
-}
-
-.peace-density-content h2 strong {
-    color: #f0cd45;
 }
 
 .peace-density-content p {
@@ -1550,11 +1556,6 @@ img.snapshot-icon {
     font-weight: 400;
     line-height: 25px;
     text-shadow: 0 10px 28px rgba(0, 0, 0, 0.48);
-}
-
-.peace-density-content p span {
-    color: #f0cd45;
-    font-weight: 600;
 }
 
 .peace-density-scroll {
@@ -10704,47 +10705,59 @@ a[href*="wa.me"] small {
 }
 
 .property-snapshot-readmore {
-    position: relative;
-    display: inline-flex;
-    min-width: 155px;
-    min-height: 48px;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    overflow: hidden;
-    border-radius: 14px;
-    background: linear-gradient(180deg, #D5AE66, #D5AE66);
-    color: #080808;
-    font-size: 14px;
-    font-weight: 700;
-    letter-spacing: 0.02em;
-    box-shadow: 0 20px 46px rgba(213, 174, 102, 0.18);
+    --property-snapshot-readmore-min-height: 28px;
+    --property-snapshot-readmore-padding-y: 7px;
+    --property-snapshot-readmore-padding-x: 18px;
+    --property-snapshot-readmore-radius: 10px;
+    --property-snapshot-readmore-font-size: 12px;
+    --property-snapshot-readmore-line-height: 1;
+    --property-snapshot-readmore-letter-spacing: 0.18em;
+    position: relative !important;
+    display: inline-flex !important;
+    min-width: 0 !important;
+    min-height: var(--property-snapshot-readmore-min-height) !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    padding: var(--property-snapshot-readmore-padding-y) var(--property-snapshot-readmore-padding-x) !important;
+    overflow: hidden !important;
+    border: 1px solid rgba(240, 205, 69, 0.38) !important;
+    border-radius: var(--property-snapshot-readmore-radius) !important;
+    background: rgba(240, 205, 69, 0.14) !important;
+    color: #f0cd45 !important;
+    font-family: "Inter", Arial, sans-serif !important;
+    font-size: var(--property-snapshot-readmore-font-size) !important;
+    font-weight: 700 !important;
+    line-height: var(--property-snapshot-readmore-line-height) !important;
+    letter-spacing: var(--property-snapshot-readmore-letter-spacing) !important;
+    text-align: center !important;
+    text-transform: uppercase !important;
+    text-decoration: none !important;
+    box-shadow: none !important;
     transition:
         transform 0.26s ease,
-        box-shadow 0.26s ease,
-        filter 0.26s ease;
+        border-color 0.26s ease,
+        background-color 0.26s ease,
+        color 0.26s ease;
 }
 
 .property-snapshot-readmore::after {
-    content: "";
-    position: absolute;
-    top: -35%;
-    left: -55%;
-    width: 36%;
-    height: 170%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.38), transparent);
-    transform: skewX(-18deg);
-    transition: left 0.55s ease;
+    content: none !important;
 }
 
 .property-snapshot-readmore:hover {
-    filter: brightness(1.06);
-    transform: translateY(-3px);
-    box-shadow: 0 23px 46px rgba(213, 174, 102, 0.30);
+    background: rgba(240, 205, 69, 0.2) !important;
+    border-color: rgba(240, 205, 69, 0.56) !important;
+    color: #ffe07a !important;
+    transform: translateY(-2px) !important;
 }
 
 .property-snapshot-readmore:hover::after {
-    left: 118%;
+    content: none !important;
+}
+
+.property-snapshot-readmore span {
+    display: none !important;
 }
 
 .property-snapshot-strip {
@@ -11536,11 +11549,6 @@ a[href*="wa.me"] small {
     line-height: 26px;
 }
 
-.differentiation-copy p strong {
-    color: #f0cd45;
-    font-weight: 600;
-}
-
 .differentiation-cards {
     counter-reset: differentiation-card;
     display: grid;
@@ -11880,7 +11888,6 @@ a[href*="wa.me"] small {
     .snapshot-inner,
     .about-reveal-img,
     .about-reveal-content,
-    .peace-density-content h2,
     .peace-density-content p,
     .peace-density-scroll,
     .ideal-floor-eyebrow,
@@ -12956,7 +12963,6 @@ body {
 
 
 :is(
-    .peace-density-content h2,
     .sticky-availability-content h2,
     .sticky-availability-content--interested h2,
     .interested-property-copy h2,
@@ -13100,7 +13106,6 @@ body {
 
 
 :is(
-    .about-btn,
     .ideal-floor-size-tabs button,
     .ideal-floor-levels button,
     .ideal-floor-price-btn,
@@ -13124,7 +13129,6 @@ body {
     .site-visit-submit,
     .site-visit-whatsapp,
     .footer-redesign-actions a,
-    .property-snapshot-readmore,
     .property-snapshot-modal-btn
 ) {
     font-size: 15.5px !important;
