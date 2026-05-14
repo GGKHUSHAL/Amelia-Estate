@@ -4175,7 +4175,6 @@
 
     .peace-density-overlay {
         background:
-            radial-gradient(360px 180px at 22% 48%, rgba(240, 205, 69, 0.16), transparent 70%),
             linear-gradient(180deg, rgba(3, 8, 12, 0.36) 0%, rgba(3, 8, 12, 0.34) 48%, rgba(3, 8, 12, 0.72) 100%),
             linear-gradient(90deg, rgba(0, 0, 0, 0.62) 0%, rgba(0, 0, 0, 0.34) 64%, rgba(0, 0, 0, 0.18) 100%);
     }
