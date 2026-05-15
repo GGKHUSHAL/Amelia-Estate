@@ -532,9 +532,7 @@ const idealFloorSection = document.querySelector(".ideal-floor-section");
 if (idealFloorSection) {
     const sizeTabs = idealFloorSection.querySelectorAll("[data-ideal-size]");
     const floorTabs = idealFloorSection.querySelectorAll("[data-ideal-floor]");
-    const badgeSizeFloor = idealFloorSection.querySelector(".ideal-floor-badges span");
     const badgeFeature = idealFloorSection.querySelector(".ideal-floor-badges strong");
-    const badgeFeatureIcon = badgeFeature.querySelector("svg").outerHTML;
     const panelSubtitle = idealFloorSection.querySelector(".ideal-floor-panel > div:first-child p");
     const specValues = idealFloorSection.querySelectorAll(".ideal-floor-spec strong");
     const idealImage = idealFloorSection.querySelector(".ideal-floor-media img");
@@ -634,10 +632,8 @@ if (idealFloorSection) {
             return;
         }
 
-        badgeSizeFloor.textContent = `${size.label} - ${activeFloor} Floor`;
         if (activeFloor === "4th") {
             badgeFeature.style.display = "";
-            badgeFeature.innerHTML = `${badgeFeatureIcon}${feature}`;
         } else {
             badgeFeature.style.display = "none";
         }
@@ -692,6 +688,8 @@ if (projectPlansSection) {
     const floorImage = "assets/img/project plans/90009c575573f8f004b5343f065db6963be4f203.png";
     const siteImage = "assets/img/project plans/site plan.jpg";
     let activePlan = "floor";
+    let projectPlanImageTimer;
+    let projectPlanImageRequest = 0;
 
     [floorImage, siteImage].forEach((src) => {
         const preload = new Image();
@@ -734,6 +732,59 @@ if (projectPlansSection) {
         }
     };
 
+    const switchProjectPlanImage = (src, alt) => {
+        if (!image || !src) {
+            return;
+        }
+
+        if (image.getAttribute("src") === src) {
+            image.alt = alt;
+            return;
+        }
+
+        const requestId = ++projectPlanImageRequest;
+        clearTimeout(projectPlanImageTimer);
+        visual.querySelectorAll(".project-plan-image-next").forEach((nextImage) => nextImage.remove());
+
+        const nextImage = new Image();
+        nextImage.className = "project-plan-image-next";
+        nextImage.alt = alt;
+        nextImage.setAttribute("aria-hidden", "true");
+        nextImage.src = src;
+
+        const minimumFade = new Promise((resolve) => {
+            setTimeout(resolve, 180);
+        });
+
+        const finishSwitch = () => {
+            if (requestId !== projectPlanImageRequest) {
+                return;
+            }
+
+            visual.appendChild(nextImage);
+            requestAnimationFrame(() => {
+                nextImage.classList.add("is-visible");
+            });
+
+            projectPlanImageTimer = setTimeout(() => {
+                if (requestId === projectPlanImageRequest) {
+                    image.src = src;
+                    image.alt = alt;
+                    nextImage.remove();
+                }
+            }, 620);
+        };
+
+        const imageReady = nextImage.decode
+            ? nextImage.decode().catch(() => undefined)
+            : new Promise((resolve) => {
+                nextImage.onload = resolve;
+                nextImage.onerror = resolve;
+            });
+
+        Promise.all([imageReady, minimumFade]).then(finishSwitch);
+    };
+
     const updatePlan = (key) => {
         const content = planContent[key];
 
@@ -748,13 +799,13 @@ if (projectPlansSection) {
         });
 
         image.classList.remove("is-switching");
-        image.src = content.image;
-        image.alt = content.alt;
+        switchProjectPlanImage(content.image, content.alt);
         badgeLabel.textContent = content.badge;
         badgeAccentText.textContent = content.badgeAccent;
         footerTitle.textContent = content.title;
         footerCopy.textContent = content.copy;
         meta.innerHTML = content.meta;
+        projectPlansSection.classList.toggle("is-site-plan-active", key === "site");
         visual.classList.toggle("is-site", key === "site");
         variantBar.hidden = !content.showVariants;
         variants.hidden = !content.showVariants;
@@ -877,6 +928,7 @@ if (pricingSection) {
     const pricingTitle = pricingSection.querySelector(".pricing-title-block h3");
     const pricingFloor = pricingSection.querySelector(".pricing-title-block p");
     const imageBadge = pricingSection.querySelector(".pricing-image-badge");
+    const pricingImageWrap = pricingSection.querySelector(".pricing-image-wrap");
     const pricingImage = pricingSection.querySelector(".pricing-image-wrap img");
     const selectedPriceBox = pricingSection.querySelector(".selected-price-box");
     const selectedPrice = pricingSection.querySelector(".selected-price-box strong");
@@ -923,6 +975,7 @@ if (pricingSection) {
     let activeSize = "230";
     let isPricingUnlocked = false;
     let pricingImageTimer;
+    let pricingImageRequest = 0;
     let pricingCelebrationTimer;
     const unlockedIcon = `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 11V8a5 5 0 0 1 9.5-2.2" /><path d="M6 11h12v10H6V11Z" /></svg>`;
     const getActiveSizeLabel = () => `${activeSize} Sq.Yd`;
@@ -944,6 +997,59 @@ if (pricingSection) {
         if (unlockSizeInput) {
             unlockSizeInput.value = getActiveSizeLabel();
         }
+    };
+
+    const switchPricingImage = (src, alt) => {
+        if (!pricingImage || !pricingImageWrap || !src) {
+            return;
+        }
+
+        if (pricingImage.getAttribute("src") === src) {
+            pricingImage.alt = alt;
+            return;
+        }
+
+        const requestId = ++pricingImageRequest;
+        clearTimeout(pricingImageTimer);
+        pricingImageWrap.querySelectorAll(".pricing-image-next").forEach((nextImage) => nextImage.remove());
+
+        const nextImage = new Image();
+        nextImage.className = "pricing-image-next";
+        nextImage.alt = alt;
+        nextImage.setAttribute("aria-hidden", "true");
+        nextImage.src = src;
+
+        const minimumFade = new Promise((resolve) => {
+            setTimeout(resolve, 180);
+        });
+
+        const finishSwitch = () => {
+            if (requestId !== pricingImageRequest) {
+                return;
+            }
+
+            pricingImageWrap.appendChild(nextImage);
+            requestAnimationFrame(() => {
+                nextImage.classList.add("is-visible");
+            });
+
+            pricingImageTimer = setTimeout(() => {
+                if (requestId === pricingImageRequest) {
+                    pricingImage.src = src;
+                    pricingImage.alt = alt;
+                    nextImage.remove();
+                }
+            }, 620);
+        };
+
+        const imageReady = nextImage.decode
+            ? nextImage.decode().catch(() => undefined)
+            : new Promise((resolve) => {
+                nextImage.onload = resolve;
+                nextImage.onerror = resolve;
+            });
+
+        Promise.all([imageReady, minimumFade]).then(finishSwitch);
     };
 
     const openPricingUnlockForm = () => {
@@ -1014,15 +1120,7 @@ if (pricingSection) {
         imageBadge.textContent = content.badge;
         pricingSection.querySelector(".pricing-spec strong").textContent = content.area;
 
-        if (pricingImage && content.image && pricingImage.getAttribute("src") !== content.image) {
-            clearTimeout(pricingImageTimer);
-            pricingImage.classList.add("is-switching");
-            pricingImageTimer = setTimeout(() => {
-                pricingImage.src = content.image;
-                pricingImage.alt = `${content.title} premium residence view`;
-                pricingImage.classList.remove("is-switching");
-            }, 160);
-        }
+        switchPricingImage(content.image, `${content.title} premium residence view`);
 
         floorButtons.forEach((button, index) => {
             button.dataset.floorPrice = content.prices[index];

@@ -10,7 +10,6 @@
     }
 }
 
-
 /* Responsive rules moved from style.css; keep desktop/default styles in style.css. */
 
 /* Mobile/tablet navigation drawer. */
@@ -4252,27 +4251,17 @@
     }
 
     .booking-enquiry-form button {
-        height: 46px;
+        display: flex;
+        justify-content: center;
         padding: 0 12px;
-        font-size: 9px;
         letter-spacing: 0.13em;
-    }
-
-    .booking-trust-row {
-        justify-content: flex-start;
-        gap: 8px;
-        margin-top: 16px;
-        font-size: 9px;
-        line-height: 14px;
-    }
-
-    .booking-trust-row span + span::before {
-        margin-right: 3px;
+        min-height: 40px ;
+        font-size: 13.5px ;
     }
 
     .booking-trust-row svg {
-        width: 12px;
-        height: 12px;
+        width: 15px;
+        height: 15px;
     }
 
     .differentiation-banner {
@@ -4448,37 +4437,15 @@
         line-height: 28px;
     }
 
-    .booking-enquiry-form button {
-        font-size: 8px;
-        letter-spacing: 0.1em;
-    }
-
     .booking-trust-row {
         display: grid;
         grid-template-columns: repeat(3, minmax(0, 1fr));
         gap: 5px;
         align-items: center;
         width: 100%;
-        font-size: 7.8px;
-        line-height: 11px;
+        font-size: 9px;
+        line-height: 5px;
         letter-spacing: 0;
-    }
-
-    .booking-trust-row span {
-        justify-content: center;
-        gap: 3px;
-        min-width: 0;
-        white-space: nowrap;
-    }
-
-    .booking-trust-row span + span::before {
-        display: none;
-    }
-
-    .booking-trust-row svg {
-        width: 10px;
-        height: 10px;
-        flex: 0 0 10px;
     }
 
     .project-plans-section {
@@ -8576,17 +8543,6 @@
         font-size: 14px !important;
     }
 
-    .booking-enquiry-form button {
-        min-height: 48px !important;
-        font-size: 13.5px !important;
-        line-height: 1.2 !important;
-        white-space: normal !important;
-    }
-
-    .booking-trust-row {
-        font-size: 11.5px !important;
-        line-height: 1.35 !important;
-    }
 }
 
 @media (max-width: 991px) {
@@ -8682,51 +8638,32 @@
         height: 5px !important;
     }
 
-    .booking-enquiry-form button {
-        min-height: 44px !important;
-        height: 44px !important;
-        margin-top: 5px !important;
-        padding: 0 12px !important;
-        font-size: 10px !important;
-        line-height: 1.15 !important;
-        letter-spacing: 0.08em !important;
-    }
-
-    .booking-enquiry-form button span {
-        display: inline-block !important;
-        margin-left: auto !important;
-    }
-
-    .booking-trust-row {
-        display: grid !important;
-        grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
-        gap: 4px !important;
-        margin-top: 10px !important;
-        font-size: 7px !important;
-        line-height: 1 !important;
-        letter-spacing: 0 !important;
-    }
-
     .booking-trust-row span {
+        position: relative !important;
         min-width: 0 !important;
+        display: flex !important;
+        flex-direction: column !important;
         justify-content: center !important;
         align-items: center !important;
-        gap: 2px !important;
-        border: 1px solid rgba(240, 205, 69, 0.18) !important;
-        border-radius: 999px !important;
-        background: rgba(240, 205, 69, 0.055) !important;
-        padding: 6px 3px !important;
-        white-space: nowrap !important;
+        gap: 4px !important;
+        padding: 4px 6px !important;
+        border: 0 !important;
+        border-radius: 0 !important;
+        background: transparent !important;
+        white-space: normal !important;
+        text-align: center !important;
     }
 
     .booking-trust-row span + span::before {
-        display: none !important;
-    }
-
-    .booking-trust-row svg {
-        width: 8px !important;
-        height: 8px !important;
-        flex: 0 0 8px !important;
+        display: block !important;
+        position: absolute !important;
+        left: 0 !important;
+        top: 50% !important;
+        width: 1px !important;
+        height: 25px !important;
+        margin-right: 0 !important;
+        background: rgba(240, 205, 69, 0.35) !important;
+        transform: translateY(-50%) !important;
     }
 
     .selected-price-box {
@@ -8798,9 +8735,6 @@
         margin-bottom: 11px !important;
     }
 
-    .booking-trust-row {
-        font-size: 6.5px !important;
-    }
 }
 
 /* Construction mobile fit: keep status cards equal and bank tiles readable. */
@@ -10032,12 +9966,6 @@
         letter-spacing: 0.16em !important;
     }
 
-    .booking-enquiry-form h2 {
-        background: linear-gradient(135deg, #ffffff 0%, #ffffff 34%, #f0cd45 66%, #fff4c7 100%) !important;
-        -webkit-background-clip: text !important;
-        background-clip: text !important;
-        -webkit-text-fill-color: transparent !important;
-    }
 }
 
 /* Mobile choose ideal floor: tighter card, pills, and spec boxes. */
@@ -10265,7 +10193,7 @@
         border-radius: 999px !important;
         padding: 5px 9px !important;
         font-size: 8px !important;
-        font-weight: 700 !important;
+        font-weight: 500 !important;
         line-height: 1 !important;
         letter-spacing: 0.03em !important;
         text-transform: uppercase !important;
@@ -10449,7 +10377,15 @@
     }
 
     .transparent-pricing-section .pricing-image-wrap img {
-        height: 164px !important;
+        height: 220px !important;
+        object-fit: cover !important;
+        object-position: center center !important;
+    }
+
+    .transparent-pricing-section .pricing-image-wrap .pricing-image-next {
+        height: 220px !important;
+        object-fit: cover !important;
+        object-position: center center !important;
     }
 
     .transparent-pricing-section .selected-price-box {
@@ -10658,5 +10594,175 @@
         align-self: flex-start !important;
         margin-left: 0 !important;
         margin-right: 0 !important;
+    }
+}
+
+/* Mobile project plan image: keep the badge above the image and let the image fill the frame. */
+@media (max-width: 767px) {
+    .project-plan-tabs {
+        margin-bottom: 14px !important;
+    }
+
+    .project-plan-card {
+        position: relative !important;
+        margin-top: 50px !important;
+        overflow: visible !important;
+    }
+
+    .project-plan-variant-bar {
+        position: absolute !important;
+        top: -50px !important;
+        left: 0 !important;
+        right: 0 !important;
+        z-index: 4 !important;
+        width: calc(100% - 22px) !important;
+        margin: 0 auto 10px !important;
+        padding: 0 !important;
+        border: 0 !important;
+        background: transparent !important;
+    }
+
+    .project-plan-variants {
+        width: 100% !important;
+        min-width: 0 !important;
+    }
+
+    .project-plan-visual,
+    .project-plan-visual.is-site {
+        position: relative !important;
+        height: 220px !important;
+        min-height: 220px !important;
+        max-height: none !important;
+        padding: 0 !important;
+        gap: 0 !important;
+        overflow: hidden !important;
+        border-radius: 18px 18px 0 0 !important;
+    }
+
+    .project-plan-badges {
+        position: absolute !important;
+        top: 8px !important;
+        left: 8px !important;
+        z-index: 3 !important;
+        display: flex !important;
+        width: auto !important;
+        max-width: calc(100% - 16px) !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        transform: none !important;
+    }
+
+    .project-plan-badges .project-plan-badge-label,
+    .project-plan-visual .project-plan-badge-label {
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        min-height: 22px !important;
+        margin: 0 !important;
+        padding: 5px 9px !important;
+        font-family: "Jost", "Inter", Arial, sans-serif !important;
+        font-weight: 600 !important;
+        font-size: 8px !important;
+        line-height: 1 !important;
+        letter-spacing: 0.03em !important;
+        text-transform: uppercase !important;
+        border-radius: 999px !important;
+        background: rgba(11, 10, 9, 0.93) !important;
+        color: #f0cd45 !important;
+    }
+
+    .project-plan-image,
+    .project-plan-visual.is-site .project-plan-image,
+    .project-plan-visual .project-plan-image-next {
+        display: block !important;
+        width: 100% !important;
+        height: 100% !important;
+        margin-top: 0 !important;
+        max-width: 100% !important;
+        max-height: none !important;
+        object-fit: cover !important;
+        object-position: center center !important;
+        border-radius: 18px 18px 0 0 !important;
+    }
+
+    .project-plan-footer h3 {
+        color: #ffffff !important;
+        -webkit-text-fill-color: #ffffff !important;
+    }
+}
+
+@media (max-width: 767px) {
+    .transparent-pricing-section .pricing-left {
+        padding-top: 0 !important;
+        padding-right: 0 !important;
+        padding-left: 0 !important;
+        border-right: 0 !important;
+        border-bottom: 0 !important;
+    }
+
+    .transparent-pricing-section .pricing-right {
+        border-top: 0 !important;
+    }
+
+    .transparent-pricing-section .pricing-image-wrap {
+        width: 100% !important;
+        margin-top: 0 !important;
+        margin-right: 0 !important;
+        margin-left: 0 !important;
+        border-radius: 18px 18px 0 0 !important;
+    }
+
+    .transparent-pricing-section .pricing-image-wrap img,
+    .transparent-pricing-section .pricing-image-wrap .pricing-image-next {
+        width: 100% !important;
+        height: 220px !important;
+        object-fit: cover !important;
+        object-position: center center !important;
+        border-radius: 18px 18px 0 0 !important;
+    }
+
+    .transparent-pricing-section .floor-price-panel {
+        margin-right: 10px !important;
+        margin-left: 10px !important;
+        border-color: transparent !important;
+        background: transparent !important;
+        box-shadow: none !important;
+    }
+
+    .transparent-pricing-section .floor-price-grid button {
+        border-color: rgba(240, 205, 69, 0.18) !important;
+        border-width: 1px !important;
+        background: rgba(240, 205, 69, 0.04) !important;
+    }
+
+    .transparent-pricing-section .floor-price-grid button.is-active {
+        background: rgba(240, 205, 69, 0.10) !important;
+        border-color: rgba(240, 205, 69, 0.38) !important;
+        color: #f0cd45 !important;
+        box-shadow: inset 0 0 0 1px rgba(240, 205, 69, 0.20) !important;
+    }
+
+    .transparent-pricing-section .floor-price-grid button.is-active span {
+        color: rgba(255, 255, 255, 0.68) !important;
+    }
+
+    .transparent-pricing-section .floor-price-grid button.is-active strong,
+    .transparent-pricing-section .floor-price-grid button.is-active .pricing-currency {
+        color: #f0cd45 !important;
+        filter: none !important;
+        text-shadow: none !important;
+    }
+
+    .transparent-pricing-section .floor-price-grid button.is-price-visible:not(.is-active) {
+        background: rgba(240, 205, 69, 0.04) !important;
+        border-color: rgba(240, 205, 69, 0.18) !important;
+        box-shadow: none !important;
+    }
+
+    .transparent-pricing-section .floor-price-grid button.is-price-visible:not(.is-active) strong,
+    .transparent-pricing-section .floor-price-grid button.is-price-visible:not(.is-active) .pricing-currency {
+        color: #ffffff !important;
+        filter: none !important;
+        text-shadow: none !important;
     }
 }
