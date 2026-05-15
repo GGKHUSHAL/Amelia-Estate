@@ -10770,8 +10770,8 @@
 /* Mobile booking enquiry after the structure slider: give the form room to breathe. */
 @media (max-width: 767px) {
     .booking-enquiry-section {
-        min-height: 100svh !important;
-        padding: 56px 14px 64px !important;
+        min-height: auto !important;
+        padding: 30px 14px 34px !important;
         overflow: visible !important;
     }
 
@@ -10782,7 +10782,7 @@
     .booking-enquiry-form {
         max-height: none !important;
         min-height: 0 !important;
-        padding: 24px 18px 16px !important;
+        padding: 22px 18px 15px !important;
         border-radius: 22px !important;
     }
 
@@ -10809,11 +10809,78 @@
     }
 
     .booking-enquiry-form button {
+        display: flex !important;
+        width: min(100%, 286px) !important;
         min-height: 46px !important;
-        margin-top: 4px !important;
+        margin: 6px auto 0 !important;
+        padding-inline: 18px !important;
+        justify-content: center !important;
+        text-align: center !important;
     }
 
     .booking-trust-row {
-        margin-top: 10px !important;
+        display: flex !important;
+        justify-content: space-between !important;
+        gap: 0 !important;
+        margin-top: 14px !important;
+        font-size: 9px !important;
+        line-height: 1.2 !important;
+        letter-spacing: 0.045em !important;
+    }
+
+    .booking-trust-row span {
+        flex: 1 1 0 !important;
+        gap: 5px !important;
+        padding: 5px 4px !important;
+        color: rgba(255, 255, 255, 0.9) !important;
+    }
+
+    .booking-trust-row svg {
+        width: 15px !important;
+        height: 15px !important;
+        stroke-width: 2 !important;
+    }
+}
+
+/* Match Section 8 mobile spec cards with Section 10's compact premium sizing. */
+@media (max-width: 767px) {
+    .premium-specs-brand-dots {
+        display: none !important;
+    }
+
+    .ideal-floor-section .ideal-floor-specs {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 5px !important;
+    }
+
+    .ideal-floor-section .ideal-floor-panel .ideal-floor-spec {
+        min-height: 58px !important;
+        height: auto !important;
+        gap: 4px !important;
+        padding: 8px 6px !important;
+        border-radius: 12px !important;
+        background: rgba(4, 4, 4, 0.56) !important;
+        text-align: center !important;
+    }
+
+    .ideal-floor-section .ideal-floor-panel .ideal-floor-spec img {
+        width: 16px !important;
+        height: 16px !important;
+        margin: 0 !important;
+    }
+
+    .ideal-floor-section .ideal-floor-panel .ideal-floor-spec span {
+        margin: 0 !important;
+        font-size: 7px !important;
+        line-height: 9px !important;
+        text-align: center !important;
+    }
+
+    .ideal-floor-section .ideal-floor-panel .ideal-floor-spec strong {
+        min-height: 0 !important;
+        margin: 0 !important;
+        font-size: 10px !important;
+        line-height: 12px !important;
+        text-align: center !important;
     }
 }

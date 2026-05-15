@@ -4579,8 +4579,8 @@ body.is-pricing-modal-open {
     padding: 8px 20px;
     border: 1px solid rgba(213, 174, 102, 0.58);
     border-radius: 999px;
-    background: rgba(213, 174, 102, 0.10);
-    color: #D5AE66;
+   background: rgba(240, 205, 69, 0.14) ;
+    color: #f0cd45 ;
     font-family: "Jost", "Inter", Arial, sans-serif;
     font-size: 13px;
     font-weight: 700;
@@ -4608,7 +4608,7 @@ body.is-pricing-modal-open {
 }
 
 .premium-specs-header h2 span {
-    color: #D5AE66;
+    color: #f0CD45;
 }
 
 .premium-specs-header>p:not(.premium-specs-eyebrow) {
@@ -4801,23 +4801,42 @@ body.is-pricing-modal-open {
 }
 
 .premium-specs-slide-overlay button {
-    align-self: flex-start;
+    position: absolute;
+    right: 22px;
+    bottom: 22px;
+    z-index: 4;
+    display: grid;
+    width: 44px;
+    height: 44px;
     min-height: 44px;
-    padding: 0 22px;
-    border: 1px solid #D5AE66;
-    border-radius: 12px;
-    background: rgba(213, 174, 102, 0.92);
-    color: #050505;
-    font-size: 13px;
-    font-weight: 800;
+    place-items: center;
+    padding: 0;
+    border: 1px solid rgba(213, 174, 102, 0.42);
+    border-radius: 14px;
+    background: rgba(10, 10, 10, 0.82);
+    color: #ffffff;
+    backdrop-filter: blur(12px);
     transition:
         background-color 0.24s ease,
+        border-color 0.24s ease,
         transform 0.24s ease;
 }
 
 .premium-specs-slide-overlay button:hover {
-    background: #D5AE66;
-    transform: translateX(4px);
+    border-color: rgba(213, 174, 102, 0.82);
+    background: rgba(213, 174, 102, 0.92);
+    color: #050505;
+    transform: translateY(-2px);
+}
+
+.premium-specs-slide-overlay button svg {
+    width: 19px;
+    height: 19px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
 }
 
 @keyframes premiumSpecZoomIn {
@@ -4874,14 +4893,11 @@ body.is-pricing-modal-open {
 .premium-specs-brands {
     margin-top: 48px;
     padding: 35px 34px 32px;
-    border: 1px solid rgba(213, 174, 102, 0.20);
-    border-radius: 14px;
-    background: #141414;
 }
 
 .premium-specs-brands p {
     margin: 0 0 20px;
-    color: rgba(255, 255, 255, 0.46);
+    color: #ffff;
     font-family: "Jost", "Inter", Arial, sans-serif;
     font-size: 12px;
     font-weight: 800;
@@ -4913,11 +4929,9 @@ body.is-pricing-modal-open {
     align-items: center;
     justify-content: center;
     gap: 10px;
-    min-height: 54px;
+    min-height: 44px;
     padding: 0 14px;
-    border: 1px solid rgba(255, 255, 255, 0.04);
     border-radius: 16px;
-    background: #030303;
     color: #ffffff;
     font-family: "Jost", "Inter", Arial, sans-serif;
     font-size: 14px;
@@ -4956,13 +4970,14 @@ body.is-pricing-modal-open {
 .premium-specs-brand b {
     min-width: 0;
     font: inherit;
+    color:rgba(255, 255, 255, 0.46);
 }
 
 .premium-specs-brand:hover {
-    border-color: rgba(213, 174, 102, 0.36);
-    background: rgba(213, 174, 102, 0.10);
+     border: 1px solid rgba(213, 174, 102, 0.20);
+    border-radius: 14px;
+    background: #141414;
     color: #D5AE66;
-    transform: translateY(-2px);
 }
 
 .premium-specs-brand-dots {
@@ -4996,9 +5011,7 @@ body.is-pricing-modal-open {
     width: min(100%, 820px);
     margin: 36px auto 0;
     padding: 24px 34px 25px;
-    border: 1px solid rgba(213, 174, 102, 0.20);
     border-radius: 12px;
-    background: #141414;
 }
 
 .premium-specs-notice strong {
@@ -13328,6 +13341,139 @@ body {
 .footer-redesign-cta a:not([href*="wa.me"])>* {
     position: relative !important;
     z-index: 1 !important;
+}
+
+.premium-specs-slide-overlay button {
+    position: absolute !important;
+    right: 22px !important;
+    bottom: 22px !important;
+    z-index: 4 !important;
+    display: grid !important;
+    width: 44px !important;
+    height: 44px !important;
+    min-width: 44px !important;
+    min-height: 44px !important;
+    place-items: center !important;
+    padding: 0 !important;
+    border: 1px solid rgba(213, 174, 102, 0.5) !important;
+    border-radius: 14px !important;
+    background: rgba(10, 10, 10, 0.58) !important;
+    color: #D5AE66 !important;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
+    backdrop-filter: blur(12px) !important;
+}
+
+.premium-specs-slide-overlay button::after {
+    display: none !important;
+    content: none !important;
+}
+
+.premium-specs-slide-overlay button:hover {
+    border-color: #D5AE66 !important;
+    background: linear-gradient(180deg, rgba(213, 174, 102, 0.18), rgba(213, 174, 102, 0.08)), rgba(10, 10, 10, 0.72) !important;
+    color: #D5AE66 !important;
+    box-shadow: inset 0 0 0 1px rgba(213, 174, 102, 0.18), 0 12px 28px rgba(0, 0, 0, 0.28) !important;
+    transform: translateY(-2px) !important;
+}
+
+.premium-specs-slide-overlay button svg {
+    width: 19px !important;
+    height: 19px !important;
+    fill: none !important;
+    stroke: currentColor !important;
+    stroke-width: 1.8 !important;
+    stroke-linecap: round !important;
+    stroke-linejoin: round !important;
+}
+
+/* Section 11 final theme lock: only image boxes, badges, and detail triggers use the heading gold. */
+.premium-specs-section .premium-specs-slide,
+.premium-specs-section .premium-specs-slide.is-prev,
+.premium-specs-section .premium-specs-slide.is-next,
+.premium-specs-section .premium-specs-slide.is-active {
+    border: 1px solid rgba(240, 205, 69, 0.32) !important;
+}
+
+.premium-specs-section .premium-specs-slide.is-active,
+.premium-specs-section .premium-specs-slide:hover {
+    box-shadow:
+        0 34px 88px rgba(0, 0, 0, 0.72),
+        0 0 0 1px rgba(240, 205, 69, 0.34) !important;
+}
+
+.premium-specs-section .premium-specs-slide-overlay span {
+    color: #f0cd45 !important;
+}
+
+.premium-specs-section .premium-specs-slide-overlay span {
+    border-color: rgba(240, 205, 69, 0.58) !important;
+    background: rgba(240, 205, 69, 0.14) !important;
+}
+
+.premium-specs-section .premium-specs-slide-overlay button {
+    font-size: 0 !important;
+    border-color: rgba(240, 205, 69, 0.56) !important;
+    color: #f0cd45 !important;
+    background: rgba(10, 10, 10, 0.58) !important;
+}
+
+.premium-specs-section .premium-specs-slide-overlay button:hover {
+    border-color: #f0cd45 !important;
+    color: #f0cd45 !important;
+    background: linear-gradient(180deg, rgba(240, 205, 69, 0.18), rgba(240, 205, 69, 0.08)), rgba(10, 10, 10, 0.74) !important;
+}
+
+/* Section 10 image switch should feel exactly like Section 8's smooth reveal. */
+.transparent-pricing-section .pricing-image-wrap img {
+    opacity: 1 !important;
+    transition:
+        opacity .62s ease,
+        filter .58s ease,
+        transform .78s cubic-bezier(.22, 1, .36, 1) !important;
+    will-change: opacity, filter, transform !important;
+}
+
+.transparent-pricing-section .pricing-image-wrap .pricing-image-next {
+    position: absolute !important;
+    inset: 0 !important;
+    z-index: 1 !important;
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    min-height: 100% !important;
+    object-fit: cover !important;
+    object-position: center center !important;
+    opacity: 0 !important;
+    filter: blur(5px) saturate(.92) !important;
+    transform: scale(1.025) !important;
+    pointer-events: none !important;
+    transition:
+        opacity .58s ease,
+        filter .58s ease,
+        transform .72s cubic-bezier(.22, 1, .36, 1) !important;
+    will-change: opacity, filter, transform !important;
+}
+
+.transparent-pricing-section .pricing-image-wrap .pricing-image-next.is-visible {
+    opacity: 1 !important;
+    filter: none !important;
+    transform: scale(1) !important;
+}
+
+/* Section 11 hover: keep cards in place, only let the image breathe. */
+.premium-specs-section .premium-specs-slide:not(.is-active):hover,
+.premium-specs-section .premium-specs-slide.is-active:hover {
+    transform: none !important;
+}
+
+.premium-specs-section .premium-specs-slide:not(.is-active):hover img,
+.premium-specs-section .premium-specs-slide.is-active:hover img {
+    transform: scale(1.035) !important;
+}
+
+.premium-specs-section .premium-specs-slide-overlay button svg {
+    display: block !important;
+    stroke-width: 2.8 !important;
 }
 
 

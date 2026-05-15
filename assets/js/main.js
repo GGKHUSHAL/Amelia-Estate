@@ -972,6 +972,13 @@ if (pricingSection) {
         }
     };
 
+    Object.values(pricingContent).forEach(({ image }) => {
+        if (image) {
+            const preload = new Image();
+            preload.src = image;
+        }
+    });
+
     let activeSize = "230";
     let isPricingUnlocked = false;
     let pricingImageTimer;
@@ -984,6 +991,11 @@ if (pricingSection) {
         const floorLabel = button.querySelector("span").textContent;
         const price = button.dataset.floorPrice;
         const isVisiblePrice = isPricingUnlocked || button.classList.contains("is-price-visible");
+
+        if (!isVisiblePrice) {
+            openPricingUnlockForm();
+            return;
+        }
 
         floorButtons.forEach((item) => item.classList.remove("is-active"));
         button.classList.add("is-active");
@@ -1379,10 +1391,18 @@ if (premiumSpecsSection) {
 
     const startSpecSlider = () => {
         clearInterval(specSliderInterval);
+        specSliderInterval = setInterval(() => {
+            if (specsModal && !specsModal.hidden) {
+                return;
+            }
+
+            setSpecSlide(activeSpecSlide + 1, 1);
+        }, 3200);
     };
 
     const resetSpecSlider = () => {
         clearInterval(specSliderInterval);
+        startSpecSlider();
     };
 
     const openSpecsModal = (slide) => {
@@ -1438,6 +1458,15 @@ if (premiumSpecsSection) {
     });
 
     specSlides.forEach((slide, index) => {
+        const detailsButton = slide.querySelector(".premium-specs-slide-overlay button");
+
+        detailsButton?.addEventListener("click", (event) => {
+            event.stopPropagation();
+            setSpecSlide(index);
+            resetSpecSlider();
+            openSpecsModal(slide);
+        });
+
         slide.addEventListener("click", () => {
             if (didSpecSwipe) {
                 return;
@@ -1476,6 +1505,12 @@ if (premiumSpecsSection) {
         specEndX = event.clientX;
         handleSpecSwipe();
     });
+
+    specTrack.addEventListener("mouseenter", () => {
+        clearInterval(specSliderInterval);
+    });
+
+    specTrack.addEventListener("mouseleave", startSpecSlider);
 
     if (brandTrack && brandItems.length && brandDots.length) {
         setupBrandMarquee();
