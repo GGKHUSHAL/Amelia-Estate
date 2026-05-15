@@ -885,6 +885,11 @@
         margin-bottom: 18px !important;
     }
 
+    .footer-redesign-marquee-mask {
+        -webkit-mask-image: none !important;
+        mask-image: none !important;
+    }
+
     .footer-redesign-marquee-set {
         gap: 22px !important;
         padding: 13px 22px 13px 0 !important;
@@ -1189,7 +1194,7 @@
 
     .visual-showcase-section {
         min-height: 0;
-        padding: 70px 32px;
+        padding: 56px 32px;
     }
 
     .prime-location-section {
@@ -1903,7 +1908,7 @@
     }
 
     .visual-showcase-section {
-        padding: 60px 40px;
+        padding: 50px 40px;
     }
 
     .prime-location-section {
@@ -2076,17 +2081,6 @@
     .visual-showcase-header > p:not(.visual-showcase-eyebrow) {
         font-size: 16px;
         line-height: 24px;
-    }
-
-    .visual-showcase-tabs {
-        width: 100%;
-        max-width: 620px;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    .visual-showcase-tabs button {
-        min-width: 0;
     }
 
     .visual-showcase-grid {
@@ -2982,7 +2976,7 @@
     }
 
     .visual-showcase-section {
-        padding: 52px 16px 58px;
+        padding: 42px 16px 46px;
     }
 
     .lifestyle-amenities-section {
@@ -3501,24 +3495,6 @@
         line-height: 22px;
     }
 
-    .visual-showcase-tabs {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        margin-top: 32px;
-        min-height: 54px;
-        padding: 4px;
-        gap: 8px;
-    }
-
-    .visual-showcase-tabs button {
-        width: 100%;
-        min-width: 0;
-        min-height: 44px;
-        padding: 0 14px;
-        font-size: 14px;
-        font-weight: 500;
-    }
-
     .visual-showcase-copy {
         margin-top: 20px;
         padding-top: 18px;
@@ -3561,14 +3537,6 @@
         border-radius: 10px;
         scroll-snap-align: center;
         scroll-snap-stop: always;
-    }
-
-    .visual-gallery-card.is-active {
-        box-shadow:
-            0 22px 54px rgba(0, 0, 0, 0.46),
-            0 0 0 1px rgba(240, 205, 69, 0.28),
-            0 0 24px rgba(240, 205, 69, 0.14);
-        border-color: rgba(240, 205, 69, 0.74);
     }
 
     .visual-gallery-dots {
@@ -3708,12 +3676,16 @@
     .premium-specs-brand-list {
         display: flex;
         grid-template-columns: none;
-        gap: 10px;
-        margin: 0 -8px;
-        padding: 0 8px 2px;
+        gap: 4px;
+        margin: 0 -4px;
+        padding: 0 4px 2px;
         overflow-x: auto;
         scroll-snap-type: none;
         scrollbar-width: none;
+    }
+
+    .premium-specs-brand-list.is-marquee {
+        cursor: default;
     }
 
     .premium-specs-brand-list::-webkit-scrollbar {
@@ -3724,7 +3696,14 @@
         flex: 0 0 min(68vw, 210px);
         min-height: 46px;
         padding: 0 10px;
+        border: 0 !important;
+        border-radius: 0 !important;
+        background: #000000 !important;
+        color: rgba(255, 255, 255, 0.46) !important;
+        box-shadow: none !important;
+        transform: none !important;
         font-size: 12px;
+        transition: none !important;
     }
 
     .premium-specs-brand-logo {
@@ -3741,14 +3720,17 @@
         flex-basis: 78px;
     }
 
+    .premium-specs-brand:hover,
     .premium-specs-brand.is-active {
-        border-color: rgba(213, 174, 102, 0.52);
-        background: rgba(213, 174, 102, 0.12);
-        color: #D5AE66;
+        border: 0 !important;
+        background: #000000 !important;
+        color: rgba(255, 255, 255, 0.46) !important;
+        box-shadow: none !important;
+        transform: none !important;
     }
 
     .premium-specs-brand-dots {
-        display: flex;
+        display: none !important;
     }
 
     .premium-specs-notice {
@@ -4623,7 +4605,7 @@
     }
 
     .visual-showcase-section {
-        padding: 44px 14px 50px;
+        padding: 36px 14px 40px;
     }
 
     .prime-location-section {
@@ -5225,13 +5207,6 @@
     .visual-showcase-header > p:not(.visual-showcase-eyebrow) {
         font-size: 14px;
         line-height: 21px;
-    }
-
-    .visual-showcase-tabs button {
-        min-width: 0;
-        padding: 0 9px;
-        font-size: 12px;
-        gap: 4px;
     }
 
     .visual-showcase-tabs button span {
@@ -10211,6 +10186,28 @@
         background: #f0cd45 !important;
         color: #000000 !important;
         box-shadow: 0 0 18px rgba(240, 205, 69, 0.36) !important;
+    }
+
+    .visual-showcase-tabs.transparent-pricing-tabs {
+        width: min(100%, 430px) !important;
+        margin: 32px auto 10px !important;
+    }
+
+    .visual-showcase-tabs.transparent-pricing-tabs button {
+        flex: 1 1 0 !important;
+        min-width: 0 !important;
+        padding: 0 4px !important;
+        font-size: 9px !important;
+        gap: 4px !important;
+        white-space: nowrap !important;
+    }
+
+    .visual-showcase-tabs.transparent-pricing-tabs button:hover,
+    .visual-showcase-tabs.transparent-pricing-tabs button.is-active {
+        background: rgba(240, 205, 69, 0.12) !important;
+        color: #f0cd45 !important;
+        border-color: rgba(240, 205, 69, 0.42) !important;
+        box-shadow: inset 0 0 0 1px rgba(240, 205, 69, 0.20) !important;
     }
 
     .transparent-pricing-section .pricing-spec-grid {

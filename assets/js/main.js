@@ -1259,6 +1259,8 @@ if (premiumSpecsSection) {
             return;
         }
 
+        cancelAnimationFrame(brandMarqueeFrame);
+
         const step = () => {
             if (!isBrandMarqueePaused) {
                 brandMarqueePosition += 0.55;
@@ -1275,7 +1277,6 @@ if (premiumSpecsSection) {
             brandMarqueeFrame = requestAnimationFrame(step);
         };
 
-        cancelAnimationFrame(brandMarqueeFrame);
         brandMarqueeFrame = requestAnimationFrame(step);
     };
 
@@ -1630,10 +1631,14 @@ if (visualShowcaseSection) {
             </div>
             <span class="visual-gallery-view-full" aria-hidden="true">
                 <svg viewBox="0 0 24 24">
-                    <path d="M15 3h6v6" />
-                    <path d="m14 10 7-7" />
-                    <path d="M9 21H3v-6" />
-                    <path d="m10 14-7 7" />
+                    <path d="M9.6 4H4v5.6" />
+                    <path d="M4.5 4.5 10 10" />
+                    <path d="M14.4 4H20v5.6" />
+                    <path d="M19.5 4.5 14 10" />
+                    <path d="M20 14.4V20h-5.6" />
+                    <path d="M19.5 19.5 14 14" />
+                    <path d="M4 14.4V20h5.6" />
+                    <path d="M4.5 19.5 10 14" />
                 </svg>
             </span>
         `;
