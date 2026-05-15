@@ -1970,7 +1970,17 @@ if (primeLocationSection) {
     };
 
     const updateDistanceSlider = () => {
-        if (!distanceGrid || !distanceCards.length || !isMobileDistanceSlider()) {
+        if (!distanceGrid || !distanceCards.length) {
+            return;
+        }
+
+        if (!isMobileDistanceSlider()) {
+            setActiveDistanceCard(-1);
+
+            if (distanceProgress) {
+                distanceProgress.style.width = "";
+            }
+
             return;
         }
 
@@ -2040,7 +2050,6 @@ if (primeLocationSection) {
     };
 
     if (distanceGrid && distanceCards.length) {
-        setActiveDistanceCard(0);
         distanceGrid.addEventListener("scroll", requestDistanceSliderUpdate, { passive: true });
         window.addEventListener("resize", requestDistanceSliderUpdate);
         window.addEventListener("scroll", requestLocationCtaShiftUpdate, { passive: true });
