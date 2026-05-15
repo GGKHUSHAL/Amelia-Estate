@@ -3848,7 +3848,7 @@ body.is-project-plan-lightbox-open {
     position: absolute;
     inset: 0;
     background:
-        radial-gradient(circle at 50% 42%, rgba(213, 174, 102, 0.26), transparent 32%),
+        radial-gradient(circle at 50% 42%, rgba(240, 205, 69, 0.28), transparent 32%),
         rgba(0, 0, 0, 0.28);
     animation: pricingCelebrationFade 2.65s ease forwards;
 }
@@ -3860,11 +3860,11 @@ body.is-project-plan-lightbox-open {
     top: 50%;
     width: 180px;
     height: 180px;
-    border: 1px solid rgba(213, 174, 102, 0.44);
+    border: 1px solid rgba(240, 205, 69, 0.52);
     border-radius: 50%;
     box-shadow:
-        0 0 34px rgba(213, 174, 102, 0.18),
-        inset 0 0 28px rgba(213, 174, 102, 0.10);
+        0 0 34px rgba(240, 205, 69, 0.24),
+        inset 0 0 28px rgba(240, 205, 69, 0.12);
     animation: pricingCelebrationRing 2.55s ease forwards;
 }
 
@@ -3875,17 +3875,17 @@ body.is-project-plan-lightbox-open {
     width: 10px;
     height: 18px;
     border-radius: 2px;
-    background: #D5AE66;
+    background: #f0cd45;
     animation: pricingConfetti 2.35s cubic-bezier(0.18, 0.86, 0.26, 1) forwards;
 }
 
 .pricing-celebration span:nth-child(2n) {
-    background: #ffffff;
+    background: #fff4bd;
     animation-delay: 0.08s;
 }
 
 .pricing-celebration span:nth-child(3n) {
-    background: #19bb86;
+    background: #d8a900;
     animation-delay: 0.15s;
 }
 
@@ -3970,23 +3970,24 @@ body.is-project-plan-lightbox-open {
     z-index: 1;
     width: min(100% - 40px, 430px);
     padding: 28px 26px;
-    border: 1px solid rgba(213, 174, 102, 0.36);
+    border: 1px solid rgba(240, 205, 69, 0.46);
     border-radius: 16px;
     background: rgba(8, 8, 7, 0.92);
     color: #ffffff;
     text-align: center;
     box-shadow:
         0 30px 70px rgba(0, 0, 0, 0.48),
-        0 0 36px rgba(213, 174, 102, 0.18);
+        0 0 38px rgba(240, 205, 69, 0.22);
     animation: pricingSuccessPop 2.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .pricing-celebration strong {
     display: block;
-    color: #D5AE66;
+    color: #f0cd45;
     font-size: 28px;
     font-weight: 700;
     line-height: 34px;
+    text-shadow: 0 0 22px rgba(240, 205, 69, 0.22);
 }
 
 .pricing-celebration p {
@@ -4822,6 +4823,52 @@ body.is-pricing-modal-open {
         transform 0.24s ease;
 }
 
+/* Final guard: locked floor prices stay blurred even after selecting that floor. */
+.transparent-pricing-section .pricing-card:not(.is-unlocked) .floor-price-grid button:not(.is-price-visible) strong,
+.transparent-pricing-section .pricing-card:not(.is-unlocked) .floor-price-grid button:not(.is-price-visible) .pricing-currency,
+.transparent-pricing-section .pricing-card:not(.is-unlocked) .floor-price-grid button.is-active:not(.is-price-visible) strong,
+.transparent-pricing-section .pricing-card:not(.is-unlocked) .floor-price-grid button.is-active:not(.is-price-visible) .pricing-currency {
+    color: rgba(255, 255, 255, 0.28) !important;
+    filter: blur(10px) !important;
+    text-shadow: none !important;
+    pointer-events: none !important;
+    user-select: none !important;
+}
+
+.transparent-pricing-section .pricing-card:not(.is-unlocked) .floor-price-grid button.is-active:not(.is-price-visible) {
+    background: rgba(240, 205, 69, 0.13) !important;
+    border-color: rgba(240, 205, 69, 0.78) !important;
+    box-shadow:
+        inset 0 0 0 1px rgba(240, 205, 69, 0.34),
+        0 0 24px rgba(240, 205, 69, 0.18) !important;
+}
+
+.transparent-pricing-section .pricing-card:not(.is-unlocked) .selected-price-box:not(.is-price-visible) strong,
+.transparent-pricing-section .pricing-card:not(.is-unlocked) .selected-price-box:not(.is-price-visible) .pricing-currency,
+.transparent-pricing-section .pricing-card:not(.is-unlocked) .selected-price-box:not(.is-price-visible) p {
+    color: rgba(255, 255, 255, 0.28) !important;
+    filter: blur(10px) !important;
+    transition: none !important;
+    text-shadow: none !important;
+    pointer-events: none !important;
+    user-select: none !important;
+}
+
+/* Section 11 active card: keep copy away from the bottom-right details button. */
+.premium-specs-slide-overlay {
+    padding-right: 96px !important;
+}
+
+.premium-specs-slide-overlay p {
+    max-width: 100% !important;
+    margin-bottom: 0 !important;
+}
+
+.premium-specs-slide-overlay button {
+    right: 24px !important;
+    bottom: 24px !important;
+}
+
 .premium-specs-slide-overlay button:hover {
     border-color: rgba(213, 174, 102, 0.82);
     background: rgba(213, 174, 102, 0.92);
@@ -5117,10 +5164,12 @@ body.is-pricing-modal-open {
     width: min(704px, calc(100vw - 48px));
     max-height: calc(100vh - 82px);
     overflow: hidden;
-    border: 1px solid rgba(213, 174, 102, 0.28);
+    border: 1px solid rgba(240, 205, 69, 0.36);
     border-radius: 28px;
     background: #121212;
-    box-shadow: 0 30px 90px rgba(0, 0, 0, 0.72);
+    box-shadow:
+        0 30px 90px rgba(0, 0, 0, 0.72),
+        0 0 34px rgba(240, 205, 69, 0.12);
 }
 
 .premium-specs-modal-close {
@@ -5132,10 +5181,10 @@ body.is-pricing-modal-open {
     width: 43px;
     height: 43px;
     place-items: center;
-    border: 1px solid rgba(255, 255, 255, 0.16);
+    border: 1px solid rgba(240, 205, 69, 0.36);
     border-radius: 14px;
     background: rgba(10, 10, 10, 0.88);
-    color: #ffffff;
+    color: #f0cd45;
     transition:
         border-color 0.24s ease,
         background-color 0.24s ease,
@@ -5143,8 +5192,8 @@ body.is-pricing-modal-open {
 }
 
 .premium-specs-modal-close:hover {
-    border-color: rgba(213, 174, 102, 0.65);
-    background: rgba(213, 174, 102, 0.14);
+    border-color: rgba(240, 205, 69, 0.78);
+    background: rgba(240, 205, 69, 0.14);
     transform: translateY(-1px);
 }
 
@@ -5160,7 +5209,7 @@ body.is-pricing-modal-open {
 .premium-specs-modal-scroll {
     max-height: calc(100vh - 82px);
     overflow-y: auto;
-    scrollbar-color: rgba(255, 255, 255, 0.56) transparent;
+    scrollbar-color: rgba(240, 205, 69, 0.72) transparent;
 }
 
 .premium-specs-modal-image {
@@ -5196,7 +5245,7 @@ body.is-pricing-modal-open {
     min-height: 68px;
     margin-bottom: 30px;
     padding: 21px 20px;
-    border: 1px solid rgba(213, 174, 102, 0.28);
+    border: 1px solid rgba(240, 205, 69, 0.34);
     border-radius: 13px;
     background: #030303;
 }
@@ -5204,7 +5253,7 @@ body.is-pricing-modal-open {
 .premium-specs-modal-brand-box span {
     display: block;
     margin-bottom: 9px;
-    color: #D5AE66;
+    color: #f0cd45;
     font-size: 11px;
     font-weight: 800;
     line-height: 1;
@@ -5227,13 +5276,14 @@ body.is-pricing-modal-open {
 
 .premium-specs-modal-detail {
     padding: 20px 18px;
+    border: 1px solid rgba(240, 205, 69, 0.18);
     border-radius: 9px;
     background: #050505;
 }
 
 .premium-specs-modal-detail strong {
     display: block;
-    color: #ffffff;
+    color: #f0cd45;
     font-size: 14px;
     font-weight: 800;
     line-height: 20px;
@@ -11286,6 +11336,12 @@ a[href*="wa.me"] small {
     border-bottom-color: rgba(240, 205, 69, 0.84);
 }
 
+.booking-enquiry-form button {
+    display: flex;
+    margin-right: auto;
+    margin-left: auto;
+}
+
 .booking-phone-field {
     display: flex;
     align-items: center;
@@ -13460,6 +13516,70 @@ body {
     transform: scale(1) !important;
 }
 
+/* Locked pricing cards can be selected, but their prices must stay hidden until unlock. */
+.transparent-pricing-section .pricing-card:not(.is-unlocked) .floor-price-grid button.is-active:not(.is-price-visible) {
+    background: rgba(240, 205, 69, 0.08) !important;
+    border-color: rgba(240, 205, 69, 0.38) !important;
+    box-shadow: inset 0 0 0 1px rgba(240, 205, 69, 0.18) !important;
+}
+
+.transparent-pricing-section .pricing-card:not(.is-unlocked) .floor-price-grid button.is-active:not(.is-price-visible) span {
+    color: rgba(255, 255, 255, 0.68) !important;
+}
+
+.transparent-pricing-section .pricing-card:not(.is-unlocked) .floor-price-grid button.is-active:not(.is-price-visible) strong,
+.transparent-pricing-section .pricing-card:not(.is-unlocked) .floor-price-grid button.is-active:not(.is-price-visible) .pricing-currency {
+    color: rgba(255, 255, 255, 0.28) !important;
+    filter: blur(10px) !important;
+    text-shadow: none !important;
+    pointer-events: none !important;
+    user-select: none !important;
+}
+
+.transparent-pricing-section .pricing-card:not(.is-unlocked) .selected-price-box:not(.is-price-visible) strong,
+.transparent-pricing-section .pricing-card:not(.is-unlocked) .selected-price-box:not(.is-price-visible) .pricing-currency,
+.transparent-pricing-section .pricing-card:not(.is-unlocked) .selected-price-box:not(.is-price-visible) p {
+    color: rgba(255, 255, 255, 0.28) !important;
+    filter: blur(10px) !important;
+    text-shadow: none !important;
+    pointer-events: none !important;
+    user-select: none !important;
+}
+
+/* Floor/project plan tabs: animate the newly selected image only, never the old tab image. */
+.ideal-floor-media img.is-switching,
+.project-plan-image.is-switching {
+    opacity: 0.44 !important;
+    filter: blur(7px) saturate(.90) brightness(.94) !important;
+    transform: scale(1.045) !important;
+}
+
+.ideal-floor-media img.is-image-revealing,
+.project-plan-image.is-image-revealing,
+.pricing-image-wrap img.is-image-revealing {
+    animation: tabImageReveal .72s cubic-bezier(.22, 1, .36, 1) both !important;
+}
+
+@keyframes tabImageReveal {
+    0% {
+        opacity: .35;
+        filter: blur(8px) saturate(.88) brightness(.94);
+        transform: scale(1.045);
+    }
+
+    58% {
+        opacity: 1;
+        filter: blur(1px) saturate(1.04) brightness(1.02);
+        transform: scale(1.008);
+    }
+
+    100% {
+        opacity: 1;
+        filter: none;
+        transform: scale(1);
+    }
+}
+
 /* Section 11 hover: keep cards in place, only let the image breathe. */
 .premium-specs-section .premium-specs-slide:not(.is-active):hover,
 .premium-specs-section .premium-specs-slide.is-active:hover {
@@ -14580,6 +14700,10 @@ body {
     color: #f0cd45 !important;
 }
 
+.pricing-unlock-form label>span {
+    color: #ffffff !important;
+}
+
 
 .pricing-unlock-close {
     border-color: rgba(240, 205, 69, 0.20) !important;
@@ -14845,4 +14969,26 @@ body {
     .ideal-floor-price-btn {
         min-height: 46px !important;
     }
+}
+
+/* Final guard: locked floor prices stay blurred even after selecting that floor. */
+.transparent-pricing-section .pricing-card:not(.is-unlocked) .floor-price-grid button:not(.is-price-visible) strong,
+.transparent-pricing-section .pricing-card:not(.is-unlocked) .floor-price-grid button:not(.is-price-visible) .pricing-currency,
+.transparent-pricing-section .pricing-card:not(.is-unlocked) .floor-price-grid button.is-active:not(.is-price-visible) strong,
+.transparent-pricing-section .pricing-card:not(.is-unlocked) .floor-price-grid button.is-active:not(.is-price-visible) .pricing-currency {
+    color: rgba(255, 255, 255, 0.28) !important;
+    filter: blur(10px) !important;
+    text-shadow: none !important;
+    pointer-events: none !important;
+    user-select: none !important;
+}
+
+.transparent-pricing-section .pricing-card:not(.is-unlocked) .selected-price-box:not(.is-price-visible) strong,
+.transparent-pricing-section .pricing-card:not(.is-unlocked) .selected-price-box:not(.is-price-visible) .pricing-currency,
+.transparent-pricing-section .pricing-card:not(.is-unlocked) .selected-price-box:not(.is-price-visible) p {
+    color: rgba(255, 255, 255, 0.28) !important;
+    filter: blur(10px) !important;
+    text-shadow: none !important;
+    pointer-events: none !important;
+    user-select: none !important;
 }

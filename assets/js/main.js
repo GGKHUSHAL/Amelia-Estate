@@ -582,46 +582,23 @@ if (idealFloorSection) {
         const requestId = ++idealImageRequest;
         clearTimeout(idealImageTimer);
         idealFloorSection.querySelectorAll(".ideal-floor-media-next").forEach((image) => image.remove());
+        idealImage.classList.remove("is-switching", "is-image-revealing");
+        idealImage.src = src;
+        void idealImage.offsetWidth;
 
-        const nextImage = new Image();
-        nextImage.className = "ideal-floor-media-next";
-        nextImage.alt = idealImage.alt;
-        nextImage.setAttribute("aria-hidden", "true");
-        nextImage.src = src;
-        const minimumFade = new Promise((resolve) => {
-            setTimeout(resolve, 180);
-        });
+        if (requestId !== idealImageRequest) {
+            return;
+        }
 
-        const finishSwitch = () => {
+        idealImage.classList.add("is-image-revealing");
+
+        idealImageTimer = setTimeout(() => {
             if (requestId !== idealImageRequest) {
                 return;
             }
 
-            idealImage.parentElement.appendChild(nextImage);
-            requestAnimationFrame(() => {
-                nextImage.classList.add("is-visible");
-            });
-
-            idealImageTimer = setTimeout(() => {
-                if (requestId === idealImageRequest) {
-                    idealImage.src = src;
-                    nextImage.remove();
-                }
-            }, 620);
-        };
-
-        const imageReady = nextImage.decode
-            ? nextImage.decode().catch(() => undefined)
-            : new Promise((resolve) => {
-                nextImage.onload = resolve;
-                nextImage.onerror = resolve;
-            });
-
-        if (nextImage.decode) {
-            Promise.all([imageReady, minimumFade]).then(finishSwitch);
-        } else {
-            Promise.all([imageReady, minimumFade]).then(finishSwitch);
-        }
+            idealImage.classList.remove("is-image-revealing");
+        }, 760);
     };
 
     const refreshIdealFloor = () => {
@@ -745,44 +722,24 @@ if (projectPlansSection) {
         const requestId = ++projectPlanImageRequest;
         clearTimeout(projectPlanImageTimer);
         visual.querySelectorAll(".project-plan-image-next").forEach((nextImage) => nextImage.remove());
+        image.classList.remove("is-switching", "is-image-revealing");
+        image.src = src;
+        image.alt = alt;
+        void image.offsetWidth;
 
-        const nextImage = new Image();
-        nextImage.className = "project-plan-image-next";
-        nextImage.alt = alt;
-        nextImage.setAttribute("aria-hidden", "true");
-        nextImage.src = src;
+        if (requestId !== projectPlanImageRequest) {
+            return;
+        }
 
-        const minimumFade = new Promise((resolve) => {
-            setTimeout(resolve, 180);
-        });
+        image.classList.add("is-image-revealing");
 
-        const finishSwitch = () => {
+        projectPlanImageTimer = setTimeout(() => {
             if (requestId !== projectPlanImageRequest) {
                 return;
             }
 
-            visual.appendChild(nextImage);
-            requestAnimationFrame(() => {
-                nextImage.classList.add("is-visible");
-            });
-
-            projectPlanImageTimer = setTimeout(() => {
-                if (requestId === projectPlanImageRequest) {
-                    image.src = src;
-                    image.alt = alt;
-                    nextImage.remove();
-                }
-            }, 620);
-        };
-
-        const imageReady = nextImage.decode
-            ? nextImage.decode().catch(() => undefined)
-            : new Promise((resolve) => {
-                nextImage.onload = resolve;
-                nextImage.onerror = resolve;
-            });
-
-        Promise.all([imageReady, minimumFade]).then(finishSwitch);
+            image.classList.remove("is-image-revealing");
+        }, 760);
     };
 
     const updatePlan = (key) => {
@@ -992,14 +949,17 @@ if (pricingSection) {
         const price = button.dataset.floorPrice;
         const isVisiblePrice = isPricingUnlocked || button.classList.contains("is-price-visible");
 
-        if (!isVisiblePrice) {
-            openPricingUnlockForm();
-            return;
-        }
-
         floorButtons.forEach((item) => item.classList.remove("is-active"));
         button.classList.add("is-active");
-        selectedPriceBox?.classList.toggle("is-price-visible", isVisiblePrice);
+
+        if (selectedPriceBox) {
+            selectedPriceBox.classList.toggle("is-price-visible", isVisiblePrice);
+
+            if (!isVisiblePrice) {
+                void selectedPriceBox.offsetWidth;
+            }
+        }
+
         pricingFloor.textContent = floorLabel;
         selectedPrice.innerHTML = `<span class="pricing-currency">&#8377;</span>${price}*`;
         selectedMeta.innerHTML = `${floorLabel} &middot; <span>${activeSize} Sq.Yd</span>`;
@@ -1024,44 +984,24 @@ if (pricingSection) {
         const requestId = ++pricingImageRequest;
         clearTimeout(pricingImageTimer);
         pricingImageWrap.querySelectorAll(".pricing-image-next").forEach((nextImage) => nextImage.remove());
+        pricingImage.classList.remove("is-image-revealing");
+        pricingImage.src = src;
+        pricingImage.alt = alt;
+        void pricingImage.offsetWidth;
 
-        const nextImage = new Image();
-        nextImage.className = "pricing-image-next";
-        nextImage.alt = alt;
-        nextImage.setAttribute("aria-hidden", "true");
-        nextImage.src = src;
+        if (requestId !== pricingImageRequest) {
+            return;
+        }
 
-        const minimumFade = new Promise((resolve) => {
-            setTimeout(resolve, 180);
-        });
+        pricingImage.classList.add("is-image-revealing");
 
-        const finishSwitch = () => {
+        pricingImageTimer = setTimeout(() => {
             if (requestId !== pricingImageRequest) {
                 return;
             }
 
-            pricingImageWrap.appendChild(nextImage);
-            requestAnimationFrame(() => {
-                nextImage.classList.add("is-visible");
-            });
-
-            pricingImageTimer = setTimeout(() => {
-                if (requestId === pricingImageRequest) {
-                    pricingImage.src = src;
-                    pricingImage.alt = alt;
-                    nextImage.remove();
-                }
-            }, 620);
-        };
-
-        const imageReady = nextImage.decode
-            ? nextImage.decode().catch(() => undefined)
-            : new Promise((resolve) => {
-                nextImage.onload = resolve;
-                nextImage.onerror = resolve;
-            });
-
-        Promise.all([imageReady, minimumFade]).then(finishSwitch);
+            pricingImage.classList.remove("is-image-revealing");
+        }, 760);
     };
 
     const openPricingUnlockForm = () => {
@@ -1212,6 +1152,7 @@ if (premiumSpecsSection) {
     let specAnimationTimer;
     let brandIndicatorFrame;
     let brandMarqueeFrame;
+    let brandMarqueePosition = 0;
     let isBrandMarqueePaused = false;
     const specSwipeDistance = 44;
     const specAnimationDuration = 860;
@@ -1324,9 +1265,11 @@ if (premiumSpecsSection) {
 
         const step = () => {
             if (!isBrandMarqueePaused) {
-                brandTrack.scrollLeft += 0.9;
+                brandMarqueePosition += 0.55;
+                brandTrack.scrollLeft = brandMarqueePosition;
 
                 if (brandTrack.scrollLeft >= brandTrack.scrollWidth / 2) {
+                    brandMarqueePosition = 0;
                     brandTrack.scrollLeft = 0;
                 }
 
@@ -1524,9 +1467,11 @@ if (premiumSpecsSection) {
                     inline: "center"
                 });
                 setActiveBrand(index);
+                brandMarqueePosition = brandTrack.scrollLeft;
 
                 setTimeout(() => {
                     isBrandMarqueePaused = false;
+                    brandMarqueePosition = brandTrack.scrollLeft;
                 }, 1400);
             });
         });
