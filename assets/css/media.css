@@ -9540,7 +9540,7 @@
         padding: 0 24px !important;
         border: 0 !important;
         border-radius: 999px !important;
-        background: linear-gradient(180deg, #f6d957 0%, #d8b437 100%) !important;
+        background: #f0cd45 !important;
         color: #070907 !important;
         box-shadow: 0 18px 42px rgba(240, 205, 69, 0.28) !important;
         font-size: 16px !important;
@@ -9573,23 +9573,13 @@
     }
 
     .hero-price-details-btn .hero-price-details-shine {
-        position: absolute !important;
-        top: 0 !important;
-        bottom: 0 !important;
-        left: -34% !important;
-        z-index: 1 !important;
-        display: block !important;
-        width: 24% !important;
-        height: 100% !important;
-        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.62), transparent) !important;
-        transform: skewX(-18deg) !important;
-        pointer-events: none !important;
-        opacity: 0.9 !important;
-        animation: heroPriceButtonShine 4.2s ease-in-out infinite !important;
+        display: none !important;
+        content: none !important;
+        animation: none !important;
     }
 
     .hero-price-details-btn:hover {
-        background: linear-gradient(180deg, #f6d957 0%, #d8b437 100%) !important;
+        background: #fceba6 !important;
         color: #070907 !important;
         box-shadow: 0 18px 42px rgba(240, 205, 69, 0.28) !important;
         transform: none !important;

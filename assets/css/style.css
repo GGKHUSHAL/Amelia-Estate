@@ -467,37 +467,9 @@ button {
 }
 
 .hero-price-details-shine {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: -33.333%;
-    z-index: 1;
-    width: 33.333%;
-    background: rgba(255, 255, 255, 0.55);
-    transform: skewX(-20deg);
-    pointer-events: none;
-    transition: left 0.7s ease;
-    animation: heroPriceButtonShine 4.8s ease-in-out infinite;
-}
-
-.hero-price-details-btn:hover .hero-price-details-shine {
-    left: 120%;
-}
-
-.booking-enquiry-form button:hover .hero-price-details-shine {
-    left: 120%;
-}
-
-.ideal-floor-price-btn:hover .hero-price-details-shine {
-    left: 120%;
-}
-
-.project-plan-cta:hover .hero-price-details-shine {
-    left: 120%;
-}
-
-.pricing-unlock-btn:hover .hero-price-details-shine {
-    left: 120%;
+    display: none !important;
+    content: none !important;
+    animation: none !important;
 }
 
 .hero-whatsapp-btn {
@@ -545,16 +517,9 @@ button {
 }
 
 .hero-whatsapp-btn::after {
-    content: "";
-    position: absolute;
-    top: -45%;
-    left: -62%;
-    z-index: -1;
-    width: 36%;
-    height: 190%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.58), transparent);
-    transform: skewX(-18deg);
-    animation: heroPrimaryShine 2.7s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+    display: none;
+    content: none;
+    animation: none;
     pointer-events: none;
 }
 
@@ -573,7 +538,9 @@ button {
 }
 
 .hero-whatsapp-btn:hover::after {
-    animation-duration: 1.15s;
+    display: none;
+    content: none;
+    animation: none;
 }
 
 .hero-whatsapp-btn span {
@@ -593,37 +560,6 @@ button {
 @keyframes heroPrimaryGlowSpin {
     to {
         transform: rotate(1turn);
-    }
-}
-
-@keyframes heroPrimaryShine {
-
-    0%,
-    18% {
-        left: -62%;
-    }
-
-    72% {
-        left: 126%;
-    }
-
-    72.01%,
-    100% {
-        left: -62%;
-    }
-}
-
-@keyframes heroPriceButtonShine {
-
-    0%,
-    72%,
-    100% {
-        left: -36%;
-    }
-
-    24%,
-    44% {
-        left: 118%;
     }
 }
 
@@ -2186,10 +2122,10 @@ img.snapshot-icon {
     min-height: 35px;
     margin: 0 0 24px;
     padding: 8px 21px;
-    border: 1px solid rgba(213, 174, 102, 0.58);
+    border: 1px solid rgba(240, 205, 69, 0.58);
     border-radius: 999px;
-    background: rgba(213, 174, 102, 0.10);
-    color: #D5AE66;
+    background: rgba(240, 205, 69, 0.10);
+    color: #f0cd45;
     font-family: "Inter", Arial, sans-serif;
     font-size: 13px;
     font-weight: 700;
@@ -2218,7 +2154,7 @@ img.snapshot-icon {
 }
 
 .project-plans-copy h2 span {
-    color: #D5AE66;
+    color: #f0cd45;
 }
 
 .project-plans-copy>p:not(.project-plans-eyebrow) {
@@ -2236,7 +2172,7 @@ img.snapshot-icon {
     min-width: 397px;
     height: 61px;
     padding: 5px;
-    border: 1px solid rgba(213, 174, 102, 0.26);
+    border: 1px solid rgba(240, 205, 69, 0.26);
     border-radius: 18px;
     background: rgba(4, 4, 4, 0.92);
 }
@@ -2263,9 +2199,9 @@ img.snapshot-icon {
 }
 
 .project-plan-tabs button:hover {
-    background: rgba(213, 174, 102, 0.10);
-    color: #D5AE66;
-    box-shadow: inset 0 0 0 1px rgba(213, 174, 102, 0.18);
+    background: rgba(240, 205, 69, 0.10);
+    color: #f0cd45;
+    box-shadow: inset 0 0 0 1px rgba(240, 205, 69, 0.18);
 }
 
 .project-plan-tabs svg {
@@ -2285,19 +2221,19 @@ img.snapshot-icon {
 }
 
 .project-plan-tabs button.is-active {
-    background: linear-gradient(180deg, #D5AE66 0%, #D5AE66 100%);
+    background: linear-gradient(180deg, #f0cd45 0%, #f0cd45 100%);
     color: #000000;
-    box-shadow: 0 16px 32px rgba(213, 174, 102, 0.44);
+    box-shadow: 0 16px 32px rgba(240, 205, 69, 0.44);
 }
 
 .project-plan-tabs button.is-active:hover {
     color: #000000;
-    box-shadow: 0 18px 36px rgba(213, 174, 102, 0.52);
+    box-shadow: 0 18px 36px rgba(240, 205, 69, 0.52);
 }
 
 .project-plan-card {
     overflow: hidden;
-    border: 1px solid rgba(213, 174, 102, 0.24);
+    border: 1px solid rgba(240, 205, 69, 0.24);
     border-radius: 24px;
     background: #050505;
     box-shadow: 0 22px 50px rgba(0, 0, 0, 0.18);
@@ -2310,7 +2246,7 @@ img.snapshot-icon {
     min-height: 82px;
     gap: 24px;
     padding: 16px 30px;
-    border-bottom: 1px solid rgba(213, 174, 102, 0.18);
+    border-bottom: 1px solid rgba(240, 205, 69, 0.18);
     background: rgba(13, 13, 13, 0.88);
 }
 
@@ -2323,7 +2259,7 @@ img.snapshot-icon {
     min-width: 398px;
     height: 60px;
     padding: 5px;
-    border: 1px solid rgba(213, 174, 102, 0.26);
+    border: 1px solid rgba(240, 205, 69, 0.26);
     border-radius: 16px;
     background: rgba(4, 4, 4, 0.92);
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
@@ -2360,20 +2296,20 @@ img.snapshot-icon {
 }
 
 .project-plan-variants button.is-active {
-    background: linear-gradient(180deg, #D5AE66 0%, #D5AE66 100%);
+    background: linear-gradient(180deg, #f0cd45 0%, #f0cd45 100%);
     color: #000000;
 }
 
 .project-plan-variants button:hover {
-    background: rgba(213, 174, 102, 0.10);
-    color: #D5AE66;
-    box-shadow: inset 0 0 0 1px rgba(213, 174, 102, 0.20);
+    background: rgba(240, 205, 69, 0.10);
+    color: #f0cd45;
+    box-shadow: inset 0 0 0 1px rgba(240, 205, 69, 0.20);
 }
 
 .project-plan-variants button.is-active:hover {
-    background: linear-gradient(180deg, #D5AE66 0%, #D5AE66 100%);
+    background: linear-gradient(180deg, #f0cd45 0%, #f0cd45 100%);
     color: #000000;
-    box-shadow: 0 0 28px rgba(213, 174, 102, 0.48);
+    box-shadow: 0 0 28px rgba(240, 205, 69, 0.48);
 }
 
 .project-plan-meta {
@@ -2385,7 +2321,7 @@ img.snapshot-icon {
 }
 
 .project-plan-meta strong {
-    color: #D5AE66;
+    color: #f0cd45;
     font-weight: 700;
 }
 
@@ -2692,7 +2628,7 @@ body.is-visual-detail-modal-open {
 }
 
 .project-plan-image:focus-visible {
-    outline: 2px solid #D5AE66;
+    outline: 2px solid #f0cd45;
     outline-offset: 4px;
 }
 
@@ -2725,10 +2661,12 @@ body.is-visual-detail-modal-open {
     width: min(100%, 1120px);
     max-height: calc(100dvh - 64px);
     padding: 18px;
-    border: 1px solid rgba(213, 174, 102, 0.32);
+    border: 1px solid rgba(240, 205, 69, 0.32);
     border-radius: 18px;
     background: rgba(8, 8, 8, 0.96);
-    box-shadow: 0 30px 90px rgba(0, 0, 0, 0.56);
+    box-shadow:
+        0 30px 90px rgba(0, 0, 0, 0.56),
+        0 0 32px rgba(240, 205, 69, 0.12);
 }
 
 .project-plan-lightbox-close {
@@ -2741,16 +2679,16 @@ body.is-visual-detail-modal-open {
     justify-content: center;
     width: 42px;
     height: 42px;
-    border: 1px solid rgba(213, 174, 102, 0.34);
+    border: 1px solid rgba(240, 205, 69, 0.34);
     border-radius: 999px;
     background: rgba(0, 0, 0, 0.72);
-    color: #ffffff;
+    color: #f0cd45;
     transition: background-color 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
 }
 
 .project-plan-lightbox-close:hover {
-    border-color: rgba(213, 174, 102, 0.72);
-    background: rgba(213, 174, 102, 0.16);
+    border-color: rgba(240, 205, 69, 0.72);
+    background: rgba(240, 205, 69, 0.16);
     transform: scale(1.04);
 }
 
@@ -2770,10 +2708,10 @@ body.is-visual-detail-modal-open {
     min-height: 32px;
     align-items: center;
     padding: 8px 14px;
-    border: 1px solid rgba(213, 174, 102, 0.24);
+    border: 1px solid rgba(240, 205, 69, 0.24);
     border-radius: 999px;
-    background: rgba(213, 174, 102, 0.10);
-    color: #D5AE66;
+    background: rgba(240, 205, 69, 0.10);
+    color: #f0cd45;
     font-size: 12px;
     font-weight: 800;
     line-height: 1;
@@ -2867,10 +2805,10 @@ body.is-project-plan-lightbox-open {
     justify-content: center;
     width: 42px;
     height: 42px;
-    border: 1px solid rgba(213, 174, 102, 0.24);
+    border: 1px solid rgba(240, 205, 69, 0.24);
     border-radius: 14px;
     background: rgba(10, 10, 10, 0.92);
-    color: #ffffff;
+    color: #f0cd45;
     transition:
         background-color 0.3s ease,
         border-color 0.3s ease,
@@ -2878,8 +2816,9 @@ body.is-project-plan-lightbox-open {
 }
 
 .project-plan-tools a:hover {
-    border-color: rgba(213, 174, 102, 0.62);
-    background: rgba(213, 174, 102, 0.14);
+    border-color: rgba(240, 205, 69, 0.62);
+    background: rgba(240, 205, 69, 0.14);
+    color: #f0cd45;
     transform: translateY(-2px);
 }
 
@@ -2900,7 +2839,7 @@ body.is-project-plan-lightbox-open {
     gap: 30px;
     min-height: 93px;
     padding: 20px 30px 17px;
-    border-top: 1px solid rgba(213, 174, 102, 0.16);
+    border-top: 1px solid rgba(240, 205, 69, 0.16);
     background:
         radial-gradient(52% 100% at 100% 0%, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0) 72%),
         #151515;
@@ -3916,7 +3855,7 @@ body.is-project-plan-lightbox-open {
     border: 1px solid rgba(240, 205, 69, 0.46);
     border-radius: 16px;
     background: rgba(8, 8, 7, 0.92);
-    color: #ffffff;
+    color: #f0cd45;
     text-align: center;
     box-shadow:
         0 30px 70px rgba(0, 0, 0, 0.48),
@@ -4140,17 +4079,17 @@ body.is-pricing-modal-open {
 .project-plans-section,
 .transparent-pricing-section {
     background:
-        radial-gradient(760px 280px at 72% 0%, rgba(213, 174, 102, 0.16), rgba(213, 174, 102, 0) 68%),
-        radial-gradient(520px 240px at 0% 100%, rgba(213, 174, 102, 0.10), rgba(213, 174, 102, 0) 70%),
+        radial-gradient(760px 280px at 72% 0%, rgba(240, 205, 69, 0.16), rgba(240, 205, 69, 0) 68%),
+        radial-gradient(520px 240px at 0% 100%, rgba(240, 205, 69, 0.10), rgba(240, 205, 69, 0) 70%),
         linear-gradient(180deg, #050505 0%, #0d0d0c 52%, #050505 100%) !important;
 }
 
 .ideal-floor-eyebrow,
 .project-plans-eyebrow,
 .transparent-pricing-eyebrow {
-    border-color: rgba(213, 174, 102, 0.58);
-    background: rgba(213, 174, 102, 0.10);
-    color: #D5AE66;
+    border-color: rgba(240, 205, 69, 0.58);
+    background: rgba(240, 205, 69, 0.10);
+    color: #f0cd45;
 }
 
 .ideal-floor-heading h2 span,
@@ -4158,7 +4097,7 @@ body.is-pricing-modal-open {
 .transparent-pricing-header h2 span,
 .pricing-title-block p,
 .selected-price-box p span {
-    color: #D5AE66;
+    color: #f0cd45;
 }
 
 .ideal-floor-heading>p:not(.ideal-floor-eyebrow),
@@ -4172,7 +4111,7 @@ body.is-pricing-modal-open {
 .transparent-pricing-tabs,
 .ideal-floor-levels,
 .floor-price-panel {
-    border-color: rgba(213, 174, 102, 0.26);
+    border-color: rgba(240, 205, 69, 0.26);
     border-radius: 18px;
     background: rgba(4, 4, 4, 0.92);
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
@@ -4182,33 +4121,33 @@ body.is-pricing-modal-open {
 .project-plan-tabs button.is-active,
 .project-plan-variants button.is-active,
 .transparent-pricing-tabs button.is-active{
-    background: #D5AE66;
+    background: #f0cd45;
     color: #000000;
     box-shadow:
-        0 0 15px rgba(213, 174, 102, 0.22),
-        0 16px 32px rgba(213, 174, 102, 0.24);
+        0 0 15px rgba(240, 205, 69, 0.22),
+        0 16px 32px rgba(240, 205, 69, 0.24);
 }
 
 .project-plan-tabs button:hover,
 .project-plan-variants button:hover,
 .transparent-pricing-tabs button:hover {
-    background: rgba(213, 174, 102, 0.12);
-    color: #D5AE66;
-    box-shadow: inset 0 0 0 1px rgba(213, 174, 102, 0.20);
+    background: rgba(240, 205, 69, 0.12);
+    color: #f0cd45;
+    box-shadow: inset 0 0 0 1px rgba(240, 205, 69, 0.20);
 }
 
 .ideal-floor-card,
 .project-plan-card,
 .pricing-card {
-    border-color: rgba(213, 174, 102, 0.24);
+    border-color: rgba(240, 205, 69, 0.24);
     border-radius: 24px;
     background:
-        radial-gradient(115% 82% at 50% 0%, rgba(213, 174, 102, 0.10), transparent 62%),
+        radial-gradient(115% 82% at 50% 0%, rgba(240, 205, 69, 0.10), transparent 62%),
         linear-gradient(180deg, rgba(255, 255, 255, 0.095), rgba(255, 255, 255, 0.025)),
         rgba(17, 16, 13, 0.96);
     box-shadow:
         0 28px 60px rgba(0, 0, 0, 0.42),
-        0 0 28px rgba(213, 174, 102, 0.08),
+        0 0 28px rgba(240, 205, 69, 0.08),
         inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 
@@ -4217,12 +4156,12 @@ body.is-pricing-modal-open {
 .pricing-card:hover {
     box-shadow:
         0 34px 74px rgba(0, 0, 0, 0.46),
-        0 0 34px rgba(213, 174, 102, 0.14),
+        0 0 34px rgba(240, 205, 69, 0.14),
         inset 0 1px 0 rgba(255, 255, 255, 0.12);
 }
 
 .ideal-floor-card:hover {
-    border-color: rgba(213, 174, 102, 0.24);
+    border-color: rgba(240, 205, 69, 0.24);
 }
 
 .ideal-floor-media::before,
@@ -4233,8 +4172,8 @@ body.is-pricing-modal-open {
     z-index: 2;
     border-radius: inherit;
     background:
-        linear-gradient(135deg, rgba(213, 174, 102, 0.38), transparent 24%, rgba(255, 255, 255, 0.14) 48%, transparent 72%),
-        radial-gradient(180px 120px at 18% 0%, rgba(213, 174, 102, 0.24), transparent 70%);
+        linear-gradient(135deg, rgba(240, 205, 69, 0.38), transparent 24%, rgba(255, 255, 255, 0.14) 48%, transparent 72%),
+        radial-gradient(180px 120px at 18% 0%, rgba(240, 205, 69, 0.24), transparent 70%);
     opacity: 0.22;
     pointer-events: none;
     transition: opacity 0.35s ease;
@@ -4275,7 +4214,7 @@ body.is-pricing-modal-open {
 .pricing-spec,
 .floor-price-grid button,
 .selected-price-box {
-    border-color: rgba(213, 174, 102, 0.16);
+    border-color: rgba(240, 205, 69, 0.16);
     border-radius: 14px;
     background: rgba(4, 4, 4, 0.62);
 }
@@ -4283,8 +4222,8 @@ body.is-pricing-modal-open {
 .ideal-floor-spec:hover,
 .pricing-spec:hover,
 .floor-price-grid button:hover {
-    border-color: rgba(213, 174, 102, 0.42);
-    background: rgba(213, 174, 102, 0.10);
+    border-color: rgba(240, 205, 69, 0.42);
+    background: rgba(240, 205, 69, 0.10);
 }
 
 .pricing-spec img,
@@ -4301,7 +4240,7 @@ body.is-pricing-modal-open {
 .project-plan-badge-label,
 .ideal-floor-badges span,
 .ideal-floor-badges strong {
-    border: 1px solid rgba(213, 174, 102, 0.20);
+    border: 1px solid rgba(240, 205, 69, 0.20);
     background: rgba(5, 5, 5, 0.86);
     box-shadow: 0 14px 26px rgba(0, 0, 0, 0.22);
     backdrop-filter: blur(10px);
@@ -4751,7 +4690,7 @@ body.is-pricing-modal-open {
     border: 1px solid rgba(213, 174, 102, 0.42);
     border-radius: 14px;
     background: rgba(10, 10, 10, 0.82);
-    color: #ffffff;
+    color: #f0cd45;
     backdrop-filter: blur(12px);
     transition:
         background-color 0.24s ease,
@@ -4763,6 +4702,7 @@ body.is-pricing-modal-open {
     border-color: rgba(213, 174, 102, 0.82);
     background: rgba(213, 174, 102, 0.92);
     color: #050505;
+    color: #f0cd45;
     transform: translateY(-2px);
 }
 
@@ -5331,7 +5271,7 @@ body.is-premium-specs-modal-open {
 .visual-showcase-copy {
     margin-top: 24px;
     padding-top: 21px;
-    border-top: 1px solid rgba(213, 174, 102, 0.16);
+    border-top: 1px solid rgba(240, 205, 69, 0.16);
 }
 
 .visual-showcase-copy p {
@@ -10312,9 +10252,9 @@ a[href*="wa.me"] i {
 a[href*="wa.me"]:hover,
 .hero-actions a[href*="wa.me"].hero-whatsapp-btn:hover {
     border-color: rgba(0, 230, 118, .72) !important;
-    background: rgba(0, 230, 118, .09) !important;
+    background: rgba(0, 0, 0, 0.78) !important;
     color: #42ff9a !important;
-    box-shadow: none !important;
+    box-shadow: 0 12px 26px rgba(0, 0, 0, 0.26) !important;
     transform: translateY(-2px) !important;
 }
 
@@ -13235,18 +13175,10 @@ body {
 .site-visit-submit::after,
 .property-snapshot-modal-btn:not(.property-snapshot-modal-btn--ghost)::after,
 .footer-redesign-cta a:not([href*="wa.me"])::after {
-    content: "" !important;
-    position: absolute !important;
-    inset: 0 auto 0 -33.333% !important;
-    z-index: 0 !important;
-    display: block !important;
-    width: 33.333% !important;
-    height: 100% !important;
-    background: rgba(255, 255, 255, .55) !important;
-    transform: skewX(-20deg) !important;
+    display: none !important;
+    content: none !important;
     animation: none !important;
     pointer-events: none !important;
-    transition: left .7s ease !important;
 }
 
 .pricing-unlock-submit:hover,
@@ -13258,7 +13190,7 @@ body {
 .site-visit-submit:hover,
 .property-snapshot-modal-btn:not(.property-snapshot-modal-btn--ghost):hover,
 .footer-redesign-cta a:not([href*="wa.me"]):hover {
-    background: #ffdd59 !important;
+    background: #fceba6 !important;
     color: #000000 !important;
     box-shadow: 0 18px 45px rgba(240, 205, 69, .35) !important;
     transform: translateY(-4px) !important;
@@ -13273,7 +13205,8 @@ body {
 .site-visit-submit:hover::after,
 .property-snapshot-modal-btn:not(.property-snapshot-modal-btn--ghost):hover::after,
 .footer-redesign-cta a:not([href*="wa.me"]):hover::after {
-    left: 120% !important;
+    display: none !important;
+    content: none !important;
 }
 
 .pricing-unlock-submit>*,
@@ -14564,10 +14497,10 @@ body {
 
 
 .pricing-unlock-submit:hover {
-    background: #d0ad2f !important;
-    border-color: #d0ad2f !important;
+    background: #fceba6 !important;
+    border-color: #fceba6 !important;
     color: #000000 !important;
-    box-shadow: 0 14px 34px rgba(208, 173, 47, 0.32) !important;
+    box-shadow: 0 18px 45px rgba(240, 205, 69, 0.35) !important;
     transform: none !important;
 }
 
