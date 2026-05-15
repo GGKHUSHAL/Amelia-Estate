@@ -2682,11 +2682,6 @@ body.is-visual-detail-modal-open {
     width: min(100%, 940px);
 }
 
-.project-plan-image.is-switching {
-    opacity: 0;
-    transform: translateY(14px) scale(0.98);
-}
-
 .project-plan-image {
     opacity: 1 !important;
     transition:
@@ -2694,32 +2689,6 @@ body.is-visual-detail-modal-open {
         filter .58s ease,
         transform .78s cubic-bezier(.22, 1, .36, 1) !important;
     will-change: opacity, filter, transform !important;
-}
-
-.project-plan-visual .project-plan-image-next {
-    position: absolute !important;
-    inset: 0 !important;
-    z-index: 1 !important;
-    display: block !important;
-    width: 100% !important;
-    height: 100% !important;
-    min-height: 100% !important;
-    object-fit: contain !important;
-    object-position: center center !important;
-    opacity: 0 !important;
-    filter: blur(5px) saturate(.92) !important;
-    transform: scale(1.025) !important;
-    pointer-events: none !important;
-    transition:
-        opacity .58s ease,
-        filter .58s ease,
-        transform .72s cubic-bezier(.22, 1, .36, 1) !important;
-}
-
-.project-plan-visual .project-plan-image-next.is-visible {
-    opacity: 1 !important;
-    filter: none !important;
-    transform: scale(1) !important;
 }
 
 .project-plan-image:focus-visible {
@@ -3223,32 +3192,6 @@ body.is-project-plan-lightbox-open {
     transition:
         filter 0.4s ease,
         transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.pricing-image-wrap .pricing-image-next {
-    position: absolute !important;
-    inset: 0 !important;
-    z-index: 1 !important;
-    display: block !important;
-    width: 100% !important;
-    height: 100% !important;
-    min-height: 100% !important;
-    object-fit: contain !important;
-    object-position: center center !important;
-    opacity: 0 !important;
-    filter: blur(5px) saturate(.92) !important;
-    transform: scale(1.025) !important;
-    pointer-events: none !important;
-    transition:
-        opacity .58s ease,
-        filter .58s ease,
-        transform .72s cubic-bezier(.22, 1, .36, 1) !important;
-}
-
-.pricing-image-wrap .pricing-image-next.is-visible {
-    opacity: 1 !important;
-    filter: none !important;
-    transform: scale(1) !important;
 }
 
 .pricing-image-wrap:hover img {
@@ -4323,13 +4266,6 @@ body.is-pricing-modal-open {
     animation: toolImageShine 1.05s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.ideal-floor-media img.is-switching,
-.pricing-image-wrap img.is-switching {
-    opacity: 0;
-    transform: scale(1.06) translateY(14px);
-    filter: blur(8px) saturate(0.8);
-}
-
 .ideal-floor-media img,
 .pricing-image-wrap img {
     opacity: 1;
@@ -4821,52 +4757,6 @@ body.is-pricing-modal-open {
         background-color 0.24s ease,
         border-color 0.24s ease,
         transform 0.24s ease;
-}
-
-/* Final guard: locked floor prices stay blurred even after selecting that floor. */
-.transparent-pricing-section .pricing-card:not(.is-unlocked) .floor-price-grid button:not(.is-price-visible) strong,
-.transparent-pricing-section .pricing-card:not(.is-unlocked) .floor-price-grid button:not(.is-price-visible) .pricing-currency,
-.transparent-pricing-section .pricing-card:not(.is-unlocked) .floor-price-grid button.is-active:not(.is-price-visible) strong,
-.transparent-pricing-section .pricing-card:not(.is-unlocked) .floor-price-grid button.is-active:not(.is-price-visible) .pricing-currency {
-    color: rgba(255, 255, 255, 0.28) !important;
-    filter: blur(10px) !important;
-    text-shadow: none !important;
-    pointer-events: none !important;
-    user-select: none !important;
-}
-
-.transparent-pricing-section .pricing-card:not(.is-unlocked) .floor-price-grid button.is-active:not(.is-price-visible) {
-    background: rgba(240, 205, 69, 0.13) !important;
-    border-color: rgba(240, 205, 69, 0.78) !important;
-    box-shadow:
-        inset 0 0 0 1px rgba(240, 205, 69, 0.34),
-        0 0 24px rgba(240, 205, 69, 0.18) !important;
-}
-
-.transparent-pricing-section .pricing-card:not(.is-unlocked) .selected-price-box:not(.is-price-visible) strong,
-.transparent-pricing-section .pricing-card:not(.is-unlocked) .selected-price-box:not(.is-price-visible) .pricing-currency,
-.transparent-pricing-section .pricing-card:not(.is-unlocked) .selected-price-box:not(.is-price-visible) p {
-    color: rgba(255, 255, 255, 0.28) !important;
-    filter: blur(10px) !important;
-    transition: none !important;
-    text-shadow: none !important;
-    pointer-events: none !important;
-    user-select: none !important;
-}
-
-/* Section 11 active card: keep copy away from the bottom-right details button. */
-.premium-specs-slide-overlay {
-    padding-right: 96px !important;
-}
-
-.premium-specs-slide-overlay p {
-    max-width: 100% !important;
-    margin-bottom: 0 !important;
-}
-
-.premium-specs-slide-overlay button {
-    right: 24px !important;
-    bottom: 24px !important;
 }
 
 .premium-specs-slide-overlay button:hover {
@@ -13479,6 +13369,20 @@ body {
     background: linear-gradient(180deg, rgba(240, 205, 69, 0.18), rgba(240, 205, 69, 0.08)), rgba(10, 10, 10, 0.74) !important;
 }
 
+.premium-specs-section .premium-specs-slide-overlay {
+    padding-right: 96px !important;
+}
+
+.premium-specs-section .premium-specs-slide-overlay p {
+    max-width: 100% !important;
+    margin-bottom: 0 !important;
+}
+
+.premium-specs-section .premium-specs-slide-overlay button {
+    right: 24px !important;
+    bottom: 24px !important;
+}
+
 /* Section 10 image switch should feel exactly like Section 8's smooth reveal. */
 .transparent-pricing-section .pricing-image-wrap img {
     opacity: 1 !important;
@@ -13487,71 +13391,6 @@ body {
         filter .58s ease,
         transform .78s cubic-bezier(.22, 1, .36, 1) !important;
     will-change: opacity, filter, transform !important;
-}
-
-.transparent-pricing-section .pricing-image-wrap .pricing-image-next {
-    position: absolute !important;
-    inset: 0 !important;
-    z-index: 1 !important;
-    display: block !important;
-    width: 100% !important;
-    height: 100% !important;
-    min-height: 100% !important;
-    object-fit: cover !important;
-    object-position: center center !important;
-    opacity: 0 !important;
-    filter: blur(5px) saturate(.92) !important;
-    transform: scale(1.025) !important;
-    pointer-events: none !important;
-    transition:
-        opacity .58s ease,
-        filter .58s ease,
-        transform .72s cubic-bezier(.22, 1, .36, 1) !important;
-    will-change: opacity, filter, transform !important;
-}
-
-.transparent-pricing-section .pricing-image-wrap .pricing-image-next.is-visible {
-    opacity: 1 !important;
-    filter: none !important;
-    transform: scale(1) !important;
-}
-
-/* Locked pricing cards can be selected, but their prices must stay hidden until unlock. */
-.transparent-pricing-section .pricing-card:not(.is-unlocked) .floor-price-grid button.is-active:not(.is-price-visible) {
-    background: rgba(240, 205, 69, 0.08) !important;
-    border-color: rgba(240, 205, 69, 0.38) !important;
-    box-shadow: inset 0 0 0 1px rgba(240, 205, 69, 0.18) !important;
-}
-
-.transparent-pricing-section .pricing-card:not(.is-unlocked) .floor-price-grid button.is-active:not(.is-price-visible) span {
-    color: rgba(255, 255, 255, 0.68) !important;
-}
-
-.transparent-pricing-section .pricing-card:not(.is-unlocked) .floor-price-grid button.is-active:not(.is-price-visible) strong,
-.transparent-pricing-section .pricing-card:not(.is-unlocked) .floor-price-grid button.is-active:not(.is-price-visible) .pricing-currency {
-    color: rgba(255, 255, 255, 0.28) !important;
-    filter: blur(10px) !important;
-    text-shadow: none !important;
-    pointer-events: none !important;
-    user-select: none !important;
-}
-
-.transparent-pricing-section .pricing-card:not(.is-unlocked) .selected-price-box:not(.is-price-visible) strong,
-.transparent-pricing-section .pricing-card:not(.is-unlocked) .selected-price-box:not(.is-price-visible) .pricing-currency,
-.transparent-pricing-section .pricing-card:not(.is-unlocked) .selected-price-box:not(.is-price-visible) p {
-    color: rgba(255, 255, 255, 0.28) !important;
-    filter: blur(10px) !important;
-    text-shadow: none !important;
-    pointer-events: none !important;
-    user-select: none !important;
-}
-
-/* Floor/project plan tabs: animate the newly selected image only, never the old tab image. */
-.ideal-floor-media img.is-switching,
-.project-plan-image.is-switching {
-    opacity: 0.44 !important;
-    filter: blur(7px) saturate(.90) brightness(.94) !important;
-    transform: scale(1.045) !important;
 }
 
 .ideal-floor-media img.is-image-revealing,
@@ -13834,41 +13673,6 @@ body {
         filter .58s ease,
         transform .78s cubic-bezier(.22, 1, .36, 1) !important;
     will-change: opacity, filter, transform !important;
-}
-
-
-.ideal-floor-media img.is-switching {
-    opacity: 1 !important;
-    filter: saturate(.94) brightness(.96) !important;
-    transform: scale(1.01) !important;
-}
-
-
-.ideal-floor-media .ideal-floor-media-next {
-    position: absolute !important;
-    inset: 0 !important;
-    z-index: 1 !important;
-    display: block !important;
-    width: 100% !important;
-    height: 100% !important;
-    min-height: 100% !important;
-    object-fit: cover !important;
-    object-position: center !important;
-    opacity: 0 !important;
-    filter: blur(5px) saturate(.92) !important;
-    transform: scale(1.025) !important;
-    pointer-events: none !important;
-    transition:
-        opacity .58s ease,
-        filter .58s ease,
-        transform .72s cubic-bezier(.22, 1, .36, 1) !important;
-}
-
-
-.ideal-floor-media .ideal-floor-media-next.is-visible {
-    opacity: 1 !important;
-    filter: none !important;
-    transform: scale(1) !important;
 }
 
 
@@ -14567,12 +14371,6 @@ body {
 
 @media (min-width: 768px) {
     .transparent-pricing-section .pricing-image-wrap img {
-        height: 255px !important;
-        max-height: 255px !important;
-        object-fit: cover !important;
-    }
-
-    .transparent-pricing-section .pricing-image-wrap .pricing-image-next {
         height: 255px !important;
         max-height: 255px !important;
         object-fit: cover !important;

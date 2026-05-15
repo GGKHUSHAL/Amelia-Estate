@@ -581,8 +581,7 @@ if (idealFloorSection) {
 
         const requestId = ++idealImageRequest;
         clearTimeout(idealImageTimer);
-        idealFloorSection.querySelectorAll(".ideal-floor-media-next").forEach((image) => image.remove());
-        idealImage.classList.remove("is-switching", "is-image-revealing");
+        idealImage.classList.remove("is-image-revealing");
         idealImage.src = src;
         void idealImage.offsetWidth;
 
@@ -721,8 +720,7 @@ if (projectPlansSection) {
 
         const requestId = ++projectPlanImageRequest;
         clearTimeout(projectPlanImageTimer);
-        visual.querySelectorAll(".project-plan-image-next").forEach((nextImage) => nextImage.remove());
-        image.classList.remove("is-switching", "is-image-revealing");
+        image.classList.remove("is-image-revealing");
         image.src = src;
         image.alt = alt;
         void image.offsetWidth;
@@ -755,7 +753,6 @@ if (projectPlansSection) {
             tab.classList.toggle("is-active", tab.dataset.planTab === key);
         });
 
-        image.classList.remove("is-switching");
         switchProjectPlanImage(content.image, content.alt);
         badgeLabel.textContent = content.badge;
         badgeAccentText.textContent = content.badgeAccent;
@@ -983,7 +980,6 @@ if (pricingSection) {
 
         const requestId = ++pricingImageRequest;
         clearTimeout(pricingImageTimer);
-        pricingImageWrap.querySelectorAll(".pricing-image-next").forEach((nextImage) => nextImage.remove());
         pricingImage.classList.remove("is-image-revealing");
         pricingImage.src = src;
         pricingImage.alt = alt;
