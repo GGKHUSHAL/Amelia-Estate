@@ -3566,7 +3566,9 @@
     .visual-gallery-card.is-active {
         box-shadow:
             0 22px 54px rgba(0, 0, 0, 0.46),
-            0 0 0 1px rgba(213, 174, 102, 0.28);
+            0 0 0 1px rgba(240, 205, 69, 0.28),
+            0 0 24px rgba(240, 205, 69, 0.14);
+        border-color: rgba(240, 205, 69, 0.74);
     }
 
     .visual-gallery-dots {

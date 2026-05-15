@@ -1627,7 +1627,6 @@ if (visualShowcaseSection) {
         overlay.innerHTML = `
             <div class="visual-gallery-info-copy">
                 <strong>${escapeHtml(detail.title)}</strong>
-                <span>${escapeHtml(detail.description)}</span>
             </div>
             <span class="visual-gallery-view-full" aria-hidden="true">
                 <svg viewBox="0 0 24 24">
@@ -1648,7 +1647,7 @@ if (visualShowcaseSection) {
     };
 
     const openVisualDetail = (card) => {
-        if (!visualDetailModal || !visualDetailImage || !visualDetailTitle || !visualDetailCopy || !visualDetailCategory || !visualDetailList) {
+        if (!visualDetailModal || !visualDetailImage || !visualDetailTitle || !visualDetailCopy || !visualDetailCategory) {
             return;
         }
 
@@ -1658,9 +1657,9 @@ if (visualShowcaseSection) {
         visualDetailTitle.textContent = detail.title;
         visualDetailCopy.textContent = detail.description;
         visualDetailCategory.textContent = detail.category;
-        visualDetailList.innerHTML = detail.details.map(([label, value]) => (
-            `<div class="visual-detail-modal-detail"><strong>${escapeHtml(label)}</strong><span>${escapeHtml(value)}</span></div>`
-        )).join("");
+        if (visualDetailList) {
+            visualDetailList.innerHTML = "";
+        }
         visualDetailModal.hidden = false;
         document.body.classList.add("is-visual-detail-modal-open");
     };
@@ -1729,6 +1728,25 @@ if (visualShowcaseSection) {
 
     const updateActiveGalleryGrid = () => {
         galleryGrids.forEach((grid) => updateGalleryIndicator(grid));
+    };
+
+    const markGalleryCardActive = (card) => {
+        const grid = card.closest(".visual-showcase-grid");
+
+        if (grid && galleryGridState.has(grid)) {
+            const state = galleryGridState.get(grid);
+            const cardIndex = state.cards.indexOf(card);
+
+            if (cardIndex !== -1) {
+                setActiveGalleryImage(grid, cardIndex);
+            }
+        }
+
+        galleryCards.forEach((galleryCard) => {
+            if (galleryCard.classList.contains("visual-walkthrough-card")) {
+                galleryCard.classList.toggle("is-active", galleryCard === card);
+            }
+        });
     };
 
     galleryGrids.forEach((grid) => {
@@ -1808,7 +1826,10 @@ if (visualShowcaseSection) {
     galleryCards.forEach((card) => {
         addVisualGalleryOverlay(card);
 
-        card.addEventListener("click", () => openVisualDetail(card));
+        card.addEventListener("click", () => {
+            markGalleryCardActive(card);
+            openVisualDetail(card);
+        });
 
         if (card.tagName !== "BUTTON") {
             card.addEventListener("keydown", (event) => {
@@ -1817,6 +1838,7 @@ if (visualShowcaseSection) {
                 }
 
                 event.preventDefault();
+                markGalleryCardActive(card);
                 openVisualDetail(card);
             });
         }
