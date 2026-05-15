@@ -10766,3 +10766,54 @@
         text-shadow: none !important;
     }
 }
+
+/* Mobile booking enquiry after the structure slider: give the form room to breathe. */
+@media (max-width: 767px) {
+    .booking-enquiry-section {
+        min-height: 100svh !important;
+        padding: 56px 14px 64px !important;
+        overflow: visible !important;
+    }
+
+    .booking-enquiry-inner {
+        max-width: 376px !important;
+    }
+
+    .booking-enquiry-form {
+        max-height: none !important;
+        min-height: 0 !important;
+        padding: 24px 18px 16px !important;
+        border-radius: 22px !important;
+    }
+
+    .booking-enquiry-form h2 {
+        font-size: 25px !important;
+        line-height: 1.16 !important;
+    }
+
+    .booking-enquiry-form p {
+        margin: 12px 0 20px !important;
+        font-size: 12.8px !important;
+        line-height: 1.55 !important;
+    }
+
+    .booking-enquiry-form label {
+        margin-bottom: 15px !important;
+    }
+
+    .booking-phone-field,
+    .booking-enquiry-form input {
+        height: 38px !important;
+        min-height: 38px !important;
+        font-size: 13px !important;
+    }
+
+    .booking-enquiry-form button {
+        min-height: 46px !important;
+        margin-top: 4px !important;
+    }
+
+    .booking-trust-row {
+        margin-top: 10px !important;
+    }
+}
