@@ -14630,3 +14630,73 @@ body {
     filter: none !important;
     text-shadow: none !important;
 }
+
+@media (min-width: 768px) {
+    .ideal-floor-card,
+    .transparent-pricing-section .pricing-card {
+        height: clamp(500px, 68vh, 540px) !important;
+        min-height: clamp(500px, 68vh, 540px) !important;
+    }
+
+    .ideal-floor-media,
+    .transparent-pricing-section .pricing-left,
+    .transparent-pricing-section .pricing-right {
+        min-height: 0 !important;
+        height: 100% !important;
+    }
+
+    .ideal-floor-media img {
+        min-height: 0 !important;
+        height: 100% !important;
+    }
+
+    .ideal-floor-panel {
+        gap: clamp(12px, 1.6vh, 18px) !important;
+        padding: clamp(24px, 3vh, 34px) 30px clamp(24px, 3vh, 34px) !important;
+        justify-content: center !important;
+    }
+
+    .ideal-floor-panel h3 {
+        font-size: clamp(26px, 2.2vw, 30px) !important;
+        line-height: 1.14 !important;
+    }
+
+    .ideal-floor-panel > div:first-child p {
+        margin-top: 5px !important;
+        font-size: 14px !important;
+        line-height: 18px !important;
+    }
+
+    .ideal-floor-selector {
+        gap: 8px !important;
+    }
+
+    .ideal-floor-levels {
+        height: 52px !important;
+    }
+
+    .ideal-floor-panel .ideal-floor-specs {
+        gap: 8px !important;
+    }
+
+    .ideal-floor-panel .ideal-floor-spec {
+        min-height: 68px !important;
+        padding: 10px 9px !important;
+        gap: 4px !important;
+    }
+
+    .ideal-floor-panel .ideal-floor-spec img {
+        width: 21px !important;
+        height: 21px !important;
+    }
+
+    .ideal-floor-panel .ideal-floor-spec strong {
+        min-height: 30px !important;
+        font-size: 14px !important;
+        line-height: 16px !important;
+    }
+
+    .ideal-floor-price-btn {
+        min-height: 46px !important;
+    }
+}
