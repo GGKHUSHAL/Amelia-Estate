@@ -10,6 +10,32 @@
     }
 }
 
+@keyframes visualTabsHintRight {
+    0%,
+    100% {
+        transform: translate(-2px, -50%);
+        opacity: 0.72;
+    }
+
+    50% {
+        transform: translate(3px, -50%);
+        opacity: 1;
+    }
+}
+
+@keyframes visualTabsHintLeft {
+    0%,
+    100% {
+        transform: translate(2px, -50%);
+        opacity: 0.72;
+    }
+
+    50% {
+        transform: translate(-3px, -50%);
+        opacity: 1;
+    }
+}
+
 /* Responsive rules moved from style.css; keep desktop/default styles in style.css. */
 
 /* Mobile/tablet navigation drawer. */
@@ -269,12 +295,12 @@
         right: 10px;
         bottom: 10px;
         left: 10px;
-        min-height: 82px;
-        padding: 13px;
+        min-height: 48px;
+        padding: 9px 10px;
     }
 
     .visual-gallery-info-copy {
-        padding-right: 76px;
+        padding-right: 42px;
     }
 
     .visual-gallery-info-copy strong {
@@ -290,6 +316,7 @@
     .visual-gallery-view-full {
         width: 32px;
         height: 32px;
+        border-radius: 9px;
     }
 
     .visual-gallery-view-full svg {
@@ -570,9 +597,7 @@
         line-height: 1.25;
     }
 
-    h4,
-    .premium-specs-eyebrow,
-    .visual-showcase-eyebrow {
+    h4 {
         font-size: 16px;
     }
 
@@ -719,13 +744,6 @@
         width: 100% !important;
     }
 
-    .property-snapshot-eyebrow {
-        min-height: 30px !important;
-        padding: 6px 13px !important;
-        font-size: 10px !important;
-        letter-spacing: 0.10em !important;
-    }
-
     .property-snapshot-header h2 {
         margin-top: 14px !important;
         font-size: 28px !important;
@@ -740,7 +758,7 @@
     .property-snapshot-card {
         min-height: 0 !important;
         padding: 18px 18px 16px !important;
-   
+        border-radius: 18px !important;
     }
 
     .property-snapshot-brand {
@@ -1100,7 +1118,6 @@
 
     .about-content,
     .about-text-block,
-    .about-eyebrow,
     .about-content h2,
     .about-text-block > p,
     .about-feature-grid {
@@ -1198,7 +1215,7 @@
 
     .visual-showcase-section {
         min-height: 0;
-        padding: 56px 32px;
+        padding: 44px 32px;
     }
 
     .prime-location-section {
@@ -1233,7 +1250,7 @@
     }
 
     .buyer-appreciation-section {
-        padding: 60px 32px;
+        padding: 48px 32px 42px !important;
     }
 
     .buyer-appreciation-section > div {
@@ -1245,14 +1262,15 @@
     }
 
     .faq-section {
-        padding: 70px 32px;
+        padding: 48px 24px;
     }
 
     .faq-layout {
-        grid-template-columns: 280px minmax(0, 1fr) !important;
-        gap: 18px !important;
-        padding: 14px !important;
-        border-radius: 22px !important;
+        grid-template-columns: 270px minmax(0, 1fr) !important;
+        gap: 16px !important;
+        margin-top: 24px !important;
+        padding: 12px !important;
+        border-radius: 18px !important;
     }
 
     .project-essentials-section {
@@ -1340,8 +1358,8 @@
     }
 
     .buyer-testimonial-card {
-        width: 360px;
-        flex-basis: 360px;
+        width: 320px;
+        flex-basis: 320px;
     }
 
     .interested-property-section > div {
@@ -1400,7 +1418,7 @@
     .construction-progress-photo,
     .construction-progress-card {
         height: auto;
-        min-height: 440px;
+        min-height: 360px;
     }
 
     .lifestyle-amenities-section > div {
@@ -1912,7 +1930,7 @@
     }
 
     .visual-showcase-section {
-        padding: 50px 40px;
+        padding: 40px 40px;
     }
 
     .prime-location-section {
@@ -1950,17 +1968,18 @@
     }
 
     .faq-header h2 {
-        font-size: 34px !important;
-        line-height: 42px !important;
+        font-size: 32px !important;
+        line-height: 39px !important;
     }
 
     .faq-item button {
-        padding: 0 24px;
+        min-height: 58px;
+        padding: 0 18px;
     }
 
     .faq-answer {
-        margin-right: 24px;
-        margin-left: 24px;
+        margin-right: 18px;
+        margin-left: 18px;
     }
 
     .project-essentials-card h2 {
@@ -2634,13 +2653,6 @@
         margin-bottom: 16px;
     }
 
-    .ideal-floor-eyebrow {
-        height: 26px;
-        padding: 5px 13px;
-        font-size: 10px;
-        letter-spacing: 0.28em;
-    }
-
     .ideal-floor-heading h2 {
         font-size: 27px;
         line-height: 32px;
@@ -2772,14 +2784,6 @@
         font-size: 13px;
         line-height: 18px;
         overflow-wrap: normal;
-    }
-
-    .project-plans-eyebrow {
-        min-height: 24px;
-        margin-bottom: 8px;
-        padding: 5px 11px;
-        font-size: 9px;
-        letter-spacing: 0.16em;
     }
 
     .project-plans-eyebrow,
@@ -2980,7 +2984,7 @@
     }
 
     .visual-showcase-section {
-        padding: 42px 16px 46px;
+        padding: 34px 16px 36px;
     }
 
     .lifestyle-amenities-section {
@@ -3018,19 +3022,79 @@
     }
 
     .faq-section {
-        padding: 46px 4px;
+        padding: 34px 0;
+    }
+
+    .faq-section > div {
+        width: calc(100% - 14px) !important;
+        max-width: none !important;
     }
 
     .faq-layout {
+        display: flex !important;
+        flex-direction: column !important;
         grid-template-columns: 1fr !important;
-        gap: 12px !important;
-        margin-top: 28px !important;
+        gap: 10px !important;
+        margin-top: 20px !important;
+        width: 100% !important;
+        max-width: none !important;
         padding: 6px !important;
-        border-radius: 18px !important;
+        border-radius: 16px !important;
     }
 
     .faq-sidebar {
+        display: contents !important;
         min-width: 0;
+    }
+
+    .faq-tabs-shell {
+        order: 1;
+        display: grid !important;
+        grid-template-columns: 24px minmax(0, 1fr) 24px;
+        align-items: center;
+        width: 100%;
+        margin: 0 auto !important;
+        padding: 4px !important;
+        border: 1px solid rgba(240, 205, 69, 0.24);
+        border-radius: 18px;
+        background:
+            linear-gradient(180deg, rgba(240, 205, 69, 0.055), rgba(255, 255, 255, 0.018)),
+            rgba(4, 4, 4, 0.82);
+        box-shadow:
+            0 16px 34px rgba(0, 0, 0, 0.24),
+            inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    }
+
+    .faq-tabs-arrow {
+        display: grid !important;
+        width: 24px;
+        height: 38px;
+        place-items: center;
+        border: 0;
+        border-radius: 12px;
+        background: transparent;
+        color: rgba(240, 205, 69, 0.82);
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 19px;
+        font-weight: 800;
+        line-height: 1;
+    }
+
+    .faq-tabs-arrow:not(.is-disabled) {
+        background: rgba(240, 205, 69, 0.055);
+    }
+
+    .faq-tabs-arrow.is-disabled {
+        opacity: 0.24;
+        pointer-events: none;
+    }
+
+    .faq-tabs-arrow--prev {
+        border-right: 1px solid rgba(240, 205, 69, 0.14);
+    }
+
+    .faq-tabs-arrow--next {
+        border-left: 1px solid rgba(240, 205, 69, 0.14);
     }
 
     .faq-tabs {
@@ -3041,13 +3105,13 @@
         width: 100%;
         max-width: 100%;
         margin: 0 !important;
-        gap: 8px !important;
+        gap: 5px !important;
         overflow-x: auto;
         overscroll-behavior-inline: contain;
         scroll-snap-type: x mandatory;
         scroll-padding-inline: 0;
         scrollbar-width: none;
-        padding: 0 0 2px !important;
+        padding: 0 !important;
         border: 0 !important;
         border-radius: 0 !important;
         background: transparent !important;
@@ -3059,24 +3123,25 @@
     }
 
     .faq-tab-progress {
-        display: block;
+        display: none !important;
     }
 
     .faq-tab {
-        grid-template-columns: 30px minmax(0, 1fr) 22px;
-        flex: 0 0 min(76vw, 238px);
+        grid-template-columns: 20px minmax(0, 1fr) 18px;
+        flex: 0 0 100%;
+        width: 100%;
         min-width: 0;
-        height: 46px;
-        min-height: 46px;
-        scroll-snap-align: center;
+        height: 38px;
+        min-height: 38px;
+        scroll-snap-align: start;
         scroll-snap-stop: always;
-        gap: 8px;
-        padding: 0 9px;
-        font-size: 11px;
-        line-height: 15px;
+        gap: 5px;
+        padding: 0 7px;
+        font-size: 9.5px;
+        line-height: 12px;
         border-radius: 12px;
-        border-color: rgba(213, 174, 102, 0.16);
-        background: rgba(0, 0, 0, 0.32);
+        border-color: transparent;
+        background: transparent;
     }
 
     .faq-tab > span:not(.faq-tab-icon) {
@@ -3086,38 +3151,48 @@
     }
 
     .faq-tab-icon {
-        width: 30px;
-        height: 30px;
-        border-radius: 9px;
+        width: 20px;
+        height: 20px;
+        border-radius: 7px;
     }
 
     .faq-tab-icon::before {
-        font-size: 14px;
-    }
-
-    .faq-tab strong {
-        width: 22px;
-        height: 22px;
         font-size: 10px;
     }
 
-    .faq-assist-card {
-        display: none;
+    .faq-tab strong {
+        width: 18px;
+        height: 18px;
+        font-size: 9px;
     }
 
     .faq-panels {
+        order: 2;
         width: 100%;
-        padding: 10px 8px;
-        border-radius: 16px;
-        overflow: hidden;
+        max-width: none !important;
+        padding: 0;
+        border-radius: 0;
+        overflow: visible;
+        background: transparent;
     }
 
     .faq-panel {
-        gap: 8px;
+        gap: 7px;
     }
 
     .faq-item {
         border-radius: 13px;
+    }
+
+    .faq-assist-card {
+        order: 3;
+        width: 100%;
+        margin: 14px auto 0 !important;
+        padding: 16px 12px !important;
+        border: 1px solid rgba(240, 205, 69, 0.18);
+        border-radius: 14px;
+        background: rgba(0, 0, 0, 0.24);
+        text-align: center;
     }
 
     .project-essentials-section {
@@ -3260,13 +3335,13 @@
     }
 
     .buyer-testimonials-track {
-        gap: 16px;
+        gap: 12px;
     }
 
     .buyer-appreciation-section .buyer-testimonials-slider {
         width: 100% !important;
         max-width: 100% !important;
-        margin-top: 28px !important;
+        margin-top: 22px !important;
         padding-bottom: 6px;
         scroll-snap-type: x mandatory;
         scrollbar-width: none;
@@ -3282,15 +3357,15 @@
     }
 
     .buyer-testimonial-card {
-        width: 300px;
-        min-height: 250px;
-        flex-basis: 300px;
-        padding: 22px 20px 18px;
+        width: 282px;
+        min-height: 214px;
+        flex-basis: 282px;
+        padding: 19px 18px 16px;
     }
 
     .buyer-appreciation-section .buyer-testimonial-card {
         width: 100% !important;
-        min-height: 252px;
+        min-height: 214px;
         flex: 0 0 100% !important;
         scroll-snap-align: center;
     }
@@ -3302,8 +3377,8 @@
     }
 
     .buyer-testimonial-card p {
-        font-size: 13px;
-        line-height: 23px;
+        font-size: 12.5px;
+        line-height: 21px;
     }
 
     .interested-property-copy h2 {
@@ -3369,7 +3444,7 @@
     }
 
     .construction-progress-photo {
-        min-height: 320px;
+        min-height: 300px;
     }
 
     .construction-progress-card {
@@ -3441,15 +3516,6 @@
         max-width: 560px;
     }
 
-    .visual-showcase-eyebrow {
-        min-height: 28px;
-        margin-bottom: 16px;
-        padding: 6px 14px;
-        font-size: 11px;
-        font-weight: 600;
-        letter-spacing: 0.1em;
-    }
-
     .visual-showcase-header h2 {
         font-size: 30px;
         line-height: 37px;
@@ -3465,8 +3531,8 @@
     }
 
     .visual-showcase-copy {
-        margin-top: 20px;
-        padding-top: 18px;
+        margin-top: 12px;
+        padding-top: 8px;
     }
 
     .visual-showcase-copy p {
@@ -3475,13 +3541,13 @@
     }
 
     .visual-showcase-update {
-        margin: 24px 0 20px;
+        margin: 18px 0 16px;
         font-size: 14px;
         line-height: 19px;
     }
 
     .visual-showcase-content {
-        margin-top: 30px;
+        margin-top: 20px;
     }
 
     .visual-showcase-grid {
@@ -3529,8 +3595,8 @@
     }
 
     .visual-showcase-cta {
-        margin-top: 34px;
-        padding: 26px 18px 24px;
+        margin-top: 22px;
+        padding: 0;
     }
 
     .visual-showcase-cta h3 {
@@ -3554,8 +3620,8 @@
     }
 
     .visual-showcase-disclaimer {
-        margin-top: 34px;
-        padding: 20px 16px;
+        margin-top: 22px;
+        padding: 16px 14px;
     }
 
     .visual-showcase-disclaimer p {
@@ -3565,14 +3631,6 @@
 
     .premium-specs-header {
         max-width: 560px;
-    }
-
-    .premium-specs-eyebrow {
-        min-height: 28px;
-        margin-bottom: 10px;
-        padding: 6px 14px;
-        font-size: 11px;
-        letter-spacing: 0.1em;
     }
 
     .premium-specs-header h2 {
@@ -3703,8 +3761,10 @@
     }
 
     .premium-specs-notice {
-        margin-top: 14px;
-        padding: 12px 16px;
+        width: min(100%, 520px);
+        margin-top: 16px;
+        padding: 16px 18px;
+        border-radius: 12px;
     }
 
     .premium-specs-notice p {
@@ -3724,14 +3784,6 @@
         max-width: 560px;
         margin: 0 auto;
         text-align: center;
-    }
-
-    .transparent-pricing-eyebrow {
-        min-height: 24px;
-        margin-bottom: 8px;
-        padding: 5px 11px;
-        font-size: 9px;
-        letter-spacing: 0.16em;
     }
 
     .transparent-pricing-header h2 {
@@ -3956,7 +4008,6 @@
     .about-side-gallery,
     .about-content,
     .about-text-block,
-    .about-eyebrow,
     .about-content h2,
     .about-text-block > p,
     .about-feature-grid {
@@ -4004,23 +4055,6 @@
     .about-content {
         gap: 18px;
         padding-top: 0;
-    }
-
-    .about-eyebrow {
-        height: auto;
-        gap: 12px;
-        margin-top: 12px;
-        margin-bottom: 0;
-        color: #77716d;
-        font-size: 12px;
-        font-weight: 600;
-        line-height: 16px;
-        letter-spacing: 1.1px;
-    }
-
-    .about-eyebrow span {
-        width: 24px;
-        height: 2px;
     }
 
     .about-content h2 {
@@ -4412,13 +4446,6 @@
         margin-bottom: 12px;
     }
 
-    .project-plans-eyebrow {
-        min-height: 24px;
-        margin-bottom: 7px;
-        padding: 5px 11px;
-        font-size: 8.5px;
-    }
-
     .project-plans-copy h2 {
         font-size: 23px;
         line-height: 28px;
@@ -4574,7 +4601,7 @@
     }
 
     .visual-showcase-section {
-        padding: 36px 14px 40px;
+        padding: 30px 14px 32px;
     }
 
     .prime-location-section {
@@ -4620,13 +4647,13 @@
     }
 
     .faq-tab {
-        flex-basis: min(76vw, 238px);
-        height: 44px;
-        min-height: 44px;
+        flex-basis: 100%;
+        height: 38px;
+        min-height: 38px;
     }
 
     .faq-item button {
-        min-height: 56px;
+        min-height: 50px;
         padding: 0 9px 0 13px;
         font-size: 12px;
         line-height: 17px;
@@ -4634,19 +4661,38 @@
     }
 
     .faq-item button span {
-        width: 28px;
-        height: 28px;
-        flex-basis: 28px;
+        width: 18px;
+        height: 18px;
+        flex-basis: 18px;
+        border: 0;
+        background: transparent;
+        box-shadow: none;
     }
 
     .faq-answer {
-        margin: -2px 10px 14px 13px;
-        padding-left: 12px;
+        margin: -2px 13px 12px;
+        padding-left: 0;
+        border-left: 0;
     }
 
     .faq-answer p {
         font-size: 12px;
         line-height: 19px;
+    }
+
+    .faq-item button span::before,
+    .faq-item button span::after {
+        width: 10px !important;
+        height: 2px !important;
+        background: #f0cd45 !important;
+    }
+
+    .faq-item:hover button span,
+    .faq-item:focus-within button span {
+        border: 0 !important;
+        background: transparent !important;
+        transform: none !important;
+        box-shadow: none !important;
     }
 
     .project-essentials-card {
@@ -4657,14 +4703,6 @@
 
     .project-essentials-wrap {
         width: calc(100% - 28px) !important;
-    }
-
-    .project-essentials-head-eyebrow {
-        min-height: 28px;
-        margin-bottom: 12px;
-        padding: 0 12px;
-        font-size: 9px;
-        letter-spacing: 0.12em;
     }
 
     .project-essentials-head h2 {
@@ -4685,13 +4723,6 @@
     .project-essentials-panel > p:not(.project-essentials-eyebrow) {
         font-size: 13px !important;
         line-height: 20px !important;
-    }
-
-    .project-essentials-eyebrow {
-        min-height: 28px;
-        padding: 0 12px !important;
-        font-size: 10px !important;
-        letter-spacing: 0.1em !important;
     }
 
     .project-essentials-btn {
@@ -4732,7 +4763,7 @@
     }
 
     .site-visit-section {
-        padding: 44px 14px;
+        padding: 30px 14px;
     }
 
     .site-visit-card h2 {
@@ -4741,7 +4772,7 @@
     }
 
     .site-visit-card-inner {
-        padding: 24px 16px 18px;
+        padding: 0;
     }
 
     .site-visit-map {
@@ -4763,18 +4794,18 @@
     }
 
     .site-visit-form input {
-        height: 46px;
+        height: 40px;
         font-size: 13px;
     }
 
     .site-visit-submit,
     .site-visit-whatsapp {
-        height: 50px;
+        height: 44px;
         font-size: 14px;
     }
 
     .site-visit-whatsapp {
-        height: 56px;
+        height: 46px;
         font-size: 15px;
     }
 
@@ -4785,8 +4816,8 @@
 
     .site-visit-phone {
         gap: 10px;
-        font-size: 18px;
-        line-height: 26px;
+        font-size: 15px;
+        line-height: 22px;
         letter-spacing: 0.02em;
     }
 
@@ -4902,29 +4933,23 @@
         line-height: 35px !important;
     }
 
-    .buyer-testimonials-eyebrow {
-        padding: 6px 12px;
-        font-size: 10px;
-        letter-spacing: 0.1em;
-    }
-
     .buyer-testimonials-header h2 {
         font-size: 27px !important;
         line-height: 34px !important;
     }
 
     .buyer-testimonial-card {
-        width: 278px;
-        flex-basis: 278px;
+        width: 268px;
+        flex-basis: 268px;
     }
 
     .buyer-appreciation-section .buyer-testimonials-slider {
-        margin-top: 24px !important;
+        margin-top: 20px !important;
     }
 
     .buyer-appreciation-section .buyer-testimonial-card {
         width: 100% !important;
-        min-height: 260px;
+        min-height: 218px;
         flex-basis: 100% !important;
     }
 
@@ -4939,12 +4964,6 @@
     .interested-property-copy a {
         min-width: 0 !important;
         flex: 1 1 140px;
-    }
-
-    .construction-progress-eyebrow {
-        padding: 6px 12px;
-        font-size: 10px;
-        letter-spacing: 0.1em;
     }
 
     .construction-progress-title {
@@ -4966,12 +4985,6 @@
         flex-basis: 16px;
     }
 
-    .lifestyle-amenities-eyebrow {
-        padding: 6px 12px;
-        font-size: 10px;
-        letter-spacing: 0.1em;
-    }
-
     .lifestyle-amenities-title {
         font-size: 27px !important;
         line-height: 34px !important;
@@ -4988,11 +5001,6 @@
 
     .prime-location-inner {
         width: 100%;
-    }
-
-    .prime-location-eyebrow {
-        padding: 6px 12px;
-        font-size: 10px;
     }
 
     .prime-location-header h2 {
@@ -5035,17 +5043,13 @@
     }
 
     .prime-distance-grid {
-        display: flex !important;
-        grid-template-columns: none !important;
-        gap: 12px !important;
-        margin: 24px -14px 0;
-        padding: 0 14px 4px;
-        overflow-x: auto;
-        overflow-y: hidden;
-        scroll-padding-inline: 14px;
-        scroll-snap-type: x mandatory;
-        scrollbar-width: none;
-        -webkit-overflow-scrolling: touch;
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 10px !important;
+        margin: 24px 0 0 !important;
+        padding: 0 !important;
+        overflow: visible !important;
+        scroll-snap-type: none !important;
     }
 
     .prime-distance-grid::-webkit-scrollbar {
@@ -5053,17 +5057,25 @@
     }
 
     .prime-distance-card {
-        min-height: 206px;
-        width: auto;
-        flex: 0 0 min(76vw, 244px);
-        padding: 22px 16px 18px;
-        border-radius: 16px;
-        scroll-snap-align: center;
-        scroll-snap-stop: always;
+        width: 100% !important;
+        min-height: 184px;
+        flex: none !important;
+        padding: 16px 12px 24px;
+        overflow: visible !important;
+        border-radius: 14px;
+        scroll-snap-align: unset;
+        scroll-snap-stop: normal;
+    }
+
+    .prime-distance-card::after {
+        left: 12px !important;
+        bottom: 12px !important;
+        width: 36px !important;
+        max-width: calc(100% - 24px) !important;
     }
 
     .prime-distance-progress {
-        display: block;
+        display: none !important;
     }
 
     .prime-distance-card div {
@@ -5071,35 +5083,38 @@
     }
 
     .prime-distance-card svg {
-        width: 35px;
-        height: 35px;
-        margin-bottom: 28px;
+        width: 23px;
+        height: 23px;
+        margin-bottom: 12px;
     }
 
     .prime-distance-card span {
         display: block;
-        font-size: 15px;
-        line-height: 20px;
+        min-height: 34px;
+        font-size: 12px;
+        line-height: 17px;
+        overflow-wrap: anywhere;
     }
 
     .prime-distance-card strong {
         margin: 8px 0 0;
-        font-size: 13px;
-        line-height: 18px;
+        font-size: 10.5px;
+        line-height: 15px;
+        overflow-wrap: anywhere;
     }
 
     .prime-distance-card strong em {
-        margin-bottom: 10px;
-        font-size: 15px;
-        line-height: 20px;
+        margin-bottom: 6px;
+        font-size: 12px;
+        line-height: 16px;
     }
 
     .prime-whatsapp-location-cta {
-        height: 162px;
-        min-height: 162px;
-        margin-top: 28px;
-        border-radius: 14px;
-        padding: 0 18px;
+        height: auto;
+        min-height: 0;
+        margin-top: 20px;
+        border-radius: 0;
+        padding: 0;
     }
 
     .prime-whatsapp-location-btn {
@@ -5112,7 +5127,7 @@
 
     .prime-whatsapp-location-cta small {
         max-width: 278px;
-        margin-top: 26px;
+        margin-top: 12px;
         font-size: 15px;
         line-height: 20px;
     }
@@ -5133,12 +5148,6 @@
         margin-top: 16px;
         font-size: 20px;
         line-height: 26px;
-    }
-
-    .visual-showcase-eyebrow {
-        padding: 6px 12px;
-        font-size: 10px;
-        font-weight: 600;
     }
 
     .visual-showcase-header h2 {
@@ -5178,11 +5187,6 @@
         min-width: 0;
     }
 
-    .premium-specs-eyebrow {
-        padding: 6px 12px;
-        font-size: 10px;
-    }
-
     .premium-specs-header h2 {
         font-size: 27px;
         line-height: 34px;
@@ -5218,7 +5222,7 @@
     }
 
     .premium-specs-notice {
-        padding: 18px 14px;
+        padding: 16px 14px;
     }
 
     .transparent-pricing-top {
@@ -5242,13 +5246,6 @@
         width: 100%;
         max-width: 100%;
         margin: 0 auto;
-    }
-
-    .transparent-pricing-eyebrow {
-        min-height: 24px;
-        margin-bottom: 7px;
-        padding: 5px 11px;
-        font-size: 8.5px;
     }
 
     .transparent-pricing-header h2 {
@@ -6535,13 +6532,6 @@
         margin-bottom: 14px;
     }
 
-    .ideal-floor-eyebrow {
-        height: 24px;
-        padding: 5px 11px;
-        font-size: 9px;
-        letter-spacing: 0.22em;
-    }
-
     .ideal-floor-heading h2 {
         max-width: 280px;
         font-size: 23px;
@@ -6694,17 +6684,13 @@
     }
 
     .prime-distance-grid {
-        display: flex !important;
-        grid-template-columns: none !important;
-        gap: 12px !important;
-        margin: 24px -14px 0;
-        padding: 0 14px 4px;
-        overflow-x: auto;
-        overflow-y: hidden;
-        scroll-padding-inline: 14px;
-        scroll-snap-type: x mandatory;
-        scrollbar-width: none;
-        -webkit-overflow-scrolling: touch;
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 10px !important;
+        margin: 24px 0 0 !important;
+        padding: 0 !important;
+        overflow: visible !important;
+        scroll-snap-type: none !important;
     }
 
     .prime-distance-grid::-webkit-scrollbar {
@@ -6712,13 +6698,14 @@
     }
 
     .prime-distance-card {
-        width: auto;
-        min-height: 206px;
-        flex: 0 0 min(76vw, 244px);
-        padding: 22px 16px 18px;
-        border-radius: 16px;
-        scroll-snap-align: center;
-        scroll-snap-stop: always;
+        width: 100% !important;
+        min-height: 184px;
+        flex: none !important;
+        padding: 16px 12px 24px;
+        overflow: visible !important;
+        border-radius: 14px;
+        scroll-snap-align: unset;
+        scroll-snap-stop: normal;
     }
 
     .prime-distance-card.is-active {
@@ -6736,42 +6723,45 @@
     }
 
     .prime-distance-card svg {
-        width: 35px;
-        height: 35px;
-        margin-bottom: 28px;
+        width: 23px;
+        height: 23px;
+        margin-bottom: 12px;
     }
 
     .prime-distance-card span {
         display: block;
-        font-size: 15px;
-        line-height: 20px;
+        min-height: 34px;
+        font-size: 12px;
+        line-height: 17px;
+        overflow-wrap: anywhere;
     }
 
     .prime-distance-card strong {
         margin: 8px 0 0;
-        font-size: 13px;
-        line-height: 18px;
+        font-size: 10.5px;
+        line-height: 15px;
+        overflow-wrap: anywhere;
     }
 
     .prime-distance-card strong em {
-        margin-bottom: 10px;
-        font-size: 15px;
-        line-height: 20px;
+        margin-bottom: 6px;
+        font-size: 12px;
+        line-height: 16px;
     }
 
     .prime-distance-progress {
-        display: block;
+        display: none !important;
     }
 
     .prime-whatsapp-location-cta--map {
         display: flex;
         width: calc(100% - 28px);
-        height: 136px;
-        min-height: 136px;
-        max-height: 136px;
+        height: auto;
+        min-height: 0;
+        max-height: none;
         margin: 14px auto 0;
-        padding: 0 16px;
-        border-radius: 16px;
+        padding: 0;
+        border-radius: 0;
         opacity: 1;
         transform: translateY(0);
         transition:
@@ -6821,29 +6811,93 @@
     }
 
     .prime-location-section.is-distance-cta-shifted .prime-whatsapp-location-cta--after-distance {
-        height: 162px;
-        min-height: 162px;
-        max-height: 162px;
-        margin-top: 26px;
-        padding: 0 18px;
-        border-width: 1px;
+        height: auto;
+        min-height: 0;
+        max-height: none;
+        margin-top: 20px;
+        padding: 0;
+        border-width: 0;
         opacity: 1;
         pointer-events: auto;
         transform: translateY(0) scale(1);
     }
 
     .prime-whatsapp-location-cta--map .prime-whatsapp-location-btn {
-        width: min(100%, 254px);
-        height: 42px;
-        font-size: 13px;
-        line-height: 17px;
+        display: inline-flex !important;
+        width: min(100%, 292px) !important;
+        max-width: 292px !important;
+        min-width: 0 !important;
+        height: 44px !important;
+        min-height: 44px !important;
+        gap: 8px !important;
+        border: 1px solid rgba(37, 211, 102, 0.48) !important;
+        border-radius: 999px !important;
+        background:
+            radial-gradient(90% 150% at 0% 0%, rgba(37, 211, 102, 0.26), transparent 64%),
+            rgba(37, 211, 102, 0.14) !important;
+        color: #eafff0 !important;
+        box-shadow: 0 14px 32px rgba(37, 211, 102, 0.12) !important;
+        font-size: 13px !important;
+        font-weight: 800 !important;
+        line-height: 1 !important;
+        white-space: nowrap !important;
+        text-decoration: none !important;
     }
 
     .prime-whatsapp-location-cta--map small {
-        max-width: 254px;
-        margin-top: 18px;
-        font-size: 12px;
-        line-height: 17px;
+        display: flex !important;
+        max-width: 292px;
+        margin-top: 12px;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 5px 8px;
+        font-size: 11px;
+        line-height: 15px;
+    }
+
+    .prime-whatsapp-location-cta--after-distance small {
+        display: flex !important;
+        max-width: 292px;
+        margin-top: 12px;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 5px 8px;
+        font-size: 11px;
+        line-height: 15px;
+    }
+
+    .prime-whatsapp-location-cta--after-distance .prime-whatsapp-location-btn {
+        display: inline-flex !important;
+        width: min(100%, 292px) !important;
+        max-width: 292px !important;
+        min-width: 0 !important;
+        height: 44px !important;
+        min-height: 44px !important;
+        gap: 8px !important;
+        border: 1px solid rgba(37, 211, 102, 0.48) !important;
+        border-radius: 999px !important;
+        background:
+            radial-gradient(90% 150% at 0% 0%, rgba(37, 211, 102, 0.26), transparent 64%),
+            rgba(37, 211, 102, 0.14) !important;
+        color: #eafff0 !important;
+        box-shadow: 0 14px 32px rgba(37, 211, 102, 0.12) !important;
+        font-size: 13px !important;
+        font-weight: 800 !important;
+        line-height: 1 !important;
+        white-space: nowrap !important;
+        text-decoration: none !important;
+    }
+
+    .prime-whatsapp-location-btn svg {
+        width: 18px !important;
+        height: 18px !important;
+        flex: 0 0 18px !important;
+        color: #25d366 !important;
+    }
+
+    .prime-area-map-link {
+        color: #f0cd45 !important;
+        font-weight: 800 !important;
     }
 }
 
@@ -6859,13 +6913,6 @@
 
     .lifestyle-amenities-section > div > .mx-auto.text-center {
         width: calc(100% - 32px);
-    }
-
-    .lifestyle-amenities-eyebrow {
-        min-height: 24px;
-        padding: 5px 11px;
-        font-size: 9px;
-        letter-spacing: 0.12em;
     }
 
     .lifestyle-amenities-title {
@@ -6981,7 +7028,7 @@
 
     .construction-progress-photo {
         height: auto;
-        min-height: 440px;
+        min-height: 360px;
     }
 
     .construction-progress-side {
@@ -6996,7 +7043,7 @@
     }
 
     .construction-info-card {
-        min-height: 220px;
+        min-height: 0;
     }
 }
 
@@ -7007,14 +7054,14 @@
     }
 
     .construction-progress-photo {
-        height: 330px;
-        min-height: 330px;
+        height: 300px;
+        min-height: 300px;
         border-radius: 18px !important;
     }
 
     .construction-status-ring {
-        width: 190px;
-        height: 190px;
+        width: 220px;
+        height: 220px;
     }
 
     .construction-status-ring-track,
@@ -7042,6 +7089,7 @@
         margin-top: 11px;
         padding: 0 11px;
         font-size: 10px;
+        white-space: nowrap;
     }
 
     .construction-photo-status {
@@ -7055,14 +7103,6 @@
         min-height: 31px;
         padding: 0 11px;
         font-size: 10px;
-    }
-
-    .construction-photo-status span:last-child {
-        display: none;
-    }
-
-    .construction-photo-status em {
-        padding-left: 8px;
     }
 
     .construction-progress-side {
@@ -7080,7 +7120,7 @@
     }
 
     .construction-proof-card {
-        min-height: 178px;
+        min-height: 0;
         border-radius: 18px;
         padding: 20px 16px 18px;
     }
@@ -7184,12 +7224,6 @@
         line-height: 10px;
     }
 
-    .construction-bank-proof {
-        padding-top: 12px;
-        gap: 10px;
-        font-size: 10px;
-        line-height: 13px;
-    }
 }
 
 @media (max-width: 767px) {
@@ -7391,14 +7425,6 @@
         line-height: 33px !important;
     }
 
-    .interested-property-kicker {
-        min-height: 30px;
-        margin-bottom: 10px;
-        padding: 0 14px;
-        font-size: 10px;
-        letter-spacing: 0.12em;
-    }
-
     .sticky-availability-content--interested .interested-property-copy p {
         margin-top: 10px !important;
         max-width: 258px !important;
@@ -7453,8 +7479,6 @@
     .buyer-testimonials-header p:not(.buyer-testimonials-eyebrow),
     .sticky-availability-content > p,
     .buyer-appreciation-card p,
-    .faq-header > p,
-    .faq-answer p,
     .project-essentials-head > p:not(.project-essentials-head-eyebrow),
     .project-essentials-panel > p:not(.project-essentials-eyebrow),
     .site-visit-card p,
@@ -7465,14 +7489,9 @@
 
     .hero-location,
     .hero-slide--figma .hero-location,
-    .ideal-floor-eyebrow,
-    .project-plans-eyebrow,
-    .transparent-pricing-eyebrow,
     .sticky-availability-label,
-    .faq-tab,
-    .property-snapshot-strip span,
-    .interested-property-kicker {
-        font-size: 12px !important;
+    .property-snapshot-strip span {
+        font-size: 11px !important;
         line-height: 1.45 !important;
     }
 
@@ -7494,8 +7513,7 @@
     .about-content h2,
     .ideal-floor-heading h2,
     .project-plans-copy h2,
-    .transparent-pricing-header h2,
-    .faq-header h2 {
+    .transparent-pricing-header h2 {
         font-size: 30px !important;
         line-height: 1.24 !important;
     }
@@ -7518,8 +7536,7 @@
         line-height: 1.16 !important;
     }
 
-    .faq-tab strong,
-.project-plan-tabs button,
+    .project-plan-tabs button,
 .project-plan-variants button,
 .ideal-floor-levels button,
 .ideal-floor-size-tabs button{
@@ -7577,18 +7594,6 @@
         line-height: 1.4 !important;
     }
 
-    .faq-item button {
-        font-size: 16px !important;
-        line-height: 1.5 !important;
-    }
-
-    .project-essentials-eyebrow,
-    .site-visit-eyebrow,
-    .property-snapshot-eyebrow,
-    .faq-eyebrow {
-        font-size: 13px !important;
-        line-height: 1.45 !important;
-    }
 }
 
 @media (max-width: 767px) {
@@ -7673,8 +7678,8 @@
     .lifestyle-amenities-cta {
         flex-direction: column !important;
         justify-content: center !important;
-        gap: 18px !important;
-        padding: 28px 20px !important;
+        gap: 12px !important;
+        padding: 18px 20px !important;
         text-align: center !important;
     }
 
@@ -8123,7 +8128,6 @@
         .construction-progress-title,
         .buyer-testimonials-header h2,
         .buyer-appreciation-title,
-        .faq-header h2,
         .project-essentials-head h2,
         .site-visit-card h2,
         .site-visit-section h2,
@@ -8187,7 +8191,6 @@
         .construction-progress-title,
         .buyer-testimonials-header h2,
         .buyer-appreciation-title,
-        .faq-header h2,
         .project-essentials-head h2,
         .project-essentials-card h2,
         .site-visit-card h2,
@@ -8241,8 +8244,6 @@
         .buyer-testimonials-header p:not(.buyer-testimonials-eyebrow),
         .buyer-testimonial-card p,
         .buyer-appreciation-card p,
-        .faq-header > p,
-        .faq-answer p,
         .project-essentials-head > p:not(.project-essentials-head-eyebrow),
         .project-essentials-panel > p:not(.project-essentials-eyebrow),
         .site-visit-card > p,
@@ -8258,22 +8259,6 @@
     }
 
     :is(
-        .about-eyebrow,
-        .ideal-floor-eyebrow,
-        .project-plans-eyebrow,
-        .transparent-pricing-eyebrow,
-        .premium-specs-eyebrow,
-        .visual-showcase-eyebrow,
-        .prime-location-eyebrow,
-        .lifestyle-amenities-eyebrow,
-        .construction-progress-eyebrow,
-        .buyer-testimonials-eyebrow,
-        .faq-eyebrow,
-        .project-essentials-head-eyebrow,
-        .project-essentials-eyebrow,
-        .site-visit-eyebrow,
-        .property-snapshot-eyebrow,
-        .interested-property-kicker,
         .pricing-unlock-kicker,
         .footer-redesign-cta p
     ){
@@ -8364,9 +8349,6 @@
         .prime-whatsapp-location-btn,
         .lifestyle-amenities-tabs button,
         .construction-phase-trigger,
-        .faq-tab,
-        .faq-item button,
-        .faq-assist-card a,
         .project-essentials-btn,
         .site-visit-submit,
         .site-visit-whatsapp,
@@ -8395,14 +8377,96 @@
 @media (max-width: 991px) {
     .prime-location-section.is-distance-revealed .prime-distance-block {
         max-height: 760px;
-        margin-top: 38px;
+        margin-top: 24px;
     }
 }
 
 @media (max-width: 767px) {
+    .amenity-image-lightbox {
+        padding: 10px !important;
+        place-items: center !important;
+    }
+
+    .amenity-image-lightbox-panel {
+        width: fit-content !important;
+        max-width: calc(100vw - 20px) !important;
+        max-height: calc(100dvh - 20px) !important;
+        gap: 10px !important;
+        padding: 12px !important;
+        border-radius: 16px !important;
+    }
+
+    .amenity-image-lightbox-title {
+        max-width: calc(100% - 52px) !important;
+        min-height: 30px !important;
+        padding: 7px 12px !important;
+        color: #f0cd45 !important;
+        font-size: 11px !important;
+    }
+
+    .amenity-image-lightbox-close {
+        top: 10px !important;
+        right: 10px !important;
+        width: 40px !important;
+        height: 40px !important;
+    }
+
+    .amenity-image-lightbox-image {
+        width: auto !important;
+        height: auto !important;
+        max-width: calc(100vw - 44px) !important;
+        max-height: calc(100dvh - 92px) !important;
+        object-fit: contain !important;
+        object-position: center !important;
+        border-radius: 12px !important;
+        background: #101010 !important;
+    }
+
     .prime-location-section.is-distance-revealed .prime-distance-block {
-        max-height: 680px;
-        margin-top: 32px;
+        max-height: none !important;
+        margin-top: 20px;
+        overflow: visible !important;
+    }
+
+    .prime-distance-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 10px !important;
+        overflow: visible !important;
+    }
+
+    .prime-distance-card {
+        min-height: 184px !important;
+        padding: 16px 12px 24px !important;
+        overflow: visible !important;
+    }
+
+    .prime-distance-card span {
+        min-height: 34px !important;
+        font-size: 12px !important;
+        line-height: 17px !important;
+    }
+
+    .prime-distance-card strong {
+        margin-top: 8px !important;
+        font-size: 10.5px !important;
+        line-height: 15px !important;
+    }
+
+    .prime-distance-card strong em {
+        margin-bottom: 6px !important;
+        font-size: 12px !important;
+        line-height: 16px !important;
+    }
+
+    .prime-distance-progress {
+        display: none !important;
+    }
+
+    .prime-location-section.is-distance-cta-shifted .prime-whatsapp-location-cta--after-distance {
+        max-height: none !important;
+        margin-bottom: 8px !important;
+        overflow: visible !important;
     }
 }
 
@@ -8561,7 +8625,7 @@
     }
 
     .construction-info-card--banks {
-        padding: 20px 16px 18px !important;
+        padding: 18px 16px 16px !important;
     }
 
     .construction-bank-grid {
@@ -8602,13 +8666,6 @@
         top: 3px !important;
         width: 5px !important;
         height: 3px !important;
-    }
-
-    .construction-bank-proof {
-        flex-wrap: wrap !important;
-        padding-top: 13px !important;
-        gap: 8px 12px !important;
-        text-align: center !important;
     }
 
     .construction-stage-labels {
@@ -10063,8 +10120,8 @@
     }
 
     .prime-location-tabs.transparent-pricing-tabs {
-        width: min(100%, 360px) !important;
-        height: 50px !important;
+        width: calc(100% - 4px) !important;
+        height: 52px !important;
     }
 
     .lifestyle-amenities-tabs.transparent-pricing-tabs {
@@ -10086,7 +10143,9 @@
     .prime-location-tabs.transparent-pricing-tabs button {
         height: 40px !important;
         min-height: 40px !important;
-        font-size: 10px !important;
+        padding: 0 10px !important;
+        font-size: 13px !important;
+        font-weight: 700 !important;
         justify-content: center !important;
         text-align: center !important;
     }
@@ -10111,6 +10170,274 @@
         color: #f0cd45 !important;
         border-color: rgba(240, 205, 69, 0.42) !important;
         box-shadow: inset 0 0 0 1px rgba(240, 205, 69, 0.20) !important;
+    }
+
+    .visual-showcase-tabs-shell {
+        display: grid;
+        grid-template-columns: 22px minmax(0, 1fr) 22px;
+        gap: 0;
+        align-items: center;
+        width: calc(100% - 4px);
+        max-width: none;
+        margin: 30px auto 12px;
+        border: 1px solid rgba(240, 205, 69, 0.24);
+        border-radius: 18px;
+        background:
+            linear-gradient(180deg, rgba(240, 205, 69, 0.055), rgba(255, 255, 255, 0.018)),
+            rgba(4, 4, 4, 0.82);
+        box-shadow:
+            0 16px 34px rgba(0, 0, 0, 0.24),
+            inset 0 1px 0 rgba(255, 255, 255, 0.04);
+        padding: 4px;
+    }
+
+    .visual-showcase-tabs-arrow {
+        display: grid;
+        width: 22px;
+        height: 38px;
+        place-items: center;
+        border: 0;
+        border-radius: 12px;
+        background: transparent;
+        color: rgba(240, 205, 69, 0.82);
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 20px;
+        font-weight: 800;
+        line-height: 1;
+        transition:
+            opacity 0.22s ease,
+            transform 0.22s ease,
+            color 0.22s ease,
+            background 0.22s ease;
+    }
+
+    .visual-showcase-tabs-arrow--prev {
+        border-right: 1px solid rgba(240, 205, 69, 0.14);
+        animation: none;
+    }
+
+    .visual-showcase-tabs-arrow--next {
+        border-left: 1px solid rgba(240, 205, 69, 0.14);
+        animation: none;
+    }
+
+    .visual-showcase-tabs-arrow:not(.is-disabled) {
+        background: rgba(240, 205, 69, 0.055);
+    }
+
+    .visual-showcase-tabs-arrow:not(.is-disabled):active {
+        color: #f0cd45;
+        transform: scale(0.94);
+    }
+
+    .visual-showcase-tabs-arrow.is-disabled {
+        opacity: 0.22;
+        pointer-events: none;
+    }
+
+    .visual-showcase-tabs.transparent-pricing-tabs {
+        justify-content: flex-start !important;
+        width: 100% !important;
+        max-width: none !important;
+        margin: 0 !important;
+        gap: 5px !important;
+        border: 0 !important;
+        border-radius: 14px !important;
+        background: transparent !important;
+        box-shadow: none !important;
+        overflow-x: auto !important;
+        overflow-y: hidden !important;
+        scroll-snap-type: x mandatory !important;
+        -webkit-overflow-scrolling: touch !important;
+        scrollbar-width: none !important;
+        padding: 0 !important;
+    }
+
+    .visual-showcase-tabs.transparent-pricing-tabs::-webkit-scrollbar {
+        display: none !important;
+    }
+
+    .visual-showcase-tabs.transparent-pricing-tabs button {
+        flex: 0 0 auto !important;
+        width: calc((100% - 5px) / 2) !important;
+        min-width: calc((100% - 5px) / 2) !important;
+        height: 38px !important;
+        min-height: 38px !important;
+        padding: 0 8px !important;
+        border: 1px solid transparent !important;
+        border-radius: 12px !important;
+        background: transparent !important;
+        color: rgba(255, 255, 255, 0.58) !important;
+        font-size: 11px !important;
+        font-weight: 700 !important;
+        line-height: 1 !important;
+        letter-spacing: 0 !important;
+        scroll-snap-align: start !important;
+        scroll-snap-stop: always !important;
+    }
+
+    .visual-showcase-tabs.transparent-pricing-tabs button span {
+        min-width: 18px !important;
+        height: 18px !important;
+        padding: 0 5px !important;
+        border: 1px solid rgba(240, 205, 69, 0.20) !important;
+        background: rgba(240, 205, 69, 0.10) !important;
+        color: rgba(240, 205, 69, 0.92) !important;
+        font-size: 10px !important;
+        font-weight: 800 !important;
+    }
+
+    .visual-showcase-tabs.transparent-pricing-tabs button:hover,
+    .visual-showcase-tabs.transparent-pricing-tabs button.is-active {
+        border-color: rgba(240, 205, 69, 0.34) !important;
+        background:
+            linear-gradient(180deg, rgba(240, 205, 69, 0.14), rgba(240, 205, 69, 0.055)) !important;
+        color: #f0cd45 !important;
+        box-shadow:
+            inset 0 1px 0 rgba(255, 255, 255, 0.035),
+            0 10px 24px rgba(0, 0, 0, 0.18) !important;
+    }
+
+    .visual-showcase-tabs.transparent-pricing-tabs button.is-active span {
+        border-color: rgba(240, 205, 69, 0.34) !important;
+        background: rgba(0, 0, 0, 0.32) !important;
+        color: #ffffff !important;
+    }
+
+    .lifestyle-amenities-tabs-shell {
+        display: grid;
+        grid-template-columns: 22px minmax(0, 1fr) 22px;
+        gap: 0;
+        align-items: center;
+        width: calc(100% - 4px);
+        max-width: none;
+        margin: 16px auto 0;
+        border: 1px solid rgba(240, 205, 69, 0.24);
+        border-radius: 18px;
+        background:
+            linear-gradient(180deg, rgba(240, 205, 69, 0.055), rgba(255, 255, 255, 0.018)),
+            rgba(4, 4, 4, 0.82);
+        box-shadow:
+            0 16px 34px rgba(0, 0, 0, 0.24),
+            inset 0 1px 0 rgba(255, 255, 255, 0.04);
+        padding: 4px;
+    }
+
+    .lifestyle-amenities-tabs-arrow {
+        display: grid;
+        width: 22px;
+        height: 38px;
+        place-items: center;
+        border: 0;
+        border-radius: 12px;
+        background: transparent;
+        color: rgba(240, 205, 69, 0.82);
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 20px;
+        font-weight: 800;
+        line-height: 1;
+        transition:
+            opacity 0.22s ease,
+            transform 0.22s ease,
+            color 0.22s ease,
+            background 0.22s ease;
+    }
+
+    .lifestyle-amenities-tabs-arrow--prev {
+        border-right: 1px solid rgba(240, 205, 69, 0.14);
+    }
+
+    .lifestyle-amenities-tabs-arrow--next {
+        border-left: 1px solid rgba(240, 205, 69, 0.14);
+    }
+
+    .lifestyle-amenities-tabs-arrow:not(.is-disabled) {
+        background: rgba(240, 205, 69, 0.055);
+    }
+
+    .lifestyle-amenities-tabs-arrow:not(.is-disabled):active {
+        color: #f0cd45;
+        transform: scale(0.94);
+    }
+
+    .lifestyle-amenities-tabs-arrow.is-disabled {
+        opacity: 0.22;
+        pointer-events: none;
+    }
+
+    .lifestyle-amenities-tabs.transparent-pricing-tabs {
+        justify-content: flex-start !important;
+        width: 100% !important;
+        max-width: none !important;
+        margin: 0 !important;
+        gap: 5px !important;
+        border: 0 !important;
+        border-radius: 14px !important;
+        background: transparent !important;
+        box-shadow: none !important;
+        overflow-x: auto !important;
+        overflow-y: hidden !important;
+        scroll-snap-type: x mandatory !important;
+        -webkit-overflow-scrolling: touch !important;
+        scrollbar-width: none !important;
+        padding: 0 !important;
+    }
+
+    .lifestyle-amenities-tabs.transparent-pricing-tabs::-webkit-scrollbar {
+        display: none !important;
+    }
+
+    .lifestyle-amenities-tabs.transparent-pricing-tabs button {
+        flex: 0 0 auto !important;
+        width: calc((100% - 5px) / 2) !important;
+        min-width: calc((100% - 5px) / 2) !important;
+        height: 38px !important;
+        min-height: 38px !important;
+        padding: 0 8px !important;
+        border: 1px solid transparent !important;
+        border-radius: 12px !important;
+        background: transparent !important;
+        color: rgba(255, 255, 255, 0.58) !important;
+        font-size: 11px !important;
+        font-weight: 700 !important;
+        line-height: 1.1 !important;
+        letter-spacing: 0 !important;
+        white-space: normal !important;
+        scroll-snap-align: start !important;
+        scroll-snap-stop: always !important;
+    }
+
+    .lifestyle-amenities-tabs.transparent-pricing-tabs button:hover,
+    .lifestyle-amenities-tabs.transparent-pricing-tabs button.is-active {
+        border-color: rgba(240, 205, 69, 0.34) !important;
+        background:
+            linear-gradient(180deg, rgba(240, 205, 69, 0.14), rgba(240, 205, 69, 0.055)) !important;
+        color: #f0cd45 !important;
+        box-shadow:
+            inset 0 1px 0 rgba(255, 255, 255, 0.035),
+            0 10px 24px rgba(0, 0, 0, 0.18) !important;
+    }
+
+    .lifestyle-amenities-tab-progress {
+        display: none !important;
+    }
+
+    .lifestyle-amenities-progress {
+        display: block !important;
+        width: min(230px, 58vw) !important;
+        height: 3px !important;
+        margin: 12px auto 0 !important;
+        overflow: hidden !important;
+        border-radius: 999px !important;
+        background: rgba(255, 255, 255, 0.14) !important;
+    }
+
+    .lifestyle-amenities-progress span {
+        display: block !important;
+        height: 100% !important;
+        border-radius: inherit !important;
+        background: linear-gradient(90deg, #f0cd45, #f0cd45) !important;
+        box-shadow: 0 0 16px rgba(240, 205, 69, 0.48) !important;
     }
 
     .transparent-pricing-section .pricing-spec-grid {
@@ -10422,34 +10749,6 @@
         align-items: center !important;
         flex-direction: column !important;
     }
-
-    .footer-redesign-main > .footer-redesign-column:not(.footer-redesign-contact) {
-        text-align: center !important;
-    }
-
-    .footer-redesign-main .footer-redesign-column:not(.footer-redesign-contact) > a {
-        margin-right: auto !important;
-        margin-left: auto !important;
-    }
-
-    .footer-redesign-contact a {
-        max-width: 100% !important;
-        margin-right: auto !important;
-        margin-left: auto !important;
-        white-space: normal !important;
-    }
-
-    .footer-redesign-contact a[href^="tel:"] {
-        color: #ffffff !important;
-    }
-
-    .footer-redesign-contact a[href*="wa.me"] {
-        width: fit-content !important;
-        max-width: 100% !important;
-        align-self: center !important;
-        white-space: nowrap !important;
-    }
-  
 }
 
 @media (max-width: 575px) {
@@ -10753,7 +11052,7 @@
         display: flex !important;
         justify-content: space-between !important;
         gap: 0 !important;
-        margin-top: 14px !important;
+        margin-top: 12px !important;
         font-size: 9px !important;
         line-height: 1.2 !important;
         letter-spacing: 0.045em !important;
@@ -11063,79 +11362,365 @@
     }
 }
 
-/* Final mobile property snapshot theme sync. */
+@media (max-width: 991px) {
+    .project-download-section {
+        padding: 40px 18px;
+    }
+
+    .project-download-inner {
+        grid-template-columns: 1fr;
+    }
+
+    .download-preview {
+        min-height: auto;
+        padding: 24px 24px;
+    }
+}
+
 @media (max-width: 767px) {
-    .property-snapshot-section {
+    .project-download-section {
+        padding: 34px 14px 40px;
+    }
+
+    .project-download-heading {
+        margin-bottom: 22px;
+    }
+
+    .project-download-heading p {
+        margin-bottom: 10px;
+        font-size: 10px;
+        letter-spacing: .12em;
+        padding: 8px 11px;
+    }
+
+    .project-download-heading h2 {
+        font-size: clamp(28px, 8.2vw, 36px);
+    }
+
+    .project-download-heading > span {
+        margin-top: 10px;
+        font-size: 14px;
+        line-height: 1.35;
+    }
+
+    .project-download-heading small {
+        margin-top: 10px;
+        font-size: 11px;
+        line-height: 1.35;
+        padding: 8px 11px;
+    }
+
+    .project-download-inner {
+        border-radius: 20px;
+    }
+
+    .download-preview {
+        padding: 18px 14px;
+    }
+
+    .download-preview-card {
+        border-radius: 15px;
+        aspect-ratio: 1.38;
+    }
+
+    .download-options-panel {
+        padding: 22px 14px 20px;
+    }
+
+    .download-options-panel h3 {
+        font-size: 24px;
+    }
+
+    .download-options-panel > p {
+        margin-bottom: 16px;
+        font-size: 13px;
+        line-height: 1.45;
+    }
+
+    .download-option {
+        grid-template-columns: 40px 1fr auto;
+        gap: 9px;
+        min-height: 64px;
+        padding: 10px;
+    }
+
+    .download-option i {
+        width: 40px;
+        height: 40px;
+        border-radius: 10px;
+        font-size: 19px;
+    }
+
+    .download-option h4 {
+        font-size: 14px;
+    }
+
+    .download-option span {
+        font-size: 11px;
+        line-height: 1.25;
+    }
+
+    .download-option a {
+        grid-column: auto;
+        width: fit-content;
+        margin-top: 0;
+        min-height: 24px;
+        padding: 0 8px;
+        font-size: 11px;
+    }
+
+    .download-footnote {
+        margin-top: 16px;
+        padding-top: 15px;
+    }
+
+    .download-footnote p {
+        align-items: flex-start;
+        font-size: 12px;
+        line-height: 1.4;
+    }
+
+    .download-footnote div span {
+        font-size: 11px;
+        padding: 7px 11px;
+    }
+}
+
+/* Keep all section pills matched to the Floor Plans eyebrow on every viewport. */
+:is(.ideal-floor-eyebrow,
+    .project-plans-eyebrow,
+    .transparent-pricing-eyebrow,
+    .premium-specs-eyebrow,
+    .visual-showcase-eyebrow,
+    .prime-location-eyebrow,
+    .lifestyle-amenities-eyebrow,
+    .construction-progress-eyebrow,
+    .buyer-testimonials-eyebrow,
+    .faq-eyebrow,
+    .project-essentials-head-eyebrow,
+    .project-essentials-eyebrow,
+    .site-visit-eyebrow,
+    .property-snapshot-eyebrow) {
+    display: inline-flex !important;
+    min-height: 28px !important;
+    height: 28px !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    margin-bottom: 18px !important;
+    padding: 5px 17px !important;
+    border: 1px solid rgba(240, 205, 69, 0.38) !important;
+    border-radius: 999px !important;
+    background: rgba(240, 205, 69, 0.14) !important;
+    color: #f0cd45 !important;
+    font-family: "Inter", Arial, sans-serif !important;
+    font-size: 12px !important;
+    font-weight: 700 !important;
+    line-height: 1 !important;
+    letter-spacing: 0.34em !important;
+    text-transform: uppercase !important;
+}
+
+:is(.ideal-floor-eyebrow,
+    .project-plans-eyebrow,
+    .transparent-pricing-eyebrow,
+    .premium-specs-eyebrow,
+    .visual-showcase-eyebrow,
+    .prime-location-eyebrow,
+    .lifestyle-amenities-eyebrow,
+    .construction-progress-eyebrow,
+    .buyer-testimonials-eyebrow,
+    .faq-eyebrow,
+    .project-essentials-head-eyebrow,
+    .project-essentials-eyebrow,
+    .site-visit-eyebrow,
+    .property-snapshot-eyebrow) svg {
+    width: 13px !important;
+    height: 13px !important;
+}
+
+@media (max-width: 767px) {
+    .sticky-availability-section {
+        --sticky-availability-height: 100dvh !important;
+        height: calc(var(--sticky-availability-height) * 2) !important;
+        min-height: calc(var(--sticky-availability-height) * 2) !important;
+    }
+
+    .sticky-availability-panel {
+        height: 100dvh !important;
+        min-height: 100dvh !important;
+    }
+
+    .sticky-availability-section.is-pinned .sticky-availability-panel {
+        position: fixed !important;
+        top: 0 !important;
+        bottom: auto !important;
+        left: 0 !important;
+        width: 100% !important;
+    }
+
+    .sticky-availability-section.is-released .sticky-availability-panel {
+        position: absolute !important;
+        top: auto !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        width: 100% !important;
+    }
+
+    .buyer-appreciation-section {
+        margin-top: calc(-1 * var(--sticky-availability-height)) !important;
+    }
+
+    .sticky-availability-content--interested {
+        width: calc(100% - 24px) !important;
+        padding: 8px 0 18px !important;
+        justify-content: center !important;
+    }
+
+    .sticky-availability-content--interested .interested-property-copy {
+        width: min(100%, 292px) !important;
+        max-width: 292px !important;
+        padding: 10px 10px 12px !important;
+        margin-top: 0 !important;
+        transform: none !important;
+    }
+
+    .sticky-availability-content--interested .interested-property-copy::before {
+        inset: 0 !important;
+        border-color: rgba(240, 205, 69, 0.24) !important;
+        border-radius: 18px !important;
         background:
-            radial-gradient(860px 320px at 50% -120px, rgba(213, 174, 102, 0.16), transparent 72%),
-            linear-gradient(180deg, #070707 0%, #10100e 54%, #070707 100%) !important;
+            radial-gradient(circle at 50% 0%, rgba(240, 205, 69, 0.18), rgba(240, 205, 69, 0) 46%),
+            rgba(12, 12, 10, 0.46) !important;
     }
 
-    .property-snapshot-section::before {
+    .sticky-availability-content--interested .interested-property-kicker {
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        width: fit-content !important;
+        max-width: calc(100% - 30px) !important;
+        min-width: 0 !important;
+        min-height: 25px !important;
+        height: auto !important;
+        margin: 0 auto 10px !important;
+        padding: 7px 18px !important;
+        box-sizing: border-box !important;
+        font-family: Arial, sans-serif !important;
+        font-size: 7.5px !important;
+        font-stretch: condensed !important;
+        font-weight: 800 !important;
+        line-height: 1 !important;
+        letter-spacing: 0 !important;
+        white-space: nowrap !important;
+        overflow: hidden !important;
+        text-overflow: clip !important;
+    }
+
+    .sticky-availability-content--interested .interested-property-copy h2 {
+        font-size: 22px !important;
+        line-height: 27px !important;
+    }
+
+    .sticky-availability-content--interested .interested-property-copy>p:not(.interested-property-kicker) {
+        max-width: 238px !important;
+        margin-top: 8px !important;
+        font-size: 11px !important;
+        line-height: 15.5px !important;
+    }
+
+    .sticky-availability-content--interested .interested-property-copy>div {
+        width: 100% !important;
+        max-width: 258px !important;
+        margin-top: 10px !important;
+        gap: 7px !important;
+    }
+
+    .sticky-availability-content--interested .sticky-availability-btn {
+        width: 100% !important;
+        height: 36px !important;
+        min-width: 0 !important;
+        border-radius: 999px !important;
+        font-size: 12px !important;
+        line-height: 1 !important;
+    }
+
+    .sticky-availability-content--interested .sticky-availability-btn--white {
+        border: 1px solid rgba(0, 255, 127, 0.58) !important;
+        background: rgba(0, 255, 127, 0.08) !important;
+        color: #25d366 !important;
+        box-shadow: none !important;
+    }
+
+    .buyer-appreciation-section {
+        position: relative !important;
+        z-index: 4 !important;
+        margin-top: calc(-1 * var(--sticky-availability-height)) !important;
+        padding: 46px 18px 42px !important;
         background:
-            linear-gradient(90deg, rgba(213, 174, 102, 0.06) 0 1px, transparent 1px 100%),
-            linear-gradient(180deg, rgba(255, 255, 255, 0.035) 0 1px, transparent 1px 100%) !important;
-        background-size: 86px 86px !important;
-        mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.72), transparent 76%) !important;
-        opacity: 0.45 !important;
+            radial-gradient(520px 180px at 50% -80px, rgba(240, 205, 69, 0.14), transparent 72%),
+            linear-gradient(180deg, #060606 0%, #10100d 52%, #070707 100%) !important;
+        box-shadow: 0 -24px 56px rgba(0, 0, 0, 0.34) !important;
     }
 
-    .property-snapshot-card {
-        border-width: 0 !important;
-        border-color: transparent !important;
+    .buyer-appreciation-section > div {
+        width: 100% !important;
+        max-width: 100% !important;
+        text-align: center !important;
     }
 
-    .property-snapshot-kicker span {
+    .buyer-appreciation-section .buyer-testimonials-eyebrow {
+        display: flex !important;
+        width: fit-content !important;
+        max-width: calc(100% - 20px) !important;
+        margin-top: 0 !important;
+        margin-right: auto !important;
+        margin-left: auto !important;
+        text-align: center !important;
+    }
+
+    .buyer-appreciation-title {
+        margin-top: 14px !important;
+        font-size: 28px !important;
+        line-height: 36px !important;
+        text-align: center !important;
+    }
+
+    .buyer-appreciation-section .buyer-testimonials-slider {
+        width: calc(100vw - 14px) !important;
+        max-width: calc(100vw - 14px) !important;
+        margin-right: calc(50% - 50vw + 7px) !important;
+        margin-left: calc(50% - 50vw + 7px) !important;
+        margin-top: 24px !important;
+        overflow-x: auto !important;
+        overflow-y: hidden !important;
+        padding-bottom: 10px !important;
+        scrollbar-width: none !important;
+        -webkit-overflow-scrolling: touch !important;
+    }
+
+    .buyer-appreciation-section .buyer-testimonials-slider::-webkit-scrollbar {
         display: none !important;
     }
 
-    .property-snapshot-eyebrow {
-        min-height: 28px !important;
-        gap: 8px !important;
-        border-color: rgba(240, 205, 69, 0.40) !important;
-        background: rgba(240, 205, 69, 0.10) !important;
-        padding: 6px 16px !important;
-        color: #f0cd45 !important;
-        font-size: 11px !important;
-        letter-spacing: 0.16em !important;
+    .buyer-appreciation-section .buyer-testimonials-track {
+        display: flex !important;
+        width: max-content !important;
+        gap: 10px !important;
+        padding: 0 7px !important;
     }
 
-    .property-snapshot-content h3 {
-        font-size: clamp(29px, 8.1vw, 34px) !important;
-        line-height: 1.18 !important;
+    .buyer-appreciation-section .buyer-testimonial-card {
+        width: calc(100vw - 28px) !important;
+        min-height: 212px !important;
+        flex: 0 0 calc(100vw - 28px) !important;
+        padding: 20px 18px 16px !important;
+        border-radius: 8px !important;
     }
 
-    .property-snapshot-brand h3 em,
-    .property-snapshot-kicker,
-    .property-snapshot-metrics strong,
-    .property-snapshot-strip strong,
-    .property-snapshot-strip span {
-        color: #f0cd45 !important;
-        background: none !important;
-        -webkit-background-clip: border-box !important;
-        background-clip: border-box !important;
-        animation: none !important;
-    }
-
-    .property-snapshot-kicker span,
-    .property-snapshot-metrics > div::after {
-        background: #f0cd45 !important;
-    }
-
-    .property-snapshot-metrics svg {
-        stroke: #f0cd45 !important;
-    }
-
-    .property-snapshot-readmore {
-        min-height: var(--about-readmore-height, 36px) !important;
-        height: var(--about-readmore-height, 36px) !important;
-        padding: 0 var(--about-readmore-padding-x, 20px) !important;
-        border-color: rgba(240, 205, 69, 0.38) !important;
-        border-radius: var(--about-readmore-radius, 10px) !important;
-        background: rgba(240, 205, 69, 0.14) !important;
-        color: #f0cd45 !important;
-        font-size: var(--about-readmore-font-size, 13px) !important;
-        letter-spacing: 0.12em !important;
+    .buyer-testimonials-progress {
+        display: block !important;
+        margin-top: 14px !important;
     }
 }
 

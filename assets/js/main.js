@@ -1540,6 +1540,9 @@ if (premiumSpecsSection) {
 const visualShowcaseSection = document.querySelector(".visual-showcase-section");
 
 if (visualShowcaseSection) {
+    const galleryTabsScroller = visualShowcaseSection.querySelector(".visual-showcase-tabs");
+    const galleryTabsPrevious = visualShowcaseSection.querySelector("[data-gallery-tabs-prev]");
+    const galleryTabsNext = visualShowcaseSection.querySelector("[data-gallery-tabs-next]");
     const galleryTabs = visualShowcaseSection.querySelectorAll("[data-gallery-tab]");
     const galleryPanels = visualShowcaseSection.querySelectorAll("[data-gallery-panel]");
     const galleryCopies = visualShowcaseSection.querySelectorAll("[data-gallery-copy]");
@@ -1557,6 +1560,31 @@ if (visualShowcaseSection) {
     let activeGalleryTab = "sample";
     let gallerySwitchTimer;
     const isMobileGallery = () => window.matchMedia("(max-width: 767px)").matches;
+
+    const updateGalleryTabSliderState = () => {
+        if (!galleryTabsScroller) {
+            return;
+        }
+
+        const maxScroll = galleryTabsScroller.scrollWidth - galleryTabsScroller.clientWidth;
+        const isShifted = isMobileGallery() && galleryTabsScroller.scrollLeft > 12;
+        const isAtEnd = !isMobileGallery() || galleryTabsScroller.scrollLeft >= maxScroll - 12;
+
+        galleryTabsScroller.classList.toggle("is-tab-slider-shifted", isShifted);
+        galleryTabsPrevious?.classList.toggle("is-disabled", !isShifted);
+        galleryTabsNext?.classList.toggle("is-disabled", isAtEnd);
+    };
+
+    const scrollGalleryTabsByPage = (direction) => {
+        if (!galleryTabsScroller) {
+            return;
+        }
+
+        galleryTabsScroller.scrollBy({
+            left: direction * galleryTabsScroller.clientWidth,
+            behavior: "smooth"
+        });
+    };
 
     const galleryPanelLabels = {
         sample: "Sample Flat",
@@ -1845,6 +1873,14 @@ if (visualShowcaseSection) {
 
         galleryTabs.forEach((tab) => {
             tab.classList.toggle("is-active", tab.dataset.galleryTab === key);
+
+            if (tab.dataset.galleryTab === key && isMobileGallery()) {
+                tab.scrollIntoView({
+                    behavior: "smooth",
+                    block: "nearest",
+                    inline: "nearest"
+                });
+            }
         });
 
         gallerySwitchTimer = setTimeout(() => {
@@ -1871,6 +1907,10 @@ if (visualShowcaseSection) {
     galleryTabs.forEach((tab) => {
         tab.addEventListener("click", () => setGalleryTab(tab.dataset.galleryTab));
     });
+
+    galleryTabsScroller?.addEventListener("scroll", updateGalleryTabSliderState, { passive: true });
+    galleryTabsPrevious?.addEventListener("click", () => scrollGalleryTabsByPage(-1));
+    galleryTabsNext?.addEventListener("click", () => scrollGalleryTabsByPage(1));
 
     galleryCards.forEach((card) => {
         addVisualGalleryOverlay(card);
@@ -1903,8 +1943,12 @@ if (visualShowcaseSection) {
         }
     });
 
-    window.addEventListener("resize", updateActiveGalleryGrid);
+    window.addEventListener("resize", () => {
+        updateActiveGalleryGrid();
+        updateGalleryTabSliderState();
+    });
     updateActiveGalleryGrid();
+    updateGalleryTabSliderState();
 }
 
 // Prime location: switches the map card between the designed image and embedded Google Map.
@@ -2103,92 +2147,33 @@ if (primeLocationSection) {
     }
 }
 
-// Project essentials: hover over each item to update the preview images with a smooth transform effect.
-const projectEssentialsSection = document.querySelector(".project-essentials-section");
+// Project downloads: match the upstream hover/focus preview behavior.
+const downloadOptions = document.querySelectorAll(".download-option");
+const downloadPreviewImages = document.querySelectorAll(".download-preview-image");
 
-if (projectEssentialsSection) {
-    const visuals = projectEssentialsSection.querySelector(".project-essentials-visual");
-    const previewPrevImg = projectEssentialsSection.querySelector(".project-essentials-preview--prev img");
-    const previewActiveImg = projectEssentialsSection.querySelector(".project-essentials-preview--active img");
-    const previewNextImg = projectEssentialsSection.querySelector(".project-essentials-preview--next img");
-    const previewButtons = projectEssentialsSection.querySelectorAll(".project-essentials-btn[data-preview-active]");
-    const defaultPreviewButton = projectEssentialsSection.querySelector(".project-essentials-btn.is-active") || previewButtons[0];
-    const originalPreviews = {
-        prev: previewPrevImg?.src,
-        active: previewActiveImg?.src,
-        next: previewNextImg?.src
-    };
+if (downloadOptions.length && downloadPreviewImages.length) {
+    const setDownloadPreview = (index) => {
+        downloadOptions.forEach((option, optionIndex) => {
+            option.classList.toggle("active", optionIndex === index);
+        });
 
-    const fadeImageTo = (img, src) => {
-        if (!img || img.getAttribute("src") === src) {
-            return;
-        }
-
-        const preloader = new Image();
-        preloader.onload = () => {
-            img.style.opacity = "0";
-            setTimeout(() => {
-                img.src = src;
-                img.style.opacity = "1";
-            }, 175); // Half the transition duration for smooth crossfade
-        };
-        preloader.src = src;
-    };
-
-    const updatePreviews = (previewData) => {
-        if (!previewPrevImg || !previewActiveImg || !previewNextImg) {
-            return;
-        }
-
-        fadeImageTo(previewPrevImg, previewData.prev);
-        fadeImageTo(previewActiveImg, previewData.active);
-        fadeImageTo(previewNextImg, previewData.next);
-        visuals?.classList.add("is-preview-hovered");
-    };
-
-    const resetPreviews = () => {
-        if (!previewPrevImg || !previewActiveImg || !previewNextImg) {
-            return;
-        }
-
-        fadeImageTo(previewPrevImg, originalPreviews.prev);
-        fadeImageTo(previewActiveImg, originalPreviews.active);
-        fadeImageTo(previewNextImg, originalPreviews.next);
-        visuals?.classList.remove("is-preview-hovered");
-        previewButtons.forEach((btn) => {
-            btn.classList.toggle("is-active", btn === defaultPreviewButton);
+        downloadPreviewImages.forEach((image, imageIndex) => {
+            image.classList.toggle("active", imageIndex === index);
         });
     };
 
-    const setActiveButton = (button) => {
-        previewButtons.forEach((btn) => {
-            btn.classList.toggle("is-active", btn === button);
-        });
-    };
-
-    previewButtons.forEach((button) => {
-        const previewData = {
-            active: button.dataset.previewActive,
-            prev: button.dataset.previewPrev,
-            next: button.dataset.previewNext
-        };
-
-        button.addEventListener("mouseenter", () => {
-            setActiveButton(button);
-            updatePreviews(previewData);
+    downloadOptions.forEach((option, index) => {
+        option.addEventListener("mouseenter", () => {
+            setDownloadPreview(index);
         });
 
-        button.addEventListener("focus", () => {
-            setActiveButton(button);
-            updatePreviews(previewData);
+        option.addEventListener("focusin", () => {
+            setDownloadPreview(index);
         });
-    });
 
-    projectEssentialsSection.addEventListener("mouseleave", resetPreviews);
-    projectEssentialsSection.addEventListener("focusout", (event) => {
-        if (!projectEssentialsSection.contains(event.relatedTarget)) {
-            resetPreviews();
-        }
+        option.addEventListener("click", () => {
+            setDownloadPreview(index);
+        });
     });
 }
 
@@ -2235,6 +2220,8 @@ const lifestyleAmenitiesSection = document.querySelector(".lifestyle-amenities-s
 
 if (lifestyleAmenitiesSection) {
     const amenityTabsWrap = lifestyleAmenitiesSection.querySelector(".lifestyle-amenities-tabs");
+    const amenityTabsPrevious = lifestyleAmenitiesSection.querySelector("[data-amenity-tabs-prev]");
+    const amenityTabsNext = lifestyleAmenitiesSection.querySelector("[data-amenity-tabs-next]");
     const amenityTabs = lifestyleAmenitiesSection.querySelectorAll("[data-amenity-tab]");
     const amenityCards = lifestyleAmenitiesSection.querySelectorAll("[data-amenity-type]");
     const amenityGrid = lifestyleAmenitiesSection.querySelector(".lifestyle-amenities-grid");
@@ -2309,7 +2296,9 @@ if (lifestyleAmenitiesSection) {
     };
 
     const updateAmenityTabProgress = () => {
-        if (!amenityTabsWrap || !amenityTabProgress || !isMobileAmenitySlider()) {
+        if (!amenityTabsWrap || !isMobileAmenitySlider()) {
+            amenityTabsPrevious?.classList.add("is-disabled");
+            amenityTabsNext?.classList.add("is-disabled");
             return;
         }
 
@@ -2317,12 +2306,28 @@ if (lifestyleAmenitiesSection) {
         const progress = maxScroll > 0 ? amenityTabsWrap.scrollLeft / maxScroll : 1;
         const progressWidth = maxScroll > 0 ? Math.max(24, Math.min(100, 24 + (progress * 76))) : 100;
 
-        amenityTabProgress.style.width = `${progressWidth}%`;
+        if (amenityTabProgress) {
+            amenityTabProgress.style.width = `${progressWidth}%`;
+        }
+
+        amenityTabsPrevious?.classList.toggle("is-disabled", amenityTabsWrap.scrollLeft <= 12);
+        amenityTabsNext?.classList.toggle("is-disabled", amenityTabsWrap.scrollLeft >= maxScroll - 12);
     };
 
     const requestAmenityTabProgressUpdate = () => {
         cancelAnimationFrame(amenityTabFrame);
         amenityTabFrame = requestAnimationFrame(updateAmenityTabProgress);
+    };
+
+    const scrollAmenityTabsByPage = (direction) => {
+        if (!amenityTabsWrap) {
+            return;
+        }
+
+        amenityTabsWrap.scrollBy({
+            left: direction * amenityTabsWrap.clientWidth,
+            behavior: "smooth"
+        });
     };
 
     const openAmenityLightbox = (card) => {
@@ -2376,7 +2381,7 @@ if (lifestyleAmenitiesSection) {
             activeTab.scrollIntoView({
                 behavior: "smooth",
                 block: "nearest",
-                inline: "center"
+                inline: "nearest"
             });
         }
 
@@ -2427,6 +2432,8 @@ if (lifestyleAmenitiesSection) {
 
     if (amenityTabsWrap) {
         amenityTabsWrap.addEventListener("scroll", requestAmenityTabProgressUpdate, { passive: true });
+        amenityTabsPrevious?.addEventListener("click", () => scrollAmenityTabsByPage(-1));
+        amenityTabsNext?.addEventListener("click", () => scrollAmenityTabsByPage(1));
         window.addEventListener("resize", requestAmenityTabProgressUpdate);
         requestAmenityTabProgressUpdate();
     }
@@ -2613,13 +2620,17 @@ if (faqSection) {
     const faqPanels = faqSection.querySelectorAll("[data-faq-panel]");
     const faqTabsWrap = faqSection.querySelector(".faq-tabs");
     const faqTabProgress = faqSection.querySelector(".faq-tab-progress span");
+    const faqTabsPrevious = faqSection.querySelector("[data-faq-tabs-prev]");
+    const faqTabsNext = faqSection.querySelector("[data-faq-tabs-next]");
     const faqAnimationDuration = 380;
     let faqTabProgressFrame = 0;
 
     const isMobileFaqTabs = () => window.matchMedia("(max-width: 991px)").matches;
 
     const updateFaqTabProgress = () => {
-        if (!faqTabsWrap || !faqTabProgress || !isMobileFaqTabs()) {
+        if (!faqTabsWrap || !isMobileFaqTabs()) {
+            faqTabsPrevious?.classList.add("is-disabled");
+            faqTabsNext?.classList.add("is-disabled");
             return;
         }
 
@@ -2627,7 +2638,12 @@ if (faqSection) {
         const progress = maxScroll > 0 ? faqTabsWrap.scrollLeft / maxScroll : 1;
         const progressWidth = maxScroll > 0 ? Math.max(24, Math.min(100, 24 + (progress * 76))) : 100;
 
-        faqTabProgress.style.width = `${progressWidth}%`;
+        if (faqTabProgress) {
+            faqTabProgress.style.width = `${progressWidth}%`;
+        }
+
+        faqTabsPrevious?.classList.toggle("is-disabled", faqTabsWrap.scrollLeft <= 12);
+        faqTabsNext?.classList.toggle("is-disabled", faqTabsWrap.scrollLeft >= maxScroll - 12);
     };
 
     const requestFaqTabProgressUpdate = () => {
@@ -2646,6 +2662,17 @@ if (faqSection) {
             const isActive = panel.dataset.faqPanel === key;
             panel.hidden = !isActive;
             panel.classList.toggle("is-active", isActive);
+        });
+    };
+
+    const scrollFaqTabsByPage = (direction) => {
+        if (!faqTabsWrap) {
+            return;
+        }
+
+        faqTabsWrap.scrollBy({
+            left: direction * faqTabsWrap.clientWidth,
+            behavior: "smooth"
         });
     };
 
@@ -2715,7 +2742,7 @@ if (faqSection) {
             setFaqPanel(tab.dataset.faqTab);
 
             if (faqTabsWrap && isMobileFaqTabs()) {
-                tab.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+                tab.scrollIntoView({ behavior: "smooth", inline: "nearest", block: "nearest" });
                 requestFaqTabProgressUpdate();
             }
         });
@@ -2723,6 +2750,8 @@ if (faqSection) {
 
     if (faqTabsWrap) {
         faqTabsWrap.addEventListener("scroll", requestFaqTabProgressUpdate, { passive: true });
+        faqTabsPrevious?.addEventListener("click", () => scrollFaqTabsByPage(-1));
+        faqTabsNext?.addEventListener("click", () => scrollFaqTabsByPage(1));
         window.addEventListener("resize", requestFaqTabProgressUpdate);
         requestFaqTabProgressUpdate();
     }
@@ -2739,6 +2768,99 @@ if (faqSection) {
         });
     });
 }
+
+// Lead forms: validate names, emails, and keep mobile numbers to 10 digits.
+const leadForms = document.querySelectorAll(".booking-enquiry-form, .pricing-unlock-form, .site-visit-form");
+const leadPhoneInputs = document.querySelectorAll(
+    '.booking-enquiry-form input[type="tel"], .pricing-unlock-form input[type="tel"], .site-visit-form input[type="tel"]'
+);
+const leadNameInputs = document.querySelectorAll(
+    '.booking-enquiry-form input[name*="name"], .pricing-unlock-form input[name="name"], .site-visit-form input[name="name"]'
+);
+const leadEmailInputs = document.querySelectorAll(
+    '.booking-enquiry-form input[type="email"], .site-visit-form input[type="email"]'
+);
+const normalizeLeadPhone = (value) => {
+    const digits = value.replace(/\D/g, "");
+    const withoutCountryCode = digits.length > 10 && digits.startsWith("91")
+        ? digits.slice(2)
+        : digits;
+
+    return withoutCountryCode.slice(0, 10);
+};
+
+leadPhoneInputs.forEach((input) => {
+    input.setAttribute("maxlength", "10");
+    input.setAttribute("inputmode", "numeric");
+    input.setAttribute("pattern", "[0-9]{10}");
+
+    input.addEventListener("input", () => {
+        const digitsOnly = normalizeLeadPhone(input.value);
+
+        if (input.value !== digitsOnly) {
+            input.value = digitsOnly;
+        }
+
+        input.setCustomValidity(digitsOnly.length === 10 || digitsOnly.length === 0
+            ? ""
+            : "Please enter a 10 digit mobile number.");
+    });
+});
+
+leadNameInputs.forEach((input) => {
+    input.addEventListener("input", () => {
+        const cleanedName = input.value.replace(/[^A-Za-z .'-]/g, "").replace(/\s{2,}/g, " ");
+
+        if (input.value !== cleanedName) {
+            input.value = cleanedName;
+        }
+
+        const isValidName = /^[A-Za-z][A-Za-z .'-]{1,}$/.test(cleanedName.trim());
+        input.setCustomValidity(isValidName || cleanedName.trim().length === 0
+            ? ""
+            : "Please enter a valid name.");
+    });
+});
+
+leadEmailInputs.forEach((input) => {
+    input.addEventListener("input", () => {
+        input.setCustomValidity(input.validity.valid || input.value.trim().length === 0
+            ? ""
+            : "Please enter a valid email address.");
+    });
+});
+
+leadForms.forEach((form) => {
+    form.addEventListener("submit", (event) => {
+        const phoneInput = form.querySelector('input[type="tel"]');
+        const nameInput = form.querySelector('input[name*="name"]');
+        const emailInput = form.querySelector('input[type="email"]');
+
+        if (phoneInput) {
+            phoneInput.value = normalizeLeadPhone(phoneInput.value);
+            phoneInput.setCustomValidity(/^[0-9]{10}$/.test(phoneInput.value)
+                ? ""
+                : "Please enter a 10 digit mobile number.");
+        }
+
+        if (nameInput) {
+            nameInput.value = nameInput.value.trim().replace(/\s{2,}/g, " ");
+            nameInput.setCustomValidity(/^[A-Za-z][A-Za-z .'-]{1,}$/.test(nameInput.value)
+                ? ""
+                : "Please enter a valid name.");
+        }
+
+        if (emailInput) {
+            emailInput.setCustomValidity(emailInput.validity.valid ? "" : "Please enter a valid email address.");
+        }
+
+        if (!form.checkValidity()) {
+            event.preventDefault();
+            event.stopImmediatePropagation();
+            form.reportValidity();
+        }
+    }, true);
+});
 
 // Site visit form: keeps the static landing page from reloading on submit.
 const siteVisitForm = document.querySelector(".site-visit-form");

@@ -554,7 +554,9 @@
 
                         <label>
                             <span>Full Name</span>
-                            <input type="text" name="full-name" placeholder="Enter full name" />
+                            <input type="text" name="full-name" placeholder="Enter full name" autocomplete="name"
+                                minlength="2" pattern="[A-Za-z][A-Za-z .'-]{1,}" required
+                                title="Please enter a valid name" />
                         </label>
 
                         <label>
@@ -565,13 +567,16 @@
                                     <span>+91</span>
                                     <span class="booking-country-arrow" aria-hidden="true"></span>
                                 </span>
-                                <input type="tel" name="mobile-number" placeholder="Xxxxxxxxxx" />
+                                <input type="tel" name="mobile-number" placeholder="Xxxxxxxxxx"
+                                    autocomplete="tel" inputmode="numeric" maxlength="10" pattern="[0-9]{10}" required
+                                    title="Please enter a 10 digit mobile number" />
                             </div>
                         </label>
 
                         <label>
                             <span>Email</span>
-                            <input type="email" name="email" placeholder="Enter email id" />
+                            <input type="email" name="email" placeholder="Enter email id" autocomplete="email"
+                                required title="Please enter a valid email address" />
                         </label>
 
                         <button type="submit">Check Price &amp; Book Site Visit</button>
@@ -948,12 +953,16 @@
 
                         <label>
                             <span>Full Name</span>
-                            <input type="text" name="name" placeholder="Enter your name" required>
+                            <input type="text" name="name" placeholder="Enter your name" autocomplete="name"
+                                minlength="2" pattern="[A-Za-z][A-Za-z .'-]{1,}" required
+                                title="Please enter a valid name">
                         </label>
 
                         <label>
                             <span>Phone Number</span>
-                            <input type="tel" name="phone" placeholder="+91 95094 89253" required>
+                            <input type="tel" name="phone" placeholder="+91 95094 89253" autocomplete="tel"
+                                inputmode="numeric" maxlength="10" pattern="[0-9]{10}" required
+                                title="Please enter a 10 digit mobile number">
                         </label>
 
                         <label>
@@ -1195,19 +1204,25 @@
                     <p>From walkthrough to construction updates - see every detail before you visit.</p>
                 </div>
 
-                <div class="visual-showcase-tabs transparent-pricing-tabs" aria-label="Gallery categories">
-                    <button class="is-active" type="button" data-gallery-tab="sample">
-                        Sample Flat <span>6</span>
-                    </button>
-                    <button type="button" data-gallery-tab="walkthrough">
-                        Walkthrough <span>1</span>
-                    </button>
-                    <button type="button" data-gallery-tab="exterior">
-                        Exterior <span>6</span>
-                    </button>
-                    <button type="button" data-gallery-tab="construction">
-                        Construction <span>6</span>
-                    </button>
+                <div class="visual-showcase-tabs-shell">
+                    <button class="visual-showcase-tabs-arrow visual-showcase-tabs-arrow--prev" type="button"
+                        aria-label="Previous gallery tabs" data-gallery-tabs-prev>&lsaquo;</button>
+                    <div class="visual-showcase-tabs transparent-pricing-tabs" aria-label="Gallery categories">
+                        <button class="is-active" type="button" data-gallery-tab="sample">
+                            Sample Flat <span>6</span>
+                        </button>
+                        <button type="button" data-gallery-tab="walkthrough">
+                            Walkthrough <span>1</span>
+                        </button>
+                        <button type="button" data-gallery-tab="exterior">
+                            Exterior <span>6</span>
+                        </button>
+                        <button type="button" data-gallery-tab="construction">
+                            Construction <span>6</span>
+                        </button>
+                    </div>
+                    <button class="visual-showcase-tabs-arrow visual-showcase-tabs-arrow--next" type="button"
+                        aria-label="Next gallery tabs" data-gallery-tabs-next>&rsaquo;</button>
                 </div>
 
                 <div class="visual-showcase-copy">
@@ -1225,7 +1240,7 @@
                 </div>
 
                 <div class="visual-showcase-update" hidden>
-                    Last Updated: April 28, 2026 - 85% Construction Complete
+                    Last Updated: May 15, 2026 - 85% Construction Complete
                 </div>
 
                 <div class="visual-showcase-content is-active" data-gallery-panel="sample">
@@ -1535,7 +1550,7 @@
         </div>
 
         <!-- Lifestyle amenities -->
-        <section class="lifestyle-amenities-section reveal-on-scroll w-full overflow-hidden bg-[#181818] pb-[42px] pt-[58px] text-white"
+        <section class="lifestyle-amenities-section reveal-on-scroll w-full overflow-hidden bg-[#181818] pb-[30px] pt-[38px] text-white"
             id="amenities" aria-label="Lifestyle amenities">
             <div class="mx-auto w-[calc(100%_-_48px)] max-w-[1200px]">
                 <div class="mx-auto text-center">
@@ -1549,40 +1564,46 @@
                         </svg>
                         Lifestyle Amenities
                     </p>
-                    <h2 class="lifestyle-amenities-title mt-5 text-[40px] font-medium leading-[48px] text-[#f6f2ea]">
+                    <h2 class="lifestyle-amenities-title mt-3 text-[40px] font-medium leading-[48px] text-[#f6f2ea]">
                         Curated For <span class="text-[#f0cd45]">Elevated Living</span>
                     </h2>
 
-                    <div class="lifestyle-amenities-tabs transparent-pricing-tabs mx-auto"
-                        aria-label="Amenity categories">
-                        <button class="is-active" type="button" data-amenity-tab="all">All Amenities</button>
-                        <button type="button" data-amenity-tab="wellness">Wellness</button>
-                        <button type="button" data-amenity-tab="recreation">Recreation</button>
-                        <button type="button" data-amenity-tab="security">Security &amp; Convenience</button>
+                    <div class="lifestyle-amenities-tabs-shell">
+                        <button class="lifestyle-amenities-tabs-arrow lifestyle-amenities-tabs-arrow--prev" type="button"
+                            aria-label="Previous amenity tabs" data-amenity-tabs-prev>&lsaquo;</button>
+                        <div class="lifestyle-amenities-tabs transparent-pricing-tabs mx-auto"
+                            aria-label="Amenity categories">
+                            <button class="is-active" type="button" data-amenity-tab="all">All Amenities</button>
+                            <button type="button" data-amenity-tab="wellness">Wellness</button>
+                            <button type="button" data-amenity-tab="recreation">Recreation</button>
+                            <button type="button" data-amenity-tab="security">Security &amp; Convenience</button>
+                        </div>
+                        <button class="lifestyle-amenities-tabs-arrow lifestyle-amenities-tabs-arrow--next" type="button"
+                            aria-label="Next amenity tabs" data-amenity-tabs-next>&rsaquo;</button>
                     </div>
                     <div class="lifestyle-amenities-tab-progress" aria-hidden="true"><span></span></div>
                 </div>
 
-                <div class="lifestyle-amenities-grid mt-7 grid grid-cols-3">
-                    <article class="lifestyle-amenity-card" data-amenity-type="wellness">
-                        <img src="assets/img/lifestyle img/08dbf8b284c57e1048f715d17e9aa265bb594bd8.png" alt="Infinity pool amenity" />
+                <div class="lifestyle-amenities-grid mt-5 grid grid-cols-3">
+                    <article class="lifestyle-amenity-card" data-amenity-type="security">
+                        <img src="assets/img/lifestyle img/08dbf8b284c57e1048f715d17e9aa265bb594bd8.png" alt="CCTV surveillance amenity" />
                         <div class="lifestyle-amenity-caption">
-                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 16c2 0 2-2 4-2s2 2 4 2 2-2 4-2 2 2 4 2M4 20c2 0 2-2 4-2s2 2 4 2 2-2 4-2 2 2 4 2M8 12l4-8 4 8" /></svg>
-                            <span>Infinity Pool</span>
-                        </div>
-                    </article>
-                    <article class="lifestyle-amenity-card" data-amenity-type="wellness">
-                        <img src="assets/img/lifestyle img/39facef832cb84ad963eea33b854a423175d5754.jpg" alt="Fitness studio amenity" />
-                        <div class="lifestyle-amenity-caption">
-                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 7v10M18 7v10M3 10v4M21 10v4M6 12h12" /></svg>
-                            <span>Fitness Studio</span>
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16v10H4z" /><path d="M9 17v3h6v-3" /><path d="M8 11h3m2 0h3" /></svg>
+                            <span>CCTV Surveillance</span>
                         </div>
                     </article>
                     <article class="lifestyle-amenity-card" data-amenity-type="recreation">
-                        <img src="assets/img/lifestyle img/99826a0ae4206139a144e0cad7443e478dfa18ad.png" alt="Clubhouse amenity" />
+                        <img src="assets/img/lifestyle img/39facef832cb84ad963eea33b854a423175d5754.jpg" alt="Clubhouse lounge amenity" />
                         <div class="lifestyle-amenity-caption">
                             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h16M6 20V9l6-5 6 5v11M9 20v-6h6v6" /></svg>
-                            <span>Clubhouse</span>
+                            <span>Clubhouse Lounge</span>
+                        </div>
+                    </article>
+                    <article class="lifestyle-amenity-card" data-amenity-type="wellness">
+                        <img src="assets/img/lifestyle img/99826a0ae4206139a144e0cad7443e478dfa18ad.png" alt="Fitness studio amenity" />
+                        <div class="lifestyle-amenity-caption">
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 7v10M18 7v10M3 10v4M21 10v4M6 12h12" /></svg>
+                            <span>Fitness Studio</span>
                         </div>
                     </article>
                     <article class="lifestyle-amenity-card" data-amenity-type="recreation">
@@ -1592,24 +1613,24 @@
                             <span>Kids Play Zone</span>
                         </div>
                     </article>
+                    <article class="lifestyle-amenity-card" data-amenity-type="wellness">
+                        <img src="assets/img/lifestyle img/ead92151fb34f66acdade3837b9eb43336bf5369.jpg" alt="Indoor pool amenity" />
+                        <div class="lifestyle-amenity-caption">
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 16c2 0 2-2 4-2s2 2 4 2 2-2 4-2 2 2 4 2M4 20c2 0 2-2 4-2s2 2 4 2 2-2 4-2 2 2 4 2M8 12l4-8 4 8" /></svg>
+                            <span>Indoor Pool</span>
+                        </div>
+                    </article>
                     <article class="lifestyle-amenity-card" data-amenity-type="recreation">
-                        <img src="assets/img/lifestyle img/ead92151fb34f66acdade3837b9eb43336bf5369.jpg" alt="Landscaped gardens amenity" />
+                        <img src="assets/img/lifestyle img/f77d85aa8ec67ce21a408df20bfdfdbbc219a4f2.jpg" alt="Landscaped gardens amenity" />
                         <div class="lifestyle-amenity-caption">
                             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21V9" /><path d="M7 9c0-3 2-5 5-5 0 3-2 5-5 5Z" /><path d="M17 12c0-3-2-5-5-5 0 3 2 5 5 5Z" /></svg>
                             <span>Landscaped Gardens</span>
                         </div>
                     </article>
-                    <article class="lifestyle-amenity-card" data-amenity-type="security">
-                        <img src="assets/img/lifestyle img/f77d85aa8ec67ce21a408df20bfdfdbbc219a4f2.jpg" alt="24x7 security amenity" />
-                        <div class="lifestyle-amenity-caption">
-                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 10V8a6 6 0 0 1 12 0v2" /><path d="M5 10h14v10H5z" /><path d="M12 14v2" /></svg>
-                            <span>24x7 Security</span>
-                        </div>
-                    </article>
                 </div>
                 <div class="lifestyle-amenities-progress" aria-hidden="true"><span></span></div>
 
-                <div class="lifestyle-amenities-cta mt-8 flex min-h-[104px] items-center justify-between rounded-[18px] border border-[#f0cd45]/25 bg-[#211f1b] px-12">
+                <div class="lifestyle-amenities-cta mt-8 flex min-h-[72px] items-center justify-between rounded-[18px] border border-[#f0cd45]/25 bg-[#211f1b] px-12">
                     <div>
                         <p class="text-[11px] font-medium text-white/35">Experience These Amenities</p>
                         <h3 class="mt-2 text-[18px] font-normal text-[#f6f2ea]">Starting <span class="text-[28px] font-semibold text-[#f0cd45]">&#8377;1.325 Cr</span></h3>
@@ -1637,11 +1658,11 @@
         </div>
 
         <!-- Construction progress -->
-        <section class="construction-progress-section reveal-on-scroll w-full overflow-hidden bg-[#080808] py-[82px] text-white"
+        <section class="construction-progress-section reveal-on-scroll w-full overflow-hidden bg-[#080808] py-[48px] text-white"
             id="construction-progress" aria-label="Construction progress and project status">
             <div class="mx-auto w-[calc(100%_-_48px)] max-w-[1200px]">
                 <div class="construction-progress-header mx-auto text-center">
-                    <p class="construction-progress-eyebrow mx-auto inline-flex min-h-7 items-center gap-2 rounded-full border border-[#D5AE66]/40 bg-[#141414] px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#D5AE66]">
+                    <p class="construction-progress-eyebrow mx-auto inline-flex min-h-7 items-center gap-2 rounded-full border border-[#f0cd45]/40 bg-[#141414] px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#f0cd45]">
                         <svg class="h-[15px] w-[15px]" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                             <path d="M4 7h7v10H4z" />
@@ -1650,16 +1671,16 @@
                         </svg>
                         Milestone Details
                     </p>
-                    <h2 class="construction-progress-title mt-5 text-[40px] font-medium leading-[48px] text-[#f7f4ee]">
-                        Construction <span class="text-[#D5AE66]">Progress</span> &amp; Project Status
+                    <h2 class="construction-progress-title mt-3 text-[40px] font-medium leading-[48px] text-[#f7f4ee]">
+                        Construction Progress &amp; <span class="text-[#f0cd45]">Project Status</span>
                     </h2>
-                    <p class="construction-progress-copy mx-auto mt-6 max-w-[850px] text-[17px] font-normal leading-7 text-white/78">
+                    <p class="construction-progress-copy mx-auto mt-2 max-w-[850px] text-[17px] font-normal leading-7 text-white/78">
                         Track the current progress of Amelia Estate II and experience the development firsthand through site visits.
                     </p>
                 </div>
 
-                <div class="construction-progress-layout mt-[52px] grid grid-cols-[0.95fr_0.93fr] gap-6">
-                    <div class="construction-progress-photo overflow-hidden rounded-[8px] border border-[#4a3f28] bg-[#151515]">
+                <div class="construction-progress-layout mt-[34px] grid grid-cols-[0.95fr_0.93fr] gap-6">
+                    <div class="construction-progress-photo overflow-hidden rounded-[8px] border border-[#f0cd45]/30 bg-[#151515]">
                         <img class="h-full w-full object-cover" src="assets/img/project gallery/walktrough.jpg"
                             alt="Amelia Estate II exterior project view" />
                         <div class="construction-status-overlay" aria-label="Construction is 35 percent complete">
@@ -1671,13 +1692,12 @@
                                 <div class="construction-status-center">
                                     <strong><span data-construction-progress-count data-progress-target="35">35</span><em>%</em></strong>
                                     <small>Complete</small>
-                                    <b><i></i> Structure work in progress</b>
+                                    <b><i></i> Work in Progress</b>
                                 </div>
                             </div>
                         </div>
                         <div class="construction-photo-status">
-                            <span><i></i> Live <em>Updated May 2026</em></span>
-                            <span>257 watching now</span>
+                            <span><i></i> Updated May 2026</span>
                         </div>
                     </div>
 
@@ -1726,10 +1746,6 @@
                             <span class="construction-bank-tile"><b>PNB</b><em><i></i>Approved</em></span>
                             <span class="construction-bank-tile"><b>Kotak</b><em><i></i>Approved</em></span>
                         </div>
-                        <div class="construction-bank-proof">
-                            <span>Up to 80% financing</span>
-                            <span>Quick approvals</span>
-                        </div>
                     </article>
                 </div>
             </div>
@@ -1744,13 +1760,13 @@
                     <div class="interested-property-copy">
                         <p class="interested-property-kicker">Limited Low-Rise Availability</p>
                         <h2 class="text-[56px] font-semibold leading-[68px] text-[#f7f4ee]">
-                            Are You Interested In<br />This Property?
+                            Are You Interested In<br /><span>This Property ?</span>
                         </h2>
                         <p class="mt-7 max-w-[680px] text-[18px] font-normal leading-[31px] text-white/82">
                             We're here to help you every step of the way, with expert guidance, transparent pricing, and dedicated support.
                         </p>
                         <div class="mt-10 flex items-center justify-center gap-4">
-                            <a class="sticky-availability-btn sticky-availability-btn--gold inline-flex h-[52px] min-w-[148px] items-center justify-center rounded-[10px] bg-gradient-to-b from-[#D5AE66] to-[#D5AE66] px-6 text-[15px] font-semibold text-[#0b0906] shadow-[0_18px_38px_rgba(213, 174, 102,0.28)]"
+                            <a class="sticky-availability-btn sticky-availability-btn--gold inline-flex h-[52px] min-w-[148px] items-center justify-center rounded-[10px] bg-gradient-to-b from-[#f0cd45] to-[#f0cd45] px-6 text-[15px] font-semibold text-[#0b0906] shadow-[0_18px_38px_rgba(240,205,69,0.28)]"
                             href="#booking-enquiry">Enquire Now</a>
                             <a class="sticky-availability-btn sticky-availability-btn--white inline-flex h-[52px] min-w-[164px] items-center justify-center gap-3 rounded-[10px] bg-white px-6 text-[15px] font-semibold text-[#171717]"
                             href="https://wa.me/919509489253" target="_blank" rel="noopener noreferrer">
@@ -1768,17 +1784,17 @@
         </section>
 
         <!-- Buyer appreciation -->
-        <section class="buyer-appreciation-section reveal-on-scroll w-full bg-[#090909] py-[72px] text-white"
+        <section class="buyer-appreciation-section reveal-on-scroll w-full bg-[#090909] py-[52px] text-white"
             id="buyer-appreciation" aria-label="What buyers appreciate about Amelia Estate II">
             <div class="mx-auto w-[calc(100%_-_48px)] max-w-[1200px]">
-                <p class="buyer-testimonials-eyebrow mx-auto inline-flex min-h-7 items-center gap-2 rounded-full border border-[#D5AE66]/40 bg-[#141414] px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#D5AE66]">
+                <p class="buyer-testimonials-eyebrow mx-auto inline-flex min-h-7 items-center gap-2 rounded-full border border-[#f0cd45]/40 bg-[#141414] px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#f0cd45]">
                     Testimonials
                 </p>
-                <h2 class="buyer-appreciation-title text-center text-[40px] font-medium leading-[50px] text-[#f7f4ee]">
-                    What Buyers Appreciate About Amelia Estate II
+                <h2 class="buyer-appreciation-title text-center text-[36px] font-medium leading-[44px] text-[#f7f4ee]">
+                    What Buyers Appreciate About <span>Amelia Estate II</span>
                 </h2>
 
-                <div class="buyer-testimonials-slider mx-auto mt-11 w-full max-w-[1200px]" aria-label="Buyer testimonial slider">
+                <div class="buyer-testimonials-slider mx-auto mt-7 w-full max-w-[1200px]" aria-label="Buyer testimonial slider">
                     <div class="buyer-testimonials-track">
                         <article class="buyer-testimonial-card">
                             <p>We booked a 3BHK Stilt+4 floor in Amelia Estate II for the zero-traffic PR-7 Airport Road location. Only 15 minutes to Chandigarh Airport, and the RERA documentation was transparent.</p>
@@ -1836,53 +1852,57 @@
         </section>
 
         <!-- FAQ -->
-        <section class="faq-section reveal-on-scroll w-full bg-[#080808] py-[96px] text-white" id="faq"
+        <section class="faq-section reveal-on-scroll text-white" id="faq"
             aria-label="Frequently asked questions">
-            <div class="mx-auto w-[calc(100%_-_48px)] max-w-[1200px]">
-                <div class="faq-header mx-auto text-center">
-                    <p class="faq-eyebrow mx-auto inline-flex min-h-7 items-center gap-2 rounded-full border border-[#D5AE66]/50 bg-[#151515] px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#D5AE66]">
+            <div>
+                <div class="faq-header">
+                    <p class="faq-eyebrow">
                         <span class="faq-eyebrow-icon" aria-hidden="true"></span>
                         Your Questions
                     </p>
-                    <h2 class="mt-5 text-[40px] font-medium leading-[50px] text-[#f7f4ee]">
-                        Frequently Asked <span class="text-[#D5AE66]">Questions</span>
+                    <h2>
+                        Frequently Asked <span>Questions</span>
                     </h2>
-                    <p class="mt-4 text-[14px] font-normal leading-6 text-white/62">
+                    <p>
                         Everything about Amelia Estate II Stilt+4 3BHK Floors on PR-7
                     </p>
                 </div>
 
-                <div class="faq-layout mt-12 grid grid-cols-[320px_minmax(0,1fr)] gap-8">
+                <div class="faq-layout">
                     <div class="faq-sidebar">
-                    <div class="faq-tabs flex flex-col gap-3" role="tablist" aria-label="FAQ categories">
-                        <button class="faq-tab is-active" type="button" role="tab" aria-selected="true"
-                            data-faq-tab="price">
-                            <span class="faq-tab-icon" aria-hidden="true">₹</span>
-                            <span>Price & Payment</span>
-                            <strong>5</strong>
-                        </button>
-                        <button class="faq-tab" type="button" role="tab" aria-selected="false" data-faq-tab="legal">
-                            <span class="faq-tab-icon" aria-hidden="true">✓</span>
-                            <span>Legal & RERA</span>
-                            <strong>3</strong>
-                        </button>
-                        <button class="faq-tab" type="button" role="tab" aria-selected="false" data-faq-tab="quality">
-                            <span class="faq-tab-icon" aria-hidden="true">▥</span>
-                            <span>Construction & Quality</span>
-                            <strong>5</strong>
-                        </button>
-                        <button class="faq-tab" type="button" role="tab" aria-selected="false" data-faq-tab="location">
-                            <span class="faq-tab-icon" aria-hidden="true">⌖</span>
-                            <span>Location & Connectivity</span>
-                            <strong>5</strong>
-                        </button>
-                    </div>
-                    <div class="faq-tab-progress" aria-hidden="true"><span></span></div>
-                    <div class="faq-assist-card">
-                        <span>Need a quick answer?</span>
-                        <strong>Talk to Amelia Estate II advisor</strong>
-                        <a href="#booking-enquiry">Request Callback</a>
-                    </div>
+                        <div class="faq-tabs-shell">
+                            <button class="faq-tabs-arrow faq-tabs-arrow--prev" type="button" data-faq-tabs-prev aria-label="Previous FAQ category">‹</button>
+                            <div class="faq-tabs" role="tablist" aria-label="FAQ categories">
+                                <button class="faq-tab is-active" type="button" role="tab" aria-selected="true"
+                                    data-faq-tab="price">
+                                    <span class="faq-tab-icon" aria-hidden="true">₹</span>
+                                    <span>Price & Payment</span>
+                                    <strong>5</strong>
+                                </button>
+                                <button class="faq-tab" type="button" role="tab" aria-selected="false" data-faq-tab="legal">
+                                    <span class="faq-tab-icon" aria-hidden="true">✓</span>
+                                    <span>Legal & RERA</span>
+                                    <strong>3</strong>
+                                </button>
+                                <button class="faq-tab" type="button" role="tab" aria-selected="false" data-faq-tab="quality">
+                                    <span class="faq-tab-icon" aria-hidden="true">▥</span>
+                                    <span>Construction & Quality</span>
+                                    <strong>5</strong>
+                                </button>
+                                <button class="faq-tab" type="button" role="tab" aria-selected="false" data-faq-tab="location">
+                                    <span class="faq-tab-icon" aria-hidden="true">⌖</span>
+                                    <span>Location & Connectivity</span>
+                                    <strong>5</strong>
+                                </button>
+                            </div>
+                            <button class="faq-tabs-arrow faq-tabs-arrow--next" type="button" data-faq-tabs-next aria-label="Next FAQ category">›</button>
+                        </div>
+                        <div class="faq-tab-progress" aria-hidden="true"><span></span></div>
+                        <div class="faq-assist-card">
+                            <span>Need a quick answer?</span>
+                            <strong>Talk to Amelia Estate II advisor</strong>
+                            <a href="#booking-enquiry">Request Callback</a>
+                        </div>
                     </div>
 
                     <div class="faq-panels">
@@ -2061,110 +2081,80 @@
                         </div>
                     </div>
                 </div>
+
             </div>
         </section>
-
-        <!-- Project essentials download -->
-        <section class="project-essentials-section reveal-on-scroll w-full" id="project-essentials"
-            aria-label="Download project essentials">
-            <div class="project-essentials-wrap mx-auto w-[calc(100%_-_48px)] max-w-[1180px]">
-            <div class="project-essentials-head mx-auto text-center">
-                <p class="project-essentials-head-eyebrow">Private Concierge Access</p>
-                <h2>Project Essentials, <span>Handed To You</span></h2>
-                <p>Choose what you want to receive instantly for Amelia Estate II.</p>
+        
+        <!-- download -->
+        <section class="project-download-section" aria-label="Download project essentials">
+            <div class="project-download-heading">
+                <p>Private Concierge Access</p>
+                <h2><span>Project Essentials,</span> Handed to You</h2>
+                <span>Choose what you'd like to receive - delivered instantly on WhatsApp.</span>
+                <small>312 documents shared this week - Avg response: 2 min</small>
             </div>
-            <div class="project-essentials-card">
-                <div class="project-essentials-visual" aria-hidden="true">
-                    <span class="project-essentials-live-badge"><i></i> Live Preview</span>
-                    <div class="project-essentials-preview project-essentials-preview--prev">
-                        <img src="assets/img/Project essentials download/download (2).jpg" alt="" />
-                    </div>
-                    <div class="project-essentials-preview project-essentials-preview--active">
-                        <img src="assets/img/Project essentials download/download (1).jpg" alt="" />
-                    </div>
-                    <div class="project-essentials-preview project-essentials-preview--next">
-                        <img src="assets/img/Project essentials download/download.jpg" alt="" />
-                    </div>
-                </div>
-                <div class="project-essentials-panel">
-                <h2 class="mt-7 text-center text-[40px] font-semibold leading-[50px] text-white">
-                    Choose what you need
-                </h2>
-                <p class="mt-4 text-center text-[18px] font-normal leading-7 text-white/90">
-                    A luxury concierge will share your selection privately on WhatsApp.
-                </p>
 
-                <div class="project-essentials-actions mt-10 grid grid-cols-3 gap-4">
-                    <a class="project-essentials-btn" href="assets/img/Project essentials download/download.jpg"
-                        download
-                        data-preview-active="assets/img/Project essentials download/download.jpg"
-                        data-preview-prev="assets/img/Project essentials download/download (1).jpg"
-                        data-preview-next="assets/img/Project essentials download/download (2).jpg">
-                        <svg class="h-[18px] w-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                            <path d="M7 4h10v16H7z" />
-                            <path d="M9.5 8h5" />
-                            <path d="M9.5 11.5h5" />
-                            <path d="M9.5 15h3" />
-                        </svg>
-                        <span><b>Brochure</b><em>Project overview, highlights and lifestyle</em></span>
-                        <strong>Get <i>-&gt;</i></strong>
-                    </a>
-                    <a class="project-essentials-btn is-active project-essentials-btn--gold" href="assets/img/Project essentials download/download (1).jpg" download
-                        data-preview-active="assets/img/Project essentials download/download (1).jpg"
-                        data-preview-prev="assets/img/Project essentials download/download (2).jpg"
-                        data-preview-next="assets/img/Project essentials download/download.jpg">
-                        <svg class="h-[18px] w-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                            <rect x="5" y="5" width="5" height="5" rx="1" />
-                            <rect x="14" y="5" width="5" height="5" rx="1" />
-                            <rect x="5" y="14" width="5" height="5" rx="1" />
-                            <rect x="14" y="14" width="5" height="5" rx="1" />
-                        </svg>
-                        <span><b>Floor Plan &amp; Site Plan</b><em>Layout clarity and planning structure</em></span>
-                        <strong>Get <i>-&gt;</i></strong>
-                    </a>
-                    <a class="project-essentials-btn" href="#booking-enquiry"
-                        data-preview-active="assets/img/Project essentials download/download (2).jpg"
-                        data-preview-prev="assets/img/Project essentials download/download.jpg"
-                        data-preview-next="assets/img/Project essentials download/download (1).jpg">
-                        <svg class="h-[18px] w-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                            <circle cx="12" cy="12" r="8" />
-                            <path d="M12 8v4l3 2" />
-                        </svg>
-                        <span><b>Price List &amp; Payment Plan</b><em>Current pricing and payment structure</em></span>
-                        <strong>Get <i>-&gt;</i></strong>
-                    </a>
-                </div>
-                <div class="project-essentials-trust">
-                    <p>
-                        <svg viewBox="0 0 24 24" aria-hidden="true">
-                            <path d="M7 11V8a5 5 0 0 1 10 0v3" />
-                            <path d="M6 11h12v9H6z" />
-                        </svg>
-                        Shared privately with serious buyers
-                    </p>
-                    <div>
-                        <span>
-                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 12 4 4L19 6" /></svg>
-                            RERA Approved
-                        </span>
-                        <span>
-                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m13 2-8 12h6l-1 8 8-12h-6l1-8Z" /></svg>
-                            Instant WhatsApp
-                        </span>
+            <div class="project-download-inner">
+                <div class="download-preview">
+                    <div class="download-preview-card">
+                        <img class="download-preview-image active" src="/assets/images/project1.webp"
+                            alt="Premium project brochure preview" loading="lazy" decoding="async">
+                        <img class="download-preview-image" src="/assets/images/project2.webp"
+                            alt="Floor plan and site plan preview" loading="lazy" decoding="async">
+                        <img class="download-preview-image" src="/assets/images/project3.webp"
+                            alt="Price list and payment plan preview" loading="lazy" decoding="async">
                     </div>
                 </div>
+
+                <div class="download-options-panel">
+                    <h3>Choose what you need</h3>
+                    <p>A luxury concierge will share your selection privately on WhatsApp.</p>
+
+                    <div class="download-options">
+                        <article class="download-option active" data-download-preview="0">
+                            <i class="material-symbols-rounded" aria-hidden="true">article</i>
+                            <div>
+                                <h4>Brochure</h4>
+                                <span>Project overview, highlights and lifestyle</span>
+                            </div>
+                            <a href="assets/downloads/amelia-brochure.txt" download>Get <b>arrow_forward</b></a>
+                        </article>
+
+                        <article class="download-option" data-download-preview="1">
+                            <i class="material-symbols-rounded" aria-hidden="true">grid_view</i>
+                            <div>
+                                <h4>Floor Plan &amp; Site Plan</h4>
+                                <span>Layout clarity and planning structure</span>
+                            </div>
+                            <a href="assets/downloads/amelia-floor-plan.txt" download>Get <b>arrow_forward</b></a>
+                        </article>
+
+                        <article class="download-option" data-download-preview="2">
+                            <i class="material-symbols-rounded" aria-hidden="true">schedule</i>
+                            <div>
+                                <h4>Price List &amp; Payment Plan</h4>
+                                <span>Current pricing and payment structure</span>
+                            </div>
+                            <a href="assets/downloads/amelia-price-list.txt" download>Get <b>arrow_forward</b></a>
+                        </article>
+                    </div>
+
+                    <div class="download-footnote">
+                        <p><span class="material-symbols-rounded" aria-hidden="true">lock</span> Shared privately with
+                            serious buyers</p>
+                        <div>
+                            <span>RERA Approved</span>
+                            <span>Instant WhatsApp</span>
+                        </div>
+                    </div>
                 </div>
-            </div>
             </div>
         </section>
 
         <!-- Site visit booking -->
-        <section class="site-visit-section reveal-on-scroll w-full bg-black py-[76px]" id="site-visit"
+        <section class="site-visit-section reveal-on-scroll w-full bg-black py-[30px]" id="site-visit"
             aria-label="Book your site visit">
-            <div class="site-visit-inner mx-auto grid w-[calc(100%_-_48px)] max-w-[1200px] grid-cols-[1fr_576px] items-center gap-10">
+            <div class="site-visit-inner mx-auto grid w-[calc(100%_-_48px)] max-w-[1200px] grid-cols-[1fr_460px] items-center gap-6">
                 <div class="site-visit-map" aria-hidden="true">
                     <img src="assets/img/prime loaction/39a9aa3054e6b7112941359dfa086812cd656f1d.png"
                         alt="" />
@@ -2181,7 +2171,7 @@
 
                 <div class="site-visit-card">
                     <div class="site-visit-card-inner">
-                        <p class="site-visit-eyebrow mx-auto inline-flex min-h-9 items-center gap-3 rounded-full border border-[#D5AE66]/70 bg-[#0d0b08]/80 px-5 text-[14px] font-semibold uppercase tracking-[0.1em] text-[#D5AE66]">
+                        <p class="site-visit-eyebrow mx-auto inline-flex min-h-9 items-center gap-3 rounded-full border border-[#f0cd45]/70 bg-[#0d0b08]/80 px-5 text-[14px] font-semibold uppercase tracking-[0.1em] text-[#f0cd45]">
                             <svg class="h-[16px] w-[16px]" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                 stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                                 <path d="M4 7h16v12H4z" />
@@ -2190,16 +2180,21 @@
                             Contact Us
                         </p>
                         <h2 class="mt-5 text-center text-[40px] font-semibold leading-[50px] text-white">
-                            Book Your <span class="text-[#D5AE66]">Site Visit</span>
+                            Book Your <span class="text-[#f0cd45]">Site Visit</span>
                         </h2>
                         <p class="mt-4 text-center text-[16px] font-normal leading-6 text-white/76">
                             Starting &#8377;1.325 Cr &middot; RERA Approved
                         </p>
 
                         <form class="site-visit-form mt-9">
-                            <input type="text" name="name" placeholder="FULL NAME" aria-label="Full name">
-                            <input type="tel" name="phone" placeholder="MOBILE NUMBER" aria-label="Mobile number">
-                            <input type="email" name="email" placeholder="EMAIL ADDRESS*" aria-label="Email address">
+                            <input type="text" name="name" placeholder="FULL NAME" aria-label="Full name"
+                                autocomplete="name" minlength="2" pattern="[A-Za-z][A-Za-z .'-]{1,}" required
+                                title="Please enter a valid name">
+                            <input type="tel" name="phone" placeholder="MOBILE NUMBER" aria-label="Mobile number"
+                                autocomplete="tel" inputmode="numeric" maxlength="10" pattern="[0-9]{10}" required
+                                title="Please enter a 10 digit mobile number">
+                            <input type="email" name="email" placeholder="EMAIL ADDRESS*" aria-label="Email address"
+                                autocomplete="email" required title="Please enter a valid email address">
 
                             <button class="site-visit-submit" type="submit">
                                 Schedule Visit
@@ -2341,6 +2336,7 @@
                 <div class="property-snapshot-layout mt-10 grid grid-cols-[424px_minmax(0,1fr)] gap-11">
                     <aside class="property-snapshot-card">
                         <div class="property-snapshot-brand">
+                            
                             <h3>
                                 Amelia
                                 <em>Estate II.</em>
