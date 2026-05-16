@@ -736,7 +736,7 @@
     .property-snapshot-card {
         min-height: 0 !important;
         padding: 18px 18px 16px !important;
-        border-radius: 18px !important;
+   
     }
 
     .property-snapshot-brand {
@@ -10369,7 +10369,81 @@
         font-size: inherit !important;
         font-weight: inherit !important;
         line-height: inherit !important;
+
     }
+
+    .footer-redesign-cta h2 span {
+        margin-top: 0 !important;
+        font-size: inherit !important;
+        line-height: inherit !important;
+        display: block !important;
+    }
+
+    .footer-redesign-cta h2 {
+        text-align: center !important;
+    }
+
+    .footer-redesign-actions {
+        align-items: center !important;
+    }
+
+    .footer-redesign-actions a,
+    .footer-redesign-actions a[href*="wa.me"] {
+        width: 100% !important;
+        max-width: none !important;
+        min-height: 44px !important;
+        align-self: stretch !important;
+        border-radius: 999px !important;
+    }
+
+    .footer-redesign-main {
+        grid-template-columns: repeat(2, 132px) !important;
+        justify-content: center !important;
+        gap: 18px 0 !important;
+    }
+
+    .footer-redesign-brand {
+        grid-column: 1 / -1 !important;
+        width: min(100%, 320px) !important;
+        justify-self: center !important;
+    }
+
+    .footer-redesign-contact {
+        display: flex !important;
+        grid-column: 1 / -1 !important;
+        width: min(100%, 300px) !important;
+        justify-self: center !important;
+        align-items: center !important;
+        flex-direction: column !important;
+    }
+
+    .footer-redesign-main > .footer-redesign-column:not(.footer-redesign-contact) {
+        text-align: center !important;
+    }
+
+    .footer-redesign-main .footer-redesign-column:not(.footer-redesign-contact) > a {
+        margin-right: auto !important;
+        margin-left: auto !important;
+    }
+
+    .footer-redesign-contact a {
+        max-width: 100% !important;
+        margin-right: auto !important;
+        margin-left: auto !important;
+        white-space: normal !important;
+    }
+
+    .footer-redesign-contact a[href^="tel:"] {
+        color: #ffffff !important;
+    }
+
+    .footer-redesign-contact a[href*="wa.me"] {
+        width: fit-content !important;
+        max-width: 100% !important;
+        align-self: center !important;
+        white-space: nowrap !important;
+    }
+  
 }
 
 @media (max-width: 575px) {
@@ -10817,5 +10891,150 @@
     .mobile-menu a:hover {
         background: rgba(240, 205, 69, 0.12) !important;
         color: #f0cd45 !important;
+    }
+}
+
+/* Final mobile footer alignment guard. */
+@media (max-width: 767px) {
+    .footer-redesign-cta {
+        text-align: center !important;
+    }
+
+    .footer-redesign-cta p {
+        display: inline-flex !important;
+        width: fit-content !important;
+        margin-right: auto !important;
+        margin-left: auto !important;
+        border-color: rgba(240, 205, 69, 0.40) !important;
+        background: rgba(240, 205, 69, 0.10) !important;
+        color: #f0cd45 !important;
+    }
+
+    .footer-redesign-cta h2,
+    .footer-redesign-cta h2 span {
+        font-size: clamp(29px, 8.1vw, 34px) !important;
+        line-height: 1.18 !important;
+        text-align: center !important;
+    }
+
+    .footer-redesign-cta h2 span {
+        display: block !important;
+        margin-top: 0 !important;
+    }
+
+    .footer-redesign-brand > img,
+    .footer-redesign-brand div img {
+        filter:
+            brightness(0) saturate(100%) invert(85%) sepia(95%) saturate(731%) hue-rotate(344deg) brightness(101%) contrast(88%) !important;
+    }
+
+    .footer-redesign-main {
+        grid-template-columns: repeat(2, minmax(118px, 132px)) !important;
+        justify-content: center !important;
+        justify-items: center !important;
+        column-gap: 0 !important;
+    }
+
+    .footer-redesign-brand,
+    .footer-redesign-contact {
+        grid-column: 1 / -1 !important;
+    }
+
+    .footer-redesign-main > .footer-redesign-column:not(.footer-redesign-contact) {
+        width: 100% !important;
+        text-align: center !important;
+    }
+
+    .footer-redesign-column h3,
+    .footer-redesign-column p,
+    .footer-redesign-column strong {
+        text-align: center !important;
+    }
+
+    .footer-redesign-main .footer-redesign-column:not(.footer-redesign-contact) > a {
+        width: fit-content !important;
+        margin-right: auto !important;
+        margin-left: auto !important;
+        text-align: center !important;
+    }
+
+    .footer-redesign-contact a[href^="tel:"] {
+        color: #f0cd45 !important;
+    }
+}
+
+/* Final mobile property snapshot theme sync. */
+@media (max-width: 767px) {
+    .property-snapshot-section {
+        background:
+            radial-gradient(860px 320px at 50% -120px, rgba(213, 174, 102, 0.16), transparent 72%),
+            linear-gradient(180deg, #070707 0%, #10100e 54%, #070707 100%) !important;
+    }
+
+    .property-snapshot-section::before {
+        background:
+            linear-gradient(90deg, rgba(213, 174, 102, 0.06) 0 1px, transparent 1px 100%),
+            linear-gradient(180deg, rgba(255, 255, 255, 0.035) 0 1px, transparent 1px 100%) !important;
+        background-size: 86px 86px !important;
+        mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.72), transparent 76%) !important;
+        opacity: 0.45 !important;
+    }
+
+    .property-snapshot-card {
+        border-width: 0 !important;
+        border-color: transparent !important;
+    }
+
+    .property-snapshot-kicker span {
+        display: none !important;
+    }
+
+    .property-snapshot-eyebrow {
+        min-height: 28px !important;
+        gap: 8px !important;
+        border-color: rgba(240, 205, 69, 0.40) !important;
+        background: rgba(240, 205, 69, 0.10) !important;
+        padding: 6px 16px !important;
+        color: #f0cd45 !important;
+        font-size: 11px !important;
+        letter-spacing: 0.16em !important;
+    }
+
+    .property-snapshot-content h3 {
+        font-size: clamp(29px, 8.1vw, 34px) !important;
+        line-height: 1.18 !important;
+    }
+
+    .property-snapshot-brand h3 em,
+    .property-snapshot-kicker,
+    .property-snapshot-metrics strong,
+    .property-snapshot-strip strong,
+    .property-snapshot-strip span {
+        color: #f0cd45 !important;
+        background: none !important;
+        -webkit-background-clip: border-box !important;
+        background-clip: border-box !important;
+        animation: none !important;
+    }
+
+    .property-snapshot-kicker span,
+    .property-snapshot-metrics > div::after {
+        background: #f0cd45 !important;
+    }
+
+    .property-snapshot-metrics svg {
+        stroke: #f0cd45 !important;
+    }
+
+    .property-snapshot-readmore {
+        min-height: var(--about-readmore-height, 36px) !important;
+        height: var(--about-readmore-height, 36px) !important;
+        padding: 0 var(--about-readmore-padding-x, 20px) !important;
+        border-color: rgba(240, 205, 69, 0.38) !important;
+        border-radius: var(--about-readmore-radius, 10px) !important;
+        background: rgba(240, 205, 69, 0.14) !important;
+        color: #f0cd45 !important;
+        font-size: var(--about-readmore-font-size, 13px) !important;
+        letter-spacing: 0.12em !important;
     }
 }
