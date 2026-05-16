@@ -2725,6 +2725,99 @@ if (faqSection) {
     });
 }
 
+// Lead forms: validate names, emails, and keep mobile numbers to 10 digits.
+const leadForms = document.querySelectorAll(".booking-enquiry-form, .pricing-unlock-form, .site-visit-form");
+const leadPhoneInputs = document.querySelectorAll(
+    '.booking-enquiry-form input[type="tel"], .pricing-unlock-form input[type="tel"], .site-visit-form input[type="tel"]'
+);
+const leadNameInputs = document.querySelectorAll(
+    '.booking-enquiry-form input[name*="name"], .pricing-unlock-form input[name="name"], .site-visit-form input[name="name"]'
+);
+const leadEmailInputs = document.querySelectorAll(
+    '.booking-enquiry-form input[type="email"], .site-visit-form input[type="email"]'
+);
+const normalizeLeadPhone = (value) => {
+    const digits = value.replace(/\D/g, "");
+    const withoutCountryCode = digits.length > 10 && digits.startsWith("91")
+        ? digits.slice(2)
+        : digits;
+
+    return withoutCountryCode.slice(0, 10);
+};
+
+leadPhoneInputs.forEach((input) => {
+    input.setAttribute("maxlength", "10");
+    input.setAttribute("inputmode", "numeric");
+    input.setAttribute("pattern", "[0-9]{10}");
+
+    input.addEventListener("input", () => {
+        const digitsOnly = normalizeLeadPhone(input.value);
+
+        if (input.value !== digitsOnly) {
+            input.value = digitsOnly;
+        }
+
+        input.setCustomValidity(digitsOnly.length === 10 || digitsOnly.length === 0
+            ? ""
+            : "Please enter a 10 digit mobile number.");
+    });
+});
+
+leadNameInputs.forEach((input) => {
+    input.addEventListener("input", () => {
+        const cleanedName = input.value.replace(/[^A-Za-z .'-]/g, "").replace(/\s{2,}/g, " ");
+
+        if (input.value !== cleanedName) {
+            input.value = cleanedName;
+        }
+
+        const isValidName = /^[A-Za-z][A-Za-z .'-]{1,}$/.test(cleanedName.trim());
+        input.setCustomValidity(isValidName || cleanedName.trim().length === 0
+            ? ""
+            : "Please enter a valid name.");
+    });
+});
+
+leadEmailInputs.forEach((input) => {
+    input.addEventListener("input", () => {
+        input.setCustomValidity(input.validity.valid || input.value.trim().length === 0
+            ? ""
+            : "Please enter a valid email address.");
+    });
+});
+
+leadForms.forEach((form) => {
+    form.addEventListener("submit", (event) => {
+        const phoneInput = form.querySelector('input[type="tel"]');
+        const nameInput = form.querySelector('input[name*="name"]');
+        const emailInput = form.querySelector('input[type="email"]');
+
+        if (phoneInput) {
+            phoneInput.value = normalizeLeadPhone(phoneInput.value);
+            phoneInput.setCustomValidity(/^[0-9]{10}$/.test(phoneInput.value)
+                ? ""
+                : "Please enter a 10 digit mobile number.");
+        }
+
+        if (nameInput) {
+            nameInput.value = nameInput.value.trim().replace(/\s{2,}/g, " ");
+            nameInput.setCustomValidity(/^[A-Za-z][A-Za-z .'-]{1,}$/.test(nameInput.value)
+                ? ""
+                : "Please enter a valid name.");
+        }
+
+        if (emailInput) {
+            emailInput.setCustomValidity(emailInput.validity.valid ? "" : "Please enter a valid email address.");
+        }
+
+        if (!form.checkValidity()) {
+            event.preventDefault();
+            event.stopImmediatePropagation();
+            form.reportValidity();
+        }
+    }, true);
+});
+
 // Site visit form: keeps the static landing page from reloading on submit.
 const siteVisitForm = document.querySelector(".site-visit-form");
 
