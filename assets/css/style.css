@@ -5137,7 +5137,7 @@ body.is-premium-specs-modal-open {
 /* Visual showcase: tabbed gallery with walkthrough preview and image effects. */
 .visual-showcase-section {
     min-height: 0;
-    padding: 64px 0 58px;
+    padding: 48px 0 42px;
     overflow: hidden;
     background:
         radial-gradient(860px 320px at 50% -120px, rgba(240, 205, 69, 0.12), transparent 72%),
@@ -5164,7 +5164,7 @@ body.is-premium-specs-modal-open {
     align-items: center;
     gap: 9px;
     min-height: 35px;
-    margin: 0 0 22px;
+    margin: 0 0 16px;
     padding: 8px 20px;
     border: 1px solid rgba(240, 205, 69, 0.58);
     border-radius: 999px;
@@ -5200,7 +5200,7 @@ body.is-premium-specs-modal-open {
 }
 
 .visual-showcase-header>p:not(.visual-showcase-eyebrow) {
-    margin: 14px 0 0;
+    margin: 10px 0 0;
     color: rgba(255, 255, 255, 0.68);
     font-size: 17px;
     font-weight: 400;
@@ -5210,7 +5210,7 @@ body.is-premium-specs-modal-open {
 .visual-showcase-tabs {
     width: min(100%, 760px) !important;
     min-width: 0 !important;
-    margin: 36px auto 8px !important;
+    margin: 24px auto 4px !important;
 }
 
 .visual-showcase-tabs button {
@@ -5240,8 +5240,8 @@ body.is-premium-specs-modal-open {
 }
 
 .visual-showcase-copy {
-    margin-top: 18px;
-    padding-top: 16px;
+    margin-top: 10px;
+    padding-top: 8px;
     border-top: 0;
 }
 
@@ -5276,7 +5276,7 @@ body.is-premium-specs-modal-open {
 }
 
 .visual-showcase-content {
-    margin-top: 32px;
+    margin-top: 22px;
 }
 
 .visual-showcase-section.is-gallery-switching .visual-showcase-copy p:not([hidden]),
@@ -5331,11 +5331,9 @@ body.is-premium-specs-modal-open {
     height: 300px;
     border-radius: 12px;
     background: #151515;
-    border: 1px solid rgba(240, 205, 69, 0.72);
+    border: 1px solid rgba(240, 205, 69, 0.42);
     box-shadow:
-        0 28px 64px rgba(0, 0, 0, 0.46),
-        0 0 0 1px rgba(240, 205, 69, 0.26),
-        0 0 30px rgba(240, 205, 69, 0.12);
+        0 22px 48px rgba(0, 0, 0, 0.38);
     isolation: isolate;
     transition:
         border-color 0.35s ease,
@@ -5347,11 +5345,11 @@ body.is-premium-specs-modal-open {
     content: "";
     position: absolute;
     inset: 0;
-    border: 1px solid rgba(240, 205, 69, 0.52);
+    border: 0;
     border-radius: inherit;
     background:
         linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0) 38%),
-        radial-gradient(circle at 50% 30%, rgba(240, 205, 69, 0.14), rgba(240, 205, 69, 0) 62%);
+        radial-gradient(circle at 50% 30%, rgba(240, 205, 69, 0.08), rgba(240, 205, 69, 0) 62%);
     opacity: 1;
     transition:
         border-color 0.35s ease,
@@ -5389,14 +5387,14 @@ body.is-premium-specs-modal-open {
 }
 
 .visual-gallery-card:hover {
+    border-color: rgba(240, 205, 69, 0.42);
     box-shadow:
-        0 26px 60px rgba(0, 0, 0, 0.46),
-        0 0 0 1px rgba(240, 205, 69, 0.18);
+        0 24px 54px rgba(0, 0, 0, 0.42);
     transform: translateY(-4px);
 }
 
 .visual-gallery-card:hover::after {
-    border-color: rgba(240, 205, 69, 0.52);
+    opacity: 0.88;
 }
 
 .visual-gallery-card:focus-visible {
@@ -5404,7 +5402,7 @@ body.is-premium-specs-modal-open {
 }
 
 .visual-gallery-card:focus-visible::after {
-    border-color: rgba(240, 205, 69, 0.52);
+    opacity: 0.88;
 }
 
 .visual-gallery-card:hover::before {
@@ -5512,13 +5510,11 @@ body.is-premium-specs-modal-open {
 }
 
 .visual-showcase-cta {
-    margin-top: 36px;
-    padding: 31px 28px 27px;
-    border: 1px solid rgba(240, 205, 69, 0.22);
-    border-radius: 14px;
-    background:
-        radial-gradient(56% 120% at 50% 100%, rgba(240, 205, 69, 0.13) 0%, rgba(240, 205, 69, 0) 66%),
-        #1b1915;
+    margin-top: 24px;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
 }
 
 .visual-showcase-cta h3 {
@@ -5530,11 +5526,11 @@ body.is-premium-specs-modal-open {
 }
 
 .visual-showcase-cta h3 span {
-    color: var(--theme-gold);
+    color: inherit;
 }
 
 .visual-showcase-cta p {
-    margin: 9px 0 22px;
+    margin: 7px 0 16px;
     color: rgba(255, 255, 255, 0.52);
     font-size: 16px;
     font-weight: 400;
@@ -5567,7 +5563,7 @@ body.is-premium-specs-modal-open {
 
 .visual-showcase-cta small {
     display: block;
-    margin-top: 23px;
+    margin-top: 15px;
     color: rgba(255, 255, 255, 0.48);
     font-size: 15px;
     font-weight: 400;
@@ -5576,8 +5572,8 @@ body.is-premium-specs-modal-open {
 
 .visual-showcase-disclaimer {
     width: min(100%, 1090px);
-    margin: 36px auto 0;
-    padding: 26px 34px;
+    margin: 24px auto 0;
+    padding: 20px 28px;
     border: 1px solid rgba(240, 205, 69, 0.18);
     border-radius: 12px;
     background:
@@ -5671,7 +5667,7 @@ body.is-premium-specs-modal-open {
 /* Prime location: map-led connectivity section after gallery. */
 .prime-location-section {
     min-height: 0;
-    padding: 62px 0 46px;
+    padding: 48px 0 34px;
     overflow: hidden;
     background:
         radial-gradient(circle at 50% 20%, rgba(240, 205, 69, 0.12) 0%, rgba(240, 205, 69, 0) 28%),
@@ -5987,7 +5983,7 @@ body.is-prime-map-lightbox-open {
 
 .prime-location-section.is-distance-revealed .prime-distance-block {
     max-height: 900px;
-    margin-top: 40px;
+    margin-top: 28px;
     overflow: visible;
     opacity: 1;
     transform: translateY(0);
@@ -6010,8 +6006,8 @@ body.is-prime-map-lightbox-open {
 
 .prime-distance-card {
     position: relative;
-    min-height: 121px;
-    padding: 26px 24px;
+    min-height: 104px;
+    padding: 20px 24px;
     overflow: hidden;
     border: 1px solid rgba(240, 205, 69, 0.24);
     border-radius: 8px;
@@ -6126,24 +6122,20 @@ body.is-prime-map-lightbox-open {
     position: relative;
     display: flex;
     width: 100%;
-    height: 176px;
-    min-height: 176px;
-    margin-top: 34px;
+    height: auto;
+    min-height: 0;
+    margin-top: 24px;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 0;
     overflow: hidden;
-    border: 1px solid rgba(240, 205, 69, 0.22);
-    border-radius: 8px;
-    background:
-        linear-gradient(180deg, rgba(19, 18, 15, 0.78), rgba(22, 21, 18, 0.80)),
-        url("../img/prime loaction/46308d6f52f67f34894833b36b26f3210b6df91f.png") center / cover no-repeat;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
     color: #ffffff;
     text-align: center;
-    box-shadow:
-        0 26px 64px rgba(0, 0, 0, 0.22),
-        inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    box-shadow: none;
     isolation: isolate;
     will-change: height, max-height, opacity, transform;
     transition:
@@ -6170,22 +6162,19 @@ body.is-prime-map-lightbox-open {
 }
 
 .prime-whatsapp-location-cta:hover {
-    filter: brightness(1.03);
-    box-shadow:
-        0 30px 74px rgba(0, 0, 0, 0.28),
-        0 0 28px rgba(240, 205, 69, 0.18),
-        inset 0 1px 0 rgba(255, 255, 255, 0.32);
+    filter: none;
+    box-shadow: none;
 }
 
 .prime-whatsapp-location-cta--map {
     display: flex;
     width: min(100%, 1200px);
-    height: 176px;
-    min-height: 176px;
-    max-height: 176px;
-    margin: 18px auto 0;
+    height: auto;
+    min-height: 0;
+    max-height: 96px;
+    margin: 14px auto 0;
     padding: 0;
-    border-width: 1px;
+    border-width: 0;
     opacity: 1;
     pointer-events: auto;
     transform: translateY(0);
@@ -6228,12 +6217,12 @@ body.is-prime-map-lightbox-open {
 }
 
 .prime-location-section.is-distance-cta-shifted .prime-whatsapp-location-cta--after-distance {
-    height: 176px;
-    min-height: 176px;
-    max-height: 176px;
-    margin-top: 34px;
+    height: auto;
+    min-height: 0;
+    max-height: 96px;
+    margin-top: 22px;
     padding: 0;
-    border-width: 1px;
+    border-width: 0;
     opacity: 1;
     pointer-events: auto;
     transform: translateY(0) scale(1);
@@ -6276,7 +6265,7 @@ body.is-prime-map-lightbox-open {
 
 .prime-whatsapp-location-cta small {
     display: block;
-    margin-top: 28px;
+    margin-top: 14px;
     color: rgba(255, 255, 255, 0.42);
     font-size: 11px;
     font-weight: 500;
@@ -12976,7 +12965,6 @@ body {
 .project-plan-heading h2 span,
 .transparent-pricing-heading h2 span,
 .visual-showcase-header h2 span,
-.visual-showcase-cta h3 span,
 .lifestyle-amenities-title span,
 .lifestyle-amenities-cta h3 span,
 .site-visit-phone,

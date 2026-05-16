@@ -1194,7 +1194,7 @@
 
     .visual-showcase-section {
         min-height: 0;
-        padding: 56px 32px;
+        padding: 44px 32px;
     }
 
     .prime-location-section {
@@ -1908,7 +1908,7 @@
     }
 
     .visual-showcase-section {
-        padding: 50px 40px;
+        padding: 40px 40px;
     }
 
     .prime-location-section {
@@ -2976,7 +2976,7 @@
     }
 
     .visual-showcase-section {
-        padding: 42px 16px 46px;
+        padding: 34px 16px 36px;
     }
 
     .lifestyle-amenities-section {
@@ -3461,8 +3461,8 @@
     }
 
     .visual-showcase-copy {
-        margin-top: 20px;
-        padding-top: 18px;
+        margin-top: 12px;
+        padding-top: 8px;
     }
 
     .visual-showcase-copy p {
@@ -3471,13 +3471,13 @@
     }
 
     .visual-showcase-update {
-        margin: 24px 0 20px;
+        margin: 18px 0 16px;
         font-size: 14px;
         line-height: 19px;
     }
 
     .visual-showcase-content {
-        margin-top: 30px;
+        margin-top: 20px;
     }
 
     .visual-showcase-grid {
@@ -3525,8 +3525,8 @@
     }
 
     .visual-showcase-cta {
-        margin-top: 34px;
-        padding: 26px 18px 24px;
+        margin-top: 22px;
+        padding: 0;
     }
 
     .visual-showcase-cta h3 {
@@ -3550,8 +3550,8 @@
     }
 
     .visual-showcase-disclaimer {
-        margin-top: 34px;
-        padding: 20px 16px;
+        margin-top: 22px;
+        padding: 16px 14px;
     }
 
     .visual-showcase-disclaimer p {
@@ -4570,7 +4570,7 @@
     }
 
     .visual-showcase-section {
-        padding: 36px 14px 40px;
+        padding: 30px 14px 32px;
     }
 
     .prime-location-section {
@@ -5091,11 +5091,11 @@
     }
 
     .prime-whatsapp-location-cta {
-        height: 162px;
-        min-height: 162px;
-        margin-top: 28px;
-        border-radius: 14px;
-        padding: 0 18px;
+        height: auto;
+        min-height: 0;
+        margin-top: 20px;
+        border-radius: 0;
+        padding: 0;
     }
 
     .prime-whatsapp-location-btn {
@@ -5108,7 +5108,7 @@
 
     .prime-whatsapp-location-cta small {
         max-width: 278px;
-        margin-top: 26px;
+        margin-top: 12px;
         font-size: 15px;
         line-height: 20px;
     }
@@ -6762,12 +6762,12 @@
     .prime-whatsapp-location-cta--map {
         display: flex;
         width: calc(100% - 28px);
-        height: 136px;
-        min-height: 136px;
-        max-height: 136px;
-        margin: 14px auto 0;
-        padding: 0 16px;
-        border-radius: 16px;
+        height: auto;
+        min-height: 0;
+        max-height: 92px;
+        margin: 12px auto 0;
+        padding: 0;
+        border-radius: 0;
         opacity: 1;
         transform: translateY(0);
         transition:
@@ -6817,12 +6817,12 @@
     }
 
     .prime-location-section.is-distance-cta-shifted .prime-whatsapp-location-cta--after-distance {
-        height: 162px;
-        min-height: 162px;
-        max-height: 162px;
-        margin-top: 26px;
-        padding: 0 18px;
-        border-width: 1px;
+        height: auto;
+        min-height: 0;
+        max-height: 92px;
+        margin-top: 18px;
+        padding: 0;
+        border-width: 0;
         opacity: 1;
         pointer-events: auto;
         transform: translateY(0) scale(1);
@@ -8391,14 +8391,14 @@
 @media (max-width: 991px) {
     .prime-location-section.is-distance-revealed .prime-distance-block {
         max-height: 760px;
-        margin-top: 38px;
+        margin-top: 24px;
     }
 }
 
 @media (max-width: 767px) {
     .prime-location-section.is-distance-revealed .prime-distance-block {
         max-height: 680px;
-        margin-top: 32px;
+        margin-top: 20px;
     }
 }
 
