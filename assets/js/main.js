@@ -1496,6 +1496,9 @@ if (premiumSpecsSection) {
 const visualShowcaseSection = document.querySelector(".visual-showcase-section");
 
 if (visualShowcaseSection) {
+    const galleryTabsScroller = visualShowcaseSection.querySelector(".visual-showcase-tabs");
+    const galleryTabsPrevious = visualShowcaseSection.querySelector("[data-gallery-tabs-prev]");
+    const galleryTabsNext = visualShowcaseSection.querySelector("[data-gallery-tabs-next]");
     const galleryTabs = visualShowcaseSection.querySelectorAll("[data-gallery-tab]");
     const galleryPanels = visualShowcaseSection.querySelectorAll("[data-gallery-panel]");
     const galleryCopies = visualShowcaseSection.querySelectorAll("[data-gallery-copy]");
@@ -1513,6 +1516,31 @@ if (visualShowcaseSection) {
     let activeGalleryTab = "sample";
     let gallerySwitchTimer;
     const isMobileGallery = () => window.matchMedia("(max-width: 767px)").matches;
+
+    const updateGalleryTabSliderState = () => {
+        if (!galleryTabsScroller) {
+            return;
+        }
+
+        const maxScroll = galleryTabsScroller.scrollWidth - galleryTabsScroller.clientWidth;
+        const isShifted = isMobileGallery() && galleryTabsScroller.scrollLeft > 12;
+        const isAtEnd = !isMobileGallery() || galleryTabsScroller.scrollLeft >= maxScroll - 12;
+
+        galleryTabsScroller.classList.toggle("is-tab-slider-shifted", isShifted);
+        galleryTabsPrevious?.classList.toggle("is-disabled", !isShifted);
+        galleryTabsNext?.classList.toggle("is-disabled", isAtEnd);
+    };
+
+    const scrollGalleryTabsByPage = (direction) => {
+        if (!galleryTabsScroller) {
+            return;
+        }
+
+        galleryTabsScroller.scrollBy({
+            left: direction * galleryTabsScroller.clientWidth,
+            behavior: "smooth"
+        });
+    };
 
     const galleryPanelLabels = {
         sample: "Sample Flat",
@@ -1801,6 +1829,14 @@ if (visualShowcaseSection) {
 
         galleryTabs.forEach((tab) => {
             tab.classList.toggle("is-active", tab.dataset.galleryTab === key);
+
+            if (tab.dataset.galleryTab === key && isMobileGallery()) {
+                tab.scrollIntoView({
+                    behavior: "smooth",
+                    block: "nearest",
+                    inline: "nearest"
+                });
+            }
         });
 
         gallerySwitchTimer = setTimeout(() => {
@@ -1827,6 +1863,10 @@ if (visualShowcaseSection) {
     galleryTabs.forEach((tab) => {
         tab.addEventListener("click", () => setGalleryTab(tab.dataset.galleryTab));
     });
+
+    galleryTabsScroller?.addEventListener("scroll", updateGalleryTabSliderState, { passive: true });
+    galleryTabsPrevious?.addEventListener("click", () => scrollGalleryTabsByPage(-1));
+    galleryTabsNext?.addEventListener("click", () => scrollGalleryTabsByPage(1));
 
     galleryCards.forEach((card) => {
         addVisualGalleryOverlay(card);
@@ -1859,8 +1899,12 @@ if (visualShowcaseSection) {
         }
     });
 
-    window.addEventListener("resize", updateActiveGalleryGrid);
+    window.addEventListener("resize", () => {
+        updateActiveGalleryGrid();
+        updateGalleryTabSliderState();
+    });
     updateActiveGalleryGrid();
+    updateGalleryTabSliderState();
 }
 
 // Prime location: switches the map card between the designed image and embedded Google Map.
@@ -2132,6 +2176,8 @@ const lifestyleAmenitiesSection = document.querySelector(".lifestyle-amenities-s
 
 if (lifestyleAmenitiesSection) {
     const amenityTabsWrap = lifestyleAmenitiesSection.querySelector(".lifestyle-amenities-tabs");
+    const amenityTabsPrevious = lifestyleAmenitiesSection.querySelector("[data-amenity-tabs-prev]");
+    const amenityTabsNext = lifestyleAmenitiesSection.querySelector("[data-amenity-tabs-next]");
     const amenityTabs = lifestyleAmenitiesSection.querySelectorAll("[data-amenity-tab]");
     const amenityCards = lifestyleAmenitiesSection.querySelectorAll("[data-amenity-type]");
     const amenityGrid = lifestyleAmenitiesSection.querySelector(".lifestyle-amenities-grid");
@@ -2206,7 +2252,9 @@ if (lifestyleAmenitiesSection) {
     };
 
     const updateAmenityTabProgress = () => {
-        if (!amenityTabsWrap || !amenityTabProgress || !isMobileAmenitySlider()) {
+        if (!amenityTabsWrap || !isMobileAmenitySlider()) {
+            amenityTabsPrevious?.classList.add("is-disabled");
+            amenityTabsNext?.classList.add("is-disabled");
             return;
         }
 
@@ -2214,12 +2262,28 @@ if (lifestyleAmenitiesSection) {
         const progress = maxScroll > 0 ? amenityTabsWrap.scrollLeft / maxScroll : 1;
         const progressWidth = maxScroll > 0 ? Math.max(24, Math.min(100, 24 + (progress * 76))) : 100;
 
-        amenityTabProgress.style.width = `${progressWidth}%`;
+        if (amenityTabProgress) {
+            amenityTabProgress.style.width = `${progressWidth}%`;
+        }
+
+        amenityTabsPrevious?.classList.toggle("is-disabled", amenityTabsWrap.scrollLeft <= 12);
+        amenityTabsNext?.classList.toggle("is-disabled", amenityTabsWrap.scrollLeft >= maxScroll - 12);
     };
 
     const requestAmenityTabProgressUpdate = () => {
         cancelAnimationFrame(amenityTabFrame);
         amenityTabFrame = requestAnimationFrame(updateAmenityTabProgress);
+    };
+
+    const scrollAmenityTabsByPage = (direction) => {
+        if (!amenityTabsWrap) {
+            return;
+        }
+
+        amenityTabsWrap.scrollBy({
+            left: direction * amenityTabsWrap.clientWidth,
+            behavior: "smooth"
+        });
     };
 
     const openAmenityLightbox = (card) => {
@@ -2273,7 +2337,7 @@ if (lifestyleAmenitiesSection) {
             activeTab.scrollIntoView({
                 behavior: "smooth",
                 block: "nearest",
-                inline: "center"
+                inline: "nearest"
             });
         }
 
@@ -2324,6 +2388,8 @@ if (lifestyleAmenitiesSection) {
 
     if (amenityTabsWrap) {
         amenityTabsWrap.addEventListener("scroll", requestAmenityTabProgressUpdate, { passive: true });
+        amenityTabsPrevious?.addEventListener("click", () => scrollAmenityTabsByPage(-1));
+        amenityTabsNext?.addEventListener("click", () => scrollAmenityTabsByPage(1));
         window.addEventListener("resize", requestAmenityTabProgressUpdate);
         requestAmenityTabProgressUpdate();
     }
@@ -2510,13 +2576,17 @@ if (faqSection) {
     const faqPanels = faqSection.querySelectorAll("[data-faq-panel]");
     const faqTabsWrap = faqSection.querySelector(".faq-tabs");
     const faqTabProgress = faqSection.querySelector(".faq-tab-progress span");
+    const faqTabsPrevious = faqSection.querySelector("[data-faq-tabs-prev]");
+    const faqTabsNext = faqSection.querySelector("[data-faq-tabs-next]");
     const faqAnimationDuration = 380;
     let faqTabProgressFrame = 0;
 
     const isMobileFaqTabs = () => window.matchMedia("(max-width: 991px)").matches;
 
     const updateFaqTabProgress = () => {
-        if (!faqTabsWrap || !faqTabProgress || !isMobileFaqTabs()) {
+        if (!faqTabsWrap || !isMobileFaqTabs()) {
+            faqTabsPrevious?.classList.add("is-disabled");
+            faqTabsNext?.classList.add("is-disabled");
             return;
         }
 
@@ -2524,7 +2594,12 @@ if (faqSection) {
         const progress = maxScroll > 0 ? faqTabsWrap.scrollLeft / maxScroll : 1;
         const progressWidth = maxScroll > 0 ? Math.max(24, Math.min(100, 24 + (progress * 76))) : 100;
 
-        faqTabProgress.style.width = `${progressWidth}%`;
+        if (faqTabProgress) {
+            faqTabProgress.style.width = `${progressWidth}%`;
+        }
+
+        faqTabsPrevious?.classList.toggle("is-disabled", faqTabsWrap.scrollLeft <= 12);
+        faqTabsNext?.classList.toggle("is-disabled", faqTabsWrap.scrollLeft >= maxScroll - 12);
     };
 
     const requestFaqTabProgressUpdate = () => {
@@ -2543,6 +2618,17 @@ if (faqSection) {
             const isActive = panel.dataset.faqPanel === key;
             panel.hidden = !isActive;
             panel.classList.toggle("is-active", isActive);
+        });
+    };
+
+    const scrollFaqTabsByPage = (direction) => {
+        if (!faqTabsWrap) {
+            return;
+        }
+
+        faqTabsWrap.scrollBy({
+            left: direction * faqTabsWrap.clientWidth,
+            behavior: "smooth"
         });
     };
 
@@ -2612,7 +2698,7 @@ if (faqSection) {
             setFaqPanel(tab.dataset.faqTab);
 
             if (faqTabsWrap && isMobileFaqTabs()) {
-                tab.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+                tab.scrollIntoView({ behavior: "smooth", inline: "nearest", block: "nearest" });
                 requestFaqTabProgressUpdate();
             }
         });
@@ -2620,6 +2706,8 @@ if (faqSection) {
 
     if (faqTabsWrap) {
         faqTabsWrap.addEventListener("scroll", requestFaqTabProgressUpdate, { passive: true });
+        faqTabsPrevious?.addEventListener("click", () => scrollFaqTabsByPage(-1));
+        faqTabsNext?.addEventListener("click", () => scrollFaqTabsByPage(1));
         window.addEventListener("resize", requestFaqTabProgressUpdate);
         requestFaqTabProgressUpdate();
     }

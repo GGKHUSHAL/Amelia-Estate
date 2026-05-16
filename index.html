@@ -16,7 +16,7 @@
         rel="stylesheet">
 
     <link rel="stylesheet" href="assets/css/style.css?v=hero-content-dark-1">
-    <link rel="stylesheet" href="assets/css/media.css?v=mobile-about-more-tight-1">
+    <link rel="stylesheet" href="assets/css/media.css?v=testimonial-mobile-wide-1">
 </head>
 
 <body class="min-h-screen bg-white text-white">
@@ -1201,19 +1201,25 @@
                     <p>From walkthrough to construction updates - see every detail before you visit.</p>
                 </div>
 
-                <div class="visual-showcase-tabs transparent-pricing-tabs" aria-label="Gallery categories">
-                    <button class="is-active" type="button" data-gallery-tab="sample">
-                        Sample Flat <span>6</span>
-                    </button>
-                    <button type="button" data-gallery-tab="walkthrough">
-                        Walkthrough <span>1</span>
-                    </button>
-                    <button type="button" data-gallery-tab="exterior">
-                        Exterior <span>6</span>
-                    </button>
-                    <button type="button" data-gallery-tab="construction">
-                        Construction <span>6</span>
-                    </button>
+                <div class="visual-showcase-tabs-shell">
+                    <button class="visual-showcase-tabs-arrow visual-showcase-tabs-arrow--prev" type="button"
+                        aria-label="Previous gallery tabs" data-gallery-tabs-prev>&lsaquo;</button>
+                    <div class="visual-showcase-tabs transparent-pricing-tabs" aria-label="Gallery categories">
+                        <button class="is-active" type="button" data-gallery-tab="sample">
+                            Sample Flat <span>6</span>
+                        </button>
+                        <button type="button" data-gallery-tab="walkthrough">
+                            Walkthrough <span>1</span>
+                        </button>
+                        <button type="button" data-gallery-tab="exterior">
+                            Exterior <span>6</span>
+                        </button>
+                        <button type="button" data-gallery-tab="construction">
+                            Construction <span>6</span>
+                        </button>
+                    </div>
+                    <button class="visual-showcase-tabs-arrow visual-showcase-tabs-arrow--next" type="button"
+                        aria-label="Next gallery tabs" data-gallery-tabs-next>&rsaquo;</button>
                 </div>
 
                 <div class="visual-showcase-copy">
@@ -1231,7 +1237,7 @@
                 </div>
 
                 <div class="visual-showcase-update" hidden>
-                    Last Updated: April 28, 2026 - 85% Construction Complete
+                    Last Updated: May 15, 2026 - 85% Construction Complete
                 </div>
 
                 <div class="visual-showcase-content is-active" data-gallery-panel="sample">
@@ -1559,36 +1565,42 @@
                         Curated For <span class="text-[#f0cd45]">Elevated Living</span>
                     </h2>
 
-                    <div class="lifestyle-amenities-tabs transparent-pricing-tabs mx-auto"
-                        aria-label="Amenity categories">
-                        <button class="is-active" type="button" data-amenity-tab="all">All Amenities</button>
-                        <button type="button" data-amenity-tab="wellness">Wellness</button>
-                        <button type="button" data-amenity-tab="recreation">Recreation</button>
-                        <button type="button" data-amenity-tab="security">Security &amp; Convenience</button>
+                    <div class="lifestyle-amenities-tabs-shell">
+                        <button class="lifestyle-amenities-tabs-arrow lifestyle-amenities-tabs-arrow--prev" type="button"
+                            aria-label="Previous amenity tabs" data-amenity-tabs-prev>&lsaquo;</button>
+                        <div class="lifestyle-amenities-tabs transparent-pricing-tabs mx-auto"
+                            aria-label="Amenity categories">
+                            <button class="is-active" type="button" data-amenity-tab="all">All Amenities</button>
+                            <button type="button" data-amenity-tab="wellness">Wellness</button>
+                            <button type="button" data-amenity-tab="recreation">Recreation</button>
+                            <button type="button" data-amenity-tab="security">Security &amp; Convenience</button>
+                        </div>
+                        <button class="lifestyle-amenities-tabs-arrow lifestyle-amenities-tabs-arrow--next" type="button"
+                            aria-label="Next amenity tabs" data-amenity-tabs-next>&rsaquo;</button>
                     </div>
                     <div class="lifestyle-amenities-tab-progress" aria-hidden="true"><span></span></div>
                 </div>
 
                 <div class="lifestyle-amenities-grid mt-5 grid grid-cols-3">
-                    <article class="lifestyle-amenity-card" data-amenity-type="wellness">
-                        <img src="assets/img/lifestyle img/08dbf8b284c57e1048f715d17e9aa265bb594bd8.png" alt="Infinity pool amenity" />
+                    <article class="lifestyle-amenity-card" data-amenity-type="security">
+                        <img src="assets/img/lifestyle img/08dbf8b284c57e1048f715d17e9aa265bb594bd8.png" alt="CCTV surveillance amenity" />
                         <div class="lifestyle-amenity-caption">
-                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 16c2 0 2-2 4-2s2 2 4 2 2-2 4-2 2 2 4 2M4 20c2 0 2-2 4-2s2 2 4 2 2-2 4-2 2 2 4 2M8 12l4-8 4 8" /></svg>
-                            <span>Infinity Pool</span>
-                        </div>
-                    </article>
-                    <article class="lifestyle-amenity-card" data-amenity-type="wellness">
-                        <img src="assets/img/lifestyle img/39facef832cb84ad963eea33b854a423175d5754.jpg" alt="Fitness studio amenity" />
-                        <div class="lifestyle-amenity-caption">
-                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 7v10M18 7v10M3 10v4M21 10v4M6 12h12" /></svg>
-                            <span>Fitness Studio</span>
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16v10H4z" /><path d="M9 17v3h6v-3" /><path d="M8 11h3m2 0h3" /></svg>
+                            <span>CCTV Surveillance</span>
                         </div>
                     </article>
                     <article class="lifestyle-amenity-card" data-amenity-type="recreation">
-                        <img src="assets/img/lifestyle img/99826a0ae4206139a144e0cad7443e478dfa18ad.png" alt="Clubhouse amenity" />
+                        <img src="assets/img/lifestyle img/39facef832cb84ad963eea33b854a423175d5754.jpg" alt="Clubhouse lounge amenity" />
                         <div class="lifestyle-amenity-caption">
                             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h16M6 20V9l6-5 6 5v11M9 20v-6h6v6" /></svg>
-                            <span>Clubhouse</span>
+                            <span>Clubhouse Lounge</span>
+                        </div>
+                    </article>
+                    <article class="lifestyle-amenity-card" data-amenity-type="wellness">
+                        <img src="assets/img/lifestyle img/99826a0ae4206139a144e0cad7443e478dfa18ad.png" alt="Fitness studio amenity" />
+                        <div class="lifestyle-amenity-caption">
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 7v10M18 7v10M3 10v4M21 10v4M6 12h12" /></svg>
+                            <span>Fitness Studio</span>
                         </div>
                     </article>
                     <article class="lifestyle-amenity-card" data-amenity-type="recreation">
@@ -1598,18 +1610,18 @@
                             <span>Kids Play Zone</span>
                         </div>
                     </article>
+                    <article class="lifestyle-amenity-card" data-amenity-type="wellness">
+                        <img src="assets/img/lifestyle img/ead92151fb34f66acdade3837b9eb43336bf5369.jpg" alt="Indoor pool amenity" />
+                        <div class="lifestyle-amenity-caption">
+                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 16c2 0 2-2 4-2s2 2 4 2 2-2 4-2 2 2 4 2M4 20c2 0 2-2 4-2s2 2 4 2 2-2 4-2 2 2 4 2M8 12l4-8 4 8" /></svg>
+                            <span>Indoor Pool</span>
+                        </div>
+                    </article>
                     <article class="lifestyle-amenity-card" data-amenity-type="recreation">
-                        <img src="assets/img/lifestyle img/ead92151fb34f66acdade3837b9eb43336bf5369.jpg" alt="Landscaped gardens amenity" />
+                        <img src="assets/img/lifestyle img/f77d85aa8ec67ce21a408df20bfdfdbbc219a4f2.jpg" alt="Landscaped gardens amenity" />
                         <div class="lifestyle-amenity-caption">
                             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21V9" /><path d="M7 9c0-3 2-5 5-5 0 3-2 5-5 5Z" /><path d="M17 12c0-3-2-5-5-5 0 3 2 5 5 5Z" /></svg>
                             <span>Landscaped Gardens</span>
-                        </div>
-                    </article>
-                    <article class="lifestyle-amenity-card" data-amenity-type="security">
-                        <img src="assets/img/lifestyle img/f77d85aa8ec67ce21a408df20bfdfdbbc219a4f2.jpg" alt="24x7 security amenity" />
-                        <div class="lifestyle-amenity-caption">
-                            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 10V8a6 6 0 0 1 12 0v2" /><path d="M5 10h14v10H5z" /><path d="M12 14v2" /></svg>
-                            <span>24x7 Security</span>
                         </div>
                     </article>
                 </div>
@@ -1855,28 +1867,32 @@
 
                 <div class="faq-layout">
                     <div class="faq-sidebar">
-                        <div class="faq-tabs" role="tablist" aria-label="FAQ categories">
-                            <button class="faq-tab is-active" type="button" role="tab" aria-selected="true"
-                                data-faq-tab="price">
-                                <span class="faq-tab-icon" aria-hidden="true">₹</span>
-                                <span>Price & Payment</span>
-                                <strong>5</strong>
-                            </button>
-                            <button class="faq-tab" type="button" role="tab" aria-selected="false" data-faq-tab="legal">
-                                <span class="faq-tab-icon" aria-hidden="true">✓</span>
-                                <span>Legal & RERA</span>
-                                <strong>3</strong>
-                            </button>
-                            <button class="faq-tab" type="button" role="tab" aria-selected="false" data-faq-tab="quality">
-                                <span class="faq-tab-icon" aria-hidden="true">▥</span>
-                                <span>Construction & Quality</span>
-                                <strong>5</strong>
-                            </button>
-                            <button class="faq-tab" type="button" role="tab" aria-selected="false" data-faq-tab="location">
-                                <span class="faq-tab-icon" aria-hidden="true">⌖</span>
-                                <span>Location & Connectivity</span>
-                                <strong>5</strong>
-                            </button>
+                        <div class="faq-tabs-shell">
+                            <button class="faq-tabs-arrow faq-tabs-arrow--prev" type="button" data-faq-tabs-prev aria-label="Previous FAQ category">‹</button>
+                            <div class="faq-tabs" role="tablist" aria-label="FAQ categories">
+                                <button class="faq-tab is-active" type="button" role="tab" aria-selected="true"
+                                    data-faq-tab="price">
+                                    <span class="faq-tab-icon" aria-hidden="true">₹</span>
+                                    <span>Price & Payment</span>
+                                    <strong>5</strong>
+                                </button>
+                                <button class="faq-tab" type="button" role="tab" aria-selected="false" data-faq-tab="legal">
+                                    <span class="faq-tab-icon" aria-hidden="true">✓</span>
+                                    <span>Legal & RERA</span>
+                                    <strong>3</strong>
+                                </button>
+                                <button class="faq-tab" type="button" role="tab" aria-selected="false" data-faq-tab="quality">
+                                    <span class="faq-tab-icon" aria-hidden="true">▥</span>
+                                    <span>Construction & Quality</span>
+                                    <strong>5</strong>
+                                </button>
+                                <button class="faq-tab" type="button" role="tab" aria-selected="false" data-faq-tab="location">
+                                    <span class="faq-tab-icon" aria-hidden="true">⌖</span>
+                                    <span>Location & Connectivity</span>
+                                    <strong>5</strong>
+                                </button>
+                            </div>
+                            <button class="faq-tabs-arrow faq-tabs-arrow--next" type="button" data-faq-tabs-next aria-label="Next FAQ category">›</button>
                         </div>
                         <div class="faq-tab-progress" aria-hidden="true"><span></span></div>
                         <div class="faq-assist-card">
