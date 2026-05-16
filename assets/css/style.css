@@ -5770,7 +5770,7 @@ body.is-prime-map-lightbox-open {
     z-index: 10000;
     display: grid;
     place-items: center;
-    padding: 30px;
+    padding: 18px;
 }
 
 .prime-map-lightbox-backdrop {
@@ -5785,10 +5785,10 @@ body.is-prime-map-lightbox-open {
     position: relative;
     z-index: 1;
     display: grid;
-    gap: 14px;
-    width: min(100%, 1180px);
-    max-height: calc(100dvh - 60px);
-    padding: 18px;
+    gap: 12px;
+    width: min(100%, 1360px);
+    max-height: calc(100dvh - 36px);
+    padding: 12px;
     border: 1px solid rgba(240, 205, 69, 0.34);
     border-radius: 18px;
     background: rgba(8, 8, 8, 0.96);
@@ -5829,10 +5829,19 @@ body.is-prime-map-lightbox-open {
     stroke-linecap: round;
 }
 
+.prime-map-lightbox-head {
+    display: flex;
+    min-height: 44px;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding-right: 58px;
+}
+
 .prime-map-lightbox-title {
     display: inline-flex;
     width: fit-content;
-    max-width: calc(100% - 64px);
+    max-width: 100%;
     min-height: 32px;
     align-items: center;
     padding: 8px 14px;
@@ -5847,10 +5856,46 @@ body.is-prime-map-lightbox-open {
     text-transform: uppercase;
 }
 
+.prime-map-lightbox-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.prime-map-lightbox-actions a {
+    display: grid;
+    width: 40px;
+    height: 40px;
+    place-items: center;
+    border: 1px solid rgba(240, 205, 69, 0.34);
+    border-radius: 10px;
+    background: rgba(0, 0, 0, 0.54);
+    color: #ffffff;
+    transition:
+        border-color 0.25s ease,
+        background-color 0.25s ease,
+        transform 0.25s ease;
+}
+
+.prime-map-lightbox-actions a:hover {
+    border-color: rgba(240, 205, 69, 0.78);
+    background: rgba(240, 205, 69, 0.16);
+    transform: translateY(-2px);
+}
+
+.prime-map-lightbox-actions svg {
+    width: 20px;
+    height: 20px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
 .prime-map-lightbox-image {
     display: block;
     width: 100%;
-    max-height: calc(100dvh - 150px);
+    max-height: calc(100dvh - 118px);
     object-fit: contain;
     border-radius: 12px;
     background: #161616;

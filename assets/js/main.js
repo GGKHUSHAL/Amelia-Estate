@@ -1961,7 +1961,6 @@ if (primeLocationSection) {
     const mapTabs = primeLocationSection.querySelectorAll("[data-prime-map-tab]");
     const mapPanels = primeLocationSection.querySelectorAll("[data-prime-map-panel]");
     const mapOpenButtons = primeLocationSection.querySelectorAll("[data-prime-map-open]");
-    const primeMapFullscreenButtons = primeLocationSection.querySelectorAll("[data-prime-map-fullscreen]");
     const primeMapLightbox = document.getElementById("prime-map-lightbox");
     const primeMapLightboxImage = primeMapLightbox?.querySelector(".prime-map-lightbox-image");
     const primeMapLightboxCloseButtons = primeMapLightbox?.querySelectorAll("[data-prime-map-close]");
@@ -2036,10 +2035,6 @@ if (primeLocationSection) {
             openPrimeMapLightbox();
         });
     }
-
-    primeMapFullscreenButtons.forEach((button) => {
-        button.addEventListener("click", openPrimeMapLightbox);
-    });
 
     primeMapLightboxCloseButtons?.forEach((button) => {
         button.addEventListener("click", closePrimeMapLightbox);

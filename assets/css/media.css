@@ -6798,25 +6798,21 @@
     }
 
     .prime-whatsapp-location-cta--map small {
-        display: flex !important;
+        display: block !important;
         max-width: 292px;
         margin-top: 12px;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 5px 8px;
-        font-size: 11px;
-        line-height: 15px;
+        font-size: 10px;
+        line-height: 13px;
+        text-align: center;
     }
 
     .prime-whatsapp-location-cta--after-distance small {
-        display: flex !important;
+        display: block !important;
         max-width: 292px;
         margin-top: 12px;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 5px 8px;
-        font-size: 11px;
-        line-height: 15px;
+        font-size: 10px;
+        line-height: 13px;
+        text-align: center;
     }
 
     .prime-whatsapp-location-cta--after-distance .prime-whatsapp-location-btn {
@@ -6849,8 +6845,21 @@
     }
 
     .prime-area-map-link {
+        display: inline !important;
+        margin-top: 0 !important;
         color: #f0cd45 !important;
         font-weight: 800 !important;
+        white-space: nowrap !important;
+    }
+
+    .prime-location-mobile-break {
+        display: inline-block !important;
+        margin-top: 4px !important;
+    }
+
+    .prime-location-mobile-break::before {
+        content: "\A";
+        white-space: pre;
     }
 }
 
@@ -7667,6 +7676,63 @@
 }
 
 @media (max-width: 767px) {
+    .prime-map-lightbox {
+        padding: 8px !important;
+    }
+
+    .prime-map-lightbox-panel {
+        width: 100% !important;
+        max-height: calc(100dvh - 16px) !important;
+        gap: 8px !important;
+        padding: 8px !important;
+        border-radius: 14px !important;
+    }
+
+    .prime-map-lightbox-head {
+        min-height: 40px !important;
+        gap: 8px !important;
+        padding-right: 48px !important;
+    }
+
+    .prime-map-lightbox-title {
+        min-height: 30px !important;
+        padding: 7px 10px !important;
+        font-size: 10px !important;
+        letter-spacing: 0.06em !important;
+    }
+
+    .prime-map-lightbox-actions {
+        gap: 6px !important;
+    }
+
+    .prime-map-lightbox-actions a {
+        width: 34px !important;
+        height: 34px !important;
+        border-radius: 9px !important;
+    }
+
+    .prime-map-lightbox-actions svg {
+        width: 17px !important;
+        height: 17px !important;
+    }
+
+    .prime-map-lightbox-close {
+        top: 12px !important;
+        right: 12px !important;
+        width: 36px !important;
+        height: 36px !important;
+    }
+
+    .prime-map-lightbox-close svg {
+        width: 18px !important;
+        height: 18px !important;
+    }
+
+    .prime-map-lightbox-image {
+        max-height: calc(100dvh - 82px) !important;
+        border-radius: 10px !important;
+    }
+
     .lifestyle-amenities-grid {
         margin-top: 26px !important;
     }
