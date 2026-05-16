@@ -1087,27 +1087,6 @@ img.snapshot-icon {
     width: 535px;
 }
 
-.about-eyebrow {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 12px;
-    width: 555px;
-    height: 32px;
-    margin-bottom: 6px;
-    color: rgba(255, 255, 255, 0.68);
-    font-size: 15px;
-    font-weight: 500;
-    line-height: 18px;
-    letter-spacing: 0.96px;
-}
-
-.about-eyebrow span {
-    width: 24px;
-    height: 2px;
-    background: #f0cd45;
-}
-
 .about-content h2 {
     width: 100%;
     margin: 0;
@@ -1650,28 +1629,7 @@ img.snapshot-icon {
     width: min(100%, 690px);
 }
 
-.ideal-floor-eyebrow {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    height: 28px;
-    margin: 0 0 18px;
-    padding: 5px 17px;
-    border: 1px solid rgba(240, 205, 69, 0.38);
-    border-radius: 999px;
-    background: rgba(240, 205, 69, 0.14);
-    color: #f0cd45;
-    font-family: "Inter", Arial, sans-serif;
-    font-size: 12px;
-    font-weight: 700;
-    line-height: 1;
-    letter-spacing: 0.34em;
-    text-transform: uppercase;
-}
-
 .ideal-floor-eyebrow svg {
-    width: 13px;
-    height: 13px;
     fill: currentColor;
 }
 
@@ -2115,28 +2073,7 @@ img.snapshot-icon {
     min-width: 0;
 }
 
-.project-plans-eyebrow {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    min-height: 35px;
-    margin: 0 0 24px;
-    padding: 8px 21px;
-    border: 1px solid rgba(240, 205, 69, 0.58);
-    border-radius: 999px;
-    background: rgba(240, 205, 69, 0.10);
-    color: #f0cd45;
-    font-family: "Inter", Arial, sans-serif;
-    font-size: 13px;
-    font-weight: 700;
-    line-height: 1;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-}
-
 .project-plans-eyebrow svg {
-    width: 16px;
-    height: 16px;
     fill: none;
     stroke: currentColor;
     stroke-width: 2;
@@ -2973,28 +2910,7 @@ body.is-project-plan-lightbox-open {
         width 0.45s ease;
 }
 
-.transparent-pricing-eyebrow {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    min-height: 35px;
-    margin: 0 0 22px;
-    padding: 8px 21px;
-    border: 1px solid rgba(213, 174, 102, 0.58);
-    border-radius: 999px;
-    background: rgba(213, 174, 102, 0.10);
-    color: #D5AE66;
-    font-family: "Inter", Arial, sans-serif;
-    font-size: 13px;
-    font-weight: 700;
-    line-height: 1;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-}
-
 .transparent-pricing-eyebrow svg {
-    width: 16px;
-    height: 16px;
     fill: none;
     stroke: currentColor;
     stroke-width: 2;
@@ -3160,7 +3076,7 @@ body.is-project-plan-lightbox-open {
 .floor-price-panel {
     margin-top: 24px;
     padding: 15px 12px;
-    border: 1px solid rgba(213, 174, 102, 0.18);
+    border: 1px solid rgba(240, 205, 69, 0.18);
     border-radius: 16px;
     background: #020202;
 }
@@ -4084,14 +4000,6 @@ body.is-pricing-modal-open {
         linear-gradient(180deg, #050505 0%, #0d0d0c 52%, #050505 100%) !important;
 }
 
-.ideal-floor-eyebrow,
-.project-plans-eyebrow,
-.transparent-pricing-eyebrow {
-    border-color: rgba(240, 205, 69, 0.58);
-    background: rgba(240, 205, 69, 0.10);
-    color: #f0cd45;
-}
-
 .ideal-floor-heading h2 span,
 .project-plans-copy h2 span,
 .transparent-pricing-header h2 span,
@@ -4325,12 +4233,6 @@ body.is-pricing-modal-open {
     stroke: #fff7cf !important;
 }
 
-.ideal-floor-eyebrow {
-    border-color: rgba(240, 205, 69, 0.38) !important;
-    background: rgba(240, 205, 69, 0.14) !important;
-    color: #f0cd45 !important;
-}
-
 .ideal-floor-heading h2 span,
 .ideal-floor-spec:hover span,
 .selected-price-box strong {
@@ -4446,28 +4348,7 @@ body.is-pricing-modal-open {
     margin: 0 auto;
 }
 
-.premium-specs-eyebrow {
-    display: inline-flex;
-    align-items: center;
-    gap: 9px;
-    min-height: 35px;
-    margin: 0 0 12px;
-    padding: 8px 20px;
-    border: 1px solid rgba(213, 174, 102, 0.58);
-    border-radius: 999px;
-   background: rgba(240, 205, 69, 0.14) ;
-    color: #f0cd45 ;
-    font-family: "Jost", "Inter", Arial, sans-serif;
-    font-size: 13px;
-    font-weight: 700;
-    line-height: 1;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-}
-
 .premium-specs-eyebrow svg {
-    width: 16px;
-    height: 16px;
     fill: none;
     stroke: currentColor;
     stroke-width: 2;
@@ -4830,7 +4711,7 @@ body.is-pricing-modal-open {
     height: 30px;
     flex: 0 0 74px;
     padding: 5px 8px;
-    border: 1px solid rgba(213, 174, 102, 0.18);
+    border: 1px solid rgba(240, 205, 69, 0.18);
     border-radius: 9px;
     background: #ffffff;
     object-fit: contain;
@@ -5159,27 +5040,7 @@ body.is-premium-specs-modal-open {
     margin: 0 auto;
 }
 
-.visual-showcase-eyebrow {
-    display: inline-flex;
-    align-items: center;
-    gap: 9px;
-    min-height: 35px;
-    margin: 0 0 16px;
-    padding: 8px 20px;
-    border: 1px solid rgba(240, 205, 69, 0.58);
-    border-radius: 999px;
-    background: rgba(240, 205, 69, 0.10);
-    color: var(--theme-gold);
-    font-size: 12px;
-    font-weight: 600;
-    line-height: 1;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-}
-
 .visual-showcase-eyebrow svg {
-    width: 16px;
-    height: 16px;
     fill: none;
     stroke: currentColor;
     stroke-width: 2;
@@ -5684,20 +5545,6 @@ body.is-premium-specs-modal-open {
 
 .prime-location-header {
     width: min(100%, 830px);
-}
-
-.prime-location-eyebrow {
-    min-height: 28px;
-    padding: 6px 16px;
-    border: 1px solid rgba(240, 205, 69, 0.38);
-    border-radius: 999px;
-    background: rgba(240, 205, 69, 0.11);
-    color: var(--theme-gold);
-    font-size: 11px;
-    font-weight: 600;
-    line-height: 14px;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
 }
 
 .prime-location-eyebrow svg,
@@ -6833,7 +6680,7 @@ body.is-amenity-lightbox-open {
     height: 18px;
     flex: 0 0 18px;
     fill: none;
-    stroke: #D5AE66;
+    stroke: #f0cd45;
     stroke-width: 1.9;
     stroke-linecap: round;
     stroke-linejoin: round;
@@ -6911,7 +6758,7 @@ body.is-amenity-lightbox-open {
 }
 
 .construction-phase-panel strong.is-gold {
-    background: #D5AE66;
+    background: #f0cd45;
     color: #ffffff;
 }
 
@@ -6926,7 +6773,7 @@ body.is-amenity-lightbox-open {
     display: block;
     height: 100%;
     border-radius: inherit;
-    background: linear-gradient(90deg, #D5AE66 0%, #D5AE66 100%);
+    background: linear-gradient(90deg, #f0cd45 0%, #f0cd45 100%);
     transition: width 0.35s ease;
 }
 
@@ -6982,7 +6829,7 @@ body.is-amenity-lightbox-open {
 }
 
 .construction-progress-layout {
-    --construction-feature-height: 592px;
+    --construction-feature-height: 400px;
     grid-template-columns: minmax(0, 1.34fr) minmax(320px, 0.86fr) !important;
     align-items: stretch;
 }
@@ -7005,7 +6852,7 @@ body.is-amenity-lightbox-open {
     inset: 0;
     z-index: 1;
     background:
-        radial-gradient(circle at 50% 45%, rgba(213, 174, 102, 0.12) 0%, rgba(213, 174, 102, 0) 32%),
+        radial-gradient(circle at 50% 45%, rgba(240, 205, 69, 0.12) 0%, rgba(240, 205, 69, 0) 32%),
         linear-gradient(90deg, rgba(0, 0, 0, 0.30), rgba(0, 0, 0, 0.04) 46%, rgba(0, 0, 0, 0.28)),
         linear-gradient(180deg, rgba(0, 0, 0, 0.02), rgba(0, 0, 0, 0.20));
     pointer-events: none;
@@ -7039,8 +6886,8 @@ body.is-amenity-lightbox-open {
 .construction-status-ring {
     position: relative;
     display: grid;
-    width: 246px;
-    height: 246px;
+    width: 258px;
+    height: 258px;
     place-items: center;
     border-radius: 999px;
     background: radial-gradient(circle, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.03) 46%, rgba(255, 255, 255, 0) 68%);
@@ -7067,10 +6914,10 @@ body.is-amenity-lightbox-open {
 }
 
 .construction-status-ring-fill {
-    stroke: #D5AE66;
+    stroke: #f0cd45;
     stroke-dasharray: 100;
     stroke-dashoffset: 100;
-    filter: drop-shadow(0 0 18px rgba(213, 174, 102, 0.58));
+    filter: drop-shadow(0 0 18px rgba(240, 205, 69, 0.58));
     transition: stroke-dashoffset 1.45s cubic-bezier(0.16, 1, 0.3, 1) 0.28s;
 }
 
@@ -7090,7 +6937,7 @@ body.is-amenity-lightbox-open {
     display: flex;
     align-items: baseline;
     color: #ffffff;
-    font-size: 64px;
+    font-size: 58px;
     font-weight: 800;
     line-height: 0.9;
     letter-spacing: 0;
@@ -7098,9 +6945,9 @@ body.is-amenity-lightbox-open {
 }
 
 .construction-status-center strong em {
-    color: #D5AE66;
+    color: #f0cd45;
     font-style: normal;
-    font-size: 46px;
+    font-size: 40px;
 }
 
 .construction-status-center small {
@@ -7123,6 +6970,7 @@ body.is-amenity-lightbox-open {
     border-radius: 999px;
     background: rgba(18, 18, 18, 0.72);
     padding: 0 14px;
+    white-space: nowrap;
     color: rgba(255, 255, 255, 0.88);
     font-size: 12px;
     font-weight: 700;
@@ -7136,8 +6984,13 @@ body.is-amenity-lightbox-open {
     height: 7px;
     flex: 0 0 7px;
     border-radius: 999px;
-    background: #D5AE66;
-    box-shadow: 0 0 14px rgba(213, 174, 102, 0.68);
+    background: #f0cd45;
+    box-shadow: 0 0 14px rgba(240, 205, 69, 0.68);
+}
+
+.construction-photo-status i {
+    background: #00d289;
+    box-shadow: 0 0 14px rgba(0, 210, 137, 0.72);
 }
 
 .construction-photo-status {
@@ -7148,7 +7001,7 @@ body.is-amenity-lightbox-open {
     z-index: 3;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-end;
     gap: 16px;
     color: #ffffff;
 }
@@ -7158,34 +7011,26 @@ body.is-amenity-lightbox-open {
     min-height: 38px;
     align-items: center;
     gap: 9px;
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(0, 210, 137, 0.26);
     border-radius: 999px;
     background: rgba(9, 9, 9, 0.62);
     padding: 0 16px;
-    color: rgba(255, 255, 255, 0.88);
+    color: rgba(255, 255, 255, 0.90);
     font-size: 12px;
     font-weight: 700;
     line-height: 15px;
     backdrop-filter: blur(12px);
 }
 
-.construction-photo-status em {
-    border-left: 1px solid rgba(255, 255, 255, 0.16);
-    padding-left: 10px;
-    color: rgba(255, 255, 255, 0.58);
-    font-style: normal;
-    font-weight: 600;
-}
-
 .construction-progress-side {
     display: grid;
-    gap: 24px;
-    grid-template-rows: minmax(0, 0.82fr) minmax(0, 1.18fr);
+    gap: 14px;
+    grid-template-rows: auto auto;
 }
 
 .construction-progress-side .construction-proof-card {
     min-height: 0;
-    height: 100%;
+    height: auto;
 }
 
 .construction-info-card {
@@ -7196,13 +7041,13 @@ body.is-amenity-lightbox-open {
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    border: 1px solid rgba(213, 174, 102, 0.22);
+    border: 1px solid rgba(240, 205, 69, 0.22);
     border-radius: 26px;
     background:
-        radial-gradient(circle at 50% 0%, rgba(213, 174, 102, 0.12), rgba(213, 174, 102, 0) 42%),
+        radial-gradient(circle at 50% 0%, rgba(240, 205, 69, 0.12), rgba(240, 205, 69, 0) 42%),
         linear-gradient(180deg, rgba(255, 255, 255, 0.055), rgba(255, 255, 255, 0.018)),
         #141414;
-    padding: 30px 26px;
+    padding: 20px 22px;
     text-align: center;
     box-shadow: 0 24px 58px rgba(0, 0, 0, 0.26), inset 0 1px 0 rgba(255, 255, 255, 0.05);
     transition:
@@ -7226,10 +7071,10 @@ body.is-amenity-lightbox-open {
 }
 
 .construction-info-card:hover {
-    border-color: rgba(213, 174, 102, 0.48);
+    border-color: rgba(240, 205, 69, 0.48);
     box-shadow:
         0 30px 72px rgba(0, 0, 0, 0.34),
-        0 0 34px rgba(213, 174, 102, 0.12),
+        0 0 34px rgba(240, 205, 69, 0.12),
         inset 0 1px 0 rgba(255, 255, 255, 0.09);
     transform: translateY(-5px);
 }
@@ -7264,12 +7109,12 @@ body.is-amenity-lightbox-open {
 .construction-info-card--possession strong {
     display: grid;
     gap: 10px;
-    margin-top: 18px;
-    color: #D5AE66;
+    margin-top: 12px;
+    color: #f0cd45;
     font-family: Georgia, "Times New Roman", serif;
-    font-size: 43px;
+    font-size: 38px;
     font-weight: 700;
-    line-height: 44px;
+    line-height: 39px;
 }
 
 .construction-info-card--possession strong span {
@@ -7283,7 +7128,7 @@ body.is-amenity-lightbox-open {
 .construction-info-card small {
     display: block;
     max-width: 250px;
-    margin-top: 18px;
+    margin-top: 12px;
     color: rgba(255, 255, 255, 0.62);
     font-size: 14px;
     font-weight: 500;
@@ -7291,7 +7136,7 @@ body.is-amenity-lightbox-open {
 }
 
 .construction-info-card--possession em {
-    margin-top: 14px;
+    margin-top: 10px;
     color: rgba(255, 255, 255, 0.42);
     font-style: normal;
     font-size: 12px;
@@ -7302,18 +7147,13 @@ body.is-amenity-lightbox-open {
 .construction-info-card--banks {
     min-height: 0;
     justify-content: flex-start;
-    background:
-        radial-gradient(circle at 50% 42%, rgba(213, 174, 102, 0.10), rgba(213, 174, 102, 0) 46%),
-        linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
-        #0f0f0f;
-    background-size: auto, 18px 18px, 18px 18px, auto;
-    padding: 24px 24px 22px;
+    background: #0f0f0f;
+    padding: 20px 24px 22px;
 }
 
 .construction-proof-row .construction-info-card--banks {
-    min-height: 242px;
-    padding: 30px 34px 26px;
+    min-height: 0;
+    padding: 24px 34px 24px;
 }
 
 .construction-bank-eyebrow {
@@ -7328,7 +7168,7 @@ body.is-amenity-lightbox-open {
     width: 15px;
     height: 15px;
     fill: none;
-    stroke: #D5AE66;
+    stroke: #f0cd45;
     stroke-width: 1.9;
     stroke-linecap: round;
     stroke-linejoin: round;
@@ -7344,7 +7184,7 @@ body.is-amenity-lightbox-open {
 .construction-bank-grid {
     display: grid;
     width: 100%;
-    margin-top: 20px;
+    margin-top: 16px;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 9px;
 }
@@ -7414,55 +7254,25 @@ body.is-amenity-lightbox-open {
     transform: rotate(-45deg);
 }
 
-.construction-bank-proof {
-    display: flex;
-    margin-top: auto;
-    padding-top: 16px;
-    align-items: center;
-    justify-content: center;
-    gap: 14px;
-    color: rgba(255, 255, 255, 0.76);
-    font-size: 12px;
-    font-weight: 600;
-    line-height: 16px;
-}
-
-.construction-bank-proof span {
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-}
-
-.construction-bank-proof span::before {
-    content: "";
-    width: 8px;
-    height: 8px;
-    flex: 0 0 8px;
-    border-radius: 999px;
-    background: rgba(213, 174, 102, 0.32);
-    box-shadow: inset 0 0 0 2px rgba(213, 174, 102, 0.64);
-}
-
 .construction-proof-row {
     display: grid;
     width: min(100%, 1200px);
-    margin: 28px auto 0;
+    margin: 22px auto 0;
     grid-template-columns: 1fr;
     gap: 24px;
 }
 
 .construction-proof-card {
     position: relative;
-    min-height: 206px;
+    min-height: 0;
     overflow: hidden;
-    border: 1px solid rgba(213, 174, 102, 0.22);
+    border: 1px solid rgba(240, 205, 69, 0.22);
     border-radius: 22px;
     background:
-        radial-gradient(circle at 0% 0%, rgba(213, 174, 102, 0.14), rgba(213, 174, 102, 0) 36%),
+        radial-gradient(circle at 0% 0%, rgba(240, 205, 69, 0.14), rgba(240, 205, 69, 0) 36%),
         linear-gradient(180deg, rgba(255, 255, 255, 0.052), rgba(255, 255, 255, 0.018)),
         #111111;
-    padding: 28px 28px 24px;
+    padding: 22px 28px 20px;
     box-shadow:
         0 24px 62px rgba(0, 0, 0, 0.28),
         inset 0 1px 0 rgba(255, 255, 255, 0.06);
@@ -7486,10 +7296,10 @@ body.is-amenity-lightbox-open {
 }
 
 .construction-proof-card:hover {
-    border-color: rgba(213, 174, 102, 0.48);
+    border-color: rgba(240, 205, 69, 0.48);
     box-shadow:
         0 30px 78px rgba(0, 0, 0, 0.36),
-        0 0 34px rgba(213, 174, 102, 0.11),
+        0 0 34px rgba(240, 205, 69, 0.11),
         inset 0 1px 0 rgba(255, 255, 255, 0.10);
     transform: translateY(-5px);
 }
@@ -7501,7 +7311,7 @@ body.is-amenity-lightbox-open {
 
 .construction-proof-card--social {
     background:
-        radial-gradient(circle at 100% 0%, rgba(213, 174, 102, 0.15), rgba(213, 174, 102, 0) 38%),
+        radial-gradient(circle at 100% 0%, rgba(240, 205, 69, 0.15), rgba(240, 205, 69, 0) 38%),
         linear-gradient(180deg, rgba(255, 255, 255, 0.046), rgba(255, 255, 255, 0.014)),
         #111006;
 }
@@ -7511,10 +7321,10 @@ body.is-amenity-lightbox-open {
     width: 40px;
     height: 40px;
     place-items: center;
-    border: 1px solid rgba(213, 174, 102, 0.28);
+    border: 1px solid rgba(240, 205, 69, 0.28);
     border-radius: 999px;
-    background: rgba(213, 174, 102, 0.14);
-    color: #D5AE66;
+    background: rgba(240, 205, 69, 0.14);
+    color: #f0cd45;
 }
 
 .construction-proof-icon svg {
@@ -7542,15 +7352,15 @@ body.is-amenity-lightbox-open {
 
 .construction-proof-card strong {
     display: block;
-    margin-top: 26px;
+    margin-top: 18px;
     color: #ffffff;
-    font-size: 32px;
+    font-size: 30px;
     font-weight: 800;
     line-height: 38px;
 }
 
 .construction-proof-card strong span {
-    color: #D5AE66;
+    color: #f0cd45;
 }
 
 .construction-proof-card small {
@@ -7564,7 +7374,7 @@ body.is-amenity-lightbox-open {
 
 .construction-stage-track {
     display: grid;
-    margin-top: 22px;
+    margin-top: 12px;
     grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 6px;
 }
@@ -7577,8 +7387,8 @@ body.is-amenity-lightbox-open {
 
 .construction-stage-track span.is-done,
 .construction-stage-track span.is-active {
-    background: #D5AE66;
-    box-shadow: 0 0 16px rgba(213, 174, 102, 0.30);
+    background: #f0cd45;
+    box-shadow: 0 0 16px rgba(240, 205, 69, 0.30);
 }
 
 .construction-stage-labels {
@@ -7595,7 +7405,7 @@ body.is-amenity-lightbox-open {
 }
 
 .construction-stage-labels span:nth-child(3) {
-    color: #D5AE66;
+    color: #f0cd45;
 }
 
 .construction-buyer-proof {
@@ -8302,28 +8112,10 @@ body.is-amenity-lightbox-open {
     border: 1px solid rgba(213, 174, 102, 0.18);
     border-radius: 24px;
     background:
-        radial-gradient(circle at 50% 0%, rgba(213, 174, 102, 0.18), rgba(213, 174, 102, 0) 42%),
+        radial-gradient(circle at 50% 0%, rgba(240, 205, 69, 0.18), rgba(240, 205, 69, 0) 42%),
         linear-gradient(180deg, rgba(13, 13, 13, 0.26), rgba(13, 13, 13, 0.04));
     box-shadow: 0 32px 90px rgba(0, 0, 0, 0.24);
     pointer-events: none;
-}
-
-.interested-property-kicker {
-    display: inline-flex;
-    min-height: 34px;
-    align-items: center;
-    justify-content: center;
-    margin: 0 0 16px;
-    border: 1px solid rgba(213, 174, 102, 0.42);
-    border-radius: 999px;
-    background: rgba(213, 174, 102, 0.10);
-    padding: 0 18px;
-    color: #D5AE66;
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 0.18em;
-    line-height: 1;
-    text-transform: uppercase;
 }
 
 .sticky-availability-content--interested h2 {
@@ -8333,6 +8125,10 @@ body.is-amenity-lightbox-open {
     line-height: 1.08 !important;
 }
 
+.sticky-availability-content--interested h2 span {
+    color: #f0cd45;
+}
+
 .sticky-availability-content--interested h2::after {
     content: "";
     display: block;
@@ -8340,7 +8136,7 @@ body.is-amenity-lightbox-open {
     height: 2px;
     margin: 18px auto 0;
     border-radius: 999px;
-    background: linear-gradient(90deg, rgba(213, 174, 102, 0), #D5AE66, rgba(213, 174, 102, 0));
+    background: linear-gradient(90deg, rgba(240, 205, 69, 0), #f0cd45, rgba(240, 205, 69, 0));
 }
 
 .sticky-availability-content--interested .interested-property-copy>p:not(.interested-property-kicker) {
@@ -8375,7 +8171,7 @@ body.is-amenity-lightbox-open {
 .buyer-testimonials-slider {
     overflow-x: auto;
     overflow-y: hidden;
-    padding-bottom: 18px;
+    padding-bottom: 10px;
     scrollbar-width: none;
     overscroll-behavior-x: contain;
     cursor: grab;
@@ -8392,36 +8188,40 @@ body.is-amenity-lightbox-open {
 .buyer-testimonials-track {
     display: flex;
     width: max-content;
-    gap: 28px;
+    gap: 18px;
     padding-right: 2px;
 }
 
 .buyer-testimonial-card {
     display: flex;
-    width: 386px;
-    min-height: 265px;
-    flex: 0 0 386px;
+    width: 330px;
+    min-height: 212px;
+    flex: 0 0 330px;
     flex-direction: column;
     justify-content: space-between;
-    border: 1px solid rgba(213, 174, 102, 0.64);
+    border: 1px solid rgba(240, 205, 69, 0.42);
     border-radius: 8px;
-    background: #101010;
-    padding: 27px 28px 20px;
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.035);
+    background:
+        linear-gradient(180deg, rgba(240, 205, 69, 0.055), rgba(255, 255, 255, 0.015)),
+        #101010;
+    padding: 22px 22px 17px;
+    box-shadow:
+        0 16px 40px rgba(0, 0, 0, 0.20),
+        inset 0 1px 0 rgba(255, 255, 255, 0.035);
 }
 
 .buyer-testimonial-card p {
     margin: 0;
-    color: rgba(255, 255, 255, 0.88);
-    font-size: 15px;
+    color: rgba(255, 255, 255, 0.84);
+    font-size: 14px;
     font-weight: 400;
-    line-height: 27px;
+    line-height: 23px;
 }
 
 .buyer-testimonial-card div {
-    margin-top: 22px;
-    padding-top: 18px;
-    border-top: 1px solid rgba(255, 255, 255, 0.04);
+    margin-top: 16px;
+    padding-top: 13px;
+    border-top: 1px solid rgba(240, 205, 69, 0.10);
 }
 
 .buyer-testimonial-card strong,
@@ -8438,10 +8238,10 @@ body.is-amenity-lightbox-open {
 
 .buyer-testimonial-card span {
     margin-top: 3px;
-    color: #D5AE66;
-    font-size: 14px;
+    color: #f0cd45;
+    font-size: 13px;
     font-weight: 400;
-    line-height: 18px;
+    line-height: 17px;
 }
 
 .buyer-testimonials-eyebrow,
@@ -8481,9 +8281,9 @@ body.is-amenity-lightbox-open {
 
 .buyer-testimonials-progress {
     display: block;
-    width: min(100%, 520px);
+    width: min(100%, 420px);
     height: 3px;
-    margin: 18px auto 0;
+    margin: 12px auto 0;
     overflow: hidden;
     border-radius: 999px;
     background: rgba(255, 255, 255, 0.14);
@@ -8494,7 +8294,7 @@ body.is-amenity-lightbox-open {
     width: 18%;
     height: 100%;
     border-radius: inherit;
-    background: linear-gradient(90deg, #D5AE66, #D5AE66);
+    background: linear-gradient(90deg, #f0cd45, #f0cd45);
     transition: width 0.22s ease;
 }
 
@@ -8668,6 +8468,11 @@ body.is-amenity-lightbox-open {
     position: relative;
     z-index: 4;
     margin-top: calc(-1 * var(--sticky-availability-height));
+    padding-top: 52px !important;
+    padding-bottom: 46px !important;
+    background:
+        radial-gradient(760px 260px at 50% -120px, rgba(240, 205, 69, 0.14), transparent 72%),
+        linear-gradient(180deg, #060606 0%, #10100d 52%, #070707 100%) !important;
     box-shadow: 0 -40px 80px rgba(0, 0, 0, 0.42);
 }
 
@@ -8679,11 +8484,12 @@ body.is-amenity-lightbox-open {
 }
 
 .buyer-appreciation-section .buyer-appreciation-title {
-    margin-top: 20px;
+    margin-top: 14px;
 }
 
 .buyer-appreciation-section .buyer-testimonials-slider {
     width: 100%;
+    margin-top: 28px !important;
 }
 
 .buyer-appreciation-section .buyer-testimonials-progress {
@@ -8696,9 +8502,9 @@ body.is-amenity-lightbox-open {
 
 /* Buyer appreciation: three buyer insight cards in dark theme. */
 .buyer-appreciation-card {
-    min-height: 238px;
-    padding: 27px 26px;
-    border: 1px solid rgba(213, 174, 102, 0.28);
+    min-height: 206px;
+    padding: 22px 22px;
+    border: 1px solid rgba(240, 205, 69, 0.28);
     border-radius: 8px;
     background:
         linear-gradient(135deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.018)),
@@ -8713,9 +8519,9 @@ body.is-amenity-lightbox-open {
 }
 
 .buyer-appreciation-card:hover {
-    border-color: rgba(213, 174, 102, 0.58);
+    border-color: rgba(240, 205, 69, 0.58);
     background:
-        linear-gradient(135deg, rgba(213, 174, 102, 0.10), rgba(255, 255, 255, 0.02)),
+        linear-gradient(135deg, rgba(240, 205, 69, 0.10), rgba(255, 255, 255, 0.02)),
         #171717;
     transform: translateY(-5px);
 }
@@ -8724,29 +8530,29 @@ body.is-amenity-lightbox-open {
     display: block;
     width: 30px;
     height: 2px;
-    background: #D5AE66;
+    background: #f0cd45;
 }
 
 .buyer-appreciation-card p {
-    margin: 24px 0 0;
+    margin: 18px 0 0;
     color: rgba(255, 255, 255, 0.90);
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 400;
-    line-height: 30px;
+    line-height: 26px;
 }
 
 .buyer-appreciation-card strong {
     display: inline-flex;
-    min-height: 40px;
-    margin-top: 32px;
+    min-height: 34px;
+    margin-top: 22px;
     align-items: center;
     justify-content: center;
-    border: 1px solid rgba(213, 174, 102, 0.38);
+    border: 1px solid rgba(240, 205, 69, 0.38);
     border-radius: 999px;
-    background: rgba(213, 174, 102, 0.12);
-    padding: 0 20px;
-    color: #D5AE66;
-    font-size: 14px;
+    background: rgba(240, 205, 69, 0.12);
+    padding: 0 16px;
+    color: #f0cd45;
+    font-size: 13px;
     font-weight: 700;
     line-height: 18px;
     text-transform: uppercase;
@@ -9259,23 +9065,6 @@ body.is-amenity-lightbox-open {
     width: min(100%, 760px);
 }
 
-.project-essentials-head-eyebrow {
-    display: inline-flex;
-    min-height: 32px;
-    align-items: center;
-    justify-content: center;
-    margin: 0 0 16px;
-    border: 1px solid rgba(213, 174, 102, 0.32);
-    border-radius: 999px;
-    background: rgba(255, 255, 255, 0.045);
-    padding: 0 16px;
-    color: #D5AE66;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-}
-
 .project-essentials-head h2 {
     margin: 0;
     color: #ffffff;
@@ -9415,13 +9204,6 @@ body.is-amenity-lightbox-open {
     left: 0;
     width: 1px;
     background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.12), transparent);
-}
-
-.project-essentials-eyebrow {
-    border-color: rgba(213, 174, 102, 0.40) !important;
-    background: rgba(255, 255, 255, 0.05) !important;
-    color: #D5AE66 !important;
-    margin-left: 0 !important;
 }
 
 .project-essentials-card h2 {
@@ -12798,23 +12580,7 @@ body {
 }
 
 
-:is(.about-eyebrow,
-    .ideal-floor-eyebrow,
-    .project-plans-eyebrow,
-    .transparent-pricing-eyebrow,
-    .premium-specs-eyebrow,
-    .visual-showcase-eyebrow,
-    .prime-location-eyebrow,
-    .lifestyle-amenities-eyebrow,
-    .construction-progress-eyebrow,
-    .buyer-testimonials-eyebrow,
-    .faq-eyebrow,
-    .project-essentials-head-eyebrow,
-    .project-essentials-eyebrow,
-    .site-visit-eyebrow,
-    .property-snapshot-eyebrow,
-    .interested-property-kicker,
-    .pricing-unlock-kicker,
+:is(.pricing-unlock-kicker,
     .footer-redesign-cta p) {
     font-size: 13px !important;
     line-height: 1.35 !important;
@@ -13354,14 +13120,6 @@ body {
 }
 
 
-/* Final Choose Ideal Floor theme pass. */
-.ideal-floor-eyebrow {
-    border-color: rgba(240, 205, 69, .38) !important;
-    background: rgba(240, 205, 69, .14) !important;
-    color: #f0cd45 !important;
-}
-
-
 .ideal-floor-heading h2 span,
 .ideal-floor-spec:hover span,
 .selected-price-box strong {
@@ -13574,36 +13332,6 @@ body {
 }
 
 
-/* Project Plans heading/tab theme matched with Choose Ideal Floor. */
-.project-plans-eyebrow {
-    display: inline-flex !important;
-    align-items: center !important;
-    gap: 8px !important;
-    min-height: 28px !important;
-    margin: 0 0 12px !important;
-    padding: 5px 17px !important;
-    border: 1px solid rgba(240, 205, 69, .38) !important;
-    border-radius: 999px !important;
-    background: rgba(240, 205, 69, .14) !important;
-    color: #f0cd45 !important;
-    font-family: "Inter", Arial, sans-serif !important;
-    font-size: 12px !important;
-    font-weight: 700 !important;
-    line-height: 1 !important;
-    letter-spacing: .34em !important;
-    text-transform: uppercase !important;
-}
-
-
-.project-plans-eyebrow svg {
-    width: 13px !important;
-    height: 13px !important;
-    color: #f0cd45 !important;
-    fill: none !important;
-    stroke: #f0cd45 !important;
-}
-
-
 .project-plans-copy h2 span {
     color: #f0cd45 !important;
 }
@@ -13748,39 +13476,6 @@ body {
     height: 11px !important;
 }
 
-
-
-/* Pricing section top matched to the About Amelia Estate II pill label. */
-.transparent-pricing-eyebrow {
-    display: inline-flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    gap: 8px !important;
-    min-height: 28px !important;
-    margin: 0 0 12px !important;
-    padding: 7px 18px !important;
-    border: 1px solid rgba(240, 205, 69, 0.38) !important;
-    border-radius: 999px !important;
-    background: rgba(240, 205, 69, 0.14) !important;
-    color: #f0cd45 !important;
-    font-family: "Inter", Arial, sans-serif !important;
-    font-size: 12px !important;
-    font-weight: 700 !important;
-    line-height: 1 !important;
-    letter-spacing: 0.18em !important;
-    text-align: center !important;
-    text-transform: uppercase !important;
-}
-
-
-.transparent-pricing-eyebrow svg {
-    width: 14px !important;
-    height: 14px !important;
-    color: #f0cd45 !important;
-    fill: none !important;
-    stroke: #f0cd45 !important;
-    stroke-width: 2 !important;
-}
 
 
 .transparent-pricing-header h2 {
@@ -14689,4 +14384,59 @@ body {
     text-shadow: none !important;
     pointer-events: none !important;
     user-select: none !important;
+}
+
+/* Shared section pill style: match the Floor Plans eyebrow across the page. */
+:is(.ideal-floor-eyebrow,
+    .project-plans-eyebrow,
+    .transparent-pricing-eyebrow,
+    .premium-specs-eyebrow,
+    .visual-showcase-eyebrow,
+    .prime-location-eyebrow,
+    .lifestyle-amenities-eyebrow,
+    .construction-progress-eyebrow,
+    .buyer-testimonials-eyebrow,
+    .faq-eyebrow,
+    .project-essentials-head-eyebrow,
+    .project-essentials-eyebrow,
+    .site-visit-eyebrow,
+    .property-snapshot-eyebrow,
+    .interested-property-kicker) {
+    display: inline-flex !important;
+    min-height: 28px !important;
+    height: 28px !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    margin-bottom: 18px !important;
+    padding: 5px 17px !important;
+    border: 1px solid rgba(240, 205, 69, 0.38) !important;
+    border-radius: 999px !important;
+    background: rgba(240, 205, 69, 0.14) !important;
+    color: #f0cd45 !important;
+    font-family: "Inter", Arial, sans-serif !important;
+    font-size: 12px !important;
+    font-weight: 700 !important;
+    line-height: 1 !important;
+    letter-spacing: 0.34em !important;
+    text-transform: uppercase !important;
+}
+
+:is(.ideal-floor-eyebrow,
+    .project-plans-eyebrow,
+    .transparent-pricing-eyebrow,
+    .premium-specs-eyebrow,
+    .visual-showcase-eyebrow,
+    .prime-location-eyebrow,
+    .lifestyle-amenities-eyebrow,
+    .construction-progress-eyebrow,
+    .buyer-testimonials-eyebrow,
+    .faq-eyebrow,
+    .project-essentials-head-eyebrow,
+    .project-essentials-eyebrow,
+    .site-visit-eyebrow,
+    .property-snapshot-eyebrow,
+    .interested-property-kicker) svg {
+    width: 13px !important;
+    height: 13px !important;
 }

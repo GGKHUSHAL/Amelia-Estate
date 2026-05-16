@@ -570,9 +570,7 @@
         line-height: 1.25;
     }
 
-    h4,
-    .premium-specs-eyebrow,
-    .visual-showcase-eyebrow {
+    h4 {
         font-size: 16px;
     }
 
@@ -713,13 +711,6 @@
 
     .property-snapshot-section > div {
         width: 100% !important;
-    }
-
-    .property-snapshot-eyebrow {
-        min-height: 30px !important;
-        padding: 6px 13px !important;
-        font-size: 10px !important;
-        letter-spacing: 0.10em !important;
     }
 
     .property-snapshot-header h2 {
@@ -1096,7 +1087,6 @@
 
     .about-content,
     .about-text-block,
-    .about-eyebrow,
     .about-content h2,
     .about-text-block > p,
     .about-feature-grid {
@@ -1229,7 +1219,7 @@
     }
 
     .buyer-appreciation-section {
-        padding: 60px 32px;
+        padding: 48px 32px 42px !important;
     }
 
     .buyer-appreciation-section > div {
@@ -1336,8 +1326,8 @@
     }
 
     .buyer-testimonial-card {
-        width: 360px;
-        flex-basis: 360px;
+        width: 320px;
+        flex-basis: 320px;
     }
 
     .interested-property-section > div {
@@ -1396,7 +1386,7 @@
     .construction-progress-photo,
     .construction-progress-card {
         height: auto;
-        min-height: 440px;
+        min-height: 360px;
     }
 
     .lifestyle-amenities-section > div {
@@ -2630,13 +2620,6 @@
         margin-bottom: 16px;
     }
 
-    .ideal-floor-eyebrow {
-        height: 26px;
-        padding: 5px 13px;
-        font-size: 10px;
-        letter-spacing: 0.28em;
-    }
-
     .ideal-floor-heading h2 {
         font-size: 27px;
         line-height: 32px;
@@ -2768,14 +2751,6 @@
         font-size: 13px;
         line-height: 18px;
         overflow-wrap: normal;
-    }
-
-    .project-plans-eyebrow {
-        min-height: 24px;
-        margin-bottom: 8px;
-        padding: 5px 11px;
-        font-size: 9px;
-        letter-spacing: 0.16em;
     }
 
     .project-plans-eyebrow,
@@ -3256,13 +3231,13 @@
     }
 
     .buyer-testimonials-track {
-        gap: 16px;
+        gap: 12px;
     }
 
     .buyer-appreciation-section .buyer-testimonials-slider {
         width: 100% !important;
         max-width: 100% !important;
-        margin-top: 28px !important;
+        margin-top: 22px !important;
         padding-bottom: 6px;
         scroll-snap-type: x mandatory;
         scrollbar-width: none;
@@ -3278,15 +3253,15 @@
     }
 
     .buyer-testimonial-card {
-        width: 300px;
-        min-height: 250px;
-        flex-basis: 300px;
-        padding: 22px 20px 18px;
+        width: 282px;
+        min-height: 214px;
+        flex-basis: 282px;
+        padding: 19px 18px 16px;
     }
 
     .buyer-appreciation-section .buyer-testimonial-card {
         width: 100% !important;
-        min-height: 252px;
+        min-height: 214px;
         flex: 0 0 100% !important;
         scroll-snap-align: center;
     }
@@ -3298,8 +3273,8 @@
     }
 
     .buyer-testimonial-card p {
-        font-size: 13px;
-        line-height: 23px;
+        font-size: 12.5px;
+        line-height: 21px;
     }
 
     .interested-property-copy h2 {
@@ -3365,7 +3340,7 @@
     }
 
     .construction-progress-photo {
-        min-height: 320px;
+        min-height: 300px;
     }
 
     .construction-progress-card {
@@ -3435,15 +3410,6 @@
 
     .visual-showcase-header {
         max-width: 560px;
-    }
-
-    .visual-showcase-eyebrow {
-        min-height: 28px;
-        margin-bottom: 16px;
-        padding: 6px 14px;
-        font-size: 11px;
-        font-weight: 600;
-        letter-spacing: 0.1em;
     }
 
     .visual-showcase-header h2 {
@@ -3561,14 +3527,6 @@
 
     .premium-specs-header {
         max-width: 560px;
-    }
-
-    .premium-specs-eyebrow {
-        min-height: 28px;
-        margin-bottom: 10px;
-        padding: 6px 14px;
-        font-size: 11px;
-        letter-spacing: 0.1em;
     }
 
     .premium-specs-header h2 {
@@ -3720,14 +3678,6 @@
         max-width: 560px;
         margin: 0 auto;
         text-align: center;
-    }
-
-    .transparent-pricing-eyebrow {
-        min-height: 24px;
-        margin-bottom: 8px;
-        padding: 5px 11px;
-        font-size: 9px;
-        letter-spacing: 0.16em;
     }
 
     .transparent-pricing-header h2 {
@@ -3952,7 +3902,6 @@
     .about-side-gallery,
     .about-content,
     .about-text-block,
-    .about-eyebrow,
     .about-content h2,
     .about-text-block > p,
     .about-feature-grid {
@@ -4000,23 +3949,6 @@
     .about-content {
         gap: 18px;
         padding-top: 0;
-    }
-
-    .about-eyebrow {
-        height: auto;
-        gap: 12px;
-        margin-top: 12px;
-        margin-bottom: 0;
-        color: #77716d;
-        font-size: 12px;
-        font-weight: 600;
-        line-height: 16px;
-        letter-spacing: 1.1px;
-    }
-
-    .about-eyebrow span {
-        width: 24px;
-        height: 2px;
     }
 
     .about-content h2 {
@@ -4408,13 +4340,6 @@
         margin-bottom: 12px;
     }
 
-    .project-plans-eyebrow {
-        min-height: 24px;
-        margin-bottom: 7px;
-        padding: 5px 11px;
-        font-size: 8.5px;
-    }
-
     .project-plans-copy h2 {
         font-size: 23px;
         line-height: 28px;
@@ -4655,14 +4580,6 @@
         width: calc(100% - 28px) !important;
     }
 
-    .project-essentials-head-eyebrow {
-        min-height: 28px;
-        margin-bottom: 12px;
-        padding: 0 12px;
-        font-size: 9px;
-        letter-spacing: 0.12em;
-    }
-
     .project-essentials-head h2 {
         font-size: 27px;
         line-height: 33px;
@@ -4681,13 +4598,6 @@
     .project-essentials-panel > p:not(.project-essentials-eyebrow) {
         font-size: 13px !important;
         line-height: 20px !important;
-    }
-
-    .project-essentials-eyebrow {
-        min-height: 28px;
-        padding: 0 12px !important;
-        font-size: 10px !important;
-        letter-spacing: 0.1em !important;
     }
 
     .project-essentials-btn {
@@ -4898,29 +4808,23 @@
         line-height: 35px !important;
     }
 
-    .buyer-testimonials-eyebrow {
-        padding: 6px 12px;
-        font-size: 10px;
-        letter-spacing: 0.1em;
-    }
-
     .buyer-testimonials-header h2 {
         font-size: 27px !important;
         line-height: 34px !important;
     }
 
     .buyer-testimonial-card {
-        width: 278px;
-        flex-basis: 278px;
+        width: 268px;
+        flex-basis: 268px;
     }
 
     .buyer-appreciation-section .buyer-testimonials-slider {
-        margin-top: 24px !important;
+        margin-top: 20px !important;
     }
 
     .buyer-appreciation-section .buyer-testimonial-card {
         width: 100% !important;
-        min-height: 260px;
+        min-height: 218px;
         flex-basis: 100% !important;
     }
 
@@ -4935,12 +4839,6 @@
     .interested-property-copy a {
         min-width: 0 !important;
         flex: 1 1 140px;
-    }
-
-    .construction-progress-eyebrow {
-        padding: 6px 12px;
-        font-size: 10px;
-        letter-spacing: 0.1em;
     }
 
     .construction-progress-title {
@@ -4962,12 +4860,6 @@
         flex-basis: 16px;
     }
 
-    .lifestyle-amenities-eyebrow {
-        padding: 6px 12px;
-        font-size: 10px;
-        letter-spacing: 0.1em;
-    }
-
     .lifestyle-amenities-title {
         font-size: 27px !important;
         line-height: 34px !important;
@@ -4984,11 +4876,6 @@
 
     .prime-location-inner {
         width: 100%;
-    }
-
-    .prime-location-eyebrow {
-        padding: 6px 12px;
-        font-size: 10px;
     }
 
     .prime-location-header h2 {
@@ -5131,12 +5018,6 @@
         line-height: 26px;
     }
 
-    .visual-showcase-eyebrow {
-        padding: 6px 12px;
-        font-size: 10px;
-        font-weight: 600;
-    }
-
     .visual-showcase-header h2 {
         font-size: 27px;
         line-height: 34px;
@@ -5172,11 +5053,6 @@
     .visual-showcase-cta a {
         width: 100%;
         min-width: 0;
-    }
-
-    .premium-specs-eyebrow {
-        padding: 6px 12px;
-        font-size: 10px;
     }
 
     .premium-specs-header h2 {
@@ -5238,13 +5114,6 @@
         width: 100%;
         max-width: 100%;
         margin: 0 auto;
-    }
-
-    .transparent-pricing-eyebrow {
-        min-height: 24px;
-        margin-bottom: 7px;
-        padding: 5px 11px;
-        font-size: 8.5px;
     }
 
     .transparent-pricing-header h2 {
@@ -6531,13 +6400,6 @@
         margin-bottom: 14px;
     }
 
-    .ideal-floor-eyebrow {
-        height: 24px;
-        padding: 5px 11px;
-        font-size: 9px;
-        letter-spacing: 0.22em;
-    }
-
     .ideal-floor-heading h2 {
         max-width: 280px;
         font-size: 23px;
@@ -6857,13 +6719,6 @@
         width: calc(100% - 32px);
     }
 
-    .lifestyle-amenities-eyebrow {
-        min-height: 24px;
-        padding: 5px 11px;
-        font-size: 9px;
-        letter-spacing: 0.12em;
-    }
-
     .lifestyle-amenities-title {
         margin-top: 10px !important;
         font-size: 25px !important;
@@ -6977,7 +6832,7 @@
 
     .construction-progress-photo {
         height: auto;
-        min-height: 440px;
+        min-height: 360px;
     }
 
     .construction-progress-side {
@@ -6992,7 +6847,7 @@
     }
 
     .construction-info-card {
-        min-height: 220px;
+        min-height: 0;
     }
 }
 
@@ -7003,14 +6858,14 @@
     }
 
     .construction-progress-photo {
-        height: 330px;
-        min-height: 330px;
+        height: 300px;
+        min-height: 300px;
         border-radius: 18px !important;
     }
 
     .construction-status-ring {
-        width: 190px;
-        height: 190px;
+        width: 220px;
+        height: 220px;
     }
 
     .construction-status-ring-track,
@@ -7038,6 +6893,7 @@
         margin-top: 11px;
         padding: 0 11px;
         font-size: 10px;
+        white-space: nowrap;
     }
 
     .construction-photo-status {
@@ -7051,14 +6907,6 @@
         min-height: 31px;
         padding: 0 11px;
         font-size: 10px;
-    }
-
-    .construction-photo-status span:last-child {
-        display: none;
-    }
-
-    .construction-photo-status em {
-        padding-left: 8px;
     }
 
     .construction-progress-side {
@@ -7076,7 +6924,7 @@
     }
 
     .construction-proof-card {
-        min-height: 178px;
+        min-height: 0;
         border-radius: 18px;
         padding: 20px 16px 18px;
     }
@@ -7180,12 +7028,6 @@
         line-height: 10px;
     }
 
-    .construction-bank-proof {
-        padding-top: 12px;
-        gap: 10px;
-        font-size: 10px;
-        line-height: 13px;
-    }
 }
 
 @media (max-width: 767px) {
@@ -7387,14 +7229,6 @@
         line-height: 33px !important;
     }
 
-    .interested-property-kicker {
-        min-height: 30px;
-        margin-bottom: 10px;
-        padding: 0 14px;
-        font-size: 10px;
-        letter-spacing: 0.12em;
-    }
-
     .sticky-availability-content--interested .interested-property-copy p {
         margin-top: 10px !important;
         max-width: 258px !important;
@@ -7461,14 +7295,10 @@
 
     .hero-location,
     .hero-slide--figma .hero-location,
-    .ideal-floor-eyebrow,
-    .project-plans-eyebrow,
-    .transparent-pricing-eyebrow,
     .sticky-availability-label,
     .faq-tab,
-    .property-snapshot-strip span,
-    .interested-property-kicker {
-        font-size: 12px !important;
+    .property-snapshot-strip span {
+        font-size: 11px !important;
         line-height: 1.45 !important;
     }
 
@@ -7578,13 +7408,6 @@
         line-height: 1.5 !important;
     }
 
-    .project-essentials-eyebrow,
-    .site-visit-eyebrow,
-    .property-snapshot-eyebrow,
-    .faq-eyebrow {
-        font-size: 13px !important;
-        line-height: 1.45 !important;
-    }
 }
 
 @media (max-width: 767px) {
@@ -8254,22 +8077,6 @@
     }
 
     :is(
-        .about-eyebrow,
-        .ideal-floor-eyebrow,
-        .project-plans-eyebrow,
-        .transparent-pricing-eyebrow,
-        .premium-specs-eyebrow,
-        .visual-showcase-eyebrow,
-        .prime-location-eyebrow,
-        .lifestyle-amenities-eyebrow,
-        .construction-progress-eyebrow,
-        .buyer-testimonials-eyebrow,
-        .faq-eyebrow,
-        .project-essentials-head-eyebrow,
-        .project-essentials-eyebrow,
-        .site-visit-eyebrow,
-        .property-snapshot-eyebrow,
-        .interested-property-kicker,
         .pricing-unlock-kicker,
         .footer-redesign-cta p
     ){
@@ -8557,7 +8364,7 @@
     }
 
     .construction-info-card--banks {
-        padding: 20px 16px 18px !important;
+        padding: 18px 16px 16px !important;
     }
 
     .construction-bank-grid {
@@ -8598,13 +8405,6 @@
         top: 3px !important;
         width: 5px !important;
         height: 3px !important;
-    }
-
-    .construction-bank-proof {
-        flex-wrap: wrap !important;
-        padding-top: 13px !important;
-        gap: 8px 12px !important;
-        text-align: center !important;
     }
 
     .construction-stage-labels {
@@ -10673,7 +10473,7 @@
         display: flex !important;
         justify-content: space-between !important;
         gap: 0 !important;
-        margin-top: 14px !important;
+        margin-top: 12px !important;
         font-size: 9px !important;
         line-height: 1.2 !important;
         letter-spacing: 0.045em !important;
@@ -10818,4 +10618,59 @@
         background: rgba(240, 205, 69, 0.12) !important;
         color: #f0cd45 !important;
     }
+}
+
+/* Keep all section pills matched to the Floor Plans eyebrow on every viewport. */
+:is(.ideal-floor-eyebrow,
+    .project-plans-eyebrow,
+    .transparent-pricing-eyebrow,
+    .premium-specs-eyebrow,
+    .visual-showcase-eyebrow,
+    .prime-location-eyebrow,
+    .lifestyle-amenities-eyebrow,
+    .construction-progress-eyebrow,
+    .buyer-testimonials-eyebrow,
+    .faq-eyebrow,
+    .project-essentials-head-eyebrow,
+    .project-essentials-eyebrow,
+    .site-visit-eyebrow,
+    .property-snapshot-eyebrow,
+    .interested-property-kicker) {
+    display: inline-flex !important;
+    min-height: 28px !important;
+    height: 28px !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    margin-bottom: 18px !important;
+    padding: 5px 17px !important;
+    border: 1px solid rgba(240, 205, 69, 0.38) !important;
+    border-radius: 999px !important;
+    background: rgba(240, 205, 69, 0.14) !important;
+    color: #f0cd45 !important;
+    font-family: "Inter", Arial, sans-serif !important;
+    font-size: 12px !important;
+    font-weight: 700 !important;
+    line-height: 1 !important;
+    letter-spacing: 0.34em !important;
+    text-transform: uppercase !important;
+}
+
+:is(.ideal-floor-eyebrow,
+    .project-plans-eyebrow,
+    .transparent-pricing-eyebrow,
+    .premium-specs-eyebrow,
+    .visual-showcase-eyebrow,
+    .prime-location-eyebrow,
+    .lifestyle-amenities-eyebrow,
+    .construction-progress-eyebrow,
+    .buyer-testimonials-eyebrow,
+    .faq-eyebrow,
+    .project-essentials-head-eyebrow,
+    .project-essentials-eyebrow,
+    .site-visit-eyebrow,
+    .property-snapshot-eyebrow,
+    .interested-property-kicker) svg {
+    width: 13px !important;
+    height: 13px !important;
 }
