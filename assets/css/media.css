@@ -11211,6 +11211,98 @@
         text-align: center !important;
     }
 
+    .footer-redesign-main {
+        grid-template-columns: minmax(0, 260px) !important;
+        gap: 0 !important;
+    }
+
+    .footer-redesign-brand,
+    .footer-redesign-main > .footer-redesign-column,
+    .footer-redesign-contact {
+        grid-column: 1 / -1 !important;
+        width: 100% !important;
+    }
+
+    .footer-redesign-contact {
+        align-items: stretch !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.14) !important;
+        border-radius: 0 !important;
+    }
+
+    .footer-redesign-main > .footer-redesign-column {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.14) !important;
+        padding: 0 !important;
+        text-align: left !important;
+    }
+
+    .footer-redesign-column h3 {
+        width: 100% !important;
+        margin: 0 !important;
+        text-align: left !important;
+    }
+
+    .footer-accordion-toggle {
+        display: flex !important;
+        width: 100% !important;
+        min-height: 52px !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        box-sizing: border-box !important;
+        padding: 0 !important;
+        color: #f0cd45 !important;
+        cursor: pointer !important;
+    }
+
+    .footer-accordion-icon {
+        display: inline-block !important;
+        width: 9px !important;
+        height: 9px !important;
+        border-right: 2px solid currentColor !important;
+        border-bottom: 2px solid currentColor !important;
+        color: rgba(255, 255, 255, 0.70) !important;
+        line-height: 1 !important;
+        transform: rotate(45deg) !important;
+        transition: transform 0.24s ease, color 0.24s ease !important;
+    }
+
+    .footer-redesign-column.is-open .footer-accordion-icon {
+        color: #f0cd45 !important;
+        transform: rotate(-135deg) !important;
+    }
+
+    .footer-redesign-column:not(.is-open) .footer-accordion-panel {
+        display: none !important;
+    }
+
+    .footer-accordion-panel {
+        display: flex !important;
+        width: calc(100% - 18px) !important;
+        align-items: flex-start !important;
+        padding: 0 0 16px 18px !important;
+    }
+
+    .footer-redesign-contact .footer-accordion-panel {
+        width: calc(100% - 10px) !important;
+        align-items: flex-start !important;
+        padding-left: 10px !important;
+        text-align: left !important;
+    }
+
+    .footer-redesign-main .footer-redesign-column:not(.footer-redesign-contact) .footer-accordion-panel > a {
+        margin-right: 0 !important;
+        margin-left: 0 !important;
+        text-align: left !important;
+    }
+
+    .footer-redesign-column p,
+    .footer-redesign-column strong {
+        text-align: left !important;
+    }
+
+    .footer-redesign-contact address {
+        text-align: left !important;
+    }
+
     .footer-redesign-contact a[href^="tel:"] {
         color: #f0cd45 !important;
     }
