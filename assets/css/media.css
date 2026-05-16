@@ -570,16 +570,6 @@
     }
 }
 
-@media (max-width: 639px) {
-
-    a[href*="wa.me"],
-    .hero-actions a[href*="wa.me"].hero-whatsapp-btn {
-        width: 100% !important;
-        max-width: none !important;
-        white-space: nowrap !important;
-    }
-}
-
 @media (max-width: 767px) {
     body {
         font-size: 16px;
@@ -4117,7 +4107,7 @@
     }
 
     .about-feature h3 {
-        color: #f0cd45;
+        color: #ffffff;
         font-size: 15px;
         line-height: 18px;
         letter-spacing: 0.2px;
@@ -6350,54 +6340,6 @@
         height: auto;
         margin: 0;
         transform: translateX(-50%);
-    }
-
-    .hero-whatsapp-btn {
-        width: 100% !important;
-        max-width: none !important;
-        min-width: 0 !important;
-        border-radius: 22px;
-        padding: 0 18px;
-        white-space: nowrap;
-    }
-
-    .hero-whatsapp-btn {
-        height: 52px;
-        background:
-            linear-gradient(180deg, #D5AE66 0%, #D5AE66 100%);
-        color: #000000;
-        font-family: "Inter", Arial, sans-serif;
-        font-size: 15px;
-        font-weight: 800;
-        line-height: 1;
-        box-shadow:
-            0 15px 30px rgba(0, 0, 0, 0.34),
-            0 0 24px rgba(213, 174, 102, 0.26),
-            inset 0 1px 0 rgba(255, 255, 255, 0.42);
-    }
-
-    .hero-whatsapp-btn::before,
-    .hero-whatsapp-btn::after {
-        display: none;
-    }
-
-    .hero-whatsapp-btn span {
-        display: grid;
-        place-items: center;
-        width: 24px;
-        height: 24px;
-        border-radius: 50%;
-        background: rgba(0, 0, 0, 0.14);
-        color: #000000;
-        font-size: 15px;
-        line-height: 1;
-    }
-
-    .hero-whatsapp-icon {
-        display: block;
-        width: 15px;
-        height: 15px;
-        fill: #21d07a;
     }
 
     .hero-slide--figma .hero-tags span:nth-child(3),
@@ -9145,6 +9087,11 @@
         margin: 0 !important;
     }
 
+    .about-feature h3 {
+        color: #ffffff !important;
+        text-shadow: none !important;
+    }
+
     .about-btn,
     .property-snapshot-readmore {
         border-radius: 10px !important;
@@ -9706,7 +9653,7 @@
 @media (max-width: 767px) {
     .ideal-floor-section {
         min-height: auto !important;
-        padding-top: 42px !important;
+        padding-top: 34px !important;
         padding-bottom: 42px !important;
     }
 
@@ -9715,12 +9662,12 @@
     }
 
     .ideal-floor-header {
-        gap: 14px !important;
-        margin-bottom: 16px !important;
+        gap: 10px !important;
+        margin-bottom: 24px !important;
     }
 
     .ideal-floor-heading>p:not(.ideal-floor-eyebrow) {
-        margin-top: 8px !important;
+        margin-top: 6px !important;
     }
 
     .ideal-floor-card {
@@ -10560,7 +10507,6 @@
 
     /* Single mobile source for both hero CTA buttons. */
     .hero-price-details-btn,
-    a[href*="wa.me"],
     .hero-actions a[href*="wa.me"].hero-whatsapp-btn {
         width: var(--hero-mobile-btn-width) !important;
         max-width: var(--hero-mobile-btn-width) !important;
@@ -10575,13 +10521,18 @@
     }
 
     .hero-price-details-btn>span:not(.hero-price-details-shine),
-    a[href*="wa.me"],
     .hero-actions a[href*="wa.me"].hero-whatsapp-btn,
     .hero-whatsapp-btn span {
         font-size: inherit !important;
         font-weight: inherit !important;
         line-height: inherit !important;
 
+    }
+
+    .hero-actions a[href*="wa.me"].hero-whatsapp-btn::before {
+        width: 17px !important;
+        height: 17px !important;
+        flex-basis: 17px !important;
     }
 
     .footer-redesign-cta h2 span {
@@ -10700,6 +10651,26 @@
 
 /* Mobile project plan image: keep the badge above the image and let the image fill the frame. */
 @media (max-width: 767px) {
+    .project-plan-lightbox {
+        padding: 10px !important;
+    }
+
+    .project-plan-lightbox-panel {
+        width: 100% !important;
+        max-height: calc(100dvh - 20px) !important;
+        padding: 14px !important;
+        gap: 10px !important;
+    }
+
+    .project-plan-lightbox-image {
+        max-height: calc(100dvh - 96px) !important;
+        border-radius: 10px !important;
+    }
+
+    .project-plan-lightbox-title {
+        max-width: calc(100% - 54px) !important;
+    }
+
     .project-plan-tabs {
         margin-bottom: 14px !important;
     }
@@ -11903,8 +11874,7 @@
         gap: 8px !important;
         width: fit-content !important;
         max-width: calc(100% - 28px) !important;
-        margin-right: auto !important;
-        margin-left: auto !important;
+        margin: 0 auto 14px !important;
         padding: 6px 16px !important;
         border: 1px solid rgba(240, 205, 69, 0.40) !important;
         border-radius: 999px !important;
@@ -11917,6 +11887,18 @@
         letter-spacing: 0.16em !important;
         text-transform: uppercase !important;
         box-shadow: none !important;
+    }
+
+    :is(.ideal-floor-eyebrow,
+        .project-plans-eyebrow,
+        .transparent-pricing-eyebrow) {
+        margin-bottom: 18px !important;
+    }
+
+    .ideal-floor-eyebrow+h2,
+    .project-plans-eyebrow+h2,
+    .transparent-pricing-eyebrow+h2 {
+        margin-top: 14px !important;
     }
 
     :is(.ideal-floor-eyebrow,

@@ -1173,12 +1173,12 @@ img.snapshot-icon {
 
 .about-feature h3 {
     margin: 0;
-    color: #f0cd45;
+    color: #ffffff;
     font-size: 17px;
     font-weight: 500;
     line-height: 21px;
     letter-spacing: 0.25px;
-    text-shadow: 0 0 18px rgba(240, 205, 69, 0.14);
+    text-shadow: none;
     transition:
         color 0.35s ease,
         text-shadow 0.35s ease;
@@ -1192,8 +1192,8 @@ img.snapshot-icon {
 }
 
 .about-feature:hover h3 {
-    color: #f0cd45;
-    text-shadow: 0 0 22px rgba(240, 205, 69, 0.24);
+    color: #ffffff;
+    text-shadow: none;
 }
 
 .about-feature p {
@@ -2576,7 +2576,7 @@ body.is-visual-detail-modal-open {
     z-index: 120;
     display: grid;
     place-items: center;
-    padding: 32px;
+    padding: 18px;
 }
 
 .project-plan-lightbox[hidden] {
@@ -2595,10 +2595,10 @@ body.is-visual-detail-modal-open {
     position: relative;
     z-index: 1;
     display: grid;
-    gap: 14px;
-    width: min(100%, 1120px);
-    max-height: calc(100dvh - 64px);
-    padding: 18px;
+    gap: 12px;
+    width: min(96vw, 1280px);
+    max-height: calc(100dvh - 36px);
+    padding: 16px;
     border: 1px solid rgba(240, 205, 69, 0.32);
     border-radius: 18px;
     background: rgba(8, 8, 8, 0.96);
@@ -2660,7 +2660,7 @@ body.is-visual-detail-modal-open {
 .project-plan-lightbox-image {
     display: block;
     width: 100%;
-    max-height: calc(100dvh - 150px);
+    max-height: calc(100dvh - 118px);
     object-fit: contain;
     border-radius: 12px;
     background: #ffffff;
@@ -13272,20 +13272,23 @@ body {
 
 @keyframes tabImageReveal {
     0% {
-        opacity: .35;
-        filter: blur(8px) saturate(.88) brightness(.94);
-        transform: scale(1.045);
+        opacity: 0;
+        filter: none;
+        clip-path: inset(0 18% 0 0 round 18px);
+        transform: translateX(18px) scale(.985);
     }
 
-    58% {
+    62% {
         opacity: 1;
-        filter: blur(1px) saturate(1.04) brightness(1.02);
-        transform: scale(1.008);
+        filter: none;
+        clip-path: inset(0 0 0 0 round 18px);
+        transform: translateX(0) scale(1.012);
     }
 
     100% {
         opacity: 1;
         filter: none;
+        clip-path: inset(0 0 0 0 round 18px);
         transform: scale(1);
     }
 }

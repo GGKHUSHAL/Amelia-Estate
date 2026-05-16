@@ -576,7 +576,9 @@ const idealFloorSection = document.querySelector(".ideal-floor-section");
 if (idealFloorSection) {
     const sizeTabs = idealFloorSection.querySelectorAll("[data-ideal-size]");
     const floorTabs = idealFloorSection.querySelectorAll("[data-ideal-floor]");
+    const badgeSizeFloor = idealFloorSection.querySelector(".ideal-floor-badges span");
     const badgeFeature = idealFloorSection.querySelector(".ideal-floor-badges strong");
+    const panelTitle = idealFloorSection.querySelector(".ideal-floor-panel h3");
     const panelSubtitle = idealFloorSection.querySelector(".ideal-floor-panel > div:first-child p");
     const specValues = idealFloorSection.querySelectorAll(".ideal-floor-spec strong");
     const idealImage = idealFloorSection.querySelector(".ideal-floor-media img");
@@ -590,25 +592,41 @@ if (idealFloorSection) {
         230: {
             label: "230 Sq.Yd",
             area: "230 Sq.Yds",
+            title: "3 BHK Premium Floor",
             image: "assets/img/choose ideal/banner.jpg"
         },
         219: {
             label: "219 Sq.Yd",
             area: "219 Sq.Yds",
+            title: "3 BHK Smart Floor",
             image: "assets/img/choose ideal/banner.png"
         },
         205: {
             label: "205 Sq.Yd",
             area: "205 Sq.Yds",
+            title: "3 BHK Compact Floor",
             image: "assets/img/choose ideal/banner.jpg"
         }
     };
 
-    const featureCopy = {
-        "1st": "Low-Rise Living",
-        "2nd": "Lift Access",
-        "3rd": "Open View",
-        "4th": "Roof Right"
+    const floorDetails = {
+        "1st": {
+            label: "1st Floor",
+            spec: "1st Floor"
+        },
+        "2nd": {
+            label: "2nd Floor",
+            spec: "2nd Floor"
+        },
+        "3rd": {
+            label: "3rd Floor",
+            spec: "3rd Floor"
+        },
+        "4th": {
+            label: "4th Floor",
+            feature: "Roof Right",
+            spec: "4th + Roof"
+        }
     };
 
     Object.values(sizeDetails).forEach(({ image }) => {
@@ -646,19 +664,40 @@ if (idealFloorSection) {
 
     const refreshIdealFloor = () => {
         const size = sizeDetails[activeSize];
-        const feature = featureCopy[activeFloor] || "Premium Floor";
+        const floor = floorDetails[activeFloor] || floorDetails["1st"];
 
         if (!size) {
             return;
         }
 
-        if (activeFloor === "4th") {
-            badgeFeature.style.display = "";
-        } else {
-            badgeFeature.style.display = "none";
+        if (badgeSizeFloor) {
+            badgeSizeFloor.textContent = `${size.label} - ${floor.label}`;
         }
-        panelSubtitle.textContent = `${activeSize} Sq. Yd ${activeFloor} Floor Selected`;
-        specValues[0].textContent = size.area;
+
+        if (badgeFeature) {
+            if (activeFloor === "4th") {
+                badgeFeature.textContent = "Roof Right";
+                badgeFeature.style.display = "";
+            } else {
+                badgeFeature.style.display = "none";
+            }
+        }
+
+        if (panelTitle) {
+            panelTitle.textContent = size.title;
+        }
+
+        if (panelSubtitle) {
+            panelSubtitle.textContent = `${size.label} ${floor.label} Selected`;
+        }
+
+        if (specValues[0]) {
+            specValues[0].textContent = size.area;
+        }
+
+        if (specValues[1]) {
+            specValues[1].textContent = floor.spec;
+        }
 
         switchIdealImage(size.image);
     };
