@@ -3317,7 +3317,7 @@
         max-width: 100% !important;
         margin-top: 22px !important;
         padding-bottom: 6px;
-        scroll-snap-type: x mandatory;
+        scroll-snap-type: none !important;
         scrollbar-width: none;
     }
 
@@ -3341,7 +3341,7 @@
         width: 100% !important;
         min-height: 214px;
         flex: 0 0 100% !important;
-        scroll-snap-align: center;
+        scroll-snap-align: none !important;
     }
 
     .buyer-testimonials-progress {

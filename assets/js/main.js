@@ -2447,7 +2447,9 @@ if (buyerAppreciationSection) {
     const testimonialProgress = buyerAppreciationSection.querySelector(".buyer-testimonials-progress span");
     let testimonialFrame = 0;
     let testimonialPointerDown = false;
+    let testimonialDragActive = false;
     let testimonialStartX = 0;
+    let testimonialStartY = 0;
     let testimonialStartScroll = 0;
 
     const updateTestimonialProgress = () => {
@@ -2470,26 +2472,16 @@ if (buyerAppreciationSection) {
     if (testimonialSlider) {
         testimonialSlider.addEventListener("scroll", requestTestimonialProgressUpdate, { passive: true });
 
-        testimonialSlider.addEventListener("wheel", (event) => {
-            if (Math.abs(event.deltaY) <= Math.abs(event.deltaX)) {
-                return;
-            }
-
-            event.preventDefault();
-            testimonialSlider.scrollLeft += event.deltaY;
-            requestTestimonialProgressUpdate();
-        }, { passive: false });
-
         testimonialSlider.addEventListener("pointerdown", (event) => {
             if (event.button !== 0) {
                 return;
             }
 
             testimonialPointerDown = true;
+            testimonialDragActive = false;
             testimonialStartX = event.clientX;
+            testimonialStartY = event.clientY;
             testimonialStartScroll = testimonialSlider.scrollLeft;
-            testimonialSlider.classList.add("is-dragging");
-            testimonialSlider.setPointerCapture(event.pointerId);
         });
 
         testimonialSlider.addEventListener("pointermove", (event) => {
@@ -2498,9 +2490,27 @@ if (buyerAppreciationSection) {
             }
 
             const distance = event.clientX - testimonialStartX;
+            const verticalDistance = event.clientY - testimonialStartY;
+
+            if (!testimonialDragActive) {
+                if (Math.abs(distance) < 6 && Math.abs(verticalDistance) < 6) {
+                    return;
+                }
+
+                if (Math.abs(verticalDistance) > Math.abs(distance)) {
+                    testimonialPointerDown = false;
+                    return;
+                }
+
+                testimonialDragActive = true;
+                testimonialSlider.classList.add("is-dragging");
+                testimonialSlider.setPointerCapture(event.pointerId);
+            }
+
+            event.preventDefault();
             testimonialSlider.scrollLeft = testimonialStartScroll - distance;
             requestTestimonialProgressUpdate();
-        });
+        }, { passive: false });
 
         const stopTestimonialDrag = (event) => {
             if (!testimonialPointerDown) {
@@ -2508,6 +2518,7 @@ if (buyerAppreciationSection) {
             }
 
             testimonialPointerDown = false;
+            testimonialDragActive = false;
             testimonialSlider.classList.remove("is-dragging");
 
             if (testimonialSlider.hasPointerCapture(event.pointerId)) {
