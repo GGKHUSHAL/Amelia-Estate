@@ -1358,7 +1358,6 @@
 
     .interested-property-copy p {
         margin-right: auto;
-        margin-left: auto;
     }
 
     .interested-property-copy > div {
@@ -3166,10 +3165,11 @@
         order: 3;
         width: 100%;
         margin: 14px auto 0 !important;
-        padding: 16px 12px !important;
-        border: 1px solid rgba(240, 205, 69, 0.18);
-        border-radius: 14px;
-        background: rgba(0, 0, 0, 0.24);
+        padding: 6px 0 0 !important;
+        border: 0 !important;
+        border-radius: 0 !important;
+        background: transparent !important;
+        box-shadow: none !important;
         text-align: center;
     }
 
@@ -7338,7 +7338,6 @@
 
     .sticky-availability-content--interested .interested-property-copy p {
         margin-right: auto;
-        margin-left: auto;
     }
 
     .sticky-availability-content--interested .interested-property-copy > div {
@@ -8185,7 +8184,6 @@
         .peace-density-content p,
         .construction-progress-copy,
         .construction-progress-meter p,
-        .interested-property-copy p,
         .buyer-testimonials-header p:not(.buyer-testimonials-eyebrow),
         .buyer-testimonial-card p,
         .buyer-appreciation-card p,
@@ -10905,14 +10903,14 @@
     }
 
     .site-visit-inner {
-        width: min(calc(100% - 34px), 286px) !important;
-        max-width: 286px !important;
+        width: calc(100% - 14px) !important;
+        max-width: none !important;
         gap: 0 !important;
     }
 
     .site-visit-card {
         width: 100% !important;
-        max-width: 286px !important;
+        max-width: none !important;
         padding: 16px 13px 12px !important;
         border-radius: 16px !important;
     }
@@ -10934,7 +10932,7 @@
     }
 
     .site-visit-form {
-        width: min(100%, 246px) !important;
+        width: 100% !important;
         margin-top: 14px !important;
         gap: 8px !important;
     }
@@ -10950,7 +10948,7 @@
 
     .site-visit-submit,
     .site-visit-card .site-visit-whatsapp {
-        width: min(100%, 246px) !important;
+        width: 100% !important;
         height: 38px !important;
         min-height: 38px !important;
         border-radius: 999px !important;
@@ -11302,7 +11300,7 @@
 
 @media (max-width: 767px) {
     .project-download-section {
-        padding: 34px 14px 40px;
+        padding: 34px 7px 40px;
     }
 
     .project-download-heading {
@@ -11334,7 +11332,8 @@
     }
 
     .project-download-inner {
-        width: min(100%, 292px);
+        width: 100%;
+        max-width: none;
         margin-right: auto;
         margin-left: auto;
         border-radius: 20px;
