@@ -29,50 +29,6 @@ if (menuToggle && mobileMenu) {
     });
 }
 
-// Mobile footer accordion: keeps footer links compact until a heading is tapped.
-const footerAccordionToggles = document.querySelectorAll(".footer-accordion-toggle");
-
-if (footerAccordionToggles.length) {
-    const isMobileFooter = () => window.matchMedia("(max-width: 767px)").matches;
-
-    const setFooterAccordionItem = (column, shouldOpen) => {
-        const toggle = column.querySelector(".footer-accordion-toggle");
-
-        column.classList.toggle("is-open", shouldOpen);
-
-        if (toggle) {
-            toggle.setAttribute("aria-expanded", String(shouldOpen));
-        }
-    };
-
-    footerAccordionToggles.forEach((toggle) => {
-        toggle.addEventListener("click", () => {
-            if (!isMobileFooter()) {
-                return;
-            }
-
-            const column = toggle.closest(".footer-redesign-column");
-            const shouldOpen = !column.classList.contains("is-open");
-
-            document.querySelectorAll(".footer-redesign-column.is-open").forEach((openColumn) => {
-                if (openColumn !== column) {
-                    setFooterAccordionItem(openColumn, false);
-                }
-            });
-
-            setFooterAccordionItem(column, shouldOpen);
-        });
-    });
-
-    window.addEventListener("resize", () => {
-        if (!isMobileFooter()) {
-            document.querySelectorAll(".footer-redesign-column.is-open").forEach((column) => {
-                setFooterAccordionItem(column, false);
-            });
-        }
-    });
-}
-
 // Hero carousel: auto-rotates slides with a soft zoom and pointer-reactive depth.
 const heroSlider = document.querySelector("#heroSlider");
 
