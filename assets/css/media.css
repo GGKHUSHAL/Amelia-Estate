@@ -8683,7 +8683,10 @@
         display: grid !important;
         grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
         gap: 10px !important;
+        width: min(100%, 292px) !important;
         margin-top: 25px !important;
+        margin-right: auto !important;
+        margin-left: auto !important;
         overflow: visible !important;
         border-radius: 0 !important;
         background: transparent !important;
@@ -8716,7 +8719,8 @@
         width: 20px !important;
         height: 2px !important;
         border-radius: 999px !important;
-        background: rgba(213, 174, 102, 0.72) !important;
+        background: rgba(240, 205, 69, 0.72) !important;
+        box-shadow: 0 0 12px rgba(240, 205, 69, 0.26) !important;
     }
 
     .property-snapshot-strip > div:nth-child(2n),
