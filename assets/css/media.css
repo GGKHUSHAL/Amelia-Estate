@@ -728,7 +728,7 @@
     .property-snapshot-card {
         min-height: 0 !important;
         padding: 18px 18px 16px !important;
-        border-radius: 18px !important;
+   
     }
 
     .property-snapshot-brand {
@@ -10152,7 +10152,81 @@
         font-size: inherit !important;
         font-weight: inherit !important;
         line-height: inherit !important;
+
     }
+
+    .footer-redesign-cta h2 span {
+        margin-top: 0 !important;
+        font-size: inherit !important;
+        line-height: inherit !important;
+        display: block !important;
+    }
+
+    .footer-redesign-cta h2 {
+        text-align: center !important;
+    }
+
+    .footer-redesign-actions {
+        align-items: center !important;
+    }
+
+    .footer-redesign-actions a,
+    .footer-redesign-actions a[href*="wa.me"] {
+        width: 100% !important;
+        max-width: none !important;
+        min-height: 44px !important;
+        align-self: stretch !important;
+        border-radius: 999px !important;
+    }
+
+    .footer-redesign-main {
+        grid-template-columns: repeat(2, 132px) !important;
+        justify-content: center !important;
+        gap: 18px 0 !important;
+    }
+
+    .footer-redesign-brand {
+        grid-column: 1 / -1 !important;
+        width: min(100%, 320px) !important;
+        justify-self: center !important;
+    }
+
+    .footer-redesign-contact {
+        display: flex !important;
+        grid-column: 1 / -1 !important;
+        width: min(100%, 300px) !important;
+        justify-self: center !important;
+        align-items: center !important;
+        flex-direction: column !important;
+    }
+
+    .footer-redesign-main > .footer-redesign-column:not(.footer-redesign-contact) {
+        text-align: center !important;
+    }
+
+    .footer-redesign-main .footer-redesign-column:not(.footer-redesign-contact) > a {
+        margin-right: auto !important;
+        margin-left: auto !important;
+    }
+
+    .footer-redesign-contact a {
+        max-width: 100% !important;
+        margin-right: auto !important;
+        margin-left: auto !important;
+        white-space: normal !important;
+    }
+
+    .footer-redesign-contact a[href^="tel:"] {
+        color: #ffffff !important;
+    }
+
+    .footer-redesign-contact a[href*="wa.me"] {
+        width: fit-content !important;
+        max-width: 100% !important;
+        align-self: center !important;
+        white-space: nowrap !important;
+    }
+  
 }
 
 @media (max-width: 575px) {
@@ -10603,179 +10677,147 @@
     }
 }
 
-@media (max-width: 991px) {
-    .project-download-section {
-        padding: 40px 18px;
-    }
-
-    .project-download-inner {
-        grid-template-columns: 1fr;
-    }
-
-    .download-preview {
-        min-height: auto;
-        padding: 24px 24px;
-    }
-}
-
+/* Final mobile footer alignment guard. */
 @media (max-width: 767px) {
-    .project-download-section {
-        padding: 34px 14px 40px;
+    .footer-redesign-cta {
+        text-align: center !important;
     }
 
-    .project-download-heading {
-        margin-bottom: 22px;
+    .footer-redesign-cta p {
+        display: inline-flex !important;
+        width: fit-content !important;
+        margin-right: auto !important;
+        margin-left: auto !important;
+        border-color: rgba(240, 205, 69, 0.40) !important;
+        background: rgba(240, 205, 69, 0.10) !important;
+        color: #f0cd45 !important;
     }
 
-    .project-download-heading p {
-        margin-bottom: 10px;
-        font-size: 10px;
-        letter-spacing: .12em;
-        padding: 8px 11px;
+    .footer-redesign-cta h2,
+    .footer-redesign-cta h2 span {
+        font-size: clamp(29px, 8.1vw, 34px) !important;
+        line-height: 1.18 !important;
+        text-align: center !important;
     }
 
-    .project-download-heading h2 {
-        font-size: clamp(28px, 8.2vw, 36px);
+    .footer-redesign-cta h2 span {
+        display: block !important;
+        margin-top: 0 !important;
     }
 
-    .project-download-heading > span {
-        margin-top: 10px;
-        font-size: 14px;
-        line-height: 1.35;
+    .footer-redesign-brand > img,
+    .footer-redesign-brand div img {
+        filter:
+            brightness(0) saturate(100%) invert(85%) sepia(95%) saturate(731%) hue-rotate(344deg) brightness(101%) contrast(88%) !important;
     }
 
-    .project-download-heading small {
-        margin-top: 10px;
-        font-size: 11px;
-        line-height: 1.35;
-        padding: 8px 11px;
+    .footer-redesign-main {
+        grid-template-columns: repeat(2, minmax(118px, 132px)) !important;
+        justify-content: center !important;
+        justify-items: center !important;
+        column-gap: 0 !important;
     }
 
-    .project-download-inner {
-        border-radius: 20px;
+    .footer-redesign-brand,
+    .footer-redesign-contact {
+        grid-column: 1 / -1 !important;
     }
 
-    .download-preview {
-        padding: 18px 14px;
+    .footer-redesign-main > .footer-redesign-column:not(.footer-redesign-contact) {
+        width: 100% !important;
+        text-align: center !important;
     }
 
-    .download-preview-card {
-        border-radius: 15px;
-        aspect-ratio: 1.38;
+    .footer-redesign-column h3,
+    .footer-redesign-column p,
+    .footer-redesign-column strong {
+        text-align: center !important;
     }
 
-    .download-options-panel {
-        padding: 22px 14px 20px;
+    .footer-redesign-main .footer-redesign-column:not(.footer-redesign-contact) > a {
+        width: fit-content !important;
+        margin-right: auto !important;
+        margin-left: auto !important;
+        text-align: center !important;
     }
 
-    .download-options-panel h3 {
-        font-size: 24px;
-    }
-
-    .download-options-panel > p {
-        margin-bottom: 16px;
-        font-size: 13px;
-        line-height: 1.45;
-    }
-
-    .download-option {
-        grid-template-columns: 40px 1fr auto;
-        gap: 9px;
-        min-height: 64px;
-        padding: 10px;
-    }
-
-    .download-option i {
-        width: 40px;
-        height: 40px;
-        border-radius: 10px;
-        font-size: 19px;
-    }
-
-    .download-option h4 {
-        font-size: 14px;
-    }
-
-    .download-option span {
-        font-size: 11px;
-        line-height: 1.25;
-    }
-
-    .download-option a {
-        grid-column: auto;
-        width: fit-content;
-        margin-top: 0;
-        min-height: 24px;
-        padding: 0 8px;
-        font-size: 11px;
-    }
-
-    .download-footnote {
-        margin-top: 16px;
-        padding-top: 15px;
-    }
-
-    .download-footnote p {
-        align-items: flex-start;
-        font-size: 12px;
-        line-height: 1.4;
-    }
-
-    .download-footnote div span {
-        font-size: 11px;
-        padding: 7px 11px;
+    .footer-redesign-contact a[href^="tel:"] {
+        color: #f0cd45 !important;
     }
 }
 
-/* Keep all section pills matched to the Floor Plans eyebrow on every viewport. */
-:is(.ideal-floor-eyebrow,
-    .project-plans-eyebrow,
-    .transparent-pricing-eyebrow,
-    .premium-specs-eyebrow,
-    .visual-showcase-eyebrow,
-    .prime-location-eyebrow,
-    .lifestyle-amenities-eyebrow,
-    .construction-progress-eyebrow,
-    .buyer-testimonials-eyebrow,
-    .faq-eyebrow,
-    .project-essentials-head-eyebrow,
-    .project-essentials-eyebrow,
-    .site-visit-eyebrow,
-    .property-snapshot-eyebrow) {
-    display: inline-flex !important;
-    min-height: 28px !important;
-    height: 28px !important;
-    align-items: center !important;
-    justify-content: center !important;
-    gap: 8px !important;
-    margin-bottom: 18px !important;
-    padding: 5px 17px !important;
-    border: 1px solid rgba(240, 205, 69, 0.38) !important;
-    border-radius: 999px !important;
-    background: rgba(240, 205, 69, 0.14) !important;
-    color: #f0cd45 !important;
-    font-family: "Inter", Arial, sans-serif !important;
-    font-size: 12px !important;
-    font-weight: 700 !important;
-    line-height: 1 !important;
-    letter-spacing: 0.34em !important;
-    text-transform: uppercase !important;
-}
+/* Final mobile property snapshot theme sync. */
+@media (max-width: 767px) {
+    .property-snapshot-section {
+        background:
+            radial-gradient(860px 320px at 50% -120px, rgba(213, 174, 102, 0.16), transparent 72%),
+            linear-gradient(180deg, #070707 0%, #10100e 54%, #070707 100%) !important;
+    }
 
-:is(.ideal-floor-eyebrow,
-    .project-plans-eyebrow,
-    .transparent-pricing-eyebrow,
-    .premium-specs-eyebrow,
-    .visual-showcase-eyebrow,
-    .prime-location-eyebrow,
-    .lifestyle-amenities-eyebrow,
-    .construction-progress-eyebrow,
-    .buyer-testimonials-eyebrow,
-    .faq-eyebrow,
-    .project-essentials-head-eyebrow,
-    .project-essentials-eyebrow,
-    .site-visit-eyebrow,
-    .property-snapshot-eyebrow) svg {
-    width: 13px !important;
-    height: 13px !important;
+    .property-snapshot-section::before {
+        background:
+            linear-gradient(90deg, rgba(213, 174, 102, 0.06) 0 1px, transparent 1px 100%),
+            linear-gradient(180deg, rgba(255, 255, 255, 0.035) 0 1px, transparent 1px 100%) !important;
+        background-size: 86px 86px !important;
+        mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.72), transparent 76%) !important;
+        opacity: 0.45 !important;
+    }
+
+    .property-snapshot-card {
+        border-width: 0 !important;
+        border-color: transparent !important;
+    }
+
+    .property-snapshot-kicker span {
+        display: none !important;
+    }
+
+    .property-snapshot-eyebrow {
+        min-height: 28px !important;
+        gap: 8px !important;
+        border-color: rgba(240, 205, 69, 0.40) !important;
+        background: rgba(240, 205, 69, 0.10) !important;
+        padding: 6px 16px !important;
+        color: #f0cd45 !important;
+        font-size: 11px !important;
+        letter-spacing: 0.16em !important;
+    }
+
+    .property-snapshot-content h3 {
+        font-size: clamp(29px, 8.1vw, 34px) !important;
+        line-height: 1.18 !important;
+    }
+
+    .property-snapshot-brand h3 em,
+    .property-snapshot-kicker,
+    .property-snapshot-metrics strong,
+    .property-snapshot-strip strong,
+    .property-snapshot-strip span {
+        color: #f0cd45 !important;
+        background: none !important;
+        -webkit-background-clip: border-box !important;
+        background-clip: border-box !important;
+        animation: none !important;
+    }
+
+    .property-snapshot-kicker span,
+    .property-snapshot-metrics > div::after {
+        background: #f0cd45 !important;
+    }
+
+    .property-snapshot-metrics svg {
+        stroke: #f0cd45 !important;
+    }
+
+    .property-snapshot-readmore {
+        min-height: var(--about-readmore-height, 36px) !important;
+        height: var(--about-readmore-height, 36px) !important;
+        padding: 0 var(--about-readmore-padding-x, 20px) !important;
+        border-color: rgba(240, 205, 69, 0.38) !important;
+        border-radius: var(--about-readmore-radius, 10px) !important;
+        background: rgba(240, 205, 69, 0.14) !important;
+        color: #f0cd45 !important;
+        font-size: var(--about-readmore-font-size, 13px) !important;
+        letter-spacing: 0.12em !important;
+    }
 }
