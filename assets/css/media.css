@@ -3114,7 +3114,7 @@
         scroll-snap-stop: always;
         gap: 5px;
         padding: 0 7px;
-        font-size: 9.5px;
+        font-size: 14.5px;
         line-height: 12px;
         border-radius: 12px;
         border-color: transparent;
@@ -4629,7 +4629,7 @@
     .faq-item button {
         min-height: 50px;
         padding: 0 9px 0 13px;
-        font-size: 12px;
+        font-size: 15px;
         line-height: 17px;
         gap: 10px;
     }
