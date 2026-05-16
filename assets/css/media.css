@@ -1231,14 +1231,15 @@
     }
 
     .faq-section {
-        padding: 70px 32px;
+        padding: 48px 24px;
     }
 
     .faq-layout {
-        grid-template-columns: 280px minmax(0, 1fr) !important;
-        gap: 18px !important;
-        padding: 14px !important;
-        border-radius: 22px !important;
+        grid-template-columns: 270px minmax(0, 1fr) !important;
+        gap: 16px !important;
+        margin-top: 24px !important;
+        padding: 12px !important;
+        border-radius: 18px !important;
     }
 
     .project-essentials-section {
@@ -1936,17 +1937,18 @@
     }
 
     .faq-header h2 {
-        font-size: 34px !important;
-        line-height: 42px !important;
+        font-size: 32px !important;
+        line-height: 39px !important;
     }
 
     .faq-item button {
-        padding: 0 24px;
+        min-height: 58px;
+        padding: 0 18px;
     }
 
     .faq-answer {
-        margin-right: 24px;
-        margin-left: 24px;
+        margin-right: 18px;
+        margin-left: 18px;
     }
 
     .project-essentials-card h2 {
@@ -2989,15 +2991,15 @@
     }
 
     .faq-section {
-        padding: 46px 4px;
+        padding: 34px 0;
     }
 
     .faq-layout {
         grid-template-columns: 1fr !important;
-        gap: 12px !important;
-        margin-top: 28px !important;
+        gap: 10px !important;
+        margin-top: 20px !important;
         padding: 6px !important;
-        border-radius: 18px !important;
+        border-radius: 16px !important;
     }
 
     .faq-sidebar {
@@ -3046,7 +3048,7 @@
         font-size: 11px;
         line-height: 15px;
         border-radius: 12px;
-        border-color: rgba(213, 174, 102, 0.16);
+        border-color: rgba(240, 205, 69, 0.16);
         background: rgba(0, 0, 0, 0.32);
     }
 
@@ -3078,13 +3080,14 @@
 
     .faq-panels {
         width: 100%;
-        padding: 10px 8px;
-        border-radius: 16px;
-        overflow: hidden;
+        padding: 0;
+        border-radius: 0;
+        overflow: visible;
+        background: transparent;
     }
 
     .faq-panel {
-        gap: 8px;
+        gap: 7px;
     }
 
     .faq-item {
@@ -4547,7 +4550,7 @@
     }
 
     .faq-item button {
-        min-height: 56px;
+        min-height: 50px;
         padding: 0 9px 0 13px;
         font-size: 12px;
         line-height: 17px;
@@ -4561,7 +4564,7 @@
     }
 
     .faq-answer {
-        margin: -2px 10px 14px 13px;
+        margin: -2px 10px 12px 13px;
         padding-left: 12px;
     }
 
@@ -7283,8 +7286,6 @@
     .buyer-testimonials-header p:not(.buyer-testimonials-eyebrow),
     .sticky-availability-content > p,
     .buyer-appreciation-card p,
-    .faq-header > p,
-    .faq-answer p,
     .project-essentials-head > p:not(.project-essentials-head-eyebrow),
     .project-essentials-panel > p:not(.project-essentials-eyebrow),
     .site-visit-card p,
@@ -7296,7 +7297,6 @@
     .hero-location,
     .hero-slide--figma .hero-location,
     .sticky-availability-label,
-    .faq-tab,
     .property-snapshot-strip span {
         font-size: 11px !important;
         line-height: 1.45 !important;
@@ -7320,8 +7320,7 @@
     .about-content h2,
     .ideal-floor-heading h2,
     .project-plans-copy h2,
-    .transparent-pricing-header h2,
-    .faq-header h2 {
+    .transparent-pricing-header h2 {
         font-size: 30px !important;
         line-height: 1.24 !important;
     }
@@ -7344,8 +7343,7 @@
         line-height: 1.16 !important;
     }
 
-    .faq-tab strong,
-.project-plan-tabs button,
+    .project-plan-tabs button,
 .project-plan-variants button,
 .ideal-floor-levels button,
 .ideal-floor-size-tabs button{
@@ -7401,11 +7399,6 @@
     .property-snapshot-strip strong {
         font-size: 14px !important;
         line-height: 1.4 !important;
-    }
-
-    .faq-item button {
-        font-size: 16px !important;
-        line-height: 1.5 !important;
     }
 
 }
@@ -7942,7 +7935,6 @@
         .construction-progress-title,
         .buyer-testimonials-header h2,
         .buyer-appreciation-title,
-        .faq-header h2,
         .project-essentials-head h2,
         .site-visit-card h2,
         .site-visit-section h2,
@@ -8006,7 +7998,6 @@
         .construction-progress-title,
         .buyer-testimonials-header h2,
         .buyer-appreciation-title,
-        .faq-header h2,
         .project-essentials-head h2,
         .project-essentials-card h2,
         .site-visit-card h2,
@@ -8060,8 +8051,6 @@
         .buyer-testimonials-header p:not(.buyer-testimonials-eyebrow),
         .buyer-testimonial-card p,
         .buyer-appreciation-card p,
-        .faq-header > p,
-        .faq-answer p,
         .project-essentials-head > p:not(.project-essentials-head-eyebrow),
         .project-essentials-panel > p:not(.project-essentials-eyebrow),
         .site-visit-card > p,
@@ -8167,9 +8156,6 @@
         .prime-whatsapp-location-btn,
         .lifestyle-amenities-tabs button,
         .construction-phase-trigger,
-        .faq-tab,
-        .faq-item button,
-        .faq-assist-card a,
         .project-essentials-btn,
         .site-visit-submit,
         .site-visit-whatsapp,
@@ -10620,6 +10606,130 @@
     }
 }
 
+@media (max-width: 991px) {
+    .project-download-section {
+        padding: 40px 18px;
+    }
+
+    .project-download-inner {
+        grid-template-columns: 1fr;
+    }
+
+    .download-preview {
+        min-height: auto;
+        padding: 24px 24px;
+    }
+}
+
+@media (max-width: 767px) {
+    .project-download-section {
+        padding: 34px 14px 40px;
+    }
+
+    .project-download-heading {
+        margin-bottom: 22px;
+    }
+
+    .project-download-heading p {
+        margin-bottom: 10px;
+        font-size: 10px;
+        letter-spacing: .12em;
+        padding: 8px 11px;
+    }
+
+    .project-download-heading h2 {
+        font-size: clamp(28px, 8.2vw, 36px);
+    }
+
+    .project-download-heading > span {
+        margin-top: 10px;
+        font-size: 14px;
+        line-height: 1.35;
+    }
+
+    .project-download-heading small {
+        margin-top: 10px;
+        font-size: 11px;
+        line-height: 1.35;
+        padding: 8px 11px;
+    }
+
+    .project-download-inner {
+        border-radius: 20px;
+    }
+
+    .download-preview {
+        padding: 18px 14px;
+    }
+
+    .download-preview-card {
+        border-radius: 15px;
+        aspect-ratio: 1.38;
+    }
+
+    .download-options-panel {
+        padding: 22px 14px 20px;
+    }
+
+    .download-options-panel h3 {
+        font-size: 24px;
+    }
+
+    .download-options-panel > p {
+        margin-bottom: 16px;
+        font-size: 13px;
+        line-height: 1.45;
+    }
+
+    .download-option {
+        grid-template-columns: 40px 1fr auto;
+        gap: 9px;
+        min-height: 64px;
+        padding: 10px;
+    }
+
+    .download-option i {
+        width: 40px;
+        height: 40px;
+        border-radius: 10px;
+        font-size: 19px;
+    }
+
+    .download-option h4 {
+        font-size: 14px;
+    }
+
+    .download-option span {
+        font-size: 11px;
+        line-height: 1.25;
+    }
+
+    .download-option a {
+        grid-column: auto;
+        width: fit-content;
+        margin-top: 0;
+        min-height: 24px;
+        padding: 0 8px;
+        font-size: 11px;
+    }
+
+    .download-footnote {
+        margin-top: 16px;
+        padding-top: 15px;
+    }
+
+    .download-footnote p {
+        align-items: flex-start;
+        font-size: 12px;
+        line-height: 1.4;
+    }
+
+    .download-footnote div span {
+        font-size: 11px;
+        padding: 7px 11px;
+    }
+}
+
 /* Keep all section pills matched to the Floor Plans eyebrow on every viewport. */
 :is(.ideal-floor-eyebrow,
     .project-plans-eyebrow,
@@ -10634,8 +10744,7 @@
     .project-essentials-head-eyebrow,
     .project-essentials-eyebrow,
     .site-visit-eyebrow,
-    .property-snapshot-eyebrow,
-    .interested-property-kicker) {
+    .property-snapshot-eyebrow) {
     display: inline-flex !important;
     min-height: 28px !important;
     height: 28px !important;
@@ -10669,8 +10778,7 @@
     .project-essentials-head-eyebrow,
     .project-essentials-eyebrow,
     .site-visit-eyebrow,
-    .property-snapshot-eyebrow,
-    .interested-property-kicker) svg {
+    .property-snapshot-eyebrow) svg {
     width: 13px !important;
     height: 13px !important;
 }
