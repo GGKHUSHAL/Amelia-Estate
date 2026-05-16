@@ -11,6 +11,7 @@
 }
 
 @keyframes visualTabsHintRight {
+
     0%,
     100% {
         transform: translate(-2px, -50%);
@@ -24,6 +25,7 @@
 }
 
 @keyframes visualTabsHintLeft {
+
     0%,
     100% {
         transform: translate(2px, -50%);
@@ -146,6 +148,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+
     .differentiation-section::after,
     .differentiation-section::before,
     .peace-density-bg img,
@@ -167,30 +170,30 @@
     .ideal-floor-media img,
     .ideal-floor-eyebrow,
     .ideal-floor-heading h2,
-    .ideal-floor-heading > p:not(.ideal-floor-eyebrow),
+    .ideal-floor-heading>p:not(.ideal-floor-eyebrow),
     .ideal-floor-size-tabs,
     .ideal-floor-media,
     .ideal-floor-panel,
     .project-plans-eyebrow,
     .project-plans-copy h2,
-    .project-plans-copy > p:not(.project-plans-eyebrow),
+    .project-plans-copy>p:not(.project-plans-eyebrow),
     .project-plan-tabs,
     .project-plan-card,
     .transparent-pricing-eyebrow,
     .transparent-pricing-header h2,
-    .transparent-pricing-header > p:not(.transparent-pricing-eyebrow),
+    .transparent-pricing-header>p:not(.transparent-pricing-eyebrow),
     .transparent-pricing-tabs,
     .pricing-card,
     .selected-price-box::before,
     .premium-specs-eyebrow,
     .premium-specs-header h2,
-    .premium-specs-header > p:not(.premium-specs-eyebrow),
+    .premium-specs-header>p:not(.premium-specs-eyebrow),
     .premium-specs-slider,
     .premium-specs-brands,
     .premium-specs-notice,
     .visual-showcase-eyebrow,
     .visual-showcase-header h2,
-    .visual-showcase-header > p:not(.visual-showcase-eyebrow),
+    .visual-showcase-header>p:not(.visual-showcase-eyebrow),
     .visual-showcase-tabs,
     .visual-showcase-copy,
     .visual-showcase-content,
@@ -198,7 +201,7 @@
     .visual-showcase-disclaimer,
     .prime-location-eyebrow,
     .prime-location-header h2,
-    .prime-location-header > p:not(.prime-location-eyebrow),
+    .prime-location-header>p:not(.prime-location-eyebrow),
     .prime-location-tabs,
     .prime-location-map,
     .prime-distance-block h3,
@@ -221,19 +224,19 @@
     .buyer-testimonials-slider,
     .sticky-availability-eyebrow,
     .sticky-availability-content h2,
-    .sticky-availability-content > p,
-    .sticky-availability-content > div,
+    .sticky-availability-content>p,
+    .sticky-availability-content>div,
     .sticky-availability-label,
     .buyer-appreciation-title,
     .buyer-appreciation-card,
     .faq-eyebrow,
     .faq-header h2,
-    .faq-header > p,
+    .faq-header>p,
     .faq-tabs,
     .faq-panels,
     .project-essentials-eyebrow,
     .project-essentials-card h2,
-    .project-essentials-panel > p:not(.project-essentials-eyebrow),
+    .project-essentials-panel>p:not(.project-essentials-eyebrow),
     .project-essentials-actions,
     .site-visit-map,
     .site-visit-card,
@@ -484,7 +487,7 @@
         padding: 20px !important;
     }
 
-    .property-modal-hero > p {
+    .property-modal-hero>p {
         padding: 18px;
         font-size: 15px;
         line-height: 1.62;
@@ -568,6 +571,7 @@
 }
 
 @media (max-width: 639px) {
+
     a[href*="wa.me"],
     .hero-actions a[href*="wa.me"].hero-whatsapp-btn {
         width: 100% !important;
@@ -607,8 +611,8 @@
     dt,
     address,
     .visual-showcase-copy p,
-    .premium-specs-header > p,
-    .project-plans-copy > p,
+    .premium-specs-header>p,
+    .project-plans-copy>p,
     .property-snapshot-content p,
     .visual-showcase-cta p {
         font-size: 16px;
@@ -678,6 +682,7 @@
 }
 
 @media (max-width: 991px) {
+
     .property-modal-hero,
     .footer-redesign-cta,
     .footer-redesign-main {
@@ -711,7 +716,7 @@
         grid-template-columns: 1fr !important;
     }
 
-    .property-modal-hero > p {
+    .property-modal-hero>p {
         padding: 18px !important;
         font-size: 15px !important;
     }
@@ -740,7 +745,7 @@
         padding: 38px 12px 42px !important;
     }
 
-    .property-snapshot-section > div {
+    .property-snapshot-section>div {
         width: 100% !important;
     }
 
@@ -798,7 +803,7 @@
         gap: 10px !important;
     }
 
-    .property-snapshot-metrics > div {
+    .property-snapshot-metrics>div {
         min-height: 92px !important;
         padding: 12px 8px 19px !important;
         border-radius: 12px !important;
@@ -906,13 +911,13 @@
         text-align: center !important;
     }
 
-    .footer-redesign-brand > img {
+    .footer-redesign-brand>img {
         width: 112px !important;
         margin-left: auto !important;
         margin-right: auto !important;
     }
 
-    .footer-redesign-brand > p {
+    .footer-redesign-brand>p {
         max-width: 250px !important;
         margin: 12px 0 !important;
         margin-left: auto !important;
@@ -997,7 +1002,7 @@
         overflow-x: hidden;
     }
 
-    header > div {
+    header>div {
         padding-left: 32px !important;
         padding-right: 32px !important;
         align-items: center !important;
@@ -1097,7 +1102,7 @@
     .about-content,
     .about-text-block,
     .about-content h2,
-    .about-text-block > p,
+    .about-text-block>p,
     .about-feature-grid {
         width: 100%;
         max-width: 680px;
@@ -1127,7 +1132,7 @@
         line-height: 44px;
     }
 
-    .ideal-floor-heading > p:not(.ideal-floor-eyebrow) {
+    .ideal-floor-heading>p:not(.ideal-floor-eyebrow) {
         font-size: 16px;
         line-height: 24px;
     }
@@ -1231,7 +1236,7 @@
         padding: 48px 32px 42px !important;
     }
 
-    .buyer-appreciation-section > div {
+    .buyer-appreciation-section>div {
         width: 100%;
     }
 
@@ -1292,7 +1297,7 @@
         padding: 70px 32px;
     }
 
-    .property-snapshot-section > div {
+    .property-snapshot-section>div {
         width: 100% !important;
     }
 
@@ -1314,11 +1319,11 @@
         grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
     }
 
-    .property-snapshot-strip > div:nth-child(2) {
+    .property-snapshot-strip>div:nth-child(2) {
         border-right: 0;
     }
 
-    .property-snapshot-strip > div:nth-child(-n+2) {
+    .property-snapshot-strip>div:nth-child(-n+2) {
         border-bottom: 1px solid rgba(255, 255, 255, 0.16);
     }
 
@@ -1327,7 +1332,7 @@
         min-height: 520px;
     }
 
-    .buyer-testimonials-section > div {
+    .buyer-testimonials-section>div {
         width: 100%;
     }
 
@@ -1340,7 +1345,7 @@
         flex-basis: 320px;
     }
 
-    .interested-property-section > div {
+    .interested-property-section>div {
         width: 100%;
         height: auto;
         grid-template-columns: 1fr !important;
@@ -1360,7 +1365,7 @@
         margin-right: auto;
     }
 
-    .interested-property-copy > div {
+    .interested-property-copy>div {
         justify-content: center;
     }
 
@@ -1384,7 +1389,7 @@
         object-position: center top;
     }
 
-    .construction-progress-section > div {
+    .construction-progress-section>div {
         width: 100%;
     }
 
@@ -1398,7 +1403,7 @@
         min-height: 360px;
     }
 
-    .lifestyle-amenities-section > div {
+    .lifestyle-amenities-section>div {
         width: 100%;
     }
 
@@ -2078,7 +2083,7 @@
         font-weight: 500;
     }
 
-    .visual-showcase-header > p:not(.visual-showcase-eyebrow) {
+    .visual-showcase-header>p:not(.visual-showcase-eyebrow) {
         font-size: 16px;
         line-height: 24px;
     }
@@ -2100,7 +2105,7 @@
         line-height: 42px;
     }
 
-    .premium-specs-header > p:not(.premium-specs-eyebrow) {
+    .premium-specs-header>p:not(.premium-specs-eyebrow) {
         font-size: 16px;
         line-height: 24px;
     }
@@ -2227,7 +2232,7 @@
         box-shadow: none !important;
     }
 
-    header > div {
+    header>div {
         padding-left: 20px !important;
         padding-right: 20px !important;
         background: #0f0f0f;
@@ -2635,7 +2640,7 @@
         line-height: 32px;
     }
 
-    .ideal-floor-heading > p:not(.ideal-floor-eyebrow) {
+    .ideal-floor-heading>p:not(.ideal-floor-eyebrow) {
         margin-top: 8px;
         font-size: 13px;
         line-height: 18px;
@@ -2699,7 +2704,7 @@
         letter-spacing: 0.01em;
     }
 
-    .ideal-floor-panel > div:first-child p {
+    .ideal-floor-panel>div:first-child p {
         margin-top: 4px;
         font-size: 11px;
         line-height: 15px;
@@ -2755,7 +2760,7 @@
         max-width: 100%;
     }
 
-    .project-plans-copy > p:not(.project-plans-eyebrow) {
+    .project-plans-copy>p:not(.project-plans-eyebrow) {
         width: 100%;
         max-width: 100%;
         font-size: 13px;
@@ -2765,7 +2770,7 @@
 
     .project-plans-eyebrow,
     .project-plans-copy h2,
-    .project-plans-copy > p:not(.project-plans-eyebrow),
+    .project-plans-copy>p:not(.project-plans-eyebrow),
     .project-plan-tabs,
     .project-plan-card {
         transform: translateY(22px);
@@ -2895,7 +2900,7 @@
     }
 
     .project-plan-badge-label {
-        margin: 5px 0px 0px 0px ;
+        margin: 5px 0px 0px 0px;
         padding: 7px 14px;
         font-size: 11px;
     }
@@ -3002,7 +3007,7 @@
         padding: 34px 0;
     }
 
-    .faq-section > div {
+    .faq-section>div {
         width: calc(100% - 14px) !important;
         max-width: none !important;
     }
@@ -3121,7 +3126,7 @@
         background: transparent;
     }
 
-    .faq-tab > span:not(.faq-tab-icon) {
+    .faq-tab>span:not(.faq-tab-icon) {
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
@@ -3201,7 +3206,7 @@
         line-height: 39px;
     }
 
-    .project-essentials-head > p:not(.project-essentials-head-eyebrow) {
+    .project-essentials-head>p:not(.project-essentials-head-eyebrow) {
         font-size: 14px;
         line-height: 22px;
     }
@@ -3272,12 +3277,12 @@
         line-height: 40px !important;
     }
 
-    .sticky-availability-content > p {
+    .sticky-availability-content>p {
         font-size: 14px !important;
         line-height: 22px !important;
     }
 
-    .sticky-availability-content > div:not(.sticky-availability-label) {
+    .sticky-availability-content>div:not(.sticky-availability-label) {
         max-width: 440px !important;
         flex-direction: column;
         gap: 12px !important;
@@ -3366,7 +3371,7 @@
         line-height: 20px !important;
     }
 
-    .interested-property-copy > div {
+    .interested-property-copy>div {
         margin-top: 24px !important;
         flex-wrap: wrap;
     }
@@ -3496,7 +3501,7 @@
         font-weight: 500;
     }
 
-    .visual-showcase-header > p:not(.visual-showcase-eyebrow) {
+    .visual-showcase-header>p:not(.visual-showcase-eyebrow) {
         max-width: 360px;
         margin-left: auto;
         margin-right: auto;
@@ -3612,7 +3617,7 @@
         line-height: 37px;
     }
 
-    .premium-specs-header > p:not(.premium-specs-eyebrow) {
+    .premium-specs-header>p:not(.premium-specs-eyebrow) {
         max-width: 360px;
         margin-top: 6px;
         margin-left: auto;
@@ -3764,7 +3769,7 @@
         font-size: 25px;
     }
 
-    .transparent-pricing-header > p:not(.transparent-pricing-eyebrow) {
+    .transparent-pricing-header>p:not(.transparent-pricing-eyebrow) {
         max-width: 300px;
         margin-left: auto;
         margin-right: auto;
@@ -3845,7 +3850,7 @@
         border-radius: 16px;
     }
 
-    .floor-price-panel > p {
+    .floor-price-panel>p {
         margin-bottom: 8px;
         font-size: 10px;
         line-height: 14px;
@@ -3923,7 +3928,7 @@
         border-radius: 16px;
     }
 
-    .selected-price-box > span {
+    .selected-price-box>span {
         font-size: 9px;
         line-height: 12px;
         letter-spacing: 0.14em;
@@ -3963,7 +3968,7 @@
 
     .transparent-pricing-eyebrow,
     .transparent-pricing-header h2,
-    .transparent-pricing-header > p:not(.transparent-pricing-eyebrow),
+    .transparent-pricing-header>p:not(.transparent-pricing-eyebrow),
     .transparent-pricing-tabs,
     .pricing-card {
         transform: translateY(22px);
@@ -3983,7 +3988,7 @@
     .about-content,
     .about-text-block,
     .about-content h2,
-    .about-text-block > p,
+    .about-text-block>p,
     .about-feature-grid {
         width: 100%;
         max-width: 100%;
@@ -4038,7 +4043,7 @@
         font-weight: 600;
     }
 
-    .about-text-block > p {
+    .about-text-block>p {
         margin-top: 14px;
         color: #8b8682;
         font-size: 15px;
@@ -4201,7 +4206,7 @@
         margin-bottom: 20px;
     }
 
-    .booking-enquiry-form label > span:first-child {
+    .booking-enquiry-form label>span:first-child {
         margin-bottom: 9px;
         font-size: 11px;
         line-height: 15px;
@@ -4217,8 +4222,8 @@
         justify-content: center;
         padding: 0 12px;
         letter-spacing: 0.13em;
-        min-height: 40px ;
-        font-size: 13.5px ;
+        min-height: 40px;
+        font-size: 13.5px;
     }
 
     .booking-trust-row svg {
@@ -4425,7 +4430,7 @@
         line-height: 28px;
     }
 
-    .project-plans-copy > p:not(.project-plans-eyebrow) {
+    .project-plans-copy>p:not(.project-plans-eyebrow) {
         max-width: 100%;
         margin-top: 6px;
         font-size: 11px;
@@ -4694,7 +4699,7 @@
         line-height: 31px !important;
     }
 
-    .project-essentials-panel > p:not(.project-essentials-eyebrow) {
+    .project-essentials-panel>p:not(.project-essentials-eyebrow) {
         font-size: 13px !important;
         line-height: 20px !important;
     }
@@ -4846,7 +4851,7 @@
         border-bottom: 0 !important;
     }
 
-    .property-snapshot-metrics > div {
+    .property-snapshot-metrics>div {
         min-height: 92px !important;
         padding: 12px 8px 19px !important;
         border: 1px solid rgba(213, 174, 102, 0.22) !important;
@@ -4956,7 +4961,7 @@
         line-height: 34px;
     }
 
-    .prime-location-header > p:not(.prime-location-eyebrow) {
+    .prime-location-header>p:not(.prime-location-eyebrow) {
         font-size: 14px;
         line-height: 21px;
     }
@@ -5104,7 +5109,7 @@
         font-weight: 500;
     }
 
-    .visual-showcase-header > p:not(.visual-showcase-eyebrow) {
+    .visual-showcase-header>p:not(.visual-showcase-eyebrow) {
         font-size: 14px;
         line-height: 21px;
     }
@@ -5140,7 +5145,7 @@
         line-height: 34px;
     }
 
-    .premium-specs-header > p:not(.premium-specs-eyebrow) {
+    .premium-specs-header>p:not(.premium-specs-eyebrow) {
         font-size: 14px;
         line-height: 21px;
     }
@@ -5201,7 +5206,7 @@
         line-height: 28px;
     }
 
-    .transparent-pricing-header > p:not(.transparent-pricing-eyebrow) {
+    .transparent-pricing-header>p:not(.transparent-pricing-eyebrow) {
         margin-top: 6px;
         font-size: 11px;
         line-height: 16px;
@@ -5245,7 +5250,7 @@
         padding: 8px;
     }
 
-    .floor-price-panel > p {
+    .floor-price-panel>p {
         margin-bottom: 7px;
         font-size: 8.5px;
         line-height: 12px;
@@ -5369,7 +5374,7 @@
         font-size: 25px;
     }
 
-    .about-text-block > p {
+    .about-text-block>p {
         font-size: 15px;
         line-height: 23px;
     }
@@ -5449,7 +5454,7 @@
     }
 
     .hero-slide-bg,
-    .hero-slide > img {
+    .hero-slide>img {
         position: absolute;
         inset: 0;
         display: block;
@@ -6198,7 +6203,7 @@
     }
 
     .hero-slide-bg,
-    .hero-slide > img {
+    .hero-slide>img {
         background-position: center top !important;
         background-size: cover !important;
         object-position: center top;
@@ -6486,7 +6491,7 @@
         line-height: 28px;
     }
 
-    .ideal-floor-heading > p:not(.ideal-floor-eyebrow) {
+    .ideal-floor-heading>p:not(.ideal-floor-eyebrow) {
         max-width: 280px;
         margin-top: 6px;
         font-size: 11px;
@@ -6551,7 +6556,7 @@
         line-height: 23px;
     }
 
-    .ideal-floor-panel > div:first-child p {
+    .ideal-floor-panel>div:first-child p {
         margin-top: 3px;
         font-size: 10px;
         line-height: 14px;
@@ -6562,7 +6567,7 @@
         gap: 7px;
     }
 
-    .ideal-floor-selector > span {
+    .ideal-floor-selector>span {
         font-size: 10px;
         line-height: 13px;
         letter-spacing: 0.09em;
@@ -6854,12 +6859,12 @@
         padding: 28px 0 30px !important;
     }
 
-    .lifestyle-amenities-section > div {
+    .lifestyle-amenities-section>div {
         width: 100% !important;
         max-width: 100% !important;
     }
 
-    .lifestyle-amenities-section > div > .mx-auto.text-center {
+    .lifestyle-amenities-section>div>.mx-auto.text-center {
         width: calc(100% - 32px);
     }
 
@@ -7215,7 +7220,7 @@
     }
 
     .hero-slide-bg,
-    .hero-slide > img {
+    .hero-slide>img {
         inset: 0 !important;
         width: 100% !important;
         height: 100% !important;
@@ -7251,8 +7256,8 @@
         overflow: hidden !important;
     }
 
-    .lifestyle-amenities-section > div,
-    .lifestyle-amenities-section > div > .mx-auto.text-center {
+    .lifestyle-amenities-section>div,
+    .lifestyle-amenities-section>div>.mx-auto.text-center {
         width: calc(100% - 28px) !important;
         max-width: 420px !important;
         margin-right: auto !important;
@@ -7336,11 +7341,8 @@
         line-height: 52px !important;
     }
 
-    .sticky-availability-content--interested .interested-property-copy p {
-        margin-right: auto;
-    }
 
-    .sticky-availability-content--interested .interested-property-copy > div {
+    .sticky-availability-content--interested .interested-property-copy>div {
         justify-content: center;
     }
 
@@ -7379,7 +7381,7 @@
         line-height: 18px !important;
     }
 
-    .sticky-availability-content--interested .interested-property-copy > div {
+    .sticky-availability-content--interested .interested-property-copy>div {
         margin-top: 14px !important;
         width: 100%;
         max-width: 258px !important;
@@ -7416,18 +7418,18 @@
     }
 
     .hero-copy p,
-    .about-text-block > p,
+    .about-text-block>p,
     .about-more p,
     .differentiation-copy p,
     .peace-density-content p,
-    .ideal-floor-heading > p:not(.ideal-floor-eyebrow),
-    .project-plans-copy > p:not(.project-plans-eyebrow),
-    .transparent-pricing-header > p:not(.transparent-pricing-eyebrow),
+    .ideal-floor-heading>p:not(.ideal-floor-eyebrow),
+    .project-plans-copy>p:not(.project-plans-eyebrow),
+    .transparent-pricing-header>p:not(.transparent-pricing-eyebrow),
     .buyer-testimonials-header p:not(.buyer-testimonials-eyebrow),
-    .sticky-availability-content > p,
+    .sticky-availability-content>p,
     .buyer-appreciation-card p,
-    .project-essentials-head > p:not(.project-essentials-head-eyebrow),
-    .project-essentials-panel > p:not(.project-essentials-eyebrow),
+    .project-essentials-head>p:not(.project-essentials-head-eyebrow),
+    .project-essentials-panel>p:not(.project-essentials-eyebrow),
     .site-visit-card p,
     .property-snapshot-content p {
         font-size: 16px !important;
@@ -7483,14 +7485,14 @@
     }
 
     .project-plan-tabs button,
-.project-plan-variants button,
-.ideal-floor-levels button,
-.ideal-floor-size-tabs button{
+    .project-plan-variants button,
+    .ideal-floor-levels button,
+    .ideal-floor-size-tabs button {
         font-size: 12px !important;
         line-height: 1.35 !important;
     }
 
-    .property-snapshot-content h3{
+    .property-snapshot-content h3 {
         font-size: 28px !important;
         line-height: 1.28 !important;
     }
@@ -7514,7 +7516,7 @@
 
     .about-feature p,
     .differentiation-card p,
-    .ideal-floor-panel > div:first-child p,
+    .ideal-floor-panel>div:first-child p,
     .project-plan-footer p,
     .property-snapshot-meta dd,
     .property-snapshot-modal-section h4 {
@@ -7558,7 +7560,7 @@
 }
 
 @media (max-width: 767px) {
-    header > div {
+    header>div {
         justify-content: space-between !important;
     }
 
@@ -7716,8 +7718,9 @@
 }
 
 @media (max-width: 360px) {
-    .lifestyle-amenities-section > div,
-    .lifestyle-amenities-section > div > .mx-auto.text-center {
+
+    .lifestyle-amenities-section>div,
+    .lifestyle-amenities-section>div>.mx-auto.text-center {
         width: calc(100% - 20px) !important;
     }
 
@@ -7749,14 +7752,14 @@
 }
 
 @media (max-width: 767px) {
-    .lifestyle-amenities-section > div {
+    .lifestyle-amenities-section>div {
         width: calc(100% - 20px) !important;
         max-width: 420px !important;
         margin: 0 auto !important;
         padding: 14px 12px 12px !important;
     }
 
-    .lifestyle-amenities-section > div > .mx-auto.text-center,
+    .lifestyle-amenities-section>div>.mx-auto.text-center,
     .lifestyle-amenities-tabs,
     .lifestyle-amenities-tab-progress,
     .lifestyle-amenities-grid,
@@ -7813,7 +7816,7 @@
 }
 
 @media (max-width: 360px) {
-    .lifestyle-amenities-section > div {
+    .lifestyle-amenities-section>div {
         width: calc(100% - 16px) !important;
         padding: 16px 10px 12px !important;
         border-radius: 18px !important;
@@ -7848,7 +7851,7 @@
         background: rgba(255, 255, 255, 0.96) !important;
     }
 
-    .site-header > div {
+    .site-header>div {
         width: 100% !important;
         padding: 0 28px !important;
     }
@@ -7913,7 +7916,7 @@
         box-shadow: 0 16px 36px rgba(0, 0, 0, 0.18) !important;
     }
 
-    .site-header > div {
+    .site-header>div {
         height: 74px !important;
         padding: 0 16px !important;
         background: transparent !important;
@@ -8060,8 +8063,7 @@
         font-size: 14px !important;
     }
 
-    :is(
-        .about-content h2,
+    :is(.about-content h2,
         .ideal-floor-heading h2,
         .project-plans-copy h2,
         .transparent-pricing-header h2,
@@ -8075,8 +8077,7 @@
         .project-essentials-head h2,
         .site-visit-card h2,
         .site-visit-section h2,
-        .property-snapshot-header h2
-    ) {
+        .property-snapshot-header h2) {
         font-size: clamp(34px, 5vw, 42px) !important;
     }
 }
@@ -8122,8 +8123,7 @@
         line-height: 1.2 !important;
     }
 
-    :is(
-        .snapshot-inner h2,
+    :is(.snapshot-inner h2,
         .about-content h2,
         .ideal-floor-heading h2,
         .project-plans-copy h2,
@@ -8140,14 +8140,12 @@
         .site-visit-card h2,
         .site-visit-section h2,
         .property-snapshot-header h2,
-        .footer-redesign-cta h2
-    ) {
+        .footer-redesign-cta h2) {
         font-size: clamp(29px, 8.1vw, 34px) !important;
         line-height: 1.18 !important;
     }
 
-    :is(
-        .peace-density-content h2,
+    :is(.peace-density-content h2,
         .differentiation-copy h2,
         .booking-enquiry-form h2,
         .interested-property-copy h2,
@@ -8157,15 +8155,13 @@
         .pricing-title-block h3,
         .project-plan-footer h3,
         .premium-specs-slide-overlay h3,
-        .visual-showcase-cta h3
-    ){
+        .visual-showcase-cta h3) {
         font-size: clamp(26px, 7.2vw, 32px) !important;
         line-height: 1.2 !important;
         text-wrap: balance;
     }
 
-    :is(
-        .about-text-block > p,
+    :is(.about-text-block > p,
         .about-more p,
         .ideal-floor-heading > p:not(.ideal-floor-eyebrow),
         .project-plans-copy > p:not(.project-plans-eyebrow),
@@ -8195,23 +8191,19 @@
         .property-modal-grid p,
         .property-modal-note p,
         .footer-redesign-cta span,
-        .footer-redesign-brand > p
-    ) {
+        .footer-redesign-brand > p) {
         font-size: 15px !important;
         line-height: 1.62 !important;
     }
 
-    :is(
-        .pricing-unlock-kicker,
-        .footer-redesign-cta p
-    ){
+    :is(.pricing-unlock-kicker,
+        .footer-redesign-cta p) {
         font-size: 11.5px !important;
         line-height: 1.35 !important;
         letter-spacing: 0.09em !important;
     }
 
-    :is(
-        .snapshot-card span,
+    :is(.snapshot-card span,
         .snapshot-card strong,
         .about-feature p,
         .about-more-points span,
@@ -8244,14 +8236,12 @@
         .property-snapshot-metrics span,
         .property-snapshot-meta dt,
         .footer-redesign-brand span,
-        .footer-redesign-column strong
-    ) {
+        .footer-redesign-column strong) {
         font-size: 11.5px !important;
         line-height: 1.38 !important;
     }
 
-    :is(
-        .about-feature h3,
+    :is(.about-feature h3,
         .ideal-floor-spec strong,
         .pricing-spec strong,
         .visual-gallery-info-copy strong,
@@ -8267,14 +8257,12 @@
         .property-snapshot-meta dd,
         .footer-redesign-column a,
         .footer-redesign-column address,
-        .footer-redesign-column p
-    ) {
+        .footer-redesign-column p) {
         font-size: 14px !important;
         line-height: 1.42 !important;
     }
 
-    :is(
-        .ideal-floor-size-tabs button,
+    :is(.ideal-floor-size-tabs button,
         .ideal-floor-levels button,
         .ideal-floor-price-btn,
         .project-plan-tabs button,
@@ -8294,18 +8282,20 @@
         .site-visit-submit,
         .site-visit-whatsapp,
         .footer-redesign-actions a,
-        .property-snapshot-modal-btn){
+        .property-snapshot-modal-btn) {
         min-height: 42px !important;
         height: auto !important;
         font-size: 13.5px !important;
         line-height: 1.25 !important;
         white-space: normal !important;
     }
-.project-plan-variants button {
-          min-height: 22px !important;
-}
-    .booking-enquiry-form label > span:first-child,
-    .pricing-unlock-form label > span,
+
+    .project-plan-variants button {
+        min-height: 22px !important;
+    }
+
+    .booking-enquiry-form label>span:first-child,
+    .pricing-unlock-form label>span,
     .booking-enquiry-form input,
     .pricing-unlock-form input,
     .site-visit-form input,
@@ -8460,7 +8450,7 @@
         margin-bottom: 12px !important;
     }
 
-    .booking-enquiry-form label > span:first-child {
+    .booking-enquiry-form label>span:first-child {
         margin-bottom: 5px !important;
         font-size: 10px !important;
         line-height: 1 !important;
@@ -8506,7 +8496,7 @@
         text-align: center !important;
     }
 
-    .booking-trust-row span + span::before {
+    .booking-trust-row span+span::before {
         display: block !important;
         position: absolute !important;
         left: 0 !important;
@@ -8547,6 +8537,7 @@
 
 /* Construction mobile fit: keep status cards equal and bank tiles readable. */
 @media (max-width: 767px) {
+
     .construction-progress-side,
     .construction-proof-row {
         width: 100% !important;
@@ -8555,9 +8546,9 @@
         align-items: stretch !important;
     }
 
-    .construction-progress-side > .construction-info-card,
-    .construction-progress-side > .construction-proof-card,
-    .construction-proof-row > .construction-info-card {
+    .construction-progress-side>.construction-info-card,
+    .construction-progress-side>.construction-proof-card,
+    .construction-proof-row>.construction-info-card {
         width: 100% !important;
         max-width: 100% !important;
         margin-left: 0 !important;
@@ -8792,6 +8783,7 @@
         letter-spacing: 0.02em !important;
     }
 }
+
 @media (max-width: 767px) {
     .snapshot-section {
         height: auto !important;
@@ -8899,7 +8891,7 @@
         line-height: 1.08 !important;
     }
 
-    .about-text-block > p {
+    .about-text-block>p {
         margin-top: 10px !important;
         line-height: 1.2 !important;
     }
@@ -8914,7 +8906,7 @@
 }
 
 @media (max-width: 767px) {
-    .about-content .about-text-block > p {
+    .about-content .about-text-block>p {
         font-size: 14.5px !important;
         line-height: 1.08 !important;
         letter-spacing: 0 !important;
@@ -9297,7 +9289,7 @@
         transform: none !important;
     }
 
-    .hero-price-details-btn > span:not(.hero-price-details-shine) {
+    .hero-price-details-btn>span:not(.hero-price-details-shine) {
         display: block !important;
         position: relative !important;
         z-index: 2 !important;
@@ -9430,7 +9422,7 @@
         padding: 12px 12px 14px !important;
     }
 
-    #aboutMore.about-more.is-open > p {
+    #aboutMore.about-more.is-open>p {
         width: 100% !important;
         max-width: 100% !important;
         margin: 0 auto !important;
@@ -9616,11 +9608,11 @@
     }
 
     .ideal-floor-heading h2,
-    .ideal-floor-heading > p:not(.ideal-floor-eyebrow) {
+    .ideal-floor-heading>p:not(.ideal-floor-eyebrow) {
         text-align: center !important;
     }
 
-    .ideal-floor-heading > p:not(.ideal-floor-eyebrow) {
+    .ideal-floor-heading>p:not(.ideal-floor-eyebrow) {
         max-width: 270px !important;
         margin: 12px auto 0 !important;
     }
@@ -9664,7 +9656,7 @@
         margin-bottom: 16px !important;
     }
 
-    .ideal-floor-heading > p:not(.ideal-floor-eyebrow) {
+    .ideal-floor-heading>p:not(.ideal-floor-eyebrow) {
         margin-top: 8px !important;
     }
 
@@ -9720,7 +9712,7 @@
         text-align: center !important;
     }
 
-    .ideal-floor-panel > div:first-child p {
+    .ideal-floor-panel>div:first-child p {
         line-height: 12px !important;
         text-align: center !important;
         padding: 5px 0 !important;
@@ -9807,11 +9799,11 @@
     .project-plans-header,
     .project-plans-copy,
     .project-plans-copy h2,
-    .project-plans-copy > p:not(.project-plans-eyebrow) {
+    .project-plans-copy>p:not(.project-plans-eyebrow) {
         text-align: center !important;
     }
 
-    .project-plans-copy > p:not(.project-plans-eyebrow) {
+    .project-plans-copy>p:not(.project-plans-eyebrow) {
         margin-right: auto !important;
         margin-left: auto !important;
     }
@@ -10390,7 +10382,7 @@
         border-radius: 16px !important;
     }
 
-    .transparent-pricing-section .selected-price-box > span {
+    .transparent-pricing-section .selected-price-box>span {
         font-size: 8px !important;
         line-height: 11px !important;
         letter-spacing: 0.12em !important;
@@ -10423,6 +10415,7 @@
 }
 
 @media (max-width: 767px) {
+
     .hero-copy h1,
     .hero-slide--figma .hero-copy h1,
     .hero-slide:not(.hero-slide--figma) .hero-copy h1 {
@@ -10454,6 +10447,7 @@
 
 /* Final mobile hero controls: keep all phone-only hero edits in media.css. */
 @media (max-width: 767px) {
+
     .hero-copy,
     .hero-copy h1,
     .hero-slide--figma .hero-copy h1,
@@ -10517,7 +10511,7 @@
         line-height: 1 !important;
     }
 
-    .hero-price-details-btn > span:not(.hero-price-details-shine),
+    .hero-price-details-btn>span:not(.hero-price-details-shine),
     a[href*="wa.me"],
     .hero-actions a[href*="wa.me"].hero-whatsapp-btn,
     .hero-whatsapp-btn span {
@@ -10614,7 +10608,7 @@
         text-align: left !important;
     }
 
-    .about-text-block > p {
+    .about-text-block>p {
         text-align: left !important;
         margin-left: 0 !important;
         margin-right: 0 !important;
@@ -10925,7 +10919,7 @@
         line-height: 30px !important;
     }
 
-    .site-visit-card h2 + p {
+    .site-visit-card h2+p {
         margin-top: 5px !important;
         font-size: 11px !important;
         line-height: 16px !important;
@@ -11144,7 +11138,7 @@
         margin-top: 0 !important;
     }
 
-    .footer-redesign-brand > img,
+    .footer-redesign-brand>img,
     .footer-redesign-brand div img {
         filter:
             brightness(0) saturate(100%) invert(85%) sepia(95%) saturate(731%) hue-rotate(344deg) brightness(101%) contrast(88%) !important;
@@ -11162,7 +11156,7 @@
         grid-column: 1 / -1 !important;
     }
 
-    .footer-redesign-main > .footer-redesign-column:not(.footer-redesign-contact) {
+    .footer-redesign-main>.footer-redesign-column:not(.footer-redesign-contact) {
         width: 100% !important;
         text-align: center !important;
     }
@@ -11173,7 +11167,7 @@
         text-align: center !important;
     }
 
-    .footer-redesign-main .footer-redesign-column:not(.footer-redesign-contact) > a {
+    .footer-redesign-main .footer-redesign-column:not(.footer-redesign-contact)>a {
         width: fit-content !important;
         margin-right: auto !important;
         margin-left: auto !important;
@@ -11188,7 +11182,7 @@
     }
 
     .footer-redesign-brand,
-    .footer-redesign-main > .footer-redesign-column,
+    .footer-redesign-main>.footer-redesign-column,
     .footer-redesign-contact {
         grid-column: 1 / -1 !important;
         width: 100% !important;
@@ -11200,7 +11194,7 @@
         border-radius: 0 !important;
     }
 
-    .footer-redesign-main > .footer-redesign-column {
+    .footer-redesign-main>.footer-redesign-column {
         border-bottom: 1px solid rgba(255, 255, 255, 0.14) !important;
         padding: 0 !important;
         text-align: left !important;
@@ -11259,7 +11253,7 @@
         text-align: left !important;
     }
 
-    .footer-redesign-contact .footer-accordion-panel > a {
+    .footer-redesign-contact .footer-accordion-panel>a {
         width: min(100%, 230px) !important;
         justify-content: center !important;
         margin-right: auto !important;
@@ -11267,7 +11261,7 @@
         text-align: center !important;
     }
 
-    .footer-redesign-main .footer-redesign-column:not(.footer-redesign-contact) .footer-accordion-panel > a {
+    .footer-redesign-main .footer-redesign-column:not(.footer-redesign-contact) .footer-accordion-panel>a {
         margin-right: 0 !important;
         margin-left: 0 !important;
         text-align: left !important;
@@ -11318,7 +11312,7 @@
         font-size: clamp(28px, 8.2vw, 36px);
     }
 
-    .project-download-heading > span {
+    .project-download-heading>span {
         margin-top: 10px;
         font-size: 14px;
         line-height: 1.35;
@@ -11358,7 +11352,7 @@
         font-size: 24px;
     }
 
-    .download-options-panel > p {
+    .download-options-panel>p {
         margin-bottom: 16px;
         font-size: 13px;
         line-height: 1.45;
@@ -11527,7 +11521,7 @@
         box-shadow: 0 -24px 56px rgba(0, 0, 0, 0.34) !important;
     }
 
-    .buyer-appreciation-section > div {
+    .buyer-appreciation-section>div {
         width: 100% !important;
         max-width: 100% !important;
         text-align: center !important;
@@ -11618,7 +11612,7 @@
         gap: 8px !important;
     }
 
-    .property-snapshot-metrics > div {
+    .property-snapshot-metrics>div {
         min-height: 78px !important;
         padding: 10px 8px 14px !important;
     }
@@ -11649,7 +11643,7 @@
         text-align: center !important;
     }
 
-    .property-snapshot-strip > div {
+    .property-snapshot-strip>div {
         position: relative !important;
         min-height: 64px !important;
         width: 100% !important;
@@ -11669,7 +11663,7 @@
             filter 0.28s ease !important;
     }
 
-    .property-snapshot-strip > div::before {
+    .property-snapshot-strip>div::before {
         content: "" !important;
         position: relative !important;
         left: auto !important;
@@ -11682,13 +11676,13 @@
         box-shadow: 0 0 12px rgba(240, 205, 69, 0.26) !important;
     }
 
-    .property-snapshot-strip > div:nth-child(2n),
-    .property-snapshot-strip > div:nth-last-child(-n+2),
-    .property-snapshot-strip > div:not(:last-child) {
+    .property-snapshot-strip>div:nth-child(2n),
+    .property-snapshot-strip>div:nth-last-child(-n+2),
+    .property-snapshot-strip>div:not(:last-child) {
         border: 0 !important;
     }
 
-    .property-snapshot-strip > div:hover {
+    .property-snapshot-strip>div:hover {
         filter: brightness(1.08) !important;
         transform: translateY(-3px) scale(1.08) !important;
     }
@@ -11717,7 +11711,7 @@
         transition: color 0.28s ease, transform 0.28s ease !important;
     }
 
-    .property-snapshot-strip > div:hover strong {
+    .property-snapshot-strip>div:hover strong {
         color: #f0cd45 !important;
     }
 
@@ -11749,7 +11743,7 @@
         gap: 12px !important;
     }
 
-    .property-modal-hero > p {
+    .property-modal-hero>p {
         padding: 13px !important;
         font-size: 14px !important;
         line-height: 1.55 !important;
@@ -11792,6 +11786,7 @@
 }
 
 @media (max-width: 767px) {
+
     :is(.about-section-tab,
         .booking-enquiry-tab,
         .ideal-floor-eyebrow,
@@ -11804,7 +11799,6 @@
         .construction-progress-eyebrow,
         .buyer-testimonials-eyebrow,
         .sticky-availability-eyebrow,
-        .interested-property-kicker,
         .faq-eyebrow,
         .project-essentials-head-eyebrow,
         .project-essentials-eyebrow,
@@ -11859,4 +11853,29 @@
         stroke: currentColor !important;
     }
 
+}
+
+.interested-property-kicker {
+    display: inline-flex !important;
+    min-height: 28px !important;
+    height: auto !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    width: fit-content !important;
+    max-width: calc(100% - 28px) !important;
+    margin-right: auto !important;
+    margin-left: auto !important;
+    padding: 2px 4px !important;
+    border: 1px solid rgba(240, 205, 69, 0.40) !important;
+    border-radius: 999px !important;
+    background: rgba(240, 205, 69, 0.10) !important;
+    color: #f0cd45 !important;
+    font-family: "Inter", Arial, sans-serif !important;
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    line-height: 1 !important;
+    letter-spacing: 0.16em !important;
+    text-transform: uppercase !important;
+    box-shadow: none !important;
 }
