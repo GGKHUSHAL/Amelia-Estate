@@ -269,12 +269,12 @@
         right: 10px;
         bottom: 10px;
         left: 10px;
-        min-height: 82px;
-        padding: 13px;
+        min-height: 48px;
+        padding: 9px 10px;
     }
 
     .visual-gallery-info-copy {
-        padding-right: 76px;
+        padding-right: 42px;
     }
 
     .visual-gallery-info-copy strong {
@@ -290,6 +290,7 @@
     .visual-gallery-view-full {
         width: 32px;
         height: 32px;
+        border-radius: 9px;
     }
 
     .visual-gallery-view-full svg {
@@ -3048,7 +3049,7 @@
         font-size: 11px;
         line-height: 15px;
         border-radius: 12px;
-        border-color: rgba(240, 205, 69, 0.16);
+        border-color: rgba(240, 205, 69, 0.14);
         background: rgba(0, 0, 0, 0.32);
     }
 
@@ -3072,10 +3073,6 @@
         width: 22px;
         height: 22px;
         font-size: 10px;
-    }
-
-    .faq-assist-card {
-        display: none;
     }
 
     .faq-panels {
@@ -4641,7 +4638,7 @@
     }
 
     .site-visit-section {
-        padding: 44px 14px;
+        padding: 30px 14px;
     }
 
     .site-visit-card h2 {
@@ -4650,7 +4647,7 @@
     }
 
     .site-visit-card-inner {
-        padding: 24px 16px 18px;
+        padding: 0;
     }
 
     .site-visit-map {
@@ -4672,18 +4669,18 @@
     }
 
     .site-visit-form input {
-        height: 46px;
+        height: 40px;
         font-size: 13px;
     }
 
     .site-visit-submit,
     .site-visit-whatsapp {
-        height: 50px;
+        height: 44px;
         font-size: 14px;
     }
 
     .site-visit-whatsapp {
-        height: 56px;
+        height: 46px;
         font-size: 15px;
     }
 
@@ -4694,8 +4691,8 @@
 
     .site-visit-phone {
         gap: 10px;
-        font-size: 18px;
-        line-height: 26px;
+        font-size: 15px;
+        line-height: 22px;
         letter-spacing: 0.02em;
     }
 
@@ -7485,8 +7482,8 @@
     .lifestyle-amenities-cta {
         flex-direction: column !important;
         justify-content: center !important;
-        gap: 18px !important;
-        padding: 28px 20px !important;
+        gap: 12px !important;
+        padding: 18px 20px !important;
         text-align: center !important;
     }
 
