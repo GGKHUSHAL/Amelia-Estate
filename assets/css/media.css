@@ -4921,13 +4921,6 @@
         width: calc(100% - 28px) !important;
     }
 
-    .sticky-availability-eyebrow {
-        min-height: 30px;
-        padding: 0 14px !important;
-        font-size: 10px !important;
-        letter-spacing: 0.16em !important;
-    }
-
     .sticky-availability-content h2 {
         font-size: 27px !important;
         line-height: 35px !important;
@@ -9774,11 +9767,6 @@
         text-align: center !important;
     }
 
-    .ideal-floor-eyebrow {
-        margin-right: auto !important;
-        margin-left: auto !important;
-    }
-
     .ideal-floor-heading h2,
     .ideal-floor-heading > p:not(.ideal-floor-eyebrow) {
         text-align: center !important;
@@ -9807,13 +9795,6 @@
     .booking-enquiry-section {
         gap: 14px !important;
         padding-top: 42px !important;
-    }
-
-    .booking-enquiry-tab {
-        min-height: 28px !important;
-        padding: 7px 18px !important;
-        font-size: 11px !important;
-        letter-spacing: 0.16em !important;
     }
 
 }
@@ -9980,11 +9961,6 @@
     .project-plans-copy h2,
     .project-plans-copy > p:not(.project-plans-eyebrow) {
         text-align: center !important;
-    }
-
-    .project-plans-eyebrow {
-        margin-right: auto !important;
-        margin-left: auto !important;
     }
 
     .project-plans-copy > p:not(.project-plans-eyebrow) {
@@ -11072,6 +11048,93 @@
     }
 }
 
+/* Final mobile site visit form compact pass. */
+@media (max-width: 767px) {
+    .site-visit-section {
+        padding: 26px 0 28px !important;
+    }
+
+    .site-visit-inner {
+        width: min(calc(100% - 34px), 286px) !important;
+        max-width: 286px !important;
+        gap: 0 !important;
+    }
+
+    .site-visit-card {
+        width: 100% !important;
+        max-width: 286px !important;
+        padding: 16px 13px 12px !important;
+        border-radius: 16px !important;
+    }
+
+    .site-visit-card-inner {
+        width: 100% !important;
+    }
+
+    .site-visit-card h2 {
+        margin-top: 11px !important;
+        font-size: 24px !important;
+        line-height: 30px !important;
+    }
+
+    .site-visit-card h2 + p {
+        margin-top: 5px !important;
+        font-size: 11px !important;
+        line-height: 16px !important;
+    }
+
+    .site-visit-form {
+        width: min(100%, 246px) !important;
+        margin-top: 14px !important;
+        gap: 8px !important;
+    }
+
+    .site-visit-form input {
+        height: 38px !important;
+        min-height: 38px !important;
+        padding: 0 12px !important;
+        border-radius: 9px !important;
+        font-size: 11px !important;
+        letter-spacing: 0.10em !important;
+    }
+
+    .site-visit-submit,
+    .site-visit-card .site-visit-whatsapp {
+        width: min(100%, 246px) !important;
+        height: 38px !important;
+        min-height: 38px !important;
+        border-radius: 999px !important;
+        font-size: 12px !important;
+        line-height: 1 !important;
+    }
+
+    .site-visit-submit {
+        margin-top: 4px !important;
+    }
+
+    .site-visit-card .site-visit-whatsapp {
+        margin-top: 8px !important;
+        gap: 8px !important;
+    }
+
+    .site-visit-card .site-visit-whatsapp svg {
+        width: 16px !important;
+        height: 16px !important;
+    }
+
+    .site-visit-phone {
+        margin-top: 10px !important;
+        gap: 8px !important;
+        font-size: 14px !important;
+        line-height: 18px !important;
+    }
+
+    .site-visit-phone svg {
+        width: 19px !important;
+        height: 19px !important;
+    }
+}
+
 /* Match Section 8 mobile spec cards with Section 10's compact premium sizing. */
 @media (max-width: 767px) {
     .premium-specs-brand-dots {
@@ -11270,7 +11333,9 @@
     }
 
     .footer-redesign-main {
-        grid-template-columns: minmax(0, 260px) !important;
+        width: 100% !important;
+        max-width: none !important;
+        grid-template-columns: minmax(0, 1fr) !important;
         gap: 0 !important;
     }
 
@@ -11340,10 +11405,18 @@
     }
 
     .footer-redesign-contact .footer-accordion-panel {
-        width: calc(100% - 10px) !important;
+        width: 100% !important;
         align-items: flex-start !important;
-        padding-left: 10px !important;
+        padding-left: 0 !important;
         text-align: left !important;
+    }
+
+    .footer-redesign-contact .footer-accordion-panel > a {
+        width: min(100%, 230px) !important;
+        justify-content: center !important;
+        margin-right: auto !important;
+        margin-left: auto !important;
+        text-align: center !important;
     }
 
     .footer-redesign-main .footer-redesign-column:not(.footer-redesign-contact) .footer-accordion-panel > a {
@@ -11486,59 +11559,6 @@
     }
 }
 
-/* Keep all section pills matched to the Floor Plans eyebrow on every viewport. */
-:is(.ideal-floor-eyebrow,
-    .project-plans-eyebrow,
-    .transparent-pricing-eyebrow,
-    .premium-specs-eyebrow,
-    .visual-showcase-eyebrow,
-    .prime-location-eyebrow,
-    .lifestyle-amenities-eyebrow,
-    .construction-progress-eyebrow,
-    .buyer-testimonials-eyebrow,
-    .faq-eyebrow,
-    .project-essentials-head-eyebrow,
-    .project-essentials-eyebrow,
-    .site-visit-eyebrow,
-    .property-snapshot-eyebrow) {
-    display: inline-flex !important;
-    min-height: 28px !important;
-    height: 28px !important;
-    align-items: center !important;
-    justify-content: center !important;
-    gap: 8px !important;
-    margin-bottom: 18px !important;
-    padding: 5px 17px !important;
-    border: 1px solid rgba(240, 205, 69, 0.38) !important;
-    border-radius: 999px !important;
-    background: rgba(240, 205, 69, 0.14) !important;
-    color: #f0cd45 !important;
-    font-family: "Inter", Arial, sans-serif !important;
-    font-size: 12px !important;
-    font-weight: 700 !important;
-    line-height: 1 !important;
-    letter-spacing: 0.34em !important;
-    text-transform: uppercase !important;
-}
-
-:is(.ideal-floor-eyebrow,
-    .project-plans-eyebrow,
-    .transparent-pricing-eyebrow,
-    .premium-specs-eyebrow,
-    .visual-showcase-eyebrow,
-    .prime-location-eyebrow,
-    .lifestyle-amenities-eyebrow,
-    .construction-progress-eyebrow,
-    .buyer-testimonials-eyebrow,
-    .faq-eyebrow,
-    .project-essentials-head-eyebrow,
-    .project-essentials-eyebrow,
-    .site-visit-eyebrow,
-    .property-snapshot-eyebrow) svg {
-    width: 13px !important;
-    height: 13px !important;
-}
-
 @media (max-width: 767px) {
     .sticky-availability-section {
         --sticky-availability-height: 100dvh !important;
@@ -11594,29 +11614,6 @@
             rgba(12, 12, 10, 0.46) !important;
     }
 
-    .sticky-availability-content--interested .interested-property-kicker {
-        display: inline-flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-        width: fit-content !important;
-        max-width: calc(100% - 30px) !important;
-        min-width: 0 !important;
-        min-height: 25px !important;
-        height: auto !important;
-        margin: 0 auto 10px !important;
-        padding: 7px 18px !important;
-        box-sizing: border-box !important;
-        font-family: Arial, sans-serif !important;
-        font-size: 7.5px !important;
-        font-stretch: condensed !important;
-        font-weight: 800 !important;
-        line-height: 1 !important;
-        letter-spacing: 0 !important;
-        white-space: nowrap !important;
-        overflow: hidden !important;
-        text-overflow: clip !important;
-    }
-
     .sticky-availability-content--interested .interested-property-copy h2 {
         font-size: 22px !important;
         line-height: 27px !important;
@@ -11666,16 +11663,6 @@
     .buyer-appreciation-section > div {
         width: 100% !important;
         max-width: 100% !important;
-        text-align: center !important;
-    }
-
-    .buyer-appreciation-section .buyer-testimonials-eyebrow {
-        display: flex !important;
-        width: fit-content !important;
-        max-width: calc(100% - 20px) !important;
-        margin-top: 0 !important;
-        margin-right: auto !important;
-        margin-left: auto !important;
         text-align: center !important;
     }
 
@@ -11872,4 +11859,74 @@
         padding: 12px !important;
         border-radius: 14px !important;
     }
+}
+
+@media (max-width: 767px) {
+    :is(.about-section-tab,
+        .booking-enquiry-tab,
+        .ideal-floor-eyebrow,
+        .project-plans-eyebrow,
+        .transparent-pricing-eyebrow,
+        .premium-specs-eyebrow,
+        .visual-showcase-eyebrow,
+        .prime-location-eyebrow,
+        .lifestyle-amenities-eyebrow,
+        .construction-progress-eyebrow,
+        .buyer-testimonials-eyebrow,
+        .sticky-availability-eyebrow,
+        .interested-property-kicker,
+        .faq-eyebrow,
+        .project-essentials-head-eyebrow,
+        .project-essentials-eyebrow,
+        .site-visit-eyebrow,
+        .property-snapshot-eyebrow,
+        .project-download-heading > p) {
+        display: inline-flex !important;
+        min-height: 28px !important;
+        height: auto !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 8px !important;
+        width: fit-content !important;
+        max-width: calc(100% - 28px) !important;
+        margin-right: auto !important;
+        margin-left: auto !important;
+        padding: 6px 16px !important;
+        border: 1px solid rgba(240, 205, 69, 0.40) !important;
+        border-radius: 999px !important;
+        background: rgba(240, 205, 69, 0.10) !important;
+        color: #f0cd45 !important;
+        font-family: "Inter", Arial, sans-serif !important;
+        font-size: 11px !important;
+        font-weight: 700 !important;
+        line-height: 1 !important;
+        letter-spacing: 0.16em !important;
+        text-transform: uppercase !important;
+        box-shadow: none !important;
+    }
+
+    :is(.ideal-floor-eyebrow,
+        .project-plans-eyebrow,
+        .transparent-pricing-eyebrow,
+        .premium-specs-eyebrow,
+        .visual-showcase-eyebrow,
+        .prime-location-eyebrow,
+        .lifestyle-amenities-eyebrow,
+        .construction-progress-eyebrow,
+        .buyer-testimonials-eyebrow,
+        .sticky-availability-eyebrow,
+        .faq-eyebrow,
+        .project-essentials-head-eyebrow,
+        .project-essentials-eyebrow,
+        .site-visit-eyebrow,
+        .property-snapshot-eyebrow,
+        .project-download-heading > p) svg,
+    .faq-eyebrow-icon {
+        width: 14px !important;
+        height: 14px !important;
+        flex: 0 0 14px !important;
+        color: #f0cd45 !important;
+        stroke: currentColor !important;
+    }
+
 }

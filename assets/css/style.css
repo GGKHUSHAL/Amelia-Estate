@@ -8211,29 +8211,6 @@ body.is-amenity-lightbox-open {
     pointer-events: none;
 }
 
-.sticky-availability-content--interested .interested-property-kicker {
-    display: inline-flex;
-    min-height: 28px;
-    height: 28px;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    margin-bottom: 18px;
-    padding: 5px 17px;
-    border: 1px solid rgba(240, 205, 69, 0.38);
-    border-radius: 999px;
-    background: rgba(240, 205, 69, 0.14);
-    box-sizing: border-box;
-    color: #f0cd45;
-    font-family: "Inter", Arial, sans-serif;
-    font-size: 12px;
-    font-weight: 700;
-    line-height: 1;
-    letter-spacing: 0.34em;
-    text-transform: uppercase;
-    white-space: nowrap;
-}
-
 .sticky-availability-content--interested h2 {
     text-wrap: balance;
     text-shadow: 0 18px 46px rgba(0, 0, 0, 0.42);
@@ -9923,16 +9900,6 @@ body.is-amenity-lightbox-open {
     gap: 0;
 }
 
-.site-visit-eyebrow {
-    border-color: rgba(240, 205, 69, 0.58) !important;
-    background: rgba(240, 205, 69, 0.08) !important;
-    color: #f0cd45 !important;
-    min-height: 30px !important;
-    padding-right: 16px !important;
-    padding-left: 16px !important;
-    font-size: 12px !important;
-}
-
 .site-visit-card h2 {
     margin-top: 18px !important;
     font-size: 34px !important;
@@ -10200,13 +10167,6 @@ a[href*="wa.me"] small {
     max-width: 420px;
     padding: 18px 22px 16px;
     border-radius: 18px;
-}
-
-.site-visit-eyebrow {
-    min-height: 28px !important;
-    padding-right: 14px !important;
-    padding-left: 14px !important;
-    font-size: 11px !important;
 }
 
 .site-visit-card h2 {
@@ -14668,59 +14628,6 @@ body {
     user-select: none !important;
 }
 
-/* Shared section pill style: match the Floor Plans eyebrow across the page. */
-:is(.ideal-floor-eyebrow,
-    .project-plans-eyebrow,
-    .transparent-pricing-eyebrow,
-    .premium-specs-eyebrow,
-    .visual-showcase-eyebrow,
-    .prime-location-eyebrow,
-    .lifestyle-amenities-eyebrow,
-    .construction-progress-eyebrow,
-    .buyer-testimonials-eyebrow,
-    .faq-eyebrow,
-    .project-essentials-head-eyebrow,
-    .project-essentials-eyebrow,
-    .site-visit-eyebrow,
-    .property-snapshot-eyebrow) {
-    display: inline-flex !important;
-    min-height: 28px !important;
-    height: 28px !important;
-    align-items: center !important;
-    justify-content: center !important;
-    gap: 8px !important;
-    margin-bottom: 18px !important;
-    padding: 5px 17px !important;
-    border: 1px solid rgba(240, 205, 69, 0.38) !important;
-    border-radius: 999px !important;
-    background: rgba(240, 205, 69, 0.14) !important;
-    color: #f0cd45 !important;
-    font-family: "Inter", Arial, sans-serif !important;
-    font-size: 12px !important;
-    font-weight: 700 !important;
-    line-height: 1 !important;
-    letter-spacing: 0.34em !important;
-    text-transform: uppercase !important;
-}
-
-:is(.ideal-floor-eyebrow,
-    .project-plans-eyebrow,
-    .transparent-pricing-eyebrow,
-    .premium-specs-eyebrow,
-    .visual-showcase-eyebrow,
-    .prime-location-eyebrow,
-    .lifestyle-amenities-eyebrow,
-    .construction-progress-eyebrow,
-    .buyer-testimonials-eyebrow,
-    .faq-eyebrow,
-    .project-essentials-head-eyebrow,
-    .project-essentials-eyebrow,
-    .site-visit-eyebrow,
-    .property-snapshot-eyebrow) svg {
-    width: 13px !important;
-    height: 13px !important;
-}
-
 .project-download-section {
     background:
         radial-gradient(circle at 50% 0%, rgba(240, 205, 69, 0.08), transparent 28%),
@@ -15079,10 +14986,31 @@ body {
     letter-spacing: 0.16em !important;
 }
 
+.site-visit-eyebrow {
+    min-height: 28px !important;
+    height: auto !important;
+    gap: 8px !important;
+    margin-bottom: 0 !important;
+    border-color: rgba(240, 205, 69, 0.40) !important;
+    background: rgba(240, 205, 69, 0.10) !important;
+    padding: 6px 16px !important;
+    color: var(--property-snapshot-gold, #f0cd45) !important;
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.16em !important;
+}
+
 .property-snapshot-eyebrow svg {
     width: 14px !important;
     height: 14px !important;
     color: var(--property-snapshot-gold) !important;
+    stroke: currentColor !important;
+}
+
+.site-visit-eyebrow svg {
+    width: 14px !important;
+    height: 14px !important;
+    color: var(--property-snapshot-gold, #f0cd45) !important;
     stroke: currentColor !important;
 }
 
@@ -15254,4 +15182,79 @@ body {
 .property-snapshot-modal .property-snapshot-modal-close svg {
     width: 15px !important;
     height: 15px !important;
+}
+
+@media (min-width: 768px) {
+    :is(.about-section-tab,
+        .booking-enquiry-tab,
+        .ideal-floor-eyebrow,
+        .project-plans-eyebrow,
+        .transparent-pricing-eyebrow,
+        .premium-specs-eyebrow,
+        .visual-showcase-eyebrow,
+        .prime-location-eyebrow,
+        .lifestyle-amenities-eyebrow,
+        .construction-progress-eyebrow,
+        .construction-bank-eyebrow,
+        .buyer-testimonials-eyebrow,
+        .sticky-availability-eyebrow,
+        .interested-property-kicker,
+        .faq-eyebrow,
+        .project-essentials-head-eyebrow,
+        .project-essentials-eyebrow,
+        .site-visit-eyebrow,
+        .property-snapshot-eyebrow,
+        .project-download-heading > p) {
+        position: relative !important;
+        z-index: 3 !important;
+        display: inline-flex !important;
+        min-height: 28px !important;
+        height: auto !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 8px !important;
+        width: fit-content !important;
+        max-width: calc(100% - 32px) !important;
+        margin-right: auto !important;
+        margin-left: auto !important;
+        padding: 7px 18px !important;
+        border: 1px solid rgba(240, 205, 69, 0.38) !important;
+        border-radius: 999px !important;
+        background: rgba(240, 205, 69, 0.14) !important;
+        color: #f0cd45 !important;
+        font-family: "Inter", Arial, sans-serif !important;
+        font-size: 12px !important;
+        font-weight: 700 !important;
+        line-height: 1 !important;
+        letter-spacing: 0.18em !important;
+        text-align: center !important;
+        text-transform: uppercase !important;
+        box-shadow: none !important;
+        white-space: normal !important;
+    }
+
+    :is(.ideal-floor-eyebrow,
+        .project-plans-eyebrow,
+        .transparent-pricing-eyebrow,
+        .premium-specs-eyebrow,
+        .visual-showcase-eyebrow,
+        .prime-location-eyebrow,
+        .lifestyle-amenities-eyebrow,
+        .construction-progress-eyebrow,
+        .construction-bank-eyebrow,
+        .buyer-testimonials-eyebrow,
+        .sticky-availability-eyebrow,
+        .faq-eyebrow,
+        .project-essentials-head-eyebrow,
+        .project-essentials-eyebrow,
+        .site-visit-eyebrow,
+        .property-snapshot-eyebrow,
+        .project-download-heading > p) svg,
+    .faq-eyebrow-icon {
+        width: 14px !important;
+        height: 14px !important;
+        flex: 0 0 14px !important;
+        color: #f0cd45 !important;
+        stroke: currentColor !important;
+    }
 }
