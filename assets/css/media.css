@@ -837,28 +837,6 @@
         line-height: 1.62 !important;
     }
 
-    .property-snapshot-strip {
-        display: grid !important;
-        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-        margin-top: 22px !important;
-        border-radius: 16px !important;
-    }
-
-    .property-snapshot-strip > div {
-        min-height: 82px !important;
-        padding: 14px 10px !important;
-        border-right: 1px solid rgba(255, 255, 255, 0.10) !important;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.10) !important;
-    }
-
-    .property-snapshot-strip > div:nth-child(2n) {
-        border-right: 0 !important;
-    }
-
-    .property-snapshot-strip > div:nth-last-child(-n+2) {
-        border-bottom: 0 !important;
-    }
-
     .footer-redesign {
         width: calc(100% - 24px) !important;
         padding: 34px 0 18px !important;
@@ -3270,10 +3248,6 @@
         align-self: auto;
     }
 
-    .property-snapshot-strip {
-        margin-top: 34px;
-    }
-
     .buyer-appreciation-card {
         min-height: 0;
         padding: 24px 20px;
@@ -4896,25 +4870,6 @@
     .property-snapshot-content p {
         font-size: 14px;
         line-height: 24px;
-    }
-
-    .property-snapshot-strip {
-        display: grid !important;
-        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-    }
-
-    .property-snapshot-strip > div {
-        min-height: 84px !important;
-        border-right: 1px solid rgba(255, 255, 255, 0.10) !important;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.10) !important;
-    }
-
-    .property-snapshot-strip > div:nth-child(2n) {
-        border-right: 0 !important;
-    }
-
-    .property-snapshot-strip > div:nth-last-child(-n+2) {
-        border-bottom: 0 !important;
     }
 
     .sticky-availability-content {
@@ -7482,8 +7437,7 @@
 
     .hero-location,
     .hero-slide--figma .hero-location,
-    .sticky-availability-label,
-    .property-snapshot-strip span {
+    .sticky-availability-label {
         font-size: 11px !important;
         line-height: 1.45 !important;
     }
@@ -7581,8 +7535,7 @@
 
     .snapshot-card strong,
     .project-plan-variants span,
-    .project-essentials-btn b,
-    .property-snapshot-strip strong {
+    .project-essentials-btn b {
         font-size: 14px !important;
         line-height: 1.4 !important;
     }
@@ -7703,8 +7656,7 @@
         margin-right: auto !important;
     }
 
-    .property-snapshot-metrics,
-    .property-snapshot-strip {
+    .property-snapshot-metrics {
         text-align: center !important;
     }
 
@@ -8292,7 +8244,6 @@
         .property-modal-grid span,
         .property-snapshot-brand p,
         .property-snapshot-metrics span,
-        .property-snapshot-strip span,
         .property-snapshot-meta dt,
         .footer-redesign-brand span,
         .footer-redesign-column strong
@@ -8315,7 +8266,6 @@
         .construction-proof-card small,
         .property-modal-hero dd,
         .property-modal-grid h4,
-        .property-snapshot-strip strong,
         .property-snapshot-meta dd,
         .footer-redesign-column a,
         .footer-redesign-column address,
@@ -8674,110 +8624,6 @@
         max-width: 100% !important;
         text-align: center !important;
         white-space: nowrap !important;
-    }
-}
-
-/* Property snapshot mobile stats: no-card premium typography blocks. */
-@media (max-width: 767px) {
-    .property-snapshot-strip {
-        display: grid !important;
-        grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
-        gap: 10px !important;
-        width: min(100%, 292px) !important;
-        margin-top: 25px !important;
-        margin-right: auto !important;
-        margin-left: auto !important;
-        overflow: visible !important;
-        border-radius: 0 !important;
-        background: transparent !important;
-    }
-
-    .property-snapshot-strip > div {
-        position: relative !important;
-        min-height: 68px !important;
-        align-items: flex-start !important;
-        justify-content: flex-start !important;
-        gap: 6px !important;
-        overflow: visible !important;
-        border: 0 !important;
-        border-radius: 0 !important;
-        background: transparent !important;
-        padding: 0 !important;
-        text-align: left !important;
-        box-shadow: none !important;
-        transform-origin: left center !important;
-        transition:
-            transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
-            filter 0.28s ease !important;
-    }
-
-    .property-snapshot-strip > div::before {
-        content: "" !important;
-        position: absolute !important;
-        left: 0 !important;
-        top: -10px !important;
-        width: 20px !important;
-        height: 2px !important;
-        border-radius: 999px !important;
-        background: rgba(240, 205, 69, 0.72) !important;
-        box-shadow: 0 0 12px rgba(240, 205, 69, 0.26) !important;
-    }
-
-    .property-snapshot-strip > div:nth-child(2n),
-    .property-snapshot-strip > div:nth-last-child(-n+2),
-    .property-snapshot-strip > div:not(:last-child) {
-        border: 0 !important;
-    }
-
-    .property-snapshot-strip > div:hover {
-        filter: brightness(1.08) !important;
-        transform: translateY(-3px) scale(1.08) !important;
-    }
-
-    .property-snapshot-strip strong {
-        margin-top: 0 !important;
-        color: #fff2dc !important;
-        font-family: Georgia, "Times New Roman", serif !important;
-        font-size: 25px !important;
-        font-weight: 500 !important;
-        line-height: 0.98 !important;
-        letter-spacing: 0 !important;
-        white-space: nowrap !important;
-        text-shadow: 0 10px 28px rgba(213, 174, 102, 0.18) !important;
-        transition: color 0.28s ease, transform 0.28s ease !important;
-    }
-
-    .property-snapshot-strip > div:hover strong {
-        color: #f0cd45 !important;
-    }
-
-    .property-snapshot-strip span {
-        max-width: 100% !important;
-        color: rgba(213, 174, 102, 0.72) !important;
-        font-size: 7px !important;
-        font-weight: 800 !important;
-        line-height: 1.35 !important;
-        letter-spacing: 0.20em !important;
-        text-transform: uppercase !important;
-    }
-}
-
-@media (max-width: 360px) {
-    .property-snapshot-strip {
-        gap: 7px !important;
-    }
-
-    .property-snapshot-strip > div {
-        min-height: 64px !important;
-    }
-
-    .property-snapshot-strip strong {
-        font-size: 22px !important;
-    }
-
-    .property-snapshot-strip span {
-        font-size: 6.5px !important;
-        letter-spacing: 0.16em !important;
     }
 }
 
@@ -11488,6 +11334,9 @@
     }
 
     .project-download-inner {
+        width: min(100%, 292px);
+        margin-right: auto;
+        margin-left: auto;
         border-radius: 20px;
     }
 
@@ -11501,6 +11350,8 @@
     }
 
     .download-options-panel {
+        width: 100%;
+        box-sizing: border-box;
         padding: 22px 14px 20px;
     }
 
@@ -11517,6 +11368,8 @@
     .download-option {
         grid-template-columns: 40px 1fr auto;
         gap: 9px;
+        width: 100%;
+        box-sizing: border-box;
         min-height: 64px;
         padding: 10px;
     }
@@ -11549,12 +11402,19 @@
     .download-footnote {
         margin-top: 16px;
         padding-top: 15px;
+        text-align: center;
     }
 
     .download-footnote p {
-        align-items: flex-start;
+        justify-content: center;
+        align-items: center;
         font-size: 12px;
         line-height: 1.4;
+        text-align: center;
+    }
+
+    .download-footnote div {
+        justify-content: center;
     }
 
     .download-footnote div span {
@@ -11770,29 +11630,92 @@
     }
 
     .property-snapshot-strip {
+        display: grid !important;
+        grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+        gap: 7px !important;
+        width: min(100%, 292px) !important;
         margin-top: 24px !important;
+        margin-right: auto !important;
         margin-bottom: 0 !important;
+        margin-left: auto !important;
+        overflow: visible !important;
+        border-radius: 0 !important;
+        background: transparent !important;
+        justify-content: center !important;
+        justify-items: center !important;
+        text-align: center !important;
     }
 
     .property-snapshot-strip > div {
-        min-height: 48px !important;
+        position: relative !important;
+        min-height: 64px !important;
+        width: 100% !important;
+        align-items: center !important;
+        justify-content: flex-start !important;
         gap: 5px !important;
+        overflow: visible !important;
+        border: 0 !important;
+        border-radius: 0 !important;
+        background: transparent !important;
+        padding: 0 !important;
+        text-align: center !important;
+        box-shadow: none !important;
+        transform-origin: center center !important;
+        transition:
+            transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+            filter 0.28s ease !important;
     }
 
     .property-snapshot-strip > div::before {
+        content: "" !important;
         position: relative !important;
         left: auto !important;
         top: auto !important;
+        width: 20px !important;
+        height: 2px !important;
         margin-bottom: 1px !important;
+        border-radius: 999px !important;
+        background: rgba(240, 205, 69, 0.72) !important;
+        box-shadow: 0 0 12px rgba(240, 205, 69, 0.26) !important;
+    }
+
+    .property-snapshot-strip > div:nth-child(2n),
+    .property-snapshot-strip > div:nth-last-child(-n+2),
+    .property-snapshot-strip > div:not(:last-child) {
+        border: 0 !important;
+    }
+
+    .property-snapshot-strip > div:hover {
+        filter: brightness(1.08) !important;
+        transform: translateY(-3px) scale(1.08) !important;
     }
 
     .property-snapshot-strip span {
+        max-width: 100% !important;
         color: rgba(255, 255, 255, 0.64) !important;
         font-family: "Jost", "Inter", Arial, sans-serif !important;
+        font-size: 6.5px !important;
+        font-weight: 800 !important;
+        line-height: 1.35 !important;
+        letter-spacing: 0.16em !important;
+        text-transform: uppercase !important;
     }
 
     .property-snapshot-strip strong {
+        margin-top: 0 !important;
+        color: #fff2dc !important;
         font-family: "Jost", "Inter", Arial, sans-serif !important;
+        font-size: 22px !important;
+        font-weight: 700 !important;
+        line-height: 0.98 !important;
+        letter-spacing: 0 !important;
+        white-space: nowrap !important;
+        text-shadow: 0 10px 28px rgba(240, 205, 69, 0.18) !important;
+        transition: color 0.28s ease, transform 0.28s ease !important;
+    }
+
+    .property-snapshot-strip > div:hover strong {
+        color: #f0cd45 !important;
     }
 
     .property-snapshot-modal .property-snapshot-modal-close {
