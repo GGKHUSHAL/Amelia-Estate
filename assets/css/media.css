@@ -10419,15 +10419,15 @@
     .transparent-pricing-section .pricing-card:not(.is-unlocked) .selected-price-box:not(.is-price-visible) strong,
     .transparent-pricing-section .pricing-card:not(.is-unlocked) .selected-price-box:not(.is-price-visible) p {
         color: rgba(217, 183, 98, 0.28) !important;
-        filter: blur(12px) !important;
+        filter: blur(7px) !important;
         pointer-events: none !important;
         user-select: none !important;
     }
 
     .transparent-pricing-section .pricing-card:not(.is-unlocked) .floor-price-grid button:not(.is-price-visible) strong,
     .transparent-pricing-section .pricing-card:not(.is-unlocked) .floor-price-grid button:not(.is-price-visible) .pricing-currency {
-        color: rgba(255, 255, 255, 0.28) !important;
-        filter: blur(10px) !important;
+        color: rgba(255, 255, 255, 0.36) !important;
+        filter: blur(5.5px) !important;
         text-shadow: none !important;
         pointer-events: none !important;
         user-select: none !important;
@@ -10871,7 +10871,7 @@
     .transparent-pricing-section .pricing-card:not(.is-unlocked) .selected-price-box:not(.is-price-visible) .pricing-currency,
     .transparent-pricing-section .pricing-card:not(.is-unlocked) .selected-price-box:not(.is-price-visible) p {
         color: rgba(255, 255, 255, 0.28) !important;
-        filter: blur(10px) !important;
+        filter: blur(7px) !important;
         text-shadow: none !important;
         pointer-events: none !important;
         user-select: none !important;
@@ -11138,7 +11138,7 @@
 .transparent-pricing-section .pricing-card:not(.is-unlocked) .selected-price-box:not(.is-price-visible) .pricing-currency,
 .transparent-pricing-section .pricing-card:not(.is-unlocked) .selected-price-box:not(.is-price-visible) p {
     color: rgba(255, 255, 255, 0.28) !important;
-    filter: blur(10px) !important;
+    filter: blur(7px) !important;
     transition: none !important;
     text-shadow: none !important;
     pointer-events: none !important;
