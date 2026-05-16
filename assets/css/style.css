@@ -13263,23 +13263,6 @@ body {
     background: linear-gradient(180deg, rgba(240, 205, 69, 0.18), rgba(240, 205, 69, 0.08)), rgba(10, 10, 10, 0.74) !important;
 }
 
-.premium-specs-section .premium-specs-slide-overlay {
-    align-items: center !important;
-    padding-right: 88px !important;
-    padding-left: 88px !important;
-    text-align: center !important;
-}
-
-.premium-specs-section .premium-specs-slide-overlay p {
-    max-width: 390px !important;
-    margin-bottom: 0 !important;
-}
-
-.premium-specs-section .premium-specs-slide-overlay button {
-    right: 24px !important;
-    bottom: 24px !important;
-}
-
 /* Section 10 image switch should feel exactly like Section 8's smooth reveal. */
 .transparent-pricing-section .pricing-image-wrap img {
     opacity: 1 !important;

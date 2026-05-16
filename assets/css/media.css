@@ -8117,21 +8117,6 @@
         height: 305px !important;
     }
 
-    .premium-specs-slide-overlay {
-        align-items: center;
-        padding: 20px 66px;
-        text-align: center;
-    }
-
-    .premium-specs-slide-overlay h3 {
-        font-size: 21px;
-        line-height: 27px;
-    }
-
-    .premium-specs-slide-overlay p {
-        font-size: 13px;
-        line-height: 20px;
-    }
 }
 
 @media (max-width: 1199px) {
@@ -8269,7 +8254,7 @@
         .footer-redesign-cta span,
         .footer-redesign-brand > p) {
         font-size: 15px !important;
-        line-height: 1.62 !important;
+        line-height: 1.30 !important;
     }
 
     :is(.pricing-unlock-kicker,
@@ -11099,21 +11084,43 @@
 }
 
 @media (max-width: 767px) {
-    .premium-specs-slide-overlay {
-        align-items: center !important;
-        padding-right: 70px !important;
-        padding-left: 70px !important;
-        text-align: center !important;
+    .premium-specs-section .premium-specs-slide-overlay {
+        align-items: stretch !important;
+        justify-content: flex-end !important;
+        padding: 22px 18px 60px !important;
+        text-align: left !important;
     }
 
-    .premium-specs-slide-overlay p {
-        max-width: 100% !important;
+    .premium-specs-section .premium-specs-slide-overlay span {
+        width: 38px !important;
+        height: 38px !important;
+        margin: 0 0 8px !important;
+        border-radius: 10px !important;
+        font-size: 14px !important;
+    }
+
+    .premium-specs-section .premium-specs-slide-overlay h3 {
+        max-width: 218px !important;
+        margin: 0 0 6px !important;
+        font-size: 23px !important;
+        line-height: 25px !important;
+        text-align: left !important;
+    }
+
+    .premium-specs-section .premium-specs-slide-overlay p {
+        max-width: 224px !important;
         margin-bottom: 0 !important;
+        font-size: 12.5px !important;
+        line-height: 17px !important;
+        text-align: left !important;
     }
 
-    .premium-specs-slide-overlay button {
-        right: 18px !important;
-        bottom: 18px !important;
+    .premium-specs-section .premium-specs-slide-overlay button {
+        right: 14px !important;
+        bottom: 14px !important;
+        width: 42px !important;
+        height: 42px !important;
+        min-height: 42px !important;
     }
 }
 
