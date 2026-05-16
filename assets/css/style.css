@@ -4029,7 +4029,7 @@ body.is-pricing-modal-open {
 .ideal-floor-levels button.is-active,
 .project-plan-tabs button.is-active,
 .project-plan-variants button.is-active,
-.transparent-pricing-tabs button.is-active{
+.transparent-pricing-tabs button.is-active {
     background: #f0cd45;
     color: #000000;
     box-shadow:
@@ -4348,6 +4348,26 @@ body.is-pricing-modal-open {
     max-width: 780px;
     margin: 0 auto;
 }
+
+.premium-specs-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    min-height: 35px;
+    margin: 0 0 12px;
+    padding: 8px 20px;
+    border: 1px solid rgba(213, 174, 102, 0.58);
+    border-radius: 999px;
+    background: rgba(240, 205, 69, 0.14);
+    color: #f0cd45;
+    font-family: "Jost", "Inter", Arial, sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
 
 .premium-specs-eyebrow svg {
     fill: none;
@@ -4731,11 +4751,11 @@ body.is-pricing-modal-open {
 .premium-specs-brand b {
     min-width: 0;
     font: inherit;
-    color:rgba(255, 255, 255, 0.46);
+    color: rgba(255, 255, 255, 0.46);
 }
 
 .premium-specs-brand:hover {
-     border: 1px solid rgba(213, 174, 102, 0.20);
+    border: 1px solid rgba(213, 174, 102, 0.20);
     border-radius: 14px;
     background: #141414;
     color: #D5AE66;
@@ -7035,8 +7055,8 @@ body.is-amenity-lightbox-open {
     height: auto;
 }
 
-.construction-progress-side > .construction-info-card,
-.construction-progress-side > .construction-proof-card {
+.construction-progress-side>.construction-info-card,
+.construction-progress-side>.construction-proof-card {
     overflow: visible;
 }
 
@@ -7382,14 +7402,14 @@ body.is-amenity-lightbox-open {
     color: #f0cd45;
 }
 
-.construction-progress-side > .construction-info-card {
+.construction-progress-side>.construction-info-card {
     align-items: center;
     justify-content: center;
     padding: 10px;
     text-align: center;
 }
 
-.construction-progress-side > .construction-proof-card {
+.construction-progress-side>.construction-proof-card {
     padding: 10px;
     text-align: left;
 }
@@ -7602,7 +7622,7 @@ body.is-amenity-lightbox-open {
 
 .property-snapshot-modal-header p {
     margin: 0 0 10px;
-    color: #D5AE66;
+    color: #f0cd45;
     font-size: 12px;
     font-weight: 800;
     letter-spacing: 0.16em;
@@ -7696,7 +7716,7 @@ body.is-amenity-lightbox-open {
 }
 
 .property-modal-grid span {
-    color: rgba(213, 174, 102, 0.74);
+    color: #f0cd45;
     font-size: 12px;
     font-weight: 800;
 }
@@ -7728,7 +7748,7 @@ body.is-amenity-lightbox-open {
 
 .property-modal-note strong {
     min-width: 124px;
-    color: #D5AE66;
+    color: #f0cd45;
     font-size: 14px;
     text-transform: uppercase;
 }
@@ -7771,7 +7791,7 @@ body.is-amenity-lightbox-open {
 .footer-redesign {
     width: min(100% - 48px, 1200px);
     margin: 0 auto;
-    padding: 72px 0 28px;
+    padding: 40px 0 28px;
 }
 
 .footer-redesign-cta {
@@ -7779,12 +7799,12 @@ body.is-amenity-lightbox-open {
     grid-template-columns: minmax(0, 1fr) auto;
     gap: 28px;
     align-items: center;
-    border: 1px solid rgba(213, 174, 102, 0.22);
+    /* border: 1px solid rgba(213, 174, 102, 0.22);
     border-radius: 22px;
     background:
         radial-gradient(80% 140% at 0% 0%, rgba(213, 174, 102, 0.17), transparent 58%),
-        linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.025));
-    padding: 34px;
+        linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.025)); */
+    padding: 14px;
 }
 
 .footer-redesign-cta p {
@@ -7804,12 +7824,21 @@ body.is-amenity-lightbox-open {
     line-height: 1.18;
 }
 
+.footer-redesign-cta h2 span {
+    max-width: 720px;
+    margin: 0;
+    font-size: 34px;
+    line-height: 1.18;
+    color: #f0cd45;
+    text-transform: capitalize;
+}
+
 .footer-redesign-cta span {
     display: block;
     max-width: 680px;
     margin-top: 12px;
     color: rgba(255, 255, 255, 0.68);
-    font-size: 16px;
+    font-size: clamp(16px, 1.18vw, 18px);
     line-height: 1.65;
 }
 
@@ -7820,13 +7849,13 @@ body.is-amenity-lightbox-open {
 
 .footer-redesign-actions a {
     display: inline-flex;
-    min-height: 50px;
+    min-height: 30px;
     align-items: center;
     justify-content: center;
     border-radius: 14px;
     padding: 0 22px;
     font-size: 14px;
-    font-weight: 800;
+    font-weight: 600;
 }
 
 .footer-redesign-actions a:first-child {
@@ -7843,14 +7872,15 @@ body.is-amenity-lightbox-open {
     display: grid;
     grid-template-columns: 1.25fr 0.8fr 1fr 1fr;
     gap: 28px;
-    padding: 54px 0 34px;
+    padding: 44px 0 34px;
+    border-top: 0.5px solid rgba(240, 205, 69, 0.54);
 }
 
 .footer-redesign-marquee {
     position: relative;
     margin: 0 0 30px;
-    border-top: 1px solid rgba(213, 174, 102, 0.16);
-    border-bottom: 1px solid rgba(213, 174, 102, 0.12);
+    border-top: 1px solid rgba(240, 205, 69, 0.24);
+    border-bottom: 1px solid rgba(240, 205, 69, 0.24);
     overflow: hidden;
 }
 
@@ -7892,7 +7922,7 @@ body.is-amenity-lightbox-open {
     width: 7px;
     height: 7px;
     flex: 0 0 7px;
-    border: 1px solid rgba(213, 174, 102, 0.74);
+    border: 1px solid rgba(240, 205, 69, 0.74);
     background: rgba(213, 174, 102, 0.25);
     box-shadow: 0 0 14px rgba(213, 174, 102, 0.34);
     transform: rotate(45deg);
@@ -7919,7 +7949,7 @@ body.is-amenity-lightbox-open {
     height: auto;
     opacity: 1;
     filter:
-        brightness(0) saturate(100%) invert(73%) sepia(38%) saturate(604%) hue-rotate(358deg) brightness(94%) contrast(92%) drop-shadow(0 0 18px rgba(213, 174, 102, 0.28));
+        brightness(0) saturate(100%) invert(85%) sepia(95%) saturate(731%) hue-rotate(344deg) brightness(101%) contrast(88%) drop-shadow(0 0 18px rgba(240, 205, 69, 0.28));
 }
 
 .footer-redesign-brand>p {
@@ -7934,7 +7964,7 @@ body.is-amenity-lightbox-open {
     display: inline-flex;
     align-items: center;
     gap: 14px;
-    border: 1px solid rgba(213, 174, 102, 0.24);
+    border: 1px solid rgba(240, 205, 69, 0.24);
     border-radius: 14px;
     background: rgba(213, 174, 102, 0.035);
     padding: 12px 14px;
@@ -7953,12 +7983,12 @@ body.is-amenity-lightbox-open {
     height: auto;
     opacity: 0.96;
     filter:
-        brightness(0) saturate(100%) invert(73%) sepia(38%) saturate(604%) hue-rotate(358deg) brightness(94%) contrast(92%);
+        brightness(0) saturate(100%) invert(85%) sepia(95%) saturate(731%) hue-rotate(344deg) brightness(101%) contrast(88%);
 }
 
 .footer-redesign-column h3 {
     margin: 0 0 18px;
-    color: #D5AE66;
+    color: #f0cd45;
     font-size: 13px;
     font-weight: 800;
     letter-spacing: 0.13em;
@@ -7977,7 +8007,7 @@ body.is-amenity-lightbox-open {
 }
 
 .footer-redesign-column a:hover {
-    color: #D5AE66;
+    color: #f0cd45;
 }
 
 .footer-redesign-main .footer-redesign-column:not(.footer-redesign-contact)>a {
@@ -7996,7 +8026,7 @@ body.is-amenity-lightbox-open {
     width: 0;
     height: 2px;
     border-radius: 999px;
-    background: #D5AE66;
+    background: #f0cd45;
     opacity: 0;
     box-shadow: 0 0 14px rgba(213, 174, 102, 0.42);
     transform: translateY(-50%);
@@ -8006,7 +8036,7 @@ body.is-amenity-lightbox-open {
 }
 
 .footer-redesign-main .footer-redesign-column:not(.footer-redesign-contact)>a:hover {
-    color: #D5AE66;
+    color: #f0cd45;
     transform: translateX(-6px);
 }
 
@@ -8033,29 +8063,40 @@ body.is-amenity-lightbox-open {
     font-weight: 800;
 }
 
-.footer-redesign-contact {
-    border: 1px solid rgba(213, 174, 102, 0.14);
-    border-radius: 18px;
-    background: rgba(255, 255, 255, 0.035);
-    padding: 22px;
-}
-
-.footer-redesign-whatsapp {
+.footer-redesign-contact .footer-redesign-whatsapp {
     display: inline-flex !important;
     width: fit-content !important;
     max-width: 100% !important;
-    min-height: 44px !important;
+    min-height: 40px !important;
     align-items: center !important;
     gap: 10px !important;
     border: 1px solid rgba(37, 211, 102, 0.48) !important;
-    border-radius: 999px !important;
+    border-radius: 10px !important;
     background:
         radial-gradient(90% 140% at 0% 0%, rgba(37, 211, 102, 0.22), transparent 64%),
         rgba(37, 211, 102, 0.10) !important;
-    padding: 0 18px !important;
+    padding: 0 16px !important;
     color: #e4ffed !important;
     font-weight: 800 !important;
     box-shadow: 0 16px 34px rgba(37, 211, 102, 0.10);
+}
+
+.footer-redesign-contact a {
+    display: inline-flex;
+    width: fit-content;
+    border-radius: 10px;
+    max-width: 100%;
+    min-height: 40px;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid rgba(240, 205, 69, 0.24);
+    padding: 0 16px;
+    color: #ffffff;
+}
+
+.footer-redesign-contact a:hover {
+    background: rgba(240, 205, 69, 0.12) !important;
+    color: #f0cd45;
 }
 
 .footer-redesign-whatsapp svg {
@@ -9822,7 +9863,7 @@ body.is-amenity-lightbox-open {
     color: #f0cd45 !important;
 }
 
-.site-visit-card h2 + p {
+.site-visit-card h2+p {
     margin-top: 10px !important;
     font-size: 14px !important;
     line-height: 20px !important;
@@ -11994,7 +12035,7 @@ a[href*="wa.me"] small {
 
 .property-snapshot-modal .property-snapshot-modal-header p {
     margin: 0 0 10px !important;
-    color: #D5AE66 !important;
+    color: #f0cd45 !important;
     font-size: 12px !important;
     font-weight: 800 !important;
     letter-spacing: 0.16em !important;
@@ -12082,7 +12123,7 @@ a[href*="wa.me"] small {
 }
 
 .property-modal-grid span {
-    color: rgba(213, 174, 102, 0.74) !important;
+    color: #f0cd45 !important;
     font-size: 12px !important;
     font-weight: 800 !important;
 }
@@ -12111,7 +12152,7 @@ a[href*="wa.me"] small {
 
 .property-modal-note strong {
     min-width: 124px !important;
-    color: #D5AE66 !important;
+    color: #f0cd45 !important;
     font-size: 14px !important;
     text-transform: uppercase !important;
 }
@@ -13868,7 +13909,7 @@ body {
 .prime-location-tabs.transparent-pricing-tabs button.is-active,
 .lifestyle-amenities-tabs.transparent-pricing-tabs button.is-active,
 .transparent-pricing-section .floor-price-grid button.is-active,
-.transparent-pricing-section .floor-price-grid button.is-price-visible{
+.transparent-pricing-section .floor-price-grid button.is-price-visible {
     background: rgba(240, 205, 69, 0.12) !important;
     color: #f0cd45 !important;
     border-color: rgba(240, 205, 69, 0.42) !important;
@@ -14358,6 +14399,7 @@ body {
 }
 
 @media (min-width: 768px) {
+
     .ideal-floor-card,
     .transparent-pricing-section .pricing-card {
         height: clamp(500px, 68vh, 540px) !important;
@@ -14387,7 +14429,7 @@ body {
         line-height: 1.14 !important;
     }
 
-    .ideal-floor-panel > div:first-child p {
+    .ideal-floor-panel>div:first-child p {
         margin-top: 5px !important;
         font-size: 14px !important;
         line-height: 18px !important;
@@ -14557,7 +14599,7 @@ body {
     color: #ffffff;
 }
 
-.project-download-heading > span {
+.project-download-heading>span {
     display: block;
     max-width: 520px;
     margin: 10px auto 0;
@@ -14655,7 +14697,7 @@ body {
     letter-spacing: 0;
 }
 
-.download-options-panel > p {
+.download-options-panel>p {
     margin: 8px 0 22px;
     color: rgba(17, 24, 39, .7);
     font-size: 13px;

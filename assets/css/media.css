@@ -10603,6 +10603,75 @@
     }
 }
 
+/* Final mobile footer alignment guard. */
+@media (max-width: 767px) {
+    .footer-redesign-cta {
+        text-align: center !important;
+    }
+
+    .footer-redesign-cta p {
+        display: inline-flex !important;
+        width: fit-content !important;
+        margin-right: auto !important;
+        margin-left: auto !important;
+        border-color: rgba(240, 205, 69, 0.40) !important;
+        background: rgba(240, 205, 69, 0.10) !important;
+        color: #f0cd45 !important;
+    }
+
+    .footer-redesign-cta h2,
+    .footer-redesign-cta h2 span {
+        font-size: clamp(29px, 8.1vw, 34px) !important;
+        line-height: 1.18 !important;
+        text-align: center !important;
+    }
+
+    .footer-redesign-cta h2 span {
+        display: block !important;
+        margin-top: 0 !important;
+    }
+
+    .footer-redesign-brand > img,
+    .footer-redesign-brand div img {
+        filter:
+            brightness(0) saturate(100%) invert(85%) sepia(95%) saturate(731%) hue-rotate(344deg) brightness(101%) contrast(88%) !important;
+    }
+
+    .footer-redesign-main {
+        grid-template-columns: repeat(2, minmax(118px, 132px)) !important;
+        justify-content: center !important;
+        justify-items: center !important;
+        column-gap: 0 !important;
+    }
+
+    .footer-redesign-brand,
+    .footer-redesign-contact {
+        grid-column: 1 / -1 !important;
+    }
+
+    .footer-redesign-main > .footer-redesign-column:not(.footer-redesign-contact) {
+        width: 100% !important;
+        text-align: center !important;
+    }
+
+    .footer-redesign-column h3,
+    .footer-redesign-column p,
+    .footer-redesign-column strong {
+        text-align: center !important;
+    }
+
+    .footer-redesign-main .footer-redesign-column:not(.footer-redesign-contact) > a {
+        width: fit-content !important;
+        margin-right: auto !important;
+        margin-left: auto !important;
+        text-align: center !important;
+    }
+
+    .footer-redesign-contact a[href^="tel:"] {
+        color: #f0cd45 !important;
+    }
+}
+
 @media (max-width: 991px) {
     .project-download-section {
         padding: 40px 18px;
