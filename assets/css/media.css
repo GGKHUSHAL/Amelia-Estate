@@ -7684,6 +7684,11 @@
         min-height: 320px !important;
     }
 
+    .lifestyle-amenity-card:hover,
+    .lifestyle-amenity-card:focus-visible {
+        transform: none !important;
+    }
+
     .visual-showcase-grid {
         gap: 14px !important;
     }
@@ -7801,6 +7806,11 @@
 
     .lifestyle-amenity-card img {
         min-height: 260px !important;
+    }
+
+    .lifestyle-amenity-card:hover,
+    .lifestyle-amenity-card:focus-visible {
+        transform: none !important;
     }
 
     .lifestyle-amenities-progress {
