@@ -15051,9 +15051,39 @@ body {
     padding: 8px 13px;
 }
 
+/* Property snapshot final theme sync. */
 .property-snapshot-section {
+    --property-snapshot-gold: #f0cd45;
+    --property-snapshot-gold-soft: rgba(240, 205, 69, 0.14);
+    --property-snapshot-gold-border: rgba(240, 205, 69, 0.38);
+    background: #080805;
     padding-top: 58px !important;
     padding-bottom: 58px !important;
+}
+
+.property-snapshot-section::before {
+    background-size: 86px 86px !important;
+    mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.72), transparent 76%) !important;
+    opacity: 0.45 !important;
+}
+
+.property-snapshot-eyebrow {
+    min-height: 28px !important;
+    gap: 8px !important;
+    border-color: rgba(240, 205, 69, 0.40) !important;
+    background: rgba(240, 205, 69, 0.10) !important;
+    padding: 6px 16px !important;
+    color: var(--property-snapshot-gold) !important;
+    font-size: 11px !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.16em !important;
+}
+
+.property-snapshot-eyebrow svg {
+    width: 14px !important;
+    height: 14px !important;
+    color: var(--property-snapshot-gold) !important;
+    stroke: currentColor !important;
 }
 
 .property-snapshot-layout {
@@ -15062,10 +15092,97 @@ body {
 
 .property-snapshot-card {
     align-self: start !important;
+    border-color: transparent !important;
+    border-width: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+    padding: 0 !important;
 }
 
 .property-snapshot-brand h3 {
     margin-top: 0 !important;
+}
+
+.property-snapshot-brand h3 em {
+    color: var(--property-snapshot-gold) !important;
+    background: none !important;
+    background-clip: border-box !important;
+    -webkit-background-clip: border-box !important;
+    text-shadow: 0 0 34px rgba(240, 205, 69, 0.18) !important;
+    animation: none !important;
+}
+
+.property-snapshot-logo,
+.property-snapshot-metrics > div {
+    border-color: rgba(240, 205, 69, 0.22) !important;
+}
+
+.property-snapshot-kicker,
+.property-snapshot-metrics strong,
+.property-snapshot-strip span,
+.property-snapshot-strip > div:hover strong,
+.property-snapshot-meta dt {
+    color: var(--property-snapshot-gold) !important;
+}
+
+.property-snapshot-kicker span,
+.property-snapshot-metrics > div::after {
+    background: var(--property-snapshot-gold) !important;
+    box-shadow: 0 0 14px rgba(240, 205, 69, 0.42) !important;
+}
+
+.property-snapshot-kicker span {
+    display: none !important;
+}
+
+.property-snapshot-metrics svg {
+    stroke: var(--property-snapshot-gold) !important;
+    filter: drop-shadow(0 0 10px rgba(240, 205, 69, 0.20)) !important;
+}
+
+.property-snapshot-metrics > div:hover {
+    border-color: rgba(240, 205, 69, 0.56) !important;
+    background:
+        linear-gradient(135deg, rgba(240, 205, 69, 0.13), rgba(255, 255, 255, 0.02)),
+        #202020 !important;
+}
+
+.property-snapshot-metrics > div:hover svg {
+    filter:
+        drop-shadow(0 0 8px rgba(240, 205, 69, 0.48)) drop-shadow(0 0 16px rgba(240, 205, 69, 0.20)) !important;
+}
+
+.property-snapshot-content h3 {
+    font-size: 34px !important;
+    line-height: 1.18 !important;
+}
+
+.property-snapshot-readmore {
+    --property-snapshot-readmore-min-height: var(--about-readmore-height, 36px);
+    --property-snapshot-readmore-padding-y: 0;
+    --property-snapshot-readmore-padding-x: var(--about-readmore-padding-x, 20px);
+    --property-snapshot-readmore-radius: var(--about-readmore-radius, 10px);
+    --property-snapshot-readmore-font-size: var(--about-readmore-font-size, 13px);
+    --property-snapshot-readmore-line-height: 1;
+    --property-snapshot-readmore-letter-spacing: 0.12em;
+    height: var(--about-readmore-height, 36px) !important;
+    border-color: var(--property-snapshot-gold-border) !important;
+    background: var(--property-snapshot-gold-soft) !important;
+    color: var(--property-snapshot-gold) !important;
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease,
+        box-shadow 0.3s ease,
+        color 0.3s ease !important;
+}
+
+.property-snapshot-readmore:hover {
+    border-color: rgba(240, 205, 69, 0.56) !important;
+    background: rgba(240, 205, 69, 0.20) !important;
+    color: var(--property-snapshot-gold) !important;
+    box-shadow: none !important;
+    transform: translateY(-2px) !important;
 }
 
 .property-snapshot-modal .property-snapshot-modal-btn {
