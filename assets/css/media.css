@@ -703,6 +703,10 @@
 
     .property-snapshot-modal .property-snapshot-modal-btn {
         width: 100% !important;
+        min-height: 50px !important;
+        padding: 0 34px !important;
+        font-size: 15px !important;
+        line-height: 1.2 !important;
     }
 }
 
@@ -10394,6 +10398,8 @@
         min-height: 44px !important;
         align-self: stretch !important;
         border-radius: 999px !important;
+        font-size: 14px !important;
+        line-height: 1.2 !important;
     }
 
     .footer-redesign-main {
@@ -10896,8 +10902,14 @@
 
 /* Final mobile footer alignment guard. */
 @media (max-width: 767px) {
+    .footer-redesign {
+        padding-top: 20px !important;
+    }
+
     .footer-redesign-cta {
         text-align: center !important;
+        padding-top: 12px !important;
+        padding-bottom: 14px !important;
     }
 
     .footer-redesign-cta p {
@@ -10958,8 +10970,96 @@
         text-align: center !important;
     }
 
-    .footer-redesign-contact a[href^="tel:"] {
+    .footer-redesign-main {
+        grid-template-columns: minmax(0, 260px) !important;
+        gap: 0 !important;
+    }
+
+    .footer-redesign-brand,
+    .footer-redesign-main > .footer-redesign-column,
+    .footer-redesign-contact {
+        grid-column: 1 / -1 !important;
+        width: 100% !important;
+    }
+
+    .footer-redesign-contact {
+        align-items: stretch !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.14) !important;
+        border-radius: 0 !important;
+    }
+
+    .footer-redesign-main > .footer-redesign-column {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.14) !important;
+        padding: 0 !important;
+        text-align: left !important;
+    }
+
+    .footer-redesign-column h3 {
+        width: 100% !important;
+        margin: 0 !important;
+        text-align: left !important;
+    }
+
+    .footer-accordion-toggle {
+        display: flex !important;
+        width: 100% !important;
+        min-height: 52px !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        box-sizing: border-box !important;
+        padding: 0 !important;
         color: #f0cd45 !important;
+        cursor: pointer !important;
+    }
+
+    .footer-accordion-icon {
+        display: inline-block !important;
+        width: 9px !important;
+        height: 9px !important;
+        border-right: 2px solid currentColor !important;
+        border-bottom: 2px solid currentColor !important;
+        color: rgba(255, 255, 255, 0.70) !important;
+        line-height: 1 !important;
+        transform: rotate(45deg) !important;
+        transition: transform 0.24s ease, color 0.24s ease !important;
+    }
+
+    .footer-redesign-column.is-open .footer-accordion-icon {
+        color: #f0cd45 !important;
+        transform: rotate(-135deg) !important;
+    }
+
+    .footer-redesign-column:not(.is-open) .footer-accordion-panel {
+        display: none !important;
+    }
+
+    .footer-accordion-panel {
+        display: flex !important;
+        width: calc(100% - 18px) !important;
+        align-items: flex-start !important;
+        padding: 0 0 16px 18px !important;
+    }
+
+    .footer-redesign-contact .footer-accordion-panel {
+        width: calc(100% - 10px) !important;
+        align-items: flex-start !important;
+        padding-left: 10px !important;
+        text-align: left !important;
+    }
+
+    .footer-redesign-main .footer-redesign-column:not(.footer-redesign-contact) .footer-accordion-panel > a {
+        margin-right: 0 !important;
+        margin-left: 0 !important;
+        text-align: left !important;
+    }
+
+    .footer-redesign-column p,
+    .footer-redesign-column strong {
+        text-align: left !important;
+    }
+
+    .footer-redesign-contact address {
+        text-align: left !important;
     }
 }
 
@@ -11036,5 +11136,155 @@
         color: #f0cd45 !important;
         font-size: var(--about-readmore-font-size, 13px) !important;
         letter-spacing: 0.12em !important;
+    }
+}
+
+/* Final mobile property snapshot compact premium pass. */
+@media (max-width: 767px) {
+    .property-snapshot-section {
+        padding: 30px 14px 32px !important;
+        background: #080805 !important;
+    }
+
+    .property-snapshot-section::before {
+        display: none !important;
+        content: none !important;
+        background: none !important;
+        opacity: 0 !important;
+    }
+
+    .property-snapshot-layout {
+        gap: 14px !important;
+        margin-top: 20px !important;
+    }
+
+    .property-snapshot-card {
+        padding: 8px 14px 13px !important;
+    }
+
+    .property-snapshot-brand {
+        margin-bottom: 12px !important;
+        padding-bottom: 14px !important;
+    }
+
+    .property-snapshot-brand h3 {
+        margin-top: 0 !important;
+    }
+
+    .property-snapshot-subtitle {
+        margin-top: 12px !important;
+    }
+
+    .property-snapshot-metrics {
+        gap: 8px !important;
+    }
+
+    .property-snapshot-metrics > div {
+        min-height: 78px !important;
+        padding: 10px 8px 14px !important;
+    }
+
+    .property-snapshot-content h3 {
+        margin-bottom: 10px !important;
+    }
+
+    .property-snapshot-content p {
+        margin-bottom: 10px !important;
+        line-height: 1.55 !important;
+    }
+
+    .property-snapshot-strip {
+        margin-top: 24px !important;
+        margin-bottom: 0 !important;
+    }
+
+    .property-snapshot-strip > div {
+        min-height: 48px !important;
+        gap: 5px !important;
+    }
+
+    .property-snapshot-strip > div::before {
+        position: relative !important;
+        left: auto !important;
+        top: auto !important;
+        margin-bottom: 1px !important;
+    }
+
+    .property-snapshot-strip span {
+        color: rgba(255, 255, 255, 0.64) !important;
+        font-family: "Jost", "Inter", Arial, sans-serif !important;
+    }
+
+    .property-snapshot-strip strong {
+        font-family: "Jost", "Inter", Arial, sans-serif !important;
+    }
+
+    .property-snapshot-modal .property-snapshot-modal-close {
+        top: 10px !important;
+        right: 10px !important;
+        width: 30px !important;
+        height: 30px !important;
+        border-radius: 8px !important;
+    }
+
+    .property-snapshot-modal .property-snapshot-modal-close svg {
+        width: 14px !important;
+        height: 14px !important;
+    }
+}
+
+/* Final mobile modal compact spacing. */
+@media (max-width: 767px) {
+    .property-snapshot-modal .property-snapshot-modal-header {
+        padding: 24px 16px 14px !important;
+    }
+
+    .property-snapshot-modal .property-snapshot-modal-content {
+        padding: 18px 16px 16px !important;
+    }
+
+    .property-modal-hero {
+        gap: 12px !important;
+    }
+
+    .property-modal-hero > p {
+        padding: 13px !important;
+        font-size: 14px !important;
+        line-height: 1.55 !important;
+    }
+
+    .property-modal-hero dl {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+        gap: 8px !important;
+    }
+
+    .property-modal-hero dl div,
+    .property-modal-grid article {
+        align-items: center !important;
+        padding: 12px !important;
+        border-radius: 14px !important;
+        text-align: center !important;
+    }
+
+    .property-modal-hero dt,
+    .property-modal-hero dd {
+        width: 100% !important;
+        text-align: center !important;
+    }
+
+    .property-modal-grid {
+        gap: 8px !important;
+        margin-top: 12px !important;
+    }
+
+    .property-modal-grid h4 {
+        margin: 8px 0 5px !important;
+    }
+
+    .property-modal-note {
+        gap: 9px !important;
+        margin-top: 12px !important;
+        padding: 12px !important;
+        border-radius: 14px !important;
     }
 }
