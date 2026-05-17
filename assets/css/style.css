@@ -5618,7 +5618,7 @@ body.is-premium-specs-modal-open {
 
 .prime-location-map {
     width: min(100%, 1200px);
-    height: 340px;
+    height: 440px;
     margin-top: 24px;
     border-color: rgba(240, 205, 69, 0.28);
     box-shadow:
@@ -6165,30 +6165,39 @@ body.is-prime-map-lightbox-open {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    min-width: 267px;
-    height: 36px;
+    gap: 8px;
+    min-width: 312px;
+    height: 48px;
     padding: 0 24px;
-    border-radius: 8px;
-    background: linear-gradient(180deg, var(--theme-gold) 0%, var(--theme-gold) 100%);
-    color: #0b0906;
-    font-size: 11px;
-    font-weight: 600;
-    line-height: 14px;
-    box-shadow:
-        0 10px 24px rgba(240, 205, 69, 0.22),
-        inset 0 1px 0 rgba(255, 255, 255, 0.22);
+    border: 1px solid rgba(0, 210, 106, .38);
+    border-radius: 999px;
+    background: rgba(0, 210, 106, .035);
+    color: #00e676;
+    font-size: 14px;
+    font-weight: 900;
+    line-height: 1.2;
+    box-shadow: none;
     transition:
-        filter 0.25s ease,
         transform 0.25s ease,
+        border-color 0.25s ease,
+        background 0.25s ease,
+        color 0.25s ease,
         box-shadow 0.25s ease;
 }
 
 .prime-whatsapp-location-btn:hover {
-    filter: brightness(1.07);
-    box-shadow:
-        0 14px 30px rgba(240, 205, 69, 0.30),
-        inset 0 1px 0 rgba(255, 255, 255, 0.28);
-    transform: none;
+    border-color: rgba(0, 230, 118, .72);
+    background: rgba(0, 0, 0, 0.58);
+    color: #42ff9a;
+    box-shadow: 0 12px 26px rgba(0, 0, 0, 0.26);
+    transform: translateY(-2px);
+}
+
+.prime-whatsapp-location-btn svg {
+    width: 17px;
+    height: 17px;
+    flex: 0 0 17px;
+    color: currentColor;
 }
 
 .prime-whatsapp-location-cta small {
@@ -7935,8 +7944,17 @@ body.is-amenity-lightbox-open {
 }
 
 .footer-redesign-actions a:last-child {
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    color: #ffffff;
+    border: 1px solid rgba(0, 210, 106, .38);
+    background: rgba(0, 210, 106, .035);
+    color: #00e676;
+    box-shadow: none;
+}
+
+.footer-redesign-actions a:last-child:hover {
+    border-color: rgba(0, 230, 118, .72);
+    background: rgba(0, 0, 0, 0.58);
+    color: #42ff9a;
+    box-shadow: 0 12px 26px rgba(0, 0, 0, 0.26);
 }
 
 .footer-redesign-main {
@@ -8172,15 +8190,13 @@ body.is-amenity-lightbox-open {
     min-height: 40px !important;
     align-items: center !important;
     gap: 10px !important;
-    border: 1px solid rgba(37, 211, 102, 0.48) !important;
-    border-radius: 10px !important;
-    background:
-        radial-gradient(90% 140% at 0% 0%, rgba(37, 211, 102, 0.22), transparent 64%),
-        rgba(37, 211, 102, 0.10) !important;
+    border: 1px solid rgba(0, 210, 106, .38) !important;
+    border-radius: 999px !important;
+    background: rgba(0, 210, 106, .035) !important;
     padding: 0 16px !important;
-    color: #e4ffed !important;
+    color: #00e676 !important;
     font-weight: 800 !important;
-    box-shadow: 0 16px 34px rgba(37, 211, 102, 0.10);
+    box-shadow: none !important;
 }
 
 .footer-redesign-contact a {
@@ -8201,11 +8217,18 @@ body.is-amenity-lightbox-open {
     color: #f0cd45;
 }
 
+.footer-redesign-contact .footer-redesign-whatsapp:hover {
+    border-color: rgba(0, 230, 118, .72) !important;
+    background: rgba(0, 0, 0, 0.58) !important;
+    color: #42ff9a !important;
+    box-shadow: 0 12px 26px rgba(0, 0, 0, 0.26) !important;
+}
+
 .footer-redesign-whatsapp svg {
-    width: 19px !important;
-    height: 19px !important;
-    flex: 0 0 19px !important;
-    color: #25d366 !important;
+    width: 17px !important;
+    height: 17px !important;
+    flex: 0 0 17px !important;
+    color: currentColor !important;
 }
 
 .footer-redesign-bottom {
@@ -8518,6 +8541,21 @@ body.is-amenity-lightbox-open {
     background: linear-gradient(90deg, rgba(213, 174, 102, 0), rgba(213, 174, 102, 0.34), rgba(23, 23, 23, 0.06), rgba(213, 174, 102, 0));
 }
 
+.sticky-availability-btn--white {
+    border: 1px solid rgba(0, 210, 106, .38) !important;
+    border-radius: 999px !important;
+    background: rgba(0, 210, 106, .035) !important;
+    color: #00e676 !important;
+    box-shadow: none !important;
+}
+
+.sticky-availability-btn--white svg {
+    width: 17px !important;
+    height: 17px !important;
+    flex: 0 0 17px !important;
+    color: currentColor !important;
+}
+
 .sticky-availability-btn:hover {
     transform: translateY(-3px);
 }
@@ -8535,8 +8573,10 @@ body.is-amenity-lightbox-open {
 }
 
 .sticky-availability-btn--white:hover {
-    background-color: #f7f7f7;
-    box-shadow: 0 18px 36px rgba(255, 255, 255, 0.18);
+    border-color: rgba(0, 230, 118, .72) !important;
+    background: rgba(0, 0, 0, 0.58) !important;
+    color: #42ff9a !important;
+    box-shadow: 0 12px 26px rgba(0, 0, 0, 0.26) !important;
 }
 
 @keyframes stickyButtonShine {
@@ -10047,15 +10087,24 @@ body.is-amenity-lightbox-open {
 
 .site-visit-whatsapp {
     margin-top: 14px;
-    border: 1px solid #00b98b;
-    color: #00c896;
-    background: rgba(0, 185, 139, 0.04);
+    border: 1px solid rgba(0, 210, 106, .38);
+    background: rgba(0, 210, 106, .035);
+    color: #00e676;
+    box-shadow: none;
 }
 
 .site-visit-whatsapp:hover {
-    background: rgba(0, 185, 139, 0.11);
-    border-color: #03d6a2;
-    box-shadow: 0 18px 36px rgba(0, 185, 139, 0.12);
+    border-color: rgba(0, 230, 118, .72);
+    background: rgba(0, 0, 0, 0.58);
+    color: #42ff9a;
+    box-shadow: 0 12px 26px rgba(0, 0, 0, 0.26);
+}
+
+.site-visit-whatsapp svg {
+    width: 17px !important;
+    height: 17px !important;
+    flex: 0 0 17px !important;
+    color: currentColor;
 }
 
 .site-visit-phone {
@@ -10079,8 +10128,7 @@ body.is-amenity-lightbox-open {
     transform: translateY(-2px);
 }
 
-/* WhatsApp CTA style matched to the referenced Amelia Estate hero button. */
-a[href*="wa.me"],
+/* Hero WhatsApp CTA style matched to the referenced Amelia Estate hero button. */
 .hero-actions a[href*="wa.me"].hero-whatsapp-btn {
     position: relative !important;
     display: inline-flex !important;
@@ -10115,7 +10163,6 @@ a[href*="wa.me"],
         box-shadow .25s ease !important;
 }
 
-a[href*="wa.me"]::before,
 .hero-actions a[href*="wa.me"].hero-whatsapp-btn::before {
     content: "" !important;
     position: relative !important;
@@ -10148,18 +10195,16 @@ a[href*="wa.me"]::before,
     mix-blend-mode: normal !important;
 }
 
-a[href*="wa.me"]::after,
 .hero-actions a[href*="wa.me"].hero-whatsapp-btn::after {
     display: none !important;
     content: none !important;
 }
 
-a[href*="wa.me"] svg,
-a[href*="wa.me"] i {
+.hero-actions a[href*="wa.me"].hero-whatsapp-btn svg,
+.hero-actions a[href*="wa.me"].hero-whatsapp-btn i {
     display: none !important;
 }
 
-a[href*="wa.me"]:hover,
 .hero-actions a[href*="wa.me"].hero-whatsapp-btn:hover {
     border-color: rgba(0, 230, 118, .72) !important;
     background: rgba(0, 0, 0, 0.78) !important;
@@ -10169,16 +10214,24 @@ a[href*="wa.me"]:hover,
 }
 
 .hero-actions a[href*="wa.me"].hero-whatsapp-btn {
-    min-width: 0 !important;
-    padding-right: 35px !important;
-    padding-left: 35px !important;
+    width: 224px !important;
+    min-width: 224px !important;
+    height: 44px !important;
+    min-height: 44px !important;
+    padding: 0 35px !important;
+    border-radius: 999px !important;
+    background: rgba(0, 0, 0, 0.42) !important;
+    color: #00e676 !important;
+    font-size: 16px !important;
+    font-weight: 800 !important;
+    line-height: 1 !important;
     white-space: nowrap !important;
 }
 
 
-a[href*="wa.me"] span,
-a[href*="wa.me"] b,
-a[href*="wa.me"] small {
+.hero-actions a[href*="wa.me"].hero-whatsapp-btn span,
+.hero-actions a[href*="wa.me"].hero-whatsapp-btn b,
+.hero-actions a[href*="wa.me"].hero-whatsapp-btn small {
     white-space: nowrap !important;
 }
 
@@ -10220,14 +10273,16 @@ a[href*="wa.me"] small {
 
 .site-visit-form {
     width: min(100%, 360px);
-    margin-top: 13px !important;
-    gap: 9px;
+    margin-top: 11px !important;
+    gap: 8px;
 }
 
 .site-visit-form input {
-    height: 36px;
-    border-radius: 10px;
-    font-size: 13px;
+    height: 32px;
+    border-radius: 9px;
+    padding: 0 12px;
+    font-size: 12px;
+    letter-spacing: 0.08em;
 }
 
 .site-visit-submit,
@@ -10235,7 +10290,7 @@ a[href*="wa.me"] small {
     width: min(100%, 290px) !important;
     height: 38px !important;
     min-height: 38px !important;
-    border-radius: 10px !important;
+    border-radius: 999px !important;
     font-size: 14px !important;
     margin-right: auto;
     margin-left: auto;
@@ -10246,9 +10301,13 @@ a[href*="wa.me"] small {
 }
 
 .site-visit-card .site-visit-whatsapp {
-    margin-top: 10px;
+    margin-top: 9px;
     padding-right: 16px !important;
     padding-left: 16px !important;
+    border-color: rgba(0, 210, 106, .38) !important;
+    background: rgba(0, 210, 106, .035) !important;
+    color: #00e676 !important;
+    box-shadow: none !important;
 }
 
 .site-visit-phone {
@@ -11930,7 +11989,7 @@ a[href*="wa.me"] small {
 }
 
 .hero-actions a[href*="wa.me"].hero-whatsapp-btn:hover {
-    background: rgba(0, 0, 0, 0.54) !important;
+    background: rgba(0, 0, 0, 0.58) !important;
     box-shadow: 0 12px 26px rgba(0, 0, 0, 0.26) !important;
 }
 
@@ -12499,6 +12558,30 @@ body.struct-slider-locked {
     color: rgba(255, 255, 255, 0.9);
 }
 
+.struct-slider-section .struct-actions.hero-actions {
+    position: static !important;
+    left: auto !important;
+    bottom: auto !important;
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 10px !important;
+    width: min(494px, 100%) !important;
+    max-width: 100% !important;
+    height: auto !important;
+    margin: 24px 0 0 !important;
+    transform: none !important;
+}
+
+.struct-slider-section .struct-actions .hero-price-details-btn,
+.struct-slider-section .struct-actions a[href*="wa.me"].hero-whatsapp-btn {
+    width: 224px !important;
+    min-width: 224px !important;
+    height: 44px !important;
+    min-height: 44px !important;
+}
+
 @keyframes structOverlayReveal {
     to {
         opacity: 0.8;
@@ -12930,7 +13013,6 @@ body {
     .construction-phase-trigger,
     .project-essentials-btn,
     .site-visit-submit,
-    .site-visit-whatsapp,
     .footer-redesign-actions a,
     .property-snapshot-modal-btn) {
     font-size: 15.5px !important;
@@ -12942,7 +13024,6 @@ body {
 .pricing-unlock-form label>span,
 .booking-enquiry-form input,
 .pricing-unlock-form input,
-.site-visit-form input,
 .booking-country {
     font-size: 15px !important;
     line-height: 1.35 !important;

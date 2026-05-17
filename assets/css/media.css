@@ -1408,7 +1408,7 @@
     }
 
     .prime-location-map {
-        height: 390px;
+        height: 430px;
     }
 
     .visual-showcase-inner {
@@ -4773,14 +4773,10 @@
         font-size: 14px;
     }
 
-    .site-visit-whatsapp {
-        height: 46px;
-        font-size: 15px;
-    }
-
     .site-visit-whatsapp svg {
-        width: 22px !important;
-        height: 22px !important;
+        width: 17px !important;
+        height: 17px !important;
+        flex: 0 0 17px !important;
     }
 
     .site-visit-phone {
@@ -4957,7 +4953,7 @@
     }
 
     .prime-location-map {
-        height: 300px;
+        height: 340px;
         margin-top: 34px;
     }
 
@@ -8702,6 +8698,27 @@
         font-size: 14px;
         line-height: 1.55;
     }
+
+    .struct-slider-section .struct-actions.hero-actions {
+        position: static !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        justify-content: flex-start !important;
+        gap: 10px !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        height: auto !important;
+        margin: 18px 0 0 !important;
+        transform: none !important;
+    }
+
+    .struct-slider-section .struct-actions .hero-price-details-btn,
+    .struct-slider-section .struct-actions a[href*="wa.me"].hero-whatsapp-btn {
+        width: min(248px, 100%) !important;
+        min-width: 0 !important;
+        max-width: 248px !important;
+    }
 }
 
 
@@ -11565,9 +11582,9 @@
     }
 
     .sticky-availability-content--interested .sticky-availability-btn--white {
-        border: 1px solid rgba(0, 255, 127, 0.58) !important;
-        background: rgba(0, 255, 127, 0.08) !important;
-        color: #25d366 !important;
+        border: 1px solid rgba(0, 210, 106, .38) !important;
+        background: rgba(0, 210, 106, .035) !important;
+        color: #00e676 !important;
         box-shadow: none !important;
     }
 
