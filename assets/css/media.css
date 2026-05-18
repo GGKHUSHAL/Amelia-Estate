@@ -10369,16 +10369,18 @@
     }
 
     .transparent-pricing-section .floor-price-grid button.is-active {
-        background: #f0cd45 !important;
-        border-color: #f0cd45 !important;
-        color: #000000 !important;
-        box-shadow: 0 18px 45px rgba(240, 205, 69, 0.35) !important;
+        background: linear-gradient(180deg, rgba(20, 20, 18, 0.96), rgba(8, 8, 7, 0.98)) !important;
+        border-color: rgba(240, 205, 69, 0.28) !important;
+        color: #f0cd45 !important;
+        box-shadow:
+            inset 0 0 0 1px rgba(240, 205, 69, 0.18),
+            inset 0 12px 24px rgba(255, 255, 255, 0.035) !important;
     }
 
     .transparent-pricing-section .floor-price-grid button.is-active span,
     .transparent-pricing-section .floor-price-grid button.is-active strong,
     .transparent-pricing-section .floor-price-grid button.is-active .pricing-currency {
-        color: #000000 !important;
+        color: #f0cd45 !important;
         filter: none !important;
         text-shadow: none !important;
     }
@@ -10826,10 +10828,12 @@
     }
 
     .transparent-pricing-section .floor-price-grid button.is-active {
-        background: rgba(240, 205, 69, 0.10) !important;
-        border-color: rgba(240, 205, 69, 0.38) !important;
+        background: linear-gradient(180deg, rgba(20, 20, 18, 0.96), rgba(8, 8, 7, 0.98)) !important;
+        border-color: rgba(240, 205, 69, 0.28) !important;
         color: #f0cd45 !important;
-        box-shadow: inset 0 0 0 1px rgba(240, 205, 69, 0.20) !important;
+        box-shadow:
+            inset 0 0 0 1px rgba(240, 205, 69, 0.18),
+            inset 0 12px 24px rgba(255, 255, 255, 0.035) !important;
     }
 
     .transparent-pricing-section .floor-price-grid button.is-active span {
@@ -11302,7 +11306,7 @@
         justify-content: space-between !important;
         box-sizing: border-box !important;
         padding: 0 !important;
-        color: #f0cd45 !important;
+        color: #ffffff !important;
         cursor: pointer !important;
     }
 
