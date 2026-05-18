@@ -8850,18 +8850,18 @@
 
     .about-feature {
         display: grid !important;
-        grid-template-columns: 18px minmax(0, 1fr) !important;
+        grid-template-columns: 20px minmax(0, 1fr) !important;
         align-items: center !important;
         justify-content: start !important;
-        gap: 4px !important;
+        gap: 10px !important;
         width: 100% !important;
         margin: 0 !important;
     }
 
     .about-feature svg {
-        width: 18px !important;
-        height: 18px !important;
-        flex: 0 0 18px !important;
+        width: 20px !important;
+        height: 20px !important;
+        flex: 0 0 20px !important;
         margin-top: 0 !important;
         align-self: center !important;
         justify-self: start !important;
@@ -8883,7 +8883,14 @@
 
     .about-feature h3 {
         color: #ffffff !important;
+        font-size: 15px !important;
+        line-height: 1.16 !important;
         text-shadow: none !important;
+    }
+
+    .about-feature p {
+        font-size: 12.5px !important;
+        line-height: 1.22 !important;
     }
 
     .about-btn,
@@ -11753,4 +11760,269 @@
     letter-spacing: 0.16em !important;
     text-transform: uppercase !important;
     box-shadow: none !important;
+}
+
+/* Final mobile readability pass: keep small supporting text legible across sections. */
+@media (max-width: 767px) {
+    body {
+        font-size: 16px !important;
+        line-height: 1.62 !important;
+    }
+
+    .hero-location,
+    .hero-slide--figma .hero-location,
+    :is(.about-section-tab,
+        .booking-enquiry-tab,
+        .ideal-floor-eyebrow,
+        .project-plans-eyebrow,
+        .transparent-pricing-eyebrow,
+        .premium-specs-eyebrow,
+        .visual-showcase-eyebrow,
+        .prime-location-eyebrow,
+        .lifestyle-amenities-eyebrow,
+        .construction-progress-eyebrow,
+        .buyer-testimonials-eyebrow,
+        .sticky-availability-eyebrow,
+        .faq-eyebrow,
+        .project-essentials-head-eyebrow,
+        .project-essentials-eyebrow,
+        .site-visit-eyebrow,
+        .property-snapshot-eyebrow,
+        .project-download-heading > p,
+        .interested-property-kicker) {
+        font-size: 12px !important;
+        line-height: 1.12 !important;
+    }
+
+    :is(.about-text-block > p,
+        .about-more p,
+        .ideal-floor-heading > p:not(.ideal-floor-eyebrow),
+        .project-plans-copy > p:not(.project-plans-eyebrow),
+        .project-plan-footer p,
+        .transparent-pricing-header > p:not(.transparent-pricing-eyebrow),
+        .premium-specs-header > p:not(.premium-specs-eyebrow),
+        .visual-showcase-header > p:not(.visual-showcase-eyebrow),
+        .visual-showcase-copy p,
+        .visual-showcase-cta p,
+        .visual-showcase-cta small,
+        .visual-showcase-disclaimer p,
+        .prime-location-header > p:not(.prime-location-eyebrow),
+        .prime-growth-grid p,
+        .peace-density-content p,
+        .construction-progress-copy,
+        .construction-progress-meter p,
+        .buyer-testimonials-header p:not(.buyer-testimonials-eyebrow),
+        .buyer-testimonial-card p,
+        .buyer-appreciation-card p,
+        .project-essentials-head > p:not(.project-essentials-head-eyebrow),
+        .project-essentials-panel > p:not(.project-essentials-eyebrow),
+        .site-visit-card > p,
+        .property-snapshot-content p,
+        .property-modal-hero > p,
+        .property-modal-grid p,
+        .property-modal-note p,
+        .footer-redesign-cta span,
+        .footer-redesign-brand > p) {
+        font-size: 16px !important;
+        line-height: 1.38 !important;
+    }
+
+    :is(.snapshot-card span,
+        .snapshot-card strong,
+        .about-feature p,
+        .about-more-points span,
+        .ideal-floor-badges strong,
+        .ideal-floor-spec span,
+        .project-plan-variants span,
+        .project-plan-meta,
+        .project-plan-badge-label,
+        .project-plan-badge-accent-text,
+        .pricing-spec span,
+        .selected-price-box > span,
+        .selected-price-box p,
+        .pricing-unlock-note,
+        .premium-specs-slide-overlay p,
+        .premium-specs-notice p,
+        .premium-specs-brands p,
+        .premium-specs-brand,
+        .visual-gallery-info-copy span,
+        .prime-distance-card strong,
+        .prime-whatsapp-location-cta small,
+        .construction-status-center small,
+        .construction-info-card p,
+        .construction-bank-subtitle,
+        .construction-bank-tile b,
+        .construction-bank-tile em,
+        .construction-proof-card p,
+        .construction-stage-labels,
+        .construction-buyer-proof span,
+        .property-modal-hero dt,
+        .property-modal-grid span,
+        .property-snapshot-brand p,
+        .property-snapshot-metrics span,
+        .property-snapshot-meta dt,
+        .footer-redesign-brand span,
+        .footer-redesign-column strong) {
+        font-size: 12.5px !important;
+        line-height: 1.42 !important;
+    }
+
+    :is(.about-feature h3,
+        .ideal-floor-spec strong,
+        .pricing-spec strong,
+        .visual-gallery-info-copy strong,
+        .prime-distance-card span,
+        .prime-distance-card strong em,
+        .lifestyle-amenity-caption span,
+        .construction-phase-panel div,
+        .construction-phase-panel strong,
+        .construction-info-card small,
+        .construction-proof-card small,
+        .property-modal-hero dd,
+        .property-modal-grid h4,
+        .property-snapshot-meta dd,
+        .footer-redesign-column a,
+        .footer-redesign-column address,
+        .footer-redesign-column p) {
+        font-size: 15px !important;
+        line-height: 1.46 !important;
+    }
+
+    :is(.hero-tags span,
+        .pricing-unlock-kicker,
+        .footer-redesign-cta p,
+        .property-snapshot-strip,
+        .property-snapshot-readmore,
+        .about-btn) {
+        font-size: 12.5px !important;
+        line-height: 1.28 !important;
+    }
+
+    :is(.ideal-floor-size-tabs button,
+        .ideal-floor-levels button,
+        .ideal-floor-price-btn,
+        .project-plan-tabs button,
+        .project-plan-variants button,
+        .project-plan-cta,
+        .transparent-pricing-tabs button,
+        .pricing-unlock-btn,
+        .pricing-unlock-submit,
+        .premium-specs-slide-overlay button,
+        .visual-showcase-tabs button,
+        .visual-showcase-cta a,
+        .prime-map-live-action a,
+        .prime-whatsapp-location-btn,
+        .lifestyle-amenities-tabs button,
+        .faq-tab,
+        .construction-phase-trigger,
+        .project-essentials-btn,
+        .site-visit-submit,
+        .site-visit-whatsapp,
+        .footer-redesign-actions a,
+        .footer-redesign-contact a,
+        .property-snapshot-modal-btn) {
+        font-size: 15px !important;
+        line-height: 1.28 !important;
+    }
+}
+
+/* Targeted mobile card sizing fixes. */
+@media (max-width: 767px) {
+    .construction-bank-tile {
+        min-height: 48px !important;
+        padding: 7px 3px !important;
+        gap: 3px !important;
+    }
+
+    .construction-bank-tile b {
+        font-size: 12px !important;
+        line-height: 1.05 !important;
+    }
+
+    .construction-bank-tile em {
+        gap: 1px !important;
+        font-size: 9px !important;
+        line-height: 1 !important;
+        letter-spacing: 0 !important;
+        white-space: nowrap !important;
+    }
+
+    .construction-bank-tile em i {
+        width: 7px !important;
+        height: 7px !important;
+        flex-basis: 7px !important;
+    }
+
+    .ideal-floor-section .ideal-floor-panel .ideal-floor-spec {
+        min-height: 74px !important;
+        gap: 6px !important;
+        padding: 10px 8px !important;
+    }
+
+    .ideal-floor-section .ideal-floor-panel .ideal-floor-spec img {
+        width: 20px !important;
+        height: 20px !important;
+    }
+
+    .ideal-floor-section .ideal-floor-panel .ideal-floor-spec span {
+        font-size: 10.5px !important;
+        line-height: 12px !important;
+    }
+
+    .ideal-floor-section .ideal-floor-panel .ideal-floor-spec strong {
+        font-size: 13.5px !important;
+        line-height: 15px !important;
+    }
+
+    .transparent-pricing-section .pricing-spec {
+        min-height: 78px !important;
+        gap: 7px !important;
+        padding: 11px 8px !important;
+    }
+
+    .transparent-pricing-section .pricing-spec img,
+    .transparent-pricing-section .pricing-spec svg {
+        width: 21px !important;
+        height: 21px !important;
+    }
+
+    .transparent-pricing-section .pricing-spec span {
+        font-size: 10.5px !important;
+        line-height: 12px !important;
+    }
+
+    .transparent-pricing-section .pricing-spec strong {
+        font-size: 13.5px !important;
+        line-height: 15px !important;
+    }
+
+    .transparent-pricing-section .floor-price-grid button {
+        min-height: 78px !important;
+        padding: 12px 8px !important;
+    }
+
+    .transparent-pricing-section .floor-price-grid button span {
+        font-size: 12px !important;
+        line-height: 14px !important;
+    }
+
+    .transparent-pricing-section .floor-price-grid button strong {
+        font-size: 18px !important;
+        line-height: 22px !important;
+    }
+
+    .transparent-pricing-section .selected-price-box {
+        min-height: 100px !important;
+        padding: 12px 12px !important;
+    }
+
+    .transparent-pricing-section .selected-price-box>span {
+        font-size: 10px !important;
+        line-height: 12px !important;
+    }
+
+    .transparent-pricing-section .selected-price-box p {
+        font-size: 10.5px !important;
+        line-height: 13px !important;
+    }
 }
