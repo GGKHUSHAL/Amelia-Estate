@@ -3639,7 +3639,8 @@ body.is-project-plan-lightbox-open {
     position: absolute;
     inset: 0;
     background:
-        radial-gradient(circle at 50% 42%, rgba(240, 205, 69, 0.28), transparent 32%),
+        radial-gradient(circle at 50% 42%, rgba(240, 205, 69, 0.32), transparent 30%),
+        radial-gradient(circle at 50% 50%, rgba(255, 244, 189, 0.18), transparent 18%),
         rgba(0, 0, 0, 0.28);
     animation: pricingCelebrationFade 2.65s ease forwards;
 }
@@ -3654,9 +3655,51 @@ body.is-project-plan-lightbox-open {
     border: 1px solid rgba(240, 205, 69, 0.52);
     border-radius: 50%;
     box-shadow:
-        0 0 34px rgba(240, 205, 69, 0.24),
-        inset 0 0 28px rgba(240, 205, 69, 0.12);
+        0 0 34px rgba(240, 205, 69, 0.34),
+        0 0 82px rgba(240, 205, 69, 0.18),
+        inset 0 0 28px rgba(240, 205, 69, 0.16);
     animation: pricingCelebrationRing 2.55s ease forwards;
+}
+
+.pricing-celebration i,
+.pricing-celebration b {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    display: block;
+    pointer-events: none;
+}
+
+.pricing-celebration i {
+    width: 320px;
+    height: 320px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 244, 189, 0.42);
+    box-shadow:
+        0 0 56px rgba(240, 205, 69, 0.24),
+        inset 0 0 42px rgba(240, 205, 69, 0.12);
+    animation: pricingCelebrationRingAlt 2.35s 0.14s ease forwards;
+}
+
+.pricing-celebration b {
+    width: 36vw;
+    max-width: 520px;
+    height: 3px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, transparent, rgba(255, 246, 199, 0.88), rgba(240, 205, 69, 0.64), transparent);
+    filter: blur(0.4px);
+    transform-origin: center;
+    animation: pricingCelebrationSweep 1.4s ease-out forwards;
+}
+
+.pricing-celebration b:nth-of-type(2) {
+    animation-delay: 0.16s;
+    transform: translate(-50%, -50%) rotate(60deg) scaleX(0);
+}
+
+.pricing-celebration b:nth-of-type(3) {
+    animation-delay: 0.26s;
+    transform: translate(-50%, -50%) rotate(-58deg) scaleX(0);
 }
 
 .pricing-celebration span {
@@ -3756,36 +3799,40 @@ body.is-project-plan-lightbox-open {
     --r: -80deg;
 }
 
-.pricing-celebration div {
-    position: relative;
-    z-index: 1;
-    width: min(100% - 40px, 430px);
-    padding: 28px 26px;
-    border: 1px solid rgba(240, 205, 69, 0.46);
-    border-radius: 16px;
-    background: rgba(8, 8, 7, 0.92);
-    color: #f0cd45;
-    text-align: center;
-    box-shadow:
-        0 30px 70px rgba(0, 0, 0, 0.48),
-        0 0 38px rgba(240, 205, 69, 0.22);
-    animation: pricingSuccessPop 2.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+.pricing-celebration span:nth-child(13) {
+    --x: -270px;
+    --y: -42px;
+    --r: 330deg;
 }
 
-.pricing-celebration strong {
-    display: block;
-    color: #f0cd45;
-    font-size: 28px;
-    font-weight: 700;
-    line-height: 34px;
-    text-shadow: 0 0 22px rgba(240, 205, 69, 0.22);
+.pricing-celebration span:nth-child(14) {
+    --x: -242px;
+    --y: 42px;
+    --r: -210deg;
 }
 
-.pricing-celebration p {
-    margin: 8px 0 0;
-    color: rgba(255, 255, 255, 0.74);
-    font-size: 14px;
-    line-height: 20px;
+.pricing-celebration span:nth-child(15) {
+    --x: -42px;
+    --y: -302px;
+    --r: 160deg;
+}
+
+.pricing-celebration span:nth-child(16) {
+    --x: 64px;
+    --y: -308px;
+    --r: -290deg;
+}
+
+.pricing-celebration span:nth-child(17) {
+    --x: 262px;
+    --y: -34px;
+    --r: 220deg;
+}
+
+.pricing-celebration span:nth-child(18) {
+    --x: 252px;
+    --y: 56px;
+    --r: -340deg;
 }
 
 .pricing-card.is-unlocked {
@@ -3829,24 +3876,6 @@ body.is-pricing-modal-open {
     }
 }
 
-@keyframes pricingSuccessPop {
-    0% {
-        opacity: 0;
-        transform: translateY(18px) scale(0.9);
-    }
-
-    16%,
-    80% {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
-
-    100% {
-        opacity: 0;
-        transform: translateY(-12px) scale(0.96);
-    }
-}
-
 @keyframes pricingCelebrationFade {
 
     0%,
@@ -3876,6 +3905,42 @@ body.is-pricing-modal-open {
     100% {
         opacity: 0;
         transform: translate(-50%, -50%) scale(2.35);
+    }
+}
+
+@keyframes pricingCelebrationRingAlt {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.22);
+    }
+
+    20% {
+        opacity: 0.9;
+    }
+
+    82% {
+        opacity: 0.28;
+    }
+
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(1.78);
+    }
+}
+
+@keyframes pricingCelebrationSweep {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) rotate(0deg) scaleX(0);
+    }
+
+    24% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -50%) rotate(0deg) scaleX(1.1);
     }
 }
 
@@ -4525,14 +4590,16 @@ body.is-pricing-modal-open {
     position: absolute;
     inset: 0;
     z-index: 2;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 44px;
+    align-content: end;
+    column-gap: 24px;
+    align-items: flex-start;
     justify-content: flex-end;
     padding: 32px;
     background: linear-gradient(180deg, transparent 40%, rgba(0, 0, 0, 0.95) 100%);
     opacity: 0;
-    text-align: center;
+    text-align: left;
     transition: opacity 0.4s ease;
 }
 
@@ -4545,7 +4612,7 @@ body.is-pricing-modal-open {
     display: grid;
     width: 48px;
     height: 48px;
-    margin: 0 auto 14px;
+    margin: 0 0 14px;
     place-items: center;
     border: 1px solid rgba(213, 174, 102, 0.40);
     border-radius: 12px;
@@ -4557,6 +4624,7 @@ body.is-pricing-modal-open {
 }
 
 .premium-specs-slide-overlay h3 {
+    grid-column: 1;
     margin: 0 0 8px;
     color: #ffffff;
     font-size: 24px;
@@ -4565,17 +4633,20 @@ body.is-pricing-modal-open {
 }
 
 .premium-specs-slide-overlay p {
+    grid-column: 1;
     max-width: 390px;
-    margin: 0 auto 18px;
+    margin: 0;
     color: rgba(255, 255, 255, 0.66);
     font-size: 14px;
     line-height: 22px;
 }
 
 .premium-specs-slide-overlay button {
-    position: absolute;
-    right: 22px;
-    bottom: 22px;
+    position: static;
+    grid-column: 2;
+    grid-row: 3;
+    align-self: center;
+    justify-self: end;
     z-index: 4;
     display: grid;
     width: 44px;
@@ -4592,13 +4663,14 @@ body.is-pricing-modal-open {
         background-color 0.24s ease,
         border-color 0.24s ease,
         transform 0.24s ease;
+    transform: none;
 }
 
 .premium-specs-slide-overlay button:hover {
     border-color: rgba(213, 174, 102, 0.82);
     background: rgba(213, 174, 102, 0.92);
     color: #f0cd45;
-    transform: translateY(-2px);
+    transform: scale(1.04);
 }
 
 .premium-specs-slide-overlay button svg {
@@ -4906,9 +4978,9 @@ body.is-pricing-modal-open {
 }
 
 .premium-specs-modal-close {
-    position: fixed;
-    top: 106px;
-    right: 30px;
+    position: absolute;
+    top: 16px;
+    right: 16px;
     z-index: 2;
     display: grid;
     width: 43px;
@@ -4948,9 +5020,11 @@ body.is-pricing-modal-open {
 .premium-specs-modal-image {
     display: block;
     width: 100%;
-    height: 328px;
-    object-fit: cover;
+    height: auto;
+    max-height: min(52vh, 460px);
+    object-fit: initial;
     object-position: center;
+    background: transparent;
     filter: brightness(1.08) contrast(1.03);
 }
 
@@ -5030,6 +5104,7 @@ body.is-pricing-modal-open {
     line-height: 22px;
 }
 
+html.is-premium-specs-modal-open,
 body.is-premium-specs-modal-open {
     overflow: hidden;
 }
@@ -5618,7 +5693,7 @@ body.is-premium-specs-modal-open {
 
 .prime-location-map {
     width: min(100%, 1200px);
-    height: 440px;
+    height: 520px;
     margin-top: 24px;
     border-color: rgba(240, 205, 69, 0.28);
     box-shadow:
@@ -8038,7 +8113,14 @@ body.is-amenity-lightbox-open {
     height: auto;
     opacity: 1;
     filter:
-        brightness(0) saturate(100%) invert(85%) sepia(95%) saturate(731%) hue-rotate(344deg) brightness(101%) contrast(88%) drop-shadow(0 0 18px rgba(240, 205, 69, 0.28));
+        brightness(1.12)
+        contrast(1.24)
+        saturate(1.1)
+        drop-shadow(1px 0 0 rgba(255, 255, 255, 0.42))
+        drop-shadow(-1px 0 0 rgba(255, 255, 255, 0.34))
+        drop-shadow(0 1px 0 rgba(255, 255, 255, 0.34))
+        drop-shadow(0 0 6px rgba(255, 255, 255, 0.18))
+        drop-shadow(0 8px 18px rgba(0, 0, 0, 0.55));
 }
 
 .footer-redesign-brand>p {
@@ -8070,9 +8152,16 @@ body.is-amenity-lightbox-open {
 .footer-redesign-brand div img {
     width: 132px;
     height: auto;
-    opacity: 0.96;
+    opacity: 1;
     filter:
-        brightness(0) saturate(100%) invert(85%) sepia(95%) saturate(731%) hue-rotate(344deg) brightness(101%) contrast(88%);
+        brightness(1.14)
+        contrast(1.26)
+        saturate(1.12)
+        drop-shadow(1px 0 0 rgba(255, 255, 255, 0.42))
+        drop-shadow(-1px 0 0 rgba(255, 255, 255, 0.34))
+        drop-shadow(0 1px 0 rgba(255, 255, 255, 0.34))
+        drop-shadow(0 0 6px rgba(255, 255, 255, 0.18))
+        drop-shadow(0 8px 18px rgba(0, 0, 0, 0.58));
 }
 
 .footer-redesign-column h3 {
@@ -8185,10 +8274,12 @@ body.is-amenity-lightbox-open {
 
 .footer-redesign-contact .footer-redesign-whatsapp {
     display: inline-flex !important;
-    width: fit-content !important;
+    width: 232px !important;
     max-width: 100% !important;
+    height: 40px !important;
     min-height: 40px !important;
     align-items: center !important;
+    justify-content: center !important;
     gap: 10px !important;
     border: 1px solid rgba(0, 210, 106, .38) !important;
     border-radius: 999px !important;
@@ -8201,15 +8292,21 @@ body.is-amenity-lightbox-open {
 
 .footer-redesign-contact a {
     display: inline-flex;
-    width: fit-content;
-    border-radius: 10px;
+    width: 232px;
     max-width: 100%;
+    height: 40px;
     min-height: 40px;
     align-items: center;
+    justify-content: center;
     gap: 10px;
     border: 1px solid rgba(240, 205, 69, 0.24);
+    border-radius: 999px;
     padding: 0 16px;
-    color: #ffffff;
+    color: #f0cd45;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1;
+    white-space: nowrap;
 }
 
 .footer-redesign-contact a:hover {
@@ -13256,9 +13353,14 @@ body {
 }
 
 .premium-specs-slide-overlay button {
-    position: absolute !important;
+    position: static !important;
+    grid-column: 2 !important;
+    grid-row: 3 !important;
+    align-self: center !important;
+    justify-self: end !important;
     right: 22px !important;
-    bottom: 22px !important;
+    top: auto !important;
+    bottom: auto !important;
     z-index: 4 !important;
     display: grid !important;
     width: 44px !important;
@@ -13273,6 +13375,7 @@ body {
     color: #D5AE66 !important;
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
     backdrop-filter: blur(12px) !important;
+    transform: none !important;
 }
 
 .premium-specs-slide-overlay button::after {
@@ -13285,7 +13388,7 @@ body {
     background: linear-gradient(180deg, rgba(213, 174, 102, 0.18), rgba(213, 174, 102, 0.08)), rgba(10, 10, 10, 0.72) !important;
     color: #D5AE66 !important;
     box-shadow: inset 0 0 0 1px rgba(213, 174, 102, 0.18), 0 12px 28px rgba(0, 0, 0, 0.28) !important;
-    transform: translateY(-2px) !important;
+    transform: scale(1.04) !important;
 }
 
 .premium-specs-slide-overlay button svg {
@@ -14179,7 +14282,7 @@ body {
 
 .transparent-pricing-section .pricing-right {
     align-items: center !important;
-    gap: 7px !important;
+    gap: 14px !important;
     padding-left: 18px !important;
     justify-content: center !important;
     text-align: center !important;
@@ -14342,7 +14445,7 @@ body {
 
 
 .transparent-pricing-section .pricing-title-block {
-    margin-bottom: 2px !important;
+    margin-bottom: 0 !important;
 }
 
 
@@ -14358,32 +14461,39 @@ body {
 
 
 .transparent-pricing-section .pricing-spec-grid {
-    gap: 7px !important;
+    gap: 12px !important;
 }
 
 
 .transparent-pricing-section .pricing-spec {
-    min-height: 64px !important;
-    padding: 10px !important;
+    min-height: 82px !important;
+    padding: 14px 12px !important;
+    grid-template-columns: 30px minmax(0, 1fr) !important;
+    column-gap: 14px !important;
+    border: 1px solid rgba(240, 205, 69, 0.24) !important;
+    border-radius: 14px !important;
+    background: rgba(4, 4, 4, 0.56) !important;
+    box-shadow: none !important;
 }
 
 
 .transparent-pricing-section .selected-price-box {
-    min-height: 96px !important;
-    padding: 11px 16px 10px !important;
+    margin-top: 30px !important;
+    min-height: 120px !important;
+    padding: 17px 20px 14px !important;
 }
 
 
 .transparent-pricing-section .selected-price-box strong {
-    margin-top: 3px !important;
-    font-size: 38px !important;
-    line-height: 42px !important;
+    margin-top: 5px !important;
+    font-size: 44px !important;
+    line-height: 50px !important;
 }
 
 
 .transparent-pricing-section .pricing-unlock-area {
-    gap: 7px !important;
-    margin-top: 2px !important;
+    gap: 9px !important;
+    margin-top: 30px !important;
 }
 
 /* Price unlock modal: same gold theme without shine/arrow button treatment. */
@@ -14646,9 +14756,9 @@ body {
     }
 
     .ideal-floor-panel {
-        gap: clamp(12px, 1.6vh, 18px) !important;
-        padding: clamp(24px, 3vh, 34px) 30px clamp(24px, 3vh, 34px) !important;
-        justify-content: center !important;
+        gap: clamp(18px, 2.6vh, 26px) !important;
+        padding: clamp(34px, 4.2vh, 46px) 30px !important;
+        justify-content: space-between !important;
     }
 
     .ideal-floor-panel h3 {
@@ -14667,17 +14777,17 @@ body {
     }
 
     .ideal-floor-levels {
-        height: 52px !important;
+        height: 58px !important;
     }
 
     .ideal-floor-panel .ideal-floor-specs {
-        gap: 8px !important;
+        gap: 10px !important;
     }
 
     .ideal-floor-panel .ideal-floor-spec {
-        min-height: 68px !important;
-        padding: 10px 9px !important;
-        gap: 4px !important;
+        min-height: 82px !important;
+        padding: 14px 12px !important;
+        gap: 6px !important;
     }
 
     .ideal-floor-panel .ideal-floor-spec img {
@@ -14692,7 +14802,7 @@ body {
     }
 
     .ideal-floor-price-btn {
-        min-height: 46px !important;
+        min-height: 48px !important;
     }
 }
 
@@ -14979,6 +15089,7 @@ body {
         linear-gradient(135deg, rgba(255, 255, 255, .08), rgba(255, 255, 255, .025)),
         rgba(9, 9, 9, .74);
     padding: 15px 16px;
+    cursor: pointer;
     transition: border-color .3s ease, box-shadow .3s ease, transform .3s ease, background .3s ease;
 }
 
@@ -15074,6 +15185,13 @@ body {
     background: #f0cd45;
     color: black;
     transform: translateX(2px);
+}
+
+.download-option:hover a,
+.download-option.active a {
+    border-color: rgba(240, 205, 69, 0.72);
+    background: #f0cd45;
+    color: #000000;
 }
 
 .download-footnote {
@@ -15190,12 +15308,22 @@ body {
 }
 
 .property-snapshot-brand h3 em {
-    color: var(--property-snapshot-gold) !important;
-    background: none !important;
-    background-clip: border-box !important;
-    -webkit-background-clip: border-box !important;
-    text-shadow: 0 0 34px rgba(240, 205, 69, 0.18) !important;
-    animation: none !important;
+    color: transparent !important;
+    background:
+        linear-gradient(105deg,
+            #D5AE66 0%,
+            #fff1be 16%,
+            #c9963f 31%,
+            #f7d981 48%,
+            #fff7d6 64%,
+            #b9822f 82%,
+            #D5AE66 100%) !important;
+    background-size: 260% 100% !important;
+    background-clip: text !important;
+    -webkit-background-clip: text !important;
+    text-shadow: 0 0 34px rgba(213, 174, 102, 0.18) !important;
+    animation: estateIiWaveFlow 4.8s ease-in-out infinite !important;
+    will-change: background-position, filter;
 }
 
 .property-snapshot-logo,
@@ -15283,15 +15411,15 @@ body {
 
 .property-snapshot-strip {
     align-items: start !important;
-    margin-top: 34px !important;
-    gap: 24px !important;
+    margin-top: 40px !important;
+    gap: 34px !important;
 }
 
 .property-snapshot-strip > div {
     position: relative !important;
-    min-height: 58px !important;
+    min-height: 78px !important;
     justify-content: flex-start !important;
-    gap: 6px !important;
+    gap: 8px !important;
 }
 
 .property-snapshot-strip > div::before {
@@ -15299,8 +15427,8 @@ body {
     position: relative !important;
     z-index: 1 !important;
     display: block !important;
-    width: 20px !important;
-    height: 2px !important;
+    width: 28px !important;
+    height: 3px !important;
     border-radius: 999px !important;
     background: rgba(240, 205, 69, 0.72) !important;
     box-shadow: 0 0 12px rgba(240, 205, 69, 0.26) !important;
@@ -15310,7 +15438,7 @@ body {
     position: relative !important;
     z-index: 1 !important;
     font-family: "Jost", "Inter", Arial, sans-serif !important;
-    font-size: 25px !important;
+    font-size: 34px !important;
     font-weight: 500 !important;
     line-height: 0.98 !important;
     white-space: nowrap !important;
@@ -15321,10 +15449,10 @@ body {
     z-index: 1 !important;
     color: rgba(255, 255, 255, 0.64) !important;
     font-family: "Jost", "Inter", Arial, sans-serif !important;
-    font-size: 7px !important;
+    font-size: 10px !important;
     font-weight: 800 !important;
-    line-height: 1.35 !important;
-    letter-spacing: 0.20em !important;
+    line-height: 1.25 !important;
+    letter-spacing: 0.16em !important;
     text-transform: uppercase !important;
 }
 

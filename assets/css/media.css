@@ -422,7 +422,10 @@
     }
 
     .premium-specs-modal-image {
-        height: 238px;
+        height: auto;
+        max-height: min(40vh, 320px);
+        object-fit: initial;
+        background: transparent;
     }
 
     .premium-specs-modal-content {
@@ -1408,7 +1411,7 @@
     }
 
     .prime-location-map {
-        height: 430px;
+        height: 500px;
     }
 
     .visual-showcase-inner {
@@ -2020,7 +2023,7 @@
     }
 
     .prime-location-map {
-        height: 360px;
+        height: 430px;
     }
 
     .prime-distance-card {
@@ -4953,7 +4956,7 @@
     }
 
     .prime-location-map {
-        height: 340px;
+        height: 380px;
         margin-top: 34px;
     }
 
@@ -11219,7 +11222,14 @@
     .footer-redesign-brand>img,
     .footer-redesign-brand div img {
         filter:
-            brightness(0) saturate(100%) invert(85%) sepia(95%) saturate(731%) hue-rotate(344deg) brightness(101%) contrast(88%) !important;
+            brightness(1.14)
+            contrast(1.26)
+            saturate(1.12)
+            drop-shadow(1px 0 0 rgba(255, 255, 255, 0.42))
+            drop-shadow(-1px 0 0 rgba(255, 255, 255, 0.34))
+            drop-shadow(0 1px 0 rgba(255, 255, 255, 0.34))
+            drop-shadow(0 0 6px rgba(255, 255, 255, 0.18))
+            drop-shadow(0 8px 18px rgba(0, 0, 0, 0.58)) !important;
     }
 
     .footer-redesign-main {
@@ -11332,8 +11342,12 @@
     }
 
     .footer-redesign-contact .footer-accordion-panel>a {
-        width: min(100%, 230px) !important;
+        width: min(100%, 232px) !important;
+        height: 42px !important;
+        min-height: 42px !important;
+        border-radius: 999px !important;
         justify-content: center !important;
+        white-space: nowrap !important;
         margin-right: auto !important;
         margin-left: auto !important;
         text-align: center !important;

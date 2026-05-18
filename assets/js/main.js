@@ -605,7 +605,7 @@ if (idealFloorSection) {
             label: "205 Sq.Yd",
             area: "205 Sq.Yds",
             title: "3 BHK Compact Floor",
-            image: "assets/img/choose ideal/banner.jpg"
+            image: "assets/img/choose ideal/bedroom-night-205.png"
         }
     };
 
@@ -1445,6 +1445,7 @@ if (premiumSpecsSection) {
             `<div class="premium-specs-modal-detail"><strong>${label}</strong><span>${value}</span></div>`
         )).join("");
         specsModal.hidden = false;
+        document.documentElement.classList.add("is-premium-specs-modal-open");
         document.body.classList.add("is-premium-specs-modal-open");
     };
 
@@ -1454,6 +1455,7 @@ if (premiumSpecsSection) {
         }
 
         specsModal.hidden = true;
+        document.documentElement.classList.remove("is-premium-specs-modal-open");
         document.body.classList.remove("is-premium-specs-modal-open");
     };
 
@@ -2205,8 +2207,18 @@ if (downloadOptions.length && downloadPreviewImages.length) {
             setDownloadPreview(index);
         });
 
-        option.addEventListener("click", () => {
+        option.addEventListener("click", (event) => {
             setDownloadPreview(index);
+
+            if (event.target.closest("a")) {
+                return;
+            }
+
+            const link = option.querySelector("a");
+
+            if (link) {
+                link.click();
+            }
         });
     });
 }
