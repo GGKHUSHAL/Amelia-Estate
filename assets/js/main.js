@@ -64,12 +64,30 @@ if (footerAccordionToggles.length) {
         });
     });
 
+    const openDefaultFooterContact = () => {
+        if (!isMobileFooter()) {
+            return;
+        }
+
+        const contactColumn = document.querySelector(".footer-redesign-contact");
+
+        if (contactColumn && !document.querySelector(".footer-redesign-column.is-open")) {
+            setFooterAccordionItem(contactColumn, true);
+        }
+    };
+
+    openDefaultFooterContact();
+
     window.addEventListener("resize", () => {
         if (!isMobileFooter()) {
             document.querySelectorAll(".footer-redesign-column.is-open").forEach((column) => {
                 setFooterAccordionItem(column, false);
             });
+
+            return;
         }
+
+        openDefaultFooterContact();
     });
 }
 
