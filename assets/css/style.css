@@ -794,7 +794,7 @@ img.snapshot-icon {
     position: absolute;
     inset: 0;
     display: block;
-    background-color: rgba(255, 255, 255, 0.76);
+    background-color: #f0cd45;
     -webkit-mask: url("../img/project snap/mingcute_key-3-line.svg") center / contain no-repeat;
     mask: url("../img/project snap/mingcute_key-3-line.svg") center / contain no-repeat;
     transition: background-color 0.35s ease;
@@ -806,12 +806,7 @@ img.snapshot-icon {
     transform: none;
 }
 
-.snapshot-section.is-visible .snapshot-card:hover .snapshot-key-icon::before {
-    background-color: #D5AE66;
-    filter: drop-shadow(0 0 12px rgba(213, 174, 102, 0.36));
-}
-
-.snapshot-card span {
+.snapshot-card span:not(.snapshot-icon) {
     color: #D5AE66;
     font-size: 14px;
     font-weight: 400;
@@ -828,7 +823,7 @@ img.snapshot-icon {
     transition: color 0.35s ease;
 }
 
-.snapshot-section.is-visible .snapshot-card:hover span {
+.snapshot-section.is-visible .snapshot-card:hover span:not(.snapshot-icon) {
     color: #D5AE66;
 }
 
@@ -1672,7 +1667,7 @@ img.snapshot-icon {
     border: 0;
     border-radius: 12px;
     background: transparent;
-    color: rgba(255, 255, 255, 0.52);
+    color: #ffffff;
     font-family: "Jost", "Inter", Arial, sans-serif;
     font-size: 16px;
     font-weight: 500;
@@ -1844,7 +1839,7 @@ img.snapshot-icon {
     border: 0;
     border-radius: 12px;
     background: transparent;
-    color: rgba(255, 255, 255, 0.44);
+    color: #ffffff;
     font-family: "Jost", "Inter", Arial, sans-serif;
     font-size: 16px;
     font-weight: 500;
@@ -1878,6 +1873,54 @@ img.snapshot-icon {
 .ideal-floor-levels button.is-active svg {
     fill: #fff7cf;
     stroke: #fff7cf;
+}
+
+.ideal-floor-levels button .ideal-floor-height-icon {
+    display: grid;
+    grid-template-columns: repeat(3, 8px);
+    align-items: end;
+    justify-content: center;
+    gap: 3px;
+    width: 36px;
+    height: 28px;
+}
+
+.ideal-floor-levels button .ideal-floor-height-icon i {
+    display: block;
+    width: 8px;
+    border-radius: 999px 999px 3px 3px;
+    background: rgba(255, 255, 255, 0.18);
+    box-shadow: inset 0 0 0 1px rgba(240, 205, 69, 0.22);
+}
+
+.ideal-floor-levels button .ideal-floor-height-icon i:nth-child(1) {
+    height: 10px;
+}
+
+.ideal-floor-levels button .ideal-floor-height-icon i:nth-child(2) {
+    height: 17px;
+}
+
+.ideal-floor-levels button .ideal-floor-height-icon i:nth-child(3) {
+    height: 24px;
+}
+
+.ideal-floor-levels button .ideal-floor-height-icon.is-low-floor i:nth-child(1),
+.ideal-floor-levels button .ideal-floor-height-icon.is-mid-floor i:nth-child(2),
+.ideal-floor-levels button .ideal-floor-height-icon.is-high-floor i:nth-child(3) {
+    background: #f0cd45;
+    box-shadow: 0 0 9px rgba(240, 205, 69, 0.48);
+}
+
+.ideal-floor-levels button.is-active .ideal-floor-height-icon i {
+    background: rgba(0, 0, 0, 0.2);
+    box-shadow: none;
+}
+
+.ideal-floor-levels button.is-active .ideal-floor-height-icon.is-low-floor i:nth-child(1),
+.ideal-floor-levels button.is-active .ideal-floor-height-icon.is-mid-floor i:nth-child(2),
+.ideal-floor-levels button.is-active .ideal-floor-height-icon.is-high-floor i:nth-child(3) {
+    background: #000000;
 }
 
 .ideal-floor-levels button .ideal-floor-lock-icon .lock-shackle {
@@ -2124,7 +2167,7 @@ img.snapshot-icon {
     border: 0;
     border-radius: 14px;
     background: transparent;
-    color: rgba(255, 255, 255, 0.56);
+    color: #ffffff;
     font-family: "Jost", "Inter", Arial, sans-serif;
     font-size: 16px;
     font-weight: 600;
@@ -2143,20 +2186,26 @@ img.snapshot-icon {
         inset 0 12px 24px rgba(255, 255, 255, 0.03);
 }
 
-.project-plan-tabs svg {
-    width: 16px;
-    height: 16px;
-    fill: currentColor;
+.project-plan-tabs .project-plan-tab-icon {
+    width: 18px;
+    height: 18px;
+    fill: none;
     stroke: currentColor;
-    stroke-width: 1.4;
+    stroke-width: 1.8;
     stroke-linecap: round;
     stroke-linejoin: round;
 }
 
-.project-plan-tabs .project-plan-cube-icon {
-    width: 17px;
-    height: 17px;
-    stroke: none;
+.project-plan-tabs button.is-active .project-plan-tab-icon {
+    color: #ffffff !important;
+    fill: none !important;
+    stroke: #ffffff !important;
+}
+
+.project-plan-tabs button:not(.is-active) .project-plan-tab-icon {
+    color: #f0cd45 !important;
+    fill: none !important;
+    stroke: #f0cd45 !important;
 }
 
 .project-plan-tabs button.is-active {
@@ -2227,7 +2276,7 @@ img.snapshot-icon {
     border: 0;
     border-radius: 10px;
     background: transparent;
-    color: rgba(255, 255, 255, 0.52);
+    color: #ffffff;
     font-family: "Jost", "Inter", Arial, sans-serif;
     font-size: 16px;
     font-weight: 500;
@@ -2988,7 +3037,7 @@ body.is-project-plan-lightbox-open {
     border: 0;
     border-radius: 9px;
     background: transparent;
-    color: rgba(255, 255, 255, 0.56);
+    color: #ffffff;
     font-family: "Jost", "Inter", Arial, sans-serif;
     font-size: 16px;
     font-weight: 600;
@@ -6080,7 +6129,7 @@ body.is-prime-map-lightbox-open {
 }
 
 .prime-distance-card span {
-    color: rgba(255, 255, 255, 0.84);
+    color: #ffffff;
     font-size: 15px;
     font-weight: 500;
     line-height: 21px;
@@ -6089,7 +6138,7 @@ body.is-prime-map-lightbox-open {
 .prime-distance-card strong {
     display: block;
     margin: 4px 0 0 52px;
-    color: rgba(255, 255, 255, 0.46);
+    color: rgba(255, 255, 255, 0.84);
     font-size: 13px;
     font-weight: 400;
     line-height: 18px;
@@ -8044,8 +8093,8 @@ body.is-amenity-lightbox-open {
 
 .footer-redesign-main {
     display: grid;
-    grid-template-columns: 1.25fr 0.8fr 1fr 1fr;
-    gap: 28px;
+    grid-template-columns: 1.2fr 0.72fr 0.86fr 0.86fr 1fr;
+    gap: 24px;
     padding: 44px 0 34px;
     border-top: 0.5px solid rgba(240, 205, 69, 0.54);
 }
@@ -8338,6 +8387,39 @@ body.is-amenity-lightbox-open {
     color: currentColor !important;
 }
 
+.footer-redesign-legal-notes {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 10px;
+    margin: 0 0 28px;
+}
+
+.footer-redesign-legal-notes div {
+    min-width: 0;
+    border: 1px solid rgba(240, 205, 69, 0.16);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.025);
+    padding: 13px 14px 12px;
+}
+
+.footer-redesign-legal-notes strong {
+    display: block;
+    margin-bottom: 7px;
+    color: #f0cd45;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    line-height: 1.25;
+    text-transform: uppercase;
+}
+
+.footer-redesign-legal-notes p {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.58);
+    font-size: 11px;
+    line-height: 1.55;
+}
+
 .footer-redesign-bottom {
     display: flex;
     align-items: center;
@@ -8353,6 +8435,48 @@ body.is-amenity-lightbox-open {
     color: rgba(255, 255, 255, 0.48);
     font-size: 12px;
     line-height: 1.55;
+}
+
+.footer-redesign-bottom-links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px 14px;
+}
+
+.footer-redesign-bottom-links a {
+    color: rgba(255, 255, 255, 0.62);
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1.4;
+}
+
+.footer-redesign-bottom-links a:hover {
+    color: #f0cd45;
+}
+
+@media (max-width: 991px) {
+    .footer-redesign-legal-notes {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 767px) {
+    .footer-redesign-legal-notes {
+        grid-template-columns: 1fr;
+        gap: 8px;
+        margin-bottom: 22px;
+    }
+
+    .footer-redesign-bottom {
+        align-items: center;
+        text-align: center;
+    }
+
+    .footer-redesign-bottom-links {
+        width: 100%;
+    }
 }
 
 
@@ -10761,6 +10885,10 @@ body.is-amenity-lightbox-open {
     letter-spacing: 0.01em;
 }
 
+.property-snapshot-content h3 span {
+    color: var(--theme-gold);
+}
+
 .property-snapshot-content p {
     max-width: 680px;
     margin: 0 0 28px;
@@ -13044,7 +13172,7 @@ body {
 }
 
 
-:is(.snapshot-card span,
+:is(.snapshot-card span:not(.snapshot-icon),
     .about-feature p,
     .about-more-points span,
     .ideal-floor-spec span,
@@ -13218,15 +13346,9 @@ body {
 }
 
 
-.snapshot-card span {
+.snapshot-card span:not(.snapshot-icon) {
     color: #f0cd45 !important;
 }
-
-
-.snapshot-key-icon::before {
-    background-color: #f0cd45 !important;
-}
-
 
 .snapshot-section.is-visible .snapshot-card:hover {
     border-color: rgba(240, 205, 69, 0.68) !important;
@@ -13242,17 +13364,11 @@ body {
 
 
 .snapshot-section.is-visible .snapshot-card:hover .snapshot-icon,
-.snapshot-section.is-visible .snapshot-card:hover span,
+.snapshot-section.is-visible .snapshot-card:hover span:not(.snapshot-icon),
 .snapshot-section.is-visible .snapshot-card:hover strong {
     color: #f0cd45 !important;
     stroke: #f0cd45 !important;
 }
-
-
-.snapshot-section.is-visible .snapshot-card:hover .snapshot-key-icon::before {
-    background-color: #f0cd45 !important;
-}
-
 
 /* Section CTA buttons matched to the referenced hero Get Price Details button. */
 .project-plan-cta,
@@ -13826,21 +13942,6 @@ body {
 }
 
 
-.project-plan-tabs button:not(.is-active) svg {
-    color: #f0cd45 !important;
-    fill: #f0cd45 !important;
-    stroke: #f0cd45 !important;
-}
-
-
-.project-plan-tabs button.is-active svg {
-    fill: rgb(255, 247, 207) !important;
-    stroke: none !important;
-}
-
-
-
-
 .ideal-floor-panel .ideal-floor-specs {
     align-items: stretch !important;
 }
@@ -13994,7 +14095,7 @@ body {
     border: 0 !important;
     border-radius: 10px !important;
     background: transparent !important;
-    color: rgba(255, 255, 255, 0.52) !important;
+    color: #ffffff !important;
     font-family: "Jost", "Inter", Arial, sans-serif !important;
     font-size: 16px !important;
     font-weight: 500 !important;
@@ -14536,8 +14637,8 @@ body {
 
 .transparent-pricing-section .selected-price-box {
     margin-top: 30px !important;
-    min-height: 120px !important;
-    padding: 17px 20px 14px !important;
+    min-height: 148px !important;
+    padding: 26px 24px 22px !important;
 }
 
 
@@ -14765,21 +14866,36 @@ body {
         inset 0 12px 24px rgba(255, 255, 255, 0.035) !important;
 }
 
-.project-plan-tabs button.is-active svg {
-    fill: #f0cd45 !important;
-    stroke: #f0cd45 !important;
-}
-
 .transparent-pricing-section .pricing-unlock-area {
     align-items: center !important;
     justify-content: center !important;
     text-align: center !important;
+    width: 100% !important;
+    max-width: 456px !important;
+    margin-right: auto !important;
+    margin-left: auto !important;
 }
 
 .transparent-pricing-section .pricing-unlock-btn {
+    display: flex !important;
     align-self: center !important;
     margin-right: auto !important;
     margin-left: auto !important;
+    width: 100% !important;
+    max-width: 456px !important;
+    min-width: 0 !important;
+    min-height: 0 !important;
+    padding: 14px 52px !important;
+    gap: 12px !important;
+    font-size: 16px !important;
+    border-radius: 999px !important;
+    line-height: 1 !important;
+}
+
+.transparent-pricing-section .pricing-unlock-btn svg {
+    width: 21px !important;
+    height: 21px !important;
+    flex: 0 0 21px !important;
 }
 
 .transparent-pricing-section .floor-price-grid button {
@@ -14801,6 +14917,18 @@ body {
 .transparent-pricing-section .floor-price-grid button.is-active span,
 .transparent-pricing-section .floor-price-grid button.is-price-visible span {
     color: rgba(255, 255, 255, 0.68) !important;
+}
+
+.prime-location-section .prime-distance-card div>span {
+    color: #ffffff !important;
+}
+
+.prime-location-section .prime-distance-card strong {
+    color: rgba(255, 255, 255, 0.84) !important;
+}
+
+.prime-location-section .prime-distance-card strong em {
+    color: var(--theme-gold) !important;
 }
 
 .transparent-pricing-section .floor-price-grid button.is-active strong,
@@ -15444,6 +15572,10 @@ body {
 .property-snapshot-strip > div:hover strong,
 .property-snapshot-meta dt {
     color: var(--property-snapshot-gold) !important;
+}
+
+.property-snapshot-metrics span {
+    color: #ffffff !important;
 }
 
 .property-snapshot-kicker span,

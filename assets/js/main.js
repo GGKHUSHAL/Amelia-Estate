@@ -1009,14 +1009,14 @@ if (pricingSection) {
             badge: "3 BHK - 230 Sq. Yd",
             area: "230 Sq.Yds",
             prices: ["1.54 Cr", "1.49 Cr", "1.49 Cr", "1.67 Cr"],
-            image: "assets/img/priceing and investment/photo-1600566753190-17f0baa2a6c3.avif"
+            image: "assets/img/priceing and investment/pricing-230-premium-living.jpg"
         },
         219: {
             title: "3 BHK - 219 Sq. Yd",
             badge: "3 BHK - 219 Sq. Yd",
             area: "219 Sq.Yds",
             prices: ["1.47 Cr", "1.42 Cr", "1.42 Cr", "1.60 Cr"],
-            image: "assets/img/priceing and investment/photo-1600596542815-ffad4c1539a9.avif"
+            image: "assets/img/priceing and investment/pricing-219-premium-bedroom.jpg"
         },
         205: {
             title: "3 BHK - 205 Sq. Yd",

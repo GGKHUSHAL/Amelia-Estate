@@ -962,6 +962,11 @@
         font-size: 11px !important;
         line-height: 1.45 !important;
     }
+
+    .footer-redesign-bottom-links {
+        width: 100% !important;
+        justify-content: center !important;
+    }
 }
 
 @media (max-width: 1199px) {
@@ -1562,7 +1567,7 @@
         height: 24px;
     }
 
-    .snapshot-card span {
+    .snapshot-card span:not(.snapshot-icon) {
         font-size: 11px;
         line-height: 13px;
     }
@@ -1751,7 +1756,7 @@
         height: 22px;
     }
 
-    .snapshot-card span {
+    .snapshot-card span:not(.snapshot-icon) {
         font-size: 10px;
         line-height: 13px;
     }
@@ -2523,11 +2528,7 @@
         stroke-width: 2;
     }
 
-    .snapshot-key-icon::before {
-        background-color: rgba(255, 255, 255, 0.76);
-    }
-
-    .snapshot-card span {
+    .snapshot-card span:not(.snapshot-icon) {
         width: 100%;
         font-size: 12px;
         line-height: 15px;
@@ -7338,7 +7339,7 @@
         height: 118px;
     }
 
-    .snapshot-card span,
+    .snapshot-card span:not(.snapshot-icon),
     .project-essentials-btn em {
         font-size: 13px !important;
         line-height: 1.35 !important;
@@ -7979,7 +7980,7 @@
         letter-spacing: 0.09em !important;
     }
 
-    :is(.snapshot-card span,
+    :is(.snapshot-card span:not(.snapshot-icon),
         .snapshot-card strong,
         .about-feature p,
         .about-more-points span,
@@ -8569,7 +8570,15 @@
         height: 24px !important;
     }
 
-    .snapshot-card span {
+    .snapshot-card .snapshot-key-icon {
+        display: block !important;
+        width: 26px !important;
+        height: 26px !important;
+        flex: 0 0 26px !important;
+        line-height: 0 !important;
+    }
+
+    .snapshot-card span:not(.snapshot-icon) {
         font-size: 11px !important;
         line-height: 1.15 !important;
         text-align: center !important;
@@ -8620,7 +8629,7 @@
         height: 24px !important;
     }
 
-    .snapshot-card span {
+    .snapshot-card span:not(.snapshot-icon) {
         font-size: 11px !important;
         line-height: 1.15 !important;
         text-align: center !important;
@@ -8671,7 +8680,7 @@
         height: 24px !important;
     }
 
-    .snapshot-card span {
+    .snapshot-card span:not(.snapshot-icon) {
         font-size: 11px !important;
         line-height: 1.15 !important;
         text-align: center !important;
@@ -8741,7 +8750,7 @@
         height: 24px !important;
     }
 
-    .snapshot-card span {
+    .snapshot-card span:not(.snapshot-icon) {
         font-size: 11px !important;
         line-height: 1.15 !important;
         text-align: center !important;
@@ -8767,7 +8776,7 @@
         padding: 12px 8px !important;
     }
 
-    .snapshot-card span {
+    .snapshot-card span:not(.snapshot-icon) {
         font-size: 10px !important;
     }
 
@@ -8967,13 +8976,23 @@
     }
 
     .transparent-pricing-section .selected-price-box {
-        min-height: 86px !important;
-        padding: 10px !important;
+        min-height: 104px !important;
+        padding: 16px 12px 14px !important;
     }
 
     .transparent-pricing-section .pricing-unlock-btn {
-        min-height: 40px !important;
-        padding: 8px 10px !important;
+        width: 100% !important;
+        min-height: 0 !important;
+        padding: 12px 24px !important;
+        gap: 10px !important;
+        font-size: 15.5px !important;
+        border-radius: 999px !important;
+    }
+
+    .transparent-pricing-section .pricing-unlock-btn svg {
+        width: 20px !important;
+        height: 20px !important;
+        flex: 0 0 20px !important;
     }
 }
 
@@ -9203,7 +9222,7 @@
         height: 24px !important;
     }
 
-    .snapshot-card span {
+    .snapshot-card span:not(.snapshot-icon) {
         font-size: 11px !important;
         line-height: 1.15 !important;
         text-align: center !important;
@@ -11827,7 +11846,7 @@
         line-height: 1.38 !important;
     }
 
-    :is(.snapshot-card span,
+    :is(.snapshot-card span:not(.snapshot-icon),
         .snapshot-card strong,
         .about-feature p,
         .about-more-points span,
