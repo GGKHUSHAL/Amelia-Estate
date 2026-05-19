@@ -23,7 +23,7 @@
     <!-- Header -->
     <header class="site-header fixed left-0 top-0 z-50 h-[86px] w-full bg-white text-neutral-950 shadow-sm">
             <div class="flex h-[86px] w-full items-center px-[120px]">
-                <a href="#" class="flex h-[40.49px] w-[305.86px] shrink-0 items-center gap-[30.48px]"
+                <a href="#top" class="flex h-[40.49px] w-[305.86px] shrink-0 items-center gap-[30.48px]"
                     aria-label="Amelia Estate II home">
                     <img class="h-[27.71px] w-[172.09px] object-contain" src="assets/img/logo/reality nivesh logo.png"
                         alt="Realty Nivesh" />
@@ -36,21 +36,21 @@
 
                 <nav class="ml-[67px] hidden h-6 w-[793px] items-center justify-end gap-[10px] px-[21px] text-[12px] font-medium leading-6 xl:flex"
                     aria-label="Primary navigation">
-                    <a href="#" class="whitespace-nowrap transition hover:text-[#D5AE66]">About Us</a>
-                    <a href="#" class="flex items-center gap-1 whitespace-nowrap transition hover:text-[#D5AE66]">
+                    <a href="#about" class="whitespace-nowrap transition hover:text-[#D5AE66]">About Us</a>
+                    <a href="#property-snapshots" class="flex items-center gap-1 whitespace-nowrap transition hover:text-[#D5AE66]">
                         Products
                         <span class="mt-0.5 h-2 w-2 rotate-45 border-b-2 border-r-2 border-current"></span>
                     </a>
-                    <a href="#" class="whitespace-nowrap transition hover:text-[#D5AE66]">Plans</a>
-                    <a href="#" class="whitespace-nowrap transition hover:text-[#D5AE66]">Location</a>
-                    <a href="#" class="whitespace-nowrap transition hover:text-[#D5AE66]">Price</a>
-                    <a href="#" class="whitespace-nowrap transition hover:text-[#D5AE66]">Amenities</a>
-                    <a href="#" class="whitespace-nowrap transition hover:text-[#D5AE66]">Specification</a>
-                    <a href="#" class="whitespace-nowrap transition hover:text-[#D5AE66]">Gallery</a>
-                    <a href="#" class="whitespace-nowrap transition hover:text-[#D5AE66]">Contact Us</a>
+                    <a href="#floor-plans" class="whitespace-nowrap transition hover:text-[#D5AE66]">Plans</a>
+                    <a href="#location" class="whitespace-nowrap transition hover:text-[#D5AE66]">Location</a>
+                    <a href="#pricing" class="whitespace-nowrap transition hover:text-[#D5AE66]">Price</a>
+                    <a href="#amenities" class="whitespace-nowrap transition hover:text-[#D5AE66]">Amenities</a>
+                    <a href="#specifications" class="whitespace-nowrap transition hover:text-[#D5AE66]">Specification</a>
+                    <a href="#gallery" class="whitespace-nowrap transition hover:text-[#D5AE66]">Gallery</a>
+                    <a href="#contact" class="whitespace-nowrap transition hover:text-[#D5AE66]">Contact Us</a>
                 </nav>
 
-                <a class="header-cta" href="#booking-enquiry">Book Site Visit</a>
+                <a class="header-cta" href="#site-visit">Book Site Visit</a>
 
                 <button id="menuToggle"
                     class="group ml-auto flex h-10 w-10 shrink-0 flex-col items-center justify-center gap-[5px] rounded-md border border-neutral-200 bg-white xl:hidden"
@@ -62,21 +62,21 @@
             </div>
 
             <nav id="mobileMenu" class="mobile-menu xl:hidden" aria-label="Mobile navigation">
-                <a href="#">About Us</a>
-                <a href="#">Products</a>
-                <a href="#">Plans</a>
-                <a href="#">Location</a>
-                <a href="#">Price</a>
-                <a href="#">Amenities</a>
-                <a href="#">Specification</a>
-                <a href="#">Gallery</a>
-                <a href="#">Contact Us</a>
+                <a href="#about">About Us</a>
+                <a href="#property-snapshots">Products</a>
+                <a href="#floor-plans">Plans</a>
+                <a href="#location">Location</a>
+                <a href="#pricing">Price</a>
+                <a href="#amenities">Amenities</a>
+                <a href="#specifications">Specification</a>
+                <a href="#gallery">Gallery</a>
+                <a href="#contact">Contact Us</a>
             </nav>
     </header>
 
     <main class="min-h-screen">
         <!-- Hero slider -->
-        <section class="hero-section reveal-on-scroll relative mt-[86px] w-full overflow-hidden">
+        <section class="hero-section reveal-on-scroll relative mt-[86px] w-full overflow-hidden" id="top">
             <div id="heroSlider" class="flex h-full transition-transform duration-700 ease-in-out">
                 <div class="hero-slide hero-slide--figma relative h-full min-w-full">
                     <div class="hero-slide-bg absolute inset-0 bg-cover bg-center"
@@ -102,7 +102,7 @@
                         </div>
 
                         <div class="hero-actions">
-                            <a class="hero-price-details-btn" href="#booking-enquiry">
+                            <a class="hero-price-details-btn" href="#pricing">
                                 <span>Check Current Price</span>
                                 <span class="hero-price-details-shine" aria-hidden="true"></span>
                             </a>
@@ -139,7 +139,7 @@
                         </div>
 
                         <div class="hero-actions">
-                            <a class="hero-price-details-btn" href="#booking-enquiry">
+                            <a class="hero-price-details-btn" href="#pricing">
                                 <span>Check Current Price</span>
                                 <span class="hero-price-details-shine" aria-hidden="true"></span>
                             </a>
@@ -176,7 +176,7 @@
                         </div>
 
                         <div class="hero-actions">
-                            <a class="hero-price-details-btn" href="#booking-enquiry">
+                            <a class="hero-price-details-btn" href="#pricing">
                                 <span>Check Current Price</span>
                                 <span class="hero-price-details-shine" aria-hidden="true"></span>
                             </a>
@@ -539,7 +539,7 @@
                         <p class="struct-description">Low-rise supply in this corridor is limited. Bookings are open and site visits
                             are available for serious buyers.</p>
                         <div class="hero-actions struct-actions">
-                            <a class="hero-price-details-btn" href="#booking-enquiry">
+                            <a class="hero-price-details-btn" href="#pricing">
                                 <span>Check Current Price</span>
                                 <span class="hero-price-details-shine" aria-hidden="true"></span>
                             </a>
@@ -830,7 +830,7 @@
                             <h3>3 BHK Floor Plan - 230 Sq.Yd</h3>
                             <p>Detailed layout with dimensions. Vastu compliant design.</p>
                         </div>
-                        <a class="project-plan-cta" href="#booking-enquiry">
+                        <a class="project-plan-cta" href="#site-visit">
                             <svg viewBox="0 0 24 24" aria-hidden="true">
                                 <path d="M7 3v4m10-4v4M5 7h14v14H5V7Z" />
                                 <path d="M8 12h8M8 16h5" />
@@ -994,8 +994,10 @@
                         </label>
 
                         <label>
-                            <span>Interested Size</span>
-                            <input class="pricing-unlock-size" type="text" name="size" value="230 Sq.Yd" readonly>
+                            <span>Email</span>
+                            <input class="pricing-unlock-email" type="email" name="email"
+                                placeholder="Enter email id" autocomplete="email" required
+                                title="Please enter a valid email address">
                         </label>
 
                         <button class="pricing-unlock-submit" type="submit">
@@ -1005,7 +1007,12 @@
                 </div>
 
                 <div class="pricing-celebration" aria-hidden="true" hidden>
-                    <i></i><b></b><b></b><b></b>
+                    <span></span><span></span><span></span><span></span><span></span><span></span>
+                    <span></span><span></span><span></span><span></span><span></span><span></span>
+                    <span></span><span></span><span></span><span></span><span></span><span></span>
+                    <span></span><span></span><span></span><span></span><span></span><span></span>
+                    <span></span><span></span><span></span><span></span><span></span><span></span>
+                    <span></span><span></span><span></span><span></span><span></span><span></span>
                     <span></span><span></span><span></span><span></span><span></span><span></span>
                     <span></span><span></span><span></span><span></span><span></span><span></span>
                     <span></span><span></span><span></span><span></span><span></span><span></span>
@@ -1369,7 +1376,7 @@
                 <div class="visual-showcase-cta">
                     <h3>Like What You See? <span>Visit the Sample Flat</span></h3>
                     <p>Actual unit ready for viewing. Experience the space, quality, and location firsthand.</p>
-                    <a href="#booking-enquiry">Book Free Site Visit</a>
+                    <a href="#site-visit">Book Free Site Visit</a>
                     <small>Free pickup &amp; drop from Chandigarh · Open 10 AM - 7 PM</small>
                 </div>
 
@@ -1674,7 +1681,7 @@
                         <h3 class="mt-2 text-[18px] font-normal text-[#f6f2ea]">Starting <span class="text-[28px] font-semibold text-[#f0cd45]">&#8377;1.325 Cr*</span></h3>
                     </div>
                     <a class="inline-flex h-10 min-w-[178px] items-center justify-center rounded-[8px] bg-gradient-to-b from-[#f0cd45] to-[#f0cd45] px-6 text-[11px] font-semibold text-[#0b0906] shadow-[0_14px_30px_rgba(240,205,69,0.28)] transition hover:-translate-y-0.5 hover:brightness-110"
-                        href="#booking-enquiry">Book Free Site Visit</a>
+                        href="#site-visit">Book Free Site Visit</a>
                 </div>
             </div>
         </section>
@@ -2350,7 +2357,7 @@
                     </div>
                 </div>
                 <div class="property-snapshot-modal-footer">
-                    <a class="property-snapshot-modal-btn" href="#booking-enquiry">Schedule Site Visit</a>
+                    <a class="property-snapshot-modal-btn" href="#site-visit">Schedule Site Visit</a>
                     <a class="property-snapshot-modal-btn property-snapshot-modal-btn--ghost" href="https://wa.me/919697300066" target="_blank" rel="noopener noreferrer">WhatsApp Now</a>
                 </div>
             </div>
@@ -2464,7 +2471,7 @@
                     <span>Get current inventory, floor-wise pricing, payment plan, and location guidance from the project team.</span>
                 </div>
                 <div class="footer-redesign-actions">
-                    <a href="#booking-enquiry">Book Site Visit</a>
+                    <a href="#site-visit">Book Site Visit</a>
                     <a href="https://wa.me/919697300066" target="_blank" rel="noopener noreferrer">WhatsApp Now</a>
                 </div>
             </div>
@@ -2518,11 +2525,11 @@
                         </button>
                     </h3>
                     <div class="footer-accordion-panel">
-                        <a href="#privacy-policy">Privacy Policy</a>
-                        <a href="#terms-conditions">Terms & Conditions</a>
-                        <a href="#project-disclaimer">Project Disclaimer</a>
-                        <a href="#rera-verification">RERA Verification</a>
-                        <a href="#booking-policy">Booking Policy</a>
+                        <a href="#privacy-policy" data-footer-legal-open="privacy-policy">Privacy Policy</a>
+                        <a href="#terms-conditions" data-footer-legal-open="terms-conditions">Terms & Conditions</a>
+                        <a href="#project-disclaimer" data-footer-legal-open="project-disclaimer">Project Disclaimer</a>
+                        <a href="#rera-verification" data-footer-legal-open="rera-verification">RERA Verification</a>
+                        <a href="#booking-policy" data-footer-legal-open="booking-policy">Booking Policy</a>
                     </div>
                 </div>
 
@@ -2547,7 +2554,7 @@
                 </div>
             </div>
 
-            <div class="footer-redesign-legal-notes" aria-label="Legal information">
+            <div class="footer-redesign-legal-notes" aria-label="Legal information" hidden>
                 <div id="privacy-policy">
                     <strong>Privacy Policy</strong>
                     <p>Contact details shared through this website may be used only for project assistance, site visit coordination, pricing updates, document sharing, and buyer support.</p>
@@ -2567,6 +2574,18 @@
                 <div id="booking-policy">
                     <strong>Booking Policy</strong>
                     <p>Booking, cancellation, refund, possession, and maintenance terms will be governed by the application form, allotment letter, buyer agreement, and applicable law.</p>
+                </div>
+            </div>
+
+            <div class="footer-legal-modal" id="footerLegalModal" role="dialog" aria-modal="true" aria-labelledby="footerLegalModalTitle" hidden>
+                <button class="footer-legal-modal-backdrop" type="button" aria-label="Close legal information" data-footer-legal-close></button>
+                <div class="footer-legal-modal-panel" role="document">
+                    <button class="footer-legal-modal-close" type="button" aria-label="Close legal information" data-footer-legal-close>
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <span class="footer-legal-modal-kicker">Legal Information</span>
+                    <h3 id="footerLegalModalTitle" data-footer-legal-title></h3>
+                    <p class="footer-legal-modal-copy" data-footer-legal-copy></p>
                 </div>
             </div>
 
@@ -2600,10 +2619,10 @@
             <div class="footer-redesign-bottom">
                 <p>Copyright 2026 Amelia Estate II. All rights reserved.</p>
                 <nav class="footer-redesign-bottom-links" aria-label="Footer legal links">
-                    <a href="#privacy-policy">Privacy</a>
-                    <a href="#terms-conditions">Terms</a>
-                    <a href="#project-disclaimer">Disclaimer</a>
-                    <a href="#rera-verification">RERA</a>
+                    <a href="#privacy-policy" data-footer-legal-open="privacy-policy">Privacy</a>
+                    <a href="#terms-conditions" data-footer-legal-open="terms-conditions">Terms</a>
+                    <a href="#project-disclaimer" data-footer-legal-open="project-disclaimer">Disclaimer</a>
+                    <a href="#rera-verification" data-footer-legal-open="rera-verification">RERA</a>
                 </nav>
                 <span>RERA Registered: PBRERA-SAS81-PR0941. Verify details at rera.punjab.gov.in.</span>
             </div>

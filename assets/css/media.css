@@ -875,7 +875,7 @@
     }
 
     .footer-redesign-marquee span {
-        gap: 0 !important;
+        gap: 8px !important;
         font-size: 9px !important;
         letter-spacing: 0.12em !important;
     }
@@ -2653,6 +2653,10 @@
     }
 
     .ideal-floor-price-btn {
+        align-self: stretch;
+        width: 100%;
+        margin-right: 0;
+        margin-left: 0;
         height: 48px;
         border-radius: 16px;
         font-size: 13px;
@@ -6406,6 +6410,9 @@
     }
 
     .ideal-floor-price-btn {
+        width: 100%;
+        margin-right: 0;
+        margin-left: 0;
         height: 44px;
         gap: 8px;
         border-radius: 16px;
@@ -9626,6 +9633,10 @@
     }
 
     .ideal-floor-price-btn {
+        align-self: stretch !important;
+        width: 100% !important;
+        margin-right: 0 !important;
+        margin-left: 0 !important;
         height: 48px !important;
         margin-top: 8px !important;
         margin-bottom: 2px !important;
@@ -9767,9 +9778,12 @@
     }
 
     .transparent-pricing-tabs button.is-active {
-        background: #f0cd45 !important;
-        color: #ffffff !important;
-        box-shadow: 0 0 18px rgba(240, 205, 69, 0.36) !important;
+        background: linear-gradient(180deg, rgba(20, 20, 18, 0.96), rgba(8, 8, 7, 0.98)) !important;
+        color: #f0cd45 !important;
+        border-color: rgba(240, 205, 69, 0.28) !important;
+        box-shadow:
+            inset 0 0 0 1px rgba(240, 205, 69, 0.18),
+            inset 0 12px 24px rgba(255, 255, 255, 0.035) !important;
     }
 
     .prime-location-tabs.transparent-pricing-tabs {
@@ -9897,7 +9911,6 @@
     .visual-showcase-tabs.transparent-pricing-tabs button.is-active {
         border-color: rgba(240, 205, 69, 0.28) !important;
         background: linear-gradient(180deg, rgba(20, 20, 18, 0.96), rgba(8, 8, 7, 0.98)) !important;
-        color: #ffffff !important;
         box-shadow:
             inset 0 0 0 1px rgba(240, 205, 69, 0.18),
             inset 0 12px 24px rgba(255, 255, 255, 0.035) !important;
@@ -9906,7 +9919,6 @@
     .visual-showcase-tabs.transparent-pricing-tabs button.is-active span {
         border-color: rgba(240, 205, 69, 0.34) !important;
         background: rgba(0, 0, 0, 0.32) !important;
-        color: #ffffff !important;
     }
 
     .lifestyle-amenities-tabs-shell {
@@ -9992,7 +10004,6 @@
     .lifestyle-amenities-tabs.transparent-pricing-tabs button.is-active {
         border-color: rgba(240, 205, 69, 0.28) !important;
         background: linear-gradient(180deg, rgba(20, 20, 18, 0.96), rgba(8, 8, 7, 0.98)) !important;
-        color: #ffffff !important;
         box-shadow:
             inset 0 0 0 1px rgba(240, 205, 69, 0.18),
             inset 0 12px 24px rgba(255, 255, 255, 0.035) !important;
@@ -12405,34 +12416,43 @@
     }
 }
 
-/* Mobile/tablet tab text override: match desktop white labels everywhere. */
+/* Mobile/tablet tab text override: normal labels stay white, selected labels turn yellow. */
 :is(.ideal-floor-size-tabs,
     .ideal-floor-levels,
     .transparent-pricing-tabs,
-    .visual-showcase-tabs,
-    .prime-location-tabs,
-    .lifestyle-amenities-tabs,
     .faq-tabs) button,
 :is(.ideal-floor-size-tabs,
     .ideal-floor-levels,
     .transparent-pricing-tabs,
-    .visual-showcase-tabs,
-    .prime-location-tabs,
-    .lifestyle-amenities-tabs,
-    .faq-tabs) button:hover,
+    .faq-tabs) button:hover {
+    color: #ffffff !important;
+}
+
 :is(.ideal-floor-size-tabs,
     .ideal-floor-levels,
     .transparent-pricing-tabs,
-    .visual-showcase-tabs,
-    .prime-location-tabs,
-    .lifestyle-amenities-tabs,
     .faq-tabs) button.is-active,
 :is(.ideal-floor-size-tabs,
     .ideal-floor-levels,
     .transparent-pricing-tabs,
-    .visual-showcase-tabs,
-    .prime-location-tabs,
-    .lifestyle-amenities-tabs,
     .faq-tabs) button.is-active:hover {
-    color: #ffffff !important;
+    color: #f0cd45 !important;
+}
+
+/* Visual showcase selected tab color: keep this as the single source of truth. */
+.visual-showcase-tabs.transparent-pricing-tabs button.is-active,
+.visual-showcase-tabs.transparent-pricing-tabs button.is-active * {
+    color: #f0cd45 !important;
+}
+
+/* Prime location selected tab color: keep this as the single source of truth. */
+.prime-location-tabs.transparent-pricing-tabs button.is-active,
+.prime-location-tabs.transparent-pricing-tabs button.is-active * {
+    color: #f0cd45 !important;
+}
+
+/* Lifestyle amenities selected tab color: keep this as the single source of truth. */
+.lifestyle-amenities-tabs.transparent-pricing-tabs button.is-active,
+.lifestyle-amenities-tabs.transparent-pricing-tabs button.is-active * {
+    color: #f0cd45 !important;
 }

@@ -91,6 +91,65 @@ if (footerAccordionToggles.length) {
     });
 }
 
+const footerLegalModal = document.querySelector("#footerLegalModal");
+
+if (footerLegalModal) {
+    const footerLegalTitle = footerLegalModal.querySelector("[data-footer-legal-title]");
+    const footerLegalCopy = footerLegalModal.querySelector("[data-footer-legal-copy]");
+    const footerLegalCloseButtons = footerLegalModal.querySelectorAll("[data-footer-legal-close]");
+    let previousFooterLegalTrigger = null;
+
+    const closeFooterLegalModal = () => {
+        footerLegalModal.hidden = true;
+        document.body.classList.remove("is-footer-legal-modal-open");
+
+        if (previousFooterLegalTrigger) {
+            previousFooterLegalTrigger.focus();
+            previousFooterLegalTrigger = null;
+        }
+    };
+
+    const openFooterLegalModal = (noteId, trigger) => {
+        const note = document.getElementById(noteId);
+
+        if (!note || !footerLegalTitle || !footerLegalCopy) {
+            return;
+        }
+
+        const title = note.querySelector("strong");
+        const copy = note.querySelector("p");
+
+        footerLegalTitle.textContent = title ? title.textContent.trim() : "";
+        footerLegalCopy.textContent = copy ? copy.textContent.trim() : "";
+        previousFooterLegalTrigger = trigger;
+        footerLegalModal.hidden = false;
+        document.body.classList.add("is-footer-legal-modal-open");
+
+        const closeButton = footerLegalModal.querySelector(".footer-legal-modal-close");
+
+        if (closeButton) {
+            closeButton.focus();
+        }
+    };
+
+    document.querySelectorAll("[data-footer-legal-open]").forEach((link) => {
+        link.addEventListener("click", (event) => {
+            event.preventDefault();
+            openFooterLegalModal(link.dataset.footerLegalOpen, link);
+        });
+    });
+
+    footerLegalCloseButtons.forEach((button) => {
+        button.addEventListener("click", closeFooterLegalModal);
+    });
+
+    document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && !footerLegalModal.hidden) {
+            closeFooterLegalModal();
+        }
+    });
+}
+
 // Hero carousel: auto-rotates slides with a soft zoom and pointer-reactive depth.
 const heroSlider = document.querySelector("#heroSlider");
 
@@ -992,7 +1051,10 @@ if (pricingSection) {
     const unlockModal = pricingSection.querySelector(".pricing-unlock-modal");
     const unlockForm = pricingSection.querySelector(".pricing-unlock-form");
     const unlockCloseButtons = pricingSection.querySelectorAll("[data-pricing-unlock-close]");
-    const unlockSizeInput = pricingSection.querySelector(".pricing-unlock-size");
+    const unlockKicker = pricingSection.querySelector(".pricing-unlock-kicker");
+    const unlockTitle = pricingSection.querySelector("#pricingUnlockTitle");
+    const unlockCopy = pricingSection.querySelector(".pricing-unlock-copy");
+    const unlockSubmit = pricingSection.querySelector(".pricing-unlock-submit");
     const pricingCelebration = pricingSection.querySelector(".pricing-celebration");
 
     if (unlockModal && unlockModal.parentElement !== document.body) {
@@ -1036,6 +1098,7 @@ if (pricingSection) {
 
     let activeSize = "230";
     let isPricingUnlocked = false;
+    let pricingUnlockCallbacks = [];
     let pricingImageTimer;
     let pricingImageRequest = 0;
     let pricingCelebrationTimer;
@@ -1063,9 +1126,28 @@ if (pricingSection) {
         selectedMeta.innerHTML = `${floorLabel} &middot; <span>${activeSize} Sq.Yd</span>`;
     };
 
-    const syncPricingUnlockSize = () => {
-        if (unlockSizeInput) {
-            unlockSizeInput.value = getActiveSizeLabel();
+    const setPricingUnlockContent = (context = {}) => {
+        const isDownload = context.type === "download";
+        const downloadTitle = context.title || "Project Essentials";
+
+        if (unlockKicker) {
+            unlockKicker.textContent = isDownload ? "Download Request" : "Price Unlock Request";
+        }
+
+        if (unlockTitle) {
+            unlockTitle.textContent = isDownload
+                ? `Get ${downloadTitle}`
+                : "Get Floor-wise Price & Payment Breakup";
+        }
+
+        if (unlockCopy) {
+            unlockCopy.textContent = isDownload
+                ? "Submit your details once. Your selected project document will download instantly."
+                : `Submit your details once. Floor-wise prices and payment breakup for ${getActiveSizeLabel()} will unlock instantly.`;
+        }
+
+        if (unlockSubmit) {
+            unlockSubmit.textContent = isDownload ? "Submit & Download" : "Submit & Unlock Prices";
         }
     };
 
@@ -1101,12 +1183,12 @@ if (pricingSection) {
         }, 760);
     };
 
-    const openPricingUnlockForm = () => {
+    const openPricingUnlockForm = (context) => {
         if (!unlockModal || isPricingUnlocked) {
             return;
         }
 
-        syncPricingUnlockSize();
+        setPricingUnlockContent(context);
         unlockModal.hidden = false;
         document.body.classList.add("is-pricing-modal-open");
 
@@ -1117,9 +1199,13 @@ if (pricingSection) {
         }
     };
 
-    const closePricingUnlockForm = () => {
+    const closePricingUnlockForm = ({ clearCallbacks = false } = {}) => {
         if (!unlockModal) {
             return;
+        }
+
+        if (clearCallbacks) {
+            pricingUnlockCallbacks = [];
         }
 
         unlockModal.hidden = true;
@@ -1139,8 +1225,20 @@ if (pricingSection) {
         }, 2750);
     };
 
+    const runPricingUnlockCallbacks = () => {
+        const callbacks = pricingUnlockCallbacks;
+        pricingUnlockCallbacks = [];
+
+        callbacks.forEach((callback) => {
+            if (typeof callback === "function") {
+                callback();
+            }
+        });
+    };
+
     const unlockPricing = () => {
         if (isPricingUnlocked) {
+            runPricingUnlockCallbacks();
             return;
         }
 
@@ -1150,6 +1248,28 @@ if (pricingSection) {
         updateSelectedPrice(pricingSection.querySelector(".floor-price-grid button.is-active"));
         unlockButton.innerHTML = `${unlockedIcon}<span>All Prices Unlocked</span>`;
         unlockButton.setAttribute("aria-label", "All floor prices are unlocked");
+
+        runPricingUnlockCallbacks();
+        window.dispatchEvent(new CustomEvent("amelia:pricing-unlocked"));
+    };
+
+    window.AmeliaPricing = {
+        isUnlocked: () => isPricingUnlocked,
+        requestUnlock: (callback, context) => {
+            if (isPricingUnlocked) {
+                if (typeof callback === "function") {
+                    callback();
+                }
+
+                return;
+            }
+
+            if (typeof callback === "function") {
+                pricingUnlockCallbacks.push(callback);
+            }
+
+            openPricingUnlockForm(context);
+        }
     };
 
     const updatePricingSize = (size) => {
@@ -1160,7 +1280,7 @@ if (pricingSection) {
         }
 
         activeSize = size;
-        syncPricingUnlockSize();
+        setPricingUnlockContent();
         pricingTabs.forEach((tab) => {
             tab.classList.toggle("is-active", tab.dataset.pricingTab === size);
         });
@@ -1200,7 +1320,7 @@ if (pricingSection) {
     });
 
     unlockCloseButtons.forEach((button) => {
-        button.addEventListener("click", closePricingUnlockForm);
+        button.addEventListener("click", () => closePricingUnlockForm({ clearCallbacks: true }));
     });
 
     if (unlockForm) {
@@ -1217,7 +1337,7 @@ if (pricingSection) {
 
     window.addEventListener("keydown", (event) => {
         if (event.key === "Escape" && unlockModal && !unlockModal.hidden) {
-            closePricingUnlockForm();
+            closePricingUnlockForm({ clearCallbacks: true });
         }
     });
 
@@ -1645,6 +1765,22 @@ if (visualShowcaseSection) {
         });
     };
 
+    const scrollGalleryTabIntoLeadPosition = (tab, direction = 1) => {
+        if (!galleryTabsScroller || !tab || !isMobileGallery()) {
+            return;
+        }
+
+        const maxScroll = galleryTabsScroller.scrollWidth - galleryTabsScroller.clientWidth;
+        const leadPosition = tab.offsetLeft;
+        const tailPosition = tab.offsetLeft + tab.offsetWidth - galleryTabsScroller.clientWidth;
+        const targetLeft = Math.max(0, Math.min(direction < 0 ? tailPosition : leadPosition, maxScroll));
+
+        galleryTabsScroller.scrollTo({
+            left: targetLeft,
+            behavior: "smooth"
+        });
+    };
+
     const galleryPanelLabels = {
         sample: "Sample Flat",
         walkthrough: "Walkthrough",
@@ -1922,6 +2058,15 @@ if (visualShowcaseSection) {
     });
 
     const setGalleryTab = (key) => {
+        const selectedTab = Array.from(galleryTabs).find((tab) => tab.dataset.galleryTab === key);
+        const selectedIndex = Array.from(galleryTabs).findIndex((tab) => tab.dataset.galleryTab === key);
+        const activeIndex = Array.from(galleryTabs).findIndex((tab) => tab.dataset.galleryTab === activeGalleryTab);
+        const tabDirection = selectedIndex < activeIndex ? -1 : 1;
+
+        if (selectedTab && isMobileGallery()) {
+            scrollGalleryTabIntoLeadPosition(selectedTab, tabDirection);
+        }
+
         if (key === activeGalleryTab) {
             return;
         }
@@ -1932,14 +2077,6 @@ if (visualShowcaseSection) {
 
         galleryTabs.forEach((tab) => {
             tab.classList.toggle("is-active", tab.dataset.galleryTab === key);
-
-            if (tab.dataset.galleryTab === key && isMobileGallery()) {
-                tab.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            }
         });
 
         gallerySwitchTimer = setTimeout(() => {
@@ -2206,6 +2343,36 @@ const downloadOptions = document.querySelectorAll(".download-option");
 const downloadPreviewImages = document.querySelectorAll(".download-preview-image");
 
 if (downloadOptions.length && downloadPreviewImages.length) {
+    const downloadFile = (link) => {
+        const downloadLink = document.createElement("a");
+        downloadLink.href = link.href;
+        downloadLink.download = link.getAttribute("download") || "";
+        downloadLink.style.display = "none";
+        document.body.appendChild(downloadLink);
+        downloadLink.click();
+        downloadLink.remove();
+    };
+
+    const requestDownload = (option) => {
+        const link = option?.querySelector("a");
+
+        if (!link) {
+            return;
+        }
+
+        if (!window.AmeliaPricing || window.AmeliaPricing.isUnlocked()) {
+            downloadFile(link);
+            return;
+        }
+
+        const optionTitle = option.querySelector("h4")?.textContent.trim() || "Project Essentials";
+
+        window.AmeliaPricing.requestUnlock(
+            () => downloadFile(link),
+            { type: "download", title: optionTitle }
+        );
+    };
+
     const setDownloadPreview = (index) => {
         downloadOptions.forEach((option, optionIndex) => {
             option.classList.toggle("active", optionIndex === index);
@@ -2228,15 +2395,8 @@ if (downloadOptions.length && downloadPreviewImages.length) {
         option.addEventListener("click", (event) => {
             setDownloadPreview(index);
 
-            if (event.target.closest("a")) {
-                return;
-            }
-
-            const link = option.querySelector("a");
-
-            if (link) {
-                link.click();
-            }
+            event.preventDefault();
+            requestDownload(option);
         });
     });
 }
@@ -2394,6 +2554,22 @@ if (lifestyleAmenitiesSection) {
         });
     };
 
+    const scrollAmenityTabIntoLeadPosition = (tab, direction = 1) => {
+        if (!amenityTabsWrap || !tab || !isMobileAmenitySlider()) {
+            return;
+        }
+
+        const maxScroll = amenityTabsWrap.scrollWidth - amenityTabsWrap.clientWidth;
+        const leadPosition = tab.offsetLeft;
+        const tailPosition = tab.offsetLeft + tab.offsetWidth - amenityTabsWrap.clientWidth;
+        const targetLeft = Math.max(0, Math.min(direction < 0 ? tailPosition : leadPosition, maxScroll));
+
+        amenityTabsWrap.scrollTo({
+            left: targetLeft,
+            behavior: "smooth"
+        });
+    };
+
     const openAmenityLightbox = (card) => {
         if (!amenityLightbox || !amenityLightboxImage || !amenityLightboxTitle) {
             return;
@@ -2426,6 +2602,9 @@ if (lifestyleAmenitiesSection) {
 
     const setAmenityTab = (key) => {
         let activeTab = null;
+        const selectedIndex = Array.from(amenityTabs).findIndex((tab) => tab.dataset.amenityTab === key);
+        const activeIndex = Array.from(amenityTabs).findIndex((tab) => tab.classList.contains("is-active"));
+        const tabDirection = selectedIndex < activeIndex ? -1 : 1;
 
         amenityTabs.forEach((tab) => {
             const isActive = tab.dataset.amenityTab === key;
@@ -2442,11 +2621,7 @@ if (lifestyleAmenitiesSection) {
         });
 
         if (activeTab && isMobileAmenitySlider()) {
-            activeTab.scrollIntoView({
-                behavior: "smooth",
-                block: "nearest",
-                inline: "nearest"
-            });
+            scrollAmenityTabIntoLeadPosition(activeTab, tabDirection);
         }
 
         if (amenityGrid) {
@@ -2898,7 +3073,7 @@ const leadNameInputs = document.querySelectorAll(
     '.booking-enquiry-form input[name*="name"], .pricing-unlock-form input[name="name"], .site-visit-form input[name="name"]'
 );
 const leadEmailInputs = document.querySelectorAll(
-    '.booking-enquiry-form input[type="email"], .site-visit-form input[type="email"]'
+    '.booking-enquiry-form input[type="email"], .pricing-unlock-form input[type="email"], .site-visit-form input[type="email"]'
 );
 const normalizeLeadPhone = (value) => {
     const digits = value.replace(/\D/g, "");
