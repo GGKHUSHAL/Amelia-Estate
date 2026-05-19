@@ -8938,11 +8938,12 @@
     }
 
     .transparent-pricing-section .pricing-image-badge {
+        top: 10px !important;
         left: 9px !important;
-        bottom: 9px !important;
-        min-height: 24px !important;
-        padding: 5px 10px !important;
-        font-size: 8.5px !important;
+        bottom: auto !important;
+        min-height: 30px !important;
+        padding: 0 14px !important;
+        font-size: 10px !important;
     }
 
     .transparent-pricing-section .floor-price-panel {
