@@ -2702,6 +2702,30 @@ if (faqSection) {
 
     const isMobileFaqTabs = () => window.matchMedia("(max-width: 991px)").matches;
 
+    const getCenteredFaqTab = () => {
+        if (!faqTabsWrap || !isMobileFaqTabs()) {
+            return null;
+        }
+
+        const wrapRect = faqTabsWrap.getBoundingClientRect();
+        const wrapCenter = wrapRect.left + (wrapRect.width / 2);
+        let centeredTab = null;
+        let closestDistance = Infinity;
+
+        faqTabs.forEach((tab) => {
+            const tabRect = tab.getBoundingClientRect();
+            const tabCenter = tabRect.left + (tabRect.width / 2);
+            const distance = Math.abs(tabCenter - wrapCenter);
+
+            if (distance < closestDistance) {
+                closestDistance = distance;
+                centeredTab = tab;
+            }
+        });
+
+        return centeredTab;
+    };
+
     const updateFaqTabProgress = () => {
         if (!faqTabsWrap || !isMobileFaqTabs()) {
             faqTabsPrevious?.classList.add("is-disabled");
@@ -2719,6 +2743,13 @@ if (faqSection) {
 
         faqTabsPrevious?.classList.toggle("is-disabled", faqTabsWrap.scrollLeft <= 12);
         faqTabsNext?.classList.toggle("is-disabled", faqTabsWrap.scrollLeft >= maxScroll - 12);
+
+        const centeredTab = getCenteredFaqTab();
+        const activeTab = faqSection.querySelector(".faq-tab.is-active");
+
+        if (centeredTab && centeredTab !== activeTab) {
+            setFaqPanel(centeredTab.dataset.faqTab);
+        }
     };
 
     const requestFaqTabProgressUpdate = () => {
@@ -2747,6 +2778,20 @@ if (faqSection) {
 
         faqTabsWrap.scrollBy({
             left: direction * faqTabsWrap.clientWidth,
+            behavior: "smooth"
+        });
+    };
+
+    const scrollFaqTabIntoLeadPosition = (tab) => {
+        if (!faqTabsWrap || !tab || !isMobileFaqTabs()) {
+            return;
+        }
+
+        const maxScroll = faqTabsWrap.scrollWidth - faqTabsWrap.clientWidth;
+        const targetLeft = Math.min(tab.offsetLeft, maxScroll);
+
+        faqTabsWrap.scrollTo({
+            left: targetLeft,
             behavior: "smooth"
         });
     };
@@ -2817,7 +2862,7 @@ if (faqSection) {
             setFaqPanel(tab.dataset.faqTab);
 
             if (faqTabsWrap && isMobileFaqTabs()) {
-                tab.scrollIntoView({ behavior: "smooth", inline: "nearest", block: "nearest" });
+                scrollFaqTabIntoLeadPosition(tab);
                 requestFaqTabProgressUpdate();
             }
         });

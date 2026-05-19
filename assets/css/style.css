@@ -1109,10 +1109,10 @@ img.snapshot-icon {
 .about-feature-grid {
     display: grid;
     grid-template-columns: 232px 232px;
-    column-gap: 54px;
-    row-gap: 4px;
-    width: 526px;
-    max-width: 526px;
+    column-gap: 64px;
+    row-gap: 14px;
+    width: 528px;
+    max-width: 528px;
     margin-top: 0;
 }
 
@@ -1122,8 +1122,8 @@ img.snapshot-icon {
     align-items: flex-start;
     gap: 3px;
     width: 232px;
-    height: 70px;
-    min-height: 70px;
+    height: 76px;
+    min-height: 76px;
     padding-left: 0;
 }
 
@@ -1137,9 +1137,9 @@ img.snapshot-icon {
     content: "";
     position: absolute;
     top: 6px;
-    left: -27px;
+    left: -32px;
     width: 1px;
-    height: 58px;
+    height: 64px;
     background: rgba(255, 255, 255, 0.18);
 }
 
@@ -12124,15 +12124,17 @@ body.is-amenity-lightbox-open {
 }
 
 .reveal-on-scroll:not(.is-visible) :is(.pricing-card:nth-child(odd),
-    .prime-distance-card:nth-child(odd),
     .buyer-appreciation-card:nth-child(odd)) {
     transform: translateX(-42px);
 }
 
 .reveal-on-scroll:not(.is-visible) :is(.pricing-card:nth-child(even),
-    .prime-distance-card:nth-child(even),
     .buyer-appreciation-card:nth-child(even)) {
     transform: translateX(42px);
+}
+
+.reveal-on-scroll:not(.is-visible) .prime-distance-card {
+    transform: translateY(36px);
 }
 
 .snapshot-section.is-visible .snapshot-card:nth-child(1) {
@@ -13173,7 +13175,6 @@ body {
 
 
 :is(.snapshot-card span:not(.snapshot-icon),
-    .about-feature p,
     .about-more-points span,
     .ideal-floor-spec span,
     .project-plan-variants span,
@@ -13210,7 +13211,6 @@ body {
 
 
 :is(.snapshot-card strong,
-    .about-feature h3,
     .ideal-floor-spec strong,
     .pricing-spec strong,
     .premium-specs-slide-overlay h3,
@@ -14844,7 +14844,6 @@ body {
     filter: none !important;
     text-shadow: none !important;
 }
-
 /* Final project plan tabs: match the dark tab theme used across the page. */
 .project-plan-tabs button:hover,
 .project-plan-variants button:hover {
@@ -15805,4 +15804,52 @@ body {
     color: #f0cd45 !important;
     filter: none !important;
     text-shadow: none !important;
+}
+
+.construction-photo-status {
+    top: 28px !important;
+    right: auto !important;
+    bottom: auto !important;
+    left: 28px !important;
+    justify-content: flex-start !important;
+}
+
+/* Final tab text override: labels stay white in normal, hover, and active states. */
+:is(.ideal-floor-size-tabs,
+    .ideal-floor-levels,
+    .project-plan-tabs,
+    .project-plan-variants,
+    .transparent-pricing-tabs,
+    .visual-showcase-tabs,
+    .prime-location-tabs,
+    .lifestyle-amenities-tabs,
+    .faq-tabs) button,
+:is(.ideal-floor-size-tabs,
+    .ideal-floor-levels,
+    .project-plan-tabs,
+    .project-plan-variants,
+    .transparent-pricing-tabs,
+    .visual-showcase-tabs,
+    .prime-location-tabs,
+    .lifestyle-amenities-tabs,
+    .faq-tabs) button:hover,
+:is(.ideal-floor-size-tabs,
+    .ideal-floor-levels,
+    .project-plan-tabs,
+    .project-plan-variants,
+    .transparent-pricing-tabs,
+    .visual-showcase-tabs,
+    .prime-location-tabs,
+    .lifestyle-amenities-tabs,
+    .faq-tabs) button.is-active,
+:is(.ideal-floor-size-tabs,
+    .ideal-floor-levels,
+    .project-plan-tabs,
+    .project-plan-variants,
+    .transparent-pricing-tabs,
+    .visual-showcase-tabs,
+    .prime-location-tabs,
+    .lifestyle-amenities-tabs,
+    .faq-tabs) button.is-active:hover {
+    color: #ffffff !important;
 }
