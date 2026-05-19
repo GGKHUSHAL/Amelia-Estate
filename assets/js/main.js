@@ -29,6 +29,131 @@ if (menuToggle && mobileMenu) {
     });
 }
 
+// Desktop mega menu: premium hover/focus panels for Plans and Location.
+const siteHeader = document.querySelector(".site-header");
+const desktopMegaRegion = document.querySelector("[data-mega-region]");
+const desktopMegaTriggers = document.querySelectorAll("[data-mega-trigger]");
+const desktopMegaPanels = document.querySelectorAll("[data-mega-panel]");
+
+if (siteHeader && desktopMegaRegion && desktopMegaTriggers.length && desktopMegaPanels.length) {
+    if (desktopMegaRegion.parentElement === siteHeader) {
+        siteHeader.insertAdjacentElement("afterend", desktopMegaRegion);
+    }
+
+    const desktopMegaQuery = window.matchMedia("(min-width: 1200px)");
+    let desktopMegaCloseTimer;
+
+    const isInsideDesktopMega = (element) => (
+        element && (siteHeader.contains(element) || desktopMegaRegion.contains(element))
+    );
+
+    const closeDesktopMega = () => {
+        const wasOpen = siteHeader.classList.contains("is-mega-open");
+
+        window.clearTimeout(desktopMegaCloseTimer);
+        siteHeader.classList.remove("is-mega-open");
+        desktopMegaRegion.setAttribute("aria-hidden", "true");
+
+        desktopMegaTriggers.forEach((trigger) => {
+            trigger.classList.remove("is-mega-active");
+            trigger.setAttribute("aria-expanded", "false");
+        });
+
+        desktopMegaPanels.forEach((panel) => {
+            panel.classList.remove("is-open");
+        });
+
+        if (wasOpen) {
+            document.dispatchEvent(new CustomEvent("desktopMegaMenuToggle", {
+                detail: { isOpen: false }
+            }));
+        }
+    };
+
+    const openDesktopMega = (key) => {
+        if (!desktopMegaQuery.matches || !key) {
+            return;
+        }
+
+        const wasOpen = siteHeader.classList.contains("is-mega-open");
+
+        window.clearTimeout(desktopMegaCloseTimer);
+        siteHeader.classList.add("is-mega-open");
+        desktopMegaRegion.setAttribute("aria-hidden", "false");
+
+        desktopMegaTriggers.forEach((trigger) => {
+            const isActive = trigger.dataset.megaTrigger === key;
+            trigger.classList.toggle("is-mega-active", isActive);
+            trigger.setAttribute("aria-expanded", String(isActive));
+        });
+
+        desktopMegaPanels.forEach((panel) => {
+            panel.classList.toggle("is-open", panel.dataset.megaPanel === key);
+        });
+
+        if (!wasOpen) {
+            document.dispatchEvent(new CustomEvent("desktopMegaMenuToggle", {
+                detail: { isOpen: true }
+            }));
+        }
+    };
+
+    const scheduleDesktopMegaClose = () => {
+        window.clearTimeout(desktopMegaCloseTimer);
+        desktopMegaCloseTimer = window.setTimeout(closeDesktopMega, 140);
+    };
+
+    desktopMegaTriggers.forEach((trigger) => {
+        const key = trigger.dataset.megaTrigger;
+
+        trigger.addEventListener("mouseenter", () => openDesktopMega(key));
+        trigger.addEventListener("focus", () => openDesktopMega(key));
+        trigger.addEventListener("mouseleave", scheduleDesktopMegaClose);
+        trigger.addEventListener("click", () => {
+            window.setTimeout(closeDesktopMega, 80);
+        });
+    });
+
+    siteHeader.querySelectorAll(".primary-nav a:not([data-mega-trigger])").forEach((link) => {
+        link.addEventListener("mouseenter", scheduleDesktopMegaClose);
+        link.addEventListener("focus", closeDesktopMega);
+    });
+
+    desktopMegaRegion.addEventListener("mouseenter", () => {
+        window.clearTimeout(desktopMegaCloseTimer);
+    });
+
+    desktopMegaRegion.addEventListener("mouseleave", scheduleDesktopMegaClose);
+
+    desktopMegaRegion.addEventListener("focusin", () => {
+        window.clearTimeout(desktopMegaCloseTimer);
+    });
+
+    desktopMegaRegion.addEventListener("focusout", (event) => {
+        if (!isInsideDesktopMega(event.relatedTarget)) {
+            scheduleDesktopMegaClose();
+        }
+    });
+
+    desktopMegaRegion.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", closeDesktopMega);
+    });
+
+    document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") {
+            closeDesktopMega();
+        }
+    });
+
+    document.addEventListener("click", (event) => {
+        if (!isInsideDesktopMega(event.target)) {
+            closeDesktopMega();
+        }
+    });
+
+    desktopMegaQuery.addEventListener("change", closeDesktopMega);
+}
+
 // Mobile footer accordion: keeps footer links compact until a heading is tapped.
 const footerAccordionToggles = document.querySelectorAll(".footer-accordion-toggle");
 
@@ -165,6 +290,7 @@ if (heroSlider) {
     let activeSlide = 0;
     let slideInterval;
     let heroLightFrame;
+    let isPausedByMegaMenu = false;
     let startX = 0;
     let endX = 0;
     const swipeDistance = 50;
@@ -256,6 +382,11 @@ if (heroSlider) {
 
     const startAutoSlide = () => {
         clearInterval(slideInterval);
+
+        if (isPausedByMegaMenu) {
+            return;
+        }
+
         const storyDuration = getStoryDuration();
         heroSection.style.setProperty("--hero-story-duration", `${storyDuration}ms`);
         slideInterval = setInterval(() => {
@@ -265,6 +396,22 @@ if (heroSlider) {
 
     const resetAutoSlide = () => {
         clearInterval(slideInterval);
+        startAutoSlide();
+    };
+
+    const pauseAutoSlideForMegaMenu = () => {
+        isPausedByMegaMenu = true;
+        clearInterval(slideInterval);
+        heroSection.classList.add("is-paused-by-mega");
+    };
+
+    const resumeAutoSlideAfterMegaMenu = () => {
+        if (!isPausedByMegaMenu) {
+            return;
+        }
+
+        isPausedByMegaMenu = false;
+        heroSection.classList.remove("is-paused-by-mega");
         startAutoSlide();
     };
 
@@ -364,6 +511,15 @@ if (heroSlider) {
 
     heroSection.addEventListener("mousemove", updateHeroLight);
     heroSection.addEventListener("mouseleave", resetHeroLight);
+
+    document.addEventListener("desktopMegaMenuToggle", (event) => {
+        if (event.detail?.isOpen) {
+            pauseAutoSlideForMegaMenu();
+            return;
+        }
+
+        resumeAutoSlideAfterMegaMenu();
+    });
 }
 
 // Sticky availability CTA: pins below the fixed header while later sections scroll over it.

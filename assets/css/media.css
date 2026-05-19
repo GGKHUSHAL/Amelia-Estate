@@ -12456,3 +12456,13 @@
 .lifestyle-amenities-tabs.transparent-pricing-tabs button.is-active * {
     color: #f0cd45 !important;
 }
+
+@media (max-width: 1199px) {
+    .desktop-mega-menu-shell {
+        display: none !important;
+    }
+
+    .mega-nav-caret {
+        display: none !important;
+    }
+}
