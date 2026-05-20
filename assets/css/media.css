@@ -9255,6 +9255,26 @@
         height: 10px !important;
     }
 
+    .ideal-floor-levels button .ideal-floor-stack {
+        grid-template-rows: repeat(4, 2px) !important;
+        gap: 1px !important;
+        width: 20px !important;
+        min-height: 15px !important;
+    }
+
+    .ideal-floor-levels button .ideal-floor-stack::before {
+        top: 2px !important;
+        bottom: 2px !important;
+        left: 2px !important;
+        width: 1px !important;
+    }
+
+    .ideal-floor-levels button .ideal-floor-stack i {
+        width: 14px !important;
+        height: 2px !important;
+        margin-left: 4px !important;
+    }
+
     .ideal-floor-specs {
         width: auto !important;
         gap: 5px !important;
@@ -11876,6 +11896,26 @@
 
     .ideal-floor-levels button .ideal-floor-height-icon i:nth-child(3) {
         height: 18px !important;
+    }
+
+    .ideal-floor-levels button .ideal-floor-stack {
+        grid-template-rows: repeat(4, 3px) !important;
+        gap: 2px !important;
+        width: 24px !important;
+        min-height: 20px !important;
+    }
+
+    .ideal-floor-levels button .ideal-floor-stack::before {
+        top: 2px !important;
+        bottom: 2px !important;
+        left: 3px !important;
+        width: 2px !important;
+    }
+
+    .ideal-floor-levels button .ideal-floor-stack i {
+        width: 16px !important;
+        height: 3px !important;
+        margin-left: 5px !important;
     }
 
     .project-plan-tabs {
