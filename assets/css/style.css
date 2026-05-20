@@ -13924,6 +13924,12 @@ body {
     gap: 18px !important;
 }
 
+.project-plan-cta {
+    min-width: min(360px, 100%) !important;
+    padding-left: 42px !important;
+    padding-right: 42px !important;
+}
+
 
 .project-plan-badge-accent {
     display: none !important;
