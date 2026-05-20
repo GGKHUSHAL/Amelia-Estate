@@ -1811,125 +1811,31 @@ img.snapshot-icon {
     stroke: #fff7cf;
 }
 
-.ideal-floor-levels button .ideal-floor-height-icon {
-    display: grid;
-    grid-template-columns: repeat(3, 8px);
-    align-items: end;
-    justify-content: center;
-    gap: 3px;
-    width: 36px;
-    height: 28px;
+.ideal-floor-levels button .ideal-floor-home-icon {
+    width: 23px;
+    height: 23px;
+    overflow: visible;
+    filter: drop-shadow(0 0 8px rgba(240, 205, 69, 0.25));
 }
 
-.ideal-floor-levels button .ideal-floor-height-icon i {
-    display: block;
-    width: 8px;
-    border-radius: 999px 999px 3px 3px;
-    background: rgba(255, 255, 255, 0.18);
-    box-shadow: inset 0 0 0 1px rgba(240, 205, 69, 0.22);
+.ideal-floor-levels button .ideal-floor-home-icon path {
+    fill: none;
+    stroke: #f0cd45;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
 }
 
-.ideal-floor-levels button .ideal-floor-height-icon i:nth-child(1) {
-    height: 10px;
+.ideal-floor-levels button .ideal-floor-home-icon .home-body {
+    fill: rgba(240, 205, 69, 0.10);
 }
 
-.ideal-floor-levels button .ideal-floor-height-icon i:nth-child(2) {
-    height: 17px;
+.ideal-floor-levels button.is-active .ideal-floor-home-icon path {
+    stroke: #fff7cf;
 }
 
-.ideal-floor-levels button .ideal-floor-height-icon i:nth-child(3) {
-    height: 24px;
-}
-
-.ideal-floor-levels button .ideal-floor-height-icon.is-low-floor i:nth-child(1),
-.ideal-floor-levels button .ideal-floor-height-icon.is-mid-floor i:nth-child(2),
-.ideal-floor-levels button .ideal-floor-height-icon.is-high-floor i:nth-child(3) {
-    background: #f0cd45;
-    box-shadow: 0 0 9px rgba(240, 205, 69, 0.48);
-}
-
-.ideal-floor-levels button.is-active .ideal-floor-height-icon i {
-    background: rgba(0, 0, 0, 0.2);
-    box-shadow: none;
-}
-
-.ideal-floor-levels button.is-active .ideal-floor-height-icon.is-low-floor i:nth-child(1),
-.ideal-floor-levels button.is-active .ideal-floor-height-icon.is-mid-floor i:nth-child(2),
-.ideal-floor-levels button.is-active .ideal-floor-height-icon.is-high-floor i:nth-child(3) {
-    background: #000000;
-}
-
-.ideal-floor-levels button .ideal-floor-stack {
-    position: relative;
-    display: grid;
-    grid-template-rows: repeat(4, 4px);
-    align-content: center;
-    justify-items: center;
-    gap: 2px;
-    width: 30px;
-    min-height: 28px;
-}
-
-.ideal-floor-levels button .ideal-floor-stack::before {
-    content: "";
-    position: absolute;
-    top: 3px;
-    bottom: 3px;
-    left: 4px;
-    width: 2px;
-    border-radius: 999px;
-    background: rgba(255, 255, 255, 0.22);
-}
-
-.ideal-floor-levels button .ideal-floor-stack i {
-    display: block;
-    width: 20px;
-    height: 4px;
-    margin-left: 6px;
-    border: 1px solid rgba(240, 205, 69, 0.20);
-    border-radius: 999px;
-    background: rgba(255, 255, 255, 0.18);
-    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.22);
-}
-
-.ideal-floor-levels button .ideal-floor-stack.is-floor-1 i:nth-child(4),
-.ideal-floor-levels button .ideal-floor-stack.is-floor-2 i:nth-child(3),
-.ideal-floor-levels button .ideal-floor-stack.is-floor-3 i:nth-child(2),
-.ideal-floor-levels button .ideal-floor-stack.is-floor-4 i:nth-child(1) {
-    border-color: #f0cd45;
-    background: #f0cd45;
-    box-shadow:
-        0 0 9px rgba(240, 205, 69, 0.55),
-        inset 0 0 0 1px rgba(255, 255, 255, 0.16);
-}
-
-.ideal-floor-levels button .ideal-floor-stack.is-floor-1::before {
-    background: linear-gradient(to top, #f0cd45 0 24%, rgba(255, 255, 255, 0.22) 24% 100%);
-}
-
-.ideal-floor-levels button .ideal-floor-stack.is-floor-2::before {
-    background: linear-gradient(to top, rgba(255, 255, 255, 0.22) 0 25%, #f0cd45 25% 49%, rgba(255, 255, 255, 0.22) 49% 100%);
-}
-
-.ideal-floor-levels button .ideal-floor-stack.is-floor-3::before {
-    background: linear-gradient(to top, rgba(255, 255, 255, 0.22) 0 50%, #f0cd45 50% 74%, rgba(255, 255, 255, 0.22) 74% 100%);
-}
-
-.ideal-floor-levels button .ideal-floor-stack.is-floor-4::before {
-    background: linear-gradient(to top, rgba(255, 255, 255, 0.22) 0 75%, #f0cd45 75% 100%);
-}
-
-.ideal-floor-levels button.is-active .ideal-floor-stack i {
-    border-color: rgba(240, 205, 69, 0.24);
-    background: rgba(255, 255, 255, 0.12);
-}
-
-.ideal-floor-levels button.is-active .ideal-floor-stack.is-floor-1 i:nth-child(4),
-.ideal-floor-levels button.is-active .ideal-floor-stack.is-floor-2 i:nth-child(3),
-.ideal-floor-levels button.is-active .ideal-floor-stack.is-floor-3 i:nth-child(2),
-.ideal-floor-levels button.is-active .ideal-floor-stack.is-floor-4 i:nth-child(1) {
-    border-color: #f0cd45;
-    background: #f0cd45;
+.ideal-floor-levels button.is-active .ideal-floor-home-icon .home-body {
+    fill: rgba(255, 247, 207, 0.22);
 }
 
 .ideal-floor-levels button .ideal-floor-lock-icon .lock-shackle {
@@ -15851,7 +15757,7 @@ body.mega-open {
         inset 0 1px 0 rgba(255, 255, 255, 0.08),
         inset 0 -1px 0 rgba(212, 175, 55, 0.08);
     color: var(--text);
-    font-family: Montserrat, Inter, "Segoe UI", Arial, sans-serif;
+    font-family: "Jost", "Inter", Arial, sans-serif;
     backdrop-filter: blur(18px) saturate(145%);
     -webkit-backdrop-filter: blur(18px) saturate(145%);
     transform: translateY(0);
@@ -16041,47 +15947,63 @@ body.mega-open {
 .premium-header .menu-toggle {
     display: inline-grid;
     place-items: center;
-    width: 38px;
-    height: 38px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.04);
-    color: var(--gold);
+    width: 44px;
+    height: 44px;
+    border: 0;
+    border-radius: 999px;
+    background: #f0cd45;
+    box-shadow: 0 18px 45px rgba(240, 205, 69, 0.35);
+    color: #000000;
     cursor: pointer;
-    transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease,
+        box-shadow 0.3s ease,
+        color 0.3s ease;
 }
 
 .premium-header .call-link:hover,
-.premium-header .menu-toggle:hover {
-    border-color: rgba(246, 199, 68, 0.5);
-    background: rgba(246, 199, 68, 0.08);
-    transform: translateY(-2px);
+.premium-header .call-link:focus-visible,
+.premium-header .menu-toggle:hover,
+.premium-header .menu-toggle:focus-visible {
+    background: #fceba6;
+    box-shadow: 0 18px 45px rgba(240, 205, 69, 0.35);
+    color: #000000;
+    transform: translateY(-4px);
 }
 
 .premium-header .site-visit-btn {
+    position: relative;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 10px;
-    min-height: 40px;
-    padding: 0 18px;
+    min-height: 44px;
+    overflow: hidden;
+    border: 0;
     border-radius: 999px;
-    background: linear-gradient(135deg, #ffe76f 0%, var(--gold) 46%, var(--gold-deep) 100%);
-    box-shadow: 0 16px 36px rgba(246, 199, 68, 0.24);
-    color: #0f0d08;
-    font-size: 10px;
+    background: #f0cd45;
+    padding: 0 28px;
+    box-shadow: 0 18px 45px rgba(240, 205, 69, 0.35);
+    color: #000000;
+    font-size: 14px;
     font-weight: 800;
-    letter-spacing: 0.14em;
+    letter-spacing: 0;
     line-height: 1;
-    text-transform: uppercase;
+    text-transform: none;
     white-space: nowrap;
-    transition: background 200ms ease;
+    transition:
+        transform 0.3s ease,
+        background 0.3s ease,
+        box-shadow 0.3s ease;
 }
 
 .premium-header .site-visit-btn:hover,
 .premium-header .site-visit-btn:focus-visible {
-    background: linear-gradient(135deg, #fff8d2 0%, #ffe985 46%, #f4cf4a 100%);
+    background: #fceba6;
+    box-shadow: 0 18px 45px rgba(240, 205, 69, 0.35);
     filter: none;
+    transform: translateY(-4px);
 }
 
 .premium-header .menu-toggle,
@@ -16124,6 +16046,9 @@ body.mega-open {
         0 24px 76px rgba(0, 0, 0, 0.66),
         inset 0 1px 0 rgba(255, 255, 255, 0.05);
     color: #fff;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
     backdrop-filter: blur(18px);
 }
 
@@ -16148,8 +16073,8 @@ body.mega-open {
 .premium-header .advisor-row span {
     color: #fff;
     font-size: 11px;
-    font-weight: 750;
-    letter-spacing: 0.22em;
+    font-weight: 600;
+    letter-spacing: 0.18em;
     line-height: 1;
     text-transform: uppercase;
 }
@@ -16229,8 +16154,8 @@ body.mega-open {
     background: rgba(43, 39, 31, 0.9);
     color: #ffe28a;
     font-size: 10px;
-    font-weight: 750;
-    letter-spacing: 0.12em;
+    font-weight: 600;
+    letter-spacing: 0.10em;
     line-height: 1;
     text-transform: uppercase;
 }
@@ -16247,10 +16172,10 @@ body.mega-open {
     z-index: 1;
     margin: -21px 0 5px;
     color: #fff;
-    font-family: Georgia, "Times New Roman", serif;
+    font-family: "Jost", "Inter", Arial, sans-serif;
     font-size: 34px;
-    font-weight: 800;
-    line-height: 1;
+    font-weight: 700;
+    line-height: 0.98;
 }
 
 .premium-header .plan-size small {
@@ -16258,25 +16183,27 @@ body.mega-open {
     color: #fff;
     font-family: inherit;
     font-size: 12px;
-    letter-spacing: 0.14em;
+    font-weight: 600;
+    letter-spacing: 0.10em;
     text-transform: uppercase;
 }
 
 .premium-header .plan-body h3 {
     margin: 0;
     color: #f9e7ae;
-    font-family: Georgia, "Times New Roman", serif;
+    font-family: "Jost", "Inter", Arial, sans-serif;
     font-size: 21px;
-    line-height: 1.2;
+    font-weight: 600;
+    line-height: 1.22;
     text-transform: uppercase;
 }
 
 .premium-header .plan-body p:not(.plan-size) {
     margin: 10px 0 0;
-    color: #fff;
+    color: rgba(255, 255, 255, 0.9);
     font-size: 13px;
-    font-weight: 500;
-    line-height: 1.48;
+    font-weight: 400;
+    line-height: 1.56;
 }
 
 .premium-header .plan-body ul {
@@ -16291,10 +16218,10 @@ body.mega-open {
     display: flex;
     align-items: center;
     gap: 9px;
-    color: #fff;
+    color: rgba(255, 255, 255, 0.94);
     font-size: 13px;
-    font-weight: 550;
-    line-height: 1.25;
+    font-weight: 400;
+    line-height: 1.35;
 }
 
 .premium-header .plan-body li i {
@@ -16312,8 +16239,8 @@ body.mega-open {
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     color: #fff;
     font-size: 12px;
-    font-weight: 750;
-    letter-spacing: 0.18em;
+    font-weight: 600;
+    letter-spacing: 0.14em;
     line-height: 1;
     text-transform: uppercase;
     transition: color 200ms ease, border-color 200ms ease;
@@ -16357,8 +16284,8 @@ body.mega-open {
     background: linear-gradient(135deg, #f8d74c, #dfb62c);
     color: #0f0d08;
     font-size: 11px;
-    font-weight: 750;
-    letter-spacing: 0.14em;
+    font-weight: 700;
+    letter-spacing: 0.10em;
     line-height: 1;
     text-transform: uppercase;
     white-space: nowrap;
@@ -16405,8 +16332,8 @@ body.mega-open {
 .premium-header .location-photo span {
     color: #ffe28a;
     font-size: 11px;
-    font-weight: 750;
-    letter-spacing: 0.22em;
+    font-weight: 600;
+    letter-spacing: 0.18em;
     line-height: 1;
     text-transform: uppercase;
 }
@@ -16415,8 +16342,9 @@ body.mega-open {
     max-width: 420px;
     margin: 10px 0;
     color: #fff;
-    font-family: Georgia, "Times New Roman", serif;
+    font-family: "Jost", "Inter", Arial, sans-serif;
     font-size: 30px;
+    font-weight: 600;
     line-height: 1.05;
     text-transform: uppercase;
 }
@@ -16425,7 +16353,7 @@ body.mega-open {
     margin: 0;
     color: #fff;
     font-size: 12px;
-    font-weight: 500;
+    font-weight: 400;
     line-height: 1.45;
 }
 
@@ -16442,8 +16370,8 @@ body.mega-open {
     background: rgba(255, 255, 255, 0.08);
     color: #fff;
     font-size: 11px;
-    font-weight: 750;
-    letter-spacing: 0.14em;
+    font-weight: 600;
+    letter-spacing: 0.10em;
     line-height: 1;
     text-transform: uppercase;
     white-space: nowrap;
@@ -16494,27 +16422,28 @@ body.mega-open {
     border: 1px solid rgba(255, 255, 255, 0.12);
     border-radius: 9px;
     color: #f8e0a1;
-    font-family: Georgia, "Times New Roman", serif;
+    font-family: "Jost", "Inter", Arial, sans-serif;
     font-size: 20px;
+    font-weight: 600;
     line-height: 1;
 }
 
 .premium-header .drive-item small {
     display: block;
     color: #fff;
-    font-family: Montserrat, Inter, "Segoe UI", Arial, sans-serif;
+    font-family: "Jost", "Inter", Arial, sans-serif;
     font-size: 10px;
-    font-weight: 650;
-    letter-spacing: 0.12em;
+    font-weight: 600;
+    letter-spacing: 0.10em;
     text-transform: uppercase;
 }
 
 .premium-header .drive-item p {
     margin: 0;
-    color: #fff;
+    color: rgba(255, 255, 255, 0.94);
     font-size: 13px;
-    font-weight: 650;
-    line-height: 1.25;
+    font-weight: 400;
+    line-height: 1.35;
 }
 
 .premium-header .drive-item p span {
@@ -16522,7 +16451,8 @@ body.mega-open {
     margin-top: 7px;
     color: rgba(255, 255, 255, 0.78);
     font-size: 11px;
-    letter-spacing: 0.18em;
+    font-weight: 400;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
 }
 
@@ -16537,8 +16467,9 @@ body.mega-open {
 
 .premium-header .advisor-row strong {
     color: #fff;
-    font-family: Georgia, "Times New Roman", serif;
+    font-family: "Jost", "Inter", Arial, sans-serif;
     font-size: 22px;
+    font-weight: 600;
     line-height: 1;
 }
 
