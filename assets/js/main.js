@@ -9,6 +9,8 @@
     const mainNav = document.getElementById("mainNav");
     const megaTriggers = document.querySelectorAll("[data-mega-target]");
     const megaPanels = document.querySelectorAll("[data-mega-panel]");
+    const megaCloseButtons = document.querySelectorAll("[data-mega-close]");
+    const fullMenuMega = document.getElementById("fullMenuMega");
     const desktopMegaQuery = window.matchMedia("(min-width: 1081px)");
     const mobileStoryHeaderQuery = window.matchMedia("(max-width: 767px)");
 
@@ -36,7 +38,8 @@
             return;
         }
 
-        siteHeader.classList.toggle("scrolled", window.scrollY > 10);
+        const sliderBgStart = Math.max(10, getHeroStoryBottom() - siteHeader.offsetHeight - 2);
+        siteHeader.classList.toggle("scrolled", window.scrollY > sliderBgStart);
         updateMobileStoryHeader();
     };
 
@@ -48,6 +51,8 @@
         });
         document.body.classList.remove("mega-open");
     };
+
+    const isFullMenuOpen = () => fullMenuMega?.classList.contains("is-open");
 
     const closeMobileAccordions = (exceptAccordion = null) => {
         mobileAccordions.forEach((accordion) => {
@@ -107,7 +112,7 @@
         trigger.classList.add("is-active");
         trigger.setAttribute("aria-expanded", "true");
 
-        if (!desktopMegaQuery.matches) {
+        if (targetPanel === fullMenuMega || !desktopMegaQuery.matches) {
             document.body.classList.add("mega-open");
         }
     };
@@ -181,6 +186,17 @@
     megaTriggers.forEach((trigger) => {
         trigger.addEventListener("click", (event) => {
             event.stopPropagation();
+            const targetPanel = document.getElementById(trigger.dataset.megaTarget);
+
+            if (trigger.classList.contains("nav-menu-trigger")) {
+                if (targetPanel?.classList.contains("is-open")) {
+                    closeMegaMenus();
+                } else {
+                    openMegaMenu(trigger);
+                }
+
+                return;
+            }
 
             if (!desktopMegaQuery.matches) {
                 openMegaMenu(trigger);
@@ -188,20 +204,29 @@
         });
 
         trigger.addEventListener("mouseenter", () => {
-            if (desktopMegaQuery.matches) {
+            if (desktopMegaQuery.matches && !trigger.classList.contains("nav-menu-trigger")) {
                 openMegaMenu(trigger);
             }
         });
 
         trigger.addEventListener("focus", () => {
-            if (desktopMegaQuery.matches) {
+            if (desktopMegaQuery.matches && !trigger.classList.contains("nav-menu-trigger")) {
                 openMegaMenu(trigger);
             }
         });
     });
 
+    megaCloseButtons.forEach((button) => {
+        button.addEventListener("click", closeMegaMenus);
+    });
+
     megaPanels.forEach((panel) => {
         panel.addEventListener("click", (event) => {
+            if (panel === fullMenuMega && event.target === panel) {
+                closeMegaMenus();
+                return;
+            }
+
             event.stopPropagation();
         });
 
@@ -218,7 +243,7 @@
 
     if (siteHeader) {
         siteHeader.addEventListener("mouseleave", () => {
-            if (desktopMegaQuery.matches) {
+            if (desktopMegaQuery.matches && !isFullMenuOpen()) {
                 closeMegaMenus();
             }
         });
@@ -1109,6 +1134,22 @@ if (projectPlansSection) {
         });
     };
 
+    const getProjectPlanFromHash = () => {
+        const match = window.location.hash.match(/^#project-plans-(floor|site|tower)$/);
+        return match ? match[1] : "";
+    };
+
+    const applyProjectPlanHash = () => {
+        const hashPlan = getProjectPlanFromHash();
+
+        if (!hashPlan) {
+            return;
+        }
+
+        updatePlan(hashPlan);
+        projectPlansSection.scrollIntoView({ behavior: "smooth", block: "start" });
+    };
+
     const openPlanLightbox = () => {
         if (!lightbox || !lightboxImage || !lightboxTitle) {
             return;
@@ -1132,6 +1173,17 @@ if (projectPlansSection) {
 
     planTabs.forEach((tab) => {
         tab.addEventListener("click", () => updatePlan(tab.dataset.planTab));
+    });
+
+    document.querySelectorAll('a[href^="#project-plans-"]').forEach((link) => {
+        link.addEventListener("click", () => {
+            const key = link.getAttribute("href").replace("#project-plans-", "");
+
+            if (planContent[key]) {
+                updatePlan(key);
+                setTimeout(() => projectPlansSection.scrollIntoView({ behavior: "smooth", block: "start" }), 0);
+            }
+        });
     });
 
     variantButtons.forEach((button) => {
@@ -1202,6 +1254,10 @@ if (projectPlansSection) {
             closePlanLightbox();
         }
     });
+
+    updatePlan(activePlan);
+    applyProjectPlanHash();
+    window.addEventListener("hashchange", applyProjectPlanHash);
 }
 
 // Transparent pricing: size tabs, floor selection, and reveal state.
@@ -1477,8 +1533,38 @@ if (pricingSection) {
         updateSelectedPrice(floorButtons[0]);
     };
 
+    const getPricingSizeFromHash = () => {
+        const match = window.location.hash.match(/^#pricing-(230|219|205)$/);
+        return match ? match[1] : "";
+    };
+
+    const applyPricingHash = () => {
+        const hashSize = getPricingSizeFromHash();
+
+        if (!hashSize) {
+            return;
+        }
+
+        updatePricingSize(hashSize);
+        pricingSection.scrollIntoView({ behavior: "smooth", block: "start" });
+    };
+
     pricingTabs.forEach((tab) => {
-        tab.addEventListener("click", () => updatePricingSize(tab.dataset.pricingTab));
+        tab.addEventListener("click", () => {
+            updatePricingSize(tab.dataset.pricingTab);
+            history.replaceState(null, "", "#pricing");
+        });
+    });
+
+    document.querySelectorAll('a[href^="#pricing-"]').forEach((link) => {
+        link.addEventListener("click", () => {
+            const size = link.getAttribute("href").replace("#pricing-", "");
+
+            if (pricingContent[size]) {
+                updatePricingSize(size);
+                setTimeout(() => pricingSection.scrollIntoView({ behavior: "smooth", block: "start" }), 0);
+            }
+        });
     });
 
     floorButtons.forEach((button) => {
@@ -1514,6 +1600,8 @@ if (pricingSection) {
     });
 
     updatePricingSize(activeSize);
+    applyPricingHash();
+    window.addEventListener("hashchange", applyPricingHash);
 }
 
 // Premium specifications: rotates the quality proof gallery and keeps dots in sync.
@@ -1883,7 +1971,40 @@ if (premiumSpecsSection) {
         }
     });
 
+    const getSpecFromHash = () => {
+        const match = window.location.hash.match(/^#specifications-(classic-kitchen|modern-kitchen|bathroom|bedroom)$/);
+        return match ? match[1] : "";
+    };
+
+    const applySpecHash = () => {
+        const specKey = getSpecFromHash();
+        const specIndex = Array.from(specSlides).findIndex((slide) => slide.dataset.specKey === specKey);
+
+        if (specIndex < 0) {
+            return;
+        }
+
+        setSpecSlide(specIndex);
+        resetSpecSlider();
+        premiumSpecsSection.scrollIntoView({ behavior: "smooth", block: "start" });
+    };
+
+    document.querySelectorAll('a[href^="#specifications-"]').forEach((link) => {
+        link.addEventListener("click", () => {
+            const specKey = link.getAttribute("href").replace("#specifications-", "");
+            const specIndex = Array.from(specSlides).findIndex((slide) => slide.dataset.specKey === specKey);
+
+            if (specIndex >= 0) {
+                setSpecSlide(specIndex);
+                resetSpecSlider();
+                setTimeout(() => premiumSpecsSection.scrollIntoView({ behavior: "smooth", block: "start" }), 0);
+            }
+        });
+    });
+
     setSpecSlide(activeSpecSlide);
+    applySpecHash();
+    window.addEventListener("hashchange", applySpecHash);
     startSpecSlider();
 }
 
@@ -2272,8 +2393,35 @@ if (visualShowcaseSection) {
         }, 320);
     };
 
+    const getGalleryTabFromHash = () => {
+        const match = window.location.hash.match(/^#gallery-(sample|walkthrough|exterior|construction)$/);
+        return match ? match[1] : "";
+    };
+
+    const applyGalleryHash = () => {
+        const galleryTab = getGalleryTabFromHash();
+
+        if (!galleryTab) {
+            return;
+        }
+
+        setGalleryTab(galleryTab);
+        visualShowcaseSection.scrollIntoView({ behavior: "smooth", block: "start" });
+    };
+
     galleryTabs.forEach((tab) => {
         tab.addEventListener("click", () => setGalleryTab(tab.dataset.galleryTab));
+    });
+
+    document.querySelectorAll('a[href^="#gallery-"]').forEach((link) => {
+        link.addEventListener("click", () => {
+            const galleryTab = link.getAttribute("href").replace("#gallery-", "");
+
+            if (galleryPanelLabels[galleryTab]) {
+                setGalleryTab(galleryTab);
+                setTimeout(() => visualShowcaseSection.scrollIntoView({ behavior: "smooth", block: "start" }), 0);
+            }
+        });
     });
 
     galleryTabsScroller?.addEventListener("scroll", updateGalleryTabSliderState, { passive: true });
@@ -2317,6 +2465,8 @@ if (visualShowcaseSection) {
     });
     updateActiveGalleryGrid();
     updateGalleryTabSliderState();
+    applyGalleryHash();
+    window.addEventListener("hashchange", applyGalleryHash);
 }
 
 // Prime location: switches the map card between the designed image and embedded Google Map.
@@ -2358,6 +2508,22 @@ if (primeLocationSection) {
         primeMap.classList.toggle("is-google-active", key === "google");
     };
 
+    const getPrimeMapFromHash = () => {
+        const match = window.location.hash.match(/^#location-(image|google)$/);
+        return match ? match[1] : "";
+    };
+
+    const applyPrimeMapHash = () => {
+        const mapKey = getPrimeMapFromHash();
+
+        if (!mapKey) {
+            return;
+        }
+
+        setPrimeMapPanel(mapKey);
+        primeLocationSection.scrollIntoView({ behavior: "smooth", block: "start" });
+    };
+
     const openPrimeMapLightbox = () => {
         if (!primeMapLightbox || !primeMapLightboxImage || !primeMapImage) {
             return;
@@ -2380,6 +2546,17 @@ if (primeLocationSection) {
 
     mapTabs.forEach((tab) => {
         tab.addEventListener("click", () => setPrimeMapPanel(tab.dataset.primeMapTab));
+    });
+
+    document.querySelectorAll('a[href^="#location-"]').forEach((link) => {
+        link.addEventListener("click", () => {
+            const mapKey = link.getAttribute("href").replace("#location-", "");
+
+            if (mapKey === "image" || mapKey === "google") {
+                setPrimeMapPanel(mapKey);
+                setTimeout(() => primeLocationSection.scrollIntoView({ behavior: "smooth", block: "start" }), 0);
+            }
+        });
     });
 
     mapOpenButtons.forEach((button) => {
@@ -2508,6 +2685,9 @@ if (primeLocationSection) {
         requestDistanceSliderUpdate();
         requestLocationCtaShiftUpdate();
     }
+
+    applyPrimeMapHash();
+    window.addEventListener("hashchange", applyPrimeMapHash);
 }
 
 // Project downloads: match the upstream hover/focus preview behavior.
@@ -2804,8 +2984,35 @@ if (lifestyleAmenitiesSection) {
         requestAmenityTabProgressUpdate();
     };
 
+    const getAmenityTabFromHash = () => {
+        const match = window.location.hash.match(/^#amenities-(all|wellness|recreation|security)$/);
+        return match ? match[1] : "";
+    };
+
+    const applyAmenityHash = () => {
+        const amenityTab = getAmenityTabFromHash();
+
+        if (!amenityTab) {
+            return;
+        }
+
+        setAmenityTab(amenityTab);
+        lifestyleAmenitiesSection.scrollIntoView({ behavior: "smooth", block: "start" });
+    };
+
     amenityTabs.forEach((tab) => {
         tab.addEventListener("click", () => setAmenityTab(tab.dataset.amenityTab));
+    });
+
+    document.querySelectorAll('a[href^="#amenities-"]').forEach((link) => {
+        link.addEventListener("click", () => {
+            const amenityTab = link.getAttribute("href").replace("#amenities-", "");
+
+            if (Array.from(amenityTabs).some((tab) => tab.dataset.amenityTab === amenityTab)) {
+                setAmenityTab(amenityTab);
+                setTimeout(() => lifestyleAmenitiesSection.scrollIntoView({ behavior: "smooth", block: "start" }), 0);
+            }
+        });
     });
 
     amenityCards.forEach((card) => {
@@ -2848,6 +3055,9 @@ if (lifestyleAmenitiesSection) {
         window.addEventListener("resize", requestAmenityTabProgressUpdate);
         requestAmenityTabProgressUpdate();
     }
+
+    applyAmenityHash();
+    window.addEventListener("hashchange", applyAmenityHash);
 }
 
 // Buyer testimonials: slider progress fill.
