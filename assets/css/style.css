@@ -15739,11 +15739,11 @@ body.mega-open {
 .premium-header {
     --header: rgba(6, 6, 7, 0.58);
     --header-solid: rgba(6, 6, 7, 0.72);
-    --gold: #f6c744;
-    --gold-deep: #dca52a;
+    --gold: #f0cd45;
+    --gold-deep: #f0cd45;
     --text: #f7f3ea;
     --muted: rgba(247, 243, 234, 0.68);
-    --line: rgba(246, 199, 68, 0.38);
+    --line: rgba(240, 205, 69, 0.38);
     --shadow: 0 22px 70px rgba(0, 0, 0, 0.42);
     position: fixed;
     top: 0;
@@ -15752,16 +15752,16 @@ body.mega-open {
     margin: 0;
     overflow: visible;
     border: 0;
-    border-bottom: 1px solid rgba(212, 175, 55, 0.18);
+    border-bottom: 1px solid rgba(240, 205, 69, 0.18);
     border-radius: 0;
     background:
         linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.015)),
-        radial-gradient(circle at 50% 0%, rgba(212, 175, 55, 0.12), transparent 46%),
+        radial-gradient(circle at 50% 0%, rgba(240, 205, 69, 0.12), transparent 46%),
         var(--header);
     box-shadow:
         0 16px 54px rgba(0, 0, 0, 0.42),
         inset 0 1px 0 rgba(255, 255, 255, 0.08),
-        inset 0 -1px 0 rgba(212, 175, 55, 0.08);
+        inset 0 -1px 0 rgba(240, 205, 69, 0.08);
     color: var(--text);
     font-family: "Jost", "Inter", Arial, sans-serif;
     backdrop-filter: blur(18px) saturate(145%);
@@ -15800,14 +15800,14 @@ body.mega-open {
     bottom: 0;
     left: 0;
     height: 1px;
-    background: linear-gradient(to right, transparent, #d4af37, transparent);
+    background: linear-gradient(to right, transparent, #f0cd45, transparent);
     pointer-events: none;
 }
 
 .premium-header.scrolled {
     background:
         linear-gradient(180deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.018)),
-        radial-gradient(circle at 50% 0%, rgba(212, 175, 55, 0.14), transparent 44%),
+        radial-gradient(circle at 50% 0%, rgba(240, 205, 69, 0.14), transparent 44%),
         var(--header-solid);
 }
 
@@ -15907,7 +15907,7 @@ body.mega-open {
 .premium-header .nav-mega-trigger:hover,
 .premium-header .nav-mega-trigger:focus-visible {
     color: #fff7d2;
-    text-shadow: 0 0 12px rgba(246, 199, 68, 0.34);
+    text-shadow: 0 0 12px rgba(240, 205, 69, 0.34);
 }
 
 .premium-header .main-nav a:hover::after,
@@ -15920,7 +15920,7 @@ body.mega-open {
 
 .premium-header .nav-mega-trigger.is-active {
     color: #fff7d2;
-    text-shadow: 0 0 12px rgba(246, 199, 68, 0.34);
+    text-shadow: 0 0 12px rgba(240, 205, 69, 0.34);
 }
 
 .premium-header .main-nav i,
@@ -16043,7 +16043,7 @@ body.mega-open {
 
 .premium-header .mega-card {
     overflow: hidden;
-    border: 1px solid rgba(246, 199, 68, 0.28);
+    border: 1px solid rgba(240, 205, 69, 0.28);
     border-radius: 16px;
     background:
         linear-gradient(180deg, rgba(16, 17, 19, 0.96), rgba(7, 8, 10, 0.98)),
@@ -16089,13 +16089,13 @@ body.mega-open {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    color: #ffe28a;
+    color: #f0cd45;
     transition: color 200ms ease, filter 200ms ease;
 }
 
 .premium-header .mega-heading a:hover,
 .premium-header .mega-heading a:focus-visible {
-    color: #fff0ae;
+    color: #ffdd59;
     filter: brightness(1.12);
 }
 
@@ -16118,9 +16118,9 @@ body.mega-open {
 }
 
 .premium-header .plan-card:hover {
-    border-color: rgba(246, 199, 68, 0.82);
+    border-color: rgba(240, 205, 69, 0.82);
     background: linear-gradient(180deg, #11151d, #0a0d12);
-    box-shadow: 0 20px 46px rgba(0, 0, 0, 0.36), 0 0 0 1px rgba(246, 199, 68, 0.14);
+    box-shadow: 0 20px 46px rgba(0, 0, 0, 0.36), 0 0 0 1px rgba(240, 205, 69, 0.14);
     transform: translateY(-5px);
 }
 
@@ -16158,7 +16158,7 @@ body.mega-open {
     padding: 6px 10px;
     border-radius: 999px;
     background: rgba(43, 39, 31, 0.9);
-    color: #ffe28a;
+    color: #f0cd45;
     font-size: 10px;
     font-weight: 600;
     letter-spacing: 0.10em;
@@ -16196,7 +16196,7 @@ body.mega-open {
 
 .premium-header .plan-body h3 {
     margin: 0;
-    color: #f9e7ae;
+    color: #f0cd45;
     font-family: "Jost", "Inter", Arial, sans-serif;
     font-size: 21px;
     font-weight: 600;
@@ -16254,8 +16254,8 @@ body.mega-open {
 
 .premium-header .plan-body > a:hover,
 .premium-header .plan-body > a:focus-visible {
-    border-color: rgba(246, 199, 68, 0.34);
-    color: #ffe28a;
+    border-color: rgba(240, 205, 69, 0.34);
+    color: #f0cd45;
 }
 
 .premium-header .plan-body > a i {
@@ -16287,7 +16287,7 @@ body.mega-open {
     min-height: 40px;
     padding: 0 20px;
     border-radius: 999px;
-    background: linear-gradient(135deg, #f8d74c, #dfb62c);
+    background: linear-gradient(135deg, #f0cd45, #f0cd45);
     color: #0f0d08;
     font-size: 11px;
     font-weight: 700;
@@ -16302,7 +16302,7 @@ body.mega-open {
 .premium-header .mega-foot a:focus-visible,
 .premium-header .advisor-row a:hover,
 .premium-header .advisor-row a:focus-visible {
-    background: linear-gradient(135deg, #fff9d9, #ffe88a);
+    background: linear-gradient(135deg, #fceba6, #fceba6);
     color: #090805;
 }
 
@@ -16336,7 +16336,7 @@ body.mega-open {
 }
 
 .premium-header .location-photo span {
-    color: #ffe28a;
+    color: #f0cd45;
     font-size: 11px;
     font-weight: 600;
     letter-spacing: 0.18em;
@@ -16403,7 +16403,7 @@ body.mega-open {
 }
 
 .premium-header .drive-head span {
-    color: #e8cf83;
+    color: #f0cd45;
 }
 
 .premium-header .drive-grid {
@@ -16427,7 +16427,7 @@ body.mega-open {
     min-height: 50px;
     border: 1px solid rgba(255, 255, 255, 0.12);
     border-radius: 9px;
-    color: #f8e0a1;
+    color: #f0cd45;
     font-family: "Jost", "Inter", Arial, sans-serif;
     font-size: 20px;
     font-weight: 600;
