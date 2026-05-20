@@ -1,4 +1,4 @@
-﻿/* Responsive Styles */
+/* Responsive Styles */
 
 @keyframes heroStoryProgress {
     from {
@@ -40,98 +40,6 @@
 
 /* Responsive rules moved from style.css; keep desktop/default styles in style.css. */
 
-/* Mobile/tablet navigation drawer. */
-@media (max-width: 1199px) {
-    .mobile-menu {
-        position: fixed;
-        display: block;
-        top: 86px;
-        left: 0;
-        z-index: 60;
-        width: 100%;
-        max-height: calc(100vh - 86px);
-        padding: 10px 20px 18px;
-        overflow-y: auto;
-        border-top: 1px solid rgba(0, 0, 0, 0.08);
-        background: #ffffff;
-        box-shadow: 0 18px 28px rgba(0, 0, 0, 0.12);
-        opacity: 0;
-        visibility: hidden;
-        transform: translateY(-12px);
-        transition:
-            opacity 0.25s ease,
-            transform 0.25s ease,
-            visibility 0.25s ease;
-    }
-
-    .site-header #menuToggle {
-        border-color: rgba(240, 205, 69, 0.24) !important;
-        background: rgba(255, 255, 255, 0.07) !important;
-        box-shadow: none !important;
-    }
-
-    .site-header #menuToggle span {
-        background: #f0cd45 !important;
-    }
-
-    .mobile-menu.is-open {
-        opacity: 1;
-        visibility: visible;
-        transform: translateY(0);
-    }
-
-    .mobile-menu a {
-        display: block;
-        padding: 12px 0;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.07);
-        color: #171717;
-        font-size: 14px;
-        font-weight: 500;
-    }
-
-    .mobile-menu,
-    .mobile-menu a:hover {
-        border-color: rgba(240, 205, 69, 0.16) !important;
-    }
-
-    .mobile-menu {
-        background: rgba(10, 10, 10, 0.98) !important;
-    }
-
-    .mobile-menu a {
-        color: rgba(255, 255, 255, 0.88) !important;
-    }
-
-    .mobile-menu a:hover {
-        background: rgba(240, 205, 69, 0.12) !important;
-        color: #f0cd45 !important;
-        box-shadow: none !important;
-    }
-
-    .mobile-menu a:last-child {
-        border-bottom: 0;
-    }
-
-    #menuToggle span {
-        transform-origin: center;
-    }
-
-    #menuToggle[aria-expanded="true"] span:nth-child(1) {
-        transform: translateY(7px) rotate(45deg);
-    }
-
-    #menuToggle[aria-expanded="true"] span:nth-child(2) {
-        opacity: 0;
-    }
-
-    #menuToggle[aria-expanded="true"] span:nth-child(3) {
-        transform: translateY(-7px) rotate(-45deg);
-    }
-
-    body.menu-open {
-        overflow: hidden;
-    }
-}
 
 /* User-preference media rules moved from style.css. */
 @media (prefers-reduced-motion: reduce) {
@@ -262,34 +170,9 @@
     }
 }
 
-@media (max-width: 767px) {
-    header {
-        transform: translateY(-100%);
-        pointer-events: none;
-    }
-
-    body.is-mobile-header-visible header {
-        transform: translateY(0);
-        pointer-events: auto;
-    }
-
-    body.is-mobile-header-hidden header {
-        transform: translateY(-100%);
-        pointer-events: none;
-    }
-
-    body.is-mobile-header-hidden .mobile-menu {
-        display: none;
-    }
-
-    .hero-section {
-        margin-top: 0 !important;
-    }
-}
-
 @supports not (height: 100dvh) {
     .hero-section {
-        --hero-section-height: calc(100vh - 86px);
+        --hero-section-height: 100vh;
     }
 }
 
@@ -558,8 +441,10 @@
     }
 
     .footer-redesign-brand div {
-        width: 100%;
-        justify-content: space-between;
+        width: fit-content;
+        max-width: 100%;
+        align-items: center;
+        justify-content: center;
     }
 
     .footer-redesign-contact {
@@ -624,8 +509,7 @@
 
     .visual-showcase-tabs button,
     .project-essentials-btn,
-    .site-visit-submit,
-    .mobile-menu a {
+    .site-visit-submit {
         font-size: 15px;
     }
 
@@ -903,10 +787,11 @@
     .footer-redesign-brand div {
         width: fit-content !important;
         max-width: 100% !important;
-        padding: 10px 12px !important;
+        padding: 11px 14px 13px !important;
         border-radius: 14px !important;
         margin-left: auto !important;
         margin-right: auto !important;
+        align-items: center !important;
         justify-content: center !important;
     }
 
@@ -971,46 +856,15 @@
 
 @media (max-width: 1199px) {
     body {
-        --sticky-availability-height: calc(100vh - 86px);
+        --sticky-availability-height: 100vh;
     }
 
     main,
-    header,
     section {
         max-width: 100% !important;
         overflow-x: hidden;
     }
-
-    header>div {
-        padding-left: 32px !important;
-        padding-right: 32px !important;
-        align-items: center !important;
-        padding-top: 0 !important;
-        width: 100% !important;
-        max-width: 100% !important;
-    }
-
-    header a[aria-label="Amelia Estate II home"] {
-        width: auto !important;
-        max-width: calc(100% - 58px);
-        gap: 18px !important;
-    }
-
-    header a[aria-label="Amelia Estate II home"] img:first-child {
-        width: 160px !important;
-        height: auto !important;
-    }
-
-    header a[aria-label="Amelia Estate II home"] img:last-child {
-        width: 96px !important;
-        height: auto !important;
-    }
-
-    header {
-        overflow: visible !important;
-    }
-
-    .hero-section {
+.hero-section {
         height: var(--hero-section-height);
         min-height: min(560px, var(--hero-section-height));
     }
@@ -2149,51 +2003,6 @@
 @media (max-width: 767px) {
     body {
         background: #ffffff;
-    }
-
-    header {
-        background: #0f0f0f !important;
-        box-shadow: none !important;
-    }
-
-    header>div {
-        padding-left: 20px !important;
-        padding-right: 20px !important;
-        background: #0f0f0f;
-    }
-
-    header a[aria-label="Amelia Estate II home"] {
-        width: auto !important;
-        gap: 0 !important;
-    }
-
-    header a[aria-label="Amelia Estate II home"] img:first-child {
-        display: none !important;
-    }
-
-    .header-logo-divider {
-        display: none;
-    }
-
-    header a[aria-label="Amelia Estate II home"] img:last-child {
-        display: block !important;
-        width: 137px !important;
-        height: auto !important;
-    }
-
-    header a[aria-label="Amelia Estate II home"] img:nth-of-type(2) {
-        display: none !important;
-    }
-
-    #menuToggle {
-        border: 0 !important;
-        background: transparent !important;
-    }
-
-    #menuToggle span {
-        width: 18px !important;
-        height: 2px !important;
-        background: #D5AE66 !important;
     }
 
     .hero-section {
@@ -4137,19 +3946,6 @@
 }
 
 @media (max-width: 575px) {
-    header a[aria-label="Amelia Estate II home"] img:first-child {
-        display: none !important;
-    }
-
-    .header-logo-divider {
-        display: none;
-    }
-
-    header a[aria-label="Amelia Estate II home"] img:last-child {
-        display: block !important;
-        width: 137px !important;
-        height: auto !important;
-    }
 
     .hero-section {
         --hero-story-width: min(421px, calc(100vw - 16px));
@@ -7210,9 +7006,7 @@
         font-size: 17px;
         line-height: 1.78;
     }
-
-    .mobile-menu a,
-    .project-plan-meta,
+.project-plan-meta,
     .site-visit-submit,
     .site-visit-whatsapp {
         font-size: 15px !important;
@@ -7361,11 +7155,7 @@
 }
 
 @media (max-width: 767px) {
-    header>div {
-        justify-content: space-between !important;
-    }
-
-    .hero-copy,
+.hero-copy,
     .hero-location,
     .hero-slide--figma .hero-location,
     .hero-tags,
@@ -7738,140 +7528,7 @@
 }
 
 @media (max-width: 1199px) {
-    .site-header {
-        background: rgba(255, 255, 255, 0.96) !important;
-    }
-
-    .site-header>div {
-        width: 100% !important;
-        padding: 0 28px !important;
-    }
-
-    .site-header nav[aria-label="Primary navigation"] {
-        display: none !important;
-    }
-
-    .site-header .header-cta {
-        margin-left: auto !important;
-    }
-
-    .site-header #menuToggle {
-        display: flex !important;
-        width: 42px !important;
-        height: 42px !important;
-        margin-left: 0 !important;
-        gap: 5px !important;
-        border: 1px solid rgba(15, 23, 42, 0.1) !important;
-        border-radius: 999px !important;
-        background: #ffffff !important;
-        box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08) !important;
-    }
-
-    .site-header #menuToggle span {
-        width: 18px !important;
-        height: 2px !important;
-        border-radius: 999px !important;
-        background: #171717 !important;
-    }
-
-    .mobile-menu {
-        top: 86px !important;
-        left: 16px !important;
-        width: calc(100% - 32px) !important;
-        padding: 8px !important;
-        border: 1px solid rgba(15, 23, 42, 0.08) !important;
-        border-radius: 18px !important;
-        background: rgba(255, 255, 255, 0.98) !important;
-        box-shadow: 0 24px 54px rgba(15, 23, 42, 0.18) !important;
-    }
-
-    .mobile-menu a {
-        padding: 13px 14px !important;
-        border-bottom: 0 !important;
-        border-radius: 12px !important;
-        color: #171717 !important;
-        font-size: 15px !important;
-        font-weight: 600 !important;
-    }
-
-    .mobile-menu a:hover {
-        background: rgba(213, 174, 102, 0.18) !important;
-    }
-}
-
-@media (max-width: 767px) {
-    .site-header {
-        height: 74px !important;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
-        background: rgba(14, 14, 14, 0.96) !important;
-        box-shadow: 0 16px 36px rgba(0, 0, 0, 0.18) !important;
-    }
-
-    .site-header>div {
-        height: 74px !important;
-        padding: 0 16px !important;
-        background: transparent !important;
-    }
-
-    .site-header a[aria-label="Amelia Estate II home"] {
-        height: 48px !important;
-        max-width: calc(100% - 58px) !important;
-        padding: 0 !important;
-        gap: 0 !important;
-    }
-
-    .site-header a[aria-label="Amelia Estate II home"] img:first-child,
-    .site-header a[aria-label="Amelia Estate II home"] img:nth-of-type(2),
-    .site-header .header-logo-divider {
-        display: none !important;
-    }
-
-    .site-header .mobile-header-logo {
-        display: block !important;
-        width: 138px !important;
-        height: auto !important;
-    }
-
-    .site-header .header-cta {
-        display: none !important;
-    }
-
-    .site-header #menuToggle {
-        width: 42px !important;
-        height: 42px !important;
-        border-color: rgba(255, 255, 255, 0.14) !important;
-        background: rgba(255, 255, 255, 0.08) !important;
-        box-shadow: none !important;
-    }
-
-    .site-header #menuToggle span {
-        width: 18px !important;
-        background: #D5AE66 !important;
-    }
-
-    .mobile-menu {
-        top: 82px !important;
-        background: rgba(17, 17, 17, 0.98) !important;
-        border-color: rgba(255, 255, 255, 0.1) !important;
-        box-shadow: 0 22px 50px rgba(0, 0, 0, 0.32) !important;
-    }
-
-    .mobile-menu a {
-        color: #ffffff !important;
-    }
-
-    .mobile-menu a:hover {
-        background: rgba(213, 174, 102, 0.16) !important;
-        color: #D5AE66 !important;
-    }
-}
-
-@media (max-width: 1199px) {
-    .site-header .header-cta {
-        font-size: 14px !important;
-    }
-
-    :is(.about-content h2,
+:is(.about-content h2,
         .ideal-floor-heading h2,
         .project-plans-copy h2,
         .transparent-pricing-header h2,
@@ -10961,46 +10618,6 @@
         inset 0 12px 24px rgba(255, 255, 255, 0.035) !important;
 }
 
-/* Final mobile header theme sync. */
-@media (max-width: 767px) {
-    .site-header {
-        border-bottom-color: rgba(240, 205, 69, 0.22) !important;
-        background: rgba(5, 5, 5, 0.96) !important;
-        box-shadow: 0 16px 36px rgba(0, 0, 0, 0.24), 0 0 24px rgba(240, 205, 69, 0.08) !important;
-    }
-
-    .site-header #menuToggle {
-        border-color: rgba(240, 205, 69, 0.34) !important;
-        background: rgba(240, 205, 69, 0.08) !important;
-        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
-    }
-
-    .site-header #menuToggle:hover,
-    body.menu-open .site-header #menuToggle {
-        border-color: rgba(240, 205, 69, 0.76) !important;
-        background: rgba(240, 205, 69, 0.14) !important;
-    }
-
-    .site-header #menuToggle span {
-        background: #f0cd45 !important;
-    }
-
-    .mobile-menu {
-        border-color: rgba(240, 205, 69, 0.24) !important;
-        background: rgba(8, 8, 7, 0.98) !important;
-        box-shadow: 0 22px 50px rgba(0, 0, 0, 0.36), 0 0 26px rgba(240, 205, 69, 0.10) !important;
-    }
-
-    .mobile-menu a {
-        border-bottom-color: rgba(240, 205, 69, 0.12) !important;
-        color: rgba(255, 255, 255, 0.90) !important;
-    }
-
-    .mobile-menu a:hover {
-        background: rgba(240, 205, 69, 0.12) !important;
-        color: #f0cd45 !important;
-    }
-}
 
 /* Final mobile footer alignment guard. */
 @media (max-width: 767px) {
@@ -12457,12 +12074,532 @@
     color: #f0cd45 !important;
 }
 
-@media (max-width: 1199px) {
-    .desktop-mega-menu-shell {
-        display: none !important;
+/* Amelia Estate Header responsive import from Amelia-Estate-Header. */
+@media (max-width: 1260px) {
+    .premium-header .header-shell {
+        gap: 18px;
+        padding: 0 22px;
     }
 
-    .mega-nav-caret {
-        display: none !important;
+    .premium-header .brand-group {
+        min-width: 0;
+    }
+
+    .premium-header .brand-amelia img {
+        height: 46px;
+    }
+
+    .premium-header .main-nav {
+        gap: 16px;
+    }
+
+    .premium-header .main-nav a,
+    .premium-header .nav-mega-trigger {
+        font-size: 11px;
+        letter-spacing: 0.055em;
+    }
+
+    .premium-header .site-visit-btn {
+        padding: 0 16px;
+        letter-spacing: 0.1em;
+    }
+}
+
+@media (max-width: 1080px) {
+    .premium-header .header-shell {
+        grid-template-columns: 1fr auto;
+        min-height: 62px;
+    }
+
+    .premium-header .brand-group {
+        min-width: 0;
+    }
+
+    .premium-header .main-nav {
+        display: none;
+    }
+
+    .premium-header .main-nav a,
+    .premium-header .nav-mega-trigger {
+        min-height: 58px;
+        justify-content: space-between;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        font-size: 15px;
+        font-weight: 600;
+    }
+
+    .premium-header .main-nav a::after,
+    .premium-header .nav-mega-trigger::after {
+        display: none;
+    }
+
+    .premium-header .nav-mega-trigger.is-active {
+        padding: 0;
+        background: transparent;
+        color: var(--gold);
+    }
+
+    .premium-header .menu-toggle {
+        display: inline-grid;
+    }
+
+    .premium-header .mobile-menu-overlay {
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+        display: block;
+        width: 100%;
+        height: 100vh;
+        height: 100dvh;
+        visibility: hidden;
+        opacity: 0;
+        pointer-events: none;
+        background:
+            radial-gradient(circle at 50% 0%, rgba(212, 175, 55, 0.14), transparent 34%),
+            linear-gradient(135deg, rgba(0, 0, 0, 0.22), rgba(212, 175, 55, 0.04), rgba(0, 0, 0, 0.34)),
+            rgba(0, 0, 0, 0.74);
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+        transition: opacity 420ms ease, visibility 420ms ease;
+    }
+
+    .premium-header .mobile-menu-overlay.is-open {
+        visibility: visible;
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    .premium-header .mobile-menu-panel {
+        display: grid;
+        grid-template-rows: auto 1fr auto;
+        min-height: 100vh;
+        min-height: 100dvh;
+        margin-left: 44px;
+        padding: max(16px, env(safe-area-inset-top)) 18px max(16px, env(safe-area-inset-bottom));
+        border: 1px solid rgba(212, 175, 55, 0.14);
+        border-radius: 0;
+        background:
+            radial-gradient(circle at 85% 12%, rgba(212, 175, 55, 0.12), transparent 28%),
+            linear-gradient(180deg, rgba(18, 18, 18, 0.97), rgba(5, 5, 6, 0.99)),
+            rgba(0, 0, 0, 0.92);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+        opacity: 0;
+        filter: blur(8px);
+        transform: translate3d(42px, 0, 0) scale(0.985);
+        transform-origin: right center;
+        transition:
+            opacity 420ms ease,
+            filter 420ms ease,
+            transform 520ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .premium-header .mobile-menu-overlay.is-open .mobile-menu-panel {
+        opacity: 1;
+        filter: blur(0);
+        transform: translate3d(0, 0, 0) scale(1);
+    }
+
+    .premium-header .mobile-menu-top {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 18px;
+        min-height: 56px;
+        padding-bottom: 14px;
+        border-bottom: 1px solid rgba(212, 175, 55, 0.13);
+    }
+
+    .premium-header .mobile-menu-top span {
+        color: #d4af37;
+        font-size: 11px;
+        font-weight: 750;
+        letter-spacing: 0.24em;
+        line-height: 1;
+        text-transform: uppercase;
+    }
+
+    .premium-header .mobile-menu-top h2 {
+        margin: 8px 0 0;
+        color: #fff8df;
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: clamp(21px, 5.8vw, 30px);
+        font-weight: 500;
+        line-height: 0.94;
+        text-transform: uppercase;
+    }
+
+    .premium-header .mobile-close {
+        display: grid;
+        flex: 0 0 44px;
+        place-items: center;
+        width: 44px;
+        height: 44px;
+        border: 1px solid rgba(212, 175, 55, 0.3);
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.04);
+        color: #f7df97;
+        cursor: pointer;
+        transition: background 180ms ease, transform 180ms ease, color 180ms ease;
+    }
+
+    .premium-header .mobile-close:hover,
+    .premium-header .mobile-close:focus-visible {
+        background: rgba(255, 255, 255, 0.1);
+        color: #fff6d5;
+        transform: scale(1.04);
+    }
+
+    .premium-header .mobile-menu-nav {
+        display: grid;
+        align-self: center;
+        gap: 0;
+        padding: 12px 0 150px;
+    }
+
+    .premium-header .mobile-menu-nav > a,
+    .premium-header .mobile-accordion {
+        opacity: 0;
+        transform: translateY(16px);
+    }
+
+    .premium-header .mobile-menu-nav > a,
+    .premium-header .mobile-accordion-trigger {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        min-height: 40px;
+        border: 0;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.045);
+        background: transparent;
+        color: #fff;
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: clamp(16px, 4.5vw, 21px);
+        font-weight: 500;
+        line-height: 1;
+        letter-spacing: 0;
+        transition: color 220ms ease, text-shadow 220ms ease, transform 220ms ease;
+    }
+
+    .premium-header .mobile-menu-nav > a::after {
+        content: "";
+        width: 7px;
+        height: 7px;
+        border-top: 1px solid #d4af37;
+        border-right: 1px solid #d4af37;
+        opacity: 0.58;
+        transform: rotate(45deg);
+        transition: opacity 220ms ease, transform 220ms ease;
+    }
+
+    .premium-header .mobile-menu-overlay.is-open .mobile-menu-nav > a,
+    .premium-header .mobile-menu-overlay.is-open .mobile-accordion {
+        animation: mobileMenuFadeUp 420ms ease forwards;
+        animation-delay: calc(var(--item-index) * 55ms);
+    }
+
+    .premium-header .mobile-menu-nav > a:hover,
+    .premium-header .mobile-menu-nav > a:focus-visible,
+    .premium-header .mobile-menu-nav > a:active,
+    .premium-header .mobile-accordion-trigger:hover,
+    .premium-header .mobile-accordion-trigger:focus-visible,
+    .premium-header .mobile-accordion-trigger:active,
+    .premium-header .mobile-accordion.is-open .mobile-accordion-trigger {
+        color: #d4af37;
+        text-shadow: 0 0 16px rgba(212, 175, 55, 0.34);
+        transform: translateX(4px);
+    }
+
+    .premium-header .mobile-menu-nav > a:hover::after,
+    .premium-header .mobile-menu-nav > a:focus-visible::after {
+        opacity: 1;
+        transform: translateX(4px) rotate(45deg);
+    }
+
+    .premium-header .mobile-accordion-trigger {
+        text-align: left;
+        cursor: pointer;
+    }
+
+    .premium-header .mobile-accordion-trigger i {
+        color: #d4af37;
+        font-size: 11px;
+        transition: transform 260ms ease, color 220ms ease;
+    }
+
+    .premium-header .mobile-accordion.is-open .mobile-accordion-trigger i {
+        color: #fff0ad;
+        transform: rotate(180deg);
+    }
+
+    .premium-header .mobile-submenu {
+        max-height: 0;
+        overflow: hidden;
+        border-bottom: 1px solid rgba(212, 175, 55, 0.08);
+        transition: max-height 320ms ease;
+    }
+
+    .premium-header .mobile-accordion.is-open .mobile-submenu {
+        max-height: 220px;
+    }
+
+    .premium-header .mobile-submenu a {
+        display: flex;
+        align-items: center;
+        min-height: 34px;
+        padding-left: 14px;
+        color: rgba(255, 255, 255, 0.68);
+        font-size: 12px;
+        font-weight: 650;
+        letter-spacing: 0.12em;
+        line-height: 1;
+        text-transform: uppercase;
+        transition: color 200ms ease, padding-left 200ms ease;
+    }
+
+    .premium-header .mobile-submenu a:hover,
+    .premium-header .mobile-submenu a:focus-visible,
+    .premium-header .mobile-submenu a:active {
+        padding-left: 20px;
+        color: #d4af37;
+    }
+
+    .premium-header .mobile-action-bar {
+        position: fixed;
+        right: 28px;
+        bottom: max(14px, env(safe-area-inset-bottom));
+        left: 68px;
+        z-index: 2;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 10px;
+        min-height: auto;
+        padding: 0;
+        border: 0;
+        border-radius: 0;
+        background: transparent;
+        box-shadow: none;
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+    }
+
+    .premium-header .mobile-action-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        width: 100%;
+        min-height: 46px;
+        border: 1px solid rgba(212, 175, 55, 0.36);
+        border-radius: 14px;
+        background: linear-gradient(135deg, #ffe76f 0%, #f6c744 48%, #dca52a 100%);
+        box-shadow:
+            0 12px 30px rgba(246, 199, 68, 0.16),
+            inset 0 1px 0 rgba(255, 255, 255, 0.34);
+        color: #0f0d08;
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: 0.12em;
+        line-height: 1;
+        text-transform: uppercase;
+        transition: background 180ms ease, color 180ms ease, transform 180ms ease;
+    }
+
+    .premium-header .mobile-action-icon:first-child {
+        border-color: rgba(37, 211, 102, 0.42);
+        background: linear-gradient(135deg, #56f29a, #25d366 52%, #128c4a);
+        box-shadow:
+            0 12px 30px rgba(37, 211, 102, 0.16),
+            inset 0 1px 0 rgba(255, 255, 255, 0.28);
+        color: #031409;
+    }
+
+    .premium-header .mobile-action-icon i {
+        font-size: 15px;
+    }
+
+    .premium-header .mobile-action-icon:hover,
+    .premium-header .mobile-action-icon:focus-visible {
+        background: linear-gradient(135deg, #fff8d3, #ffe88a);
+        color: #090805;
+        transform: scale(1.02);
+    }
+
+    .premium-header .mobile-action-icon:first-child:hover,
+    .premium-header .mobile-action-icon:first-child:focus-visible {
+        background: linear-gradient(135deg, #d8ffe7, #43e685);
+        color: #031409;
+    }
+
+    @keyframes mobileMenuFadeUp {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .premium-header .mega-layer {
+        display: none;
+    }
+
+    .premium-header .mega-layer.location-layer {
+        width: auto;
+    }
+
+    .premium-header .mega-layer.is-open {
+        transform: none;
+    }
+
+    .premium-header .mega-card {
+        border-radius: 16px;
+    }
+
+    .premium-header .plan-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .premium-header .plan-card {
+        min-height: auto;
+    }
+
+    .premium-header .location-mega {
+        width: 100%;
+        grid-template-columns: 1fr;
+    }
+
+    .premium-header .location-photo {
+        min-height: 360px;
+    }
+}
+
+@media (max-width: 720px) {
+    body {
+        padding-top: 0;
+    }
+
+    .premium-header {
+        top: 0;
+        width: 100%;
+        margin-top: 0;
+    }
+
+    .premium-header .header-shell {
+        padding: 0 14px;
+    }
+
+    .premium-header .brand-group {
+        gap: 12px;
+    }
+
+    .premium-header .brand-amelia img {
+        height: 40px;
+    }
+
+    .premium-header .call-link {
+        display: none;
+    }
+
+    .premium-header .site-visit-btn {
+        width: 38px;
+        min-height: 38px;
+        padding: 0;
+        letter-spacing: 0;
+    }
+
+    .premium-header .site-visit-btn span {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+    }
+
+    .premium-header .mega-layer {
+        right: 10px;
+        left: 10px;
+        padding: 14px;
+    }
+
+    .premium-header .mega-heading,
+    .premium-header .mega-foot,
+    .premium-header .drive-head,
+    .premium-header .advisor-row {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .premium-header .mega-heading {
+        gap: 10px;
+    }
+
+    .premium-header .mega-foot {
+        gap: 12px;
+    }
+
+    .premium-header .mega-foot a,
+    .premium-header .advisor-row a {
+        width: 100%;
+    }
+
+    .premium-header .location-mega {
+        gap: 12px;
+        padding: 12px;
+    }
+
+    .premium-header .drive-panel {
+        padding: 20px 16px 16px;
+    }
+
+    .premium-header .drive-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .premium-header .drive-item {
+        grid-template-columns: 58px 1fr;
+    }
+
+    .premium-header .location-photo h3 {
+        font-size: 28px;
+    }
+}
+
+@media (max-width: 460px) {
+    .premium-header .brand-amelia img {
+        height: 36px;
+    }
+
+    .premium-header .header-actions {
+        gap: 10px;
+    }
+
+    .premium-header .main-nav {
+        padding: 22px;
+    }
+
+    .premium-header .plan-image {
+        height: 146px;
+    }
+
+    .premium-header .plan-size {
+        font-size: 30px;
+    }
+
+    .premium-header .location-photo {
+        min-height: 330px;
+    }
+
+    .premium-header .location-photo div {
+        right: 18px;
+        bottom: 20px;
+        left: 18px;
+    }
+
+    .premium-header .location-photo h3 {
+        font-size: 24px;
+    }
+
+    .premium-header .advisor-row strong {
+        font-size: 21px;
     }
 }
