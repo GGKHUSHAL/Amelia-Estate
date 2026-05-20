@@ -12159,7 +12159,7 @@
     .premium-header .mobile-menu-panel {
         position: relative;
         display: grid;
-        grid-template-rows: auto 1fr auto;
+        grid-template-rows: auto minmax(0, 1fr) auto;
         overflow: hidden;
         height: 100vh;
         height: 100dvh;
@@ -12244,11 +12244,12 @@
 
     .premium-header .mobile-menu-nav {
         display: grid;
-        align-self: start;
+        align-self: stretch;
         gap: 0;
+        min-height: 0;
         max-height: 100%;
         overflow-y: auto;
-        padding: 10px 0 108px;
+        padding: 10px 0 12px;
         scrollbar-width: none;
     }
 
@@ -12365,17 +12366,17 @@
     }
 
     .premium-header .mobile-action-bar {
-        position: absolute;
-        right: 28px;
-        bottom: 30px;
-        bottom: calc(30px + env(safe-area-inset-bottom));
-        left: 76px;
+        position: static;
         z-index: 2;
         display: grid;
         grid-template-columns: 1fr;
+        align-self: end;
+        justify-self: center;
         gap: 10px;
+        width: min(158px, 100%);
         min-height: auto;
-        padding: 0;
+        margin: 10px auto 14px;
+        padding: 0 0 env(safe-area-inset-bottom);
         border: 0;
         border-radius: 0;
         background: transparent;
