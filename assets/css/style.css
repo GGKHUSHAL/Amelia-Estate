@@ -16603,7 +16603,7 @@ body.mega-open {
 
 .premium-header .full-menu-grid {
     display: grid;
-    grid-template-columns: repeat(8, minmax(0, 1fr));
+    grid-template-columns: repeat(7, minmax(0, 1fr)) minmax(150px, 1.16fr);
     gap: 0;
 }
 
@@ -16649,6 +16649,10 @@ body.mega-open {
 
 .premium-header .full-menu-contact {
     gap: 15px;
+}
+
+.premium-header .full-menu-contact a[href^="tel:"] {
+    white-space: nowrap;
 }
 
 .premium-header .full-menu-whatsapp {
