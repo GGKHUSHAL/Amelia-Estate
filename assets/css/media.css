@@ -12073,7 +12073,7 @@
     }
 
     .premium-header .brand-amelia img {
-        height: 46px;
+        height: 76px;
     }
 
     .premium-header .main-nav {
@@ -12497,7 +12497,7 @@
     }
 
     .premium-header .brand-amelia img {
-        height: 40px;
+        height: 62px;
     }
 
     .premium-header .call-link {
@@ -12571,7 +12571,7 @@
 
 @media (max-width: 460px) {
     .premium-header .brand-amelia img {
-        height: 36px;
+        height: 54px;
     }
 
     .premium-header .header-actions {
