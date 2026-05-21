@@ -12064,13 +12064,13 @@
 /* Amelia Estate Header responsive: clean active rules only. */
 @media (min-width: 1081px) and (max-width: 1260px) {
     .premium-header .header-shell {
-        gap: 14px;
-        grid-template-columns: 92px minmax(0, 1fr) 42px;
-        padding: 0 14px;
+        gap: 16px;
+        grid-template-columns: 120px minmax(0, 1fr) 50px;
+        padding: 0 32px;
     }
 
     .premium-header .brand-group {
-        width: 88px;
+        width: 120px;
     }
 
     .premium-header .main-nav {
@@ -12082,7 +12082,7 @@
     .premium-header .nav-menu-trigger {
         min-height: 42px;
         padding: 0 8px;
-        font-size: 12px;
+        font-size: 13px;
         letter-spacing: 0.035em;
     }
 }
@@ -12090,22 +12090,22 @@
 @media (max-width: 1080px) {
     .premium-header .header-shell {
         grid-template-columns: minmax(0, 1fr) auto;
-        width: calc(100% - 28px);
-        min-height: 62px;
-        margin-top: 8px;
-        border-radius: 18px;
-        padding: 0 14px;
+        width: 100%;
+        min-height: 72px;
+        margin-top: 0;
+        border-radius: 0;
+        padding: 0 22px;
         backdrop-filter: blur(10px) saturate(132%);
         -webkit-backdrop-filter: blur(10px) saturate(132%);
     }
 
     .premium-header .brand-group {
-        width: 92px;
-        height: 58px;
+        width: 112px;
+        height: 66px;
     }
 
     .premium-header .brand-amelia img {
-        height: 62px;
+        height: 70px;
     }
 
     .premium-header .main-nav,
@@ -12134,7 +12134,7 @@
         width: 100%;
         min-height: 100vh;
         min-height: 100dvh;
-        padding: max(10px, env(safe-area-inset-top)) max(12px, env(safe-area-inset-right)) max(10px, env(safe-area-inset-bottom)) max(12px, env(safe-area-inset-left));
+        padding: max(10px, env(safe-area-inset-top)) 0 max(10px, env(safe-area-inset-bottom)) max(24px, env(safe-area-inset-left));
         visibility: hidden;
         opacity: 0;
         pointer-events: none;
@@ -12156,7 +12156,7 @@
         position: relative;
         display: grid;
         grid-template-rows: auto minmax(0, 1fr) auto;
-        width: min(326px, calc(100vw - 24px));
+        width: min(304px, calc(100vw - 24px));
         height: calc(100vh - 20px);
         height: calc(100dvh - 20px);
         min-height: 520px;
@@ -12164,7 +12164,7 @@
         max-height: calc(100dvh - 20px);
         overflow: hidden;
         border: 1px solid rgba(255, 255, 255, 0.22);
-        border-radius: 28px;
+        border-radius: 28px 0 0 28px;
         background:
             linear-gradient(150deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.045) 42%, rgba(240, 205, 69, 0.09)),
             rgba(10, 10, 8, 0.46);
@@ -12174,8 +12174,8 @@
             inset 0 -1px 0 rgba(240, 205, 69, 0.14);
         padding: 16px 18px 18px;
         opacity: 0;
-        clip-path: inset(0 0 0 18% round 28px);
-        transform: translate3d(34px, -8px, 0) scale(0.97);
+        clip-path: inset(0 0 0 22% round 28px 0 0 28px);
+        transform: translate3d(100%, -8px, 0) scale(0.98);
         transform-origin: right top;
         backdrop-filter: blur(16px) saturate(145%);
         -webkit-backdrop-filter: blur(16px) saturate(145%);
@@ -12187,7 +12187,7 @@
 
     .premium-header .mobile-menu-overlay.is-open .mobile-menu-panel {
         opacity: 1;
-        clip-path: inset(0 0 0 0 round 28px);
+        clip-path: inset(0 0 0 0 round 28px 0 0 28px);
         transform: translate3d(0, 0, 0) scale(1);
     }
 
@@ -12275,6 +12275,7 @@
         width: 100%;
         min-height: 42px;
         gap: 14px;
+        padding-right: 14px;
         border: 0;
         border-bottom: 1px solid rgba(255, 255, 255, 0.095);
         background: transparent;
@@ -12292,7 +12293,7 @@
         flex: 0 0 auto;
         width: 9px;
         height: 9px;
-        margin-right: 3px;
+        margin-right: 7px;
         border-top: 2px solid var(--gold);
         border-right: 2px solid var(--gold);
         opacity: 0.78;
@@ -12306,13 +12307,13 @@
     .premium-header .mobile-accordion-trigger:focus-visible,
     .premium-header .mobile-accordion.is-open .mobile-accordion-trigger {
         color: var(--gold);
-        transform: translateX(4px);
+        transform: translateX(2px);
     }
 
     .premium-header .mobile-menu-nav > a:hover::after,
     .premium-header .mobile-menu-nav > a:focus-visible::after {
         opacity: 1;
-        transform: translateX(4px) rotate(45deg);
+        transform: translateX(1px) rotate(45deg);
     }
 
     .premium-header .mobile-accordion-trigger {
@@ -12420,45 +12421,45 @@
 
 @media (max-width: 720px) {
     .premium-header .header-shell {
-        width: calc(100% - 20px);
-        min-height: 58px;
-        border-radius: 16px;
-        padding: 0 12px;
+        width: 100%;
+        min-height: 66px;
+        border-radius: 0;
+        padding: 0 16px;
     }
 
     .premium-header .brand-group {
-        width: 86px;
-        height: 54px;
+        width: 98px;
+        height: 62px;
     }
 
     .premium-header .brand-amelia img {
-        height: 58px;
+        height: 66px;
     }
 
     .premium-header .mobile-menu-overlay {
-        padding: 8px;
+        padding: 8px 0 8px 20px;
     }
 
     .premium-header .mobile-menu-panel {
-        width: min(320px, calc(100vw - 16px));
+        width: min(292px, calc(100vw - 20px));
         height: calc(100vh - 16px);
         height: calc(100dvh - 16px);
         min-height: 0;
         max-height: calc(100vh - 16px);
         max-height: calc(100dvh - 16px);
-        border-radius: 24px;
+        border-radius: 24px 0 0 24px;
         padding: 14px 16px 16px;
     }
 }
 
 @media (max-width: 460px) {
     .premium-header .brand-group {
-        width: 80px;
-        height: 50px;
+        width: 88px;
+        height: 58px;
     }
 
     .premium-header .brand-amelia img {
-        height: 54px;
+        height: 60px;
     }
 
     .premium-header .header-actions {
@@ -12466,7 +12467,7 @@
     }
 
     .premium-header .mobile-menu-panel {
-        width: min(306px, calc(100vw - 16px));
+        width: min(288px, calc(100vw - 24px));
     }
 }
 
