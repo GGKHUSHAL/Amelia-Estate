@@ -242,6 +242,18 @@
     });
 
     if (siteHeader) {
+        siteHeader.addEventListener("click", (event) => {
+            const link = event.target.closest('a[href^="#"]');
+
+            if (!link) {
+                return;
+            }
+
+            window.__ameliaBypassStructSliderUntil = Date.now() + 3500;
+            document.documentElement.classList.remove("struct-slider-locked");
+            document.body.classList.remove("struct-slider-locked");
+        }, true);
+
         siteHeader.addEventListener("mouseleave", () => {
             if (desktopMegaQuery.matches && !isFullMenuOpen()) {
                 closeMegaMenus();
@@ -663,6 +675,8 @@ if (structSliderSection && structSlides.length > 1) {
         (direction > 0 && activeStructSlide < structSlides.length - 1) ||
         (direction < 0 && activeStructSlide > 0);
 
+    const isStructBypassed = () => Date.now() < (window.__ameliaBypassStructSliderUntil || 0);
+
     const isStructInFocus = () => {
         const rect = structSliderSection.getBoundingClientRect();
         return rect.top < window.innerHeight * 0.72 && rect.bottom > window.innerHeight * 0.28;
@@ -676,6 +690,10 @@ if (structSliderSection && structSlides.length > 1) {
     };
 
     const setStructLock = (shouldLock) => {
+        if (isStructBypassed()) {
+            shouldLock = false;
+        }
+
         if (shouldLock === structLocked) {
             return;
         }
@@ -690,6 +708,12 @@ if (structSliderSection && structSlides.length > 1) {
     };
 
     const syncStructLock = () => {
+        if (isStructBypassed()) {
+            structReleasedDirection = 0;
+            setStructLock(false);
+            return;
+        }
+
         if (!isStructInFocus()) {
             if (isStructSectionFullyOutOfView()) {
                 structReleasedDirection = 0;
@@ -711,6 +735,11 @@ if (structSliderSection && structSlides.length > 1) {
     };
 
     const handleStructDirection = (direction, event) => {
+        if (isStructBypassed()) {
+            setStructLock(false);
+            return;
+        }
+
         if (!isStructInFocus()) {
             syncStructLock();
             return;
@@ -729,6 +758,11 @@ if (structSliderSection && structSlides.length > 1) {
     };
 
     const handleStructWheel = (event) => {
+        if (isStructBypassed()) {
+            setStructLock(false);
+            return;
+        }
+
         const dy = event.deltaY;
 
         if (dy === 0) {
@@ -753,6 +787,11 @@ if (structSliderSection && structSlides.length > 1) {
     };
 
     const handleStructTouchMove = (event) => {
+        if (isStructBypassed()) {
+            setStructLock(false);
+            return;
+        }
+
         if (!isStructInFocus()) {
             return;
         }
@@ -767,6 +806,11 @@ if (structSliderSection && structSlides.length > 1) {
     };
 
     const handleStructKeydown = (event) => {
+        if (isStructBypassed()) {
+            setStructLock(false);
+            return;
+        }
+
         if (!isStructInFocus()) {
             return;
         }
