@@ -1356,7 +1356,7 @@ if (pricingSection) {
             title: "3 BHK - 205 Sq. Yd",
             badge: "3 BHK - 205 Sq. Yd",
             area: "205 Sq.Yds",
-            prices: ["1.37 Cr", "1.325 Cr", "1.325 Cr", "1.505 Cr"],
+            prices: ["1.37 Cr", "1.32 Cr", "1.32 Cr", "1.50 Cr"],
             image: "assets/img/priceing and investment/photo-1600607687939-ce8a6c25118c.avif"
         }
     };
