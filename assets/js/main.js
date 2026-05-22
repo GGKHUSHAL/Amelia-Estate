@@ -165,7 +165,7 @@
 
     const setCardOpen = (activeCard) => {
         mobileMenuCards.forEach((card) => {
-            const isOpen = card === activeCard;
+            const isOpen = Boolean(activeCard && card === activeCard);
             const button = card.querySelector(".mobile-menu-card-head");
 
             card.classList.toggle("is-open", isOpen);
@@ -184,7 +184,7 @@
         }
 
         button.addEventListener("click", () => {
-            setCardOpen(card);
+            setCardOpen(card.classList.contains("is-open") ? null : card);
         });
     });
 })();
