@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -19,306 +19,666 @@
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
-    <link rel="stylesheet" href="assets/css/style.css?v=full-menu-typography-1">
-    <link rel="stylesheet" href="assets/css/media.css?v=full-menu-typography-1">
+    <link rel="stylesheet" href="assets/css/style.css?v=header-mega-14">
+    <link rel="stylesheet" href="assets/css/media.css?v=header-mega-2">
 </head>
 
 <body class="min-h-screen bg-white text-white">
-    <header class="premium-header" id="siteHeader">
-        <div class="header-shell">
-            <a class="brand-group" href="#top" aria-label="Amelia Estate home">
-                <span class="brand brand-amelia">
-                    <img src="assets/img/logo/amelia-logo-hd.png" alt="Amelia Estate">
+    <div class="mega-menu-overlay" id="fullMenuMega" data-mega-menu aria-hidden="true">
+        <div class="mega-menu-card" role="dialog" aria-modal="true" aria-label="Full site menu">
+            <div class="full-menu-top">
+                <div class="full-menu-brand">
+                    <span class="site-brand-mark" aria-hidden="true">
+                        <span class="material-symbols-rounded">hotel_class</span>
+                    </span>
+                    <span class="site-brand-copy">
+                        <strong>Amelia</strong>
+                        <small>Estate II</small>
+                    </span>
+                </div>
+                <p class="full-menu-index"><span></span> Full Index &middot; 09 Sections</p>
+                <button class="full-menu-close" type="button" data-mega-menu-close aria-label="Close full menu">
+                    <span>Close</span>
+                    <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+                </button>
+            </div>
+
+            <div class="mobile-menu-panel" aria-label="Mobile site menu">
+                <div class="mobile-menu-actions">
+                    <a href="tel:+919697300066"><span class="material-symbols-rounded" aria-hidden="true">call</span> Call</a>
+                    <a href="https://wa.me/917009247378" target="_blank" rel="noopener noreferrer"><span class="material-symbols-rounded" aria-hidden="true">chat_bubble</span> WhatsApp</a>
+                </div>
+
+                <div class="mobile-menu-scroll">
+                    <p class="mobile-menu-kicker"><span></span> Explore The Estate</p>
+
+                    <div class="mobile-menu-accordion">
+                        <article class="mobile-menu-card is-open" data-mobile-menu-card>
+                            <button class="mobile-menu-card-head" type="button" aria-expanded="true">
+                                <span class="mobile-menu-index">01</span>
+                                <span class="mobile-menu-icon"><span class="material-symbols-rounded" aria-hidden="true">apartment</span></span>
+                                <span class="mobile-menu-copy"><strong>About</strong><small>The estate &middot; 48 homes</small></span>
+                                <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+                            </button>
+                            <div class="mobile-menu-card-body">
+                                <figure class="mobile-menu-card-preview">
+                                    <img src="assets/img/header/menu-about.jpg" alt="Amelia Estate II exterior">
+                                    <figcaption>
+                                        <span>01 &middot; About</span>
+                                        <strong>The estate &middot; 48 homes</strong>
+                                    </figcaption>
+                                </figure>
+                                <div class="mobile-menu-stats">
+                                    <span><strong>48</strong><small>Homes</small></span>
+                                    <span><strong>S+4</strong><small>Floors</small></span>
+                                    <span><strong>2.3</strong><small>Acres</small></span>
+                                    <span><strong>100%</strong><small>RERA</small></span>
+                                </div>
+                                <div class="mobile-menu-checks">
+                                    <span>Vaastu layouts</span>
+                                    <span>Lift in every tower</span>
+                                    <span>Roof rights &middot; top floor</span>
+                                    <span>Store utility</span>
+                                </div>
+                                <a class="mobile-menu-story" href="#about">Our Story <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></a>
+                            </div>
+                        </article>
+
+                        <article class="mobile-menu-card" data-mobile-menu-card>
+                            <button class="mobile-menu-card-head" type="button" aria-expanded="false">
+                                <span class="mobile-menu-index">02</span>
+                                <span class="mobile-menu-icon"><span class="material-symbols-rounded" aria-hidden="true">home</span></span>
+                                <span class="mobile-menu-copy"><strong>Floor Plans</strong><small>3 BHK &middot; S+4 &middot; 205/219/230</small></span>
+                                <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+                            </button>
+                            <div class="mobile-menu-card-body">
+                                <figure class="mobile-menu-card-preview">
+                                    <img src="assets/img/header/menu-gallery.jpg" alt="Floor plans preview">
+                                    <figcaption><span>02 &middot; Floor Plans</span><strong>3 BHK &middot; S+4 &middot; 205/219/230</strong></figcaption>
+                                </figure>
+                                <div class="mobile-menu-pills">
+                                    <span>3 BHK</span>
+                                    <span>Stilt + 4</span>
+                                    <span>205 &middot; 219 &middot; 230</span>
+                                </div>
+                                <div class="mobile-menu-list">
+                                    <a href="#pricing-230"><i class="material-symbols-rounded" aria-hidden="true">home</i><strong>3 BHK &middot; Corner &middot; 230 sq.yd</strong><small>Roof rights</small><span class="material-symbols-rounded" aria-hidden="true">chevron_right</span></a>
+                                    <a href="#pricing-219"><i class="material-symbols-rounded" aria-hidden="true">home</i><strong>3 BHK &middot; Premium &middot; 219 sq.yd</strong><small>Best lit</small><span class="material-symbols-rounded" aria-hidden="true">chevron_right</span></a>
+                                    <a href="#pricing-205"><i class="material-symbols-rounded" aria-hidden="true">home</i><strong>3 BHK &middot; Smart &middot; 205 sq.yd</strong><small>Quick move-in</small><span class="material-symbols-rounded" aria-hidden="true">chevron_right</span></a>
+                                </div>
+                                <a class="mobile-menu-story" href="#project-plans-floor">Download Floor Plans <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></a>
+                            </div>
+                        </article>
+
+                        <article class="mobile-menu-card" data-mobile-menu-card>
+                            <button class="mobile-menu-card-head" type="button" aria-expanded="false">
+                                <span class="mobile-menu-index">03</span>
+                                <span class="mobile-menu-icon"><span class="material-symbols-rounded" aria-hidden="true">location_on</span></span>
+                                <span class="mobile-menu-copy"><strong>Location</strong><small>PR-7 &middot; Airport Road</small></span>
+                                <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+                            </button>
+                            <div class="mobile-menu-card-body">
+                                <figure class="mobile-menu-card-preview">
+                                    <img src="assets/img/header/menu-location.jpg" alt="Location map preview">
+                                    <figcaption><span>03 &middot; Location</span><strong>PR-7 &middot; Airport Road</strong></figcaption>
+                                </figure>
+                                <div class="mobile-menu-list">
+                                    <a href="#location"><i class="material-symbols-rounded" aria-hidden="true">flight</i><strong>Mohali Airport</strong><small>8 min</small><span class="material-symbols-rounded" aria-hidden="true">chevron_right</span></a>
+                                    <a href="#location"><i class="material-symbols-rounded" aria-hidden="true">explore</i><strong>PR-7 &middot; Airport Road</strong><small>Direct</small><span class="material-symbols-rounded" aria-hidden="true">chevron_right</span></a>
+                                    <a href="#location"><i class="material-symbols-rounded" aria-hidden="true">school</i><strong>Top schools</strong><small>10 min</small><span class="material-symbols-rounded" aria-hidden="true">chevron_right</span></a>
+                                    <a href="#location"><i class="material-symbols-rounded" aria-hidden="true">local_hospital</i><strong>Hospitals</strong><small>12 min</small><span class="material-symbols-rounded" aria-hidden="true">chevron_right</span></a>
+                                    <a href="#location"><i class="material-symbols-rounded" aria-hidden="true">local_mall</i><strong>Malls & hi-street</strong><small>7 min</small><span class="material-symbols-rounded" aria-hidden="true">chevron_right</span></a>
+                                </div>
+                                <a class="mobile-menu-story" href="#location-google">Open In Maps <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></a>
+                            </div>
+                        </article>
+
+                        <article class="mobile-menu-card" data-mobile-menu-card>
+                            <button class="mobile-menu-card-head" type="button" aria-expanded="false">
+                                <span class="mobile-menu-index">04</span>
+                                <span class="mobile-menu-icon"><span class="material-symbols-rounded" aria-hidden="true">currency_rupee</span></span>
+                                <span class="mobile-menu-copy"><strong>Price</strong><small>From ₹1.32 Cr*</small></span>
+                                <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+                            </button>
+                            <div class="mobile-menu-card-body">
+                                <p class="mobile-menu-divider"><span></span> Starting &middot; By Variant <span></span></p>
+                                <div class="mobile-menu-price-list">
+                                    <a href="#pricing-205"><span>205</span><strong>3 BHK &middot; Smart<small>205 sq.yd &middot; From</small></strong><em>1.32 Cr*</em></a>
+                                    <a class="is-featured" href="#pricing-219"><span>219</span><strong>3 BHK &middot; Premium <b>Popular</b><small>219 sq.yd &middot; From</small></strong><em>1.40 Cr*</em></a>
+                                    <a href="#pricing-230"><span>230</span><strong>3 BHK &middot; Premium<small>230 sq.yd &middot; From</small></strong><em>1.49 Cr*</em></a>
+                                </div>
+                                <p class="mobile-menu-note"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i> Base price. Floor-wise rates, PLC, GST & charges on unlock.</p>
+                                <a class="mobile-menu-unlock" href="#pricing"><span class="material-symbols-rounded" aria-hidden="true">chat_bubble</span> Unlock Floor-wise Prices</a>
+                            </div>
+                        </article>
+
+                        <article class="mobile-menu-card" data-mobile-menu-card>
+                            <button class="mobile-menu-card-head" type="button" aria-expanded="false">
+                                <span class="mobile-menu-index">05</span>
+                                <span class="mobile-menu-icon"><span class="material-symbols-rounded" aria-hidden="true">park</span></span>
+                                <span class="mobile-menu-copy"><strong>Amenities</strong><small>Pool &middot; Gym &middot; Clubhouse</small></span>
+                                <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+                            </button>
+                            <div class="mobile-menu-card-body">
+                                <figure class="mobile-menu-card-preview">
+                                    <img src="assets/img/header/menu-amenities.jpg" alt="Amenities preview">
+                                    <figcaption><span>05 &middot; Amenities</span><strong>Pool &middot; Gym &middot; Clubhouse</strong></figcaption>
+                                </figure>
+                                <div class="mobile-menu-mini-grid">
+                                    <a href="#amenities"><i class="material-symbols-rounded" aria-hidden="true">waves</i><strong>Reflex Walk</strong><span class="material-symbols-rounded" aria-hidden="true">chevron_right</span></a>
+                                    <a href="#amenities"><i class="material-symbols-rounded" aria-hidden="true">spa</i><strong>Wellness</strong><span class="material-symbols-rounded" aria-hidden="true">chevron_right</span></a>
+                                    <a href="#amenities"><i class="material-symbols-rounded" aria-hidden="true">park</i><strong>Central Greens</strong><span class="material-symbols-rounded" aria-hidden="true">chevron_right</span></a>
+                                    <a href="#amenities"><i class="material-symbols-rounded" aria-hidden="true">air</i><strong>Yoga Deck</strong><span class="material-symbols-rounded" aria-hidden="true">chevron_right</span></a>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="mobile-menu-card" data-mobile-menu-card>
+                            <button class="mobile-menu-card-head" type="button" aria-expanded="false">
+                                <span class="mobile-menu-index">06</span>
+                                <span class="mobile-menu-icon"><span class="material-symbols-rounded" aria-hidden="true">construction</span></span>
+                                <span class="mobile-menu-copy"><strong>Specification</strong><small>Imported finishes</small></span>
+                                <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+                            </button>
+                            <div class="mobile-menu-card-body">
+                                <figure class="mobile-menu-card-preview">
+                                    <img src="assets/img/header/menu-spec.jpg" alt="Specification preview">
+                                    <figcaption><span>06 &middot; Specification</span><strong>Imported finishes</strong></figcaption>
+                                </figure>
+                                <div class="mobile-menu-mini-grid">
+                                    <a href="#specifications"><i class="material-symbols-rounded" aria-hidden="true">layers</i><strong>Imported Marble</strong><span class="material-symbols-rounded" aria-hidden="true">chevron_right</span></a>
+                                    <a href="#specifications"><i class="material-symbols-rounded" aria-hidden="true">water_drop</i><strong>Premium Bath</strong><span class="material-symbols-rounded" aria-hidden="true">chevron_right</span></a>
+                                    <a href="#specifications"><i class="material-symbols-rounded" aria-hidden="true">bolt</i><strong>Modular Electrical</strong><span class="material-symbols-rounded" aria-hidden="true">chevron_right</span></a>
+                                    <a href="#specifications"><i class="material-symbols-rounded" aria-hidden="true">shield</i><strong>Earthquake Safe</strong><span class="material-symbols-rounded" aria-hidden="true">chevron_right</span></a>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="mobile-menu-card" data-mobile-menu-card>
+                            <button class="mobile-menu-card-head" type="button" aria-expanded="false">
+                                <span class="mobile-menu-index">07</span>
+                                <span class="mobile-menu-icon"><span class="material-symbols-rounded" aria-hidden="true">photo_camera</span></span>
+                                <span class="mobile-menu-copy"><strong>Gallery</strong><small>Renders & walkthrough</small></span>
+                                <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+                            </button>
+                            <div class="mobile-menu-card-body">
+                                <figure class="mobile-menu-card-preview">
+                                    <img src="assets/img/header/menu-plans.jpg" alt="Gallery preview">
+                                    <figcaption><span>07 &middot; Gallery</span><strong>Renders & walkthrough</strong></figcaption>
+                                </figure>
+                                <div class="mobile-menu-gallery-thumbs">
+                                    <img src="assets/img/header/menu-plans.jpg" alt="Living room render">
+                                    <img src="assets/img/header/menu-amenities.jpg" alt="Pool render">
+                                    <img src="assets/img/header/menu-gallery.jpg" alt="Elevation render">
+                                </div>
+                                <a class="mobile-menu-story" href="#gallery">Open Gallery <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></a>
+                            </div>
+                        </article>
+
+                        <article class="mobile-menu-card" data-mobile-menu-card>
+                            <button class="mobile-menu-card-head" type="button" aria-expanded="false">
+                                <span class="mobile-menu-index">08</span>
+                                <span class="mobile-menu-icon"><span class="material-symbols-rounded" aria-hidden="true">download</span></span>
+                                <span class="mobile-menu-copy"><strong>Downloads</strong><small>Brochure &middot; Plans &middot; RERA</small></span>
+                                <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+                            </button>
+                            <div class="mobile-menu-card-body">
+                                <figure class="mobile-menu-card-preview">
+                                    <img src="assets/img/header/menu-downloads.jpg" alt="Downloads preview">
+                                    <figcaption><span>08 &middot; Downloads</span><strong>Brochure &middot; Plans &middot; RERA</strong></figcaption>
+                                </figure>
+                                <div class="mobile-menu-list">
+                                    <a href="#downloads"><i class="material-symbols-rounded" aria-hidden="true">description</i><strong>Brochure &middot; PDF</strong><small>4.2 MB</small><span class="material-symbols-rounded" aria-hidden="true">chevron_right</span></a>
+                                    <a href="#downloads"><i class="material-symbols-rounded" aria-hidden="true">straighten</i><strong>Floor plans &middot; PDF</strong><small>2.8 MB</small><span class="material-symbols-rounded" aria-hidden="true">chevron_right</span></a>
+                                    <a href="#downloads"><i class="material-symbols-rounded" aria-hidden="true">verified_user</i><strong>RERA certificate</strong><small>0.6 MB</small><span class="material-symbols-rounded" aria-hidden="true">chevron_right</span></a>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="mobile-menu-card" data-mobile-menu-card>
+                            <button class="mobile-menu-card-head" type="button" aria-expanded="false">
+                                <span class="mobile-menu-index">09</span>
+                                <span class="mobile-menu-icon"><span class="material-symbols-rounded" aria-hidden="true">mail</span></span>
+                                <span class="mobile-menu-copy"><strong>Contact</strong><small>Book a private visit</small></span>
+                                <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
+                            </button>
+                            <div class="mobile-menu-card-body">
+                                <figure class="mobile-menu-card-preview">
+                                    <img src="assets/img/header/menu-contact.jpg" alt="Contact preview">
+                                    <figcaption><span>09 &middot; Contact</span><strong>Book a private visit</strong></figcaption>
+                                </figure>
+                                <div class="mobile-menu-contact-list">
+                                    <a href="tel:+919697300066"><i class="fa-solid fa-phone" aria-hidden="true"></i><span>Sales</span><strong>+91 96973-00066</strong></a>
+                                    <a href="https://wa.me/917009247378" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i><span>WhatsApp</span><strong>+91 70092-47378</strong></a>
+                                </div>
+                                <a class="mobile-menu-unlock" href="#site-visit"><span class="material-symbols-rounded" aria-hidden="true">send</span> Request Callback</a>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="mobile-menu-proof">
+                        <span><i class="fa-solid fa-shield-halved" aria-hidden="true"></i> RERA &middot; PBRERA-SAS79-PR1183</span>
+                        <span>Possession &middot; Dec 2026</span>
+                    </div>
+                </div>
+
+                <div class="mobile-menu-cta">
+                    <a class="mobile-menu-cta-secondary" href="#downloads"><span class="material-symbols-rounded" aria-hidden="true">download</span> Brochure</a>
+                    <a class="mobile-menu-cta-primary" href="#site-visit"><span class="material-symbols-rounded" aria-hidden="true">calendar_month</span> Book A Visit</a>
+                </div>
+            </div>
+
+            <div class="full-menu-layout">
+                <nav class="full-menu-grid" aria-label="Full site navigation">
+                    <div class="full-menu-column">
+                        <p class="full-menu-column-kicker">Explore</p>
+                        <a class="full-menu-link" href="#about" data-menu-image="assets/img/header/menu-about.jpg" data-menu-index="01 &middot; Preview" data-menu-title="The Estate" data-menu-subtitle="Vision, story and the people behind Amelia.">
+                            <span>01</span><strong>The Estate</strong><i class="fa-solid fa-arrow-up-right" aria-hidden="true"></i>
+                        </a>
+                        <a class="full-menu-link" href="#project-plans-floor" data-menu-image="assets/img/header/menu-gallery.jpg" data-menu-index="02 &middot; Preview" data-menu-title="Residences" data-menu-subtitle="Low-rise homes, privacy and usable layouts.">
+                            <span>02</span><strong>Residences</strong><i class="fa-solid fa-arrow-up-right" aria-hidden="true"></i>
+                        </a>
+                        <a class="full-menu-link" href="#amenities" data-menu-image="assets/img/header/menu-amenities.jpg" data-menu-index="03 &middot; Preview" data-menu-title="Amenities" data-menu-subtitle="Wellness, leisure and calm everyday rituals.">
+                            <span>03</span><strong>Amenities</strong><i class="fa-solid fa-arrow-up-right" aria-hidden="true"></i>
+                        </a>
+                        <a class="full-menu-link" href="#specifications" data-menu-image="assets/img/header/menu-spec.jpg" data-menu-index="04 &middot; Preview" data-menu-title="Specifications" data-menu-subtitle="Material details, kitchen finishes and fittings.">
+                            <span>04</span><strong>Specifications</strong><i class="fa-solid fa-arrow-up-right" aria-hidden="true"></i>
+                        </a>
+                        <a class="full-menu-link" href="#gallery" data-menu-image="assets/img/header/menu-plans.jpg" data-menu-index="05 &middot; Preview" data-menu-title="Gallery" data-menu-subtitle="Interiors, exterior and visual walkthrough.">
+                            <span>05</span><strong>Gallery</strong><i class="fa-solid fa-arrow-up-right" aria-hidden="true"></i>
+                        </a>
+                    </div>
+
+                    <div class="full-menu-column">
+                        <p class="full-menu-column-kicker">Plan Your Visit</p>
+                        <a class="full-menu-link" href="#location" data-menu-image="assets/img/header/menu-map.jpg" data-menu-index="06 &middot; Preview" data-menu-title="Location" data-menu-subtitle="PR-7 Airport Road connectivity and access.">
+                            <span>06</span><strong>Location</strong><i class="fa-solid fa-arrow-up-right" aria-hidden="true"></i>
+                        </a>
+                        <a class="full-menu-link" href="#location" data-menu-image="assets/img/header/menu-location.jpg" data-menu-index="07 &middot; Preview" data-menu-title="Neighbourhood" data-menu-subtitle="Airport, schools, hospitals and hi-street nearby.">
+                            <span>07</span><strong>Neighbourhood</strong><i class="fa-solid fa-arrow-up-right" aria-hidden="true"></i>
+                        </a>
+                        <a class="full-menu-link" href="#pricing" data-menu-image="assets/img/header/menu-downloads.jpg" data-menu-index="08 &middot; Preview" data-menu-title="Pricing" data-menu-subtitle="Floor-wise prices, variants and unlock details.">
+                            <span>08</span><strong>Pricing</strong><i class="fa-solid fa-arrow-up-right" aria-hidden="true"></i>
+                        </a>
+                        <a class="full-menu-link" href="#site-visit" data-menu-image="assets/img/header/menu-contact.jpg" data-menu-index="09 &middot; Preview" data-menu-title="Visit Us" data-menu-subtitle="Book a private walkthrough with the Amelia team.">
+                            <span>09</span><strong>Visit Us</strong><i class="fa-solid fa-arrow-up-right" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </nav>
+
+                <aside class="full-menu-side" aria-label="Selected menu preview">
+                    <figure class="full-menu-preview">
+                        <img src="assets/img/header/menu-about.jpg" alt="">
+                        <figcaption>
+                            <span>01 &middot; Preview</span>
+                            <strong>The Estate</strong>
+                            <small>Vision, story and the people behind Amelia.</small>
+                            <a href="#about">Open Section <i class="fa-solid fa-arrow-up-right" aria-hidden="true"></i></a>
+                        </figcaption>
+                    </figure>
+                    <p class="full-menu-quote">"A boutique address near Mohali Aerocity - privacy, light, and a quietly impressive daily ritual."</p>
+                </aside>
+            </div>
+
+            <div class="full-menu-footer" aria-label="Project contact details">
+                <span><i class="fa-solid fa-shield-halved" aria-hidden="true"></i> RERA &middot; PBRERA-SAS79-PR1183</span>
+                <span><i class="fa-regular fa-clock" aria-hidden="true"></i> Possession Dec &rsquo;26</span>
+                <a href="tel:+919697300066"><i class="fa-solid fa-phone" aria-hidden="true"></i> +91 96973-00066</a>
+                <a href="https://wa.me/917009247378" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> +91 70092-47378</a>
+                <a href="mailto:hello@ameliaestate.in"><i class="fa-regular fa-envelope" aria-hidden="true"></i> hello@ameliaestate.in</a>
+            </div>
+        </div>
+    </div>
+
+    <header class="site-header" aria-label="Amelia Estate II header">
+        <div class="site-header-topbar">
+            <p>
+                <span class="material-symbols-rounded" aria-hidden="true">verified</span>
+                RERA &middot; PBRERA-SAS79-PR1183
+            </p>
+            <div class="site-header-contact">
+                <a href="tel:+919697300066">
+                    <span class="material-symbols-rounded" aria-hidden="true">call</span>
+                    +91 96973-00066
+                </a>
+                <a href="https://wa.me/917009247378" target="_blank" rel="noopener noreferrer">
+                    <span class="material-symbols-rounded" aria-hidden="true">chat</span>
+                    +91 70092-47378
+                </a>
+            </div>
+        </div>
+
+        <div class="site-navbar">
+            <a class="site-brand" href="#top" aria-label="Amelia Estate II home">
+                <span class="site-brand-mark" aria-hidden="true">
+                    <span class="material-symbols-rounded">hotel_class</span>
+                </span>
+                <span class="site-brand-copy">
+                    <strong>Amelia</strong>
+                    <small>Estate II</small>
                 </span>
             </a>
 
-            <nav class="main-nav" id="mainNav" aria-label="Primary navigation">
-                <a href="#about">About Us</a>
-                <button class="nav-mega-trigger" type="button" data-mega-target="plansMega" aria-expanded="false">
-                    Plans <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
-                </button>
-                <button class="nav-mega-trigger" type="button" data-mega-target="locationMega" aria-expanded="false">
-                    Location <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
-                </button>
-                <a href="#pricing">Price</a>
-                <a href="#amenities">Amenities</a>
-                <a href="#specifications">Specification</a>
-                <a href="#gallery">Gallery</a>
-                <a href="#contact">Contact Us</a>
-                <button class="nav-menu-trigger" type="button" data-mega-target="fullMenuMega"
-                    aria-expanded="false" aria-label="Open full menu">
-                    <span class="mega-menu-icon" aria-hidden="true">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </span>
-                </button>
+            <nav class="site-nav" aria-label="Primary navigation">
+                <div class="site-nav-item" data-mega-hover-image>
+                    <a class="site-nav-link" href="#about">About</a>
+                    <div class="header-mega-panel" aria-label="About Amelia">
+                        <div class="header-mega-media">
+                            <img class="header-mega-media-primary" src="assets/img/header/menu-about.jpg" alt="Amelia Estate II low-rise exterior">
+                            <img class="header-mega-media-alt" src="assets/img/header/menu-amenities.jpg" alt="" aria-hidden="true">
+                            <div class="header-mega-media-copy">
+                                <span>The Estate</span>
+                                <strong>A quietly impressive address.</strong>
+                                <a href="#about">Our story <span class="material-symbols-rounded" aria-hidden="true">chevron_right</span></a>
+                            </div>
+                        </div>
+                        <div class="header-mega-content">
+                            <p class="header-mega-kicker">About Amelia</p>
+                            <h2>Low-rise living, <em>crafted with care.</em></h2>
+                            <p>A boutique community of 48 residences near Mohali Aerocity with privacy, light and a refined daily ritual.</p>
+                            <div class="header-stat-grid">
+                                <span><strong>48</strong><small>Homes</small></span>
+                                <span><strong>S+4</strong><small>Stilt + 4</small></span>
+                                <span><strong>2.3</strong><small>Acres</small></span>
+                                <span><strong>100%</strong><small>RERA</small></span>
+                            </div>
+                            <div class="header-check-grid">
+                                <span>Vaastu layouts</span>
+                                <span>Lift in every tower</span>
+                                <span>Roof rights &middot; top floor</span>
+                                <span>Store room utility</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="site-nav-item" data-mega-hover-image>
+                    <a class="site-nav-link" href="#project-plans-floor">Plans</a>
+                    <div class="header-mega-panel" aria-label="Plans">
+                        <div class="header-mega-media">
+                            <img class="header-mega-media-primary" src="assets/img/header/menu-gallery.jpg" alt="Amelia Estate II stilt plus four elevation">
+                            <img class="header-mega-media-alt" src="assets/img/header/menu-spec.jpg" alt="" aria-hidden="true">
+                            <div class="header-mega-media-copy">
+                                <span>Signature Layouts</span>
+                                <strong>3 BHK &middot; Stilt + 4</strong>
+                                <a href="#project-plans-floor">Download floor plans <span class="material-symbols-rounded" aria-hidden="true">chevron_right</span></a>
+                            </div>
+                        </div>
+                        <div class="header-mega-content">
+                            <p class="header-mega-kicker">3 BHK Configurations</p>
+                            <div class="header-plan-list">
+                                <a href="#pricing-230">
+                                    <span class="material-symbols-rounded" aria-hidden="true">home</span>
+                                    <strong>3 BHK &middot; Corner <em>Signature</em></strong>
+                                    <small>230 sq.yd</small>
+                                </a>
+                                <a href="#pricing-219">
+                                    <span class="material-symbols-rounded" aria-hidden="true">home</span>
+                                    <strong>3 BHK &middot; Premium <em>Popular</em></strong>
+                                    <small>219 sq.yd</small>
+                                </a>
+                                <a href="#pricing-205">
+                                    <span class="material-symbols-rounded" aria-hidden="true">home</span>
+                                    <strong>3 BHK &middot; Smart <em>Value</em></strong>
+                                    <small>205 sq.yd</small>
+                                </a>
+                            </div>
+                            <div class="header-feature-grid">
+                                <span><i class="material-symbols-rounded" aria-hidden="true">key</i>Store room utility</span>
+                                <span><i class="material-symbols-rounded" aria-hidden="true">layers</i>Stilt + 4 with lift</span>
+                                <span><i class="material-symbols-rounded" aria-hidden="true">shield</i>Roof rights &middot; top</span>
+                                <span><i class="material-symbols-rounded" aria-hidden="true">directions_car</i>Covered parking</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="site-nav-item">
+                    <a class="site-nav-link" href="#location">Location</a>
+                    <div class="header-mega-panel" aria-label="Location">
+                        <div class="header-mega-media header-mega-media--map">
+                            <img src="assets/img/header/menu-map.jpg" alt="Amelia Estate II location connectivity map">
+                            <span class="header-location-pulse" aria-hidden="true"></span>
+                            <div class="header-mega-media-copy">
+                                <span>PR-7 &middot; Airport Road</span>
+                                <strong>Tricity's new address.</strong>
+                                <a href="#location-google">Open in Maps <span class="material-symbols-rounded" aria-hidden="true">chevron_right</span></a>
+                            </div>
+                        </div>
+                        <div class="header-mega-content">
+                            <p class="header-mega-kicker">Connectivity</p>
+                            <div class="header-connect-grid">
+                                <span><i class="material-symbols-rounded" aria-hidden="true">flight</i><strong>Mohali Airport</strong><small>8 min</small></span>
+                                <span><i class="material-symbols-rounded" aria-hidden="true">explore</i><strong>PR-7 &middot; Airport Road</strong><small>Direct</small></span>
+                                <span><i class="material-symbols-rounded" aria-hidden="true">school</i><strong>Top Schools</strong><small>10 min</small></span>
+                                <span><i class="material-symbols-rounded" aria-hidden="true">local_hospital</i><strong>Hospitals</strong><small>12 min</small></span>
+                                <span><i class="material-symbols-rounded" aria-hidden="true">local_mall</i><strong>Malls & Hi-Street</strong><small>7 min</small></span>
+                                <span><i class="material-symbols-rounded" aria-hidden="true">pin_drop</i><strong>Chandigarh ISBT</strong><small>20 min</small></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="site-nav-item">
+                    <a class="site-nav-link" href="#pricing">Price</a>
+                    <div class="header-mega-panel header-mega-panel--price" aria-label="Price">
+                        <div class="header-price-summary">
+                            <p class="header-mega-kicker">Pricing & Investment</p>
+                            <span>Starting price</span>
+                            <strong>1.32 Cr*</strong>
+                            <small>3 BHK &middot; 205 / 219 / 230 sqyd &middot; Stilt + 4</small>
+                            <div class="header-price-points">
+                                <span><i class="material-symbols-rounded" aria-hidden="true">trending_up</i>Home Loan up to 80%</span>
+                                <span><i class="material-symbols-rounded" aria-hidden="true">verified</i>Booking with just 10%</span>
+                                <span><i class="material-symbols-rounded" aria-hidden="true">calendar_month</i>Possession by Dec 2026</span>
+                            </div>
+                        </div>
+                        <div class="header-price-unlock">
+                            <p class="header-mega-kicker">All Sizes & Variants</p>
+                            <div class="header-price-tabs" role="tablist" aria-label="Price size variants">
+                                <button class="is-active" type="button" role="tab" aria-selected="true">230 &middot; Premium</button>
+                                <button type="button" role="tab" aria-selected="false">219 &middot; Signature</button>
+                                <button type="button" role="tab" aria-selected="false">205 &middot; Smart</button>
+                            </div>
+                            <form class="header-unlock-form">
+                                <span class="material-symbols-rounded" aria-hidden="true">key</span>
+                                <strong>Unlock Best Price</strong>
+                                <small>Get exact floor-wise prices on WhatsApp</small>
+                                <div>
+                                    <label>
+                                        <span class="material-symbols-rounded" aria-hidden="true">person</span>
+                                        <input type="text" name="name" placeholder="Name">
+                                    </label>
+                                    <label>
+                                        <span class="material-symbols-rounded" aria-hidden="true">call</span>
+                                        <input type="tel" name="phone" placeholder="Phone">
+                                    </label>
+                                </div>
+                                <button type="button">
+                                    <span class="material-symbols-rounded" aria-hidden="true">visibility</span>
+                                    Unlock now
+                                </button>
+                                <em>100% private &middot; No spam ever</em>
+                            </form>
+                            <div class="header-price-actions">
+                                <a href="https://wa.me/919697300066" target="_blank" rel="noopener noreferrer">Chat with Specialist</a>
+                                <a href="tel:+919697300066">Call now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="site-nav-item" data-mega-hover-image>
+                    <a class="site-nav-link" href="#amenities">Amenities</a>
+                    <div class="header-mega-panel" aria-label="Amenities">
+                        <div class="header-mega-media">
+                            <img class="header-mega-media-primary" src="assets/img/header/menu-amenities.jpg" alt="Lifestyle amenities at Amelia Estate II">
+                            <img class="header-mega-media-alt" src="assets/img/header/menu-plans.jpg" alt="" aria-hidden="true">
+                            <div class="header-mega-media-copy">
+                                <span>Curated Lifestyle</span>
+                                <strong>Wellness &middot; Leisure &middot; Calm</strong>
+                                <a href="#amenities">Explore all <span class="material-symbols-rounded" aria-hidden="true">chevron_right</span></a>
+                            </div>
+                        </div>
+                        <div class="header-mega-content">
+                            <p class="header-mega-kicker">Inside the Estate</p>
+                            <div class="header-icon-grid">
+                                <span><i class="material-symbols-rounded" aria-hidden="true">spa</i>Wellness Club</span>
+                                <span><i class="material-symbols-rounded" aria-hidden="true">waves</i>Reflex Walk</span>
+                                <span><i class="material-symbols-rounded" aria-hidden="true">park</i>Landscaped</span>
+                                <span><i class="material-symbols-rounded" aria-hidden="true">hotel_class</i>Sky Lounge</span>
+                                <span><i class="material-symbols-rounded" aria-hidden="true">self_improvement</i>Yoga Deck</span>
+                                <span><i class="material-symbols-rounded" aria-hidden="true">groups</i>Kids' Zone</span>
+                                <span><i class="material-symbols-rounded" aria-hidden="true">photo_camera</i>24x7 CCTV</span>
+                                <span><i class="material-symbols-rounded" aria-hidden="true">shield</i>Gated</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="site-nav-item">
+                    <a class="site-nav-link" href="#specifications">Specification</a>
+                    <div class="header-mega-panel" aria-label="Specification">
+                        <div class="header-mega-media">
+                            <img src="assets/img/header/menu-spec.jpg" alt="Kitchen and living room specification">
+                            <div class="header-mega-media-copy">
+                                <span>Built to Last</span>
+                                <strong>Master-crafted details</strong>
+                                <a href="#specifications">Download spec sheet <span class="material-symbols-rounded" aria-hidden="true">chevron_right</span></a>
+                            </div>
+                        </div>
+                        <div class="header-mega-content">
+                            <p class="header-mega-kicker">Specifications</p>
+                            <div class="header-connect-grid">
+                                <span><i class="material-symbols-rounded" aria-hidden="true">apartment</i><strong>Structure</strong><small>RCC &middot; Zone IV</small></span>
+                                <span><i class="material-symbols-rounded" aria-hidden="true">layers</i><strong>Flooring</strong><small>Italian marble</small></span>
+                                <span><i class="material-symbols-rounded" aria-hidden="true">door_front</i><strong>Doors</strong><small>UPVC &middot; DGU</small></span>
+                                <span><i class="material-symbols-rounded" aria-hidden="true">water_drop</i><strong>Plumbing</strong><small>Jaquar / Kohler</small></span>
+                                <span><i class="material-symbols-rounded" aria-hidden="true">bolt</i><strong>Electrical</strong><small>Modular switches</small></span>
+                                <span><i class="material-symbols-rounded" aria-hidden="true">kitchen</i><strong>Kitchen</strong><small>Granite &middot; chimney</small></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="site-nav-item" data-mega-hover-image>
+                    <a class="site-nav-link" href="#gallery">Gallery</a>
+                    <div class="header-mega-panel" aria-label="Gallery">
+                        <div class="header-mega-media">
+                            <img class="header-mega-media-primary" src="assets/img/header/menu-gallery.jpg" alt="Golden hour exterior">
+                            <img class="header-mega-media-alt" src="assets/img/header/menu-plans.jpg" alt="" aria-hidden="true">
+                            <div class="header-mega-media-copy">
+                                <span>Visual Story</span>
+                                <strong>Interiors at golden hour.</strong>
+                                <a href="#gallery">Open gallery <span class="material-symbols-rounded" aria-hidden="true">chevron_right</span></a>
+                            </div>
+                        </div>
+                        <div class="header-mega-content">
+                            <p class="header-mega-kicker">Walkthrough</p>
+                            <div class="header-gallery-grid">
+                                <img src="assets/img/header/menu-plans.jpg" alt="Living room">
+                                <img src="assets/img/header/menu-gallery.jpg" alt="Building elevation">
+                                <img src="assets/img/header/menu-amenities.jpg" alt="Amenity pool">
+                                <img src="assets/img/header/menu-location.jpg" alt="Location aerial">
+                                <img src="assets/img/header/menu-about.jpg" alt="Low-rise exterior">
+                                <img src="assets/img/header/menu-spec.jpg" alt="Kitchen detail">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="site-nav-item">
+                    <a class="site-nav-link" href="#downloads">Downloads</a>
+                    <div class="header-mega-panel" aria-label="Downloads">
+                        <div class="header-mega-media">
+                            <img src="assets/img/header/menu-downloads.jpg" alt="Amelia Estate II project documents">
+                            <div class="header-mega-media-copy">
+                                <span>Private Concierge Access</span>
+                                <strong>Documents delivered, <em>discreetly.</em></strong>
+                                <a href="#downloads">Sent on WhatsApp <span class="material-symbols-rounded" aria-hidden="true">verified_user</span></a>
+                            </div>
+                        </div>
+                        <div class="header-mega-content">
+                            <p class="header-mega-kicker">Choose Your Downloads</p>
+                            <form class="header-unlock-form header-unlock-form--compact">
+                                <span class="material-symbols-rounded" aria-hidden="true">key</span>
+                                <strong>Unlock Private Vault</strong>
+                                <small>Brochure, plans, prices & approvals.</small>
+                                <div>
+                                    <label>
+                                        <span class="material-symbols-rounded" aria-hidden="true">person</span>
+                                        <input type="text" name="name" placeholder="Name">
+                                    </label>
+                                    <label>
+                                        <span class="material-symbols-rounded" aria-hidden="true">call</span>
+                                        <input type="tel" name="phone" placeholder="Phone">
+                                    </label>
+                                </div>
+                                <button type="button">
+                                    <span class="material-symbols-rounded" aria-hidden="true">visibility</span>
+                                    Unlock now
+                                </button>
+                                <em>100% private &middot; No spam ever</em>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="site-nav-item">
+                    <a class="site-nav-link" href="#site-visit">Contact</a>
+                    <div class="header-mega-panel" aria-label="Contact">
+                        <div class="header-mega-media">
+                            <img src="assets/img/header/menu-contact.jpg" alt="Private site visit consultation">
+                            <div class="header-mega-media-copy">
+                                <span>We're Here</span>
+                                <strong>Let's plan your <em>site visit.</em></strong>
+                                <ul>
+                                    <li>+91 96973-00066</li>
+                                    <li>PR-7 &middot; Airport Road, Mohali</li>
+                                    <li>Open daily &middot; 10am - 8pm</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="header-mega-content">
+                            <p class="header-mega-kicker">Schedule a Private Visit</p>
+                            <form class="header-contact-form">
+                                <label>
+                                    <span class="material-symbols-rounded" aria-hidden="true">person</span>
+                                    <input type="text" name="name" placeholder="Full name">
+                                </label>
+                                <label>
+                                    <span class="material-symbols-rounded" aria-hidden="true">call</span>
+                                    <input type="tel" name="phone" placeholder="Phone number">
+                                </label>
+                                <select name="configuration" aria-label="Preferred configuration">
+                                    <option>3 BHK &middot; 219</option>
+                                    <option>3 BHK &middot; 230</option>
+                                    <option>3 BHK &middot; 205</option>
+                                </select>
+                                <button type="button">
+                                    <span class="material-symbols-rounded" aria-hidden="true">send</span>
+                                    Book Site Visit
+                                </button>
+                                <a href="tel:+919697300066">
+                                    <span class="material-symbols-rounded" aria-hidden="true">call</span>
+                                    Call expert
+                                </a>
+                            </form>
+                            <div class="header-service-row">
+                                <span><small>Response</small><strong>Under 2 min</strong></span>
+                                <span><small>Pickup</small><strong>Complimentary</strong></span>
+                                <span><small>Privacy</small><strong>100% Private</strong></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </nav>
 
-            <div class="header-actions">
-                <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open menu" aria-controls="mobileMenu" aria-expanded="false">
-                    <i class="fa-solid fa-bars"></i>
-                </button>
-            </div>
-        </div>
-
-        <div class="mobile-menu-overlay" id="mobileMenu" aria-hidden="true">
-            <div class="mobile-menu-panel" role="dialog" aria-modal="true" aria-label="Amelia Estate II mobile menu">
-                <div class="mobile-menu-top">
-                    <a class="mobile-menu-logo" href="#top" aria-label="Amelia Estate home">
-                        <img src="assets/img/logo/amelia-logo-hd.png" alt="Amelia Estate II">
-                    </a>
-                    <button class="mobile-close" id="mobileMenuClose" type="button" aria-label="Close menu">
-                        <i class="fa-solid fa-xmark"></i>
-                    </button>
-                </div>
-
-                <nav class="mobile-menu-nav" aria-label="Mobile navigation">
-                    <a href="#about" style="--item-index: 1">About Us</a>
-                    <div class="mobile-accordion" style="--item-index: 2">
-                        <button class="mobile-accordion-trigger" type="button" aria-expanded="false">
-                            Plans <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
-                        </button>
-                        <div class="mobile-submenu">
-                            <a href="#pricing-230">230 Sq.Yd</a>
-                            <a href="#pricing-219">219 Sq.Yd</a>
-                            <a href="#pricing-205">205 Sq.Yd</a>
-                        </div>
-                    </div>
-                    <div class="mobile-accordion" style="--item-index: 3">
-                        <button class="mobile-accordion-trigger" type="button" aria-expanded="false">
-                            Location <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
-                        </button>
-                        <div class="mobile-submenu">
-                            <a href="#location">PR-7 Airport Road</a>
-                            <a href="#location">Chandigarh Airport</a>
-                            <a href="#location">Aerocity</a>
-                            <a href="#location">Elante Mall</a>
-                        </div>
-                    </div>
-                    <a href="#pricing" style="--item-index: 4">Price</a>
-                    <a href="#amenities" style="--item-index: 5">Amenities</a>
-                    <a href="#specifications" style="--item-index: 6">Specification</a>
-                    <a href="#gallery" style="--item-index: 7">Gallery</a>
-                    <a href="#contact" style="--item-index: 8">Contact Us</a>
-                </nav>
-
-                <div class="mobile-action-bar">
-                    <a class="mobile-action-icon" href="https://wa.me/919697300066" aria-label="WhatsApp">
-                        <i class="fa-brands fa-whatsapp"></i>
-                        <span>WhatsApp</span>
-                    </a>
-                    <a class="mobile-action-icon" href="tel:+919697300066" aria-label="Call now">
-                        <i class="fa-solid fa-phone"></i>
-                        <span>Call Now</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-
-        <div class="mega-layer" id="plansMega" data-mega-panel>
-            <div class="mega-card plans-mega">
-                <div class="mega-heading">
-                    <span>Three Layouts - One Private Lift</span>
-                    <a href="#pricing">Compare All <i class="fa-solid fa-arrow-right"></i></a>
-                </div>
-
-                <div class="plan-grid">
-                    <article class="plan-card">
-                        <div class="plan-image">
-                            <img src="assets/img/header/hovermodel1.webp" alt="The Belmont apartment layout">
-                            <span>Signature</span>
-                        </div>
-                        <div class="plan-body">
-                            <p class="plan-size">230 <small>Sq.Yd</small></p>
-                            <h3>3BHK</h3>
-                            <p>Largest layout with exclusive roof rights on the top floor.</p>
-                            <ul>
-                                <li><i class="fa-solid fa-circle"></i> Roof terrace</li>
-                                <li><i class="fa-solid fa-circle"></i> Master + walk-in</li>
-                                <li><i class="fa-solid fa-circle"></i> Double-height entry</li>
-                            </ul>
-                            <a href="#pricing-230">View Price <i class="fa-solid fa-arrow-right"></i></a>
-                        </div>
-                    </article>
-
-                    <article class="plan-card">
-                        <div class="plan-image">
-                            <img src="assets/img/header/hovermodel2.webp" alt="The Avenue apartment layout">
-                            <span>Most Loved</span>
-                        </div>
-                        <div class="plan-body">
-                            <p class="plan-size">219 <small>Sq.Yd</small></p>
-                            <h3>3BHK</h3>
-                            <p>Wide living room and a generous master with walk-in wardrobe.</p>
-                            <ul>
-                                <li><i class="fa-solid fa-circle"></i> Wide living</li>
-                                <li><i class="fa-solid fa-circle"></i> Store + utility</li>
-                                <li><i class="fa-solid fa-circle"></i> North-light kitchen</li>
-                            </ul>
-                            <a href="#pricing-219">View Price <i class="fa-solid fa-arrow-right"></i></a>
-                        </div>
-                    </article>
-
-                    <article class="plan-card">
-                        <div class="plan-image">
-                            <img src="assets/img/header/hovermodel3.webp" alt="The Atelier apartment layout">
-                            <span>Best Value</span>
-                        </div>
-                        <div class="plan-body">
-                            <p class="plan-size">205 <small>Sq.Yd</small></p>
-                            <h3>3BHK</h3>
-                            <p>Smartest entry with private lift, store and vastu-aligned planning.</p>
-                            <ul>
-                                <li><i class="fa-solid fa-circle"></i> Private lift</li>
-                                <li><i class="fa-solid fa-circle"></i> Stilt + store</li>
-                                <li><i class="fa-solid fa-circle"></i> 3 BHK + store</li>
-                            </ul>
-                            <a href="#pricing-205">View Price <i class="fa-solid fa-arrow-right"></i></a>
-                        </div>
-                    </article>
-                </div>
-
-                <div class="mega-foot">
-                    <span><i class="fa-solid fa-car"></i> S+4 with lift</span>
-                    <span><i class="fa-solid fa-compass-drafting"></i> Vastu-aligned</span>
-                    <span><i class="fa-solid fa-shield-halved"></i> RERA approved</span>
-                    <a href="#pricing">Get Cost Sheet</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="mega-layer location-layer" id="locationMega" data-mega-panel>
-            <div class="mega-card location-mega">
-                <div class="location-photo">
-                    <img src="assets/img/header/price1.webp" alt="PR-7 Airport Road Mohali">
-                    <div>
-                        <span>The Address</span>
-                        <h3>PR-7 Airport Road, Mohali.</h3>
-                        <p>Sealed gated community, minutes from Aerocity belt.</p>
-                        <a href="#location">Open on Map <i class="fa-solid fa-arrow-right"></i></a>
-                    </div>
-                </div>
-
-                <div class="drive-panel">
-                    <div class="drive-head">
-                        <span>Drive Times</span>
-                        <span>Private Road Gate</span>
-                    </div>
-                    <div class="drive-grid">
-                        <div class="drive-item">
-                            <strong>02 <small>Min</small></strong>
-                            <p>PR-7 Airport Road <span>Direct Frontage</span></p>
-                        </div>
-                        <div class="drive-item">
-                            <strong>05 <small>Min</small></strong>
-                            <p>Aerocity, Mohali <span>Commercial Hub</span></p>
-                        </div>
-                        <div class="drive-item">
-                            <strong>12 <small>Min</small></strong>
-                            <p>Chandigarh Intl Airport <span>Domestic & Intl.</span></p>
-                        </div>
-                        <div class="drive-item">
-                            <strong>18 <small>Min</small></strong>
-                            <p>ISB & IISER Mohali <span>Education Belt</span></p>
-                        </div>
-                        <div class="drive-item">
-                            <strong>22 <small>Min</small></strong>
-                            <p>Sector 17, Chandigarh <span>Heritage Shopping</span></p>
-                        </div>
-                        <div class="drive-item">
-                            <strong>25 <small>Min</small></strong>
-                            <p>Elante Mall <span>Retail & Dining</span></p>
-                        </div>
-                    </div>
-                    <div class="advisor-row">
-                        <div>
-                            <span>Speak to a Residence Advisor</span>
-                            <strong>+91 96973 00066</strong>
-                        </div>
-                        <a href="#site-visit">Book Visit <i class="fa-solid fa-arrow-right"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="mega-layer full-menu-layer" id="fullMenuMega" data-mega-panel>
-            <div class="mega-card full-menu-card">
-                <div class="full-menu-brand">
-                    <img src="assets/img/logo/amelia-logo-hd.png" alt="Amelia Estate II">
-                </div>
-                <button class="full-menu-close" type="button" data-mega-close aria-label="Close full menu">
-                    <i class="fa-solid fa-xmark" aria-hidden="true"></i>
-                </button>
-
-                <div class="full-menu-grid" aria-label="Full site navigation">
-                    <div class="full-menu-column">
-                        <h3>About Us</h3>
-                        <a href="#about">Overview</a>
-                        <a href="#low-rise-story">Low-Rise Story</a>
-                        <a href="#buyer-appreciation">Buyer Appreciation</a>
-                        <a href="#property-snapshots">Snapshots</a>
-                    </div>
-
-                    <div class="full-menu-column">
-                        <h3>Plans</h3>
-                        <a href="#project-plans-floor">Floor Plan</a>
-                        <a href="#project-plans-site">Site Plan</a>
-                        <a href="#project-plans-tower">Tower Plan</a>
-                    </div>
-
-                    <div class="full-menu-column">
-                        <h3>Location</h3>
-                        <a href="#location">PR-7 Airport Road</a>
-                        <a href="#location-image">Area Map</a>
-                        <a href="#location-google">Google Map</a>
-                        <a href="#location">Distance</a>
-                    </div>
-
-                    <div class="full-menu-column">
-                        <h3>Price</h3>
-                        <a href="#pricing-230">230 Sq.Yd</a>
-                        <a href="#pricing-219">219 Sq.Yd</a>
-                        <a href="#pricing-205">205 Sq.Yd</a>
-                    </div>
-
-                    <div class="full-menu-column">
-                        <h3>Amenities</h3>
-                        <a href="#amenities-all">All Amenities</a>
-                        <a href="#amenities-wellness">Wellness</a>
-                        <a href="#amenities-recreation">Recreation</a>
-                        <a href="#amenities-security">Security</a>
-                    </div>
-
-                    <div class="full-menu-column">
-                        <h3>Specification</h3>
-                        <a href="#specifications-classic-kitchen">Classic Kitchen</a>
-                        <a href="#specifications-modern-kitchen">Modular Kitchen</a>
-                        <a href="#specifications-bathroom">Luxury Bathroom</a>
-                        <a href="#specifications-bedroom">Premium Bedroom</a>
-                    </div>
-
-                    <div class="full-menu-column">
-                        <h3>Gallery</h3>
-                        <a href="#gallery-sample">Sample Flat</a>
-                        <a href="#gallery-walkthrough">Walkthrough</a>
-                        <a href="#gallery-exterior">Exterior</a>
-                        <a href="#gallery-construction">Construction Updates</a>
-                    </div>
-
-                    <div class="full-menu-column full-menu-contact">
-                        <h3>Contact Us</h3>
-                        <a href="tel:+919697300066">+91 96973 00066</a>
-                        <a href="#site-visit">Book Site Visit</a>
-                        <a href="#contact">Contact Details</a>
-                        <a class="full-menu-whatsapp" href="https://wa.me/919697300066" target="_blank"
-                            rel="noopener noreferrer">
-                            <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
-                            WhatsApp Now
-                        </a>
-                    </div>
-                </div>
-            </div>
+            <button class="site-menu-toggle" type="button" data-mega-menu-open aria-controls="fullMenuMega" aria-haspopup="dialog" aria-expanded="false" aria-label="Open full menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
     </header>
 
@@ -2885,7 +3245,7 @@
         </div>
     </footer>
 
-    <script src="assets/js/main.js?v=nav-scroll-bypass-1"></script>
+    <script src="assets/js/main.js?v=header-mega-14"></script>
 </body>
 
 </html>
