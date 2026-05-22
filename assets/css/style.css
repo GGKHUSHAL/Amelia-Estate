@@ -8181,21 +8181,6 @@ body.is-amenity-lightbox-open {
     min-width: 0;
 }
 
-.footer-redesign-brand>img {
-    width: 156px;
-    height: auto;
-    opacity: 1;
-    filter:
-        brightness(1.12)
-        contrast(1.24)
-        saturate(1.1)
-        drop-shadow(1px 0 0 rgba(255, 255, 255, 0.42))
-        drop-shadow(-1px 0 0 rgba(255, 255, 255, 0.34))
-        drop-shadow(0 1px 0 rgba(255, 255, 255, 0.34))
-        drop-shadow(0 0 6px rgba(255, 255, 255, 0.18))
-        drop-shadow(0 8px 18px rgba(0, 0, 0, 0.55));
-}
-
 .footer-redesign-brand>p {
     max-width: 300px;
     margin: 22px 0;
@@ -8204,7 +8189,7 @@ body.is-amenity-lightbox-open {
     line-height: 1.65;
 }
 
-.footer-redesign-brand div {
+.footer-redesign-marketing {
     display: inline-flex;
     flex-direction: column;
     align-items: flex-start;
@@ -8216,7 +8201,7 @@ body.is-amenity-lightbox-open {
     padding: 12px 16px 14px;
 }
 
-.footer-redesign-brand span {
+.footer-redesign-marketing span {
     display: block;
     color: rgba(255, 255, 255, 0.42);
     font-size: 11px;
@@ -8225,7 +8210,7 @@ body.is-amenity-lightbox-open {
     text-transform: uppercase;
 }
 
-.footer-redesign-brand div img {
+.footer-redesign-marketing img {
     width: 132px;
     height: auto;
     opacity: 1;
@@ -13096,7 +13081,7 @@ body {
     .property-snapshot-metrics span,
     .property-snapshot-strip span,
     .property-snapshot-meta dt,
-    .footer-redesign-brand span,
+    .footer-redesign-marketing span,
     .footer-redesign-column strong) {
     font-size: 12.5px !important;
     line-height: 1.45 !important;
@@ -15823,24 +15808,120 @@ body {
     -webkit-backdrop-filter: blur(18px) saturate(118%);
 }
 
-.site-brand {
-    display: inline-flex;
+.amelia-logo {
+    --amelia-badge-size: 40px;
+    --amelia-icon-size: 21px;
+    --amelia-name-size: 26px;
+    --amelia-sub-size: 7px;
+    --amelia-sub-spacing: 4px;
+    display: flex;
     align-items: center;
-    min-width: 62px;
-    color: #ffffff;
-    line-height: 0;
-    text-decoration: none;
+    gap: 10px;
+    padding: 0 4px 0 0;
 }
 
-.site-brand-logo {
+/* Golden circular badge */
+.amelia-logo .badge {
+    width: var(--amelia-badge-size);
+    height: var(--amelia-badge-size);
+    border-radius: 50%;
+    background:
+        radial-gradient(circle at 30% 30%, #fff7c8 0%, #f0cd45 28%, #D5AE66 58%, #6f4314 100%);
+    box-shadow:
+        0 0 0 1px rgba(240, 205, 69, .42),
+        0 5px 12px rgba(0, 0, 0, .42),
+        inset 0 -3px 6px rgba(0, 0, 0, .35),
+        inset 0 2px 4px rgba(255, 247, 200, .48);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+/* Sparkle / 4-point star icon */
+.amelia-logo .badge svg {
+    width: var(--amelia-icon-size);
+    height: var(--amelia-icon-size);
+    fill: #2a1a08;
+    filter: drop-shadow(0 1px 0 rgba(255, 247, 200, .42));
+}
+
+/* Text block */
+.amelia-logo .text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+}
+
+.amelia-logo .name {
     display: block;
-    width: auto;
-    height: 60px;
-    object-fit: contain;
-    filter:
-        brightness(1.12)
-        contrast(1.16)
-        drop-shadow(0 7px 14px rgba(0, 0, 0, 0.48));
+    color: #D5AE66;
+    background:
+        linear-gradient(105deg,
+            #D5AE66 0%,
+            #f0cd45 24%,
+            #fff7d6 42%,
+            #b9822f 58%,
+            #f0cd45 78%,
+            #D5AE66 100%);
+    background-size: 260% 100%;
+    background-position: 100% 50%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-weight: 600;
+    font-size: var(--amelia-name-size);
+    letter-spacing: .5px;
+    line-height: .95;
+    text-shadow: 0 0 18px rgba(213, 174, 102, .16);
+    -webkit-text-fill-color: transparent;
+    animation: ameliaNameWaveRtl 4.4s ease-in-out infinite;
+}
+
+.amelia-logo .sub {
+    font-family: 'Cinzel', serif;
+    font-size: var(--amelia-sub-size);
+    letter-spacing: var(--amelia-sub-spacing);
+    color: rgba(255, 255, 255, .72);
+    margin-top: 5px;
+    padding-left: 2px;
+}
+
+.amelia-logo--menu {
+    --amelia-badge-size: 38px;
+    --amelia-icon-size: 20px;
+    --amelia-name-size: 25px;
+    --amelia-sub-size: 6.8px;
+    --amelia-sub-spacing: 3.8px;
+    gap: 9px;
+}
+
+.amelia-logo--footer {
+    --amelia-badge-size: 44px;
+    --amelia-icon-size: 23px;
+    --amelia-name-size: 28px;
+    --amelia-sub-size: 7.5px;
+    --amelia-sub-spacing: 4.4px;
+    gap: 11px;
+    padding-right: 0;
+}
+
+@keyframes ameliaNameWaveRtl {
+    0% {
+        background-position: 100% 50%;
+        filter: brightness(.96);
+    }
+
+    48% {
+        background-position: 0% 50%;
+        filter: brightness(1.18);
+    }
+
+    100% {
+        background-position: 100% 50%;
+        filter: brightness(.96);
+    }
 }
 
 .site-nav {
@@ -16994,13 +17075,27 @@ body {
         padding-left: 20px;
     }
 
+    .amelia-logo {
+        --amelia-badge-size: 38px;
+        --amelia-icon-size: 20px;
+        --amelia-name-size: 25px;
+        --amelia-sub-size: 6.8px;
+        --amelia-sub-spacing: 3.8px;
+        gap: 9px;
+    }
+
+    .amelia-logo--footer {
+        --amelia-badge-size: 42px;
+        --amelia-icon-size: 22px;
+        --amelia-name-size: 27px;
+        --amelia-sub-size: 7.2px;
+        --amelia-sub-spacing: 4.2px;
+    }
+
     .site-nav {
         display: none;
     }
 
-    .site-brand {
-        min-width: 0;
-    }
 }
 
 @media (max-width: 520px) {
@@ -17018,8 +17113,22 @@ body {
         padding-left: 14px;
     }
 
-    .site-brand-logo {
-        height: 54px;
+    .amelia-logo {
+        --amelia-badge-size: 36px;
+        --amelia-icon-size: 19px;
+        --amelia-name-size: 23px;
+        --amelia-sub-size: 6.4px;
+        --amelia-sub-spacing: 3.4px;
+        gap: 8px;
+        padding-right: 0;
+    }
+
+    .amelia-logo--footer {
+        --amelia-badge-size: 38px;
+        --amelia-icon-size: 20px;
+        --amelia-name-size: 25px;
+        --amelia-sub-size: 6.8px;
+        --amelia-sub-spacing: 3.8px;
     }
 
     .site-menu-toggle {
@@ -17108,8 +17217,7 @@ body.mega-open {
 .full-menu-brand {
     display: inline-flex;
     align-items: center;
-    gap: 10px;
-    margin-bottom: 22px;
+    min-width: 0;
 }
 
 .full-menu-layout {
@@ -17277,10 +17385,6 @@ body.mega-open {
     grid-template-columns: minmax(150px, 0.38fr) minmax(0, 1fr) minmax(150px, 0.38fr);
     align-items: center;
     gap: 24px;
-}
-
-.full-menu-brand {
-    margin: 0;
 }
 
 .full-menu-index {
@@ -17801,10 +17905,6 @@ body.mega-open {
             linear-gradient(90deg, rgba(240, 205, 69, 0.05), transparent 45%),
             rgba(5, 4, 3, 0.96);
         padding: 14px 20px;
-    }
-
-    .full-menu-brand .site-brand-logo {
-        height: 54px;
     }
 
     .full-menu-index,
@@ -20205,4 +20305,218 @@ body.mega-open {
     .mobile-menu-price-summary strong {
         font-weight: 500 !important;
     }
+}
+
+/* Final readable menu sizing pass: larger type, lighter weight. */
+.footer-redesign-brand .amelia-logo--footer {
+    --amelia-badge-size: 54px;
+    --amelia-icon-size: 28px;
+    --amelia-name-size: 36px;
+    --amelia-sub-size: 9px;
+    --amelia-sub-spacing: 5px;
+    gap: 14px;
+}
+
+.site-nav-link {
+    font-size: 13px !important;
+    font-weight: 400 !important;
+    letter-spacing: 0.18em !important;
+}
+
+.site-header-topbar p,
+.site-header-topbar a {
+    font-size: 12.5px !important;
+    font-weight: 400 !important;
+}
+
+.header-mega-kicker,
+.header-mega-media-copy span,
+.header-price-summary > span,
+.full-menu-index,
+.full-menu-column-kicker,
+.full-menu-preview span,
+.full-menu-footer span,
+.full-menu-footer a {
+    font-size: 13px !important;
+    font-weight: 400 !important;
+}
+
+.full-menu-link strong {
+    font-size: clamp(32px, 2.6vw, 38px) !important;
+    font-weight: 400 !important;
+}
+
+.full-menu-link span,
+.full-menu-preview small,
+.full-menu-quote {
+    font-size: 14px !important;
+    font-weight: 400 !important;
+}
+
+.footer-redesign-column h3,
+.footer-accordion-toggle {
+    font-size: 15px !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.15em !important;
+}
+
+.footer-redesign-column a,
+.footer-redesign-column address,
+.footer-redesign-column p {
+    font-size: 16px !important;
+    font-weight: 400 !important;
+    line-height: 1.55 !important;
+}
+
+.footer-redesign-column strong,
+.footer-redesign-marketing span {
+    font-size: 13.5px !important;
+    font-weight: 500 !important;
+}
+
+@media (max-width: 760px) {
+    .mobile-menu-actions a {
+        font-size: 14px !important;
+        font-weight: 400 !important;
+    }
+
+    .mobile-menu-copy strong {
+        font-size: 19px !important;
+        font-weight: 500 !important;
+    }
+
+    .mobile-menu-copy small,
+    .mobile-menu-list small,
+    .mobile-menu-price-list small,
+    .mobile-menu-contact-list span,
+    .mobile-menu-note {
+        font-size: 13px !important;
+        font-weight: 400 !important;
+    }
+
+    .mobile-menu-list strong,
+    .mobile-menu-mini-grid strong,
+    .mobile-menu-price-list strong,
+    .mobile-menu-price-list b,
+    .mobile-menu-price-list em,
+    .mobile-menu-contact-list strong,
+    .mobile-menu-unlock,
+    .mobile-menu-cta a,
+    .mobile-menu-story,
+    .mobile-menu-pills span {
+        font-size: 14px !important;
+        font-weight: 500 !important;
+    }
+
+    .footer-redesign-brand .amelia-logo--footer {
+        --amelia-badge-size: 48px;
+        --amelia-icon-size: 25px;
+        --amelia-name-size: 32px;
+        --amelia-sub-size: 8px;
+        --amelia-sub-spacing: 4.4px;
+    }
+}
+
+/* Final hover-dropdown readability pass. */
+.site-header .header-mega-panel {
+    font-weight: 400 !important;
+}
+
+.site-header .header-mega-panel .header-mega-kicker,
+.site-header .header-mega-panel .header-mega-media-copy span,
+.site-header .header-mega-panel .header-price-summary > span {
+    font-size: 14px !important;
+    font-weight: 400 !important;
+    letter-spacing: 0.03em !important;
+}
+
+.site-header .header-mega-panel .header-mega-media-copy strong,
+.site-header .header-mega-panel .header-mega-content h2 {
+    font-weight: 500 !important;
+}
+
+.site-header .header-mega-panel .header-mega-content > p:not(.header-mega-kicker),
+.site-header .header-mega-panel .header-mega-media-copy a {
+    font-size: 15px !important;
+    font-weight: 400 !important;
+}
+
+.site-header .header-mega-panel .header-check-grid,
+.site-header .header-mega-panel .header-check-grid span,
+.site-header .header-mega-panel .header-feature-grid span,
+.site-header .header-mega-panel .header-icon-grid span,
+.site-header .header-mega-panel .header-price-points span,
+.site-header .header-mega-panel .header-service-row span {
+    font-size: 14.5px !important;
+    font-weight: 400 !important;
+    line-height: 1.36 !important;
+}
+
+.site-header .header-mega-panel .header-feature-grid span,
+.site-header .header-mega-panel .header-icon-grid span,
+.site-header .header-mega-panel .header-connect-grid span,
+.site-header .header-mega-panel .header-price-points span,
+.site-header .header-mega-panel .header-service-row span {
+    letter-spacing: 0 !important;
+}
+
+.site-header .header-mega-panel .header-connect-grid strong,
+.site-header .header-mega-panel .header-download-grid strong,
+.site-header .header-mega-panel .header-plan-list strong,
+.site-header .header-mega-panel .header-unlock-form > strong {
+    font-size: 16px !important;
+    font-weight: 500 !important;
+    line-height: 1.18 !important;
+}
+
+.site-header .header-mega-panel .header-connect-grid small,
+.site-header .header-mega-panel .header-download-grid small,
+.site-header .header-mega-panel .header-plan-list small,
+.site-header .header-mega-panel .header-service-row small,
+.site-header .header-mega-panel .header-unlock-form > small,
+.site-header .header-mega-panel .header-price-summary > small {
+    font-size: 13px !important;
+    font-weight: 400 !important;
+    line-height: 1.35 !important;
+}
+
+.site-header .header-mega-panel .header-price-tabs button {
+    font-size: 12.5px !important;
+    font-weight: 500 !important;
+}
+
+.site-header .header-mega-panel .header-unlock-form,
+.site-header .header-mega-panel .header-contact-form {
+    gap: 12px !important;
+}
+
+.site-header .header-mega-panel .header-unlock-form label,
+.site-header .header-mega-panel .header-contact-form label {
+    height: 42px !important;
+}
+
+.site-header .header-mega-panel .header-unlock-form input,
+.site-header .header-mega-panel .header-contact-form input,
+.site-header .header-mega-panel .header-contact-form select {
+    font-size: 13px !important;
+    font-weight: 400 !important;
+}
+
+.site-header .header-mega-panel .header-unlock-form button,
+.site-header .header-mega-panel .header-contact-form button,
+.site-header .header-mega-panel .header-price-actions a,
+.site-header .header-mega-panel .header-contact-form > a {
+    min-height: 42px !important;
+    font-size: 13.5px !important;
+    font-weight: 500 !important;
+}
+
+.site-header .header-mega-panel .header-unlock-form em {
+    font-size: 11.8px !important;
+    font-weight: 400 !important;
+}
+
+.site-header .header-mega-panel .header-download-grid em {
+    font-size: 12.5px !important;
+    font-weight: 500 !important;
 }
