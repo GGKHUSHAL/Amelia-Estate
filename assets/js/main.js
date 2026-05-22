@@ -189,6 +189,33 @@
     });
 })();
 
+(() => {
+    const siteHeader = document.querySelector(".site-header");
+    const heroSection = document.querySelector(".hero-section");
+
+    if (!siteHeader || !heroSection) {
+        return;
+    }
+
+    const isMobileHeader = () => window.matchMedia("(max-width: 767px)").matches;
+
+    const updateMobileHeaderState = () => {
+        if (!isMobileHeader()) {
+            siteHeader.classList.remove("is-mobile-scroll-active");
+            return;
+        }
+
+        const heroBottom = heroSection.offsetTop + heroSection.offsetHeight;
+        const revealPoint = Math.max(0, heroBottom - 1);
+
+        siteHeader.classList.toggle("is-mobile-scroll-active", window.scrollY >= revealPoint);
+    };
+
+    updateMobileHeaderState();
+    window.addEventListener("scroll", updateMobileHeaderState, { passive: true });
+    window.addEventListener("resize", updateMobileHeaderState);
+})();
+
 // Mobile footer accordion: keeps footer links compact until a heading is tapped.
 const footerAccordionToggles = document.querySelectorAll(".footer-accordion-toggle");
 
