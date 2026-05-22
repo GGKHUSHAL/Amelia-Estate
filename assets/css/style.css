@@ -18866,6 +18866,210 @@ body.mega-open {
     color: currentColor !important;
 }
 
+.full-menu-preview a {
+    width: fit-content !important;
+    min-width: 132px !important;
+    min-height: 44px !important;
+    border-radius: 999px !important;
+    padding: 0 18px !important;
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    gap: 7px !important;
+    white-space: nowrap !important;
+}
+
+.full-menu-preview a i {
+    font-size: 12px !important;
+}
+
+/* Desktop mega menu scale-up: use the available panel space. */
+@media (min-width: 1121px) {
+    .header-mega-panel {
+        width: min(1180px, calc(100vw - 116px)) !important;
+        min-height: 388px !important;
+        grid-template-columns: minmax(390px, 0.92fr) minmax(0, 1.08fr);
+    }
+
+    .header-mega-panel--price {
+        grid-template-columns: minmax(430px, 0.82fr) minmax(0, 1.18fr) !important;
+    }
+
+    .header-mega-media,
+    .header-mega-media img {
+        min-height: 388px !important;
+    }
+
+    .header-mega-content,
+    .header-price-summary,
+    .header-price-unlock {
+        gap: 22px !important;
+        padding: 34px 30px 30px !important;
+    }
+
+    .header-mega-kicker,
+    .header-mega-media-copy span,
+    .header-price-summary > span {
+        font-size: 13px !important;
+    }
+
+    .header-mega-media-copy {
+        right: 28px;
+        bottom: 30px;
+        left: 28px;
+        gap: 14px;
+    }
+
+    .header-mega-media-copy strong,
+    .header-mega-content h2 {
+        font-size: clamp(31px, 2.5vw, 40px) !important;
+        line-height: 1.08 !important;
+    }
+
+    .header-mega-content > p:not(.header-mega-kicker) {
+        max-width: 720px;
+        font-size: 16px !important;
+        line-height: 1.58;
+    }
+
+    .header-stat-grid span {
+        min-height: 76px;
+    }
+
+    .header-stat-grid strong {
+        font-size: 25px !important;
+    }
+
+    .header-stat-grid small,
+    .header-plan-list small,
+    .header-service-row small {
+        font-size: 12px !important;
+    }
+
+    .header-check-grid,
+    .header-feature-grid span,
+    .header-icon-grid span,
+    .header-connect-grid span,
+    .header-price-points span {
+        font-size: 15px !important;
+    }
+
+    .header-plan-list {
+        gap: 12px;
+    }
+
+    .header-plan-list a,
+    .header-connect-grid span,
+    .header-feature-grid span {
+        min-height: 70px;
+    }
+
+    .header-plan-list strong {
+        font-size: 22px !important;
+    }
+
+    .header-icon-grid span {
+        min-height: 84px;
+    }
+
+    .header-gallery-grid {
+        gap: 12px;
+    }
+
+    .header-gallery-grid img {
+        aspect-ratio: 1.36 / 1;
+    }
+
+    .header-price-summary > strong {
+        font-size: 44px !important;
+    }
+
+    .header-price-summary > small {
+        font-size: 15px !important;
+    }
+
+    .header-price-points {
+        gap: 11px;
+    }
+
+    .header-price-points span {
+        min-height: 48px;
+        padding: 10px 13px;
+    }
+
+    .header-price-points i,
+    .header-plan-list .material-symbols-rounded,
+    .header-connect-grid i,
+    .header-icon-grid i,
+    .header-feature-grid i {
+        width: 38px;
+        height: 38px;
+        font-size: 20px;
+    }
+
+    .header-price-tabs {
+        height: 48px;
+    }
+
+    .header-price-tabs button {
+        font-size: 12px !important;
+    }
+
+    .header-unlock-form,
+    .header-contact-form {
+        width: min(460px, 100%) !important;
+        gap: 14px;
+        border-radius: 18px;
+        padding: 22px !important;
+    }
+
+    .header-unlock-form > .material-symbols-rounded {
+        width: 42px;
+        height: 42px;
+        font-size: 21px;
+    }
+
+    .header-unlock-form > strong {
+        margin-top: -48px;
+        margin-left: 56px;
+        font-size: 18px !important;
+    }
+
+    .header-unlock-form > small {
+        margin-top: -12px;
+        margin-left: 56px;
+        font-size: 13px !important;
+    }
+
+    .header-unlock-form label,
+    .header-contact-form label,
+    .header-contact-form select {
+        height: 48px;
+    }
+
+    .header-unlock-form input,
+    .header-contact-form input,
+    .header-contact-form select {
+        font-size: 14px !important;
+    }
+
+    .header-unlock-form button,
+    .header-contact-form button,
+    .header-price-actions a,
+    .header-contact-form > a {
+        min-height: 50px !important;
+        font-size: 14px !important;
+    }
+
+    .header-unlock-form em {
+        font-size: 11px !important;
+    }
+
+    .header-price-actions {
+        grid-template-columns: minmax(0, 1fr) 150px;
+        gap: 12px;
+    }
+}
+
 /* Final header/menu type scale polish. */
 .site-header,
 .mega-menu-overlay {
@@ -19189,5 +19393,29 @@ body.mega-open {
     .mobile-menu-contact-list strong {
         font-size: 16px !important;
         font-weight: 600 !important;
+    }
+}
+
+/* Restore desktop mega menu shell size while keeping text polish. */
+@media (min-width: 1121px) {
+    .header-mega-panel {
+        width: min(1080px, calc(100vw - 150px)) !important;
+        min-height: 300px !important;
+        grid-template-columns: minmax(300px, 0.78fr) minmax(0, 1fr) !important;
+    }
+
+    .header-mega-panel--price {
+        grid-template-columns: minmax(300px, 0.78fr) minmax(0, 1.1fr) !important;
+    }
+
+    .header-mega-media,
+    .header-mega-media img {
+        min-height: 300px !important;
+    }
+
+    .header-mega-content,
+    .header-price-summary,
+    .header-price-unlock {
+        padding: 28px 24px 24px !important;
     }
 }
