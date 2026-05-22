@@ -1,3 +1,44 @@
+// Shared lead unlock state: once a visitor unlocks price/downloads, don't show that form again.
+(() => {
+    const storageKey = "amelia-estate-lead-unlocked";
+
+    const readUnlocked = () => {
+        try {
+            return window.localStorage.getItem(storageKey) === "1";
+        } catch (error) {
+            return document.body.classList.contains("is-lead-unlocked");
+        }
+    };
+
+    const writeUnlocked = () => {
+        try {
+            window.localStorage.setItem(storageKey, "1");
+        } catch (error) {
+            // Local storage may be disabled; the body class keeps the current page in sync.
+        }
+    };
+
+    const setUnlocked = () => {
+        if (readUnlocked()) {
+            document.body.classList.add("is-lead-unlocked");
+            return;
+        }
+
+        writeUnlocked();
+        document.body.classList.add("is-lead-unlocked");
+        window.dispatchEvent(new CustomEvent("amelia:lead-unlocked"));
+    };
+
+    if (readUnlocked()) {
+        document.body.classList.add("is-lead-unlocked");
+    }
+
+    window.AmeliaLeadUnlock = {
+        isUnlocked: readUnlocked,
+        unlock: setUnlocked
+    };
+})();
+
 // Standalone Amelia full mega menu. Future trigger buttons can call window.openAmeliaMegaMenu().
 (() => {
     const megaMenu = document.getElementById("fullMenuMega");
@@ -136,15 +177,45 @@
 
 (() => {
     const priceTabGroups = document.querySelectorAll(".header-price-tabs");
+    const headerPricingContent = {
+        230: {
+            area: "230 Sq.Yd",
+            prices: ["1.54 Cr", "1.49 Cr", "1.49 Cr", "1.67 Cr"]
+        },
+        219: {
+            area: "219 Sq.Yd",
+            prices: ["1.47 Cr", "1.42 Cr", "1.42 Cr", "1.60 Cr"]
+        },
+        205: {
+            area: "205 Sq.Yd",
+            prices: ["1.37 Cr", "1.32 Cr", "1.32 Cr", "1.50 Cr"]
+        }
+    };
 
     priceTabGroups.forEach((group) => {
         const tabs = Array.from(group.querySelectorAll("button"));
 
         const setActiveTab = (activeTab) => {
+            const selectedSize = activeTab.dataset.headerPriceSize;
+            const selectedContent = headerPricingContent[selectedSize];
+            const panel = group.closest(".header-price-unlock");
+
             tabs.forEach((tab) => {
                 const isActive = tab === activeTab;
                 tab.classList.toggle("is-active", isActive);
                 tab.setAttribute("aria-selected", String(isActive));
+            });
+
+            if (!selectedContent || !panel) {
+                return;
+            }
+
+            panel.querySelectorAll("[data-header-floor-area]").forEach((area) => {
+                area.textContent = selectedContent.area;
+            });
+
+            panel.querySelectorAll("[data-header-floor-price]").forEach((price, index) => {
+                price.textContent = `${selectedContent.prices[index]}*`;
             });
         };
 
@@ -158,16 +229,31 @@
 
 (() => {
     const unlockForms = document.querySelectorAll("[data-header-unlock-form]");
+    const getUnlockPanels = () => Array.from(unlockForms)
+        .map((form) => form.closest(".header-price-unlock, .header-mega-content"))
+        .filter(Boolean);
+
+    const revealHeaderUnlocks = () => {
+        getUnlockPanels().forEach((panel) => {
+            panel.classList.add("is-unlocked");
+        });
+    };
+
+    if (window.AmeliaLeadUnlock?.isUnlocked()) {
+        revealHeaderUnlocks();
+    }
+
+    window.addEventListener("amelia:lead-unlocked", revealHeaderUnlocks);
+    window.addEventListener("amelia:pricing-unlocked", () => {
+        revealHeaderUnlocks();
+        window.AmeliaLeadUnlock?.unlock();
+    });
 
     unlockForms.forEach((form) => {
         const unlockPanel = () => {
-            const panel = form.closest(".header-price-unlock, .header-mega-content");
-
-            if (!panel) {
-                return;
-            }
-
-            panel.classList.add("is-unlocked");
+            revealHeaderUnlocks();
+            window.AmeliaLeadUnlock?.unlock();
+            window.AmeliaPricing?.unlockNow?.();
         };
 
         form.addEventListener("submit", (event) => {
@@ -181,6 +267,121 @@
                 unlockPanel();
             });
         });
+    });
+})();
+
+(() => {
+    const choices = Array.from(document.querySelectorAll("[data-header-choice]"));
+
+    if (!choices.length) {
+        return;
+    }
+
+    const closeChoice = (choice) => {
+        const trigger = choice.querySelector("[data-header-choice-trigger]");
+
+        choice.classList.remove("is-open");
+
+        if (trigger) {
+            trigger.setAttribute("aria-expanded", "false");
+        }
+    };
+
+    const closeAllChoices = (exceptChoice) => {
+        choices.forEach((choice) => {
+            if (choice !== exceptChoice) {
+                closeChoice(choice);
+            }
+        });
+    };
+
+    choices.forEach((choice) => {
+        const trigger = choice.querySelector("[data-header-choice-trigger]");
+        const label = choice.querySelector("[data-header-choice-label]");
+        const input = choice.querySelector('input[type="hidden"]');
+        const options = Array.from(choice.querySelectorAll("[data-header-choice-option]"));
+
+        if (!trigger || !label || !input || !options.length) {
+            return;
+        }
+
+        const openChoice = () => {
+            closeAllChoices(choice);
+            choice.classList.add("is-open");
+            trigger.setAttribute("aria-expanded", "true");
+        };
+
+        const toggleChoice = () => {
+            if (choice.classList.contains("is-open")) {
+                closeChoice(choice);
+                return;
+            }
+
+            openChoice();
+        };
+
+        const selectOption = (option) => {
+            const value = option.dataset.value || option.textContent.trim();
+
+            input.value = value;
+            label.textContent = option.textContent.trim();
+
+            options.forEach((item) => {
+                item.setAttribute("aria-selected", String(item === option));
+            });
+
+            closeChoice(choice);
+        };
+
+        trigger.addEventListener("click", (event) => {
+            event.preventDefault();
+            toggleChoice();
+        });
+
+        trigger.addEventListener("keydown", (event) => {
+            if (event.key === "Enter" || event.key === " " || event.key === "ArrowDown") {
+                event.preventDefault();
+                openChoice();
+                (options.find((option) => option.getAttribute("aria-selected") === "true") || options[0]).focus();
+            }
+        });
+
+        options.forEach((option, index) => {
+            option.addEventListener("click", (event) => {
+                event.preventDefault();
+                selectOption(option);
+                trigger.focus();
+            });
+
+            option.addEventListener("keydown", (event) => {
+                if (event.key === "Enter" || event.key === " ") {
+                    event.preventDefault();
+                    selectOption(option);
+                    trigger.focus();
+                }
+
+                if (event.key === "ArrowDown" || event.key === "ArrowUp") {
+                    event.preventDefault();
+                    const direction = event.key === "ArrowDown" ? 1 : -1;
+                    const nextIndex = (index + direction + options.length) % options.length;
+                    options[nextIndex].focus();
+                }
+
+                if (event.key === "Escape") {
+                    event.preventDefault();
+                    closeChoice(choice);
+                    trigger.focus();
+                }
+            });
+        });
+    });
+
+    document.addEventListener("click", (event) => {
+        const target = event.target instanceof Element ? event.target : event.target.parentElement;
+
+        if (!target?.closest("[data-header-choice]")) {
+            closeAllChoices();
+        }
     });
 })();
 
@@ -1479,7 +1680,7 @@ if (pricingSection) {
         });
     };
 
-    const unlockPricing = () => {
+    const unlockPricing = ({ persist = true } = {}) => {
         if (isPricingUnlocked) {
             runPricingUnlockCallbacks();
             return;
@@ -1493,11 +1694,17 @@ if (pricingSection) {
         unlockButton.setAttribute("aria-label", "All floor prices are unlocked");
 
         runPricingUnlockCallbacks();
+
+        if (persist) {
+            window.AmeliaLeadUnlock?.unlock();
+        }
+
         window.dispatchEvent(new CustomEvent("amelia:pricing-unlocked"));
     };
 
     window.AmeliaPricing = {
         isUnlocked: () => isPricingUnlocked,
+        unlockNow: () => unlockPricing(),
         requestUnlock: (callback, context) => {
             if (isPricingUnlocked) {
                 if (typeof callback === "function") {
@@ -1514,6 +1721,10 @@ if (pricingSection) {
             openPricingUnlockForm(context);
         }
     };
+
+    window.addEventListener("amelia:lead-unlocked", () => {
+        unlockPricing({ persist: false });
+    });
 
     const updatePricingSize = (size) => {
         const content = pricingContent[size];
@@ -1615,6 +1826,11 @@ if (pricingSection) {
     });
 
     updatePricingSize(activeSize);
+
+    if (window.AmeliaLeadUnlock?.isUnlocked()) {
+        unlockPricing({ persist: false });
+    }
+
     applyPricingHash();
     window.addEventListener("hashchange", applyPricingHash);
 }

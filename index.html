@@ -19,7 +19,7 @@
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
-    <link rel="stylesheet" href="assets/css/style.css?v=mega-unlocked-states-1">
+    <link rel="stylesheet" href="assets/css/style.css?v=hamburger-footer-4">
     <link rel="stylesheet" href="assets/css/media.css?v=header-mega-3">
 </head>
 
@@ -266,6 +266,11 @@
                         <span><i class="fa-solid fa-shield-halved" aria-hidden="true"></i> RERA &middot; PBRERA-SAS79-PR1183</span>
                         <span>Possession &middot; Dec 2026</span>
                     </div>
+                    <div class="mobile-menu-footer-line" aria-label="Project contact details">
+                        <a href="tel:+919697300066"><i class="fa-solid fa-phone" aria-hidden="true"></i> +91 96973-00066</a>
+                        <a href="https://wa.me/917009247378" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp" aria-hidden="true"></i> +91 70092-47378</a>
+                        <a href="mailto:hello@ameliaestate.in"><i class="fa-regular fa-envelope" aria-hidden="true"></i> hello@ameliaestate.in</a>
+                    </div>
                 </div>
 
                 <div class="mobile-menu-cta">
@@ -480,9 +485,9 @@
                                 Unlocked
                             </p>
                             <div class="header-price-tabs" role="tablist" aria-label="Price size variants">
-                                <button class="is-active" type="button" role="tab" aria-selected="true">230 &middot; Premium</button>
-                                <button type="button" role="tab" aria-selected="false">219 &middot; Signature</button>
-                                <button type="button" role="tab" aria-selected="false">205 &middot; Smart</button>
+                                <button class="is-active" type="button" role="tab" aria-selected="true" data-header-price-size="230">230 Sq.Yd</button>
+                                <button type="button" role="tab" aria-selected="false" data-header-price-size="219">219 Sq.Yd</button>
+                                <button type="button" role="tab" aria-selected="false" data-header-price-size="205">205 Sq.Yd</button>
                             </div>
                             <form class="header-unlock-form" data-header-unlock-form>
                                 <span class="material-symbols-rounded" aria-hidden="true">key</span>
@@ -508,28 +513,28 @@
                                 <div class="header-unlocked-price-list">
                                     <span>
                                         <i class="material-symbols-rounded" aria-hidden="true">layers</i>
-                                        <strong>1st Floor &middot; 230 sq.yd</strong>
-                                        <em>1.54 Cr*</em>
+                                        <strong><span data-header-floor-name>1st Floor</span> &middot; <span data-header-floor-area>230 Sq.Yd</span></strong>
+                                        <em data-header-floor-price>1.54 Cr*</em>
                                     </span>
                                     <span>
                                         <i class="material-symbols-rounded" aria-hidden="true">layers</i>
-                                        <strong>2nd Floor &middot; 230 sq.yd</strong>
-                                        <em>1.49 Cr*</em>
+                                        <strong><span data-header-floor-name>2nd Floor</span> &middot; <span data-header-floor-area>230 Sq.Yd</span></strong>
+                                        <em data-header-floor-price>1.49 Cr*</em>
                                     </span>
                                     <span>
                                         <i class="material-symbols-rounded" aria-hidden="true">layers</i>
-                                        <strong>3rd Floor &middot; 230 sq.yd</strong>
-                                        <em>1.49 Cr*</em>
+                                        <strong><span data-header-floor-name>3rd Floor</span> &middot; <span data-header-floor-area>230 Sq.Yd</span></strong>
+                                        <em data-header-floor-price>1.49 Cr*</em>
                                     </span>
                                     <span>
                                         <i class="material-symbols-rounded" aria-hidden="true">layers</i>
-                                        <strong>4th + Roof Floor &middot; 230 sq.yd</strong>
-                                        <em>1.67 Cr*</em>
+                                        <strong><span data-header-floor-name>4th + Roof Floor</span> &middot; <span data-header-floor-area>230 Sq.Yd</span></strong>
+                                        <em data-header-floor-price>1.67 Cr*</em>
                                     </span>
                                 </div>
                             </div>
                             <div class="header-price-actions">
-                                <a href="https://wa.me/919697300066" target="_blank" rel="noopener noreferrer">Chat with Specialist</a>
+                                <a href="https://wa.me/917009247378" target="_blank" rel="noopener noreferrer">Chat with Specialist</a>
                                 <a href="tel:+919697300066">Call now</a>
                             </div>
                         </div>
@@ -714,11 +719,20 @@
                                     <span class="material-symbols-rounded" aria-hidden="true">call</span>
                                     <input type="tel" name="phone" placeholder="Phone number">
                                 </label>
-                                <select name="configuration" aria-label="Preferred configuration">
-                                    <option>3 BHK &middot; 219</option>
-                                    <option>3 BHK &middot; 230</option>
-                                    <option>3 BHK &middot; 205</option>
-                                </select>
+                                <div class="header-choice" data-header-choice>
+                                    <button class="header-choice-button" type="button" data-header-choice-trigger aria-haspopup="listbox" aria-expanded="false">
+                                        <span class="material-symbols-rounded" aria-hidden="true">home</span>
+                                        <strong data-header-choice-label>3 BHK &middot; 219</strong>
+                                        <i class="material-symbols-rounded" aria-hidden="true">expand_more</i>
+                                    </button>
+                                    <input type="hidden" name="configuration" value="3 BHK &middot; 219">
+                                    <div class="header-choice-menu" role="listbox" aria-label="Preferred configuration">
+                                        <button type="button" role="option" data-header-choice-option data-value="3 BHK &middot; 205" aria-selected="false">3 BHK &middot; 205</button>
+                                        <button type="button" role="option" data-header-choice-option data-value="3 BHK &middot; 219" aria-selected="true">3 BHK &middot; 219</button>
+                                        <button type="button" role="option" data-header-choice-option data-value="3 BHK &middot; 230" aria-selected="false">3 BHK &middot; 230</button>
+                                        <button type="button" role="option" data-header-choice-option data-value="Site visit only" aria-selected="false">Site visit only</button>
+                                    </div>
+                                </div>
                                 <button type="button">
                                     <span class="material-symbols-rounded" aria-hidden="true">send</span>
                                     Book Site Visit
@@ -778,7 +792,7 @@
                                 <span>Check Current Price</span>
                                 <span class="hero-price-details-shine" aria-hidden="true"></span>
                             </a>
-                            <a class="hero-whatsapp-btn" href="https://wa.me/919509489253" target="_blank"
+                            <a class="hero-whatsapp-btn" href="https://wa.me/917009247378" target="_blank"
                                 rel="noopener noreferrer" aria-label="Chat on WhatsApp">
                                 Chat on WhatsApp
                             </a>
@@ -815,7 +829,7 @@
                                 <span>Check Current Price</span>
                                 <span class="hero-price-details-shine" aria-hidden="true"></span>
                             </a>
-                            <a class="hero-whatsapp-btn" href="https://wa.me/919509489253" target="_blank"
+                            <a class="hero-whatsapp-btn" href="https://wa.me/917009247378" target="_blank"
                                 rel="noopener noreferrer" aria-label="Chat on WhatsApp">
                                 Chat on WhatsApp
                             </a>
@@ -852,7 +866,7 @@
                                 <span>Check Current Price</span>
                                 <span class="hero-price-details-shine" aria-hidden="true"></span>
                             </a>
-                            <a class="hero-whatsapp-btn" href="https://wa.me/919509489253" target="_blank"
+                            <a class="hero-whatsapp-btn" href="https://wa.me/917009247378" target="_blank"
                                 rel="noopener noreferrer" aria-label="Chat on WhatsApp">
                                 Chat on WhatsApp
                             </a>
@@ -1215,7 +1229,7 @@
                                 <span>Check Current Price</span>
                                 <span class="hero-price-details-shine" aria-hidden="true"></span>
                             </a>
-                            <a class="hero-whatsapp-btn" href="https://wa.me/919509489253" target="_blank"
+                            <a class="hero-whatsapp-btn" href="https://wa.me/917009247378" target="_blank"
                                 rel="noopener noreferrer" aria-label="Chat on WhatsApp">
                                 Chat on WhatsApp
                             </a>
@@ -2161,7 +2175,7 @@
                 </div>
 
                 <div class="prime-whatsapp-location-cta prime-whatsapp-location-cta--map">
-                    <a class="prime-whatsapp-location-btn" href="https://wa.me/919509489253" target="_blank" rel="noopener noreferrer">
+                    <a class="prime-whatsapp-location-btn" href="https://wa.me/917009247378" target="_blank" rel="noopener noreferrer">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
                             stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                             <path d="M4.5 19.5 5.8 16A8 8 0 1 1 8 18.2l-3.5 1.3Z" />
@@ -2227,7 +2241,7 @@
                     <div class="prime-distance-progress" aria-hidden="true"><span></span></div>
 
                     <div class="prime-whatsapp-location-cta prime-whatsapp-location-cta--after-distance">
-                        <a class="prime-whatsapp-location-btn" href="https://wa.me/919509489253" target="_blank" rel="noopener noreferrer">
+                        <a class="prime-whatsapp-location-btn" href="https://wa.me/917009247378" target="_blank" rel="noopener noreferrer">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                 stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                                 <path d="M4.5 19.5 5.8 16A8 8 0 1 1 8 18.2l-3.5 1.3Z" />
@@ -2494,7 +2508,7 @@
                             <a class="sticky-availability-btn sticky-availability-btn--gold inline-flex h-[52px] min-w-[148px] items-center justify-center rounded-[10px] bg-gradient-to-b from-[#f0cd45] to-[#f0cd45] px-6 text-[15px] font-semibold text-[#0b0906] shadow-[0_18px_38px_rgba(240,205,69,0.28)]"
                             href="#booking-enquiry">Enquire Now</a>
                             <a class="sticky-availability-btn sticky-availability-btn--white inline-flex h-[52px] min-w-[164px] items-center justify-center gap-3 rounded-[10px] bg-white px-6 text-[15px] font-semibold text-[#171717]"
-                            href="https://wa.me/919509489253" target="_blank" rel="noopener noreferrer">
+                            href="https://wa.me/917009247378" target="_blank" rel="noopener noreferrer">
                                 <svg class="h-[18px] w-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                 stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                                     <path d="M4.5 19.5 5.8 16A8 8 0 1 1 8 18.2l-3.5 1.3Z" />
@@ -2925,7 +2939,7 @@
                             </button>
                         </form>
 
-                        <a class="site-visit-whatsapp" href="https://wa.me/919697300066" target="_blank"
+                        <a class="site-visit-whatsapp" href="https://wa.me/917009247378" target="_blank"
                             rel="noopener noreferrer">
                             <svg class="h-[18px] w-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                 stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -2939,7 +2953,7 @@
                             <svg class="h-[25px] w-[25px]" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                                 <path d="M6.62 10.79c1.44 2.83 3.76 5.15 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C10.61 21 3 13.39 3 4c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.24.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2Z" />
                             </svg>
-                            9697300066 | 7009247378
+                            +91 96973-00066
                         </a>
                     </div>
                 </div>
@@ -3038,7 +3052,7 @@
                 </div>
                 <div class="property-snapshot-modal-footer">
                     <a class="property-snapshot-modal-btn" href="#site-visit">Schedule Site Visit</a>
-                    <a class="property-snapshot-modal-btn property-snapshot-modal-btn--ghost" href="https://wa.me/919697300066" target="_blank" rel="noopener noreferrer">WhatsApp Now</a>
+                    <a class="property-snapshot-modal-btn property-snapshot-modal-btn--ghost" href="https://wa.me/917009247378" target="_blank" rel="noopener noreferrer">WhatsApp Now</a>
                 </div>
             </div>
         </div>
@@ -3152,7 +3166,7 @@
                 </div>
                 <div class="footer-redesign-actions">
                     <a href="#site-visit">Book Site Visit</a>
-                    <a href="https://wa.me/919697300066" target="_blank" rel="noopener noreferrer">WhatsApp Now</a>
+                    <a href="https://wa.me/917009247378" target="_blank" rel="noopener noreferrer">WhatsApp Now</a>
                 </div>
             </div>
 
@@ -3221,8 +3235,8 @@
                         </button>
                     </h3>
                     <div class="footer-accordion-panel">
-                        <a href="tel:+919697300066">Call: +91 96973 00666</a>
-                        <a class="footer-redesign-whatsapp" href="https://wa.me/919697300066" target="_blank" rel="noopener noreferrer">
+                        <a href="tel:+919697300066">Call: +91 96973-00066</a>
+                        <a class="footer-redesign-whatsapp" href="https://wa.me/917009247378" target="_blank" rel="noopener noreferrer">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                                 <path d="M4.5 19.5 5.8 16A8 8 0 1 1 8 18.2l-3.5 1.3Z" />
                                 <path d="M9 9.5c.4 2 2 3.7 4 4.5l1.2-1.2 1.8.5c.2.1.4.3.4.6v1.1c0 .4-.3.7-.7.7-4.4 0-8-3.6-8-8 0-.4.3-.7.7-.7h1.1c.3 0 .5.2.6.4l.5 1.8L9 9.5Z" />
@@ -3309,7 +3323,7 @@
         </div>
     </footer>
 
-    <script src="assets/js/main.js?v=mega-unlocked-states-1"></script>
+    <script src="assets/js/main.js?v=contact-dropdown-footer-1"></script>
 </body>
 
 </html>

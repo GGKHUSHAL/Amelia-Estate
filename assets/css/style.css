@@ -17218,6 +17218,8 @@ body.mega-open {
     grid-template-rows: auto minmax(0, 1fr) auto;
     width: 100%;
     max-width: none;
+    height: 100vh;
+    height: 100dvh;
     min-height: 100vh;
     min-height: 100dvh;
     margin: 0;
@@ -17331,7 +17333,7 @@ body.mega-open {
     align-items: center;
     gap: clamp(42px, 7vw, 94px);
     min-height: 0;
-    padding: clamp(34px, 7vh, 76px) 0 clamp(28px, 5vh, 54px);
+    padding: clamp(24px, 5vh, 56px) 0 clamp(12px, 2.6vh, 28px);
 }
 
 .full-menu-grid {
@@ -17432,7 +17434,7 @@ body.mega-open {
     display: inline-block;
     color: inherit;
     font-family: Georgia, "Times New Roman", serif;
-    font-size: clamp(34px, 3.05vw, 44px);
+    font-size: clamp(30px, 2.55vw, 38px);
     font-weight: 700;
     line-height: 1;
     letter-spacing: -0.01em;
@@ -17494,7 +17496,7 @@ body.mega-open {
 }
 
 .full-menu-preview {
-    min-height: 396px;
+    min-height: clamp(310px, 43vh, 396px);
     border: 1px solid rgba(255, 255, 255, 0.12);
     border-radius: 18px;
     box-shadow:
@@ -17513,7 +17515,7 @@ body.mega-open {
 }
 
 .full-menu-preview img {
-    min-height: 396px;
+    min-height: clamp(310px, 43vh, 396px);
     opacity: 0.86;
     filter: saturate(0.88) contrast(1.08) brightness(0.78);
 }
@@ -17592,7 +17594,7 @@ body.mega-open {
 .full-menu-footer {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
     gap: 18px;
     min-height: 26px;
     color: rgba(255, 255, 255, 0.68);
@@ -17618,9 +17620,49 @@ body.mega-open {
     font-size: 13px;
 }
 
+.full-menu-footer a:first-of-type {
+    margin-left: auto;
+}
+
 .full-menu-footer a:hover,
 .full-menu-footer a:focus-visible {
     color: #f0cd45;
+}
+
+@media (min-width: 1121px) and (max-height: 760px) {
+    .mega-menu-card {
+        padding: 34px 48px 16px;
+    }
+
+    .full-menu-layout {
+        padding-top: 28px;
+        padding-bottom: 12px;
+    }
+
+    .full-menu-column,
+    .full-menu-column:first-child,
+    .full-menu-column:nth-child(5) {
+        gap: 17px;
+    }
+
+    .full-menu-preview,
+    .full-menu-preview img {
+        min-height: 300px;
+    }
+
+    .full-menu-side {
+        gap: 14px;
+    }
+
+    .full-menu-quote {
+        font-size: 13px;
+        line-height: 1.45;
+    }
+
+    .full-menu-footer {
+        min-height: 30px;
+        padding-top: 4px;
+    }
 }
 
 @media (max-width: 1120px) {
@@ -17645,6 +17687,10 @@ body.mega-open {
     .full-menu-footer {
         flex-wrap: wrap;
         justify-content: flex-start;
+    }
+
+    .full-menu-footer a:first-of-type {
+        margin-left: 0;
     }
 }
 
@@ -17671,7 +17717,7 @@ body.mega-open {
     }
 
     .full-menu-link strong {
-        font-size: 34px;
+        font-size: 30px;
     }
 
     .full-menu-preview,
@@ -18684,6 +18730,12 @@ body.mega-open {
         border-color 0.35s ease;
 }
 
+.full-menu-footer a[href*="wa.me"] {
+    min-width: 128px;
+    padding-right: 16px;
+    padding-left: 16px;
+}
+
 .header-contact-form > a[href*="wa.me"]::before,
 .header-price-actions a[href*="wa.me"]::before,
 .full-menu-footer a[href*="wa.me"]::before,
@@ -19491,7 +19543,7 @@ body.mega-open {
         rgba(0, 0, 0, 0.20);
 }
 
-.header-unlocked-price-list span {
+.header-unlocked-price-list > span {
     display: grid;
     grid-template-columns: 24px minmax(0, 1fr) auto;
     align-items: center;
@@ -19502,16 +19554,16 @@ body.mega-open {
     color: rgba(255, 255, 255, 0.88);
 }
 
-.header-unlocked-price-list span:last-child {
+.header-unlocked-price-list > span:last-child {
     border-bottom: 0;
 }
 
-.header-unlocked-price-list i {
+.header-unlocked-price-list > span > i {
     color: #f0cd45;
     font-size: 18px;
 }
 
-.header-unlocked-price-list strong {
+.header-unlocked-price-list > span > strong {
     min-width: 0;
     overflow: hidden;
     color: #ffffff;
@@ -19522,7 +19574,7 @@ body.mega-open {
     white-space: nowrap;
 }
 
-.header-unlocked-price-list em {
+.header-unlocked-price-list > span > em {
     color: #f0cd45;
     font-size: 14px;
     font-style: normal;
@@ -19537,24 +19589,25 @@ body.mega-open {
 .header-download-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 10px;
+    grid-auto-rows: minmax(104px, 1fr);
+    gap: 12px;
 }
 
 .site-header .header-download-grid a[href*="wa.me"] {
     position: relative;
     display: grid !important;
-    grid-template-columns: 40px minmax(0, 1fr);
+    grid-template-columns: 48px minmax(0, 1fr);
     grid-template-rows: auto auto auto;
     align-items: center;
-    gap: 4px 12px;
-    min-height: 80px !important;
+    gap: 6px 14px;
+    min-height: 104px !important;
     overflow: hidden;
     border: 1px solid rgba(255, 255, 255, 0.09) !important;
     border-radius: 10px !important;
     background:
         linear-gradient(180deg, rgba(255, 255, 255, 0.025), rgba(255, 255, 255, 0.008)),
         rgba(4, 4, 4, 0.34) !important;
-    padding: 12px 14px !important;
+    padding: 16px 17px !important;
     color: #ffffff !important;
     box-shadow: none !important;
     text-align: left;
@@ -19580,25 +19633,25 @@ body.mega-open {
     grid-row: 1 / 4;
     display: grid;
     place-items: center;
-    width: 40px;
-    height: 40px;
+    width: 48px;
+    height: 48px;
     border: 1px solid rgba(240, 205, 69, 0.44);
     border-radius: 8px;
     background: rgba(240, 205, 69, 0.10);
     color: #f0cd45;
-    font-size: 19px;
+    font-size: 22px;
 }
 
 .header-download-grid strong {
     color: #ffffff;
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 700;
     line-height: 1.12;
 }
 
 .header-download-grid small {
     color: rgba(255, 255, 255, 0.62);
-    font-size: 11px;
+    font-size: 12px;
     font-weight: 500;
     line-height: 1.18;
 }
@@ -19608,7 +19661,7 @@ body.mega-open {
     align-items: center;
     gap: 4px;
     color: #f0cd45;
-    font-size: 10px;
+    font-size: 11px;
     font-style: normal;
     font-weight: 600;
     line-height: 1;
@@ -19622,9 +19675,9 @@ body.mega-open {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    margin: 12px 0 0;
+    margin: 14px 0 0;
     color: rgba(255, 255, 255, 0.64);
-    font-size: 11px;
+    font-size: 12px;
     font-weight: 500;
     line-height: 1.2;
 }
@@ -19632,4 +19685,216 @@ body.mega-open {
 .header-download-note .material-symbols-rounded {
     color: #f0cd45;
     font-size: 15px;
+}
+
+/* Keep CTA text readable on pale hover states. */
+:is(.header-unlock-form button,
+    .header-contact-form button,
+    .header-price-actions a,
+    .header-contact-form > a,
+    .pricing-unlock-btn,
+    .pricing-unlock-submit,
+    .download-option a,
+    .mobile-menu-unlock,
+    .mobile-menu-actions a,
+    .mobile-menu-contact-list a,
+    .mobile-menu-cta a,
+    .full-menu-preview a):hover,
+:is(.header-unlock-form button,
+    .header-contact-form button,
+    .header-price-actions a,
+    .header-contact-form > a,
+    .pricing-unlock-btn,
+    .pricing-unlock-submit,
+    .download-option a,
+    .mobile-menu-unlock,
+    .mobile-menu-actions a,
+    .mobile-menu-contact-list a,
+    .mobile-menu-cta a,
+    .full-menu-preview a):focus-visible {
+    color: #000000 !important;
+}
+
+:is(.header-unlock-form button,
+    .header-contact-form button,
+    .header-price-actions a,
+    .header-contact-form > a,
+    .pricing-unlock-btn,
+    .pricing-unlock-submit,
+    .download-option a,
+    .mobile-menu-unlock,
+    .mobile-menu-actions a,
+    .mobile-menu-contact-list a,
+    .mobile-menu-cta a,
+    .full-menu-preview a):hover :is(.material-symbols-rounded, i, span, strong, small, b),
+:is(.header-unlock-form button,
+    .header-contact-form button,
+    .header-price-actions a,
+    .header-contact-form > a,
+    .pricing-unlock-btn,
+    .pricing-unlock-submit,
+    .download-option a,
+    .mobile-menu-unlock,
+    .mobile-menu-actions a,
+    .mobile-menu-contact-list a,
+    .mobile-menu-cta a,
+    .full-menu-preview a):focus-visible :is(.material-symbols-rounded, i, span, strong, small, b) {
+    color: #000000 !important;
+}
+
+/* Header contact custom dropdown and hamburger footer line. */
+.header-choice {
+    position: relative;
+    grid-column: 1 / -1;
+    min-width: 0;
+    z-index: 8;
+}
+
+.header-contact-form .header-choice-button {
+    display: grid !important;
+    grid-template-columns: 20px minmax(0, 1fr) 20px;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    min-height: 42px !important;
+    border: 1px solid rgba(240, 205, 69, 0.40) !important;
+    border-radius: 8px !important;
+    background:
+        linear-gradient(180deg, rgba(12, 10, 8, 0.96), rgba(4, 4, 3, 0.96)) !important;
+    padding: 0 12px !important;
+    color: rgba(255, 255, 255, 0.90) !important;
+    box-shadow: none !important;
+    text-align: left;
+    transform: none !important;
+}
+
+.header-contact-form .header-choice-button:hover,
+.header-contact-form .header-choice-button:focus-visible {
+    border-color: rgba(240, 205, 69, 0.70) !important;
+    background:
+        linear-gradient(180deg, rgba(18, 15, 10, 0.98), rgba(5, 4, 3, 0.98)) !important;
+    color: #ffffff !important;
+    box-shadow: 0 0 18px rgba(240, 205, 69, 0.08) !important;
+}
+
+.header-contact-form .header-choice-button:hover :is(span, strong, i),
+.header-contact-form .header-choice-button:focus-visible :is(span, strong, i) {
+    color: #ffffff !important;
+}
+
+.header-choice-button .material-symbols-rounded {
+    color: rgba(240, 205, 69, 0.92);
+    font-size: 17px;
+}
+
+.header-choice-button strong {
+    overflow: hidden;
+    color: inherit;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.header-choice-button i {
+    justify-self: end;
+    color: rgba(255, 255, 255, 0.72);
+    transition: transform 220ms ease;
+}
+
+.header-choice.is-open .header-choice-button i {
+    transform: rotate(180deg);
+}
+
+.header-choice-menu {
+    position: absolute;
+    top: calc(100% + 7px);
+    left: 0;
+    right: 0;
+    z-index: 45;
+    display: grid;
+    gap: 3px;
+    max-height: 0;
+    overflow: hidden;
+    border: 1px solid rgba(240, 205, 69, 0.32);
+    border-radius: 10px;
+    background:
+        linear-gradient(180deg, rgba(13, 10, 7, 0.98), rgba(4, 3, 2, 0.99));
+    box-shadow:
+        0 18px 38px rgba(0, 0, 0, 0.42),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    opacity: 0;
+    padding: 0 6px;
+    pointer-events: none;
+    transform: translateY(-6px);
+    transition:
+        max-height 260ms ease,
+        opacity 200ms ease,
+        padding 200ms ease,
+        transform 260ms ease;
+}
+
+.header-choice.is-open .header-choice-menu {
+    max-height: 178px;
+    opacity: 1;
+    padding: 6px;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
+.header-contact-form .header-choice-menu button {
+    display: flex !important;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    min-height: 34px !important;
+    border: 0 !important;
+    border-radius: 7px !important;
+    background: transparent !important;
+    color: rgba(255, 255, 255, 0.86) !important;
+    box-shadow: none !important;
+    padding: 0 11px !important;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1;
+    text-align: left;
+    transform: none !important;
+}
+
+.header-contact-form .header-choice-menu button:hover,
+.header-contact-form .header-choice-menu button:focus-visible,
+.header-contact-form .header-choice-menu button[aria-selected="true"] {
+    background: linear-gradient(90deg, #ffe08a, #d69a17) !important;
+    color: #090604 !important;
+    outline: 0;
+}
+
+.mobile-menu-footer-line {
+    display: grid;
+    gap: 8px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding: 12px 12px 14px;
+}
+
+.mobile-menu-footer-line a {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    color: rgba(255, 255, 255, 0.76);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    line-height: 1.15;
+    text-decoration: none;
+}
+
+.mobile-menu-footer-line i {
+    color: #f0cd45;
+    font-size: 12px;
+}
+
+.mobile-menu-footer-line a:hover,
+.mobile-menu-footer-line a:focus-visible {
+    color: #ffffff;
 }
