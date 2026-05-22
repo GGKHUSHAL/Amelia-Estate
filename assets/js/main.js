@@ -1,21 +1,13 @@
-// Shared lead unlock state: once a visitor unlocks price/downloads, don't show that form again.
+// Shared lead unlock state for the current page view only.
 (() => {
-    const storageKey = "amelia-estate-lead-unlocked";
+    try {
+        window.localStorage.removeItem("amelia-estate-lead-unlocked");
+    } catch (error) {
+        // Local storage may be blocked; the page-view class still controls the state.
+    }
 
     const readUnlocked = () => {
-        try {
-            return window.localStorage.getItem(storageKey) === "1";
-        } catch (error) {
-            return document.body.classList.contains("is-lead-unlocked");
-        }
-    };
-
-    const writeUnlocked = () => {
-        try {
-            window.localStorage.setItem(storageKey, "1");
-        } catch (error) {
-            // Local storage may be disabled; the body class keeps the current page in sync.
-        }
+        return document.body.classList.contains("is-lead-unlocked");
     };
 
     const setUnlocked = () => {
@@ -24,14 +16,9 @@
             return;
         }
 
-        writeUnlocked();
         document.body.classList.add("is-lead-unlocked");
         window.dispatchEvent(new CustomEvent("amelia:lead-unlocked"));
     };
-
-    if (readUnlocked()) {
-        document.body.classList.add("is-lead-unlocked");
-    }
 
     window.AmeliaLeadUnlock = {
         isUnlocked: readUnlocked,
@@ -250,11 +237,37 @@
     });
 
     unlockForms.forEach((form) => {
+        const validateForm = () => {
+            const requiredInputs = Array.from(form.querySelectorAll("input[name='name'], input[name='phone']"));
+            const firstEmpty = requiredInputs.find((input) => !input.value.trim());
+
+            requiredInputs.forEach((input) => {
+                input.closest("label")?.classList.toggle("is-invalid", !input.value.trim());
+            });
+
+            if (firstEmpty) {
+                firstEmpty.focus();
+                return false;
+            }
+
+            return true;
+        };
+
         const unlockPanel = () => {
+            if (!validateForm()) {
+                return;
+            }
+
             revealHeaderUnlocks();
             window.AmeliaLeadUnlock?.unlock();
             window.AmeliaPricing?.unlockNow?.();
         };
+
+        form.querySelectorAll("input[name='name'], input[name='phone']").forEach((input) => {
+            input.addEventListener("input", () => {
+                input.closest("label")?.classList.remove("is-invalid");
+            });
+        });
 
         form.addEventListener("submit", (event) => {
             event.preventDefault();
