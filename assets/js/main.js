@@ -157,6 +157,34 @@
 })();
 
 (() => {
+    const unlockForms = document.querySelectorAll("[data-header-unlock-form]");
+
+    unlockForms.forEach((form) => {
+        const unlockPanel = () => {
+            const panel = form.closest(".header-price-unlock, .header-mega-content");
+
+            if (!panel) {
+                return;
+            }
+
+            panel.classList.add("is-unlocked");
+        };
+
+        form.addEventListener("submit", (event) => {
+            event.preventDefault();
+            unlockPanel();
+        });
+
+        form.querySelectorAll("button").forEach((button) => {
+            button.addEventListener("click", (event) => {
+                event.preventDefault();
+                unlockPanel();
+            });
+        });
+    });
+})();
+
+(() => {
     const mobileMenuCards = Array.from(document.querySelectorAll("[data-mobile-menu-card]"));
 
     if (!mobileMenuCards.length) {
