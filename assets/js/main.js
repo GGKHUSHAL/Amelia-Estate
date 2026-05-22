@@ -444,13 +444,16 @@
     const updateMobileHeaderState = () => {
         if (!isMobileHeader()) {
             siteHeader.classList.remove("is-mobile-scroll-active");
+            document.body.classList.remove("is-mobile-hero-active");
             return;
         }
 
         const heroBottom = heroSection.offsetTop + heroSection.offsetHeight;
         const revealPoint = Math.max(0, heroBottom - 1);
+        const isPastHero = window.scrollY >= revealPoint;
 
-        siteHeader.classList.toggle("is-mobile-scroll-active", window.scrollY >= revealPoint);
+        siteHeader.classList.toggle("is-mobile-scroll-active", isPastHero);
+        document.body.classList.toggle("is-mobile-hero-active", !isPastHero);
     };
 
     updateMobileHeaderState();
