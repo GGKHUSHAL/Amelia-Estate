@@ -18696,3 +18696,61 @@ body.mega-open {
     justify-content: stretch;
     text-align: left;
 }
+
+/* Header WhatsApp/chat buttons use the same green treatment as the hero slider. */
+.site-header a[href*="wa.me"],
+.mega-menu-overlay a[href*="wa.me"] {
+    border: 1px solid rgba(0, 210, 106, .38) !important;
+    background: rgba(0, 0, 0, 0.42) !important;
+    color: #00e676 !important;
+    box-shadow: none !important;
+}
+
+.site-header a[href*="wa.me"]::before,
+.mega-menu-overlay a[href*="wa.me"]::before {
+    display: none !important;
+    content: none !important;
+    animation: none !important;
+}
+
+.site-header a[href*="wa.me"] i,
+.site-header a[href*="wa.me"] .material-symbols-rounded,
+.mega-menu-overlay a[href*="wa.me"] i,
+.mega-menu-overlay a[href*="wa.me"] .material-symbols-rounded {
+    color: currentColor !important;
+}
+
+.mobile-menu-actions a[href*="wa.me"] i {
+    font-size: 18px;
+}
+
+.site-header-contact a[href*="wa.me"] i,
+.full-menu-footer a[href*="wa.me"] i,
+.mobile-menu-contact-list a[href*="wa.me"] i {
+    color: #00e676 !important;
+}
+
+.site-header a[href*="wa.me"]:hover,
+.mega-menu-overlay a[href*="wa.me"]:hover,
+.site-header a[href*="wa.me"]:focus-visible,
+.mega-menu-overlay a[href*="wa.me"]:focus-visible {
+    border-color: rgba(0, 230, 118, .72) !important;
+    background: rgba(0, 0, 0, 0.78) !important;
+    color: #42ff9a !important;
+    box-shadow: 0 12px 26px rgba(0, 0, 0, 0.26) !important;
+    transform: translateY(-2px) !important;
+}
+
+.mobile-menu-actions a[href*="wa.me"] {
+    background: rgba(0, 0, 0, 0.42) !important;
+}
+
+.mobile-menu-contact-list a[href*="wa.me"] {
+    background: rgba(0, 0, 0, 0.32) !important;
+}
+
+.mobile-menu-contact-list a[href*="wa.me"]:hover i,
+.site-header-contact a[href*="wa.me"]:hover i,
+.full-menu-footer a[href*="wa.me"]:hover i {
+    color: #42ff9a !important;
+}
