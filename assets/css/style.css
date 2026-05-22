@@ -20097,3 +20097,112 @@ body.mega-open {
         height: 1px !important;
     }
 }
+
+/* Final menu typography: lighter content across hover, full, and mobile menus. */
+.site-header .header-mega-panel,
+.mega-menu-overlay {
+    font-weight: 400 !important;
+}
+
+.site-header .header-mega-panel :is(p, a, span, small, em, li, label, input, select, button),
+.mega-menu-overlay :is(p, a, span, small, em, b, li, button) {
+    font-weight: 400 !important;
+}
+
+.site-header .header-mega-panel :is(strong, h2),
+.mega-menu-overlay :is(strong) {
+    font-weight: 500 !important;
+}
+
+.header-mega-kicker,
+.header-mega-media-copy span,
+.header-price-summary > span,
+.header-unlocked-badge,
+.header-plan-list strong em,
+.full-menu-index,
+.full-menu-column-kicker,
+.full-menu-preview span,
+.full-menu-footer span,
+.full-menu-footer a,
+.mobile-menu-kicker,
+.mobile-menu-index,
+.mobile-menu-card-preview span,
+.mobile-menu-divider,
+.mobile-menu-proof {
+    font-weight: 500 !important;
+}
+
+.header-mega-content h2,
+.header-mega-media-copy strong {
+    font-size: clamp(29px, 2.35vw, 37px) !important;
+    font-weight: 500 !important;
+}
+
+.header-plan-list strong {
+    font-size: 21px !important;
+    font-weight: 500 !important;
+}
+
+.header-plan-list small,
+.header-connect-grid small,
+.header-unlocked-price-list > span > strong,
+.header-unlocked-price-list > span > em,
+.header-download-grid :is(strong, em),
+.header-contact-form .header-choice-button :is(strong, span),
+.header-price-tabs button,
+.header-unlock-form button,
+.header-contact-form button,
+.header-price-actions a,
+.header-contact-form > a,
+.mobile-menu-list strong,
+.mobile-menu-mini-grid strong,
+.mobile-menu-price-list strong,
+.mobile-menu-price-list b,
+.mobile-menu-price-list em,
+.mobile-menu-contact-list strong,
+.mobile-menu-unlock,
+.mobile-menu-cta a,
+.mobile-menu-actions a,
+.mobile-menu-story,
+.mobile-menu-pills span {
+    font-weight: 500 !important;
+}
+
+.header-feature-grid span,
+.header-icon-grid span,
+.header-connect-grid span,
+.header-price-points span,
+.header-check-grid,
+.header-mega-content > p:not(.header-mega-kicker),
+.header-mega-media-copy a,
+.header-price-summary > small,
+.header-download-grid small,
+.header-download-note,
+.full-menu-preview small,
+.full-menu-quote,
+.mobile-menu-copy small,
+.mobile-menu-card-preview small,
+.mobile-menu-list small,
+.mobile-menu-price-list small,
+.mobile-menu-price-summary small,
+.mobile-menu-note,
+.mobile-menu-contact-list span {
+    font-weight: 400 !important;
+}
+
+@media (max-width: 760px) {
+    .mobile-menu-copy strong {
+        font-size: 18px !important;
+        font-weight: 500 !important;
+    }
+
+    .mobile-menu-card-preview strong {
+        font-size: 22px !important;
+        font-weight: 500 !important;
+    }
+
+    .mobile-menu-stats strong,
+    .mobile-menu-price-summary strong {
+        font-weight: 500 !important;
+    }
+}
