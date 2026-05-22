@@ -18794,6 +18794,19 @@ body.mega-open {
     background: rgba(0, 0, 0, 0.32) !important;
 }
 
+.site-header-topbar .site-header-contact a[href*="wa.me"] {
+    min-height: 24px;
+    border-radius: 999px;
+    padding: 0 9px;
+    gap: 7px;
+    border-color: rgba(0, 210, 106, .42) !important;
+    background: rgba(0, 210, 106, .055) !important;
+}
+
+.site-header-topbar .site-header-contact a[href*="wa.me"] i {
+    font-size: 12px;
+}
+
 .mobile-menu-contact-list a[href*="wa.me"]:hover i,
 .site-header-contact a[href*="wa.me"]:hover i,
 .full-menu-footer a[href*="wa.me"]:hover i {
