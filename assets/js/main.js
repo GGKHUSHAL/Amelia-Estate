@@ -3795,6 +3795,56 @@ if (siteVisitForm) {
     });
 }
 
+// Mobile compass CTA: opens the extra quick actions from the floating center button.
+(() => {
+    const mobileCta = document.querySelector("[data-mobile-cta]");
+    const mobileCtaToggle = mobileCta?.querySelector("[data-mobile-cta-toggle]");
+    const mobileCtaMenu = mobileCta?.querySelector("#mobilePremiumCtaMenu");
+
+    if (!mobileCta || !mobileCtaToggle || !mobileCtaMenu) {
+        return;
+    }
+
+    const isOpen = () => document.body.classList.contains("is-mobile-cta-open");
+
+    const setMobileCtaOpen = (shouldOpen) => {
+        document.body.classList.toggle("is-mobile-cta-open", shouldOpen);
+        mobileCtaToggle.setAttribute("aria-expanded", String(shouldOpen));
+        mobileCtaToggle.setAttribute("aria-label", shouldOpen ? "Close quick menu" : "Open quick menu");
+        mobileCtaMenu.setAttribute("aria-hidden", String(!shouldOpen));
+    };
+
+    mobileCtaToggle.addEventListener("click", (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        setMobileCtaOpen(!isOpen());
+    });
+
+    mobileCta.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", () => setMobileCtaOpen(false));
+    });
+
+    document.addEventListener("click", (event) => {
+        if (!isOpen() || mobileCta.contains(event.target)) {
+            return;
+        }
+
+        setMobileCtaOpen(false);
+    });
+
+    document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") {
+            setMobileCtaOpen(false);
+        }
+    });
+
+    window.addEventListener("resize", () => {
+        if (!window.matchMedia("(max-width: 767px)").matches) {
+            setMobileCtaOpen(false);
+        }
+    });
+})();
+
 // Scroll reveal: toggles .is-visible for sections that animate when entering the viewport.
 const revealSections = document.querySelectorAll(".reveal-on-scroll");
 
