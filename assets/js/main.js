@@ -434,26 +434,40 @@
 (() => {
     const siteHeader = document.querySelector(".site-header");
     const heroSection = document.querySelector(".hero-section");
+    const mobileStructSliderSection = document.querySelector(".struct-slider-section");
 
     if (!siteHeader || !heroSection) {
         return;
     }
 
     const isMobileHeader = () => window.matchMedia("(max-width: 767px)").matches;
+    const isMobileStructSliderActive = () => {
+        if (!mobileStructSliderSection) {
+            return false;
+        }
+
+        const rect = mobileStructSliderSection.getBoundingClientRect();
+        const viewportHeight = window.innerHeight || document.documentElement.clientHeight || 1;
+
+        return rect.top < viewportHeight * 0.72 && rect.bottom > viewportHeight * 0.28;
+    };
 
     const updateMobileHeaderState = () => {
         if (!isMobileHeader()) {
             siteHeader.classList.remove("is-mobile-scroll-active");
             document.body.classList.remove("is-mobile-hero-active");
+            document.body.classList.remove("is-mobile-struct-slider-active");
             return;
         }
 
         const heroBottom = heroSection.offsetTop + heroSection.offsetHeight;
         const revealPoint = Math.max(0, heroBottom - 1);
         const isPastHero = window.scrollY >= revealPoint;
+        const isStructSliderActive = isMobileStructSliderActive();
 
-        siteHeader.classList.toggle("is-mobile-scroll-active", isPastHero);
+        siteHeader.classList.toggle("is-mobile-scroll-active", isPastHero && !isStructSliderActive);
         document.body.classList.toggle("is-mobile-hero-active", !isPastHero);
+        document.body.classList.toggle("is-mobile-struct-slider-active", isStructSliderActive);
     };
 
     updateMobileHeaderState();
@@ -3800,18 +3814,53 @@ if (siteVisitForm) {
     const mobileCta = document.querySelector("[data-mobile-cta]");
     const mobileCtaToggle = mobileCta?.querySelector("[data-mobile-cta-toggle]");
     const mobileCtaMenu = mobileCta?.querySelector("#mobilePremiumCtaMenu");
+    const mobileCtaIdleDelay = 2400;
+    let mobileCtaIdleTimer = 0;
 
     if (!mobileCta || !mobileCtaToggle || !mobileCtaMenu) {
         return;
     }
 
     const isOpen = () => document.body.classList.contains("is-mobile-cta-open");
+    const isMobileCtaViewport = () => window.matchMedia("(max-width: 767px)").matches;
+
+    const setMobileCtaIdle = (shouldHide) => {
+        document.body.classList.toggle("is-mobile-cta-idle", shouldHide && !isOpen());
+    };
+
+    const scheduleMobileCtaIdle = () => {
+        window.clearTimeout(mobileCtaIdleTimer);
+
+        if (!isMobileCtaViewport()) {
+            setMobileCtaIdle(false);
+            return;
+        }
+
+        mobileCtaIdleTimer = window.setTimeout(() => {
+            setMobileCtaIdle(true);
+        }, mobileCtaIdleDelay);
+    };
+
+    const wakeMobileCta = () => {
+        if (!isMobileCtaViewport()) {
+            setMobileCtaIdle(false);
+            return;
+        }
+
+        setMobileCtaIdle(false);
+        scheduleMobileCtaIdle();
+    };
 
     const setMobileCtaOpen = (shouldOpen) => {
         document.body.classList.toggle("is-mobile-cta-open", shouldOpen);
+        setMobileCtaIdle(false);
         mobileCtaToggle.setAttribute("aria-expanded", String(shouldOpen));
         mobileCtaToggle.setAttribute("aria-label", shouldOpen ? "Close quick menu" : "Open quick menu");
         mobileCtaMenu.setAttribute("aria-hidden", String(!shouldOpen));
+
+        if (!shouldOpen) {
+            scheduleMobileCtaIdle();
+        }
     };
 
     mobileCtaToggle.addEventListener("click", (event) => {
@@ -3838,11 +3887,20 @@ if (siteVisitForm) {
         }
     });
 
+    window.addEventListener("scroll", wakeMobileCta, { passive: true });
+    window.addEventListener("touchmove", wakeMobileCta, { passive: true });
+    window.addEventListener("wheel", wakeMobileCta, { passive: true });
+
     window.addEventListener("resize", () => {
         if (!window.matchMedia("(max-width: 767px)").matches) {
             setMobileCtaOpen(false);
+            setMobileCtaIdle(false);
+        } else {
+            scheduleMobileCtaIdle();
         }
     });
+
+    scheduleMobileCtaIdle();
 })();
 
 // Scroll reveal: toggles .is-visible for sections that animate when entering the viewport.

@@ -17143,6 +17143,13 @@ body.mega-open {
     overflow: hidden;
 }
 
+body.struct-slider-locked .site-header {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-110%);
+    visibility: hidden;
+}
+
 .mega-menu-overlay,
 .mega-menu-overlay * {
     box-sizing: border-box;
@@ -20539,7 +20546,7 @@ body.mega-open {
         z-index: 1200 !important;
         display: block !important;
         width: 100% !important;
-        min-height: calc(94px + env(safe-area-inset-bottom)) !important;
+        min-height: calc(78px + env(safe-area-inset-bottom)) !important;
         overflow: visible !important;
         border: 0 !important;
         border-radius: 0 !important;
@@ -20552,8 +20559,8 @@ body.mega-open {
         opacity: 1;
         transform: none;
         transition:
-            opacity 220ms ease,
-            transform 260ms ease,
+            opacity 420ms ease,
+            transform 560ms cubic-bezier(0.16, 1, 0.3, 1),
             visibility 0ms linear 0ms;
     }
 
@@ -20597,19 +20604,19 @@ body.mega-open {
         grid-template-columns: minmax(98px, 1fr) 66px minmax(98px, 1fr);
         align-items: end;
         gap: 6px;
-        min-height: calc(76px + env(safe-area-inset-bottom));
+        min-height: calc(62px + env(safe-area-inset-bottom));
         overflow: visible;
         border: 0;
         background: transparent;
         box-shadow: none;
         isolation: isolate;
-        padding: 28px 8px calc(9px + env(safe-area-inset-bottom));
+        padding: 20px 8px calc(6px + env(safe-area-inset-bottom));
     }
 
     .mobile-premium-cta__bar::before {
         content: "";
         position: absolute;
-        inset: 18px 0 0;
+        inset: 14px 0 0;
         z-index: -1;
         border: 1px solid rgba(240, 205, 69, 0.28);
         border-radius: 18px 18px 0 0;
@@ -20631,7 +20638,7 @@ body.mega-open {
         justify-content: center !important;
         gap: 5px !important;
         min-width: 0 !important;
-        min-height: 38px !important;
+        min-height: 34px !important;
         overflow: hidden;
         border: 1px solid rgba(255, 255, 255, 0.11) !important;
         border-radius: 12px !important;
@@ -20709,7 +20716,7 @@ body.mega-open {
 
     .mobile-premium-cta__toggle {
         position: absolute;
-        top: -9px;
+        top: -12px;
         left: 50%;
         z-index: 3;
         display: inline-grid;
@@ -20901,8 +20908,31 @@ body.mega-open {
         transform: translateY(110%) !important;
         visibility: hidden !important;
         transition:
-            opacity 190ms ease,
-            transform 240ms ease,
-            visibility 0ms linear 240ms;
+            opacity 360ms ease,
+            transform 520ms cubic-bezier(0.7, 0, 0.84, 0),
+            visibility 0ms linear 520ms;
+    }
+
+    body.is-mobile-cta-idle .mobile-premium-cta {
+        opacity: 0 !important;
+        pointer-events: none !important;
+        transform: translateY(110%) !important;
+        visibility: hidden !important;
+        transition:
+            opacity 360ms ease,
+            transform 520ms cubic-bezier(0.7, 0, 0.84, 0),
+            visibility 0ms linear 520ms;
+    }
+
+    body.struct-slider-locked .mobile-premium-cta,
+    body.is-mobile-struct-slider-active .mobile-premium-cta {
+        opacity: 0 !important;
+        pointer-events: none !important;
+        transform: translateY(110%) !important;
+        visibility: hidden !important;
+        transition:
+            opacity 360ms ease,
+            transform 520ms cubic-bezier(0.7, 0, 0.84, 0),
+            visibility 0ms linear 520ms;
     }
 }
