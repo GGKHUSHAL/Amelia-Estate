@@ -10921,21 +10921,40 @@
 }
 
 @media (max-width: 767px) {
+    .ideal-floor-header {
+        gap: 8px !important;
+        margin-bottom: 18px !important;
+    }
+
+    .ideal-floor-heading>p:not(.ideal-floor-eyebrow) {
+        margin-top: 8px !important;
+        font-size: 15.5px !important;
+        font-weight: 360 !important;
+        line-height: 1.42 !important;
+        letter-spacing: 0.012em !important;
+    }
+
     .ideal-floor-badges {
-        gap: 7px !important;
+        top: 10px !important;
+        left: 9px !important;
+        gap: 5px !important;
         align-items: flex-start !important;
     }
 
     .ideal-floor-badges span,
     .ideal-floor-badges strong {
-        min-height: 30px !important;
-        padding: 8px 15px !important;
+        min-height: 28px !important;
+        padding: 7px 13px !important;
         border-radius: 999px !important;
-        font-size: 11px !important;
-        font-weight: 800 !important;
+        font-size: 10.5px !important;
+        font-weight: 560 !important;
         line-height: 1 !important;
-        letter-spacing: 0.04em !important;
+        letter-spacing: 0.07em !important;
         white-space: nowrap !important;
+    }
+
+    .ideal-floor-size-tabs button {
+        font-weight: 520 !important;
     }
 
     .project-plan-tabs {
@@ -11258,8 +11277,8 @@ body.is-mobile-struct-slider-active .site-header {
 @media (max-width: 639px) {
     .struct-slider-section {
         position: relative !important;
-        height: 100svh !important;
-        min-height: 100svh !important;
+        height: var(--amelia-mobile-viewport-height, 100dvh) !important;
+        min-height: var(--amelia-mobile-viewport-height, 100dvh) !important;
         overflow: hidden !important;
         background: #111111 !important;
         color: #ffffff !important;
@@ -11273,10 +11292,10 @@ body.is-mobile-struct-slider-active .site-header {
         justify-content: flex-start !important;
         width: 100% !important;
         max-width: none !important;
-        height: 100svh !important;
-        min-height: 100svh !important;
+        height: var(--amelia-mobile-viewport-height, 100dvh) !important;
+        min-height: var(--amelia-mobile-viewport-height, 100dvh) !important;
         gap: 0 !important;
-        padding: clamp(70px, 14svh, 88px) clamp(12px, 4vw, 16px) max(28px, env(safe-area-inset-bottom)) clamp(68px, 21vw, 74px) !important;
+        padding: clamp(70px, calc(var(--amelia-mobile-viewport-height, 100dvh) * 0.14), 88px) clamp(12px, 4vw, 16px) max(28px, env(safe-area-inset-bottom)) clamp(68px, 21vw, 74px) !important;
         box-sizing: border-box !important;
     }
 

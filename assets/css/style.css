@@ -21,6 +21,7 @@ body {
     overflow-y: auto;
     scrollbar-width: none;
     background: #ffffff;
+    --amelia-mobile-viewport-height: 100dvh;
     --content-width: min(100% - 48px, 1200px);
     --sticky-availability-height: 100vh;
 }
@@ -12667,9 +12668,9 @@ body.struct-slider-locked {
     font-family: "Jost", "Inter", Arial, sans-serif;
     position: relative;
     height: 100vh;
-    height: 100svh;
+    height: 100dvh;
     min-height: 100vh;
-    min-height: 100svh;
+    min-height: 100dvh;
     overflow: hidden;
     background: #111111;
     color: #ffffff;
@@ -12678,7 +12679,7 @@ body.struct-slider-locked {
 
 .struct-slider-inner {
     min-height: 100vh;
-    min-height: 100svh;
+    min-height: 100dvh;
     height: 100%;
     box-sizing: border-box;
     gap: clamp(28px, 6vw, 96px);

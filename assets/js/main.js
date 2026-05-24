@@ -1,5 +1,20 @@
 // Shared lead unlock state for the current page view only.
 (() => {
+    const setMobileViewportHeight = () => {
+        const viewportHeight = window.visualViewport?.height || window.innerHeight;
+
+        document.documentElement.style.setProperty("--amelia-mobile-viewport-height", `${viewportHeight}px`);
+        document.body?.style.setProperty("--amelia-mobile-viewport-height", `${viewportHeight}px`);
+    };
+
+    setMobileViewportHeight();
+    window.addEventListener("resize", setMobileViewportHeight);
+    window.addEventListener("orientationchange", setMobileViewportHeight);
+    window.visualViewport?.addEventListener("resize", setMobileViewportHeight);
+    window.visualViewport?.addEventListener("scroll", setMobileViewportHeight);
+})();
+
+(() => {
     try {
         window.localStorage.removeItem("amelia-estate-lead-unlocked");
     } catch (error) {
