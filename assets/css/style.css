@@ -1,4 +1,4 @@
-/* Global base styles and project fonts. */
+﻿/* Global base styles and project fonts. */
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Jost:wght@400;500;600;700&display=swap");
 
 * {
@@ -3097,7 +3097,7 @@ body.is-project-plan-lightbox-open {
 .floor-price-grid span {
     color: rgba(255, 255, 255, 0.58);
     font-size: 13px;
-    font-weight: 500;
+    font-weight: 300;
     line-height: 18px;
 }
 
@@ -3168,7 +3168,7 @@ body.is-project-plan-lightbox-open {
     margin: 8px 0 0;
     color: #D5AE66;
     font-size: 18px;
-    font-weight: 600;
+    font-weight: 300;
     line-height: 24px;
 }
 
@@ -4701,7 +4701,7 @@ body.is-pricing-modal-open {
     margin: 0 0 8px;
     color: #ffffff;
     font-size: 24px;
-    font-weight: 800;
+    font-weight: 500;
     line-height: 30px;
 }
 
@@ -4817,7 +4817,7 @@ body.is-pricing-modal-open {
     color: #ffff;
     font-family: "Jost", "Inter", Arial, sans-serif;
     font-size: 12px;
-    font-weight: 800;
+    font-weight: 600;
     line-height: 16px;
     letter-spacing: 0.24em;
     text-transform: uppercase;
@@ -4943,8 +4943,8 @@ body.is-pricing-modal-open {
     display: block;
     color: #ffffff;
     font-family: "Jost", "Inter", Arial, sans-serif;
-    font-size: 12px;
-    font-weight: 800;
+    font-size: 16px;
+    font-weight: 500;
     line-height: 16px;
 }
 
@@ -13091,7 +13091,7 @@ body {
     .property-snapshot-meta dt,
     .footer-redesign-marketing span,
     .footer-redesign-column strong) {
-    font-size: 12.5px !important;
+    font-size: 14.5px !important;
     line-height: 1.45 !important;
 }
 
@@ -14455,7 +14455,7 @@ body {
     color: #f0cd45 !important;
     font-family: "Jost", "Inter", Arial, sans-serif !important;
     font-size: 13px !important;
-    font-weight: 800 !important;
+    font-weight: 500 !important;
     line-height: 1 !important;
     letter-spacing: 0.04em !important;
     text-align: center !important;

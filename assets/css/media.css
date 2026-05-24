@@ -1,4 +1,4 @@
-/* Responsive Styles */
+﻿/* Responsive Styles */
 
 @keyframes heroStoryProgress {
     from {
@@ -3433,7 +3433,7 @@
 
     .pricing-title-block p {
         margin-top: 4px;
-        font-size: 12px;
+        font-size: 16px;
         line-height: 16px;
     }
 
@@ -4488,7 +4488,7 @@
     }
 
     .pricing-title-block p {
-        font-size: 11px;
+        font-size: 16px;
         line-height: 14px;
     }
 
@@ -7756,8 +7756,16 @@
 
 @media (max-width: 767px) {
     .transparent-pricing-section {
-        padding-top: 24px !important;
+        padding-top: 28px !important;
         padding-bottom: 28px !important;
+    }
+
+    .transparent-pricing-eyebrow {
+        margin: 0 auto 20px !important;
+    }
+
+    .transparent-pricing-eyebrow+h2 {
+        margin-top: 0 !important;
     }
 
     .transparent-pricing-section .pricing-left,
@@ -7775,7 +7783,7 @@
         bottom: auto !important;
         min-height: 30px !important;
         padding: 0 14px !important;
-        font-size: 10px !important;
+        font-size: 12.5px !important;
     }
 
     .transparent-pricing-section .floor-price-panel {
@@ -7815,7 +7823,7 @@
         min-height: 0 !important;
         padding: 12px 24px !important;
         gap: 10px !important;
-        font-size: 15.5px !important;
+        font-size: 16px !important;
         border-radius: 999px !important;
     }
 
@@ -8196,8 +8204,7 @@
 @media (max-width: 767px) {
     .ideal-floor-section {
         min-height: auto !important;
-        padding-top: 34px !important;
-        padding-bottom: 42px !important;
+        padding: 28px 16px 22px !important;
     }
 
     .ideal-floor-inner {
@@ -8209,8 +8216,20 @@
         margin-bottom: 24px !important;
     }
 
+    .ideal-floor-eyebrow {
+        margin: 0 auto 20px !important;
+    }
+
+    .ideal-floor-eyebrow+h2 {
+        margin-top: 0 !important;
+    }
+
     .ideal-floor-heading>p:not(.ideal-floor-eyebrow) {
         margin-top: 6px !important;
+    }
+
+    .ideal-floor-selector>span {
+        color: #ffffff !important;
     }
 
     .ideal-floor-card {
@@ -8355,7 +8374,7 @@
 /* Mobile project plans: match Section 8 badge treatment and center intro copy. */
 @media (max-width: 767px) {
     .project-plans-section {
-        padding-top: 46px !important;
+        padding-top: 28px !important;
     }
 
     .project-plans-header,
@@ -8368,6 +8387,14 @@
     .project-plans-copy>p:not(.project-plans-eyebrow) {
         margin-right: auto !important;
         margin-left: auto !important;
+    }
+
+    .project-plans-eyebrow {
+        margin: 0 auto 20px !important;
+    }
+
+    .project-plans-eyebrow+h2 {
+        margin-top: 0 !important;
     }
 
     .project-plan-variant-bar {
@@ -8403,7 +8430,8 @@
         height: 30px !important;
         padding: 0 5px !important;
         border-radius: 10px !important;
-        font-size: 9px !important;
+        font-size: 11.5px !important;
+        font-weight: 500 !important;
         line-height: 1 !important;
     }
 
@@ -8420,7 +8448,7 @@
         min-height: 22px !important;
         border-radius: 999px !important;
         padding: 5px 9px !important;
-        font-size: 8px !important;
+        font-size: 10.5px !important;
         font-weight: 500 !important;
         line-height: 1 !important;
         letter-spacing: 0.03em !important;
@@ -9673,7 +9701,7 @@
         width: 100% !important;
         max-width: 100% !important;
         margin: 0 0 5px !important;
-        font-size: 21px !important;
+        font-size: 24px !important;
         line-height: 22px !important;
         text-align: left !important;
         text-wrap: normal !important;
@@ -10757,6 +10785,21 @@
         font-size: 15px !important;
         line-height: 1.28 !important;
     }
+
+    .project-plan-cta {
+        font-size: 16px !important;
+        font-weight: 500 !important;
+    }
+
+    .project-plan-cta svg {
+        width: 24px !important;
+        height: 24px !important;
+        stroke-width: 1.55 !important;
+    }
+
+    .ideal-floor-price-btn {
+        font-size: 16px !important;
+    }
 }
 
 /* Targeted mobile card sizing fixes. */
@@ -10835,12 +10878,12 @@
     }
 
     .transparent-pricing-section .floor-price-grid button span {
-        font-size: 12px !important;
+        font-size: 17px !important;
         line-height: 14px !important;
     }
 
     .transparent-pricing-section .floor-price-grid button strong {
-        font-size: 18px !important;
+        font-size: 22px !important;
         line-height: 22px !important;
     }
 
@@ -10929,7 +10972,7 @@
     .ideal-floor-heading>p:not(.ideal-floor-eyebrow) {
         margin-top: 8px !important;
         font-size: 15.5px !important;
-        font-weight: 360 !important;
+        font-weight: 300 !important;
         line-height: 1.42 !important;
         letter-spacing: 0.012em !important;
     }
@@ -10946,8 +10989,8 @@
         min-height: 28px !important;
         padding: 7px 13px !important;
         border-radius: 999px !important;
-        font-size: 10.5px !important;
-        font-weight: 560 !important;
+        font-size: 11.5px !important;
+        font-weight: 500 !important;
         line-height: 1 !important;
         letter-spacing: 0.07em !important;
         white-space: nowrap !important;
@@ -10955,6 +10998,13 @@
 
     .ideal-floor-size-tabs button {
         font-weight: 520 !important;
+    }
+
+    .ideal-floor-spec span,
+    .ideal-floor-spec strong {
+        font-weight: 480 !important;
+        letter-spacing: 0.04em !important;
+        word-spacing: 0.08em !important;
     }
 
     .project-plan-tabs {
@@ -10968,19 +11018,20 @@
 
     .project-plan-tabs button {
         height: 50px !important;
-        gap: 6px !important;
+        gap: 7px !important;
         padding: 0 6px !important;
-        font-size: 11.5px !important;
-        font-weight: 700 !important;
+        font-size: 13.5px !important;
+        font-weight: 420 !important;
         line-height: 1.1 !important;
         white-space: normal !important;
     }
 
     .project-plan-tabs .project-plan-tab-icon,
     .project-plan-tabs svg {
-        width: 19px !important;
-        height: 19px !important;
-        flex: 0 0 19px !important;
+        width: 26px !important;
+        height: 26px !important;
+        flex: 0 0 26px !important;
+        stroke-width: 1.55 !important;
     }
 
     .transparent-pricing-section .pricing-spec-grid {
@@ -11011,14 +11062,14 @@
     }
 
     .transparent-pricing-section .pricing-spec span {
-        font-size: 11.5px !important;
-        font-weight: 700 !important;
+        font-size: 12.5px !important;
+        font-weight: 400 !important;
         line-height: 13px !important;
     }
 
     .transparent-pricing-section .pricing-spec strong {
         font-size: 15px !important;
-        font-weight: 800 !important;
+        font-weight: 400 !important;
         line-height: 17px !important;
     }
 
@@ -11031,8 +11082,8 @@
     }
 
     .transparent-pricing-section .selected-price-box>span {
-        font-size: 11.5px !important;
-        font-weight: 800 !important;
+        font-size: 13.5px !important;
+        font-weight: 500 !important;
         line-height: 13px !important;
     }
 
@@ -11044,7 +11095,7 @@
 
     .transparent-pricing-section .selected-price-box p {
         margin-top: 4px !important;
-        font-size: 12px !important;
+        font-size: 15px !important;
         line-height: 15px !important;
     }
 
@@ -11470,5 +11521,24 @@ body.is-mobile-struct-slider-active .site-header {
         font-size: inherit !important;
         font-weight: inherit !important;
         line-height: inherit !important;
+    }
+}
+
+@media (max-width: 767px) {
+    .ideal-floor-section .ideal-floor-price-btn {
+        font-size: 16px !important;
+    }
+}
+
+@media (max-width: 767px) {
+    .project-plans-section .project-plan-cta {
+        font-size: 16px !important;
+        font-weight: 500 !important;
+    }
+
+    .project-plans-section .project-plan-cta svg {
+        width: 24px !important;
+        height: 24px !important;
+        stroke-width: 1.55 !important;
     }
 }
