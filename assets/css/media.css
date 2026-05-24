@@ -1298,31 +1298,6 @@
         line-height: 24px;
     }
 
-    .booking-enquiry-section {
-        min-height: 0;
-        padding: 36px 32px 42px;
-    }
-
-    .booking-enquiry-inner {
-        grid-template-columns: minmax(0, 1fr) minmax(300px, 400px);
-        gap: 24px;
-        width: min(100%, 980px);
-    }
-
-    .booking-enquiry-image {
-        height: 460px;
-    }
-
-    .booking-enquiry-form {
-        min-height: 450px;
-        padding: 28px 30px 24px;
-    }
-
-    .booking-trust-row {
-        flex-wrap: wrap;
-        row-gap: 8px;
-    }
-
     .differentiation-section {
         height: auto;
         background: #000000 url("../img/Differentiation Banner/89913c4de3bacd517a6920d106fe6f7082f9f0a4.jpg") center / cover no-repeat;
@@ -1957,27 +1932,6 @@
         line-height: 23px;
     }
 
-    .booking-enquiry-section {
-        padding: 36px 40px 44px;
-    }
-
-    .booking-enquiry-inner {
-        grid-template-columns: 1fr;
-        gap: 28px;
-        max-width: 680px;
-    }
-
-    .booking-enquiry-image {
-        height: 340px;
-    }
-
-    .booking-enquiry-panel {
-        width: 100%;
-    }
-
-    .booking-enquiry-form {
-        min-height: 0;
-    }
 }
 
 @media (min-width: 768px) and (max-width: 899px) {
@@ -3565,63 +3519,6 @@
         transform: translateY(22px);
     }
 
-    .booking-enquiry-section {
-        padding: 72px 20px 34px;
-    }
-
-    .booking-enquiry-inner {
-        display: block;
-        width: 100%;
-    }
-
-    .booking-enquiry-image {
-        height: 250px;
-    }
-
-    .booking-enquiry-panel {
-        margin-top: 18px;
-    }
-
-    .booking-enquiry-form {
-        min-height: 0;
-        padding: 28px 22px 24px;
-    }
-
-    .booking-enquiry-form p {
-        margin: 10px 0 24px;
-        font-size: 13px;
-        line-height: 19px;
-    }
-
-    .booking-enquiry-form label {
-        margin-bottom: 20px;
-    }
-
-    .booking-enquiry-form label>span:first-child {
-        margin-bottom: 9px;
-        font-size: 11px;
-        line-height: 15px;
-    }
-
-    .booking-enquiry-form input,
-    .booking-country {
-        font-size: 13px;
-    }
-
-    .booking-enquiry-form button {
-        display: flex;
-        justify-content: center;
-        padding: 0 12px;
-        letter-spacing: 0.13em;
-        min-height: 40px;
-        font-size: 13.5px;
-    }
-
-    .booking-trust-row svg {
-        width: 15px;
-        height: 15px;
-    }
-
     .differentiation-banner {
         min-height: 660px;
         flex-direction: column;
@@ -3745,29 +3642,6 @@
 
     .hero-whatsapp-btn {
         height: 49px;
-    }
-
-    .booking-enquiry-section {
-        padding: 140px 14px 42px;
-    }
-
-    .booking-enquiry-image {
-        height: 238px;
-    }
-
-    .booking-enquiry-form {
-        padding: 24px 18px 22px;
-    }
-
-    .booking-trust-row {
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 5px;
-        align-items: center;
-        width: 100%;
-        font-size: 9px;
-        line-height: 5px;
-        letter-spacing: 0;
     }
 
     .project-plans-section {
@@ -7345,12 +7219,9 @@
         min-height: 22px !important;
     }
 
-    .booking-enquiry-form label>span:first-child,
     .pricing-unlock-form label>span,
-    .booking-enquiry-form input,
     .pricing-unlock-form input,
-    .site-visit-form input,
-    .booking-country {
+    .site-visit-form input {
         font-size: 14px !important;
     }
 
@@ -7450,130 +7321,6 @@
         margin-bottom: 8px !important;
         overflow: visible !important;
     }
-}
-
-/* Final mobile booking form polish. */
-@media (max-width: 767px) {
-    .booking-enquiry-section {
-        display: flex !important;
-        min-height: calc(100svh - 73px) !important;
-        align-items: center !important;
-        padding: 14px 12px 16px !important;
-        overflow: hidden !important;
-    }
-
-    .booking-enquiry-inner {
-        display: block !important;
-        width: 100% !important;
-        max-width: 360px !important;
-        margin: 0 auto !important;
-    }
-
-    .booking-enquiry-image {
-        display: none !important;
-    }
-
-    .booking-enquiry-panel {
-        width: 100% !important;
-        margin-top: 0 !important;
-    }
-
-    .booking-enquiry-form {
-        width: 100% !important;
-        min-height: 0 !important;
-        max-height: calc(100svh - 112px) !important;
-        border-radius: 18px !important;
-        padding: 18px 16px 14px !important;
-    }
-
-    .booking-enquiry-form p {
-        margin: 8px 0 16px !important;
-        font-size: 12px !important;
-        line-height: 1.45 !important;
-    }
-
-    .booking-enquiry-form label {
-        margin-bottom: 12px !important;
-    }
-
-    .booking-enquiry-form label>span:first-child {
-        margin-bottom: 5px !important;
-        line-height: 1 !important;
-        letter-spacing: 0.09em !important;
-    }
-
-    .booking-phone-field,
-    .booking-enquiry-form input {
-        height: 30px !important;
-        min-height: 30px !important;
-        font-size: 12.5px !important;
-    }
-
-    .booking-country {
-        gap: 5px !important;
-        margin-right: 6px !important;
-        font-size: 12px !important;
-    }
-
-    .booking-flag {
-        width: 15px !important;
-        height: 9px !important;
-    }
-
-    .booking-country-arrow {
-        width: 5px !important;
-        height: 5px !important;
-    }
-
-    .booking-trust-row span {
-        position: relative !important;
-        min-width: 0 !important;
-        display: flex !important;
-        flex-direction: column !important;
-        justify-content: center !important;
-        align-items: center !important;
-        gap: 4px !important;
-        padding: 4px 6px !important;
-        border: 0 !important;
-        border-radius: 0 !important;
-        background: transparent !important;
-        white-space: normal !important;
-        text-align: center !important;
-    }
-
-    .booking-trust-row span+span::before {
-        display: block !important;
-        position: absolute !important;
-        left: 0 !important;
-        top: 50% !important;
-        width: 1px !important;
-        height: 25px !important;
-        margin-right: 0 !important;
-        background: rgba(240, 205, 69, 0.35) !important;
-        transform: translateY(-50%) !important;
-    }
-
-}
-
-@media (max-width: 360px) {
-    .booking-enquiry-section {
-        padding: 12px 12px 14px !important;
-    }
-
-    .booking-enquiry-form {
-        padding: 17px 16px 13px !important;
-    }
-
-    .booking-enquiry-form p {
-        margin-bottom: 14px !important;
-        font-size: 11.5px !important;
-        line-height: 1.42 !important;
-    }
-
-    .booking-enquiry-form label {
-        margin-bottom: 11px !important;
-    }
-
 }
 
 /* Construction mobile fit: keep status cards equal and bank tiles readable. */
@@ -8445,15 +8192,6 @@
     }
 }
 
-/* Mobile booking enquiry label and heading polish. */
-@media (max-width: 767px) {
-    .booking-enquiry-section {
-        gap: 14px !important;
-        padding-top: 42px !important;
-    }
-
-}
-
 /* Mobile choose ideal floor: tighter card, pills, and spec boxes. */
 @media (max-width: 767px) {
     .ideal-floor-section {
@@ -9146,18 +8884,6 @@
         line-height: 11px !important;
     }
 
-    .booking-enquiry-section {
-        min-height: auto !important;
-        align-items: center !important;
-        justify-content: center !important;
-        padding-top: 34px !important;
-        padding-bottom: 34px !important;
-    }
-
-    .booking-enquiry-inner {
-        margin-top: 0 !important;
-        margin-bottom: 0 !important;
-    }
 }
 
 @media (max-width: 767px) {
@@ -9557,40 +9283,120 @@
     }
 }
 
-/* Mobile booking enquiry after the structure slider: give the form room to breathe. */
+/* Booking enquiry tablet layout. */
+@media (min-width: 768px) and (max-width: 1023px) {
+    .booking-enquiry-section {
+        min-height: 0 !important;
+        padding: 42px 32px 46px !important;
+    }
+
+    .booking-enquiry-inner {
+        grid-template-columns: 1fr !important;
+        gap: 28px !important;
+        width: min(100%, 680px) !important;
+    }
+
+    .booking-enquiry-image {
+        height: 340px !important;
+    }
+
+    .booking-enquiry-panel {
+        width: 100% !important;
+    }
+
+    .booking-enquiry-form {
+        min-height: 0 !important;
+    }
+
+    .booking-trust-row {
+        flex-wrap: wrap !important;
+        row-gap: 8px !important;
+    }
+}
+
+/* Booking enquiry mobile layout. */
 @media (max-width: 767px) {
     .booking-enquiry-section {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
         min-height: auto !important;
-        padding: 30px 14px 34px !important;
+        padding: 30px 14px 16px !important;
         overflow: visible !important;
     }
 
     .booking-enquiry-inner {
+        display: block !important;
+        width: 100% !important;
         max-width: 376px !important;
+        margin: 0 auto !important;
+    }
+
+    .booking-enquiry-image {
+        display: none !important;
+    }
+
+    .booking-enquiry-panel {
+        width: 100% !important;
+        margin-top: 0 !important;
     }
 
     .booking-enquiry-form {
+        width: 100% !important;
         max-height: none !important;
         min-height: 0 !important;
         padding: 22px 18px 15px !important;
         border-radius: 22px !important;
     }
 
+    .booking-enquiry-form h2 {
+        font-size: 29px !important;
+        font-weight: 760 !important;
+        line-height: 1.12 !important;
+        letter-spacing: 0 !important;
+    }
+
     .booking-enquiry-form p {
-        margin: 12px 0 20px !important;
-        font-size: 12.8px !important;
+        margin: 13px 0 20px !important;
+        font-size: clamp(14px, 4.25vw, 15px) !important;
+        font-weight: 360 !important;
         line-height: 1.55 !important;
+        letter-spacing: 0.012em !important;
     }
 
     .booking-enquiry-form label {
         margin-bottom: 15px !important;
     }
 
+    .booking-enquiry-form label>span:first-child {
+        margin-bottom: 5px !important;
+        font-size: 15px !important;
+        font-weight: 460 !important;
+        line-height: 1.05 !important;
+        letter-spacing: 0.13em !important;
+    }
+
     .booking-phone-field,
     .booking-enquiry-form input {
         height: 38px !important;
         min-height: 38px !important;
-        font-size: 13px !important;
+        font-size: 14.5px !important;
+    }
+
+    .booking-country {
+        gap: 5px !important;
+        margin-right: 6px !important;
+        font-size: 14.5px !important;
+    }
+
+    .booking-flag {
+        width: 15px !important;
+        height: 9px !important;
+    }
+
+    .booking-country-arrow {
+        width: 5px !important;
+        height: 5px !important;
     }
 
     .booking-enquiry-form button {
@@ -9607,7 +9413,7 @@
         display: flex !important;
         justify-content: space-between !important;
         gap: 0 !important;
-        margin-top: 12px !important;
+        margin-top: 9px !important;
         font-size: 9px !important;
         line-height: 1.2 !important;
         letter-spacing: 0.045em !important;
@@ -9615,9 +9421,28 @@
 
     .booking-trust-row span {
         flex: 1 1 0 !important;
+        position: relative !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
         gap: 5px !important;
         padding: 5px 4px !important;
         color: rgba(255, 255, 255, 0.9) !important;
+        white-space: normal !important;
+        text-align: center !important;
+    }
+
+    .booking-trust-row span+span::before {
+        display: block !important;
+        position: absolute !important;
+        left: 0 !important;
+        top: 50% !important;
+        width: 1px !important;
+        height: 25px !important;
+        margin-right: 0 !important;
+        background: rgba(240, 205, 69, 0.35) !important;
+        transform: translateY(-50%) !important;
     }
 
     .booking-trust-row svg {
@@ -11096,25 +10921,6 @@
 }
 
 @media (max-width: 767px) {
-    .booking-enquiry-form h2 {
-        font-size: 29px !important;
-        font-weight: 900 !important;
-        line-height: 1.12 !important;
-        letter-spacing: 0 !important;
-    }
-
-    .booking-enquiry-form label>span:first-child {
-        margin-bottom: 3px !important;
-        font-size: 16px !important;
-        font-weight: 500 !important;
-        letter-spacing: 0.10em !important;
-    }
-
-    .booking-enquiry-form input,
-    .booking-country {
-        font-size: 14.5px !important;
-    }
-
     .ideal-floor-badges {
         gap: 7px !important;
         align-items: flex-start !important;
