@@ -447,9 +447,8 @@
         }
 
         const rect = mobileStructSliderSection.getBoundingClientRect();
-        const viewportHeight = window.innerHeight || document.documentElement.clientHeight || 1;
 
-        return rect.top < viewportHeight * 0.72 && rect.bottom > viewportHeight * 0.28;
+        return rect.top <= 2 && rect.bottom > 2;
     };
 
     const updateMobileHeaderState = () => {
@@ -845,50 +844,74 @@ const structIndexes = structSliderSection?.querySelectorAll(".struct-index") || 
 const structDots = structSliderSection?.querySelectorAll(".struct-dot") || [];
 
 let activeStructSlide = 0;
-let structTouchStartY = 0;
 let structAnimating = false;
 let structLocked = false;
-let structReleasedDirection = 0;
+let previousStructScrollY = window.scrollY;
+let structTouchStartY = 0;
+let structReleaseUntil = 0;
+let structReleaseDirection = 0;
 
-const updateStructSlide = (nextIndex) => {
-    if (!structSlides.length || structAnimating || nextIndex === activeStructSlide) {
-        return;
+const setStructSlide = (nextIndex) => {
+    if (!structSlides.length) {
+        return false;
     }
 
-    structAnimating = true;
+    const clampedIndex = Math.max(0, Math.min(nextIndex, structSlides.length - 1));
+
+    if (clampedIndex === activeStructSlide) {
+        return false;
+    }
+
     structSlides[activeStructSlide]?.classList.remove("is-active");
     structCopies[activeStructSlide]?.classList.remove("is-active");
     structIndexes[activeStructSlide]?.classList.remove("is-active");
     structDots[activeStructSlide]?.classList.remove("is-active");
 
-    activeStructSlide = nextIndex;
+    activeStructSlide = clampedIndex;
     structSlides[activeStructSlide]?.classList.add("is-active");
     structCopies[activeStructSlide]?.classList.add("is-active");
     structIndexes[activeStructSlide]?.classList.add("is-active");
     structDots[activeStructSlide]?.classList.add("is-active");
 
-    window.setTimeout(() => {
-        structAnimating = false;
-    }, 700);
+    return true;
 };
 
 if (structSliderSection && structSlides.length > 1) {
     const canMoveStructSlide = (direction) =>
         (direction > 0 && activeStructSlide < structSlides.length - 1) ||
         (direction < 0 && activeStructSlide > 0);
+    const getStructTop = () =>
+        Math.max(0, window.scrollY + structSliderSection.getBoundingClientRect().top);
+    const isStructReleased = () => Date.now() < structReleaseUntil;
 
     const isStructBypassed = () => Date.now() < (window.__ameliaBypassStructSliderUntil || 0);
-
-    const isStructInFocus = () => {
-        const rect = structSliderSection.getBoundingClientRect();
-        return rect.top < window.innerHeight * 0.72 && rect.bottom > window.innerHeight * 0.28;
+    const bypassStructLock = (duration = 900) => {
+        window.__ameliaBypassStructSliderUntil = Date.now() + duration;
+    };
+    const clearStructRelease = () => {
+        structReleaseUntil = 0;
+        structReleaseDirection = 0;
+        window.__ameliaBypassStructSliderUntil = 0;
+    };
+    const preventStructEvent = (event) => {
+        if (event?.cancelable !== false) {
+            event?.preventDefault();
+        }
     };
 
-    const isStructSectionFullyOutOfView = () => {
-        const rect = structSliderSection.getBoundingClientRect();
-        const vh = window.innerHeight || document.documentElement.clientHeight || 1;
+    const jumpToStructTarget = (targetTop) => {
+        const root = document.documentElement;
+        const previousRootScrollBehavior = root.style.scrollBehavior;
+        const previousBodyScrollBehavior = document.body.style.scrollBehavior;
 
-        return rect.bottom < 1 || rect.top > vh - 1;
+        root.style.scrollBehavior = "auto";
+        document.body.style.scrollBehavior = "auto";
+        window.scrollTo({ top: targetTop, left: 0, behavior: "auto" });
+
+        window.requestAnimationFrame(() => {
+            root.style.scrollBehavior = previousRootScrollBehavior;
+            document.body.style.scrollBehavior = previousBodyScrollBehavior;
+        });
     };
 
     const setStructLock = (shouldLock) => {
@@ -897,87 +920,172 @@ if (structSliderSection && structSlides.length > 1) {
         }
 
         if (shouldLock === structLocked) {
+            document.documentElement.classList.toggle("struct-slider-locked", shouldLock);
+            document.body.classList.toggle("struct-slider-locked", shouldLock);
             return;
         }
 
         structLocked = shouldLock;
         document.documentElement.classList.toggle("struct-slider-locked", shouldLock);
         document.body.classList.toggle("struct-slider-locked", shouldLock);
-
-        if (shouldLock) {
-            structSliderSection.scrollIntoView({ block: "start" });
-        }
     };
 
-    const syncStructLock = () => {
-        if (isStructBypassed()) {
-            structReleasedDirection = 0;
-            setStructLock(false);
-            return;
+    const lockStructSlider = (entryDirection) => {
+        const structTop = getStructTop();
+
+        if (entryDirection > 0) {
+            setStructSlide(0);
+        } else {
+            setStructSlide(structSlides.length - 1);
         }
 
-        if (!isStructInFocus()) {
-            if (isStructSectionFullyOutOfView()) {
-                structReleasedDirection = 0;
-            }
-
-            setStructLock(false);
-            return;
-        }
-
-        if (
-            (structReleasedDirection === 1 && activeStructSlide === structSlides.length - 1) ||
-            (structReleasedDirection === -1 && activeStructSlide === 0)
-        ) {
-            setStructLock(false);
-            return;
-        }
-
+        previousStructScrollY = structTop;
+        jumpToStructTarget(structTop);
         setStructLock(true);
     };
 
-    const handleStructDirection = (direction, event) => {
-        if (isStructBypassed()) {
+    const getStructReleaseBuffer = () => Math.max(48, Math.min(160, window.innerHeight * 0.25));
+
+    const updateStructReleaseState = (currentScrollY = window.scrollY, structTop = getStructTop()) => {
+        if (!structReleaseDirection) {
+            return;
+        }
+
+        const releaseBuffer = getStructReleaseBuffer();
+        const hasLeftAbove = structReleaseDirection < 0 && currentScrollY < structTop - releaseBuffer;
+        const hasLeftBelow = structReleaseDirection > 0 && currentScrollY > structTop + releaseBuffer;
+
+        if (hasLeftAbove || hasLeftBelow) {
+            clearStructRelease();
+        }
+    };
+
+    const releaseStructSlider = (direction) => {
+        setStructLock(false);
+        structReleaseDirection = direction;
+        bypassStructLock(450);
+        structReleaseUntil = Date.now() + 450;
+        previousStructScrollY = window.scrollY;
+    };
+
+    const recaptureStructSlider = (direction, event) => {
+        if (!structReleaseDirection || direction !== -structReleaseDirection || structLocked) {
+            return false;
+        }
+
+        const structTop = getStructTop();
+        const releaseBuffer = getStructReleaseBuffer();
+
+        updateStructReleaseState(window.scrollY, structTop);
+
+        if (!structReleaseDirection || Math.abs(window.scrollY - structTop) > releaseBuffer) {
+            return false;
+        }
+
+        preventStructEvent(event);
+        clearStructRelease();
+        jumpToStructTarget(structTop);
+        previousStructScrollY = structTop;
+        setStructLock(true);
+
+        if (canMoveStructSlide(direction)) {
+            structAnimating = true;
+            setStructSlide(activeStructSlide + direction);
+
+            window.setTimeout(() => {
+                structAnimating = false;
+            }, 650);
+        }
+
+        return true;
+    };
+
+    const syncStructLock = () => {
+        const currentScrollY = window.scrollY;
+        const structTop = getStructTop();
+
+        updateStructReleaseState(currentScrollY, structTop);
+
+        const isReversingRelease =
+            structReleaseDirection < 0
+                ? currentScrollY > previousStructScrollY
+                : structReleaseDirection > 0 && currentScrollY < previousStructScrollY;
+
+        if (isReversingRelease && recaptureStructSlider(-structReleaseDirection)) {
+            return;
+        }
+
+        if (isStructBypassed() || isStructReleased()) {
+            previousStructScrollY = currentScrollY;
             setStructLock(false);
             return;
         }
 
-        if (!isStructInFocus()) {
-            syncStructLock();
+        if (structLocked) {
+            jumpToStructTarget(structTop);
             return;
         }
 
-        if (canMoveStructSlide(direction)) {
-            event.preventDefault();
-            structReleasedDirection = 0;
-            setStructLock(true);
-            updateStructSlide(activeStructSlide + direction);
+        const scrollingDown = currentScrollY > previousStructScrollY;
+        const reachedStructTop = previousStructScrollY < structTop && currentScrollY >= structTop - 2;
+        const reachedStructFromBelow = previousStructScrollY > structTop && currentScrollY <= structTop + 2;
+
+        if (scrollingDown && reachedStructTop && activeStructSlide < structSlides.length - 1) {
+            lockStructSlider(1);
             return;
         }
 
-        structReleasedDirection = direction;
-        setStructLock(false);
+        if (!scrollingDown && reachedStructFromBelow && activeStructSlide > 0) {
+            lockStructSlider(-1);
+            return;
+        }
+
+        previousStructScrollY = currentScrollY;
+    };
+
+    const handleStructDirection = (direction, event) => {
+        if (!structLocked) {
+            return;
+        }
+
+        const canMove = canMoveStructSlide(direction);
+
+        if (structAnimating) {
+            if (canMove) {
+                preventStructEvent(event);
+            } else {
+                releaseStructSlider(direction);
+            }
+            return;
+        }
+
+        if (canMove) {
+            preventStructEvent(event);
+            structAnimating = true;
+            setStructSlide(activeStructSlide + direction);
+
+            window.setTimeout(() => {
+                structAnimating = false;
+            }, 650);
+            return;
+        }
+
+        releaseStructSlider(direction);
     };
 
     const handleStructWheel = (event) => {
-        if (isStructBypassed()) {
-            setStructLock(false);
-            return;
-        }
-
         const dy = event.deltaY;
 
-        if (dy === 0) {
+        if (Math.abs(dy) > 12 && recaptureStructSlider(dy > 0 ? 1 : -1, event)) {
             return;
         }
 
-        const atFirstSlide = activeStructSlide === 0;
-        const atLastSlide = activeStructSlide === structSlides.length - 1;
-        const boundaryWheelExit =
-            isStructInFocus() &&
-            ((atFirstSlide && dy < 0) || (atLastSlide && dy > 0));
+        if (!structLocked) {
+            return;
+        }
 
-        if (Math.abs(dy) <= 12 && !boundaryWheelExit) {
+        if (Math.abs(dy) <= 12) {
+            preventStructEvent(event);
             return;
         }
 
@@ -985,41 +1093,65 @@ if (structSliderSection && structSlides.length > 1) {
     };
 
     const handleStructTouchStart = (event) => {
+        if (!structLocked && !structReleaseDirection) {
+            return;
+        }
+
         structTouchStartY = event.touches[0]?.clientY || 0;
     };
 
     const handleStructTouchMove = (event) => {
-        if (isStructBypassed()) {
-            setStructLock(false);
-            return;
-        }
-
-        if (!isStructInFocus()) {
-            return;
-        }
-
-        const currentY = event.touches[0]?.clientY || 0;
+        const currentY = event.touches[0]?.clientY || structTouchStartY;
         const deltaY = structTouchStartY - currentY;
 
-        if (Math.abs(deltaY) > 16) {
-            handleStructDirection(deltaY > 0 ? 1 : -1, event);
+        if (!structLocked && Math.abs(deltaY) > 24 && recaptureStructSlider(deltaY > 0 ? 1 : -1, event)) {
             structTouchStartY = currentY;
+            return;
+        }
+
+        if (structLocked && Math.abs(deltaY) > 24) {
+            const direction = deltaY > 0 ? 1 : -1;
+
+            if (!canMoveStructSlide(direction)) {
+                handleStructDirection(direction, event);
+                structTouchStartY = currentY;
+                return;
+            }
+        }
+
+        if (!structLocked) {
+            return;
+        }
+
+        preventStructEvent(event);
+    };
+
+    const handleStructTouchEnd = (event) => {
+        const endY = event.changedTouches[0]?.clientY || structTouchStartY;
+        const deltaY = structTouchStartY - endY;
+
+        if (!structLocked) {
+            if (Math.abs(deltaY) > 24) {
+                recaptureStructSlider(deltaY > 0 ? 1 : -1, event);
+            }
+            return;
+        }
+
+        if (Math.abs(deltaY) > 24) {
+            handleStructDirection(deltaY > 0 ? 1 : -1, event);
         }
     };
 
     const handleStructKeydown = (event) => {
-        if (isStructBypassed()) {
-            setStructLock(false);
-            return;
-        }
-
-        if (!isStructInFocus()) {
-            return;
-        }
-
         if (["ArrowDown", "PageDown", "Space"].includes(event.code)) {
+            if (!structLocked && recaptureStructSlider(1, event)) {
+                return;
+            }
             handleStructDirection(1, event);
         } else if (["ArrowUp", "PageUp"].includes(event.code)) {
+            if (!structLocked && recaptureStructSlider(-1, event)) {
+                return;
+            }
             handleStructDirection(-1, event);
         }
     };
@@ -1028,7 +1160,9 @@ if (structSliderSection && structSlides.length > 1) {
     window.addEventListener("wheel", handleStructWheel, { passive: false });
     window.addEventListener("touchstart", handleStructTouchStart, { passive: true });
     window.addEventListener("touchmove", handleStructTouchMove, { passive: false });
+    window.addEventListener("touchend", handleStructTouchEnd, { passive: false });
     window.addEventListener("keydown", handleStructKeydown);
+    window.addEventListener("resize", syncStructLock);
     syncStructLock();
 }
 
