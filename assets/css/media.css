@@ -3813,7 +3813,7 @@
     }
 
     .prime-location-section {
-        padding: 36px 14px 40px;
+        padding: 28px 14px 40px;
     }
 
     .lifestyle-amenities-section {
@@ -5962,8 +5962,8 @@
             rgba(37, 211, 102, 0.14) !important;
         color: #eafff0 !important;
         box-shadow: 0 14px 32px rgba(37, 211, 102, 0.12) !important;
-        font-size: 13px !important;
-        font-weight: 800 !important;
+        font-size: 15px !important;
+        font-weight: 600 !important;
         line-height: 1 !important;
         white-space: nowrap !important;
         text-decoration: none !important;
@@ -6075,8 +6075,8 @@
     }
 
     .lifestyle-amenity-caption svg {
-        width: 17px;
-        height: 17px;
+        width: 25px;
+        height: 25px;
     }
 
     .lifestyle-amenity-caption span {
@@ -6196,7 +6196,7 @@
     .construction-photo-status span {
         min-height: 31px;
         padding: 0 11px;
-        font-size: 10px;
+        font-size: 12px;
     }
 
     .construction-progress-side {
@@ -6283,7 +6283,7 @@
 
     .construction-info-card--possession em {
         margin-top: 9px;
-        font-size: 10px;
+        font-size: 12px;
         line-height: 13px;
     }
 
@@ -8544,8 +8544,8 @@
         height: 40px !important;
         min-height: 40px !important;
         padding: 0 10px !important;
-        font-size: 13px !important;
-        font-weight: 700 !important;
+        font-size: 16px !important;
+        font-weight: 600 !important;
         justify-content: center !important;
         text-align: center !important;
     }
@@ -8623,8 +8623,8 @@
         border-radius: 12px !important;
         background: transparent !important;
         color: #ffffff !important;
-        font-size: 13px !important;
-        font-weight: 700 !important;
+        font-size: 15px !important;
+        font-weight: 600 !important;
         line-height: 1 !important;
         letter-spacing: 0 !important;
         scroll-snap-align: start !important;
@@ -8638,8 +8638,8 @@
         border: 1px solid rgba(240, 205, 69, 0.20) !important;
         background: rgba(240, 205, 69, 0.10) !important;
         color: rgba(240, 205, 69, 0.92) !important;
-        font-size: 13px !important;
-        font-weight: 800 !important;
+        font-size: 15px !important;
+        font-weight: 600 !important;
     }
 
     .visual-showcase-tabs.transparent-pricing-tabs button:hover,
@@ -8724,8 +8724,8 @@
         border-radius: 12px !important;
         background: transparent !important;
         color: #ffffff !important;
-        font-size: 13px !important;
-        font-weight: 700 !important;
+        font-size: 15px !important;
+        font-weight: 500 !important;
         line-height: 1.15 !important;
         letter-spacing: 0 !important;
         justify-content: center !important;
