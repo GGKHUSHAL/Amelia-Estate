@@ -20982,3 +20982,71 @@ body.struct-slider-locked .site-header {
             visibility 0ms linear 520ms;
     }
 }
+
+@media (min-width: 768px) {
+    .about-section .about-feature svg {
+        width: 27px;
+        height: 27px;
+        flex-basis: 27px;
+        stroke-width: 2.35;
+    }
+
+    .about-section .about-feature h3 {
+        font-size: 19px;
+        font-weight: 400;
+        line-height: 23px;
+    }
+
+    .about-section .about-feature p {
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 20px;
+    }
+
+    .about-section .about-more-points span {
+        font-size: 14px !important;
+        font-weight: 500;
+        min-height: 34px;
+        padding-top: 9px;
+        padding-bottom: 9px;
+    }
+
+    .about-section .about-btn {
+        margin-top: 14px;
+    }
+}
+
+@media (min-width: 992px) {
+    :is(
+        .ideal-floor-eyebrow,
+        .project-plans-eyebrow,
+        .transparent-pricing-eyebrow,
+        .premium-specs-eyebrow,
+        .visual-showcase-eyebrow,
+        .prime-location-eyebrow,
+        .lifestyle-amenities-eyebrow,
+        .construction-progress-eyebrow,
+        .buyer-testimonials-eyebrow,
+        .faq-eyebrow,
+        .property-snapshot-eyebrow
+    ) {
+        margin-top: 0 !important;
+        margin-bottom: 16px !important;
+    }
+
+    :is(
+        .ideal-floor-heading h2,
+        .project-plans-copy h2,
+        .transparent-pricing-header h2,
+        .premium-specs-header h2,
+        .visual-showcase-header h2,
+        .prime-location-header h2,
+        .lifestyle-amenities-title,
+        .construction-progress-title,
+        .buyer-testimonials-header h2,
+        .faq-header h2,
+        .property-snapshot-heading h2
+    ) {
+        margin-top: 0 !important;
+    }
+}

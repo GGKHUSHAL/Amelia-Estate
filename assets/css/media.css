@@ -11967,6 +11967,23 @@ body.is-mobile-struct-slider-active .site-header {
     }
 }
 
+@media (min-width: 768px) {
+    .sticky-availability-panel > .interested-property-kicker--mobile {
+        position: absolute !important;
+        top: 28px !important;
+        left: 50% !important;
+        z-index: 3 !important;
+        display: inline-flex !important;
+        max-width: none !important;
+        margin: 0 !important;
+        padding: 7px 18px !important;
+        font-size: 12px !important;
+        line-height: 1 !important;
+        transform: translateX(-50%) !important;
+        white-space: nowrap !important;
+    }
+}
+
 @media (max-width: 760px) {
     body {
         padding-bottom: calc(88px + env(safe-area-inset-bottom)) !important;
