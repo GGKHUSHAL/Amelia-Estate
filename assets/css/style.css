@@ -8674,8 +8674,8 @@ body.is-footer-legal-modal-open {
 
 .buyer-testimonial-card strong {
     color: #ffffff;
-    font-size: 14px;
-    font-weight: 700;
+    font-size: 16px;
+    font-weight: 500;
     line-height: 18px;
 }
 
@@ -9322,7 +9322,7 @@ body.is-footer-legal-modal-open {
     background: #f0cd45;
     padding: 0 22px;
     color: #080808;
-    font-size: 13px;
+    font-size: 16px;
     font-weight: 800;
     line-height: 1;
     box-shadow: 0 14px 30px rgba(240, 205, 69, 0.28);
@@ -15073,7 +15073,6 @@ body {
     margin: 10px auto 0;
     color: rgba(255, 255, 255, .72);
     font-size: 14px;
-    font-weight: 600;
     line-height: 1.25;
 }
 
@@ -15181,7 +15180,7 @@ body {
     color: #ffffff;
     font-family: "Jost", "Inter", Arial, sans-serif;
     font-size: clamp(25px, 2.6vw, 30px);
-    font-weight: 700;
+    font-weight: 600;
     line-height: 1.05;
     letter-spacing: 0;
 }
