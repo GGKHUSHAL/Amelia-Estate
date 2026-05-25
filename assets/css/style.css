@@ -20394,6 +20394,32 @@ body.struct-slider-locked .site-header {
         font-weight: 400 !important;
     }
 
+    .mobile-menu-actions a:not([href*="wa.me"]):is(:hover, :focus-visible, :active),
+    .mobile-menu-actions a:not([href*="wa.me"]):is(:hover, :focus-visible, :active) .material-symbols-rounded {
+        color: #090704 !important;
+    }
+
+    .mobile-menu-actions a:not([href*="wa.me"]):is(:hover, :focus-visible, :active) {
+        background: #fceba6 !important;
+    }
+
+    .mobile-menu-actions a[href*="wa.me"]:is(:hover, :focus-visible, :active),
+    .mobile-menu-actions a[href*="wa.me"]:is(:hover, :focus-visible, :active) i {
+        color: #42ff9a !important;
+    }
+
+    .mobile-menu-cta .mobile-menu-cta-primary:is(:hover, :focus-visible, :active),
+    .mobile-menu-cta .mobile-menu-cta-primary:is(:hover, :focus-visible, :active) .material-symbols-rounded {
+        border-color: #f0cd45 !important;
+        background: #f0cd45 !important;
+        color: #090704 !important;
+    }
+
+    .mobile-menu-cta .mobile-menu-cta-secondary:is(:hover, :focus-visible, :active),
+    .mobile-menu-cta .mobile-menu-cta-secondary:is(:hover, :focus-visible, :active) .material-symbols-rounded {
+        color: #090704 !important;
+    }
+
     .mobile-menu-copy strong {
         font-size: 19px !important;
         font-weight: 500 !important;

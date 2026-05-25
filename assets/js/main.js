@@ -3157,6 +3157,13 @@ if (downloadOptions.length && downloadPreviewImages.length) {
         option.addEventListener("click", (event) => {
             setDownloadPreview(index);
 
+            const clickedGetButton = event.target.closest("a");
+            const isMobileDownloadLayout = window.matchMedia("(max-width: 767px)").matches;
+
+            if (isMobileDownloadLayout && !clickedGetButton) {
+                return;
+            }
+
             event.preventDefault();
             requestDownload(option);
         });
@@ -3958,25 +3965,20 @@ if (siteVisitForm) {
     });
 }
 
-// Mobile compass CTA: opens the extra quick actions from the floating center button.
+// Mobile bottom CTA: hide after inactivity and wake again on user movement.
 (() => {
-    const mobileCta = document.querySelector("[data-mobile-cta]");
-    const mobileCtaToggle = mobileCta?.querySelector("[data-mobile-cta-toggle]");
-    const mobileCtaMenu = mobileCta?.querySelector("#mobilePremiumCtaMenu");
+    const mobileCta = document.querySelector(".mobile-initial-cta");
     const mobileCtaIdleDelay = 2400;
     let mobileCtaIdleTimer = 0;
 
-    if (!mobileCta || !mobileCtaToggle || !mobileCtaMenu) {
+    if (!mobileCta) {
         return;
     }
 
-    const isOpen = () => document.body.classList.contains("is-mobile-cta-open");
-    const isMobileCtaViewport = () => window.matchMedia("(max-width: 767px)").matches;
-
+    const isMobileCtaViewport = () => window.matchMedia("(max-width: 760px)").matches;
     const setMobileCtaIdle = (shouldHide) => {
-        document.body.classList.toggle("is-mobile-cta-idle", shouldHide && !isOpen());
+        document.body.classList.toggle("is-mobile-cta-idle", shouldHide && isMobileCtaViewport());
     };
-
     const scheduleMobileCtaIdle = () => {
         window.clearTimeout(mobileCtaIdleTimer);
 
@@ -3985,69 +3987,18 @@ if (siteVisitForm) {
             return;
         }
 
-        mobileCtaIdleTimer = window.setTimeout(() => {
-            setMobileCtaIdle(true);
-        }, mobileCtaIdleDelay);
+        mobileCtaIdleTimer = window.setTimeout(() => setMobileCtaIdle(true), mobileCtaIdleDelay);
     };
-
     const wakeMobileCta = () => {
-        if (!isMobileCtaViewport()) {
-            setMobileCtaIdle(false);
-            return;
-        }
-
         setMobileCtaIdle(false);
         scheduleMobileCtaIdle();
     };
 
-    const setMobileCtaOpen = (shouldOpen) => {
-        document.body.classList.toggle("is-mobile-cta-open", shouldOpen);
-        setMobileCtaIdle(false);
-        mobileCtaToggle.setAttribute("aria-expanded", String(shouldOpen));
-        mobileCtaToggle.setAttribute("aria-label", shouldOpen ? "Close quick menu" : "Open quick menu");
-        mobileCtaMenu.setAttribute("aria-hidden", String(!shouldOpen));
-
-        if (!shouldOpen) {
-            scheduleMobileCtaIdle();
-        }
-    };
-
-    mobileCtaToggle.addEventListener("click", (event) => {
-        event.preventDefault();
-        event.stopPropagation();
-        setMobileCtaOpen(!isOpen());
-    });
-
-    mobileCta.querySelectorAll("a").forEach((link) => {
-        link.addEventListener("click", () => setMobileCtaOpen(false));
-    });
-
-    document.addEventListener("click", (event) => {
-        if (!isOpen() || mobileCta.contains(event.target)) {
-            return;
-        }
-
-        setMobileCtaOpen(false);
-    });
-
-    document.addEventListener("keydown", (event) => {
-        if (event.key === "Escape") {
-            setMobileCtaOpen(false);
-        }
-    });
-
     window.addEventListener("scroll", wakeMobileCta, { passive: true });
     window.addEventListener("touchmove", wakeMobileCta, { passive: true });
     window.addEventListener("wheel", wakeMobileCta, { passive: true });
-
-    window.addEventListener("resize", () => {
-        if (!window.matchMedia("(max-width: 767px)").matches) {
-            setMobileCtaOpen(false);
-            setMobileCtaIdle(false);
-        } else {
-            scheduleMobileCtaIdle();
-        }
-    });
+    window.addEventListener("resize", wakeMobileCta);
+    mobileCta.addEventListener("pointerdown", wakeMobileCta, { passive: true });
 
     scheduleMobileCtaIdle();
 })();

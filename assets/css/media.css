@@ -10056,9 +10056,9 @@
         grid-column: auto;
         width: fit-content;
         margin-top: 0;
-        min-height: 26px;
-        padding: 0 10px;
-        font-size: 12px;
+        min-height: 34px;
+        padding: 0 14px;
+        font-size: 13px;
         font-weight: 650;
     }
 
@@ -10129,9 +10129,20 @@
     .sticky-availability-content--interested .interested-property-copy {
         width: min(100%, 292px) !important;
         max-width: 292px !important;
-        padding: 10px 10px 12px !important;
+        padding: 18px 10px 12px !important;
         margin-top: 0 !important;
         transform: none !important;
+    }
+
+    .sticky-availability-panel > .interested-property-kicker--mobile {
+        position: absolute !important;
+        top: 28px !important;
+        left: 50% !important;
+        z-index: 2 !important;
+        max-width: none !important;
+        margin: 0 !important;
+        transform: translateX(-50%) !important;
+        white-space: nowrap !important;
     }
 
     .sticky-availability-content--interested .interested-property-copy::before {
@@ -10144,8 +10155,8 @@
     }
 
     .sticky-availability-content--interested .interested-property-copy h2 {
-        font-size: 22px !important;
-        line-height: 27px !important;
+        font-size: 32px !important;
+        line-height: 38px !important;
     }
 
     .sticky-availability-content--interested .interested-property-copy>p:not(.interested-property-kicker) {
@@ -10643,8 +10654,208 @@
     box-shadow: none !important;
 }
 
+/* Restored first mobile CTA design from the initial implementation. */
+.mobile-initial-cta {
+    display: none;
+}
+
+@media (max-width: 760px) {
+    body {
+        padding-bottom: calc(88px + env(safe-area-inset-bottom)) !important;
+    }
+
+    .mobile-initial-cta {
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 1200;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(74px, auto) 58px;
+        gap: 8px;
+        align-items: stretch;
+        width: 100%;
+        min-height: 74px;
+        overflow: hidden;
+        isolation: isolate;
+        border-top: 1px solid rgba(240, 205, 69, 0.28);
+        background:
+            radial-gradient(circle at 18% 0%, rgba(255, 247, 200, 0.16), transparent 34%),
+            linear-gradient(145deg, rgba(17, 13, 8, 0.92), rgba(5, 4, 3, 0.98));
+        box-shadow:
+            0 -18px 42px rgba(0, 0, 0, 0.42),
+            inset 0 1px 0 rgba(255, 255, 255, 0.035);
+        padding: 8px 10px calc(8px + env(safe-area-inset-bottom));
+        backdrop-filter: blur(18px) saturate(150%);
+        -webkit-backdrop-filter: blur(18px) saturate(150%);
+        transition: opacity 240ms ease, transform 300ms ease;
+    }
+
+    .mobile-initial-cta::before {
+        content: "";
+        position: absolute;
+        inset: -120% -40%;
+        z-index: -1;
+        background: conic-gradient(from 110deg,
+                transparent,
+                rgba(240, 205, 69, 0.18),
+                rgba(255, 247, 200, 0.26),
+                transparent 42%);
+        opacity: 0.7;
+        animation: mobileInitialCtaGlow 7s linear infinite;
+    }
+
+    .mobile-initial-cta::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        background:
+            linear-gradient(180deg, rgba(255, 255, 255, 0.055), transparent 45%),
+            rgba(0, 0, 0, 0.18);
+        pointer-events: none;
+    }
+
+    .mobile-initial-cta a {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 0;
+        min-height: 54px;
+        border-radius: 16px;
+        font-family: "Jost", "Inter", Arial, sans-serif;
+        line-height: 1;
+        text-decoration: none;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    .mobile-initial-cta__main {
+        flex-direction: column;
+        align-items: flex-start !important;
+        gap: 5px;
+        overflow: hidden;
+        border: 1px solid rgba(240, 205, 69, 0.55);
+        background: linear-gradient(110deg, #fff1a6 0%, #f0cd45 42%, #d5ae66 100%);
+        color: #090604;
+        padding: 0 15px;
+        box-shadow:
+            0 13px 28px rgba(240, 205, 69, 0.26),
+            inset 0 1px 0 rgba(255, 255, 255, 0.56);
+    }
+
+    .mobile-initial-cta__main::after {
+        content: "";
+        position: absolute;
+        inset: -45% -80%;
+        background: linear-gradient(110deg, transparent 38%, rgba(255, 255, 255, 0.58) 50%, transparent 62%);
+        transform: translateX(-46%) rotate(8deg);
+        animation: mobileInitialCtaSheen 3.6s ease-in-out infinite;
+    }
+
+    .mobile-initial-cta__main span,
+    .mobile-initial-cta__main strong {
+        position: relative;
+        z-index: 1;
+        display: block;
+        max-width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .mobile-initial-cta__main span {
+        color: rgba(9, 6, 4, 0.66);
+        font-size: 10px;
+        font-weight: 600;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+    }
+
+    .mobile-initial-cta__main strong {
+        color: #080604;
+        font-size: 15px;
+        font-weight: 600;
+    }
+
+    .mobile-initial-cta__action {
+        flex-direction: column;
+        gap: 5px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        background:
+            linear-gradient(180deg, rgba(255, 255, 255, 0.065), rgba(255, 255, 255, 0.018)),
+            rgba(0, 0, 0, 0.28);
+        color: rgba(255, 255, 255, 0.86);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.045);
+    }
+
+    .mobile-initial-cta__action i,
+    .mobile-initial-cta__action .material-symbols-rounded {
+        color: #f0cd45;
+        font-size: 20px;
+        line-height: 1;
+    }
+
+    .mobile-initial-cta__whatsapp {
+        padding-right: 10px;
+        padding-left: 10px;
+    }
+
+    .mobile-initial-cta__whatsapp i {
+        color: #00e676;
+    }
+
+    .mobile-initial-cta__action span:not(.material-symbols-rounded) {
+        color: rgba(255, 255, 255, 0.72);
+        font-size: 9.5px;
+        font-weight: 500;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+    }
+
+    .mobile-initial-cta a:active {
+        transform: translateY(1px) scale(0.99);
+    }
+
+    body.mega-open .mobile-initial-cta,
+    body.is-mobile-hero-active .mobile-initial-cta,
+    body.is-mobile-cta-idle .mobile-initial-cta,
+    body.struct-slider-locked .mobile-initial-cta,
+    body.is-mobile-struct-slider-active .mobile-initial-cta {
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(110%);
+    }
+}
+
+@keyframes mobileInitialCtaGlow {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes mobileInitialCtaSheen {
+    0%,
+    34% {
+        transform: translateX(-46%) rotate(8deg);
+    }
+
+    64%,
+    100% {
+        transform: translateX(48%) rotate(8deg);
+    }
+}
+
+.interested-property-kicker--mobile {
+    display: none !important;
+}
+
 /* Final mobile readability pass: keep small supporting text legible across sections. */
 @media (max-width: 767px) {
+    .sticky-availability-panel > .interested-property-kicker--mobile {
+        display: inline-flex !important;
+    }
+
     body {
         font-size: 16px !important;
         line-height: 1.62 !important;
@@ -10816,20 +11027,22 @@
         gap: 3px !important;
     }
 
-    .construction-bank-tile b {
-        font-size: 12px !important;
+    .construction-info-card--banks .construction-bank-tile b {
+        font-size: 16px !important;
+        font-weight: 500 !important;
         line-height: 1.05 !important;
     }
 
-    .construction-bank-tile em {
+    .construction-info-card--banks .construction-bank-tile em {
         gap: 1px !important;
         font-size: 9px !important;
+        font-weight: 500 !important;
         line-height: 1 !important;
         letter-spacing: 0 !important;
         white-space: nowrap !important;
     }
 
-    .construction-bank-tile em i {
+    .construction-info-card--banks .construction-bank-tile em i {
         width: 7px !important;
         height: 7px !important;
         flex-basis: 7px !important;
@@ -11751,5 +11964,11 @@ body.is-mobile-struct-slider-active .site-header {
 
     .mobile-premium-cta__menu-link--brochure {
         transform: none !important;
+    }
+}
+
+@media (max-width: 760px) {
+    body {
+        padding-bottom: calc(88px + env(safe-area-inset-bottom)) !important;
     }
 }
