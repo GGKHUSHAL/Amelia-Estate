@@ -9015,6 +9015,11 @@
         gap: 3px !important;
     }
 
+    /* Route slide navigation through the hero background so CTAs remain tappable. */
+    .hero-story-tap {
+        pointer-events: none !important;
+    }
+
     .hero-actions,
     .hero-section .hero-actions {
         --hero-mobile-btn-width: min(252px, calc(100vw - 72px));

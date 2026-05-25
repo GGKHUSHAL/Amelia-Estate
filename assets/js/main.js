@@ -686,6 +686,7 @@ if (heroSlider) {
     let startX = 0;
     let endX = 0;
     const swipeDistance = 50;
+    let suppressStoryTapUntil = 0;
     let storyProgressItems = [];
     const originalHeroBackgrounds = Array.from(slides, (slide) => {
         const background = slide.querySelector(".hero-slide-bg");
@@ -826,6 +827,7 @@ if (heroSlider) {
             return;
         }
 
+        suppressStoryTapUntil = Date.now() + 450;
         showSlide(distance > 0 ? activeSlide + 1 : activeSlide - 1);
         resetAutoSlide();
     };
@@ -862,6 +864,26 @@ if (heroSlider) {
             resetAutoSlide();
         });
     }
+
+    heroSlider.addEventListener("click", (event) => {
+        if (!isMobileStory()) {
+            return;
+        }
+
+        if (Date.now() < suppressStoryTapUntil) {
+            return;
+        }
+
+        if (event.target.closest("a, button, input, select, textarea, label")) {
+            return;
+        }
+
+        const rect = heroSlider.getBoundingClientRect();
+        const direction = event.clientX < rect.left + (rect.width / 2) ? -1 : 1;
+
+        showSlide(activeSlide + direction);
+        resetAutoSlide();
+    });
 
     heroSlider.addEventListener("touchstart", (event) => {
         if (!isMobileStory()) {
