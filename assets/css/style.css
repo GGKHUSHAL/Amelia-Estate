@@ -12295,7 +12295,7 @@ body.is-footer-legal-modal-open {
 @media (min-width: 992px) {
     .ideal-floor-section {
         min-height: 0 !important;
-        padding: 48px 0 54px !important;
+        padding: 38px 0 54px !important;
     }
 
     .ideal-floor-header {
@@ -12304,7 +12304,7 @@ body.is-footer-legal-modal-open {
     }
 
     .ideal-floor-eyebrow {
-        margin-bottom: 12px !important;
+        margin-bottom: 16px !important;
     }
 
     .ideal-floor-heading>p:not(.ideal-floor-eyebrow) {
@@ -12349,7 +12349,7 @@ body.is-footer-legal-modal-open {
 @media (min-width: 992px) {
     .project-plans-section {
         min-height: 0 !important;
-        padding: 48px 0 52px !important;
+        padding: 38px 0 52px !important;
     }
 
     .project-plan-card {
@@ -12369,6 +12369,10 @@ body.is-footer-legal-modal-open {
     .project-plans-copy>p:not(.project-plans-eyebrow) {
         margin-top: 10px !important;
         line-height: 24px !important;
+    }
+
+    .project-plans-eyebrow{
+        margin-bottom: 16px !important;
     }
 
     .project-plan-tabs {
