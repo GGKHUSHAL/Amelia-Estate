@@ -651,8 +651,8 @@ if (heroSlider) {
 
         const mobileImages = [
             null,
-            "assets/img/slider/mobile-slide-2.jpg",
-            "assets/img/slider/mobile-slide-3.jpg"
+            "assets/img/slider/mobile-slide-2.webp",
+            "assets/img/slider/mobile-slide-3.webp"
         ];
 
         slides.forEach((slide, index) => {
@@ -1268,13 +1268,13 @@ if (idealFloorSection) {
             label: "219 Sq.Yd",
             area: "219 Sq.Yds",
             title: "3 BHK Smart Floor",
-            image: "assets/img/choose ideal/banner.png"
+            image: "assets/img/choose ideal/banner-render.webp"
         },
         205: {
             label: "205 Sq.Yd",
             area: "205 Sq.Yds",
             title: "3 BHK Compact Floor",
-            image: "assets/img/choose ideal/bedroom-night-205.png"
+            image: "assets/img/choose ideal/bedroom-night-205.webp"
         }
     };
 
@@ -1413,7 +1413,7 @@ if (projectPlansSection) {
     const lightboxTitle = lightbox?.querySelector(".project-plan-lightbox-title");
     const lightboxCloseButtons = lightbox?.querySelectorAll(".project-plan-lightbox-close, .project-plan-lightbox-backdrop");
 
-    const floorImage = "assets/img/project plans/90009c575573f8f004b5343f065db6963be4f203.png";
+    const floorImage = "assets/img/project plans/90009c575573f8f004b5343f065db6963be4f203.webp";
     const siteImage = "assets/img/project plans/site plan.jpg";
     let activePlan = "floor";
     let projectPlanImageTimer;
@@ -1694,14 +1694,14 @@ if (pricingSection) {
             badge: "3 BHK - 230 Sq. Yd",
             area: "230 Sq.Yds",
             prices: ["1.54 Cr", "1.49 Cr", "1.49 Cr", "1.67 Cr"],
-            image: "assets/img/priceing and investment/pricing-230-premium-living.jpg"
+            image: "assets/img/priceing and investment/pricing-230-premium-living.webp"
         },
         219: {
             title: "3 BHK - 219 Sq. Yd",
             badge: "3 BHK - 219 Sq. Yd",
             area: "219 Sq.Yds",
             prices: ["1.47 Cr", "1.42 Cr", "1.42 Cr", "1.60 Cr"],
-            image: "assets/img/priceing and investment/pricing-219-premium-bedroom.jpg"
+            image: "assets/img/priceing and investment/pricing-219-premium-bedroom.webp"
         },
         205: {
             title: "3 BHK - 205 Sq. Yd",
@@ -2492,43 +2492,43 @@ if (visualShowcaseSection) {
     };
 
     const galleryDetailByFile = {
-        "0be2e6c5e9842f9e20d65c054d0f4df90ec098c0.jpg": {
+        "0be2e6c5e9842f9e20d65c054d0f4df90ec098c0.webp": {
             title: "Modular Island Kitchen",
             description: "Warm cabinetry, island counter and built-in appliances for a ready-to-use premium kitchen.",
             focus: "Kitchen planning, storage wall, island counter and appliance placement",
             finish: "Wood-look cabinetry, light countertop, pendant lighting and premium fittings"
         },
-        "71f1fe9bf7b83056f21dcc38fe0297862834698b.png": {
+        "71f1fe9bf7b83056f21dcc38fe0297862834698b.webp": {
             title: "Sunlit Living Lounge",
             description: "A bright living and dining zone planned for natural light, family seating and everyday comfort.",
             focus: "Living room volume, window light, lounge seating and dining connection",
             finish: "Soft neutral palette, curtains, pendant lights and warm decor accents"
         },
-        "bdec928ef1c3f2fad9db07ae04140d3f77543c80.jpg": {
+        "bdec928ef1c3f2fad9db07ae04140d3f77543c80.webp": {
             title: "Luxury Bathroom Suite",
             description: "Premium bathroom finish with vanity counter, wall cladding and modern sanitary fittings.",
             focus: "Vanity counter, shower/bath zone, wall tiles and sanitaryware positioning",
             finish: "Dark feature wall, stone-look surfaces, mirror lighting and branded fittings"
         },
-        "9d36bc9e1115936b757064117ba22e4770259b28.png": {
+        "9d36bc9e1115936b757064117ba22e4770259b28.webp": {
             title: "Family Living Area",
             description: "Open lounge planning with natural light, calm finishes and practical furniture placement.",
             focus: "Daily-use living layout, sofa placement, table zone and window-side seating",
             finish: "Warm neutral finishes, soft furnishings and elegant ceiling lighting"
         },
-        "f4b90b41d2921d5f3eb4fe1272f937640e7f3dfe.png": {
+        "f4b90b41d2921d5f3eb4fe1272f937640e7f3dfe.webp": {
             title: "Premium Lounge Interior",
             description: "A refined lounge view showing material depth, curated lighting and comfortable proportions.",
             focus: "Interior mood, lounge depth, lighting and material continuity",
             finish: "Premium textures, warm lights, feature furniture and polished surfaces"
         },
-        "ffbfb80a4618358645f60806327606317538f142.jpg": {
+        "ffbfb80a4618358645f60806327606317538f142.webp": {
             title: "Classic Kitchen Finish",
             description: "A practical kitchen detail focused on countertop workspace, storage and everyday utility.",
             focus: "Countertop work area, cabinetry, sink position and compact kitchen workflow",
             finish: "Classic cabinets, durable counter surface and clean appliance provisions"
         },
-        "walktrough.jpg": {
+        "walktrough.webp": {
             title: "Project Walkthrough Preview",
             description: "A full visual preview to understand elevation, approach, scale and overall project experience.",
             focus: "Project frontage, massing, entry experience and visual walkthrough context",
@@ -2559,7 +2559,7 @@ if (visualShowcaseSection) {
         };
         const title = panelKey === "construction"
             ? base.title.replace("Preview", "Progress View")
-            : panelKey === "exterior" && fileName === "walktrough.jpg"
+            : panelKey === "exterior" && fileName === "walktrough.webp"
                 ? "Exterior Elevation Preview"
                 : base.title;
         const description = panelKey === "construction"
