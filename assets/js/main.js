@@ -41,6 +41,47 @@
     };
 })();
 
+// This static page hands validated enquiries directly to the sales WhatsApp inbox.
+window.AmeliaLeadSubmission = {
+    send(form, intent = "Project enquiry", { delay = 0 } = {}) {
+        if (!form || !form.checkValidity()) {
+            form?.reportValidity();
+            return false;
+        }
+
+        const details = new FormData(form);
+        const name = String(details.get("name") || details.get("full-name") || "").trim();
+        const phone = String(details.get("phone") || details.get("mobile-number") || "").trim();
+        const email = String(details.get("email") || "").trim();
+        const configuration = String(details.get("configuration") || "").trim();
+        const message = [
+            `Hello, I would like assistance with Amelia Estate II (${intent}).`,
+            `Name: ${name}`,
+            `Phone: +91 ${phone}`,
+            email ? `Email: ${email}` : "",
+            configuration ? `Preference: ${configuration}` : ""
+        ].filter(Boolean).join("\n");
+        const url = `https://wa.me/917009247378?text=${encodeURIComponent(message)}`;
+        const openLeadChannel = () => {
+            const leadWindow = window.open(url, "_blank");
+
+            if (leadWindow) {
+                leadWindow.opener = null;
+            } else {
+                window.location.href = url;
+            }
+        };
+
+        if (delay > 0) {
+            window.setTimeout(openLeadChannel, delay);
+        } else {
+            openLeadChannel();
+        }
+
+        return true;
+    }
+};
+
 // Standalone Amelia full mega menu. Future trigger buttons can call window.openAmeliaMegaMenu().
 (() => {
     const megaMenu = document.getElementById("fullMenuMega");
@@ -253,15 +294,32 @@
 
     unlockForms.forEach((form) => {
         const validateForm = () => {
-            const requiredInputs = Array.from(form.querySelectorAll("input[name='name'], input[name='phone']"));
-            const firstEmpty = requiredInputs.find((input) => !input.value.trim());
+            const nameInput = form.querySelector("input[name='name']");
+            const phoneInput = form.querySelector("input[name='phone']");
 
-            requiredInputs.forEach((input) => {
-                input.closest("label")?.classList.toggle("is-invalid", !input.value.trim());
+            if (phoneInput) {
+                phoneInput.value = phoneInput.value.replace(/\D/g, "").replace(/^91(?=\d{10}$)/, "").slice(0, 10);
+            }
+
+            const requiredInputs = Array.from(form.querySelectorAll("input[name='name'], input[name='phone']"));
+            const firstInvalid = requiredInputs.find((input) => {
+                if (input === phoneInput) {
+                    return !/^[0-9]{10}$/.test(input.value);
+                }
+
+                return !/^[A-Za-z][A-Za-z .'-]{1,}$/.test(input.value.trim());
             });
 
-            if (firstEmpty) {
-                firstEmpty.focus();
+            requiredInputs.forEach((input) => {
+                const isValid = input === phoneInput
+                    ? /^[0-9]{10}$/.test(input.value)
+                    : /^[A-Za-z][A-Za-z .'-]{1,}$/.test(input.value.trim());
+
+                input.closest("label")?.classList.toggle("is-invalid", !isValid);
+            });
+
+            if (firstInvalid) {
+                firstInvalid.focus();
                 return false;
             }
 
@@ -269,7 +327,7 @@
         };
 
         const unlockPanel = () => {
-            if (!validateForm()) {
+            if (!validateForm() || !window.AmeliaLeadSubmission.send(form, "Price and document access")) {
                 return;
             }
 
@@ -944,6 +1002,20 @@ if (structSliderSection && structSlides.length > 1) {
         document.documentElement.classList.toggle("struct-slider-locked", shouldLock);
         document.body.classList.toggle("struct-slider-locked", shouldLock);
     };
+
+    document.addEventListener("click", (event) => {
+        const link = event.target.closest('a[href^="#"]');
+        const targetId = link?.getAttribute("href")?.slice(1);
+        const target = targetId ? document.getElementById(targetId) : null;
+
+        if (!target || target === structSliderSection) {
+            return;
+        }
+
+        bypassStructLock(4000);
+        setStructLock(false);
+        previousStructScrollY = window.scrollY;
+    }, true);
 
     const lockStructSlider = (entryDirection) => {
         const structTop = getStructTop();
@@ -1989,6 +2061,11 @@ if (pricingSection) {
     if (unlockForm) {
         unlockForm.addEventListener("submit", (event) => {
             event.preventDefault();
+
+            if (!window.AmeliaLeadSubmission.send(unlockForm, "Floor-wise price unlock", { delay: 2800 })) {
+                return;
+            }
+
             closePricingUnlockForm();
             showPricingCelebration();
 
@@ -3864,15 +3941,15 @@ if (faqSection) {
 }
 
 // Lead forms: validate names, emails, and keep mobile numbers to 10 digits.
-const leadForms = document.querySelectorAll(".booking-enquiry-form, .pricing-unlock-form, .site-visit-form");
+const leadForms = document.querySelectorAll(".booking-enquiry-form, .pricing-unlock-form, .site-visit-form, .header-contact-form");
 const leadPhoneInputs = document.querySelectorAll(
-    '.booking-enquiry-form input[type="tel"], .pricing-unlock-form input[type="tel"], .site-visit-form input[type="tel"]'
+    '.booking-enquiry-form input[type="tel"], .pricing-unlock-form input[type="tel"], .site-visit-form input[type="tel"], .header-contact-form input[type="tel"]'
 );
 const leadNameInputs = document.querySelectorAll(
-    '.booking-enquiry-form input[name*="name"], .pricing-unlock-form input[name="name"], .site-visit-form input[name="name"]'
+    '.booking-enquiry-form input[name*="name"], .pricing-unlock-form input[name="name"], .site-visit-form input[name="name"], .header-contact-form input[name="name"]'
 );
 const leadEmailInputs = document.querySelectorAll(
-    '.booking-enquiry-form input[type="email"], .pricing-unlock-form input[type="email"], .site-visit-form input[type="email"]'
+    '.booking-enquiry-form input[type="email"], .pricing-unlock-form input[type="email"], .site-visit-form input[type="email"], .header-contact-form input[type="email"]'
 );
 const normalizeLeadPhone = (value) => {
     const digits = value.replace(/\D/g, "");
@@ -3956,14 +4033,17 @@ leadForms.forEach((form) => {
     }, true);
 });
 
-// Site visit form: keeps the static landing page from reloading on submit.
-const siteVisitForm = document.querySelector(".site-visit-form");
-
-if (siteVisitForm) {
-    siteVisitForm.addEventListener("submit", (event) => {
+document.querySelectorAll(".booking-enquiry-form, .site-visit-form, .header-contact-form").forEach((form) => {
+    form.addEventListener("submit", (event) => {
         event.preventDefault();
+
+        const intent = form.classList.contains("booking-enquiry-form")
+            ? "Current price and availability"
+            : "Site visit booking";
+
+        window.AmeliaLeadSubmission.send(form, intent);
     });
-}
+});
 
 // Mobile bottom CTA: hide after inactivity and wake again on user movement.
 (() => {

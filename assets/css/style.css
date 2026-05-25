@@ -3637,6 +3637,21 @@ body.is-project-plan-lightbox-open {
     animation-delay: 0.15s;
 }
 
+.pricing-celebration span:nth-of-type(4n),
+.pricing-celebration span:nth-of-type(7n + 1) {
+    border-radius: 999px;
+    background: #19c889;
+    box-shadow:
+        0 0 10px rgba(25, 200, 137, 0.86),
+        0 0 22px rgba(25, 200, 137, 0.34);
+}
+
+.pricing-celebration span:nth-of-type(9n + 2) {
+    border-radius: 999px;
+    background: #62efba;
+    box-shadow: 0 0 14px rgba(42, 235, 157, 0.62);
+}
+
 .pricing-celebration span:nth-of-type(n+8) {
     animation-delay: 0.22s;
 }
@@ -3651,6 +3666,24 @@ body.is-project-plan-lightbox-open {
     width: 7px;
     height: 12px;
     animation-delay: 0.2s;
+}
+
+.pricing-celebration span:nth-of-type(n+55) {
+    width: 9px;
+    height: 9px;
+    animation-delay: 0.06s;
+}
+
+.pricing-celebration .pricing-pop-green {
+    width: 15px !important;
+    height: 15px !important;
+    border-radius: 999px !important;
+    background: #00e88f !important;
+    box-shadow:
+        0 0 0 3px rgba(0, 232, 143, 0.14),
+        0 0 18px rgba(0, 232, 143, 0.94),
+        0 0 36px rgba(0, 232, 143, 0.58) !important;
+    animation-duration: 2.6s;
 }
 
 .pricing-celebration span:nth-of-type(1) {
@@ -3975,6 +4008,114 @@ body.is-project-plan-lightbox-open {
     --x: 366px;
     --y: 34px;
     --r: -318deg;
+}
+
+.pricing-celebration span:nth-of-type(55) {
+    --x: -388px;
+    --y: -146px;
+    --r: 178deg;
+}
+
+.pricing-celebration span:nth-of-type(56) {
+    --x: -322px;
+    --y: -268px;
+    --r: -124deg;
+}
+
+.pricing-celebration span:nth-of-type(57) {
+    --x: -246px;
+    --y: -380px;
+    --r: 264deg;
+}
+
+.pricing-celebration span:nth-of-type(58) {
+    --x: -132px;
+    --y: -398px;
+    --r: -192deg;
+}
+
+.pricing-celebration span:nth-of-type(59) {
+    --x: -62px;
+    --y: -242px;
+    --r: 112deg;
+}
+
+.pricing-celebration span:nth-of-type(60) {
+    --x: 96px;
+    --y: -406px;
+    --r: -286deg;
+}
+
+.pricing-celebration span:nth-of-type(61) {
+    --x: 248px;
+    --y: -384px;
+    --r: 144deg;
+}
+
+.pricing-celebration span:nth-of-type(62) {
+    --x: 334px;
+    --y: -256px;
+    --r: -224deg;
+}
+
+.pricing-celebration span:nth-of-type(63) {
+    --x: 392px;
+    --y: -128px;
+    --r: 86deg;
+}
+
+.pricing-celebration span:nth-of-type(64) {
+    --x: 394px;
+    --y: 92px;
+    --r: -154deg;
+}
+
+.pricing-celebration span:nth-of-type(65) {
+    --x: 326px;
+    --y: 236px;
+    --r: 254deg;
+}
+
+.pricing-celebration span:nth-of-type(66) {
+    --x: 224px;
+    --y: 348px;
+    --r: -102deg;
+}
+
+.pricing-celebration span:nth-of-type(67) {
+    --x: 72px;
+    --y: 372px;
+    --r: 208deg;
+}
+
+.pricing-celebration span:nth-of-type(68) {
+    --x: -70px;
+    --y: 364px;
+    --r: -284deg;
+}
+
+.pricing-celebration span:nth-of-type(69) {
+    --x: -198px;
+    --y: 342px;
+    --r: 136deg;
+}
+
+.pricing-celebration span:nth-of-type(70) {
+    --x: -314px;
+    --y: 248px;
+    --r: -206deg;
+}
+
+.pricing-celebration span:nth-of-type(71) {
+    --x: -398px;
+    --y: 104px;
+    --r: 298deg;
+}
+
+.pricing-celebration span:nth-of-type(72) {
+    --x: 18px;
+    --y: -276px;
+    --r: -72deg;
 }
 
 .pricing-card.is-unlocked {
@@ -8784,7 +8925,7 @@ body.is-footer-legal-modal-open {
     background:
         linear-gradient(180deg, rgba(0, 0, 0, 0.30), rgba(0, 0, 0, 0.46)),
         linear-gradient(90deg, rgba(0, 0, 0, 0.34), rgba(0, 0, 0, 0.10) 48%, rgba(0, 0, 0, 0.36)),
-        url("../img/project gallery/walktrough.jpg") center / cover no-repeat;
+        url("../img/project gallery/walktrough.webp") center / cover no-repeat;
     filter: saturate(1.02) contrast(1.03) brightness(0.92);
     transform: scale(1.04);
 }
@@ -11672,7 +11813,7 @@ body.is-footer-legal-modal-open {
     position: absolute;
     inset: 0;
     z-index: 0;
-    background: url("../img/Differentiation Banner/89913c4de3bacd517a6920d106fe6f7082f9f0a4.jpg") center / cover no-repeat;
+    background: url("../img/Differentiation Banner/89913c4de3bacd517a6920d106fe6f7082f9f0a4.webp") center / cover no-repeat;
     transform: scale(1);
     transition: transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -12705,27 +12846,27 @@ body.struct-slider-locked {
 }
 
 .struct-slide-1 {
-    background-image: url("../img/struct-slider/structslider1.png");
+    background-image: url("../img/struct-slider/structslider1.webp");
 }
 
 .struct-slide-2 {
-    background-image: url("../img/struct-slider/structslider2.png");
+    background-image: url("../img/struct-slider/structslider2.webp");
 }
 
 .struct-slide-3 {
-    background-image: url("../img/struct-slider/structslider3.png");
+    background-image: url("../img/struct-slider/structslider3.webp");
 }
 
 .struct-slide-4 {
-    background-image: url("../img/struct-slider/stuctslider4.jpg");
+    background-image: url("../img/struct-slider/stuctslider4.webp");
 }
 
 .struct-slide-5 {
-    background-image: url("../img/struct-slider/structslider5.png");
+    background-image: url("../img/struct-slider/structslider5.webp");
 }
 
 .struct-slide-6 {
-    background-image: url("../img/struct-slider/structslider6.jpg");
+    background-image: url("../img/struct-slider/structslider6.webp");
 }
 
 .struct-slider-overlay {
@@ -12877,7 +13018,7 @@ body.struct-slider-locked {
 
 
 .hero-section {
-    background: #000000 url("../img/slider/hero slider -1.jpg") center center / cover no-repeat !important;
+    background: #000000 url("../img/slider/hero slider -1.webp") center center / cover no-repeat !important;
 }
 
 

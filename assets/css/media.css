@@ -291,6 +291,30 @@
         font-size: 24px;
         line-height: 30px;
     }
+
+    .pricing-celebration .pricing-pop-green {
+        width: 14px !important;
+        height: 14px !important;
+    }
+
+    .pricing-celebration span:nth-of-type(55) { --x: -128px; --y: -106px; }
+    .pricing-celebration span:nth-of-type(56) { --x: -96px; --y: -168px; }
+    .pricing-celebration span:nth-of-type(57) { --x: -48px; --y: -202px; }
+    .pricing-celebration span:nth-of-type(58) { --x: 8px; --y: -180px; }
+    .pricing-celebration span:nth-of-type(59) { --x: 62px; --y: -204px; }
+    .pricing-celebration span:nth-of-type(60) { --x: 112px; --y: -152px; }
+    .pricing-celebration span:nth-of-type(61) { --x: 136px; --y: -86px; }
+    .pricing-celebration span:nth-of-type(62) { --x: 128px; --y: -12px; }
+    .pricing-celebration span:nth-of-type(63) { --x: 118px; --y: 78px; }
+    .pricing-celebration span:nth-of-type(64) { --x: 84px; --y: 146px; }
+    .pricing-celebration span:nth-of-type(65) { --x: 32px; --y: 184px; }
+    .pricing-celebration span:nth-of-type(66) { --x: -26px; --y: 164px; }
+    .pricing-celebration span:nth-of-type(67) { --x: -82px; --y: 178px; }
+    .pricing-celebration span:nth-of-type(68) { --x: -122px; --y: 116px; }
+    .pricing-celebration span:nth-of-type(69) { --x: -138px; --y: 42px; }
+    .pricing-celebration span:nth-of-type(70) { --x: -136px; --y: -34px; }
+    .pricing-celebration span:nth-of-type(71) { --x: -74px; --y: -112px; }
+    .pricing-celebration span:nth-of-type(72) { --x: 66px; --y: -118px; }
 }
 
 @media (max-width: 767px) {
@@ -1300,7 +1324,7 @@
 
     .differentiation-section {
         height: auto;
-        background: #000000 url("../img/Differentiation Banner/89913c4de3bacd517a6920d106fe6f7082f9f0a4.jpg") center / cover no-repeat;
+        background: #000000 url("../img/Differentiation Banner/89913c4de3bacd517a6920d106fe6f7082f9f0a4.webp") center / cover no-repeat;
     }
 
     .differentiation-banner {
@@ -2050,11 +2074,11 @@
     }
 
     .hero-slide:nth-child(2) .hero-slide-bg {
-        background-image: url("../img/slider/mobile-slide-2.jpg") !important;
+        background-image: url("../img/slider/mobile-slide-2.webp") !important;
     }
 
     .hero-slide:nth-child(3) .hero-slide-bg {
-        background-image: url("../img/slider/mobile-slide-3.jpg") !important;
+        background-image: url("../img/slider/mobile-slide-3.webp") !important;
     }
 
     .hero-content {
@@ -11823,7 +11847,7 @@ body.is-mobile-struct-slider-active .site-header {
     }
 
     body {
-        padding-bottom: 0 !important;
+        padding-bottom: calc(88px + env(safe-area-inset-bottom)) !important;
     }
 
     .site-footer {
@@ -11987,5 +12011,38 @@ body.is-mobile-struct-slider-active .site-header {
 @media (max-width: 760px) {
     body {
         padding-bottom: calc(88px + env(safe-area-inset-bottom)) !important;
+    }
+
+    .footer-redesign-brand .amelia-logo--footer {
+        --amelia-badge-size: 64px;
+        --amelia-icon-size: 34px;
+        --amelia-name-size: 46px;
+        --amelia-sub-size: 10px;
+        --amelia-sub-spacing: 5.5px;
+        display: inline-flex !important;
+        flex-direction: row !important;
+        gap: 17px !important;
+        width: auto !important;
+        padding: 0 !important;
+        border: 0 !important;
+        background: transparent !important;
+    }
+
+    .footer-redesign-brand .amelia-logo--footer .badge {
+        width: var(--amelia-badge-size) !important;
+        height: var(--amelia-badge-size) !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        border-radius: 50% !important;
+    }
+
+    .footer-redesign-brand .amelia-logo--footer .text {
+        align-items: flex-start !important;
+        width: auto !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        border: 0 !important;
+        border-radius: 0 !important;
+        background: transparent !important;
     }
 }
