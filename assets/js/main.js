@@ -754,23 +754,27 @@ if (heroSlider) {
         heroSection.style.setProperty("--hero-story-duration", `${getStoryDuration()}ms`);
     }
 
-    const updateStoryProgress = () => {
+    let storyProgressFrame;
+    const updateStoryProgress = (shouldRestart = false) => {
         if (!storyProgressItems.length) {
             return;
         }
 
         storyProgressItems.forEach((item, index) => {
             item.classList.toggle("is-complete", index < activeSlide);
-            item.classList.toggle("is-active", index === activeSlide);
+            item.classList.toggle("is-active", !shouldRestart && index === activeSlide);
         });
 
-        const activeItem = storyProgressItems[activeSlide];
-
-        if (activeItem) {
-            activeItem.classList.remove("is-active");
-            activeItem.offsetHeight;
-            activeItem.classList.add("is-active");
+        if (!shouldRestart) {
+            return;
         }
+
+        window.cancelAnimationFrame(storyProgressFrame);
+        storyProgressFrame = window.requestAnimationFrame(() => {
+            storyProgressFrame = window.requestAnimationFrame(() => {
+                storyProgressItems[activeSlide]?.classList.add("is-active");
+            });
+        });
     };
 
     const showSlide = (index) => {
@@ -779,17 +783,7 @@ if (heroSlider) {
         applyHeroImage(activeSlide);
         updateSliderPosition();
         slides[activeSlide].classList.add("is-active");
-        updateStoryProgress();
-
-        if (heroSection.classList.contains("is-visible")) {
-            const content = slides[activeSlide].querySelector(".hero-content");
-
-            if (content) {
-                content.style.animation = "none";
-                content.offsetHeight;
-                content.style.animation = "";
-            }
-        }
+        updateStoryProgress(true);
     };
 
     const startAutoSlide = () => {
@@ -860,7 +854,7 @@ if (heroSlider) {
     window.addEventListener("resize", () => {
         applyHeroImage(activeSlide);
         updateSliderPosition();
-        updateStoryProgress();
+        updateStoryProgress(true);
         resetAutoSlide();
     });
 
@@ -930,6 +924,7 @@ const stickyAvailabilitySection = document.querySelector(".sticky-availability-s
 const stickyAvailabilityPanel = document.querySelector(".sticky-availability-panel");
 
 if (stickyAvailabilitySection && stickyAvailabilityPanel) {
+    let isStickyAvailabilityReady = false;
     const updateStickyAvailability = () => {
         const sectionRect = stickyAvailabilitySection.getBoundingClientRect();
         const sectionTop = sectionRect.top + window.scrollY;
@@ -945,9 +940,29 @@ if (stickyAvailabilitySection && stickyAvailabilityPanel) {
         stickyAvailabilitySection.classList.toggle("is-released", shouldRelease);
     };
 
-    updateStickyAvailability();
-    window.addEventListener("scroll", updateStickyAvailability, { passive: true });
-    window.addEventListener("resize", updateStickyAvailability);
+    const enableStickyAvailability = () => {
+        if (isStickyAvailabilityReady) {
+            return;
+        }
+
+        isStickyAvailabilityReady = true;
+        updateStickyAvailability();
+        window.addEventListener("scroll", updateStickyAvailability, { passive: true });
+        window.addEventListener("resize", updateStickyAvailability);
+    };
+
+    if ("IntersectionObserver" in window) {
+        const stickyAvailabilityObserver = new IntersectionObserver((entries) => {
+            if (entries.some((entry) => entry.isIntersecting)) {
+                enableStickyAvailability();
+                stickyAvailabilityObserver.disconnect();
+            }
+        }, { rootMargin: "800px 0px" });
+
+        stickyAvailabilityObserver.observe(stickyAvailabilitySection);
+    } else {
+        enableStickyAvailability();
+    }
 }
 
 // Structured story slider (ported from github.com/Anil-0001/Amelia-Estate/js/script.js; scroll lock extended for this layout).
@@ -1314,7 +1329,10 @@ if (structSliderSection && structSlides.length > 1) {
     window.addEventListener("touchend", handleStructTouchEnd, { passive: false });
     window.addEventListener("keydown", handleStructKeydown);
     window.addEventListener("resize", syncStructLock);
-    syncStructLock();
+
+    if (window.scrollY > 0) {
+        syncStructLock();
+    }
 }
 
 // About gallery: keeps the image depth effect and toggles the longer content panel.

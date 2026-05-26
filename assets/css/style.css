@@ -15939,9 +15939,22 @@ body {
     text-decoration: none;
 }
 
-.site-header-topbar .material-symbols-rounded {
+.site-header-topbar-icon {
+    width: 15px;
+    height: 15px;
+    flex: 0 0 15px;
+    fill: currentColor;
+}
+
+.site-header-topbar p .site-header-topbar-icon,
+.site-header-contact a[href^="tel:"] .site-header-topbar-icon {
     color: #f0cd45;
-    font-size: 15px;
+}
+
+.site-header-contact a[href*="wa.me"] .site-header-topbar-icon {
+    width: 12px;
+    height: 12px;
+    flex-basis: 12px;
 }
 
 .site-header-contact {
