@@ -21,21 +21,94 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@1,500;1,600&family=Inter:wght@400;500;600;700;800&family=Jost:wght@400;500;600;700&display=swap"
-        rel="stylesheet">
+        rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@1,500;1,600&family=Inter:wght@400;500;600;700;800&family=Jost:wght@400;500;600;700&display=swap"
+            rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     </noscript>
 
-    <link rel="stylesheet" href="assets/css/style.min.css?v=desktop-css-1">
+    <link rel="stylesheet" media="(min-width: 1200px)"
+        href="assets/css/style.desktop-critical.min.css?v=desktop-critical-1">
     <script>
-        if (window.matchMedia("(max-width: 1199px)").matches) {
-            const responsiveStyles = document.createElement("link");
-            responsiveStyles.rel = "stylesheet";
-            responsiveStyles.href = "assets/css/media.min.css?v=performance-restore-2";
-            document.head.appendChild(responsiveStyles);
+        {
+            const isDesktopView = window.matchMedia("(min-width: 1200px)").matches;
+            const requiresFullStyles = !isDesktopView
+                || (window.location.hash && window.location.hash !== "#top");
+
+            if (requiresFullStyles) {
+                const primaryStyles = document.createElement("link");
+                primaryStyles.rel = "stylesheet";
+                primaryStyles.href = "assets/css/style.min.css?v=desktop-css-1";
+                document.head.appendChild(primaryStyles);
+            }
+
+            if (!isDesktopView) {
+                const responsiveStyles = document.createElement("link");
+                responsiveStyles.rel = "stylesheet";
+                responsiveStyles.href = "assets/css/media.min.css?v=performance-restore-2";
+                document.head.appendChild(responsiveStyles);
+            }
         }
     </script>
+    <style>
+        .hero-slide.is-active {
+            z-index: 1;
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .hero-section.is-visible .hero-slide.is-active .hero-slide-bg {
+            animation: heroSlowZoom var(--hero-story-duration, 8000ms) ease-out forwards;
+        }
+
+        .hero-section.is-visible .hero-overlay {
+            opacity: 0;
+        }
+
+        .hero-section.is-visible .hero-slide.is-active .hero-content {
+            opacity: 1;
+            transform: translate3d(var(--hero-content-x), calc(-50% + var(--hero-content-y)), 0);
+            pointer-events: auto;
+        }
+
+        .lifestyle-amenities-grid,
+        .lifestyle-amenities-cta {
+            opacity: 0;
+        }
+
+        .site-footer {
+            background: #080807 !important;
+            color: #ffffff !important;
+        }
+
+        .mega-menu-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 160;
+            visibility: hidden;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .mobile-initial-cta,
+        .mobile-premium-cta {
+            display: none;
+        }
+
+        @keyframes heroSlowZoom {
+            from {
+                transform: translate3d(var(--hero-bg-x), var(--hero-bg-y), 0) scale(1.035);
+            }
+
+            to {
+                transform: translate3d(var(--hero-bg-x), var(--hero-bg-y), 0) scale(1.115);
+            }
+        }
+    </style>
     <noscript>
+        <link rel="stylesheet" href="assets/css/style.min.css?v=desktop-css-1">
         <link rel="stylesheet" href="assets/css/media.min.css?v=performance-restore-2">
     </noscript>
 </head>
@@ -3800,7 +3873,7 @@
         </a>
     </nav>
 
-    <script src="assets/js/main.min.js?v=desktop-css-1"></script>
+    <script src="assets/js/main.min.js?v=desktop-critical-1"></script>
 </body>
 
 </html>

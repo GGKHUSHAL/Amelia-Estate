@@ -136,6 +136,41 @@ const loadMobileIconFont = () => {
 loadMobileIconFont();
 window.addEventListener("resize", loadMobileIconFont);
 
+let deferredDesktopStylesLoaded = false;
+const loadDeferredDesktopStyles = () => {
+    if (deferredDesktopStylesLoaded || !window.matchMedia("(min-width: 1200px)").matches) {
+        return;
+    }
+
+    if (document.querySelector('link[href*="assets/css/style.min.css"]')) {
+        deferredDesktopStylesLoaded = true;
+        return;
+    }
+
+    const link = document.createElement("link");
+    link.rel = "stylesheet";
+    link.href = "assets/css/style.min.css?v=desktop-css-1";
+    link.dataset.desktopFullStyles = "true";
+    document.head.appendChild(link);
+    deferredDesktopStylesLoaded = true;
+};
+
+if (window.matchMedia("(min-width: 1200px)").matches) {
+    ["pointerdown", "wheel", "keydown", "touchstart"].forEach((eventName) => {
+        window.addEventListener(eventName, loadDeferredDesktopStyles, {
+            once: true,
+            passive: eventName !== "keydown"
+        });
+    });
+    window.addEventListener("scroll", loadDeferredDesktopStyles, { once: true, passive: true });
+
+    document.querySelectorAll(".site-header a, .hero-actions a, [data-mega-menu-open]")
+        .forEach((control) => {
+            control.addEventListener("mouseenter", loadDeferredDesktopStyles, { once: true, passive: true });
+            control.addEventListener("focusin", loadDeferredDesktopStyles, { once: true });
+        });
+}
+
 // Standalone Amelia full mega menu. Future trigger buttons can call window.openAmeliaMegaMenu().
 (() => {
     const megaMenu = document.getElementById("fullMenuMega");
@@ -3650,11 +3685,11 @@ if (lifestyleAmenitiesSection) {
     });
 
     amenityCards.forEach((card) => {
-        const label = card.querySelector(".lifestyle-amenity-caption span")?.textContent.trim() || "amenity image";
+        const label = card.querySelector(".lifestyle-amenity-caption span")?.textContent.trim() || "Amenity image";
 
         card.setAttribute("role", "button");
         card.setAttribute("tabindex", "0");
-        card.setAttribute("aria-label", `Open ${label} image preview`);
+        card.setAttribute("aria-label", `${label} - open image preview`);
         card.addEventListener("click", () => openAmenityLightbox(card));
         card.addEventListener("keydown", (event) => {
             if (event.key !== "Enter" && event.key !== " ") {
