@@ -20745,6 +20745,7 @@ body.struct-slider-locked .site-header {
 }
 
 /* Mobile compass CTA: final source of truth. */
+.mobile-initial-cta,
 .mobile-premium-cta {
     display: none;
 }
