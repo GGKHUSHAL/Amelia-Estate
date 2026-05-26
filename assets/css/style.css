@@ -1,5 +1,4 @@
 ﻿/* Global base styles and project fonts. */
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Jost:wght@400;500;600;700&display=swap");
 
 * {
     box-sizing: border-box;
@@ -3163,7 +3162,7 @@ body.is-project-plan-lightbox-open {
 
 .pricing-locked-price {
     display: inline-block;
-    color: rgba(255, 255, 255, 0.42);
+    color: rgba(255, 255, 255, 0.62);
     filter: blur(5px);
     user-select: none;
 }
@@ -8367,7 +8366,7 @@ body.is-amenity-lightbox-open {
 
 .footer-redesign-marketing span {
     display: block;
-    color: rgba(255, 255, 255, 0.42);
+    color: rgba(255, 255, 255, 0.68);
     font-size: 11px;
     font-weight: 800;
     letter-spacing: 0.12em;
@@ -8482,7 +8481,7 @@ body.is-amenity-lightbox-open {
 .footer-redesign-column strong {
     display: block;
     margin-bottom: 3px;
-    color: rgba(255, 255, 255, 0.44);
+    color: rgba(255, 255, 255, 0.68);
     font-size: 11px;
     letter-spacing: 0.10em;
     text-transform: uppercase;
@@ -8947,7 +8946,7 @@ body.is-footer-legal-modal-open {
     background:
         linear-gradient(180deg, rgba(0, 0, 0, 0.30), rgba(0, 0, 0, 0.46)),
         linear-gradient(90deg, rgba(0, 0, 0, 0.34), rgba(0, 0, 0, 0.10) 48%, rgba(0, 0, 0, 0.36)),
-        url("../img/project gallery/walktrough.webp") center / cover no-repeat;
+        url("../img/optimized/section/walktrough.webp") center / cover no-repeat;
     filter: saturate(1.02) contrast(1.03) brightness(0.92);
     transform: scale(1.04);
 }
@@ -11835,9 +11834,16 @@ body.is-footer-legal-modal-open {
     position: absolute;
     inset: 0;
     z-index: 0;
-    background: url("../img/Differentiation Banner/89913c4de3bacd517a6920d106fe6f7082f9f0a4.webp") center / cover no-repeat;
+    background-color: #000000;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
     transform: scale(1);
     transition: transform 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.differentiation-section.is-background-loaded::after {
+    background-image: url("../img/optimized/89913c4de3bacd517a6920d106fe6f7082f9f0a4.webp");
 }
 
 .differentiation-section::before {
@@ -12867,30 +12873,6 @@ body.struct-slider-locked {
     opacity: 1;
 }
 
-.struct-slide-1 {
-    background-image: url("../img/struct-slider/structslider1.webp");
-}
-
-.struct-slide-2 {
-    background-image: url("../img/struct-slider/structslider2.webp");
-}
-
-.struct-slide-3 {
-    background-image: url("../img/struct-slider/structslider3.webp");
-}
-
-.struct-slide-4 {
-    background-image: url("../img/struct-slider/stuctslider4.webp");
-}
-
-.struct-slide-5 {
-    background-image: url("../img/struct-slider/structslider5.webp");
-}
-
-.struct-slide-6 {
-    background-image: url("../img/struct-slider/structslider6.webp");
-}
-
 .struct-slider-overlay {
     opacity: 0;
     background:
@@ -13040,7 +13022,7 @@ body.struct-slider-locked {
 
 
 .hero-section {
-    background: #000000 url("../img/slider/hero slider -1.webp") center center / cover no-repeat !important;
+    background: #000000 url("../img/optimized/hero slider -1.webp") center center / cover no-repeat !important;
 }
 
 
@@ -15428,6 +15410,16 @@ body {
     box-shadow: inset 0 1px 0 rgba(255, 255, 255, .07);
 }
 
+.download-option i.fa-regular {
+    font-family: "Font Awesome 6 Free";
+    font-weight: 400;
+}
+
+.download-option i.fa-solid {
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+}
+
 .download-option h4 {
     margin: 0;
     color: #ffffff;
@@ -15462,8 +15454,8 @@ body {
 }
 
 .download-option a b {
-    font-family: "Material Symbols Rounded";
-    font-size: 12px;
+    font-family: inherit;
+    font-size: 15px;
     font-weight: 500;
 }
 
@@ -15501,6 +15493,13 @@ body {
     color: #f0cd45;
     font-family: "Material Symbols Rounded";
     font-size: 17px;
+}
+
+.download-footnote p i {
+    color: #f0cd45;
+    font-family: "Font Awesome 6 Free";
+    font-size: 14px;
+    font-weight: 900;
 }
 
 .download-footnote div {

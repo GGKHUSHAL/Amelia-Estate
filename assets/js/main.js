@@ -82,6 +82,26 @@ window.AmeliaLeadSubmission = {
     }
 };
 
+const loadDeferredImages = (container) => {
+    container?.querySelectorAll("img[data-deferred-src]").forEach((image) => {
+        image.src = image.dataset.deferredSrc;
+        image.removeAttribute("data-deferred-src");
+    });
+};
+
+let materialSymbolsLoaded = false;
+const loadDeferredMaterialSymbols = () => {
+    if (materialSymbolsLoaded) {
+        return;
+    }
+
+    const link = document.createElement("link");
+    link.rel = "stylesheet";
+    link.href = "https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,500,0,0&display=swap";
+    document.head.appendChild(link);
+    materialSymbolsLoaded = true;
+};
+
 // Standalone Amelia full mega menu. Future trigger buttons can call window.openAmeliaMegaMenu().
 (() => {
     const megaMenu = document.getElementById("fullMenuMega");
@@ -99,6 +119,11 @@ window.AmeliaLeadSubmission = {
     }
 
     const setMegaMenuOpen = (shouldOpen) => {
+        if (shouldOpen) {
+            loadDeferredImages(megaMenu);
+            loadDeferredMaterialSymbols();
+        }
+
         megaMenu.classList.toggle("is-open", shouldOpen);
         megaMenu.setAttribute("aria-hidden", String(!shouldOpen));
         document.body.classList.toggle("mega-open", shouldOpen);
@@ -191,11 +216,19 @@ window.AmeliaLeadSubmission = {
 })();
 
 (() => {
-    const navItems = document.querySelectorAll(".site-nav-item[data-mega-hover-image]");
+    const navItems = document.querySelectorAll(".site-nav-item");
 
     navItems.forEach((item) => {
         const media = item.querySelector(".header-mega-media");
         let swapTimer;
+
+        const loadItemMedia = () => {
+            loadDeferredImages(item);
+            loadDeferredMaterialSymbols();
+        };
+
+        item.addEventListener("mouseenter", loadItemMedia, { once: true });
+        item.addEventListener("focusin", loadItemMedia, { once: true });
 
         if (!media) {
             return;
@@ -688,40 +721,25 @@ if (heroSlider) {
     const swipeDistance = 50;
     let suppressStoryTapUntil = 0;
     let storyProgressItems = [];
-    const originalHeroBackgrounds = Array.from(slides, (slide) => {
-        const background = slide.querySelector(".hero-slide-bg");
-        return background ? background.style.backgroundImage : "";
-    });
+    const desktopHeroImages = Array.from(slides, (slide) => slide.dataset.heroImage || "");
+    const mobileHeroImages = [
+        null,
+        "assets/img/slider/mobile-slide-2.webp",
+        "assets/img/slider/mobile-slide-3.webp"
+    ];
 
     const isMobileStory = () => window.matchMedia("(max-width: 767px)").matches;
     const getStoryDuration = () => (isMobileStory() ? mobileStoryDuration : desktopStoryDuration);
 
-    const applyMobileHeroImages = () => {
-        if (!isMobileStory()) {
-            slides.forEach((slide, index) => {
-                const background = slide.querySelector(".hero-slide-bg");
+    const applyHeroImage = (index) => {
+        const background = slides[index]?.querySelector(".hero-slide-bg");
+        const source = isMobileStory() && mobileHeroImages[index]
+            ? mobileHeroImages[index]
+            : desktopHeroImages[index];
 
-                if (background) {
-                    background.style.backgroundImage = originalHeroBackgrounds[index];
-                }
-            });
-            return;
+        if (background && source) {
+            background.style.backgroundImage = `url("${source}")`;
         }
-
-        const mobileImages = [
-            null,
-            "assets/img/slider/mobile-slide-2.webp",
-            "assets/img/slider/mobile-slide-3.webp"
-        ];
-
-        slides.forEach((slide, index) => {
-            const mobileImage = mobileImages[index];
-            const background = slide.querySelector(".hero-slide-bg");
-
-            if (mobileImage && background) {
-                background.style.backgroundImage = `url("${mobileImage}")`;
-            }
-        });
     };
 
     const updateSliderPosition = () => {
@@ -758,6 +776,7 @@ if (heroSlider) {
     const showSlide = (index) => {
         slides[activeSlide].classList.remove("is-active");
         activeSlide = (index + slides.length) % slides.length;
+        applyHeroImage(activeSlide);
         updateSliderPosition();
         slides[activeSlide].classList.add("is-active");
         updateStoryProgress();
@@ -833,13 +852,13 @@ if (heroSlider) {
     };
 
     slides[activeSlide].classList.add("is-active");
-    applyMobileHeroImages();
+    applyHeroImage(activeSlide);
     updateSliderPosition();
     updateStoryProgress();
     startAutoSlide();
 
     window.addEventListener("resize", () => {
-        applyMobileHeroImages();
+        applyHeroImage(activeSlide);
         updateSliderPosition();
         updateStoryProgress();
         resetAutoSlide();
@@ -946,12 +965,22 @@ let structTouchStartY = 0;
 let structReleaseUntil = 0;
 let structReleaseDirection = 0;
 
+const loadStructSlideImage = (index) => {
+    const slide = structSlides[index];
+    const source = slide?.dataset.structImage;
+
+    if (slide && source && !slide.style.backgroundImage) {
+        slide.style.backgroundImage = `url("${source}")`;
+    }
+};
+
 const setStructSlide = (nextIndex) => {
     if (!structSlides.length) {
         return false;
     }
 
     const clampedIndex = Math.max(0, Math.min(nextIndex, structSlides.length - 1));
+    loadStructSlideImage(clampedIndex);
 
     if (clampedIndex === activeStructSlide) {
         return false;
@@ -972,6 +1001,19 @@ const setStructSlide = (nextIndex) => {
 };
 
 if (structSliderSection && structSlides.length > 1) {
+    if ("IntersectionObserver" in window) {
+        const structImageObserver = new IntersectionObserver((entries) => {
+            if (entries.some((entry) => entry.isIntersecting)) {
+                loadStructSlideImage(activeStructSlide);
+                structImageObserver.disconnect();
+            }
+        }, { rootMargin: "320px 0px" });
+
+        structImageObserver.observe(structSliderSection);
+    } else {
+        loadStructSlideImage(activeStructSlide);
+    }
+
     const canMoveStructSlide = (direction) =>
         (direction > 0 && activeStructSlide < structSlides.length - 1) ||
         (direction < 0 && activeStructSlide > 0);
@@ -1392,13 +1434,6 @@ if (idealFloorSection) {
         }
     };
 
-    Object.values(sizeDetails).forEach(({ image }) => {
-        if (image) {
-            const preload = new Image();
-            preload.src = image;
-        }
-    });
-
     const switchIdealImage = (src) => {
         if (!idealImage || !src || idealImage.getAttribute("src") === src) {
             return;
@@ -1408,8 +1443,6 @@ if (idealFloorSection) {
         clearTimeout(idealImageTimer);
         idealImage.classList.remove("is-image-revealing");
         idealImage.src = src;
-        void idealImage.offsetWidth;
-
         if (requestId !== idealImageRequest) {
             return;
         }
@@ -1507,20 +1540,17 @@ if (projectPlansSection) {
     const lightboxTitle = lightbox?.querySelector(".project-plan-lightbox-title");
     const lightboxCloseButtons = lightbox?.querySelectorAll(".project-plan-lightbox-close, .project-plan-lightbox-backdrop");
 
-    const floorImage = "assets/img/project plans/90009c575573f8f004b5343f065db6963be4f203.webp";
+    const floorImage = "assets/img/optimized/90009c575573f8f004b5343f065db6963be4f203.webp";
+    const floorDownloadImage = "assets/img/project plans/90009c575573f8f004b5343f065db6963be4f203.webp";
     const siteImage = "assets/img/project plans/site plan.jpg";
     let activePlan = "floor";
     let projectPlanImageTimer;
     let projectPlanImageRequest = 0;
 
-    [floorImage, siteImage].forEach((src) => {
-        const preload = new Image();
-        preload.src = src;
-    });
-
     const planContent = {
         floor: {
             image: floorImage,
+            download: floorDownloadImage,
             alt: "3 BHK floor plan layout",
             badge: "230 Sq.Yd Floor Plan",
             badgeAccent: "3 BHK layout",
@@ -1532,6 +1562,7 @@ if (projectPlansSection) {
         },
         site: {
             image: siteImage,
+            download: siteImage,
             alt: "Master site plan layout",
             badge: "Master Site Plan",
             badgeAccent: "Site layout",
@@ -1543,6 +1574,7 @@ if (projectPlansSection) {
         },
         tower: {
             image: floorImage,
+            download: floorDownloadImage,
             alt: "Tower plan layout",
             badge: "230 Sq.Yd Stack Plan",
             badgeAccent: "Stack view",
@@ -1569,8 +1601,6 @@ if (projectPlansSection) {
         image.classList.remove("is-image-revealing");
         image.src = src;
         image.alt = alt;
-        void image.offsetWidth;
-
         if (requestId !== projectPlanImageRequest) {
             return;
         }
@@ -1619,7 +1649,7 @@ if (projectPlansSection) {
         });
 
         toolLinks.forEach((link) => {
-            link.href = content.image;
+            link.href = content.download || content.image;
         });
     };
 
@@ -1806,13 +1836,6 @@ if (pricingSection) {
         }
     };
 
-    Object.values(pricingContent).forEach(({ image }) => {
-        if (image) {
-            const preload = new Image();
-            preload.src = image;
-        }
-    });
-
     let activeSize = "230";
     let isPricingUnlocked = false;
     let pricingUnlockCallbacks = [];
@@ -1834,7 +1857,6 @@ if (pricingSection) {
             selectedPriceBox.classList.toggle("is-price-visible", isVisiblePrice);
 
             if (!isVisiblePrice) {
-                void selectedPriceBox.offsetWidth;
             }
         }
 
@@ -1883,8 +1905,6 @@ if (pricingSection) {
         pricingImage.classList.remove("is-image-revealing");
         pricingImage.src = src;
         pricingImage.alt = alt;
-        void pricingImage.offsetWidth;
-
         if (requestId !== pricingImageRequest) {
             return;
         }
@@ -4106,6 +4126,23 @@ document.querySelectorAll(".booking-enquiry-form, .site-visit-form, .header-cont
 })();
 
 // Scroll reveal: toggles .is-visible for sections that animate when entering the viewport.
+const deferredBackgroundSection = document.querySelector(".differentiation-section");
+
+if (deferredBackgroundSection) {
+    if ("IntersectionObserver" in window) {
+        const backgroundObserver = new IntersectionObserver((entries) => {
+            if (entries.some((entry) => entry.isIntersecting)) {
+                deferredBackgroundSection.classList.add("is-background-loaded");
+                backgroundObserver.disconnect();
+            }
+        }, { rootMargin: "480px 0px" });
+
+        backgroundObserver.observe(deferredBackgroundSection);
+    } else {
+        deferredBackgroundSection.classList.add("is-background-loaded");
+    }
+}
+
 const revealSections = document.querySelectorAll(".reveal-on-scroll");
 
 if (revealSections.length) {

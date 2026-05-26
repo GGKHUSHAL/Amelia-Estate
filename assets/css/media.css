@@ -1324,7 +1324,11 @@
 
     .differentiation-section {
         height: auto;
-        background: #000000 url("../img/Differentiation Banner/89913c4de3bacd517a6920d106fe6f7082f9f0a4.webp") center / cover no-repeat;
+        background: #000000 center / cover no-repeat;
+    }
+
+    .differentiation-section.is-background-loaded {
+        background-image: url("../img/optimized/89913c4de3bacd517a6920d106fe6f7082f9f0a4.webp");
     }
 
     .differentiation-banner {
@@ -2071,14 +2075,6 @@
         height: 100%;
         background-position: center top !important;
         background-size: cover !important;
-    }
-
-    .hero-slide:nth-child(2) .hero-slide-bg {
-        background-image: url("../img/slider/mobile-slide-2.webp") !important;
-    }
-
-    .hero-slide:nth-child(3) .hero-slide-bg {
-        background-image: url("../img/slider/mobile-slide-3.webp") !important;
     }
 
     .hero-content {
