@@ -136,33 +136,6 @@ const loadMobileIconFont = () => {
 loadMobileIconFont();
 window.addEventListener("resize", loadMobileIconFont);
 
-let desktopMediaStylesLoaded = false;
-const loadDeferredDesktopMediaStyles = () => {
-    if (desktopMediaStylesLoaded || !window.matchMedia("(min-width: 1200px)").matches) {
-        return;
-    }
-
-    const link = document.createElement("link");
-    link.rel = "stylesheet";
-    link.href = "assets/css/media.min.css?v=performance-restore-2";
-    document.head.appendChild(link);
-    desktopMediaStylesLoaded = true;
-};
-
-if (window.matchMedia("(min-width: 1200px)").matches) {
-    const loadDesktopMediaWhenNeeded = () => {
-        if ((window.location.hash && window.location.hash !== "#top") || window.scrollY > 480) {
-            loadDeferredDesktopMediaStyles();
-            window.removeEventListener("scroll", loadDesktopMediaWhenNeeded);
-            window.removeEventListener("hashchange", loadDesktopMediaWhenNeeded);
-        }
-    };
-
-    window.addEventListener("scroll", loadDesktopMediaWhenNeeded, { passive: true });
-    window.addEventListener("hashchange", loadDesktopMediaWhenNeeded);
-    loadDesktopMediaWhenNeeded();
-}
-
 // Standalone Amelia full mega menu. Future trigger buttons can call window.openAmeliaMegaMenu().
 (() => {
     const megaMenu = document.getElementById("fullMenuMega");

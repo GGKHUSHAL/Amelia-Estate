@@ -26,8 +26,15 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     </noscript>
 
-    <link rel="stylesheet" href="assets/css/style.min.css?v=accessibility-restore-1">
-    <link rel="stylesheet" href="assets/css/media.min.css?v=performance-restore-2" media="(max-width: 1199px)">
+    <link rel="stylesheet" href="assets/css/style.min.css?v=desktop-css-1">
+    <script>
+        if (window.matchMedia("(max-width: 1199px)").matches) {
+            const responsiveStyles = document.createElement("link");
+            responsiveStyles.rel = "stylesheet";
+            responsiveStyles.href = "assets/css/media.min.css?v=performance-restore-2";
+            document.head.appendChild(responsiveStyles);
+        }
+    </script>
     <noscript>
         <link rel="stylesheet" href="assets/css/media.min.css?v=performance-restore-2">
     </noscript>
@@ -3793,7 +3800,7 @@
         </a>
     </nav>
 
-    <script src="assets/js/main.min.js?v=performance-restore-3"></script>
+    <script src="assets/js/main.min.js?v=desktop-css-1"></script>
 </body>
 
 </html>
