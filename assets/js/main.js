@@ -1,10 +1,22 @@
 // Shared lead unlock state for the current page view only.
 (() => {
+    let hasMobileViewportHeight = false;
     const setMobileViewportHeight = () => {
+        if (!window.matchMedia("(max-width: 767px)").matches) {
+            if (hasMobileViewportHeight) {
+                document.documentElement.style.removeProperty("--amelia-mobile-viewport-height");
+                document.body?.style.removeProperty("--amelia-mobile-viewport-height");
+                hasMobileViewportHeight = false;
+            }
+
+            return;
+        }
+
         const viewportHeight = window.visualViewport?.height || window.innerHeight;
 
         document.documentElement.style.setProperty("--amelia-mobile-viewport-height", `${viewportHeight}px`);
         document.body?.style.setProperty("--amelia-mobile-viewport-height", `${viewportHeight}px`);
+        hasMobileViewportHeight = true;
     };
 
     setMobileViewportHeight();
@@ -102,6 +114,55 @@ const loadDeferredMaterialSymbols = () => {
     materialSymbolsLoaded = true;
 };
 
+let fontAwesomeLoaded = false;
+const loadDeferredFontAwesome = () => {
+    if (fontAwesomeLoaded) {
+        return;
+    }
+
+    const link = document.createElement("link");
+    link.rel = "stylesheet";
+    link.href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css";
+    document.head.appendChild(link);
+    fontAwesomeLoaded = true;
+};
+
+const loadMobileIconFont = () => {
+    if (window.matchMedia("(max-width: 760px)").matches) {
+        loadDeferredFontAwesome();
+    }
+};
+
+loadMobileIconFont();
+window.addEventListener("resize", loadMobileIconFont);
+
+let desktopMediaStylesLoaded = false;
+const loadDeferredDesktopMediaStyles = () => {
+    if (desktopMediaStylesLoaded || !window.matchMedia("(min-width: 1200px)").matches) {
+        return;
+    }
+
+    const link = document.createElement("link");
+    link.rel = "stylesheet";
+    link.href = "assets/css/media.min.css?v=performance-restore-2";
+    document.head.appendChild(link);
+    desktopMediaStylesLoaded = true;
+};
+
+if (window.matchMedia("(min-width: 1200px)").matches) {
+    const loadDesktopMediaWhenNeeded = () => {
+        if ((window.location.hash && window.location.hash !== "#top") || window.scrollY > 480) {
+            loadDeferredDesktopMediaStyles();
+            window.removeEventListener("scroll", loadDesktopMediaWhenNeeded);
+            window.removeEventListener("hashchange", loadDesktopMediaWhenNeeded);
+        }
+    };
+
+    window.addEventListener("scroll", loadDesktopMediaWhenNeeded, { passive: true });
+    window.addEventListener("hashchange", loadDesktopMediaWhenNeeded);
+    loadDesktopMediaWhenNeeded();
+}
+
 // Standalone Amelia full mega menu. Future trigger buttons can call window.openAmeliaMegaMenu().
 (() => {
     const megaMenu = document.getElementById("fullMenuMega");
@@ -122,6 +183,7 @@ const loadDeferredMaterialSymbols = () => {
         if (shouldOpen) {
             loadDeferredImages(megaMenu);
             loadDeferredMaterialSymbols();
+            loadDeferredFontAwesome();
         }
 
         megaMenu.classList.toggle("is-open", shouldOpen);
@@ -225,6 +287,7 @@ const loadDeferredMaterialSymbols = () => {
         const loadItemMedia = () => {
             loadDeferredImages(item);
             loadDeferredMaterialSymbols();
+            loadDeferredFontAwesome();
         };
 
         item.addEventListener("mouseenter", loadItemMedia, { once: true });
@@ -2178,6 +2241,7 @@ if (premiumSpecsSection) {
     let brandMarqueeFrame;
     let brandMarqueePosition = 0;
     let isBrandMarqueePaused = false;
+    let isPremiumSpecsMotionActive = false;
     const specSwipeDistance = 44;
     const specAnimationDuration = 860;
     const specDetails = {
@@ -2483,8 +2547,6 @@ if (premiumSpecsSection) {
     specTrack.addEventListener("mouseleave", startSpecSlider);
 
     if (brandTrack && brandItems.length && brandDots.length) {
-        setupBrandMarquee();
-
         brandDots.forEach((dot, index) => {
             dot.addEventListener("click", () => {
                 isBrandMarqueePaused = true;
@@ -2508,8 +2570,6 @@ if (premiumSpecsSection) {
         document.addEventListener("visibilitychange", () => {
             isBrandMarqueePaused = document.hidden;
         });
-        updateBrandIndicator();
-        startBrandMarquee();
     }
 
     document.addEventListener("keydown", (event) => {
@@ -2552,7 +2612,37 @@ if (premiumSpecsSection) {
     setSpecSlide(activeSpecSlide);
     applySpecHash();
     window.addEventListener("hashchange", applySpecHash);
-    startSpecSlider();
+
+    const activatePremiumSpecsMotion = () => {
+        if (isPremiumSpecsMotionActive) {
+            return;
+        }
+
+        isPremiumSpecsMotionActive = true;
+
+        if (brandTrack && brandItems.length && brandDots.length) {
+            setupBrandMarquee();
+            updateBrandIndicator();
+            startBrandMarquee();
+        }
+
+        startSpecSlider();
+    };
+
+    if (getSpecFromHash()) {
+        activatePremiumSpecsMotion();
+    } else if ("IntersectionObserver" in window) {
+        const premiumSpecsMotionObserver = new IntersectionObserver((entries) => {
+            if (entries.some((entry) => entry.isIntersecting)) {
+                activatePremiumSpecsMotion();
+                premiumSpecsMotionObserver.disconnect();
+            }
+        }, { rootMargin: "500px 0px" });
+
+        premiumSpecsMotionObserver.observe(premiumSpecsSection);
+    } else {
+        activatePremiumSpecsMotion();
+    }
 }
 
 // Visual showcase: switches gallery tabs, copy, and walkthrough/construction views.
@@ -3239,6 +3329,23 @@ if (primeLocationSection) {
 
 // Project downloads: match the upstream hover/focus preview behavior.
 const downloadOptions = document.querySelectorAll(".download-option");
+
+if (downloadOptions.length) {
+    const projectDownloadSection = document.querySelector(".project-download-section");
+
+    if ("IntersectionObserver" in window && projectDownloadSection) {
+        const fontAwesomeObserver = new IntersectionObserver((entries) => {
+            if (entries.some((entry) => entry.isIntersecting)) {
+                loadDeferredFontAwesome();
+                fontAwesomeObserver.disconnect();
+            }
+        }, { rootMargin: "500px 0px" });
+
+        fontAwesomeObserver.observe(projectDownloadSection);
+    } else {
+        loadDeferredFontAwesome();
+    }
+}
 const downloadPreviewImages = document.querySelectorAll(".download-preview-image");
 
 if (downloadOptions.length && downloadPreviewImages.length) {
