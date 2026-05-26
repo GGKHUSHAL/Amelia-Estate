@@ -11638,7 +11638,7 @@ body.is-mobile-struct-slider-active .site-header {
     .struct-slider-section .struct-slider-rail {
         position: absolute !important;
         left: 16px !important;
-        top: 52% !important;
+        top: 50% !important;
         z-index: 20 !important;
         display: flex !important;
         width: 42px !important;
@@ -12013,6 +12013,23 @@ body.is-mobile-struct-slider-active .site-header {
     }
 }
 
+/* Fill tall desktop viewports without compacting shorter differentiation layouts. */
+@media (min-width: 1200px) {
+    .differentiation-section,
+    .differentiation-banner {
+        min-height: max(620px, 100vh);
+        min-height: max(620px, 100dvh);
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+    .differentiation-section,
+    .differentiation-banner {
+        min-height: max(660px, 100vh);
+        min-height: max(660px, 100dvh);
+    }
+}
+
 @media (max-width: 760px) {
     body {
         padding-bottom: calc(88px + env(safe-area-inset-bottom)) !important;
@@ -12021,7 +12038,7 @@ body.is-mobile-struct-slider-active .site-header {
     .footer-redesign-brand .amelia-logo--footer {
         --amelia-badge-size: 64px;
         --amelia-icon-size: 34px;
-        --amelia-name-size: 46px;
+        --amelia-name-size: 58px;
         --amelia-sub-size: 10px;
         --amelia-sub-spacing: 5.5px;
         display: inline-flex !important;
@@ -12031,6 +12048,16 @@ body.is-mobile-struct-slider-active .site-header {
         padding: 0 !important;
         border: 0 !important;
         background: transparent !important;
+    }
+
+    .footer-redesign-brand .amelia-logo--footer .name {
+        font-size: var(--amelia-name-size) !important;
+        line-height: 0.88 !important;
+    }
+
+    .footer-redesign-brand .amelia-logo--footer .sub {
+        font-size: var(--amelia-sub-size) !important;
+        line-height: 1 !important;
     }
 
     .footer-redesign-brand .amelia-logo--footer .badge {
