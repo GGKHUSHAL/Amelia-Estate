@@ -123,10 +123,33 @@
             } else if (hasDeepLink) {
                 loadFullStyles();
             } else {
-                const loadOnce = () => loadFullStyles();
-                ["pointerdown", "touchstart", "wheel", "keydown", "scroll"].forEach((eventName) => {
+                const shouldKeepHeroCriticalStyle = (event) => {
+                    if (!event || (event.type !== "pointerdown" && event.type !== "touchstart")) {
+                        return false;
+                    }
+
+                    const target = event.target instanceof Element ? event.target : event.target?.parentElement;
+
+                    if (!target || target.closest(".hero-actions a, input, select, textarea, label")) {
+                        return false;
+                    }
+
+                    return Boolean(target.closest("#heroSlider, .hero-story-tap"));
+                };
+                const loadOnce = (event) => {
+                    if (shouldKeepHeroCriticalStyle(event)) {
+                        return;
+                    }
+
+                    wakeEvents.forEach((eventName) => {
+                        window.removeEventListener(eventName, loadOnce);
+                    });
+                    loadFullStyles();
+                };
+                const wakeEvents = ["pointerdown", "touchstart", "wheel", "keydown", "scroll"];
+
+                wakeEvents.forEach((eventName) => {
                     window.addEventListener(eventName, loadOnce, {
-                        once: true,
                         passive: eventName !== "keydown"
                     });
                 });
