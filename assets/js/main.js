@@ -1,6 +1,9 @@
 // Shared lead unlock state for the current page view only.
 (() => {
     let hasMobileViewportHeight = false;
+    let mobileViewportFrame = 0;
+    let lastMobileViewportHeight = 0;
+
     const setMobileViewportHeight = () => {
         if (!window.matchMedia("(max-width: 767px)").matches) {
             if (hasMobileViewportHeight) {
@@ -14,16 +17,39 @@
 
         const viewportHeight = window.visualViewport?.height || window.innerHeight;
 
+        if (Math.abs(viewportHeight - lastMobileViewportHeight) < 1) {
+            return;
+        }
+
         document.documentElement.style.setProperty("--amelia-mobile-viewport-height", `${viewportHeight}px`);
         document.body?.style.setProperty("--amelia-mobile-viewport-height", `${viewportHeight}px`);
+        lastMobileViewportHeight = viewportHeight;
         hasMobileViewportHeight = true;
     };
 
-    setMobileViewportHeight();
-    window.addEventListener("resize", setMobileViewportHeight);
-    window.addEventListener("orientationchange", setMobileViewportHeight);
-    window.visualViewport?.addEventListener("resize", setMobileViewportHeight);
-    window.visualViewport?.addEventListener("scroll", setMobileViewportHeight);
+    const requestMobileViewportHeight = () => {
+        window.cancelAnimationFrame(mobileViewportFrame);
+        mobileViewportFrame = window.requestAnimationFrame(setMobileViewportHeight);
+    };
+
+    const primeMobileViewportHeight = () => {
+        if ("requestIdleCallback" in window) {
+            window.requestIdleCallback(requestMobileViewportHeight, { timeout: 1400 });
+        } else {
+            window.setTimeout(requestMobileViewportHeight, 300);
+        }
+    };
+
+    if (document.readyState === "complete") {
+        primeMobileViewportHeight();
+    } else {
+        window.addEventListener("load", primeMobileViewportHeight, { once: true });
+    }
+
+    window.addEventListener("resize", requestMobileViewportHeight);
+    window.addEventListener("orientationchange", requestMobileViewportHeight);
+    window.visualViewport?.addEventListener("resize", requestMobileViewportHeight);
+    window.visualViewport?.addEventListener("scroll", requestMobileViewportHeight);
 })();
 
 (() => {
@@ -127,14 +153,12 @@ const loadDeferredFontAwesome = () => {
     fontAwesomeLoaded = true;
 };
 
-const loadMobileIconFont = () => {
-    if (window.matchMedia("(max-width: 760px)").matches) {
-        loadDeferredFontAwesome();
-    }
-};
-
-loadMobileIconFont();
-window.addEventListener("resize", loadMobileIconFont);
+["pointerdown", "keydown"].forEach((eventName) => {
+    window.addEventListener(eventName, loadDeferredFontAwesome, {
+        once: true,
+        passive: eventName !== "keydown"
+    });
+});
 
 let deferredDesktopStylesLoaded = false;
 const loadDeferredDesktopStyles = () => {
@@ -646,9 +670,20 @@ if (window.matchMedia("(min-width: 1200px)").matches) {
         document.body.classList.toggle("is-mobile-struct-slider-active", isStructSliderActive);
     };
 
-    updateMobileHeaderState();
-    window.addEventListener("scroll", updateMobileHeaderState, { passive: true });
-    window.addEventListener("resize", updateMobileHeaderState);
+    let mobileHeaderFrame = 0;
+    const requestMobileHeaderState = () => {
+        window.cancelAnimationFrame(mobileHeaderFrame);
+        mobileHeaderFrame = window.requestAnimationFrame(updateMobileHeaderState);
+    };
+
+    if (document.readyState === "complete") {
+        requestMobileHeaderState();
+    } else {
+        window.addEventListener("load", requestMobileHeaderState, { once: true });
+    }
+
+    window.addEventListener("scroll", requestMobileHeaderState, { passive: true });
+    window.addEventListener("resize", requestMobileHeaderState);
 })();
 
 // Mobile footer accordion: keeps footer links compact until a heading is tapped.
@@ -782,7 +817,7 @@ if (heroSlider) {
     const previousStoryTap = heroSection.querySelector(".hero-story-tap--prev");
     const nextStoryTap = heroSection.querySelector(".hero-story-tap--next");
     const desktopStoryDuration = 6500;
-    const mobileStoryDuration = 2800;
+    const mobileStoryDuration = 5000;
 
     let activeSlide = 0;
     let slideInterval;
