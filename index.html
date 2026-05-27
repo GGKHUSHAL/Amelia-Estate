@@ -480,6 +480,65 @@
             body.min-h-screen.bg-white {
                 color: #111111 !important;
             }
+
+            body .premium-specs-dots {
+                min-height: 48px !important;
+                gap: 0 !important;
+            }
+
+            body .premium-specs-dots button {
+                position: relative !important;
+                display: grid !important;
+                width: 48px !important;
+                min-width: 48px !important;
+                height: 48px !important;
+                min-height: 48px !important;
+                place-items: center !important;
+                border: 0 !important;
+                background: transparent !important;
+                box-shadow: none !important;
+                touch-action: manipulation !important;
+            }
+
+            body .premium-specs-dots button::before {
+                content: "" !important;
+                display: block !important;
+                width: 9px !important;
+                height: 9px !important;
+                border-radius: 999px !important;
+                background: rgba(255, 255, 255, 0.24) !important;
+                transition:
+                    width 0.28s ease,
+                    background-color 0.28s ease,
+                    box-shadow 0.28s ease !important;
+            }
+
+            body .premium-specs-dots button.is-active::before {
+                width: 29px !important;
+                background: #D5AE66 !important;
+                box-shadow: 0 0 22px rgba(213, 174, 102, 0.55) !important;
+            }
+
+            body .visual-showcase-tabs-shell,
+            body .lifestyle-amenities-tabs-shell {
+                grid-template-columns: 48px minmax(0, 1fr) 48px !important;
+            }
+
+            body .visual-showcase-tabs-shell .visual-showcase-tabs-arrow,
+            body .lifestyle-amenities-tabs-shell .lifestyle-amenities-tabs-arrow {
+                width: 48px !important;
+                min-width: 48px !important;
+                height: 48px !important;
+                min-height: 48px !important;
+                touch-action: manipulation !important;
+            }
+
+            body .visual-showcase-tabs.transparent-pricing-tabs button,
+            body .lifestyle-amenities-tabs.transparent-pricing-tabs button {
+                height: 48px !important;
+                min-height: 48px !important;
+                touch-action: manipulation !important;
+            }
         }
 
         .hero-section,
@@ -522,7 +581,7 @@
     </noscript>
 </head>
 
-<body class="min-h-screen bg-white text-white is-mobile-hero-active">
+<body class="min-h-screen bg-white is-mobile-hero-active">
     <div class="mega-menu-overlay" id="fullMenuMega" data-mega-menu aria-hidden="true">
         <div class="mega-menu-card" role="dialog" aria-modal="true" aria-label="Full site menu">
             <div class="full-menu-top">
@@ -1699,8 +1758,8 @@
                                 alt="Premium balcony detail at Amelia Estate II" width="280" height="280"/>
                         </figure>
                         <figure class="about-photo about-reveal-img">
-                            <img loading="lazy" decoding="async" src="assets/img/optimized/small/9d36bc9e1115936b757064117ba22e4770259b28.webp"
-                                alt="Spacious modern 3 BHK living room interior" width="480" height="291"/>
+                            <img loading="lazy" decoding="async" src="assets/img/optimized/thumb/9d36bc9e1115936b757064117ba22e4770259b28.webp"
+                                alt="Spacious modern 3 BHK living room interior" width="240" height="145"/>
                         </figure>
                     </div>
                 </div>
