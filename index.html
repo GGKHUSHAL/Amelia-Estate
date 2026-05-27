@@ -593,6 +593,46 @@
             display: none !important;
         }
 
+        .mobile-initial-cta {
+            display: none !important;
+        }
+
+        .struct-index {
+            color: rgba(255, 255, 255, 0.86) !important;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.72) !important;
+        }
+
+        .struct-index::before {
+            background: rgba(255, 255, 255, 0.82) !important;
+        }
+
+        .struct-index.is-active {
+            color: #ffe66f !important;
+        }
+
+        .struct-index.is-active::before {
+            background: #ffe66f !important;
+        }
+
+        .struct-kicker,
+        .struct-title span {
+            color: #ffe66f !important;
+            text-shadow: 0 3px 14px rgba(0, 0, 0, 0.78) !important;
+        }
+
+        .struct-title,
+        .struct-description {
+            color: #ffffff !important;
+            text-shadow: 0 3px 16px rgba(0, 0, 0, 0.78) !important;
+        }
+
+        .sticky-availability-panel > .interested-property-kicker--mobile {
+            border-color: rgba(255, 230, 111, 0.70) !important;
+            background: rgba(0, 0, 0, 0.66) !important;
+            color: #ffe66f !important;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.75) !important;
+        }
+
         @media (max-width: 767px) {
             .premium-specs-modal {
                 align-items: flex-start !important;
@@ -766,11 +806,16 @@
 
             .mobile-initial-cta {
                 display: grid !important;
-                grid-template-columns: minmax(0, 1fr) 76px 76px !important;
-                gap: 6px !important;
+                grid-template-columns: minmax(0, 1fr) 74px 74px !important;
+                gap: 8px !important;
                 opacity: 1 !important;
                 pointer-events: auto !important;
                 transform: translateY(0) !important;
+                visibility: visible !important;
+            }
+
+            .mobile-initial-cta a {
+                min-height: 56px !important;
             }
 
             body.is-mobile-hero-active .mobile-initial-cta,
@@ -778,9 +823,11 @@
             body.mega-open .mobile-initial-cta,
             body.struct-slider-locked .mobile-initial-cta,
             body.is-mobile-struct-slider-active .mobile-initial-cta {
+                display: none !important;
                 opacity: 0 !important;
                 pointer-events: none !important;
                 transform: translateY(110%) !important;
+                visibility: hidden !important;
             }
         }
 
@@ -4549,16 +4596,16 @@
     </footer>
 
     <nav class="mobile-initial-cta" aria-label="Mobile quick actions">
-        <a class="mobile-initial-cta__main" href="#pricing">
+        <a class="mobile-initial-cta__main" href="#pricing" aria-label="Open current Amelia Estate II price details">
             <span>Private Price Access</span>
             <strong>Check Current Price</strong>
         </a>
         <a class="mobile-initial-cta__action mobile-initial-cta__whatsapp" href="https://wa.me/917009247378"
-            target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+            target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp from mobile bottom bar">
             <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
             <span>WhatsApp</span>
         </a>
-        <a class="mobile-initial-cta__action" href="tel:+919697300066" aria-label="Call sales team">
+        <a class="mobile-initial-cta__action" href="tel:+919697300066" aria-label="Call Amelia Estate II sales team from mobile bottom bar">
             <i class="fa-solid fa-phone" aria-hidden="true"></i>
             <span>Call</span>
         </a>
