@@ -57,19 +57,13 @@
             };
 
             if (isMobileTopView) {
-                const scheduleHydration = () => window.setTimeout(loadUtilityAndFontStyles, 250);
                 ["pointerdown", "touchstart", "wheel", "keydown", "scroll"].forEach((eventName) => {
                     window.addEventListener(eventName, loadUtilityAndFontStyles, {
                         once: true,
                         passive: eventName !== "keydown"
                     });
                 });
-                if (document.readyState === "loading") {
-                    document.addEventListener("DOMContentLoaded", scheduleHydration, { once: true });
-                } else {
-                    scheduleHydration();
-                }
-                window.setTimeout(loadUtilityAndFontStyles, 900);
+                window.setTimeout(loadUtilityAndFontStyles, 5200);
             } else {
                 loadUtilityAndFontStyles();
             }
@@ -111,7 +105,7 @@
 
             const loadFullStyles = () => {
                 appendStylesheet("assets/css/style.min.css?v=desktop-css-1", "full");
-                appendStylesheet("assets/css/media.min.css?v=performance-mobile-4", "responsive");
+                appendStylesheet("assets/css/media.min.css?v=performance-mobile-5", "responsive");
             };
 
             if (isDesktopView) {
@@ -122,19 +116,18 @@
                 loadFullStyles();
             } else {
                 const loadOnce = () => loadFullStyles();
-                const scheduleHydration = () => window.setTimeout(loadOnce, 150);
                 ["pointerdown", "touchstart", "wheel", "keydown", "scroll"].forEach((eventName) => {
                     window.addEventListener(eventName, loadOnce, {
                         once: true,
                         passive: eventName !== "keydown"
                     });
                 });
-                if (document.readyState === "loading") {
-                    document.addEventListener("DOMContentLoaded", scheduleHydration, { once: true });
-                } else {
-                    scheduleHydration();
-                }
-                window.setTimeout(loadOnce, 900);
+                window.setTimeout(() => {
+                    if (window.scrollY > 8) {
+                        loadOnce();
+                    }
+                }, 350);
+                window.setTimeout(loadOnce, 1400);
             }
         }
     </script>
@@ -485,7 +478,7 @@
     </style>
     <noscript>
         <link rel="stylesheet" href="assets/css/style.min.css?v=desktop-css-1">
-        <link rel="stylesheet" href="assets/css/media.min.css?v=performance-mobile-4">
+        <link rel="stylesheet" href="assets/css/media.min.css?v=performance-mobile-5">
     </noscript>
 </head>
 
@@ -4255,7 +4248,7 @@
 
     <script>
         {
-            const mainScriptSrc = "assets/js/main.min.js?v=performance-mobile-4";
+            const mainScriptSrc = "assets/js/main.min.js?v=performance-mobile-5";
             let mainScriptLoaded = false;
             const loadMainScript = () => {
                 if (mainScriptLoaded) {

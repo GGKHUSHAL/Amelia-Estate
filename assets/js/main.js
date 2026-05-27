@@ -1025,6 +1025,45 @@ if (heroSlider) {
     heroSection.addEventListener("mouseleave", resetHeroLight);
 }
 
+const runAfterMobileTopBoot = (callback) => {
+    const isMobileTopBoot = () => window.matchMedia("(max-width: 767px)").matches
+        && (!window.location.hash || window.location.hash === "#top")
+        && window.scrollY <= 8;
+
+    if (!isMobileTopBoot()) {
+        callback();
+        return;
+    }
+
+    let hasRun = false;
+    const eventNames = ["scroll", "wheel", "touchstart", "pointerdown", "keydown"];
+    const run = () => {
+        if (hasRun) {
+            return;
+        }
+
+        hasRun = true;
+        eventNames.forEach((eventName) => {
+            window.removeEventListener(eventName, run);
+        });
+        window.setTimeout(callback, 120);
+    };
+
+    eventNames.forEach((eventName) => {
+        window.addEventListener(eventName, run, {
+            once: true,
+            passive: eventName !== "keydown"
+        });
+    });
+    window.addEventListener("load", () => {
+        if (window.scrollY > 8) {
+            run();
+        }
+    }, { once: true });
+    window.setTimeout(run, 7000);
+};
+
+runAfterMobileTopBoot(() => {
 // Sticky availability CTA: pins while later sections scroll over it.
 const stickyAvailabilitySection = document.querySelector(".sticky-availability-section");
 const stickyAvailabilityPanel = document.querySelector(".sticky-availability-panel");
@@ -4334,3 +4373,4 @@ if (revealSections.length) {
         revealSections.forEach((section) => section.classList.add("is-visible"));
     }
 }
+});
