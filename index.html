@@ -95,6 +95,30 @@
         {
             const isDesktopView = window.matchMedia("(min-width: 1200px)").matches;
             const hasDeepLink = Boolean(window.location.hash && window.location.hash !== "#top");
+            const syncStyleOrder = () => {
+                const criticalStyles = document.querySelector("style[data-amelia-critical-style]");
+
+                if (!criticalStyles) {
+                    return;
+                }
+
+                const finalOverrides = document.querySelector("style[data-amelia-a11y-overrides]");
+                const fullStyles = document.querySelector('link[data-amelia-style="full"]');
+                const responsiveStyles = document.querySelector('link[data-amelia-style="responsive"]');
+                const target = finalOverrides || criticalStyles.nextSibling;
+
+                if (fullStyles) {
+                    document.head.insertBefore(fullStyles, target);
+                }
+
+                if (responsiveStyles) {
+                    document.head.insertBefore(responsiveStyles, target);
+                }
+            };
+
+            if (document.readyState === "loading") {
+                document.addEventListener("DOMContentLoaded", syncStyleOrder, { once: true });
+            }
 
             const appendStylesheet = (href, marker) => {
                 if (document.querySelector(`link[data-amelia-style="${marker}"]`)) {
@@ -105,12 +129,33 @@
                 link.rel = "stylesheet";
                 link.href = href;
                 link.dataset.ameliaStyle = marker;
+                const insertAfter = (target, node) => {
+                    if (target && target.parentNode) {
+                        target.parentNode.insertBefore(node, target.nextSibling);
+                    } else {
+                        document.head.appendChild(node);
+                    }
+                };
                 const criticalStyles = document.querySelector("style[data-amelia-critical-style]");
+                const fullStyles = document.querySelector('link[data-amelia-style="full"]');
                 const responsiveStyles = marker === "full"
                     ? document.querySelector('link[data-amelia-style="responsive"]')
                     : null;
 
-                document.head.insertBefore(link, responsiveStyles || criticalStyles);
+                if (marker === "full" && responsiveStyles) {
+                    document.head.insertBefore(link, responsiveStyles);
+                    syncStyleOrder();
+                    return;
+                }
+
+                if (marker === "responsive" && fullStyles) {
+                    insertAfter(fullStyles, link);
+                    syncStyleOrder();
+                    return;
+                }
+
+                insertAfter(criticalStyles || document.head.lastElementChild, link);
+                syncStyleOrder();
             };
 
             const loadBaseStyles = () => {
@@ -118,7 +163,7 @@
             };
 
             const loadResponsiveStyles = () => {
-                appendStylesheet("assets/css/media.min.css?v=performance-mobile-5", "responsive");
+                appendStylesheet("assets/css/media.min.css?v=performance-mobile-12", "responsive");
             };
 
             const loadFullStyles = () => {
@@ -778,9 +823,10 @@
             }
 
             .differentiation-copy {
-                padding: 10px 12px !important;
-                border-radius: 14px !important;
-                background-color: #050505 !important;
+                padding: 0 !important;
+                border-radius: 0 !important;
+                background-color: transparent !important;
+                box-shadow: none !important;
             }
 
             .differentiation-copy h2,
@@ -932,7 +978,6 @@
             .booking-enquiry-form button,
             .ideal-floor-price-btn,
             .project-plan-cta,
-            .pricing-unlock-btn,
             .visual-showcase-cta a,
             .lifestyle-amenities-cta a,
             .faq-assist-card a,
@@ -1003,8 +1048,7 @@
             body .project-plans-section .project-plan-variants button,
             body .transparent-pricing-section .transparent-pricing-tabs button,
             body .transparent-pricing-section .floor-price-grid button,
-            body .prime-location-section .prime-area-map-link,
-            body .site-footer .footer-accordion-toggle {
+            body .prime-location-section .prime-area-map-link {
                 opacity: 1 !important;
                 filter: none !important;
                 border-color: rgba(240, 205, 69, 0.44) !important;
@@ -1095,9 +1139,44 @@
             }
         }
     </style>
+    <style data-amelia-a11y-overrides>
+        @media (max-width: 767px) {
+            .transparent-pricing-section .pricing-card:not(.is-unlocked) .floor-price-grid button:not(.is-price-visible) strong,
+            .transparent-pricing-section .pricing-card:not(.is-unlocked) .floor-price-grid button:not(.is-price-visible) .pricing-currency,
+            .transparent-pricing-section .pricing-card:not(.is-unlocked) .selected-price-box:not(.is-price-visible) strong,
+            .transparent-pricing-section .pricing-card:not(.is-unlocked) .selected-price-box:not(.is-price-visible) .pricing-currency,
+            .transparent-pricing-section .pricing-card:not(.is-unlocked) .selected-price-box:not(.is-price-visible) p {
+                display: none !important;
+                filter: none !important;
+                text-shadow: none !important;
+            }
+
+            .transparent-pricing-section .pricing-card:not(.is-unlocked) .floor-price-grid button:not(.is-price-visible)::after,
+            .transparent-pricing-section .pricing-card:not(.is-unlocked) .selected-price-box:not(.is-price-visible)::after {
+                content: "Locked";
+                display: inline-flex;
+                margin-top: 4px;
+                color: #ffe66f;
+                font-size: 12px;
+                font-weight: 800;
+                line-height: 1;
+                letter-spacing: 0.08em;
+                text-transform: uppercase;
+            }
+
+            .prime-location-section .prime-area-map-link,
+            .prime-location-section .prime-area-map-link:hover,
+            .prime-location-section .prime-area-map-link:focus-visible {
+                color: #f0cd45 !important;
+                -webkit-text-fill-color: #f0cd45 !important;
+                text-shadow: 0 0 16px rgba(240, 205, 69, 0.28) !important;
+            }
+
+        }
+    </style>
     <noscript>
         <link rel="stylesheet" href="assets/css/style.min.css?v=desktop-css-1">
-        <link rel="stylesheet" href="assets/css/media.min.css?v=performance-mobile-5">
+        <link rel="stylesheet" href="assets/css/media.min.css?v=performance-mobile-12">
     </noscript>
 </head>
 
