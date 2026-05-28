@@ -1026,16 +1026,18 @@ if (heroSlider) {
 }
 
 const runAfterMobileTopBoot = (callback) => {
-    const isMobileTopBoot = () => window.matchMedia("(max-width: 767px)").matches
-        && (!window.location.hash || window.location.hash === "#top")
+    const isTopBoot = () => (!window.location.hash || window.location.hash === "#top")
         && window.scrollY <= 8;
+    const isMobileTopBoot = () => window.matchMedia("(max-width: 767px)").matches && isTopBoot();
+    const isDesktopTopBoot = () => window.matchMedia("(min-width: 1200px)").matches && isTopBoot();
 
-    if (!isMobileTopBoot()) {
+    if (!isMobileTopBoot() && !isDesktopTopBoot()) {
         callback();
         return;
     }
 
     let hasRun = false;
+    let bootObserver = null;
     const eventNames = ["scroll", "wheel", "touchstart", "pointerdown", "keydown"];
     const run = () => {
         if (hasRun) {
@@ -1043,11 +1045,25 @@ const runAfterMobileTopBoot = (callback) => {
         }
 
         hasRun = true;
+        bootObserver?.disconnect();
         eventNames.forEach((eventName) => {
             window.removeEventListener(eventName, run);
         });
         window.setTimeout(callback, 120);
     };
+
+    if (isDesktopTopBoot() && "IntersectionObserver" in window) {
+        const bootTarget = document.querySelector(".snapshot-section, .about-section, .struct-slider-section");
+
+        if (bootTarget) {
+            bootObserver = new IntersectionObserver((entries) => {
+                if (entries.some((entry) => entry.isIntersecting)) {
+                    run();
+                }
+            }, { rootMargin: "180px 0px" });
+            bootObserver.observe(bootTarget);
+        }
+    }
 
     eventNames.forEach((eventName) => {
         window.addEventListener(eventName, run, {
@@ -1060,7 +1076,9 @@ const runAfterMobileTopBoot = (callback) => {
             run();
         }
     }, { once: true });
-    window.setTimeout(run, 7000);
+    if (isMobileTopBoot()) {
+        window.setTimeout(run, 7000);
+    }
 };
 
 runAfterMobileTopBoot(() => {
