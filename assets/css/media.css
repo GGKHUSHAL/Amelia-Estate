@@ -11442,7 +11442,7 @@
         font-size: 8px !important;
         line-height: 1.18 !important;
         letter-spacing: 0.09em !important;
-        overflow-wrap: anywhere !important;
+        overflow-wrap: anywhere !important; 
     }
 }
 
