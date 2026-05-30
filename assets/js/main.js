@@ -173,7 +173,7 @@ const loadDeferredDesktopStyles = () => {
 
     const link = document.createElement("link");
     link.rel = "stylesheet";
-    link.href = "assets/css/style.min.css?v=desktop-css-4";
+    link.href = "assets/css/style.min.css?v=desktop-css-5";
     link.dataset.desktopFullStyles = "true";
     document.head.appendChild(link);
     deferredDesktopStylesLoaded = true;
@@ -2036,9 +2036,6 @@ if (pricingSection) {
 
         if (selectedPriceBox) {
             selectedPriceBox.classList.toggle("is-price-visible", isVisiblePrice);
-
-            if (!isVisiblePrice) {
-            }
         }
 
         pricingFloor.textContent = floorLabel;

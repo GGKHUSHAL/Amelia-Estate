@@ -9761,7 +9761,7 @@
     }
 }
 
-/* Final mobile guard: locked prices remain hidden even when selected. */
+/* Final mobile guard: hidden prices stay blurred even when selected. */
 .transparent-pricing-section .pricing-card:not(.is-unlocked) .floor-price-grid button:not(.is-price-visible) strong,
 .transparent-pricing-section .pricing-card:not(.is-unlocked) .floor-price-grid button:not(.is-price-visible) .pricing-currency,
 .transparent-pricing-section .pricing-card:not(.is-unlocked) .floor-price-grid button.is-active:not(.is-price-visible) strong,

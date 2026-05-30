@@ -3160,13 +3160,6 @@ body.is-project-plan-lightbox-open {
     user-select: auto;
 }
 
-.pricing-locked-price {
-    display: inline-block;
-    color: rgba(255, 255, 255, 0.62);
-    filter: blur(5px);
-    user-select: none;
-}
-
 .pricing-title-block h3 {
     margin: 0;
     color: #ffffff;
@@ -15102,7 +15095,7 @@ body {
     }
 }
 
-/* Final guard: locked floor prices stay blurred even after selecting that floor. */
+/* Final guard: hidden floor prices stay blurred even after selecting that floor. */
 .transparent-pricing-section .pricing-left {
     border-right-color: rgba(240, 205, 69, 0.16) !important;
     background:
