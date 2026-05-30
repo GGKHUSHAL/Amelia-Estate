@@ -14375,10 +14375,7 @@ body {
 
 .floor-price-grid button.is-active span,
 .floor-price-grid button.is-active strong,
-.floor-price-grid button.is-price-visible span,
-.floor-price-grid button.is-price-visible strong,
-.floor-price-grid button.is-active .pricing-currency,
-.floor-price-grid button.is-price-visible .pricing-currency {
+.floor-price-grid button.is-active .pricing-currency {
     color: #f0cd45 !important;
 }
 
@@ -14894,10 +14891,15 @@ body {
 }
 
 .transparent-pricing-section .floor-price-grid button.is-active strong,
-.transparent-pricing-section .floor-price-grid button.is-price-visible strong,
-.transparent-pricing-section .floor-price-grid button.is-active .pricing-currency,
-.transparent-pricing-section .floor-price-grid button.is-price-visible .pricing-currency {
+.transparent-pricing-section .floor-price-grid button.is-active .pricing-currency {
     color: #f0cd45 !important;
+    filter: none !important;
+    text-shadow: none !important;
+}
+
+.transparent-pricing-section .floor-price-grid button.is-price-visible:not(.is-active) strong,
+.transparent-pricing-section .floor-price-grid button.is-price-visible:not(.is-active) .pricing-currency {
+    color: #ffffff !important;
     filter: none !important;
     text-shadow: none !important;
 }
@@ -14988,7 +14990,6 @@ body {
 }
 
 .transparent-pricing-section .floor-price-grid button.is-active strong,
-.transparent-pricing-section .floor-price-grid button:hover strong,
 .transparent-pricing-section .floor-price-grid button.is-active .pricing-currency {
     color: #f0cd45 !important;
     filter: none !important;
@@ -15019,7 +15020,7 @@ body {
 
 .transparent-pricing-section .floor-price-grid button.is-price-visible:not(.is-active):hover strong,
 .transparent-pricing-section .floor-price-grid button.is-price-visible:not(.is-active):hover .pricing-currency {
-    color: #f0cd45 !important;
+    color: #ffffff !important;
 }
 
 @media (min-width: 992px) {
@@ -15899,13 +15900,16 @@ body {
     transform: none !important;
 }
 
-.transparent-pricing-section .floor-price-grid button:hover strong,
 .transparent-pricing-section .floor-price-grid button.is-active strong,
-.transparent-pricing-section .floor-price-grid button.is-price-visible strong,
-.transparent-pricing-section .floor-price-grid button:hover .pricing-currency,
-.transparent-pricing-section .floor-price-grid button.is-active .pricing-currency,
-.transparent-pricing-section .floor-price-grid button.is-price-visible .pricing-currency {
+.transparent-pricing-section .floor-price-grid button.is-active .pricing-currency {
     color: #f0cd45 !important;
+    filter: none !important;
+    text-shadow: none !important;
+}
+
+.transparent-pricing-section .floor-price-grid button.is-price-visible:not(.is-active) strong,
+.transparent-pricing-section .floor-price-grid button.is-price-visible:not(.is-active) .pricing-currency {
+    color: #ffffff !important;
     filter: none !important;
     text-shadow: none !important;
 }
@@ -21138,7 +21142,15 @@ body.struct-slider-locked .site-header {
         transform: translateY(1px) scale(0.99);
     }
 
-    body.is-mobile-hero-active .mobile-premium-cta {
+    body.is-mobile-hero-active .mobile-premium-cta,
+    body.is-pricing-modal-open .mobile-premium-cta,
+    body.is-premium-specs-modal-open .mobile-premium-cta,
+    body.is-visual-detail-modal-open .mobile-premium-cta,
+    body.is-footer-legal-modal-open .mobile-premium-cta,
+    body.is-project-plan-lightbox-open .mobile-premium-cta,
+    body.is-prime-map-lightbox-open .mobile-premium-cta,
+    body.is-amenity-lightbox-open .mobile-premium-cta,
+    body.is-property-snapshot-modal-open .mobile-premium-cta {
         opacity: 0 !important;
         pointer-events: none !important;
         transform: translateY(110%) !important;

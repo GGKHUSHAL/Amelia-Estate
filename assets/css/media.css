@@ -10884,6 +10884,14 @@
     body.mega-open .mobile-initial-cta,
     body.is-mobile-hero-active .mobile-initial-cta,
     body.is-mobile-cta-idle .mobile-initial-cta,
+    body.is-pricing-modal-open .mobile-initial-cta,
+    body.is-premium-specs-modal-open .mobile-initial-cta,
+    body.is-visual-detail-modal-open .mobile-initial-cta,
+    body.is-footer-legal-modal-open .mobile-initial-cta,
+    body.is-project-plan-lightbox-open .mobile-initial-cta,
+    body.is-prime-map-lightbox-open .mobile-initial-cta,
+    body.is-amenity-lightbox-open .mobile-initial-cta,
+    body.is-property-snapshot-modal-open .mobile-initial-cta,
     body.struct-slider-locked .mobile-initial-cta,
     body.is-mobile-struct-slider-active .mobile-initial-cta {
         opacity: 0;
@@ -12172,7 +12180,7 @@ body.is-mobile-struct-slider-active .site-header {
     }
 }
 
-/* Mobile bottom CTA: use the full screen width, hide on hero/idle, return on scroll. */
+/* Mobile bottom CTA: use the full screen width, sleep on idle, and wake on scroll. */
 @media (max-width: 760px) {
     .mobile-initial-cta {
         grid-template-columns: minmax(0, 1fr) 76px 76px !important;
@@ -12184,6 +12192,14 @@ body.is-mobile-struct-slider-active .site-header {
     body.is-mobile-hero-active .mobile-initial-cta,
     body.is-mobile-cta-idle .mobile-initial-cta,
     body.mega-open .mobile-initial-cta,
+    body.is-pricing-modal-open .mobile-initial-cta,
+    body.is-premium-specs-modal-open .mobile-initial-cta,
+    body.is-visual-detail-modal-open .mobile-initial-cta,
+    body.is-footer-legal-modal-open .mobile-initial-cta,
+    body.is-project-plan-lightbox-open .mobile-initial-cta,
+    body.is-prime-map-lightbox-open .mobile-initial-cta,
+    body.is-amenity-lightbox-open .mobile-initial-cta,
+    body.is-property-snapshot-modal-open .mobile-initial-cta,
     body.struct-slider-locked .mobile-initial-cta,
     body.is-mobile-struct-slider-active .mobile-initial-cta {
         opacity: 0 !important;
@@ -12517,14 +12533,31 @@ body.is-mobile-struct-slider-active .site-header {
         width: 100% !important;
         max-width: none !important;
         box-sizing: border-box !important;
-        padding-right: 12px !important;
-        padding-left: 12px !important;
+        margin-right: auto !important;
+        margin-left: auto !important;
+        padding-right: 16px !important;
+        padding-left: 16px !important;
     }
 
     .site-footer .footer-redesign-main {
-        margin-right: -12px !important;
-        margin-left: -12px !important;
-        padding-right: 12px !important;
-        padding-left: 12px !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        margin-right: 0 !important;
+        margin-left: 0 !important;
+        box-sizing: border-box !important;
+        padding-right: 0 !important;
+        padding-left: 0 !important;
+    }
+
+    .site-footer .footer-redesign-main > .footer-redesign-column,
+    .site-footer .footer-accordion-toggle,
+    .site-footer .footer-accordion-panel {
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+    }
+
+    .site-footer .footer-accordion-panel {
+        padding-left: 0 !important;
     }
 }

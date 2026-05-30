@@ -16,7 +16,7 @@
     <title>Amelia Estate II</title>
     <link rel="icon" type="image/png" sizes="64x64" href="assets/img/logo/amelia-favicon-64.png?v=amelia-round-optimized-1">
     <link rel="preload" as="image" href="assets/img/optimized/hero slider -1.webp" fetchpriority="high">
-    <link rel="preload" as="style" href="assets/css/media.min.css?v=performance-mobile-14" media="(max-width: 1199px)" fetchpriority="low">
+    <link rel="preload" as="style" href="assets/css/media.min.css?v=performance-mobile-17" media="(max-width: 1199px)" fetchpriority="low">
     <script>
         {
             const isMobileTopView = window.matchMedia("(max-width: 767px)").matches
@@ -160,11 +160,11 @@
             };
 
             const loadBaseStyles = () => {
-                appendStylesheet("assets/css/style.min.css?v=desktop-css-1", "full");
+                appendStylesheet("assets/css/style.min.css?v=desktop-css-4", "full");
             };
 
             const loadResponsiveStyles = () => {
-                appendStylesheet("assets/css/media.min.css?v=performance-mobile-14", "responsive");
+                appendStylesheet("assets/css/media.min.css?v=performance-mobile-17", "responsive");
             };
 
             const loadFullStyles = () => {
@@ -1081,8 +1081,6 @@
                 color: #ffffff !important;
             }
 
-            body .transparent-pricing-section .floor-price-grid button strong,
-            body .transparent-pricing-section .floor-price-grid button .pricing-currency,
             body .transparent-pricing-section .floor-price-grid button.is-active span,
             body .transparent-pricing-section .floor-price-grid button.is-active strong,
             body .transparent-pricing-section .floor-price-grid button.is-active .pricing-currency,
@@ -1125,6 +1123,14 @@
             body.is-mobile-hero-active .mobile-initial-cta,
             body.is-mobile-cta-idle .mobile-initial-cta,
             body.mega-open .mobile-initial-cta,
+            body.is-pricing-modal-open .mobile-initial-cta,
+            body.is-premium-specs-modal-open .mobile-initial-cta,
+            body.is-visual-detail-modal-open .mobile-initial-cta,
+            body.is-footer-legal-modal-open .mobile-initial-cta,
+            body.is-project-plan-lightbox-open .mobile-initial-cta,
+            body.is-prime-map-lightbox-open .mobile-initial-cta,
+            body.is-amenity-lightbox-open .mobile-initial-cta,
+            body.is-property-snapshot-modal-open .mobile-initial-cta,
             body.struct-slider-locked .mobile-initial-cta,
             body.is-mobile-struct-slider-active .mobile-initial-cta {
                 display: none !important;
@@ -1157,17 +1163,36 @@
                 text-shadow: none !important;
             }
 
+            .transparent-pricing-section .pricing-card:not(.is-unlocked) .selected-price-box:not(.is-price-visible) {
+                display: flex !important;
+                min-height: 74px !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                justify-content: center !important;
+                padding: 10px 12px !important;
+            }
+
             .transparent-pricing-section .pricing-card:not(.is-unlocked) .floor-price-grid button:not(.is-price-visible)::after,
             .transparent-pricing-section .pricing-card:not(.is-unlocked) .selected-price-box:not(.is-price-visible)::after {
                 content: "Locked";
                 display: inline-flex;
-                margin-top: 4px;
+                align-items: center;
+                margin-top: 7px;
+                min-height: 18px;
+                padding-left: 22px;
+                background: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%23ffe66f%22%20stroke-width%3D%222.2%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M7%2011V8a5%205%200%200%201%2010%200v3%22%2F%3E%3Cpath%20d%3D%22M5.5%2011h13v10h-13z%22%2F%3E%3Cpath%20d%3D%22M12%2015v2.5%22%2F%3E%3C%2Fsvg%3E") left center / 16px 16px no-repeat;
                 color: #ffe66f;
-                font-size: 12px;
-                font-weight: 800;
+                font-size: 14px;
+                font-weight: 900;
                 line-height: 1;
-                letter-spacing: 0.08em;
+                letter-spacing: 0.10em;
                 text-transform: uppercase;
+            }
+
+            .transparent-pricing-section .pricing-card:not(.is-unlocked) .selected-price-box:not(.is-price-visible)::after {
+                margin-top: 9px;
+                font-size: 15px;
+                letter-spacing: 0.11em;
             }
 
             .prime-location-section .prime-area-map-link,
@@ -1181,8 +1206,8 @@
         }
     </style>
     <noscript>
-        <link rel="stylesheet" href="assets/css/style.min.css?v=desktop-css-1">
-        <link rel="stylesheet" href="assets/css/media.min.css?v=performance-mobile-14">
+        <link rel="stylesheet" href="assets/css/style.min.css?v=desktop-css-4">
+        <link rel="stylesheet" href="assets/css/media.min.css?v=performance-mobile-17">
     </noscript>
 </head>
 
@@ -4952,7 +4977,65 @@
 
     <script>
         {
-            const mainScriptSrc = "assets/js/main.min.js?v=performance-desktop-100-1";
+            const initMobileCtaIdle = () => {
+                if (window.__ameliaMobileCtaIdleBooted) {
+                    return;
+                }
+
+                const mobileCtas = document.querySelectorAll(".mobile-initial-cta, .mobile-premium-cta");
+                if (!mobileCtas.length) {
+                    return;
+                }
+
+                window.__ameliaMobileCtaIdleBooted = true;
+                const idleDelay = 2600;
+                let idleTimer = 0;
+                let lastScrollY = window.scrollY;
+                const isMobile = () => window.matchMedia("(max-width: 767px)").matches;
+                const setIdle = (shouldHide) => {
+                    document.body.classList.toggle("is-mobile-cta-idle", shouldHide && isMobile());
+                };
+                const scheduleIdle = () => {
+                    window.clearTimeout(idleTimer);
+                    if (!isMobile()) {
+                        setIdle(false);
+                        return;
+                    }
+                    idleTimer = window.setTimeout(() => setIdle(true), idleDelay);
+                };
+                const wake = () => {
+                    setIdle(false);
+                    scheduleIdle();
+                };
+                const wakeOnRealScroll = () => {
+                    const currentScrollY = window.scrollY;
+                    if (Math.abs(currentScrollY - lastScrollY) < 1) {
+                        return;
+                    }
+                    lastScrollY = currentScrollY;
+                    wake();
+                };
+
+                window.addEventListener("scroll", wakeOnRealScroll, { passive: true });
+                window.addEventListener("touchmove", wake, { passive: true });
+                window.addEventListener("wheel", wake, { passive: true });
+                window.addEventListener("orientationchange", scheduleIdle, { passive: true });
+                mobileCtas.forEach((mobileCta) => {
+                    mobileCta.addEventListener("pointerdown", wake, { passive: true });
+                });
+
+                setIdle(false);
+                scheduleIdle();
+            };
+
+            window.__ameliaInitMobileCtaIdle = window.__ameliaInitMobileCtaIdle || initMobileCtaIdle;
+            window.__ameliaInitMobileCtaIdle();
+        }
+    </script>
+
+    <script>
+        {
+            const mainScriptSrc = "assets/js/main.min.js?v=performance-desktop-100-4";
             let mainScriptLoaded = false;
             const loadMainScript = () => {
                 if (mainScriptLoaded) {

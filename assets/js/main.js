@@ -173,7 +173,7 @@ const loadDeferredDesktopStyles = () => {
 
     const link = document.createElement("link");
     link.rel = "stylesheet";
-    link.href = "assets/css/style.min.css?v=desktop-css-1";
+    link.href = "assets/css/style.min.css?v=desktop-css-4";
     link.dataset.desktopFullStyles = "true";
     document.head.appendChild(link);
     deferredDesktopStylesLoaded = true;
@@ -3524,11 +3524,13 @@ if (propertyDetailsModal && propertyDetailsOpenButton) {
     const openPropertyDetailsModal = () => {
         propertyDetailsModal.removeAttribute("hidden");
         document.body.style.overflow = "hidden";
+        document.body.classList.add("is-property-snapshot-modal-open");
     };
 
     const closePropertyDetailsModal = () => {
         propertyDetailsModal.setAttribute("hidden", "");
         document.body.style.overflow = "";
+        document.body.classList.remove("is-property-snapshot-modal-open");
     };
 
     propertyDetailsOpenButton.addEventListener("click", (e) => {
@@ -4312,43 +4314,7 @@ document.querySelectorAll(".booking-enquiry-form, .site-visit-form, .header-cont
     });
 });
 
-// Mobile bottom CTA: hide after inactivity and wake again on user movement.
-(() => {
-    const mobileCta = document.querySelector(".mobile-initial-cta");
-    const mobileCtaIdleDelay = 2400;
-    let mobileCtaIdleTimer = 0;
-
-    if (!mobileCta) {
-        return;
-    }
-
-    const isMobileCtaViewport = () => window.matchMedia("(max-width: 760px)").matches;
-    const setMobileCtaIdle = (shouldHide) => {
-        document.body.classList.toggle("is-mobile-cta-idle", shouldHide && isMobileCtaViewport());
-    };
-    const scheduleMobileCtaIdle = () => {
-        window.clearTimeout(mobileCtaIdleTimer);
-
-        if (!isMobileCtaViewport()) {
-            setMobileCtaIdle(false);
-            return;
-        }
-
-        mobileCtaIdleTimer = window.setTimeout(() => setMobileCtaIdle(true), mobileCtaIdleDelay);
-    };
-    const wakeMobileCta = () => {
-        setMobileCtaIdle(false);
-        scheduleMobileCtaIdle();
-    };
-
-    window.addEventListener("scroll", wakeMobileCta, { passive: true });
-    window.addEventListener("touchmove", wakeMobileCta, { passive: true });
-    window.addEventListener("wheel", wakeMobileCta, { passive: true });
-    window.addEventListener("resize", wakeMobileCta);
-    mobileCta.addEventListener("pointerdown", wakeMobileCta, { passive: true });
-
-    scheduleMobileCtaIdle();
-})();
+window.__ameliaInitMobileCtaIdle?.();
 
 // Scroll reveal: toggles .is-visible for sections that animate when entering the viewport.
 const deferredBackgroundSection = document.querySelector(".differentiation-section");
