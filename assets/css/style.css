@@ -14356,8 +14356,7 @@ body {
 }
 
 
-.floor-price-grid button.is-active,
-.floor-price-grid button.is-price-visible {
+.floor-price-grid button.is-active {
     background: linear-gradient(180deg, rgba(20, 20, 18, 0.96), rgba(8, 8, 7, 0.98)) !important;
     border-color: rgba(240, 205, 69, 0.28) !important;
     box-shadow:
@@ -14409,7 +14408,7 @@ body {
 
 
 .prime-location-tabs.transparent-pricing-tabs button.is-active,
-.transparent-pricing-section .floor-price-grid button.is-price-visible {
+.transparent-pricing-section .floor-price-grid button.is-active {
     background: linear-gradient(180deg, rgba(20, 20, 18, 0.96), rgba(8, 8, 7, 0.98)) !important;
     color: #f0cd45 !important;
     border-color: rgba(240, 205, 69, 0.28) !important;
@@ -14871,15 +14870,13 @@ body {
 }
 
 /* Final pricing selection cleanup: active/visible prices stay gold, not black-on-gold. */
-.transparent-pricing-section .floor-price-grid button.is-active,
-.transparent-pricing-section .floor-price-grid button.is-price-visible {
+.transparent-pricing-section .floor-price-grid button.is-active {
     background: rgba(240, 205, 69, 0.04) !important;
     border-color: rgba(240, 205, 69, 0.38) !important;
     box-shadow: none !important;
 }
 
-.transparent-pricing-section .floor-price-grid button.is-active span,
-.transparent-pricing-section .floor-price-grid button.is-price-visible span {
+.transparent-pricing-section .floor-price-grid button.is-active span {
     color: rgba(255, 255, 255, 0.68) !important;
 }
 
@@ -14954,8 +14951,7 @@ body {
 }
 
 .transparent-pricing-section .floor-price-grid button:hover,
-.transparent-pricing-section .floor-price-grid button.is-active,
-.transparent-pricing-section .floor-price-grid button.is-price-visible {
+.transparent-pricing-section .floor-price-grid button.is-active {
     background: linear-gradient(180deg, rgba(20, 20, 18, 0.96), rgba(8, 8, 7, 0.98)) !important;
     border-color: rgba(240, 205, 69, 0.28) !important;
     box-shadow:
@@ -14965,8 +14961,7 @@ body {
 }
 
 .transparent-pricing-section .floor-price-grid button:hover span,
-.transparent-pricing-section .floor-price-grid button.is-active span,
-.transparent-pricing-section .floor-price-grid button.is-price-visible span {
+.transparent-pricing-section .floor-price-grid button.is-active span {
     color: rgba(255, 255, 255, 0.68) !important;
 }
 
@@ -15883,7 +15878,6 @@ body {
 /* Final pricing floor-box state: selected and hover stay dark, never gold-filled. */
 .transparent-pricing-section .floor-price-grid button:hover,
 .transparent-pricing-section .floor-price-grid button.is-active,
-.transparent-pricing-section .floor-price-grid button.is-price-visible,
 .transparent-pricing-section .floor-price-grid button.is-price-visible:not(.is-active):hover {
     background: linear-gradient(180deg, rgba(20, 20, 18, 0.96), rgba(8, 8, 7, 0.98)) !important;
     border-color: rgba(240, 205, 69, 0.28) !important;

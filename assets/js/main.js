@@ -173,7 +173,7 @@ const loadDeferredDesktopStyles = () => {
 
     const link = document.createElement("link");
     link.rel = "stylesheet";
-    link.href = "assets/css/style.min.css?v=desktop-css-5";
+    link.href = "assets/css/style.min.css?v=desktop-css-6";
     link.dataset.desktopFullStyles = "true";
     document.head.appendChild(link);
     deferredDesktopStylesLoaded = true;
