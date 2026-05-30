@@ -12489,3 +12489,42 @@ body.is-mobile-struct-slider-active .site-header {
         pointer-events: none !important;
     }
 }
+
+/* Final mobile menu/footer background guard: keep side gutters the same black. */
+@media (max-width: 767px) {
+    html,
+    body,
+    body.min-h-screen.bg-white {
+        background: #050505 !important;
+    }
+
+    .site-footer,
+    .site-footer .footer-redesign,
+    .site-footer .footer-redesign-main,
+    .site-footer .footer-redesign-main > .footer-redesign-column,
+    .site-footer .footer-accordion-toggle,
+    .site-footer .footer-accordion-panel,
+    .mega-menu-overlay,
+    .mega-menu-overlay .mega-menu-card,
+    .mega-menu-overlay .mobile-menu-panel,
+    .mega-menu-overlay .mobile-menu-scroll,
+    .mega-menu-overlay .mobile-menu-card,
+    .mega-menu-overlay .mobile-menu-card-head {
+        background: #050505 !important;
+    }
+
+    .site-footer .footer-redesign {
+        width: 100% !important;
+        max-width: none !important;
+        box-sizing: border-box !important;
+        padding-right: 12px !important;
+        padding-left: 12px !important;
+    }
+
+    .site-footer .footer-redesign-main {
+        margin-right: -12px !important;
+        margin-left: -12px !important;
+        padding-right: 12px !important;
+        padding-left: 12px !important;
+    }
+}
