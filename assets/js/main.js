@@ -173,7 +173,7 @@ const loadDeferredDesktopStyles = () => {
 
     const link = document.createElement("link");
     link.rel = "stylesheet";
-    link.href = "assets/css/style.min.css?v=desktop-css-6";
+    link.href = "assets/css/style.min.css?v=desktop-css-17";
     link.dataset.desktopFullStyles = "true";
     document.head.appendChild(link);
     deferredDesktopStylesLoaded = true;
@@ -1128,374 +1128,379 @@ if (stickyAvailabilitySection && stickyAvailabilityPanel) {
     }
 }
 
-// Structured story slider (ported from github.com/Anil-0001/Amelia-Estate/js/script.js; scroll lock extended for this layout).
-const structSliderSection = document.querySelector(".struct-slider-section");
-const structSlides = structSliderSection?.querySelectorAll(".struct-slide") || [];
-const structCopies = structSliderSection?.querySelectorAll(".struct-copy") || [];
-const structIndexes = structSliderSection?.querySelectorAll(".struct-index") || [];
-const structDots = structSliderSection?.querySelectorAll(".struct-dot") || [];
+// Structured story slider: Lovable sticky-scroll deck ported to vanilla JS.
+const structSliderSection = document.querySelector("[data-struct-story]");
 
-let activeStructSlide = 0;
-let structAnimating = false;
-let structLocked = false;
-let previousStructScrollY = window.scrollY;
-let structTouchStartY = 0;
-let structReleaseUntil = 0;
-let structReleaseDirection = 0;
+if (structSliderSection) {
+    const structCards = Array.from(structSliderSection.querySelectorAll(".struct-card"));
+    const structBackdrops = Array.from(structSliderSection.querySelectorAll(".struct-backdrop"));
+    const structStageTrack = structSliderSection.querySelector(".struct-stage-track");
+    const structGoButtons = Array.from(structSliderSection.querySelectorAll("[data-struct-go]"));
+    const structProgressButtons = Array.from(structSliderSection.querySelectorAll(".struct-progress-bars button"));
+    const structActiveNum = structSliderSection.querySelector("[data-struct-active-num]");
+    const structActiveVibe = structSliderSection.querySelector("[data-struct-active-vibe]");
+    const structActiveKicker = structSliderSection.querySelector("[data-struct-active-kicker]");
+    const structNextImage = structSliderSection.querySelector("[data-struct-next-image]");
+    const structNextNum = structSliderSection.querySelector("[data-struct-next-num]");
+    const structNextLabel = structSliderSection.querySelector("[data-struct-next-label]");
+    const structDust = structSliderSection.querySelector(".struct-dust");
+    const reduceStructMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
-const loadStructSlideImage = (index) => {
-    const slide = structSlides[index];
-    const source = slide?.dataset.structImage;
+    let activeStructSlide = 0;
+    let structScrollFrame = 0;
+    let structTiltFrame = 0;
 
-    if (slide && source && !slide.style.backgroundImage) {
-        slide.style.backgroundImage = `url("${source}")`;
-    }
-};
-
-const setStructSlide = (nextIndex) => {
-    if (!structSlides.length) {
-        return false;
-    }
-
-    const clampedIndex = Math.max(0, Math.min(nextIndex, structSlides.length - 1));
-    loadStructSlideImage(clampedIndex);
-
-    if (clampedIndex === activeStructSlide) {
-        return false;
-    }
-
-    structSlides[activeStructSlide]?.classList.remove("is-active");
-    structCopies[activeStructSlide]?.classList.remove("is-active");
-    structIndexes[activeStructSlide]?.classList.remove("is-active");
-    structDots[activeStructSlide]?.classList.remove("is-active");
-
-    activeStructSlide = clampedIndex;
-    structSlides[activeStructSlide]?.classList.add("is-active");
-    structCopies[activeStructSlide]?.classList.add("is-active");
-    structIndexes[activeStructSlide]?.classList.add("is-active");
-    structDots[activeStructSlide]?.classList.add("is-active");
-
-    return true;
-};
-
-if (structSliderSection && structSlides.length > 1) {
-    if ("IntersectionObserver" in window) {
-        const structImageObserver = new IntersectionObserver((entries) => {
-            if (entries.some((entry) => entry.isIntersecting)) {
-                loadStructSlideImage(activeStructSlide);
-                structImageObserver.disconnect();
-            }
-        }, { rootMargin: "320px 0px" });
-
-        structImageObserver.observe(structSliderSection);
-    } else {
-        loadStructSlideImage(activeStructSlide);
+    if (structDust && !structDust.children.length) {
+        Array.from({ length: 24 }).forEach((_, index) => {
+            const particle = document.createElement("span");
+            particle.style.left = `${(index * 37 + 11) % 100}%`;
+            particle.style.top = `${(index * 53 + 17) % 100}%`;
+            particle.style.setProperty("--dust-size", `${1 + ((index * 7) % 25) / 10}px`);
+            particle.style.setProperty("--dust-delay", `${((index * 13) % 60) / 10}s`);
+            particle.style.setProperty("--dust-duration", `${8 + ((index * 11) % 100) / 10}s`);
+            particle.style.setProperty("--dust-opacity", `${0.16 + ((index * 9) % 40) / 100}`);
+            structDust.appendChild(particle);
+        });
     }
 
-    const canMoveStructSlide = (direction) =>
-        (direction > 0 && activeStructSlide < structSlides.length - 1) ||
-        (direction < 0 && activeStructSlide > 0);
-    const getStructTop = () =>
-        Math.max(0, window.scrollY + structSliderSection.getBoundingClientRect().top);
-    const isStructReleased = () => Date.now() < structReleaseUntil;
+    const getStructScrollState = () => {
+        const rect = structSliderSection.getBoundingClientRect();
+        const total = Math.max(1, structSliderSection.offsetHeight - window.innerHeight);
+        const scrolled = Math.min(Math.max(-rect.top, 0), total);
+        const progress = scrolled / total;
+        const index = Math.min(structCards.length - 1, Math.floor(progress * structCards.length * 0.9999));
 
-    const isStructBypassed = () => Date.now() < (window.__ameliaBypassStructSliderUntil || 0);
-    const bypassStructLock = (duration = 900) => {
-        window.__ameliaBypassStructSliderUntil = Date.now() + duration;
-    };
-    const clearStructRelease = () => {
-        structReleaseUntil = 0;
-        structReleaseDirection = 0;
-        window.__ameliaBypassStructSliderUntil = 0;
-    };
-    const preventStructEvent = (event) => {
-        if (event?.cancelable !== false) {
-            event?.preventDefault();
-        }
+        return { progress, index, total };
     };
 
-    const jumpToStructTarget = (targetTop) => {
-        const root = document.documentElement;
-        const previousRootScrollBehavior = root.style.scrollBehavior;
-        const previousBodyScrollBehavior = document.body.style.scrollBehavior;
+    const setStructCardDepth = (index) => {
+        structCards.forEach((card, cardIndex) => {
+            const offset = cardIndex - index;
+            const absOffset = Math.abs(offset);
+            const direction = Math.sign(offset);
+            const isActive = offset === 0;
+            const translateZ = isActive ? 0 : -140 * absOffset - 80;
+            const translateX = isActive ? 0 : direction * (80 + absOffset * 30);
+            const translateY = isActive ? 0 : 25 * absOffset;
+            const opacity = absOffset > 2 ? 0 : isActive ? 1 : Math.max(0, 0.32 - absOffset * 0.08);
+            const pose = isActive
+                ? card.dataset.structPose || "rotateY(0deg)"
+                : `rotateY(${direction * -8}deg) rotateX(0deg)`;
 
-        root.style.scrollBehavior = "auto";
-        document.body.style.scrollBehavior = "auto";
-        window.scrollTo({ top: targetTop, left: 0, behavior: "auto" });
-
-        window.requestAnimationFrame(() => {
-            root.style.scrollBehavior = previousRootScrollBehavior;
-            document.body.style.scrollBehavior = previousBodyScrollBehavior;
+            card.style.setProperty("--struct-card-z", String(20 - absOffset));
+            card.style.setProperty("--struct-card-opacity", String(opacity));
+            card.style.setProperty("--struct-card-filter", isActive ? "none" : `blur(${absOffset * 2}px)`);
+            card.style.setProperty(
+                "--struct-card-transform",
+                `translate(-50%, -50%) translate3d(${translateX}px, ${translateY}px, ${translateZ}px) ${pose}`
+            );
         });
     };
 
-    const setStructLock = (shouldLock) => {
-        if (isStructBypassed()) {
-            shouldLock = false;
-        }
+    const updateStructProgressBars = (progress, index) => {
+        const localProgress = Math.min(Math.max(progress * structCards.length - index, 0), 1);
 
-        if (shouldLock === structLocked) {
-            document.documentElement.classList.toggle("struct-slider-locked", shouldLock);
-            document.body.classList.toggle("struct-slider-locked", shouldLock);
-            return;
-        }
+        structProgressButtons.forEach((button, buttonIndex) => {
+            const fill = button.querySelector("span");
+            const width = buttonIndex < index ? 100 : buttonIndex === index ? localProgress * 100 : 0;
 
-        structLocked = shouldLock;
-        document.documentElement.classList.toggle("struct-slider-locked", shouldLock);
-        document.body.classList.toggle("struct-slider-locked", shouldLock);
+            button.classList.toggle("is-active", buttonIndex === index);
+            button.classList.toggle("is-complete", buttonIndex < index);
+            if (fill) {
+                fill.style.width = `${width}%`;
+            }
+        });
     };
 
-    document.addEventListener("click", (event) => {
-        const link = event.target.closest('a[href^="#"]');
-        const targetId = link?.getAttribute("href")?.slice(1);
-        const target = targetId ? document.getElementById(targetId) : null;
-
-        if (!target || target === structSliderSection) {
+    const setStructSlide = (index, progress = getStructScrollState().progress) => {
+        if (!structCards.length) {
             return;
         }
 
-        bypassStructLock(4000);
-        setStructLock(false);
-        previousStructScrollY = window.scrollY;
-    }, true);
+        const clampedIndex = Math.max(0, Math.min(index, structCards.length - 1));
+        const activeCard = structCards[clampedIndex];
+        const nextCard = structCards[(clampedIndex + 1) % structCards.length];
 
-    const lockStructSlider = (entryDirection) => {
-        const structTop = getStructTop();
+        activeStructSlide = clampedIndex;
 
-        if (entryDirection > 0) {
-            setStructSlide(0);
-        } else {
-            setStructSlide(structSlides.length - 1);
+        structCards.forEach((card, cardIndex) => {
+            card.classList.toggle("is-active", cardIndex === clampedIndex);
+        });
+        structBackdrops.forEach((backdrop, backdropIndex) => {
+            backdrop.classList.toggle("is-active", backdropIndex === clampedIndex);
+        });
+        structGoButtons.forEach((button) => {
+            button.classList.toggle("is-active", Number(button.dataset.structGo) === clampedIndex);
+        });
+
+        if (structActiveNum) {
+            structActiveNum.textContent = activeCard?.dataset.structNum || "01";
+        }
+        if (structActiveVibe) {
+            structActiveVibe.textContent = activeCard?.dataset.structVibe || "";
+        }
+        if (structActiveKicker) {
+            structActiveKicker.textContent = activeCard?.dataset.structKicker || "";
+        }
+        if (structNextImage && nextCard?.dataset.structImage) {
+            structNextImage.src = nextCard.dataset.structImage;
+        }
+        if (structNextNum) {
+            structNextNum.textContent = nextCard?.dataset.structNum || "01";
+        }
+        if (structNextLabel) {
+            structNextLabel.textContent = activeCard?.dataset.structNext || nextCard?.dataset.structKicker || "";
         }
 
-        previousStructScrollY = structTop;
-        jumpToStructTarget(structTop);
-        setStructLock(true);
+        setStructCardDepth(clampedIndex);
+        updateStructProgressBars(progress, clampedIndex);
+        requestStructCtaHitLayerSync();
     };
 
-    const getStructReleaseBuffer = () => Math.max(48, Math.min(160, window.innerHeight * 0.25));
+    const syncStructStory = () => {
+        structScrollFrame = 0;
+        const { progress, index } = getStructScrollState();
+        const rect = structSliderSection.getBoundingClientRect();
+        const viewportHeight = window.innerHeight || document.documentElement.clientHeight || 1;
+        const isInStory = rect.top <= 1 && rect.bottom > viewportHeight + 1;
+        const isPinned = rect.top <= 0 && rect.bottom > viewportHeight;
+        const isReleased = rect.top < 0 && rect.bottom <= viewportHeight;
 
-    const updateStructReleaseState = (currentScrollY = window.scrollY, structTop = getStructTop()) => {
-        if (!structReleaseDirection) {
-            return;
-        }
+        document.body.classList.toggle("is-struct-story-active", isInStory);
+        structSliderSection.classList.toggle("is-struct-pinned", isPinned);
+        structSliderSection.classList.toggle("is-struct-released", isReleased);
+        setStructSlide(index, progress);
+    };
 
-        const releaseBuffer = getStructReleaseBuffer();
-        const hasLeftAbove = structReleaseDirection < 0 && currentScrollY < structTop - releaseBuffer;
-        const hasLeftBelow = structReleaseDirection > 0 && currentScrollY > structTop + releaseBuffer;
-
-        if (hasLeftAbove || hasLeftBelow) {
-            clearStructRelease();
+    const requestStructStorySync = () => {
+        if (!structScrollFrame) {
+            structScrollFrame = window.requestAnimationFrame(syncStructStory);
         }
     };
 
-    const releaseStructSlider = (direction) => {
-        setStructLock(false);
-        structReleaseDirection = direction;
-        bypassStructLock(450);
-        structReleaseUntil = Date.now() + 450;
-        previousStructScrollY = window.scrollY;
+    const goToStructSlide = (index) => {
+        const { total } = getStructScrollState();
+        const target = structSliderSection.offsetTop + (total * index) / structCards.length + 8;
+
+        window.scrollTo({ top: target, behavior: reduceStructMotion.matches ? "auto" : "smooth" });
     };
 
-    const recaptureStructSlider = (direction, event) => {
-        if (!structReleaseDirection || direction !== -structReleaseDirection || structLocked) {
-            return false;
+    const structCtaLinks = Array.from(structSliderSection.querySelectorAll(".struct-card:last-child .struct-actions a"));
+    let structCtaHitLayer = null;
+    let structCtaHitLinks = [];
+    let structCtaHitFrame = 0;
+    const getStructCtaAtPoint = (clientX, clientY) => {
+        if (activeStructSlide !== structCards.length - 1 || !structCtaLinks.length) {
+            return null;
         }
 
-        const structTop = getStructTop();
-        const releaseBuffer = getStructReleaseBuffer();
+        return structCtaLinks.find((link) => {
+            const rect = link.getBoundingClientRect();
+            const hitSlop = 8;
 
-        updateStructReleaseState(window.scrollY, structTop);
-
-        if (!structReleaseDirection || Math.abs(window.scrollY - structTop) > releaseBuffer) {
-            return false;
-        }
-
-        preventStructEvent(event);
-        clearStructRelease();
-        jumpToStructTarget(structTop);
-        previousStructScrollY = structTop;
-        setStructLock(true);
-
-        if (canMoveStructSlide(direction)) {
-            structAnimating = true;
-            setStructSlide(activeStructSlide + direction);
-
-            window.setTimeout(() => {
-                structAnimating = false;
-            }, 650);
-        }
-
-        return true;
+            return clientX >= rect.left - hitSlop
+                && clientX <= rect.right + hitSlop
+                && clientY >= rect.top - hitSlop
+                && clientY <= rect.bottom + hitSlop;
+        }) || null;
     };
 
-    const syncStructLock = () => {
-        const currentScrollY = window.scrollY;
-        const structTop = getStructTop();
-
-        updateStructReleaseState(currentScrollY, structTop);
-
-        const isReversingRelease =
-            structReleaseDirection < 0
-                ? currentScrollY > previousStructScrollY
-                : structReleaseDirection > 0 && currentScrollY < previousStructScrollY;
-
-        if (isReversingRelease && recaptureStructSlider(-structReleaseDirection)) {
-            return;
-        }
-
-        if (isStructBypassed() || isStructReleased()) {
-            previousStructScrollY = currentScrollY;
-            setStructLock(false);
-            return;
-        }
-
-        if (structLocked) {
-            jumpToStructTarget(structTop);
-            return;
-        }
-
-        const scrollingDown = currentScrollY > previousStructScrollY;
-        const reachedStructTop = previousStructScrollY < structTop && currentScrollY >= structTop - 2;
-        const reachedStructFromBelow = previousStructScrollY > structTop && currentScrollY <= structTop + 2;
-
-        if (scrollingDown && reachedStructTop && activeStructSlide < structSlides.length - 1) {
-            lockStructSlider(1);
-            return;
-        }
-
-        if (!scrollingDown && reachedStructFromBelow && activeStructSlide > 0) {
-            lockStructSlider(-1);
-            return;
-        }
-
-        previousStructScrollY = currentScrollY;
+    const setStructCtaHover = (activeLink) => {
+        structSliderSection.classList.toggle("is-struct-cta-hover", Boolean(activeLink));
+        structCtaLinks.forEach((link) => {
+            link.classList.toggle("is-struct-hit-hover", link === activeLink);
+        });
     };
 
-    const handleStructDirection = (direction, event) => {
-        if (!structLocked) {
+    const openStructCta = (link) => {
+        const href = link.getAttribute("href");
+
+        if (!href) {
             return;
         }
 
-        const canMove = canMoveStructSlide(direction);
+        if (href.startsWith("#")) {
+            const target = document.querySelector(href);
 
-        if (structAnimating) {
-            if (canMove) {
-                preventStructEvent(event);
+            if (target) {
+                target.scrollIntoView({ behavior: reduceStructMotion.matches ? "auto" : "smooth", block: "start" });
+
+                if (window.history?.pushState) {
+                    window.history.pushState(null, "", href);
+                }
             } else {
-                releaseStructSlider(direction);
+                window.location.hash = href.slice(1);
             }
+
             return;
         }
 
-        if (canMove) {
-            preventStructEvent(event);
-            structAnimating = true;
-            setStructSlide(activeStructSlide + direction);
+        if (link.target === "_blank") {
+            const popup = window.open(href, "_blank", "noopener,noreferrer");
 
-            window.setTimeout(() => {
-                structAnimating = false;
-            }, 650);
+            if (popup) {
+                popup.opener = null;
+            } else {
+                window.location.href = href;
+            }
+
             return;
         }
 
-        releaseStructSlider(direction);
+        window.location.href = href;
     };
 
-    const handleStructWheel = (event) => {
-        const dy = event.deltaY;
+    const syncStructCtaHitLayer = () => {
+        structCtaHitFrame = 0;
 
-        if (Math.abs(dy) > 12 && recaptureStructSlider(dy > 0 ? 1 : -1, event)) {
+        if (!structCtaHitLayer || !structCtaLinks.length) {
             return;
         }
 
-        if (!structLocked) {
+        const sectionRect = structSliderSection.getBoundingClientRect();
+        const viewportWidth = window.innerWidth || document.documentElement.clientWidth || 1;
+        const viewportHeight = window.innerHeight || document.documentElement.clientHeight || 1;
+        const isStoryVisible = sectionRect.top < viewportHeight && sectionRect.bottom > 0;
+        const shouldShowLayer = activeStructSlide === structCards.length - 1
+            && isStoryVisible
+            && document.body.classList.contains("is-struct-story-active");
+
+        structCtaHitLayer.classList.toggle("is-active", shouldShowLayer);
+
+        if (!shouldShowLayer) {
+            setStructCtaHover(null);
             return;
         }
 
-        if (Math.abs(dy) <= 12) {
-            preventStructEvent(event);
-            return;
-        }
+        structCtaLinks.forEach((sourceLink, index) => {
+            const hitLink = structCtaHitLinks[index];
 
-        handleStructDirection(dy > 0 ? 1 : -1, event);
-    };
-
-    const handleStructTouchStart = (event) => {
-        if (!structLocked && !structReleaseDirection) {
-            return;
-        }
-
-        structTouchStartY = event.touches[0]?.clientY || 0;
-    };
-
-    const handleStructTouchMove = (event) => {
-        const currentY = event.touches[0]?.clientY || structTouchStartY;
-        const deltaY = structTouchStartY - currentY;
-
-        if (!structLocked && Math.abs(deltaY) > 24 && recaptureStructSlider(deltaY > 0 ? 1 : -1, event)) {
-            structTouchStartY = currentY;
-            return;
-        }
-
-        if (structLocked && Math.abs(deltaY) > 24) {
-            const direction = deltaY > 0 ? 1 : -1;
-
-            if (!canMoveStructSlide(direction)) {
-                handleStructDirection(direction, event);
-                structTouchStartY = currentY;
+            if (!hitLink) {
                 return;
             }
-        }
 
-        if (!structLocked) {
-            return;
-        }
+            const rect = sourceLink.getBoundingClientRect();
+            const isVisible = rect.width > 1
+                && rect.height > 1
+                && rect.right > 0
+                && rect.left < viewportWidth
+                && rect.bottom > 0
+                && rect.top < viewportHeight;
 
-        preventStructEvent(event);
-    };
+            hitLink.hidden = !isVisible;
 
-    const handleStructTouchEnd = (event) => {
-        const endY = event.changedTouches[0]?.clientY || structTouchStartY;
-        const deltaY = structTouchStartY - endY;
-
-        if (!structLocked) {
-            if (Math.abs(deltaY) > 24) {
-                recaptureStructSlider(deltaY > 0 ? 1 : -1, event);
-            }
-            return;
-        }
-
-        if (Math.abs(deltaY) > 24) {
-            handleStructDirection(deltaY > 0 ? 1 : -1, event);
-        }
-    };
-
-    const handleStructKeydown = (event) => {
-        if (["ArrowDown", "PageDown", "Space"].includes(event.code)) {
-            if (!structLocked && recaptureStructSlider(1, event)) {
+            if (!isVisible) {
                 return;
             }
-            handleStructDirection(1, event);
-        } else if (["ArrowUp", "PageUp"].includes(event.code)) {
-            if (!structLocked && recaptureStructSlider(-1, event)) {
-                return;
-            }
-            handleStructDirection(-1, event);
+
+            hitLink.style.left = `${Math.max(0, rect.left)}px`;
+            hitLink.style.top = `${Math.max(0, rect.top)}px`;
+            hitLink.style.width = `${Math.min(viewportWidth, rect.right) - Math.max(0, rect.left)}px`;
+            hitLink.style.height = `${Math.min(viewportHeight, rect.bottom) - Math.max(0, rect.top)}px`;
+        });
+    };
+
+    const requestStructCtaHitLayerSync = () => {
+        if (!structCtaHitFrame) {
+            structCtaHitFrame = window.requestAnimationFrame(syncStructCtaHitLayer);
         }
     };
 
-    window.addEventListener("scroll", syncStructLock, { passive: true });
-    window.addEventListener("wheel", handleStructWheel, { passive: false });
-    window.addEventListener("touchstart", handleStructTouchStart, { passive: true });
-    window.addEventListener("touchmove", handleStructTouchMove, { passive: false });
-    window.addEventListener("touchend", handleStructTouchEnd, { passive: false });
-    window.addEventListener("keydown", handleStructKeydown);
-    window.addEventListener("resize", syncStructLock);
+    if (structCtaLinks.length) {
+        structCtaHitLayer = document.createElement("div");
+        structCtaHitLayer.className = "struct-cta-hit-layer";
+        structCtaHitLayer.setAttribute("aria-hidden", "true");
 
-    if (window.scrollY > 0) {
-        syncStructLock();
+        structCtaHitLinks = structCtaLinks.map((sourceLink, index) => {
+            const hitLink = document.createElement("a");
+            const sourceLabel = sourceLink.getAttribute("aria-label") || sourceLink.textContent.trim() || "Open";
+
+            hitLink.href = sourceLink.href;
+            hitLink.tabIndex = -1;
+            hitLink.dataset.structCtaHit = String(index);
+            hitLink.setAttribute("aria-label", sourceLabel);
+
+            if (sourceLink.target) {
+                hitLink.target = sourceLink.target;
+            }
+
+            if (sourceLink.rel) {
+                hitLink.rel = sourceLink.rel;
+            }
+
+            hitLink.addEventListener("mouseenter", () => setStructCtaHover(sourceLink));
+            hitLink.addEventListener("mouseleave", () => setStructCtaHover(null));
+            hitLink.addEventListener("click", (event) => {
+                event.preventDefault();
+                event.stopPropagation();
+                openStructCta(sourceLink);
+            });
+
+            structCtaHitLayer.appendChild(hitLink);
+            return hitLink;
+        });
+
+        document.body.appendChild(structCtaHitLayer);
     }
+
+    const handleStructCtaPointerMove = (event) => {
+        setStructCtaHover(getStructCtaAtPoint(event.clientX, event.clientY));
+    };
+
+    const handleStructCtaClick = (event) => {
+        const link = getStructCtaAtPoint(event.clientX, event.clientY);
+
+        if (!link) {
+            return;
+        }
+
+        event.preventDefault();
+        event.stopPropagation();
+        openStructCta(link);
+    };
+
+    structGoButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+            goToStructSlide(Number(button.dataset.structGo) || 0);
+        });
+    });
+
+    const handleStructMouseMove = (event) => {
+        if (!structStageTrack || reduceStructMotion.matches || window.matchMedia("(max-width: 767px)").matches) {
+            return;
+        }
+
+        window.cancelAnimationFrame(structTiltFrame);
+        structTiltFrame = window.requestAnimationFrame(() => {
+            const rect = structSliderSection.getBoundingClientRect();
+            const x = ((event.clientX - rect.left) / rect.width - 0.5) * 6;
+            const y = ((event.clientY - rect.top) / rect.height - 0.5) * -6;
+
+            structStageTrack.style.setProperty("--struct-tilt-x", `${x.toFixed(2)}deg`);
+            structStageTrack.style.setProperty("--struct-tilt-y", `${y.toFixed(2)}deg`);
+        });
+    };
+
+    const clearStructTilt = () => {
+        if (!structStageTrack) {
+            return;
+        }
+
+        window.cancelAnimationFrame(structTiltFrame);
+        structStageTrack.style.setProperty("--struct-tilt-x", "0deg");
+        structStageTrack.style.setProperty("--struct-tilt-y", "0deg");
+    };
+
+    window.addEventListener("scroll", requestStructStorySync, { passive: true });
+    window.addEventListener("resize", requestStructStorySync);
+    structSliderSection.addEventListener("mousemove", handleStructMouseMove, { passive: true });
+    structSliderSection.addEventListener("pointermove", handleStructCtaPointerMove, { passive: true });
+    structSliderSection.addEventListener("click", handleStructCtaClick, true);
+    structSliderSection.addEventListener("pointerleave", () => setStructCtaHover(null));
+    structSliderSection.addEventListener("mouseleave", clearStructTilt);
+
+    setStructSlide(activeStructSlide, 0);
+    requestStructStorySync();
 }
 
 // About gallery: keeps the image depth effect and toggles the longer content panel.

@@ -1,4 +1,4 @@
-﻿/* Global base styles and project fonts. */
+/* Global base styles and project fonts. */
 
 * {
     box-sizing: border-box;
@@ -12846,7 +12846,7 @@ body.is-footer-legal-modal-open {
 
 
 /* -------------------------------------------------------------------------- */
-/* Structured story slider (github.com/Anil-0001/Amelia-Estate) + scroll lock */
+/* Structured story slider + scroll lock                                      */
 /* -------------------------------------------------------------------------- */
 
 html.struct-slider-locked,
@@ -12856,144 +12856,495 @@ body.struct-slider-locked {
 }
 
 .struct-slider-section {
-    font-family: "Jost", "Inter", Arial, sans-serif;
+    --struct-gold: #ecca6b;
+    --struct-gold-soft: #fff0b8;
+    --struct-ivory: #fff8e7;
+    --struct-emerald: #83d9b2;
+    --struct-ink: #050403;
+    --struct-glass: rgba(6, 5, 3, 0.42);
+    --struct-line: rgba(236, 202, 107, 0.26);
     position: relative;
     height: 100vh;
     height: 100dvh;
     min-height: 100vh;
     min-height: 100dvh;
     overflow: hidden;
-    background: #111111;
+    isolation: isolate;
+    background: var(--struct-ink) !important;
     color: #ffffff;
+    font-family: "Jost", "Inter", Arial, sans-serif;
     scroll-margin-top: 0;
 }
 
-.struct-slider-inner {
-    min-height: 100vh;
-    min-height: 100dvh;
-    height: 100%;
-    box-sizing: border-box;
-    gap: clamp(28px, 6vw, 96px);
+.struct-slider-bg,
+.struct-slide,
+.struct-slider-overlay,
+.struct-light-frame {
+    position: absolute;
+    inset: 0;
 }
 
 .struct-slider-bg {
-    transform: scale(1.01);
+    z-index: 1;
+    overflow: hidden;
+    transform: scale(1.012);
+    filter: saturate(1.08) contrast(1.08);
+}
+
+.struct-slider-bg::before,
+.struct-slider-bg::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.struct-slider-bg::before {
+    background:
+        linear-gradient(90deg, rgba(255, 248, 231, 0.10) 0 1px, transparent 1px 12.5%),
+        repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.028) 0 1px, transparent 1px 120px);
+    opacity: 0.64;
+    mix-blend-mode: screen;
+}
+
+.struct-slider-bg::after {
+    inset: 28px;
+    border: 1px solid rgba(255, 248, 231, 0.10);
+    border-left-color: rgba(236, 202, 107, 0.34);
+    border-bottom-color: rgba(236, 202, 107, 0.20);
 }
 
 .struct-slide {
     opacity: 0;
+    z-index: 1;
     background-position: center;
     background-size: cover;
-    transition: opacity 700ms ease;
+    filter: brightness(0.92) saturate(1.08);
+    transform: scale(1.075);
+    transition: opacity 1000ms ease, transform 1800ms cubic-bezier(0.16, 1, 0.3, 1), filter 1000ms ease;
 }
 
 .struct-slide.is-active {
     opacity: 1;
+    filter: brightness(1) saturate(1.12);
+    transform: scale(1.018);
+    animation: structImageDrift 8800ms ease-out forwards;
 }
 
 .struct-slider-overlay {
-    opacity: 0;
+    z-index: 2;
+    pointer-events: none;
     background:
-        radial-gradient(520px 260px at 22% 48%, rgba(240, 205, 69, 0.16), transparent 70%),
-        linear-gradient(180deg, rgba(0, 0, 0, 0.16), rgba(0, 0, 0, 0.78)),
-        linear-gradient(90deg, rgba(0, 0, 0, 0.72) 0%, rgba(0, 0, 0, 0.28) 53%, rgba(0, 0, 0, 0.66) 100%);
-    animation: structOverlayReveal 920ms ease-out 180ms forwards;
+        linear-gradient(112deg, rgba(236, 202, 107, 0.12) 0%, transparent 43%, rgba(131, 217, 178, 0.08) 100%),
+        linear-gradient(180deg, rgba(5, 4, 3, 0.08) 0%, rgba(5, 4, 3, 0.24) 52%, rgba(5, 4, 3, 0.62) 100%),
+        linear-gradient(90deg, rgba(5, 4, 3, 0.72) 0%, rgba(5, 4, 3, 0.30) 42%, rgba(5, 4, 3, 0.14) 70%, rgba(5, 4, 3, 0.44) 100%);
 }
 
-.struct-slider-rail {
+.struct-light-frame {
+    z-index: 4;
+    pointer-events: none;
+}
+
+.struct-light-frame span {
+    position: absolute;
+    background: linear-gradient(90deg, transparent, rgba(236, 202, 107, 0.70), transparent);
+    opacity: 0.58;
+}
+
+.struct-light-frame span:nth-child(1),
+.struct-light-frame span:nth-child(2) {
+    left: clamp(20px, 3vw, 44px);
+    right: clamp(20px, 3vw, 44px);
+    height: 1px;
+}
+
+.struct-light-frame span:nth-child(1) {
+    top: clamp(94px, 13vh, 140px);
+}
+
+.struct-light-frame span:nth-child(2) {
+    bottom: clamp(22px, 4vh, 48px);
+}
+
+.struct-light-frame span:nth-child(3),
+.struct-light-frame span:nth-child(4) {
+    top: clamp(94px, 13vh, 140px);
+    bottom: clamp(22px, 4vh, 48px);
+    width: 1px;
+    background: linear-gradient(180deg, transparent, rgba(236, 202, 107, 0.58), transparent);
+}
+
+.struct-light-frame span:nth-child(3) {
+    left: clamp(20px, 3vw, 44px);
+}
+
+.struct-light-frame span:nth-child(4) {
+    right: clamp(20px, 3vw, 44px);
+}
+
+.struct-slider-inner {
+    position: relative;
+    z-index: 6;
+    display: grid;
+    grid-template-rows: auto minmax(0, 1fr) auto;
+    gap: clamp(16px, 3vh, 28px);
+    width: min(calc(100% - 72px), 1320px);
+    height: 100%;
+    margin: 0 auto;
+    padding: clamp(106px, 14vh, 152px) 0 clamp(28px, 4.8vh, 54px);
+    box-sizing: border-box;
+}
+
+.struct-topline {
     display: flex;
-    flex: 0 0 84px;
-    width: 84px;
-    min-height: 0;
     align-items: center;
-    padding-top: 0;
-    transform: none;
+    gap: 14px;
+    width: fit-content;
+    min-height: 36px;
+    padding: 0 14px;
+    border: 1px solid rgba(236, 202, 107, 0.30);
+    background: rgba(0, 0, 0, 0.28);
+    backdrop-filter: blur(12px);
+}
+
+.struct-topline span,
+.struct-topline em {
+    color: rgba(255, 248, 231, 0.68);
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+}
+
+.struct-topline strong {
+    color: var(--struct-gold-soft);
+    font-size: 12px;
+    font-weight: 850;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+}
+
+.struct-story-shell {
+    display: grid;
+    grid-template-columns: minmax(420px, 620px) minmax(270px, 380px);
+    align-items: center;
+    justify-content: space-between;
+    gap: clamp(24px, 5vw, 80px);
+    min-height: 0;
 }
 
 .struct-slider-content {
     position: relative;
-    min-height: 245px;
+    align-self: center;
+    width: min(100%, 620px);
+    min-height: 0;
+    padding: 28px 30px 30px;
+    border: 1px solid rgba(255, 248, 231, 0.14);
+    border-left-color: rgba(236, 202, 107, 0.58);
+    background:
+        linear-gradient(135deg, rgba(255, 248, 231, 0.11), rgba(255, 255, 255, 0.03) 42%, rgba(131, 217, 178, 0.08)),
+        rgba(0, 0, 0, 0.34);
+    box-shadow:
+        0 34px 90px rgba(0, 0, 0, 0.40),
+        inset 0 1px 0 rgba(255, 255, 255, 0.07);
+    backdrop-filter: blur(18px);
+    clip-path: polygon(0 0, calc(100% - 26px) 0, 100% 26px, 100% 100%, 26px 100%, 0 calc(100% - 26px));
 }
 
-.struct-slider-rail-items {
-    display: grid;
-    gap: 14px;
-}
-
-.struct-index {
-    position: relative;
-    padding-left: 34px;
-    font-size: 12px;
-    letter-spacing: 0.08em;
-    color: rgba(255, 255, 255, 0.45);
-    transition: color 320ms ease;
-}
-
-.struct-index::before {
+.struct-slider-content::before {
     content: "";
     position: absolute;
     left: 0;
-    top: 50%;
-    width: 24px;
-    height: 1px;
-    background: rgba(255, 255, 255, 0.4);
-    transform: translateY(-50%);
-    transition: background-color 320ms ease, width 320ms ease;
-}
-
-.struct-index.is-active {
-    color: #f0cd45;
-}
-
-.struct-index.is-active::before {
-    width: 30px;
-    background: #f0cd45;
+    top: 0;
+    bottom: 0;
+    width: 4px;
+    background: linear-gradient(180deg, rgba(236, 202, 107, 0.86), rgba(131, 217, 178, 0.30), rgba(236, 202, 107, 0.18));
+    pointer-events: none;
 }
 
 .struct-copy {
     display: none;
+    position: relative;
+    min-height: 430px;
+    z-index: 1;
+}
+
+.struct-copy::before {
+    content: "";
+    position: absolute;
+    right: -4px;
+    top: -18px;
+    z-index: 0;
+    color: rgba(236, 202, 107, 0.10);
+    font-size: 136px;
+    font-weight: 900;
+    line-height: 0.8;
+    letter-spacing: 0;
+    pointer-events: none;
+}
+
+.struct-copy:nth-child(1)::before {
+    content: "01";
+}
+
+.struct-copy:nth-child(2)::before {
+    content: "02";
+}
+
+.struct-copy:nth-child(3)::before {
+    content: "03";
+}
+
+.struct-copy:nth-child(4)::before {
+    content: "04";
+}
+
+.struct-copy:nth-child(5)::before {
+    content: "05";
+}
+
+.struct-copy:nth-child(6)::before {
+    content: "06";
+}
+
+.struct-copy>* {
+    position: relative;
+    z-index: 1;
 }
 
 .struct-copy.is-active {
     display: block;
-    animation: structTextReveal 680ms ease forwards;
+    animation: structCopyReveal 720ms cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 .struct-kicker {
-    margin-bottom: 14px;
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 0.17em;
-    color: #f0cd45;
-    text-shadow: 0 0 18px rgba(240, 205, 69, 0.28);
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 0 18px !important;
+    color: var(--struct-emerald) !important;
+    font-size: 11px;
+    font-weight: 850;
+    line-height: 1;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    text-shadow: 0 8px 24px rgba(0, 0, 0, 0.58) !important;
+}
+
+.struct-kicker span {
+    display: inline-grid;
+    place-items: center;
+    width: 34px;
+    height: 34px;
+    border: 1px solid rgba(131, 217, 178, 0.46);
+    border-radius: 50%;
+    color: var(--struct-gold-soft);
+    font-size: 11px;
+    letter-spacing: 0;
 }
 
 .struct-title {
-    max-width: 620px;
-    font-size: clamp(2rem, 4.2vw, 3.3rem);
-    line-height: 1.12;
-    font-weight: 500;
-    color: #ffffff;
-    text-shadow: 0 4px 16px rgba(0, 0, 0, 0.44);
-}
-
-.struct-title span {
-    color: #f0cd45;
-    text-shadow: 0 0 24px rgba(240, 205, 69, 0.24);
+    width: min(100%, 590px);
+    margin: 0;
+    color: var(--struct-ivory) !important;
+    font-family: "Jost", "Inter", Arial, sans-serif;
+    font-size: 58px !important;
+    font-weight: 780 !important;
+    line-height: 1.02 !important;
+    letter-spacing: 0 !important;
+    text-shadow: 0 24px 64px rgba(0, 0, 0, 0.66) !important;
 }
 
 .struct-description {
-    margin-top: 12px;
-    max-width: 400px;
-    font-size: 16px;
+    width: min(100%, 610px);
+    margin: 24px 0 0 !important;
+    padding-left: 18px;
+    border-left: 1px solid rgba(236, 202, 107, 0.56);
+    color: rgba(255, 255, 255, 0.86) !important;
+    font-size: clamp(16px, 1.12vw, 18px);
+    font-weight: 380;
     line-height: 1.7;
-    color: rgba(255, 255, 255, 0.9);
+    text-shadow: 0 12px 32px rgba(0, 0, 0, 0.58) !important;
+}
+
+.struct-signature {
+    display: grid;
+    gap: 7px;
+    width: min(100%, 560px);
+    margin-top: 22px;
+    padding: 15px 18px;
+    border: 1px solid rgba(255, 248, 231, 0.13);
+    border-left-color: rgba(236, 202, 107, 0.66);
+    background: linear-gradient(90deg, rgba(236, 202, 107, 0.14), rgba(255, 255, 255, 0.035) 52%, rgba(131, 217, 178, 0.08)), rgba(0, 0, 0, 0.28);
+    box-shadow: 0 18px 42px rgba(0, 0, 0, 0.24), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(14px);
+}
+
+.struct-signature span {
+    color: var(--struct-gold);
+    font-size: 10px;
+    font-weight: 850;
+    line-height: 1;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+}
+
+.struct-signature strong {
+    color: rgba(255, 255, 255, 0.88);
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.38;
+}
+
+.struct-detail-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    width: min(100%, 650px);
+    margin-top: 18px;
+}
+
+.struct-detail-row span {
+    display: inline-flex;
+    align-items: center;
+    min-height: 38px;
+    padding: 0 14px;
+    border: 1px solid rgba(255, 248, 231, 0.13);
+    border-radius: 999px;
+    background: rgba(0, 0, 0, 0.30);
+    color: rgba(255, 248, 231, 0.82);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.045);
+    font-size: 10.5px;
+    font-weight: 780;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+}
+
+.struct-estate-brief {
+    align-self: center;
+    display: grid;
+    gap: 17px;
+    max-width: 380px;
+    padding: 23px;
+    border: 1px solid rgba(236, 202, 107, 0.24);
+    background: linear-gradient(135deg, rgba(255, 248, 231, 0.10), rgba(255, 255, 255, 0.025) 45%, rgba(131, 217, 178, 0.06)), rgba(0, 0, 0, 0.32);
+    box-shadow: 0 32px 80px rgba(0, 0, 0, 0.34), inset 0 1px 0 rgba(255, 255, 255, 0.07);
+    backdrop-filter: blur(18px);
+    clip-path: polygon(0 0, calc(100% - 24px) 0, 100% 24px, 100% 100%, 24px 100%, 0 calc(100% - 24px));
+}
+
+.struct-estate-brief>span {
+    color: rgba(255, 248, 231, 0.62);
+    font-size: 10px;
+    font-weight: 850;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+}
+
+.struct-estate-brief>strong {
+    color: var(--struct-ivory);
+    font-size: 28px;
+    font-weight: 760;
+    line-height: 1.10;
+    letter-spacing: 0;
+}
+
+.struct-estate-brief dl {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin: 0;
+    border: 1px solid rgba(255, 248, 231, 0.10);
+}
+
+.struct-estate-brief div {
+    display: grid;
+    gap: 7px;
+    min-height: 74px;
+    padding: 13px;
+    border-right: 1px solid rgba(255, 248, 231, 0.10);
+    border-bottom: 1px solid rgba(255, 248, 231, 0.10);
+}
+
+.struct-estate-brief div:nth-child(2n) {
+    border-right: 0;
+}
+
+.struct-estate-brief div:nth-last-child(-n+2) {
+    border-bottom: 0;
+}
+
+.struct-estate-brief dt {
+    color: rgba(255, 248, 231, 0.58);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.struct-estate-brief dd {
+    margin: 0;
+    color: var(--struct-gold-soft);
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.struct-slider-rail {
+    align-self: end;
+    padding-top: 13px;
+    border-top: 1px solid rgba(255, 248, 231, 0.16);
+}
+
+.struct-slider-rail-items {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 8px;
+}
+
+.struct-index {
+    display: grid;
+    gap: 7px;
+    min-height: 58px;
+    padding: 10px 11px;
+    border: 1px solid rgba(255, 248, 231, 0.12);
+    background: rgba(0, 0, 0, 0.24);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+    color: rgba(255, 255, 255, 0.56) !important;
+    transition: border-color 280ms ease, background 280ms ease, color 280ms ease, transform 280ms ease;
+}
+
+.struct-index b {
+    color: inherit;
+    font-size: 12px;
+    font-weight: 900;
+    letter-spacing: 0.10em;
+}
+
+.struct-index small {
+    overflow: hidden;
+    color: inherit;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.10em;
+    text-overflow: ellipsis;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.struct-index.is-active {
+    border-color: rgba(236, 202, 107, 0.78);
+    background: linear-gradient(180deg, rgba(236, 202, 107, 0.24), rgba(236, 202, 107, 0.07));
+    color: var(--struct-gold-soft) !important;
+    transform: translateY(-4px);
 }
 
 .struct-slider-section .struct-actions.hero-actions {
     position: static !important;
     left: auto !important;
     bottom: auto !important;
+    z-index: 35 !important;
     display: flex !important;
     flex-direction: row !important;
     align-items: center !important;
@@ -13003,32 +13354,1079 @@ body.struct-slider-locked {
     max-width: 100% !important;
     height: auto !important;
     margin: 24px 0 0 !important;
+    pointer-events: auto !important;
     transform: none !important;
 }
 
 .struct-slider-section .struct-actions .hero-price-details-btn,
 .struct-slider-section .struct-actions a[href*="wa.me"].hero-whatsapp-btn {
+    position: relative !important;
+    z-index: 36 !important;
     width: 224px !important;
     min-width: 224px !important;
     height: 44px !important;
     min-height: 44px !important;
+    pointer-events: auto !important;
+    cursor: pointer !important;
 }
 
-@keyframes structOverlayReveal {
+.struct-slider-section.is-struct-cta-hover,
+.struct-slider-section.is-struct-cta-hover .struct-sticky-viewport,
+.struct-slider-section.is-struct-cta-hover .struct-stage,
+.struct-slider-section.is-struct-cta-hover .struct-stage-track,
+.struct-slider-section.is-struct-cta-hover .struct-card.is-active,
+.struct-slider-section.is-struct-cta-hover .struct-card-inner,
+.struct-slider-section.is-struct-cta-hover .struct-card-copy {
+    cursor: pointer !important;
+}
+
+.struct-slider-section .struct-actions a.is-struct-hit-hover {
+    cursor: pointer !important;
+}
+
+.struct-slider-section .struct-actions .hero-price-details-btn.is-struct-hit-hover,
+.struct-slider-section .struct-actions a[href*="wa.me"].hero-whatsapp-btn.is-struct-hit-hover {
+    transform: translateY(-2px) !important;
+}
+
+.struct-slider-section .struct-actions a[href*="wa.me"].hero-whatsapp-btn.is-struct-hit-hover {
+    border-color: rgba(0, 230, 118, 0.72) !important;
+    background: rgba(0, 0, 0, 0.58) !important;
+    color: #42ff9a !important;
+    box-shadow: 0 12px 26px rgba(0, 0, 0, 0.26) !important;
+}
+
+.struct-cta-hit-layer {
+    position: fixed;
+    inset: 0;
+    z-index: 95;
+    display: none;
+    pointer-events: none;
+}
+
+.struct-cta-hit-layer.is-active {
+    display: block;
+}
+
+.struct-cta-hit-layer a {
+    position: absolute;
+    display: block;
+    overflow: hidden;
+    border-radius: 999px;
+    background: transparent;
+    color: transparent;
+    cursor: pointer !important;
+    font-size: 0;
+    line-height: 0;
+    pointer-events: auto;
+    text-decoration: none;
+    text-indent: -9999px;
+}
+
+.struct-cta-hit-layer a[hidden] {
+    display: none;
+}
+
+@keyframes structImageDrift {
+    from {
+        transform: scale(1.055);
+    }
+
     to {
-        opacity: 0.8;
+        transform: scale(1.018);
     }
 }
 
-@keyframes structTextReveal {
+@keyframes structCopyReveal {
     from {
         opacity: 0;
-        transform: translateY(24px);
+        transform: translate3d(0, 24px, 0);
+        clip-path: inset(12% 0 0 0);
     }
 
     to {
         opacity: 1;
-        transform: translateY(0);
+        transform: translate3d(0, 0, 0);
+        clip-path: inset(0 0 0 0);
+    }
+}
+
+@media (max-width: 1199px) {
+    .struct-story-shell {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .struct-estate-brief {
+        display: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .struct-slide.is-active,
+    .struct-copy.is-active {
+        animation: none !important;
+    }
+}
+
+/* Lovable story showcase: static HTML/CSS/JS port of the React sticky deck. */
+.struct-slider-section {
+    --struct-gold: #e8c36a;
+    --struct-gold-soft: #f5d98a;
+    --struct-ink: #050403;
+    --struct-card: rgba(9, 8, 5, 0.72);
+    --struct-line: rgba(232, 195, 106, 0.2);
+    --struct-muted: rgba(255, 255, 255, 0.62);
+    position: relative;
+    height: 660vh !important;
+    min-height: 660vh !important;
+    overflow: visible !important;
+    isolation: isolate;
+    background: var(--struct-ink) !important;
+    color: #ffffff;
+    font-family: "Inter", "Jost", Arial, sans-serif;
+    scroll-margin-top: 0;
+}
+
+.struct-slider-section.is-struct-pinned {
+    z-index: 70;
+}
+
+body.is-struct-story-active .booking-enquiry-section {
+    position: relative;
+    z-index: 0;
+}
+
+body.is-struct-story-active .site-header {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(-110%);
+    visibility: hidden;
+}
+
+.struct-sticky-viewport {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+    overflow: hidden;
+    background: var(--struct-ink);
+}
+
+.struct-slider-section.is-struct-pinned .struct-sticky-viewport {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 20;
+}
+
+.struct-slider-section.is-struct-released .struct-sticky-viewport {
+    position: absolute;
+    top: auto;
+    bottom: 0;
+    z-index: 20;
+}
+
+.struct-ambient,
+.struct-backdrop,
+.struct-backdrop img,
+.struct-ambient-tint,
+.struct-ambient-vignette,
+.struct-ambient-grid,
+.struct-dust,
+.struct-stage {
+    position: absolute;
+    inset: 0;
+}
+
+.struct-ambient {
+    z-index: 0;
+}
+
+.struct-backdrop {
+    opacity: 0;
+    transition: opacity 1400ms ease;
+}
+
+.struct-backdrop.is-active {
+    opacity: 1;
+}
+
+.struct-backdrop img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: blur(38px) brightness(0.32) saturate(1.5);
+    transform: scale(1.25);
+}
+
+.struct-ambient-tint {
+    background:
+        linear-gradient(145deg, rgba(168, 103, 19, 0.16), rgba(5, 4, 3, 0.14) 34%, rgba(5, 4, 3, 0.92) 100%),
+        linear-gradient(180deg, rgba(5, 4, 3, 0.88), rgba(5, 4, 3, 0.38) 45%, rgba(5, 4, 3, 1));
+}
+
+.struct-ambient-vignette {
+    background: radial-gradient(ellipse at center, transparent 0%, transparent 45%, rgba(0, 0, 0, 0.72) 100%);
+}
+
+.struct-ambient-grid {
+    opacity: 0.05;
+    background-image:
+        linear-gradient(rgba(232, 195, 106, 0.65) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(232, 195, 106, 0.65) 1px, transparent 1px);
+    background-size: 80px 80px;
+}
+
+.struct-dust {
+    pointer-events: none;
+}
+
+.struct-dust span {
+    position: absolute;
+    width: var(--dust-size, 2px);
+    height: var(--dust-size, 2px);
+    border-radius: 999px;
+    background: var(--struct-gold);
+    opacity: var(--dust-opacity, 0.32);
+    filter: blur(0.5px);
+    box-shadow: 0 0 8px rgba(232, 195, 106, 0.7);
+    animation: structFloatDust var(--dust-duration, 12s) ease-in-out var(--dust-delay, 0s) infinite;
+}
+
+.struct-top-chrome,
+.struct-bottom-chrome {
+    position: absolute;
+    left: 0;
+    right: 0;
+    z-index: 30;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding-inline: clamp(24px, 4vw, 48px);
+    pointer-events: none;
+}
+
+.struct-top-chrome {
+    top: 0;
+    padding-top: clamp(22px, 4vh, 34px);
+}
+
+.struct-bottom-chrome {
+    bottom: 0;
+    align-items: flex-end;
+    padding-bottom: clamp(22px, 4vh, 34px);
+}
+
+.struct-brand-lockup {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.struct-brand-mark {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: 42px;
+    height: 42px;
+    border: 1px solid rgba(232, 195, 106, 0.52);
+    border-radius: 50%;
+    color: var(--struct-gold);
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: 18px;
+}
+
+.struct-brand-mark::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border: 1px solid rgba(232, 195, 106, 0.28);
+    border-radius: inherit;
+    animation: structBrandPing 3s ease-out infinite;
+}
+
+.struct-brand-lockup span,
+.struct-brand-lockup strong,
+.struct-count,
+.struct-side-rail b,
+.struct-kicker,
+.struct-vibe-pill,
+.struct-chapter-pill,
+.struct-meta-grid span,
+.struct-next-preview span,
+.struct-scroll-note,
+.struct-possession {
+    font-family: "JetBrains Mono", "Courier New", monospace;
+    text-transform: uppercase;
+}
+
+.struct-brand-lockup span {
+    display: block;
+    color: rgba(232, 195, 106, 0.82);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.3em;
+}
+
+.struct-brand-lockup strong {
+    display: block;
+    margin-top: 4px;
+    color: rgba(255, 255, 255, 0.42);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+}
+
+.struct-count {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    color: rgba(255, 255, 255, 0.42);
+    font-size: 10px;
+    font-style: normal;
+    letter-spacing: 0.3em;
+}
+
+.struct-count span:first-child {
+    color: var(--struct-gold);
+}
+
+.struct-count i {
+    color: rgba(255, 255, 255, 0.2);
+    font-style: normal;
+}
+
+.struct-count b {
+    margin-left: 4px;
+    color: rgba(255, 255, 255, 0.52);
+    font-weight: 500;
+}
+
+.struct-side-rail {
+    position: absolute;
+    z-index: 30;
+    left: 24px;
+    top: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    transform: translateY(-50%);
+}
+
+.struct-side-rail button {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.32);
+    cursor: pointer;
+    text-align: left;
+}
+
+.struct-side-rail span {
+    display: block;
+    width: 20px;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.26);
+    transition: width 500ms ease, background 300ms ease;
+}
+
+.struct-side-rail b {
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.25em;
+    transition: color 300ms ease;
+}
+
+.struct-side-rail button:hover,
+.struct-side-rail button.is-active {
+    color: var(--struct-gold);
+}
+
+.struct-side-rail button:hover span,
+.struct-side-rail button.is-active span {
+    width: 40px;
+    background: var(--struct-gold);
+}
+
+.struct-stage {
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    perspective: 2000px;
+    perspective-origin: 50% 45%;
+}
+
+.struct-stage-track {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transform: rotateX(var(--struct-tilt-y, 0deg)) rotateY(var(--struct-tilt-x, 0deg));
+    transition: transform 300ms ease;
+}
+
+.struct-card {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: min(88vw, 1080px);
+    height: min(71vh, 610px);
+    z-index: var(--struct-card-z, 1);
+    opacity: var(--struct-card-opacity, 0);
+    filter: var(--struct-card-filter, blur(4px));
+    pointer-events: none;
+    transform: var(--struct-card-transform, translate(-50%, -50%) translateZ(-300px));
+    transform-style: preserve-3d;
+    transition:
+        transform 1000ms cubic-bezier(0.2, 0.8, 0.2, 1),
+        opacity 1000ms ease,
+        filter 1000ms ease;
+}
+
+.struct-card.is-active {
+    pointer-events: auto;
+}
+
+.struct-card-halo {
+    position: absolute;
+    inset: -40px;
+    border-radius: 40px;
+    opacity: 0;
+    pointer-events: none;
+    background: radial-gradient(ellipse at 30% 30%, rgba(232, 195, 106, 0.25), transparent 60%);
+    filter: blur(40px);
+    transition: opacity 600ms ease;
+}
+
+.struct-card.is-active .struct-card-halo {
+    opacity: 0.6;
+}
+
+.struct-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    border: 1px solid rgba(232, 195, 106, 0.22);
+    border-radius: 28px;
+    background: var(--struct-card);
+    box-shadow:
+        0 50px 140px -20px rgba(0, 0, 0, 0.95),
+        0 0 80px -15px rgba(232, 195, 106, 0.30);
+    backdrop-filter: blur(24px);
+    transform-style: preserve-3d;
+}
+
+.struct-card-inner::before,
+.struct-card-inner::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    z-index: 12;
+    pointer-events: none;
+}
+
+.struct-card-inner::before {
+    top: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(232, 195, 106, 0.5), transparent);
+}
+
+.struct-card-inner::after {
+    inset: 0;
+    border-radius: inherit;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+.struct-corner {
+    position: absolute;
+    z-index: 20;
+    width: 24px;
+    height: 24px;
+    pointer-events: none;
+}
+
+.struct-corner--tl {
+    top: 12px;
+    left: 12px;
+    border-top: 1px solid rgba(232, 195, 106, 0.62);
+    border-left: 1px solid rgba(232, 195, 106, 0.62);
+    border-top-left-radius: 16px;
+}
+
+.struct-corner--tr {
+    top: 12px;
+    right: 12px;
+    border-top: 1px solid rgba(232, 195, 106, 0.62);
+    border-right: 1px solid rgba(232, 195, 106, 0.62);
+    border-top-right-radius: 16px;
+}
+
+.struct-corner--bl {
+    bottom: 12px;
+    left: 12px;
+    border-bottom: 1px solid rgba(232, 195, 106, 0.62);
+    border-left: 1px solid rgba(232, 195, 106, 0.62);
+    border-bottom-left-radius: 16px;
+}
+
+.struct-corner--br {
+    right: 12px;
+    bottom: 12px;
+    border-right: 1px solid rgba(232, 195, 106, 0.62);
+    border-bottom: 1px solid rgba(232, 195, 106, 0.62);
+    border-bottom-right-radius: 16px;
+}
+
+.struct-card-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    width: 100%;
+    height: 100%;
+}
+
+.struct-card-media,
+.struct-card-copy {
+    position: relative;
+    min-width: 0;
+}
+
+.struct-card-media {
+    overflow: hidden;
+}
+
+.struct-card-media img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1.02);
+    transition: transform 3000ms ease;
+}
+
+.struct-card.is-active .struct-card-media img {
+    transform: scale(1.1);
+}
+
+.struct-card-media::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent, rgba(5, 4, 3, 0.82));
+    pointer-events: none;
+}
+
+.struct-card-media-accent {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(35deg, rgba(232, 195, 106, 0.32), transparent 44%);
+    pointer-events: none;
+}
+
+.struct-card:nth-child(2) .struct-card-media-accent {
+    background: linear-gradient(35deg, rgba(245, 166, 76, 0.24), transparent 46%);
+}
+
+.struct-card:nth-child(4) .struct-card-media-accent {
+    background: linear-gradient(35deg, rgba(255, 190, 176, 0.20), transparent 46%);
+}
+
+.struct-card:nth-child(5) .struct-card-media-accent {
+    background: linear-gradient(35deg, rgba(111, 218, 168, 0.20), transparent 46%);
+}
+
+.struct-card-sheen {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    background: linear-gradient(115deg, transparent 30%, rgba(232, 195, 106, 0.25) 50%, transparent 70%);
+    transform: translateX(-100%);
+    pointer-events: none;
+}
+
+.struct-card.is-active .struct-card-sheen {
+    opacity: 0.5;
+    animation: structShimmerSweep 5s ease-in-out infinite;
+}
+
+.struct-card-num {
+    position: absolute;
+    top: 26px;
+    left: 28px;
+    z-index: 4;
+    color: transparent;
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: clamp(72px, 7.5vw, 104px);
+    font-style: italic;
+    line-height: 0.9;
+    background: linear-gradient(135deg, #f5d98a 0%, #e8c36a 40%, #b8893a 70%, #f5d98a 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    filter: drop-shadow(0 4px 24px rgba(232, 195, 106, 0.5));
+    transform: translateZ(50px);
+}
+
+.struct-vibe-pill,
+.struct-chapter-pill {
+    position: absolute;
+    z-index: 5;
+    display: inline-flex;
+    align-items: center;
+    min-height: 26px;
+    border-radius: 999px;
+    background: rgba(5, 4, 3, 0.76);
+    backdrop-filter: blur(10px);
+    color: var(--struct-gold);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+}
+
+.struct-vibe-pill {
+    left: 28px;
+    bottom: 26px;
+    gap: 8px;
+    padding: 0 12px;
+    border: 1px solid rgba(232, 195, 106, 0.42);
+    transform: translateZ(30px);
+}
+
+.struct-vibe-pill span {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--struct-gold);
+    animation: structGoldPulse 3s ease-in-out infinite;
+}
+
+.struct-chapter-pill {
+    top: 26px;
+    right: 28px;
+    padding: 0 10px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 9px;
+    letter-spacing: 0.3em;
+    transform: translateZ(30px);
+}
+
+.struct-card-copy {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 24px;
+    padding: clamp(28px, 4vw, 42px);
+}
+
+.struct-card-copy::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    opacity: 0.045;
+    background-image: radial-gradient(rgba(232, 195, 106, 0.65) 1px, transparent 1px);
+    background-size: 18px 18px;
+    pointer-events: none;
+}
+
+.struct-card-copy > * {
+    position: relative;
+    z-index: 1;
+}
+
+.struct-kicker {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 0 18px !important;
+    color: rgba(232, 195, 106, 0.9) !important;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.3em;
+    line-height: 1;
+}
+
+.struct-kicker span {
+    display: block;
+    width: 32px;
+    height: 1px;
+    background: rgba(232, 195, 106, 0.62);
+}
+
+.struct-title {
+    max-width: 500px;
+    margin: 0;
+    color: #ffffff !important;
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: clamp(34px, 4.1vw, 46px) !important;
+    font-weight: 600 !important;
+    line-height: 1.04 !important;
+    letter-spacing: 0 !important;
+    text-shadow: none !important;
+    text-wrap: balance;
+    transform: translateZ(20px);
+}
+
+.struct-title em {
+    position: relative;
+    display: inline-block;
+    color: transparent;
+    font-style: normal;
+    background: linear-gradient(135deg, #f5d98a 0%, #e8c36a 50%, #c9a14a 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+.struct-title em::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: -4px;
+    left: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--struct-gold), transparent);
+}
+
+.struct-description {
+    max-width: 440px;
+    margin: 22px 0 0 !important;
+    padding: 0;
+    border: 0;
+    color: rgba(255, 255, 255, 0.70) !important;
+    font-size: clamp(14px, 1.15vw, 16px);
+    font-weight: 400;
+    line-height: 1.68;
+    text-shadow: none !important;
+}
+
+.struct-meta-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    margin-top: 4px;
+}
+
+.struct-meta-grid div {
+    min-width: 0;
+    padding: 14px;
+    border: 1px solid rgba(232, 195, 106, 0.16);
+    border-radius: 12px;
+    background: linear-gradient(135deg, rgba(232, 195, 106, 0.075), transparent);
+    backdrop-filter: blur(10px);
+    transition: border-color 240ms ease, background 240ms ease;
+}
+
+.struct-meta-grid div:hover {
+    border-color: rgba(232, 195, 106, 0.42);
+    background: linear-gradient(135deg, rgba(232, 195, 106, 0.13), transparent);
+}
+
+.struct-meta-grid span {
+    display: block;
+    color: rgba(232, 195, 106, 0.72);
+    font-size: 9px;
+    letter-spacing: 0.25em;
+}
+
+.struct-meta-grid strong {
+    display: block;
+    margin-top: 8px;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.25;
+}
+
+.struct-cta-row {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 24px;
+}
+
+.struct-gold-cta,
+.struct-outline-cta {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 12px 24px;
+    overflow: hidden;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: 0.025em;
+    text-decoration: none;
+    transition:
+        background 240ms ease,
+        border-color 240ms ease,
+        box-shadow 240ms ease,
+        color 240ms ease,
+        transform 240ms ease;
+}
+
+.struct-gold-cta {
+    border: 0;
+    background: linear-gradient(90deg, var(--struct-gold), var(--struct-gold-soft), var(--struct-gold));
+    color: var(--struct-ink);
+    box-shadow: 0 10px 30px -10px rgba(232, 195, 106, 0.70);
+}
+
+.struct-gold-cta-shine {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.42), transparent);
+    pointer-events: none;
+    transform: translateX(-100%);
+    transition: transform 700ms ease;
+}
+
+.struct-gold-cta > span:not(.struct-gold-cta-shine) {
+    position: relative;
+    z-index: 10;
+}
+
+.struct-gold-cta:hover {
+    color: var(--struct-ink);
+    box-shadow: 0 15px 40px -10px rgba(232, 195, 106, 0.90);
+}
+
+.struct-gold-cta:hover .struct-gold-cta-shine {
+    transform: translateX(100%);
+}
+
+.struct-outline-cta {
+    border: 1px solid rgba(232, 195, 106, 0.40);
+    color: var(--struct-gold);
+    background: transparent;
+    box-shadow: none;
+}
+
+.struct-outline-cta:hover {
+    border-color: var(--struct-gold);
+    background: rgba(232, 195, 106, 0.10);
+    color: var(--struct-gold);
+}
+
+.struct-next-preview {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: min(300px, 26vw);
+}
+
+.struct-next-preview > div {
+    position: relative;
+    flex: 0 0 56px;
+    width: 56px;
+    height: 56px;
+    overflow: hidden;
+    border: 1px solid rgba(232, 195, 106, 0.32);
+    border-radius: 10px;
+}
+
+.struct-next-preview img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.struct-next-preview > div::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(5, 4, 3, 0.3);
+}
+
+.struct-next-preview p {
+    margin: 0;
+}
+
+.struct-next-preview span {
+    display: block;
+    margin-bottom: 6px;
+    color: rgba(255, 255, 255, 0.42);
+    font-size: 10px;
+    letter-spacing: 0.3em;
+}
+
+.struct-next-preview strong {
+    color: rgba(255, 255, 255, 0.82);
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.struct-progress-wrap {
+    flex: 1;
+    max-width: 660px;
+    pointer-events: auto;
+}
+
+.struct-progress-bars {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.struct-progress-bars button {
+    position: relative;
+    flex: 1;
+    height: 3px;
+    overflow: hidden;
+    padding: 0;
+    border: 0;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.10);
+    cursor: pointer;
+}
+
+.struct-progress-bars span {
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 0;
+    border-radius: inherit;
+    background: var(--struct-gold);
+    box-shadow: 0 0 12px rgba(232, 195, 106, 0.82);
+    transition: width 420ms ease, background 300ms ease;
+}
+
+.struct-progress-bars button.is-complete span {
+    width: 100%;
+    background: rgba(232, 195, 106, 0.52);
+}
+
+.struct-scroll-note {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-top: 14px;
+    color: rgba(255, 255, 255, 0.42);
+    font-size: 10px;
+    letter-spacing: 0.3em;
+}
+
+.struct-scroll-note span {
+    display: inline-block;
+    width: 14px;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.42);
+}
+
+.struct-scroll-note em {
+    flex: 1;
+    font-style: normal;
+}
+
+.struct-scroll-note strong {
+    color: var(--struct-gold);
+    font-weight: 500;
+}
+
+.struct-possession {
+    width: min(190px, 18vw);
+    text-align: right;
+}
+
+.struct-possession span,
+.struct-possession em {
+    display: block;
+    color: rgba(255, 255, 255, 0.36);
+    font-size: 10px;
+    font-style: normal;
+    letter-spacing: 0.24em;
+}
+
+.struct-possession strong {
+    display: block;
+    margin: 8px 0 5px;
+    color: var(--struct-gold);
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+}
+
+@keyframes structFloatDust {
+    0%,
+    100% {
+        transform: translate(0, 0);
+    }
+
+    50% {
+        transform: translate(20px, -30px);
+    }
+}
+
+@keyframes structBrandPing {
+    0% {
+        opacity: 0.8;
+        transform: scale(1);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(1.65);
+    }
+}
+
+@keyframes structGoldPulse {
+    0%,
+    100% {
+        opacity: 0.62;
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+@keyframes structShimmerSweep {
+    from {
+        transform: translateX(-110%);
+    }
+
+    to {
+        transform: translateX(110%);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .struct-dust span,
+    .struct-brand-mark::after,
+    .struct-vibe-pill span,
+    .struct-card-sheen {
+        animation: none !important;
+    }
+
+    .struct-card,
+    .struct-backdrop,
+    .struct-stage-track,
+    .struct-card-media img {
+        transition: none !important;
+    }
+}
+
+@media (max-width: 1439px) {
+    .struct-side-rail {
+        display: none;
+    }
+
+    .struct-card {
+        width: min(88vw, 1060px);
+        height: min(70vh, 600px);
     }
 }
 
@@ -13737,7 +15135,6 @@ body {
     opacity: 1 !important;
     transform: translateX(80%) !important;
 }
-
 
 .ideal-floor-heading h2 span,
 .ideal-floor-spec:hover span,
