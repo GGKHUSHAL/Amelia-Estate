@@ -1180,12 +1180,10 @@ if (structSliderSection) {
             const direction = Math.sign(offset);
             const isActive = offset === 0;
             const translateZ = isActive ? 0 : -140 * absOffset - 80;
-            const translateX = isActive ? 0 : direction * (80 + absOffset * 30);
-            const translateY = isActive ? 0 : 25 * absOffset;
+            const translateX = 0;
+            const translateY = isActive ? 0 : direction * (80 + absOffset * 30);
             const opacity = absOffset > 2 ? 0 : isActive ? 1 : Math.max(0, 0.32 - absOffset * 0.08);
-            const pose = isActive
-                ? card.dataset.structPose || "rotateY(0deg)"
-                : `rotateY(${direction * -8}deg) rotateX(0deg)`;
+            const pose = "rotateX(0deg) rotateY(0deg) rotateZ(0deg)";
 
             card.style.setProperty("--struct-card-z", String(20 - absOffset));
             card.style.setProperty("--struct-card-opacity", String(opacity));
@@ -1254,7 +1252,6 @@ if (structSliderSection) {
 
         setStructCardDepth(clampedIndex);
         updateStructProgressBars(progress, clampedIndex);
-        requestStructCtaHitLayerSync();
     };
 
     const syncStructStory = () => {
@@ -1283,180 +1280,6 @@ if (structSliderSection) {
         const target = structSliderSection.offsetTop + (total * index) / structCards.length + 8;
 
         window.scrollTo({ top: target, behavior: reduceStructMotion.matches ? "auto" : "smooth" });
-    };
-
-    const structCtaLinks = Array.from(structSliderSection.querySelectorAll(".struct-card:last-child .struct-actions a"));
-    let structCtaHitLayer = null;
-    let structCtaHitLinks = [];
-    let structCtaHitFrame = 0;
-    const getStructCtaAtPoint = (clientX, clientY) => {
-        if (activeStructSlide !== structCards.length - 1 || !structCtaLinks.length) {
-            return null;
-        }
-
-        return structCtaLinks.find((link) => {
-            const rect = link.getBoundingClientRect();
-            const hitSlop = 8;
-
-            return clientX >= rect.left - hitSlop
-                && clientX <= rect.right + hitSlop
-                && clientY >= rect.top - hitSlop
-                && clientY <= rect.bottom + hitSlop;
-        }) || null;
-    };
-
-    const setStructCtaHover = (activeLink) => {
-        structSliderSection.classList.toggle("is-struct-cta-hover", Boolean(activeLink));
-        structCtaLinks.forEach((link) => {
-            link.classList.toggle("is-struct-hit-hover", link === activeLink);
-        });
-    };
-
-    const openStructCta = (link) => {
-        const href = link.getAttribute("href");
-
-        if (!href) {
-            return;
-        }
-
-        if (href.startsWith("#")) {
-            const target = document.querySelector(href);
-
-            if (target) {
-                target.scrollIntoView({ behavior: reduceStructMotion.matches ? "auto" : "smooth", block: "start" });
-
-                if (window.history?.pushState) {
-                    window.history.pushState(null, "", href);
-                }
-            } else {
-                window.location.hash = href.slice(1);
-            }
-
-            return;
-        }
-
-        if (link.target === "_blank") {
-            const popup = window.open(href, "_blank", "noopener,noreferrer");
-
-            if (popup) {
-                popup.opener = null;
-            } else {
-                window.location.href = href;
-            }
-
-            return;
-        }
-
-        window.location.href = href;
-    };
-
-    const syncStructCtaHitLayer = () => {
-        structCtaHitFrame = 0;
-
-        if (!structCtaHitLayer || !structCtaLinks.length) {
-            return;
-        }
-
-        const sectionRect = structSliderSection.getBoundingClientRect();
-        const viewportWidth = window.innerWidth || document.documentElement.clientWidth || 1;
-        const viewportHeight = window.innerHeight || document.documentElement.clientHeight || 1;
-        const isStoryVisible = sectionRect.top < viewportHeight && sectionRect.bottom > 0;
-        const shouldShowLayer = activeStructSlide === structCards.length - 1
-            && isStoryVisible
-            && document.body.classList.contains("is-struct-story-active");
-
-        structCtaHitLayer.classList.toggle("is-active", shouldShowLayer);
-
-        if (!shouldShowLayer) {
-            setStructCtaHover(null);
-            return;
-        }
-
-        structCtaLinks.forEach((sourceLink, index) => {
-            const hitLink = structCtaHitLinks[index];
-
-            if (!hitLink) {
-                return;
-            }
-
-            const rect = sourceLink.getBoundingClientRect();
-            const isVisible = rect.width > 1
-                && rect.height > 1
-                && rect.right > 0
-                && rect.left < viewportWidth
-                && rect.bottom > 0
-                && rect.top < viewportHeight;
-
-            hitLink.hidden = !isVisible;
-
-            if (!isVisible) {
-                return;
-            }
-
-            hitLink.style.left = `${Math.max(0, rect.left)}px`;
-            hitLink.style.top = `${Math.max(0, rect.top)}px`;
-            hitLink.style.width = `${Math.min(viewportWidth, rect.right) - Math.max(0, rect.left)}px`;
-            hitLink.style.height = `${Math.min(viewportHeight, rect.bottom) - Math.max(0, rect.top)}px`;
-        });
-    };
-
-    const requestStructCtaHitLayerSync = () => {
-        if (!structCtaHitFrame) {
-            structCtaHitFrame = window.requestAnimationFrame(syncStructCtaHitLayer);
-        }
-    };
-
-    if (structCtaLinks.length) {
-        structCtaHitLayer = document.createElement("div");
-        structCtaHitLayer.className = "struct-cta-hit-layer";
-        structCtaHitLayer.setAttribute("aria-hidden", "true");
-
-        structCtaHitLinks = structCtaLinks.map((sourceLink, index) => {
-            const hitLink = document.createElement("a");
-            const sourceLabel = sourceLink.getAttribute("aria-label") || sourceLink.textContent.trim() || "Open";
-
-            hitLink.href = sourceLink.href;
-            hitLink.tabIndex = -1;
-            hitLink.dataset.structCtaHit = String(index);
-            hitLink.setAttribute("aria-label", sourceLabel);
-
-            if (sourceLink.target) {
-                hitLink.target = sourceLink.target;
-            }
-
-            if (sourceLink.rel) {
-                hitLink.rel = sourceLink.rel;
-            }
-
-            hitLink.addEventListener("mouseenter", () => setStructCtaHover(sourceLink));
-            hitLink.addEventListener("mouseleave", () => setStructCtaHover(null));
-            hitLink.addEventListener("click", (event) => {
-                event.preventDefault();
-                event.stopPropagation();
-                openStructCta(sourceLink);
-            });
-
-            structCtaHitLayer.appendChild(hitLink);
-            return hitLink;
-        });
-
-        document.body.appendChild(structCtaHitLayer);
-    }
-
-    const handleStructCtaPointerMove = (event) => {
-        setStructCtaHover(getStructCtaAtPoint(event.clientX, event.clientY));
-    };
-
-    const handleStructCtaClick = (event) => {
-        const link = getStructCtaAtPoint(event.clientX, event.clientY);
-
-        if (!link) {
-            return;
-        }
-
-        event.preventDefault();
-        event.stopPropagation();
-        openStructCta(link);
     };
 
     structGoButtons.forEach((button) => {
@@ -1494,9 +1317,6 @@ if (structSliderSection) {
     window.addEventListener("scroll", requestStructStorySync, { passive: true });
     window.addEventListener("resize", requestStructStorySync);
     structSliderSection.addEventListener("mousemove", handleStructMouseMove, { passive: true });
-    structSliderSection.addEventListener("pointermove", handleStructCtaPointerMove, { passive: true });
-    structSliderSection.addEventListener("click", handleStructCtaClick, true);
-    structSliderSection.addEventListener("pointerleave", () => setStructCtaHover(null));
     structSliderSection.addEventListener("mouseleave", clearStructTilt);
 
     setStructSlide(activeStructSlide, 0);
