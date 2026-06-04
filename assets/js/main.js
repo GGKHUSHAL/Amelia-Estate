@@ -1145,12 +1145,18 @@ if (structSliderSection) {
     const structNextLabel = structSliderSection.querySelector("[data-struct-next-label]");
     const structDust = structSliderSection.querySelector(".struct-dust");
     const reduceStructMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const structMobileQuery = window.matchMedia("(max-width: 767px)");
+    const isStructMobile = () => structMobileQuery.matches;
 
     let activeStructSlide = 0;
     let structScrollFrame = 0;
     let structTiltFrame = 0;
+    let structMobileTouchStartX = 0;
+    let structMobileTouchStartY = 0;
+    let structMobileSwipeLocked = false;
+    let structMobileSwipeTimer = 0;
 
-    if (structDust && !structDust.children.length) {
+    if (structDust && !structDust.children.length && !isStructMobile()) {
         Array.from({ length: 24 }).forEach((_, index) => {
             const particle = document.createElement("span");
             particle.style.left = `${(index * 37 + 11) % 100}%`;
@@ -1182,12 +1188,12 @@ if (structSliderSection) {
             const translateZ = isActive ? 0 : -140 * absOffset - 80;
             const translateX = 0;
             const translateY = isActive ? 0 : direction * (80 + absOffset * 30);
-            const opacity = absOffset > 2 ? 0 : isActive ? 1 : Math.max(0, 0.32 - absOffset * 0.08);
+            const opacity = isStructMobile() ? (isActive ? 1 : 0) : absOffset > 2 ? 0 : isActive ? 1 : Math.max(0, 0.32 - absOffset * 0.08);
             const pose = "rotateX(0deg) rotateY(0deg) rotateZ(0deg)";
 
             card.style.setProperty("--struct-card-z", String(20 - absOffset));
             card.style.setProperty("--struct-card-opacity", String(opacity));
-            card.style.setProperty("--struct-card-filter", isActive ? "none" : `blur(${absOffset * 2}px)`);
+            card.style.setProperty("--struct-card-filter", isActive || isStructMobile() ? "none" : `blur(${absOffset * 2}px)`);
             card.style.setProperty(
                 "--struct-card-transform",
                 `translate(-50%, -50%) translate3d(${translateX}px, ${translateY}px, ${translateZ}px) ${pose}`
@@ -1251,7 +1257,7 @@ if (structSliderSection) {
         }
 
         setStructCardDepth(clampedIndex);
-        updateStructProgressBars(progress, clampedIndex);
+        updateStructProgressBars(isStructMobile() ? (clampedIndex + 1) / structCards.length : progress, clampedIndex);
     };
 
     const syncStructStory = () => {
@@ -1266,7 +1272,7 @@ if (structSliderSection) {
         document.body.classList.toggle("is-struct-story-active", isInStory);
         structSliderSection.classList.toggle("is-struct-pinned", isPinned);
         structSliderSection.classList.toggle("is-struct-released", isReleased);
-        setStructSlide(index, progress);
+        setStructSlide(isStructMobile() ? activeStructSlide : index, progress);
     };
 
     const requestStructStorySync = () => {
@@ -1276,6 +1282,11 @@ if (structSliderSection) {
     };
 
     const goToStructSlide = (index) => {
+        if (isStructMobile()) {
+            setStructSlide(index);
+            return;
+        }
+
         const { total } = getStructScrollState();
         const target = structSliderSection.offsetTop + (total * index) / structCards.length + 8;
 
@@ -1287,6 +1298,93 @@ if (structSliderSection) {
             goToStructSlide(Number(button.dataset.structGo) || 0);
         });
     });
+
+    const isStructSectionActive = () => {
+        if (!isStructMobile()) {
+            return false;
+        }
+
+        const rect = structSliderSection.getBoundingClientRect();
+        const viewportHeight = window.innerHeight || document.documentElement.clientHeight || 1;
+
+        return rect.top <= 2 && rect.bottom >= viewportHeight - 2;
+    };
+
+    const releaseStructMobileSwipe = () => {
+        window.clearTimeout(structMobileSwipeTimer);
+        structMobileSwipeTimer = window.setTimeout(() => {
+            structMobileSwipeLocked = false;
+        }, reduceStructMotion.matches ? 120 : 430);
+    };
+
+    const moveStructMobileSlide = (direction) => {
+        if (!isStructSectionActive() || structMobileSwipeLocked || !direction) {
+            return false;
+        }
+
+        const targetIndex = activeStructSlide + direction;
+        structMobileSwipeLocked = true;
+
+        if (targetIndex < 0 || targetIndex >= structCards.length) {
+            const targetTop = targetIndex < 0
+                ? Math.max(0, structSliderSection.offsetTop - window.innerHeight + 1)
+                : structSliderSection.offsetTop + structSliderSection.offsetHeight + 1;
+
+            window.scrollTo({ top: targetTop, behavior: reduceStructMotion.matches ? "auto" : "smooth" });
+            releaseStructMobileSwipe();
+            return true;
+        }
+
+        setStructSlide(targetIndex);
+        releaseStructMobileSwipe();
+        return true;
+    };
+
+    structSliderSection.addEventListener("touchstart", (event) => {
+        if (!isStructSectionActive() || !event.touches.length) {
+            return;
+        }
+
+        structMobileTouchStartX = event.touches[0].clientX;
+        structMobileTouchStartY = event.touches[0].clientY;
+    }, { passive: true });
+
+    structSliderSection.addEventListener("touchmove", (event) => {
+        if (!isStructSectionActive() || !event.touches.length) {
+            return;
+        }
+
+        const deltaX = event.touches[0].clientX - structMobileTouchStartX;
+        const deltaY = event.touches[0].clientY - structMobileTouchStartY;
+
+        if (Math.abs(deltaY) > Math.abs(deltaX) && Math.abs(deltaY) > 8) {
+            event.preventDefault();
+        }
+    }, { passive: false });
+
+    structSliderSection.addEventListener("touchend", (event) => {
+        if (!isStructSectionActive()) {
+            return;
+        }
+
+        const touch = event.changedTouches[0];
+        const deltaX = touch.clientX - structMobileTouchStartX;
+        const deltaY = touch.clientY - structMobileTouchStartY;
+
+        if (Math.abs(deltaY) >= 38 && Math.abs(deltaY) > Math.abs(deltaX) * 1.15) {
+            event.preventDefault();
+            moveStructMobileSlide(deltaY < 0 ? 1 : -1);
+        }
+    }, { passive: false });
+
+    structSliderSection.addEventListener("wheel", (event) => {
+        if (!isStructSectionActive() || Math.abs(event.deltaY) < 12 || Math.abs(event.deltaY) < Math.abs(event.deltaX)) {
+            return;
+        }
+
+        event.preventDefault();
+        moveStructMobileSlide(event.deltaY > 0 ? 1 : -1);
+    }, { passive: false });
 
     const handleStructMouseMove = (event) => {
         if (!structStageTrack || reduceStructMotion.matches || window.matchMedia("(max-width: 767px)").matches) {

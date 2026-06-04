@@ -11607,6 +11607,43 @@ body.is-mobile-struct-slider-active .site-header {
     }
 }
 
+@media (max-width: 767px) {
+    .struct-dust,
+    .struct-card-halo,
+    .struct-card-sheen {
+        display: none !important;
+    }
+
+    .struct-backdrop {
+        transition: opacity 260ms ease !important;
+    }
+
+    .struct-backdrop img {
+        filter: brightness(0.42) saturate(1.08) !important;
+        transform: scale(1.06) !important;
+    }
+
+    .struct-card {
+        filter: none !important;
+        transition: transform 320ms cubic-bezier(0.2, 0.8, 0.2, 1), opacity 240ms ease !important;
+        will-change: auto !important;
+    }
+
+    .struct-card-inner,
+    .struct-vibe-pill,
+    .struct-chapter-pill,
+    .struct-meta-grid div {
+        -webkit-backdrop-filter: none !important;
+        backdrop-filter: none !important;
+    }
+
+    .struct-card-media img,
+    .struct-slide {
+        animation: none !important;
+        transition: opacity 260ms ease !important;
+    }
+}
+
 /* Structured story slider responsive layout. */
 @media (max-width: 1023px) {
     .struct-slider-inner {
