@@ -1147,17 +1147,20 @@ if (structSliderSection) {
     const reduceStructMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
     const structMobileQuery = window.matchMedia("(max-width: 767px)");
     const isStructMobile = () => structMobileQuery.matches;
+    const getStructSlideProgress = (index) => (index + 1) / Math.max(1, structCards.length);
 
     let activeStructSlide = 0;
     let structScrollFrame = 0;
     let structTiltFrame = 0;
-    let structMobileTouchStartX = 0;
-    let structMobileTouchStartY = 0;
-    let structMobileSwipeLocked = false;
-    let structMobileSwipeTimer = 0;
+    let structAnimating = false;
+    let structLocked = false;
+    let previousStructScrollY = window.scrollY;
+    let structTouchStartY = 0;
+    let structReleaseUntil = 0;
+    let structReleaseDirection = 0;
 
     if (structDust && !structDust.children.length && !isStructMobile()) {
-        Array.from({ length: 24 }).forEach((_, index) => {
+        Array.from({ length: 10 }).forEach((_, index) => {
             const particle = document.createElement("span");
             particle.style.left = `${(index * 37 + 11) % 100}%`;
             particle.style.top = `${(index * 53 + 17) % 100}%`;
@@ -1169,16 +1172,6 @@ if (structSliderSection) {
         });
     }
 
-    const getStructScrollState = () => {
-        const rect = structSliderSection.getBoundingClientRect();
-        const total = Math.max(1, structSliderSection.offsetHeight - window.innerHeight);
-        const scrolled = Math.min(Math.max(-rect.top, 0), total);
-        const progress = scrolled / total;
-        const index = Math.min(structCards.length - 1, Math.floor(progress * structCards.length * 0.9999));
-
-        return { progress, index, total };
-    };
-
     const setStructCardDepth = (index) => {
         structCards.forEach((card, cardIndex) => {
             const offset = cardIndex - index;
@@ -1188,12 +1181,12 @@ if (structSliderSection) {
             const translateZ = isActive ? 0 : -140 * absOffset - 80;
             const translateX = 0;
             const translateY = isActive ? 0 : direction * (80 + absOffset * 30);
-            const opacity = isStructMobile() ? (isActive ? 1 : 0) : absOffset > 2 ? 0 : isActive ? 1 : Math.max(0, 0.32 - absOffset * 0.08);
+            const opacity = isActive ? 1 : isStructMobile() ? 0 : absOffset > 1 ? 0 : 0.18;
             const pose = "rotateX(0deg) rotateY(0deg) rotateZ(0deg)";
 
             card.style.setProperty("--struct-card-z", String(20 - absOffset));
             card.style.setProperty("--struct-card-opacity", String(opacity));
-            card.style.setProperty("--struct-card-filter", isActive || isStructMobile() ? "none" : `blur(${absOffset * 2}px)`);
+            card.style.setProperty("--struct-card-filter", "none");
             card.style.setProperty(
                 "--struct-card-transform",
                 `translate(-50%, -50%) translate3d(${translateX}px, ${translateY}px, ${translateZ}px) ${pose}`
@@ -1216,14 +1209,20 @@ if (structSliderSection) {
         });
     };
 
-    const setStructSlide = (index, progress = getStructScrollState().progress) => {
+    const setStructSlide = (index, progress = getStructSlideProgress(index)) => {
         if (!structCards.length) {
-            return;
+            return false;
         }
 
         const clampedIndex = Math.max(0, Math.min(index, structCards.length - 1));
         const activeCard = structCards[clampedIndex];
         const nextCard = structCards[(clampedIndex + 1) % structCards.length];
+
+        if (clampedIndex === activeStructSlide && activeCard?.classList.contains("is-active")) {
+            setStructCardDepth(clampedIndex);
+            updateStructProgressBars(getStructSlideProgress(clampedIndex), clampedIndex);
+            return false;
+        }
 
         activeStructSlide = clampedIndex;
 
@@ -1257,22 +1256,13 @@ if (structSliderSection) {
         }
 
         setStructCardDepth(clampedIndex);
-        updateStructProgressBars(isStructMobile() ? (clampedIndex + 1) / structCards.length : progress, clampedIndex);
+        updateStructProgressBars(getStructSlideProgress(clampedIndex), clampedIndex);
+        return true;
     };
 
     const syncStructStory = () => {
         structScrollFrame = 0;
-        const { progress, index } = getStructScrollState();
-        const rect = structSliderSection.getBoundingClientRect();
-        const viewportHeight = window.innerHeight || document.documentElement.clientHeight || 1;
-        const isInStory = rect.top <= 1 && rect.bottom > viewportHeight + 1;
-        const isPinned = rect.top <= 0 && rect.bottom > viewportHeight;
-        const isReleased = rect.top < 0 && rect.bottom <= viewportHeight;
-
-        document.body.classList.toggle("is-struct-story-active", isInStory);
-        structSliderSection.classList.toggle("is-struct-pinned", isPinned);
-        structSliderSection.classList.toggle("is-struct-released", isReleased);
-        setStructSlide(isStructMobile() ? activeStructSlide : index, progress);
+        syncStructLock();
     };
 
     const requestStructStorySync = () => {
@@ -1282,15 +1272,7 @@ if (structSliderSection) {
     };
 
     const goToStructSlide = (index) => {
-        if (isStructMobile()) {
-            setStructSlide(index);
-            return;
-        }
-
-        const { total } = getStructScrollState();
-        const target = structSliderSection.offsetTop + (total * index) / structCards.length + 8;
-
-        window.scrollTo({ top: target, behavior: reduceStructMotion.matches ? "auto" : "smooth" });
+        setStructSlide(index);
     };
 
     structGoButtons.forEach((button) => {
@@ -1299,92 +1281,268 @@ if (structSliderSection) {
         });
     });
 
-    const isStructSectionActive = () => {
-        if (!isStructMobile()) {
+    const canMoveStructSlide = (direction) =>
+        (direction > 0 && activeStructSlide < structCards.length - 1) ||
+        (direction < 0 && activeStructSlide > 0);
+    const getStructTop = () =>
+        Math.max(0, window.scrollY + structSliderSection.getBoundingClientRect().top);
+    const isStructBypassed = () => Date.now() < (window.__ameliaBypassStructSliderUntil || 0);
+    const isStructReleased = () => Date.now() < structReleaseUntil;
+    const bypassStructLock = (duration = 900) => {
+        window.__ameliaBypassStructSliderUntil = Date.now() + duration;
+    };
+    const clearStructRelease = () => {
+        structReleaseUntil = 0;
+        structReleaseDirection = 0;
+        window.__ameliaBypassStructSliderUntil = 0;
+    };
+    const preventStructEvent = (event) => {
+        if (event?.cancelable !== false) {
+            event?.preventDefault();
+        }
+    };
+    const jumpToStructTarget = (targetTop) => {
+        const root = document.documentElement;
+        const previousRootScrollBehavior = root.style.scrollBehavior;
+        const previousBodyScrollBehavior = document.body.style.scrollBehavior;
+
+        root.style.scrollBehavior = "auto";
+        document.body.style.scrollBehavior = "auto";
+        window.scrollTo({ top: targetTop, left: 0, behavior: "auto" });
+
+        window.requestAnimationFrame(() => {
+            root.style.scrollBehavior = previousRootScrollBehavior;
+            document.body.style.scrollBehavior = previousBodyScrollBehavior;
+        });
+    };
+    const setStructLock = (shouldLock) => {
+        if (isStructBypassed()) {
+            shouldLock = false;
+        }
+
+        structLocked = shouldLock;
+        document.documentElement.classList.toggle("struct-slider-locked", shouldLock);
+        document.body.classList.toggle("struct-slider-locked", shouldLock);
+        document.body.classList.toggle("is-struct-story-active", shouldLock);
+        structSliderSection.classList.toggle("is-struct-pinned", shouldLock);
+        structSliderSection.classList.toggle("is-struct-released", false);
+    };
+    const getStructReleaseBuffer = () => Math.max(48, Math.min(160, window.innerHeight * 0.25));
+    const updateStructReleaseState = (currentScrollY = window.scrollY, structTop = getStructTop()) => {
+        if (!structReleaseDirection) {
+            return;
+        }
+
+        const releaseBuffer = getStructReleaseBuffer();
+        const hasLeftAbove = structReleaseDirection < 0 && currentScrollY < structTop - releaseBuffer;
+        const hasLeftBelow = structReleaseDirection > 0 && currentScrollY > structTop + releaseBuffer;
+
+        if (hasLeftAbove || hasLeftBelow) {
+            clearStructRelease();
+        }
+    };
+    const releaseStructSlider = (direction) => {
+        setStructLock(false);
+        structReleaseDirection = direction;
+        bypassStructLock(450);
+        structReleaseUntil = Date.now() + 450;
+        previousStructScrollY = window.scrollY;
+        structSliderSection.classList.toggle("is-struct-released", direction > 0);
+    };
+    const recaptureStructSlider = (direction, event) => {
+        if (!structReleaseDirection || direction !== -structReleaseDirection || structLocked) {
             return false;
         }
 
-        const rect = structSliderSection.getBoundingClientRect();
-        const viewportHeight = window.innerHeight || document.documentElement.clientHeight || 1;
+        const structTop = getStructTop();
+        const releaseBuffer = getStructReleaseBuffer();
 
-        return rect.top <= 2 && rect.bottom >= viewportHeight - 2;
-    };
+        updateStructReleaseState(window.scrollY, structTop);
 
-    const releaseStructMobileSwipe = () => {
-        window.clearTimeout(structMobileSwipeTimer);
-        structMobileSwipeTimer = window.setTimeout(() => {
-            structMobileSwipeLocked = false;
-        }, reduceStructMotion.matches ? 120 : 430);
-    };
-
-    const moveStructMobileSlide = (direction) => {
-        if (!isStructSectionActive() || structMobileSwipeLocked || !direction) {
+        if (!structReleaseDirection || Math.abs(window.scrollY - structTop) > releaseBuffer) {
             return false;
         }
 
-        const targetIndex = activeStructSlide + direction;
-        structMobileSwipeLocked = true;
+        preventStructEvent(event);
+        clearStructRelease();
+        jumpToStructTarget(structTop);
+        previousStructScrollY = structTop;
+        setStructLock(true);
 
-        if (targetIndex < 0 || targetIndex >= structCards.length) {
-            const targetTop = targetIndex < 0
-                ? Math.max(0, structSliderSection.offsetTop - window.innerHeight + 1)
-                : structSliderSection.offsetTop + structSliderSection.offsetHeight + 1;
-
-            window.scrollTo({ top: targetTop, behavior: reduceStructMotion.matches ? "auto" : "smooth" });
-            releaseStructMobileSwipe();
-            return true;
+        if (canMoveStructSlide(direction)) {
+            structAnimating = true;
+            setStructSlide(activeStructSlide + direction);
+            window.setTimeout(() => {
+                structAnimating = false;
+            }, 650);
         }
 
-        setStructSlide(targetIndex);
-        releaseStructMobileSwipe();
         return true;
     };
+    const lockStructSlider = (entryDirection) => {
+        const structTop = getStructTop();
 
-    structSliderSection.addEventListener("touchstart", (event) => {
-        if (!isStructSectionActive() || !event.touches.length) {
+        setStructSlide(entryDirection > 0 ? 0 : structCards.length - 1);
+        previousStructScrollY = structTop;
+        jumpToStructTarget(structTop);
+        setStructLock(true);
+    };
+    const syncStructLock = () => {
+        const currentScrollY = window.scrollY;
+        const structTop = getStructTop();
+
+        updateStructReleaseState(currentScrollY, structTop);
+
+        const isReversingRelease =
+            structReleaseDirection < 0
+                ? currentScrollY > previousStructScrollY
+                : structReleaseDirection > 0 && currentScrollY < previousStructScrollY;
+
+        if (isReversingRelease && recaptureStructSlider(-structReleaseDirection)) {
             return;
         }
 
-        structMobileTouchStartX = event.touches[0].clientX;
-        structMobileTouchStartY = event.touches[0].clientY;
-    }, { passive: true });
-
-    structSliderSection.addEventListener("touchmove", (event) => {
-        if (!isStructSectionActive() || !event.touches.length) {
+        if (isStructBypassed() || isStructReleased()) {
+            previousStructScrollY = currentScrollY;
+            setStructLock(false);
             return;
         }
 
-        const deltaX = event.touches[0].clientX - structMobileTouchStartX;
-        const deltaY = event.touches[0].clientY - structMobileTouchStartY;
-
-        if (Math.abs(deltaY) > Math.abs(deltaX) && Math.abs(deltaY) > 8) {
-            event.preventDefault();
-        }
-    }, { passive: false });
-
-    structSliderSection.addEventListener("touchend", (event) => {
-        if (!isStructSectionActive()) {
+        if (structLocked) {
+            jumpToStructTarget(structTop);
             return;
         }
 
-        const touch = event.changedTouches[0];
-        const deltaX = touch.clientX - structMobileTouchStartX;
-        const deltaY = touch.clientY - structMobileTouchStartY;
+        const scrollingDown = currentScrollY > previousStructScrollY;
+        const reachedStructTop = previousStructScrollY < structTop && currentScrollY >= structTop - 2;
+        const reachedStructFromBelow = previousStructScrollY > structTop && currentScrollY <= structTop + 2;
 
-        if (Math.abs(deltaY) >= 38 && Math.abs(deltaY) > Math.abs(deltaX) * 1.15) {
-            event.preventDefault();
-            moveStructMobileSlide(deltaY < 0 ? 1 : -1);
-        }
-    }, { passive: false });
-
-    structSliderSection.addEventListener("wheel", (event) => {
-        if (!isStructSectionActive() || Math.abs(event.deltaY) < 12 || Math.abs(event.deltaY) < Math.abs(event.deltaX)) {
+        if (scrollingDown && reachedStructTop && activeStructSlide < structCards.length - 1) {
+            lockStructSlider(1);
             return;
         }
 
-        event.preventDefault();
-        moveStructMobileSlide(event.deltaY > 0 ? 1 : -1);
-    }, { passive: false });
+        if (!scrollingDown && reachedStructFromBelow && activeStructSlide > 0) {
+            lockStructSlider(-1);
+            return;
+        }
+
+        previousStructScrollY = currentScrollY;
+    };
+    const handleStructDirection = (direction, event) => {
+        if (!structLocked) {
+            return;
+        }
+
+        const canMove = canMoveStructSlide(direction);
+
+        if (structAnimating) {
+            if (canMove) {
+                preventStructEvent(event);
+            } else {
+                releaseStructSlider(direction);
+            }
+            return;
+        }
+
+        if (canMove) {
+            preventStructEvent(event);
+            structAnimating = true;
+            setStructSlide(activeStructSlide + direction);
+            window.setTimeout(() => {
+                structAnimating = false;
+            }, 650);
+            return;
+        }
+
+        releaseStructSlider(direction);
+    };
+    const handleStructWheel = (event) => {
+        const dy = event.deltaY;
+
+        if (Math.abs(dy) > 12 && recaptureStructSlider(dy > 0 ? 1 : -1, event)) {
+            return;
+        }
+
+        if (!structLocked) {
+            return;
+        }
+
+        if (Math.abs(dy) <= 12) {
+            preventStructEvent(event);
+            return;
+        }
+
+        handleStructDirection(dy > 0 ? 1 : -1, event);
+    };
+    const handleStructTouchStart = (event) => {
+        if (!structLocked && !structReleaseDirection) {
+            return;
+        }
+
+        structTouchStartY = event.touches[0]?.clientY || 0;
+    };
+    const handleStructTouchMove = (event) => {
+        const currentY = event.touches[0]?.clientY || structTouchStartY;
+        const deltaY = structTouchStartY - currentY;
+
+        if (!structLocked && Math.abs(deltaY) > 24 && recaptureStructSlider(deltaY > 0 ? 1 : -1, event)) {
+            structTouchStartY = currentY;
+            return;
+        }
+
+        if (structLocked && Math.abs(deltaY) > 24 && !canMoveStructSlide(deltaY > 0 ? 1 : -1)) {
+            handleStructDirection(deltaY > 0 ? 1 : -1, event);
+            structTouchStartY = currentY;
+            return;
+        }
+
+        if (structLocked) {
+            preventStructEvent(event);
+        }
+    };
+    const handleStructTouchEnd = (event) => {
+        const endY = event.changedTouches[0]?.clientY || structTouchStartY;
+        const deltaY = structTouchStartY - endY;
+
+        if (!structLocked) {
+            if (Math.abs(deltaY) > 24) {
+                recaptureStructSlider(deltaY > 0 ? 1 : -1, event);
+            }
+            return;
+        }
+
+        if (Math.abs(deltaY) > 24) {
+            handleStructDirection(deltaY > 0 ? 1 : -1, event);
+        }
+    };
+    const handleStructKeydown = (event) => {
+        if (["ArrowDown", "PageDown", "Space"].includes(event.code)) {
+            if (!structLocked && recaptureStructSlider(1, event)) {
+                return;
+            }
+            handleStructDirection(1, event);
+        } else if (["ArrowUp", "PageUp"].includes(event.code)) {
+            if (!structLocked && recaptureStructSlider(-1, event)) {
+                return;
+            }
+            handleStructDirection(-1, event);
+        }
+    };
+
+    document.addEventListener("click", (event) => {
+        const link = event.target.closest('a[href^="#"]');
+        const targetId = link?.getAttribute("href")?.slice(1);
+        const target = targetId ? document.getElementById(targetId) : null;
+
+        if (!target || target === structSliderSection) {
+            return;
+        }
+
+        bypassStructLock(4000);
+        setStructLock(false);
+        previousStructScrollY = window.scrollY;
+    }, true);
 
     const handleStructMouseMove = (event) => {
         if (!structStageTrack || reduceStructMotion.matches || window.matchMedia("(max-width: 767px)").matches) {
@@ -1413,7 +1571,16 @@ if (structSliderSection) {
     };
 
     window.addEventListener("scroll", requestStructStorySync, { passive: true });
-    window.addEventListener("resize", requestStructStorySync);
+    window.addEventListener("wheel", handleStructWheel, { passive: false });
+    window.addEventListener("touchstart", handleStructTouchStart, { passive: true });
+    window.addEventListener("touchmove", handleStructTouchMove, { passive: false });
+    window.addEventListener("touchend", handleStructTouchEnd, { passive: false });
+    window.addEventListener("keydown", handleStructKeydown);
+    window.addEventListener("resize", () => {
+        clearStructRelease();
+        setStructLock(false);
+        requestStructStorySync();
+    });
     structSliderSection.addEventListener("mousemove", handleStructMouseMove, { passive: true });
     structSliderSection.addEventListener("mouseleave", clearStructTilt);
 

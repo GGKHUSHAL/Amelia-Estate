@@ -11952,9 +11952,9 @@ body.is-mobile-struct-slider-active .site-header {
 /* Lovable story showcase responsive port. Kept late to override legacy struct slider rules. */
 @media (max-width: 1199px) {
     .struct-slider-section {
-        height: 660vh !important;
-        min-height: 660vh !important;
-        overflow: visible !important;
+        height: var(--amelia-mobile-viewport-height, 100dvh) !important;
+        min-height: var(--amelia-mobile-viewport-height, 100dvh) !important;
+        overflow: hidden !important;
     }
 
     .struct-side-rail {
@@ -11978,9 +11978,9 @@ body.is-mobile-struct-slider-active .site-header {
 
 @media (max-width: 767px) {
     .struct-slider-section {
-        height: 660vh !important;
-        min-height: 660vh !important;
-        overflow: visible !important;
+        height: var(--amelia-mobile-viewport-height, 100dvh) !important;
+        min-height: var(--amelia-mobile-viewport-height, 100dvh) !important;
+        overflow: hidden !important;
     }
 
     .struct-sticky-viewport {
