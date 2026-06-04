@@ -11783,7 +11783,7 @@ body.is-mobile-struct-slider-active .site-header {
         max-width: none !important;
         padding: 16px 14px 15px !important;
         border: 1px solid rgba(255, 248, 231, 0.12) !important;
-        border-left-color: rgba(236, 202, 107, 0.52) !important;
+        border-left-color: rgba(240, 205, 69, 0.52) !important;
         background: linear-gradient(180deg, rgba(0, 0, 0, 0.20), rgba(0, 0, 0, 0.42)) !important;
         box-shadow: 0 24px 58px rgba(0, 0, 0, 0.24), inset 0 1px 0 rgba(255, 255, 255, 0.06) !important;
         backdrop-filter: blur(8px) !important;

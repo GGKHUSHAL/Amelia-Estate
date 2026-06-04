@@ -12856,13 +12856,13 @@ body.struct-slider-locked {
 }
 
 .struct-slider-section {
-    --struct-gold: #ecca6b;
-    --struct-gold-soft: #fff0b8;
+    --struct-gold: #f0cd45;
+    --struct-gold-soft: #fceba6;
     --struct-ivory: #fff8e7;
     --struct-emerald: #83d9b2;
     --struct-ink: #050403;
     --struct-glass: rgba(6, 5, 3, 0.42);
-    --struct-line: rgba(236, 202, 107, 0.26);
+    --struct-line: rgba(240, 205, 69, 0.26);
     position: relative;
     height: 100vh;
     height: 100dvh;
@@ -12911,8 +12911,8 @@ body.struct-slider-locked {
 .struct-slider-bg::after {
     inset: 28px;
     border: 1px solid rgba(255, 248, 231, 0.10);
-    border-left-color: rgba(236, 202, 107, 0.34);
-    border-bottom-color: rgba(236, 202, 107, 0.20);
+    border-left-color: rgba(240, 205, 69, 0.34);
+    border-bottom-color: rgba(240, 205, 69, 0.20);
 }
 
 .struct-slide {
@@ -12936,7 +12936,7 @@ body.struct-slider-locked {
     z-index: 2;
     pointer-events: none;
     background:
-        linear-gradient(112deg, rgba(236, 202, 107, 0.12) 0%, transparent 43%, rgba(131, 217, 178, 0.08) 100%),
+        linear-gradient(112deg, rgba(240, 205, 69, 0.12) 0%, transparent 43%, rgba(131, 217, 178, 0.08) 100%),
         linear-gradient(180deg, rgba(5, 4, 3, 0.08) 0%, rgba(5, 4, 3, 0.24) 52%, rgba(5, 4, 3, 0.62) 100%),
         linear-gradient(90deg, rgba(5, 4, 3, 0.72) 0%, rgba(5, 4, 3, 0.30) 42%, rgba(5, 4, 3, 0.14) 70%, rgba(5, 4, 3, 0.44) 100%);
 }
@@ -12948,7 +12948,7 @@ body.struct-slider-locked {
 
 .struct-light-frame span {
     position: absolute;
-    background: linear-gradient(90deg, transparent, rgba(236, 202, 107, 0.70), transparent);
+    background: linear-gradient(90deg, transparent, rgba(240, 205, 69, 0.70), transparent);
     opacity: 0.58;
 }
 
@@ -12972,7 +12972,7 @@ body.struct-slider-locked {
     top: clamp(94px, 13vh, 140px);
     bottom: clamp(22px, 4vh, 48px);
     width: 1px;
-    background: linear-gradient(180deg, transparent, rgba(236, 202, 107, 0.58), transparent);
+    background: linear-gradient(180deg, transparent, rgba(240, 205, 69, 0.58), transparent);
 }
 
 .struct-light-frame span:nth-child(3) {
@@ -13003,7 +13003,7 @@ body.struct-slider-locked {
     width: fit-content;
     min-height: 36px;
     padding: 0 14px;
-    border: 1px solid rgba(236, 202, 107, 0.30);
+    border: 1px solid rgba(240, 205, 69, 0.30);
     background: rgba(0, 0, 0, 0.28);
     backdrop-filter: blur(12px);
 }
@@ -13042,7 +13042,7 @@ body.struct-slider-locked {
     min-height: 0;
     padding: 28px 30px 30px;
     border: 1px solid rgba(255, 248, 231, 0.14);
-    border-left-color: rgba(236, 202, 107, 0.58);
+    border-left-color: rgba(240, 205, 69, 0.58);
     background:
         linear-gradient(135deg, rgba(255, 248, 231, 0.11), rgba(255, 255, 255, 0.03) 42%, rgba(131, 217, 178, 0.08)),
         rgba(0, 0, 0, 0.34);
@@ -13060,7 +13060,7 @@ body.struct-slider-locked {
     top: 0;
     bottom: 0;
     width: 4px;
-    background: linear-gradient(180deg, rgba(236, 202, 107, 0.86), rgba(131, 217, 178, 0.30), rgba(236, 202, 107, 0.18));
+    background: linear-gradient(180deg, rgba(240, 205, 69, 0.86), rgba(131, 217, 178, 0.30), rgba(240, 205, 69, 0.18));
     pointer-events: none;
 }
 
@@ -13077,7 +13077,7 @@ body.struct-slider-locked {
     right: -4px;
     top: -18px;
     z-index: 0;
-    color: rgba(236, 202, 107, 0.10);
+    color: rgba(240, 205, 69, 0.10);
     font-size: 136px;
     font-weight: 900;
     line-height: 0.8;
@@ -13161,7 +13161,7 @@ body.struct-slider-locked {
     width: min(100%, 610px);
     margin: 24px 0 0 !important;
     padding-left: 18px;
-    border-left: 1px solid rgba(236, 202, 107, 0.56);
+    border-left: 1px solid rgba(240, 205, 69, 0.56);
     color: rgba(255, 255, 255, 0.86) !important;
     font-size: clamp(16px, 1.12vw, 18px);
     font-weight: 380;
@@ -13176,8 +13176,8 @@ body.struct-slider-locked {
     margin-top: 22px;
     padding: 15px 18px;
     border: 1px solid rgba(255, 248, 231, 0.13);
-    border-left-color: rgba(236, 202, 107, 0.66);
-    background: linear-gradient(90deg, rgba(236, 202, 107, 0.14), rgba(255, 255, 255, 0.035) 52%, rgba(131, 217, 178, 0.08)), rgba(0, 0, 0, 0.28);
+    border-left-color: rgba(240, 205, 69, 0.66);
+    background: linear-gradient(90deg, rgba(240, 205, 69, 0.14), rgba(255, 255, 255, 0.035) 52%, rgba(131, 217, 178, 0.08)), rgba(0, 0, 0, 0.28);
     box-shadow: 0 18px 42px rgba(0, 0, 0, 0.24), inset 0 1px 0 rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(14px);
 }
@@ -13228,7 +13228,7 @@ body.struct-slider-locked {
     gap: 17px;
     max-width: 380px;
     padding: 23px;
-    border: 1px solid rgba(236, 202, 107, 0.24);
+    border: 1px solid rgba(240, 205, 69, 0.24);
     background: linear-gradient(135deg, rgba(255, 248, 231, 0.10), rgba(255, 255, 255, 0.025) 45%, rgba(131, 217, 178, 0.06)), rgba(0, 0, 0, 0.32);
     box-shadow: 0 32px 80px rgba(0, 0, 0, 0.34), inset 0 1px 0 rgba(255, 255, 255, 0.07);
     backdrop-filter: blur(18px);
@@ -13334,8 +13334,8 @@ body.struct-slider-locked {
 }
 
 .struct-index.is-active {
-    border-color: rgba(236, 202, 107, 0.78);
-    background: linear-gradient(180deg, rgba(236, 202, 107, 0.24), rgba(236, 202, 107, 0.07));
+    border-color: rgba(240, 205, 69, 0.78);
+    background: linear-gradient(180deg, rgba(240, 205, 69, 0.24), rgba(240, 205, 69, 0.07));
     color: var(--struct-gold-soft) !important;
     transform: translateY(-4px);
 }
@@ -13434,11 +13434,11 @@ body.struct-slider-locked {
 
 /* Lovable story showcase: static HTML/CSS/JS port of the React sticky deck. */
 .struct-slider-section {
-    --struct-gold: #e8c36a;
-    --struct-gold-soft: #f5d98a;
+    --struct-gold: #f0cd45;
+    --struct-gold-soft: #fceba6;
     --struct-ink: #050403;
     --struct-card: rgba(9, 8, 5, 0.72);
-    --struct-line: rgba(232, 195, 106, 0.2);
+    --struct-line: rgba(240, 205, 69, 0.2);
     --struct-muted: rgba(255, 255, 255, 0.62);
     position: relative;
     height: 100vh !important;
@@ -13542,8 +13542,8 @@ body.is-struct-story-active .site-header {
 .struct-ambient-grid {
     opacity: 0.05;
     background-image:
-        linear-gradient(rgba(232, 195, 106, 0.65) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(232, 195, 106, 0.65) 1px, transparent 1px);
+        linear-gradient(rgba(240, 205, 69, 0.65) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(240, 205, 69, 0.65) 1px, transparent 1px);
     background-size: 80px 80px;
 }
 
@@ -13559,7 +13559,7 @@ body.is-struct-story-active .site-header {
     background: var(--struct-gold);
     opacity: var(--dust-opacity, 0.32);
     filter: blur(0.5px);
-    box-shadow: 0 0 8px rgba(232, 195, 106, 0.7);
+    box-shadow: 0 0 8px rgba(240, 205, 69, 0.7);
     animation: structFloatDust var(--dust-duration, 12s) ease-in-out var(--dust-delay, 0s) infinite;
 }
 
@@ -13600,7 +13600,7 @@ body.is-struct-story-active .site-header {
     place-items: center;
     width: 42px;
     height: 42px;
-    border: 1px solid rgba(232, 195, 106, 0.52);
+    border: 1px solid rgba(240, 205, 69, 0.52);
     border-radius: 50%;
     color: var(--struct-gold);
     font-family: "Playfair Display", Georgia, serif;
@@ -13611,7 +13611,7 @@ body.is-struct-story-active .site-header {
     content: "";
     position: absolute;
     inset: 0;
-    border: 1px solid rgba(232, 195, 106, 0.28);
+    border: 1px solid rgba(240, 205, 69, 0.28);
     border-radius: inherit;
     animation: structBrandPing 3s ease-out infinite;
 }
@@ -13633,7 +13633,7 @@ body.is-struct-story-active .site-header {
 
 .struct-brand-lockup span {
     display: block;
-    color: rgba(232, 195, 106, 0.82);
+    color: rgba(240, 205, 69, 0.82);
     font-size: 10px;
     font-weight: 700;
     letter-spacing: 0.3em;
@@ -13767,7 +13767,7 @@ body.is-struct-story-active .site-header {
     border-radius: 40px;
     opacity: 0;
     pointer-events: none;
-    background: radial-gradient(ellipse at 30% 30%, rgba(232, 195, 106, 0.25), transparent 60%);
+    background: radial-gradient(ellipse at 30% 30%, rgba(240, 205, 69, 0.25), transparent 60%);
     filter: blur(22px);
     transition: opacity 600ms ease;
 }
@@ -13781,12 +13781,12 @@ body.is-struct-story-active .site-header {
     width: 100%;
     height: 100%;
     overflow: hidden;
-    border: 1px solid rgba(232, 195, 106, 0.22);
+    border: 1px solid rgba(240, 205, 69, 0.22);
     border-radius: 28px;
     background: var(--struct-card);
     box-shadow:
         0 50px 140px -20px rgba(0, 0, 0, 0.95),
-        0 0 80px -15px rgba(232, 195, 106, 0.30);
+        0 0 80px -15px rgba(240, 205, 69, 0.30);
     backdrop-filter: blur(10px);
     transform-style: preserve-3d;
 }
@@ -13804,7 +13804,7 @@ body.is-struct-story-active .site-header {
 .struct-card-inner::before {
     top: 0;
     height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(232, 195, 106, 0.5), transparent);
+    background: linear-gradient(90deg, transparent, rgba(240, 205, 69, 0.5), transparent);
 }
 
 .struct-card-inner::after {
@@ -13824,32 +13824,32 @@ body.is-struct-story-active .site-header {
 .struct-corner--tl {
     top: 12px;
     left: 12px;
-    border-top: 1px solid rgba(232, 195, 106, 0.62);
-    border-left: 1px solid rgba(232, 195, 106, 0.62);
+    border-top: 1px solid rgba(240, 205, 69, 0.62);
+    border-left: 1px solid rgba(240, 205, 69, 0.62);
     border-top-left-radius: 16px;
 }
 
 .struct-corner--tr {
     top: 12px;
     right: 12px;
-    border-top: 1px solid rgba(232, 195, 106, 0.62);
-    border-right: 1px solid rgba(232, 195, 106, 0.62);
+    border-top: 1px solid rgba(240, 205, 69, 0.62);
+    border-right: 1px solid rgba(240, 205, 69, 0.62);
     border-top-right-radius: 16px;
 }
 
 .struct-corner--bl {
     bottom: 12px;
     left: 12px;
-    border-bottom: 1px solid rgba(232, 195, 106, 0.62);
-    border-left: 1px solid rgba(232, 195, 106, 0.62);
+    border-bottom: 1px solid rgba(240, 205, 69, 0.62);
+    border-left: 1px solid rgba(240, 205, 69, 0.62);
     border-bottom-left-radius: 16px;
 }
 
 .struct-corner--br {
     right: 12px;
     bottom: 12px;
-    border-right: 1px solid rgba(232, 195, 106, 0.62);
-    border-bottom: 1px solid rgba(232, 195, 106, 0.62);
+    border-right: 1px solid rgba(240, 205, 69, 0.62);
+    border-bottom: 1px solid rgba(240, 205, 69, 0.62);
     border-bottom-right-radius: 16px;
 }
 
@@ -13894,7 +13894,7 @@ body.is-struct-story-active .site-header {
 .struct-card-media-accent {
     position: absolute;
     inset: 0;
-    background: linear-gradient(35deg, rgba(232, 195, 106, 0.32), transparent 44%);
+    background: linear-gradient(35deg, rgba(240, 205, 69, 0.32), transparent 44%);
     pointer-events: none;
 }
 
@@ -13914,7 +13914,7 @@ body.is-struct-story-active .site-header {
     position: absolute;
     inset: 0;
     opacity: 0;
-    background: linear-gradient(115deg, transparent 30%, rgba(232, 195, 106, 0.25) 50%, transparent 70%);
+    background: linear-gradient(115deg, transparent 30%, rgba(240, 205, 69, 0.25) 50%, transparent 70%);
     transform: translateX(-100%);
     pointer-events: none;
 }
@@ -13934,10 +13934,10 @@ body.is-struct-story-active .site-header {
     font-size: clamp(72px, 7.5vw, 104px);
     font-style: italic;
     line-height: 0.9;
-    background: linear-gradient(135deg, #f5d98a 0%, #e8c36a 40%, #b8893a 70%, #f5d98a 100%);
+    background: linear-gradient(135deg, #fceba6 0%, #f0cd45 40%, #f0cd45 70%, #fceba6 100%);
     -webkit-background-clip: text;
     background-clip: text;
-    filter: drop-shadow(0 4px 24px rgba(232, 195, 106, 0.5));
+    filter: drop-shadow(0 4px 24px rgba(240, 205, 69, 0.5));
     transform: translateZ(50px);
 }
 
@@ -13961,7 +13961,7 @@ body.is-struct-story-active .site-header {
     bottom: 26px;
     gap: 8px;
     padding: 0 12px;
-    border: 1px solid rgba(232, 195, 106, 0.42);
+    border: 1px solid rgba(240, 205, 69, 0.42);
     transform: translateZ(30px);
 }
 
@@ -13997,7 +13997,7 @@ body.is-struct-story-active .site-header {
     position: absolute;
     inset: 0;
     opacity: 0.045;
-    background-image: radial-gradient(rgba(232, 195, 106, 0.65) 1px, transparent 1px);
+    background-image: radial-gradient(rgba(240, 205, 69, 0.65) 1px, transparent 1px);
     background-size: 18px 18px;
     pointer-events: none;
 }
@@ -14012,7 +14012,7 @@ body.is-struct-story-active .site-header {
     align-items: center;
     gap: 10px;
     margin: 0 0 18px !important;
-    color: rgba(232, 195, 106, 0.9) !important;
+    color: rgba(240, 205, 69, 0.9) !important;
     font-size: 10px;
     font-weight: 500;
     letter-spacing: 0.3em;
@@ -14023,7 +14023,7 @@ body.is-struct-story-active .site-header {
     display: block;
     width: 32px;
     height: 1px;
-    background: rgba(232, 195, 106, 0.62);
+    background: rgba(240, 205, 69, 0.62);
 }
 
 .struct-title {
@@ -14045,7 +14045,7 @@ body.is-struct-story-active .site-header {
     display: inline-block;
     color: transparent;
     font-style: normal;
-    background: linear-gradient(135deg, #f5d98a 0%, #e8c36a 50%, #c9a14a 100%);
+    background: linear-gradient(135deg, #fceba6 0%, #f0cd45 50%, #f0cd45 100%);
     -webkit-background-clip: text;
     background-clip: text;
 }
@@ -14082,21 +14082,21 @@ body.is-struct-story-active .site-header {
 .struct-meta-grid div {
     min-width: 0;
     padding: 14px;
-    border: 1px solid rgba(232, 195, 106, 0.16);
+    border: 1px solid rgba(240, 205, 69, 0.16);
     border-radius: 12px;
-    background: linear-gradient(135deg, rgba(232, 195, 106, 0.075), transparent);
+    background: linear-gradient(135deg, rgba(240, 205, 69, 0.075), transparent);
     backdrop-filter: blur(10px);
     transition: border-color 240ms ease, background 240ms ease;
 }
 
 .struct-meta-grid div:hover {
-    border-color: rgba(232, 195, 106, 0.42);
-    background: linear-gradient(135deg, rgba(232, 195, 106, 0.13), transparent);
+    border-color: rgba(240, 205, 69, 0.42);
+    background: linear-gradient(135deg, rgba(240, 205, 69, 0.13), transparent);
 }
 
 .struct-meta-grid span {
     display: block;
-    color: rgba(232, 195, 106, 0.72);
+    color: rgba(240, 205, 69, 0.72);
     font-size: 9px;
     letter-spacing: 0.25em;
 }
@@ -14145,7 +14145,7 @@ body.is-struct-story-active .site-header {
     border: 0;
     background: linear-gradient(90deg, var(--struct-gold), var(--struct-gold-soft), var(--struct-gold));
     color: var(--struct-ink);
-    box-shadow: 0 10px 30px -10px rgba(232, 195, 106, 0.70);
+    box-shadow: 0 10px 30px -10px rgba(240, 205, 69, 0.70);
 }
 
 .struct-gold-cta-shine {
@@ -14165,7 +14165,7 @@ body.is-struct-story-active .site-header {
 
 .struct-gold-cta:hover {
     color: var(--struct-ink);
-    box-shadow: 0 15px 40px -10px rgba(232, 195, 106, 0.90);
+    box-shadow: 0 15px 40px -10px rgba(240, 205, 69, 0.90);
 }
 
 .struct-gold-cta:hover .struct-gold-cta-shine {
@@ -14173,7 +14173,7 @@ body.is-struct-story-active .site-header {
 }
 
 .struct-outline-cta {
-    border: 1px solid rgba(232, 195, 106, 0.40);
+    border: 1px solid rgba(240, 205, 69, 0.40);
     color: var(--struct-gold);
     background: transparent;
     box-shadow: none;
@@ -14181,7 +14181,7 @@ body.is-struct-story-active .site-header {
 
 .struct-outline-cta:hover {
     border-color: var(--struct-gold);
-    background: rgba(232, 195, 106, 0.10);
+    background: rgba(240, 205, 69, 0.10);
     color: var(--struct-gold);
 }
 
@@ -14198,7 +14198,7 @@ body.is-struct-story-active .site-header {
     width: 56px;
     height: 56px;
     overflow: hidden;
-    border: 1px solid rgba(232, 195, 106, 0.32);
+    border: 1px solid rgba(240, 205, 69, 0.32);
     border-radius: 10px;
 }
 
@@ -14264,13 +14264,13 @@ body.is-struct-story-active .site-header {
     width: 0;
     border-radius: inherit;
     background: var(--struct-gold);
-    box-shadow: 0 0 12px rgba(232, 195, 106, 0.82);
+    box-shadow: 0 0 12px rgba(240, 205, 69, 0.82);
     transition: width 420ms ease, background 300ms ease;
 }
 
 .struct-progress-bars button.is-complete span {
     width: 100%;
-    background: rgba(232, 195, 106, 0.52);
+    background: rgba(240, 205, 69, 0.52);
 }
 
 .struct-scroll-note {
