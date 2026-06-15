@@ -2,6 +2,7 @@
 
 Official project information source: https://ameliaestate.realtynivesh.com/
 Sitemap: https://ameliaestate.realtynivesh.com/sitemap.xml
+Last updated: 2026-06-15
 
 ## Entity Summary
 
