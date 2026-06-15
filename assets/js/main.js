@@ -641,7 +641,7 @@ if (window.matchMedia("(min-width: 1200px)").matches) {
         return;
     }
 
-    const isMobileHeader = () => window.matchMedia("(max-width: 767px)").matches;
+    const isMobileHeader = () => window.matchMedia("(max-width: 1024px)").matches;
     const isMobileStructSliderActive = () => {
         if (!mobileStructSliderSection) {
             return false;
@@ -752,7 +752,7 @@ const footerLegalModal = document.querySelector("#footerLegalModal");
 
 if (footerLegalModal) {
     const footerLegalTitle = footerLegalModal.querySelector("[data-footer-legal-title]");
-    const footerLegalCopy = footerLegalModal.querySelector("[data-footer-legal-copy]");
+    const footerLegalContent = footerLegalModal.querySelector("[data-footer-legal-copy]");
     const footerLegalCloseButtons = footerLegalModal.querySelectorAll("[data-footer-legal-close]");
     let previousFooterLegalTrigger = null;
 
@@ -769,18 +769,27 @@ if (footerLegalModal) {
     const openFooterLegalModal = (noteId, trigger) => {
         const note = document.getElementById(noteId);
 
-        if (!note || !footerLegalTitle || !footerLegalCopy) {
+        if (!note || !footerLegalTitle || !footerLegalContent) {
             return;
         }
 
-        const title = note.querySelector("strong");
-        const copy = note.querySelector("p");
+        const title = Array.from(note.children).find((child) => child.tagName === "STRONG");
+        const content = Array.from(note.children)
+            .filter((child) => child !== title)
+            .map((child) => child.outerHTML)
+            .join("");
 
         footerLegalTitle.textContent = title ? title.textContent.trim() : "";
-        footerLegalCopy.textContent = copy ? copy.textContent.trim() : "";
+        footerLegalContent.innerHTML = content;
         previousFooterLegalTrigger = trigger;
         footerLegalModal.hidden = false;
         document.body.classList.add("is-footer-legal-modal-open");
+
+        const panel = footerLegalModal.querySelector(".footer-legal-modal-panel");
+
+        if (panel) {
+            panel.scrollTop = 0;
+        }
 
         const closeButton = footerLegalModal.querySelector(".footer-legal-modal-close");
 
@@ -1769,12 +1778,55 @@ if (idealFloorSection) {
         switchIdealImage(size.image);
     };
 
+    const getIdealFloorHashSize = (hash = window.location.hash) => {
+        const match = hash.match(/^#floor-plans(?:-(230|219|205))?$/);
+        return match ? match[1] || "" : "";
+    };
+
+    const getIdealFloorScrollOffset = () => {
+        const header = document.querySelector(".site-header");
+        const headerHeight = header ? header.getBoundingClientRect().height : 0;
+        const minimumOffset = window.matchMedia("(max-width: 1024px)").matches ? 118 : 104;
+
+        return Math.max(minimumOffset, headerHeight + 32);
+    };
+
+    const scrollIdealFloorIntoView = () => {
+        const targetTop = idealFloorSection.getBoundingClientRect().top + window.scrollY - getIdealFloorScrollOffset();
+
+        window.scrollTo({
+            top: Math.max(0, targetTop),
+            behavior: "smooth"
+        });
+    };
+
+    const updateIdealSize = (size) => {
+        if (!sizeDetails[size]) {
+            return;
+        }
+
+        activeSize = size;
+        sizeTabs.forEach((item) => item.classList.toggle("is-active", item.dataset.idealSize === size));
+        refreshIdealFloor();
+    };
+
+    const applyIdealFloorHash = () => {
+        if (!window.location.hash.match(/^#floor-plans(?:-(230|219|205))?$/)) {
+            return;
+        }
+
+        const hashSize = getIdealFloorHashSize();
+
+        if (hashSize) {
+            updateIdealSize(hashSize);
+        }
+
+        setTimeout(scrollIdealFloorIntoView, 0);
+    };
+
     sizeTabs.forEach((tab) => {
         tab.addEventListener("click", () => {
-            activeSize = tab.dataset.idealSize;
-
-            sizeTabs.forEach((item) => item.classList.toggle("is-active", item === tab));
-            refreshIdealFloor();
+            updateIdealSize(tab.dataset.idealSize);
         });
     });
 
@@ -1788,6 +1840,30 @@ if (idealFloorSection) {
     });
 
     refreshIdealFloor();
+
+    document.querySelectorAll('a[href="#floor-plans"], a[href^="#floor-plans-"]').forEach((link) => {
+        link.addEventListener("click", (event) => {
+            const hash = link.getAttribute("href");
+
+            if (!hash.match(/^#floor-plans(?:-(230|219|205))?$/)) {
+                return;
+            }
+
+            event.preventDefault();
+
+            const hashSize = getIdealFloorHashSize(hash);
+
+            if (hashSize) {
+                updateIdealSize(hashSize);
+            }
+
+            history.pushState(null, "", hash);
+            setTimeout(scrollIdealFloorIntoView, 90);
+        });
+    });
+
+    applyIdealFloorHash();
+    window.addEventListener("hashchange", applyIdealFloorHash);
 }
 
 // Project plans: switches the main viewer between floor, site, and tower plan modes.
@@ -1924,20 +2000,54 @@ if (projectPlansSection) {
         });
     };
 
-    const getProjectPlanFromHash = () => {
-        const match = window.location.hash.match(/^#project-plans-(floor|site|tower)$/);
-        return match ? match[1] : "";
+    const getProjectPlanHashState = (hash = window.location.hash) => {
+        const match = hash.match(/^#project-plans(?:-(floor|site|tower)(?:-(230|219|205))?)?$/);
+
+        return {
+            plan: match ? match[1] || "floor" : "",
+            variant: match && match[2] ? `${match[2]} Sq.Yd` : ""
+        };
     };
 
-    const applyProjectPlanHash = () => {
-        const hashPlan = getProjectPlanFromHash();
+    const getProjectPlanScrollOffset = () => {
+        const header = document.querySelector(".site-header");
+        const headerHeight = header ? header.getBoundingClientRect().height : 0;
+        const minimumOffset = window.matchMedia("(max-width: 1024px)").matches ? 118 : 104;
 
-        if (!hashPlan) {
+        return Math.max(minimumOffset, headerHeight + 32);
+    };
+
+    const scrollProjectPlansIntoView = () => {
+        const targetTop = projectPlansSection.getBoundingClientRect().top + window.scrollY - getProjectPlanScrollOffset();
+
+        window.scrollTo({
+            top: Math.max(0, targetTop),
+            behavior: "smooth"
+        });
+    };
+
+    const selectProjectPlanVariant = (label) => {
+        if (!label || variants.hidden) {
             return;
         }
 
-        updatePlan(hashPlan);
-        projectPlansSection.scrollIntoView({ behavior: "smooth", block: "start" });
+        const targetButton = Array.from(variantButtons).find((button) => (
+            !button.hidden && button.textContent.trim() === label
+        ));
+
+        targetButton?.click();
+    };
+
+    const applyProjectPlanHash = () => {
+        const { plan, variant } = getProjectPlanHashState();
+
+        if (!plan) {
+            return;
+        }
+
+        updatePlan(plan);
+        selectProjectPlanVariant(variant);
+        setTimeout(scrollProjectPlansIntoView, 0);
     };
 
     const openPlanLightbox = () => {
@@ -1965,14 +2075,20 @@ if (projectPlansSection) {
         tab.addEventListener("click", () => updatePlan(tab.dataset.planTab));
     });
 
-    document.querySelectorAll('a[href^="#project-plans-"]').forEach((link) => {
-        link.addEventListener("click", () => {
-            const key = link.getAttribute("href").replace("#project-plans-", "");
+    document.querySelectorAll('a[href="#project-plans"], a[href^="#project-plans-"]').forEach((link) => {
+        link.addEventListener("click", (event) => {
+            const hash = link.getAttribute("href");
+            const { plan, variant } = getProjectPlanHashState(hash);
 
-            if (planContent[key]) {
-                updatePlan(key);
-                setTimeout(() => projectPlansSection.scrollIntoView({ behavior: "smooth", block: "start" }), 0);
+            if (!plan || !planContent[plan]) {
+                return;
             }
+
+            event.preventDefault();
+            updatePlan(plan);
+            selectProjectPlanVariant(variant);
+            history.pushState(null, "", hash);
+            setTimeout(scrollProjectPlansIntoView, 90);
         });
     });
 
@@ -2325,15 +2441,35 @@ if (pricingSection) {
         return match ? match[1] : "";
     };
 
+    const getPricingScrollOffset = () => {
+        const header = document.querySelector(".site-header");
+        const headerHeight = header ? header.getBoundingClientRect().height : 0;
+        const minimumOffset = window.matchMedia("(max-width: 1024px)").matches ? 118 : 104;
+
+        return Math.max(minimumOffset, headerHeight + 32);
+    };
+
+    const scrollPricingIntoView = ({ smooth = true } = {}) => {
+        const targetTop = pricingSection.getBoundingClientRect().top + window.scrollY - getPricingScrollOffset();
+
+        window.scrollTo({
+            top: Math.max(0, targetTop),
+            behavior: smooth ? "smooth" : "auto"
+        });
+    };
+
     const applyPricingHash = () => {
         const hashSize = getPricingSizeFromHash();
 
-        if (!hashSize) {
+        if (!hashSize && window.location.hash !== "#pricing") {
             return;
         }
 
-        updatePricingSize(hashSize);
-        pricingSection.scrollIntoView({ behavior: "smooth", block: "start" });
+        if (hashSize) {
+            updatePricingSize(hashSize);
+        }
+
+        setTimeout(() => scrollPricingIntoView(), 0);
     };
 
     pricingTabs.forEach((tab) => {
@@ -2343,14 +2479,19 @@ if (pricingSection) {
         });
     });
 
-    document.querySelectorAll('a[href^="#pricing-"]').forEach((link) => {
-        link.addEventListener("click", () => {
-            const size = link.getAttribute("href").replace("#pricing-", "");
+    document.querySelectorAll('a[href="#pricing"], a[href^="#pricing-"]').forEach((link) => {
+        link.addEventListener("click", (event) => {
+            const hash = link.getAttribute("href");
+            const size = hash.replace("#pricing-", "");
+
+            event.preventDefault();
 
             if (pricingContent[size]) {
                 updatePricingSize(size);
-                setTimeout(() => pricingSection.scrollIntoView({ behavior: "smooth", block: "start" }), 0);
             }
+
+            history.pushState(null, "", hash);
+            setTimeout(() => scrollPricingIntoView(), 90);
         });
     });
 
@@ -3589,9 +3730,9 @@ if (downloadOptions.length && downloadPreviewImages.length) {
             setDownloadPreview(index);
 
             const clickedGetButton = event.target.closest("a");
-            const isMobileDownloadLayout = window.matchMedia("(max-width: 767px)").matches;
+            const isTouchDownloadLayout = window.matchMedia("(max-width: 1199px)").matches;
 
-            if (isMobileDownloadLayout && !clickedGetButton) {
+            if (isTouchDownloadLayout && !clickedGetButton) {
                 return;
             }
 
